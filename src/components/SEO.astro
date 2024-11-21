@@ -1,0 +1,58 @@
+---
+interface Props {
+	title: string
+	description: string
+	canonical?: string
+	image?: string
+}
+
+const {
+	title,
+	description,
+	canonical,
+	image = './favicon.svg',
+} = Astro.props as Props
+
+const determineCanonicalURL = () => {
+	if (Astro.url.host.includes("localhost")) return "http://localhost:4321"
+	return canonical || `${Astro.site}${Astro.url.pathname}`;
+}
+
+const canonicalURL = new URL(determineCanonicalURL(), Astro.site)
+---
+
+<title>{title}</title>
+
+<meta charset="UTF-8" />
+<meta name="description" content={description} />
+
+<link rel="canonical" href={canonicalURL} />
+<meta name="viewport" content="width=device-width" />
+<meta name="theme-color" content="#000000" />
+
+<meta name="keywords" content="tenbeltz" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@TenBeltz" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image, Astro.url)} />
+
+<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:site_name" content="TenBeltz" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="manifest" href="favicon/site.webmanifest">
+<link rel="shortcut icon" href="/favicon/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="TenBeltz">
+<meta name="msapplication-config" content="/browserconfig.xml">

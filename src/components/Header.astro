@@ -1,0 +1,31 @@
+---
+import Image from "astro/components/Image.astro";
+import logo from "../../public/images/svg/logo-tenbeltz-navbar.svg"
+import hamburguerMenu from "../../public/images/svg/bars-3.svg?raw"
+---
+
+<header class="absolute flex justify-between w-full px-4 py-5 text-white bg-black lg:px-12 lg:py-3">
+  <div class="flex items-center justify-center">
+    <a href="/">
+      <Image alt="logo" src={logo} />
+    </a>
+  </div>
+  <div id="navbar-container" class="items-center justify-center hidden lg:flex">
+    <nav>
+      <ul class="flex items-center gap-x-5 [&>li]:whitespace-nowrap">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Partners</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="flex items-center justify-center">
+    <a id="customers-button" href="#" class="hidden px-4 py-2 rounded-md lg:flex bg-pheromone-purple w-fit">Customers</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 lg:hidden">
+      <Fragment set:html={hamburguerMenu} />
+    </svg>
+  </div>
+</header>

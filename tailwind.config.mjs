@@ -13,8 +13,8 @@ export default {
 				'spiro-disco-ball': '#11B2FC',
 				'vivid-blue': '#2140FF',
 				'child-of-the-night': '#1A0076',
-				'white-smoke': 'F2F2F2',
-				'obsidian-shard': '1E293B'
+				'white-smoke': '#F2F2F2',
+				'obsidian-shard': '#02010A'
 			}
 		},
 	},

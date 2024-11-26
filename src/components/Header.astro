@@ -1,31 +1,100 @@
 ---
 import Image from "astro/components/Image.astro";
 import logo from "../../public/images/svg/logo-tenbeltz-navbar.svg"
-import hamburguerMenu from "../../public/images/svg/bars-3.svg?raw"
+import openHamburgerMenu from "../../public/images/svg/bars-3.svg?raw"
+import closeHamburgerMenu from "../../public/images/svg/x-mark.svg?raw"
+
+interface NavElement {
+  title: string;
+  href: string;
+}
+
+const navElements: NavElement[] = [
+  { title: 'Home', href: '#' },
+  { title: 'Services', href: '#' },
+  { title: 'About us', href: '#' },
+  { title: 'Portfolio', href: '#' },
+  { title: 'Partners', href: '#' },
+  { title: 'FAQ', href: '#' },
+  { title: 'Customers', href: '#' },
+]
 ---
 
-<header class="absolute flex justify-between w-full px-4 py-5 text-white bg-black lg:px-12 lg:py-3">
-  <div class="flex items-center justify-center">
-    <a href="/">
-      <Image alt="logo" src={logo} />
-    </a>
+<header class="fixed w-full text-white">
+  <div class="flex justify-between px-4 py-5 bg-obsidian-shard/50 backdrop-blur-lg lg:px-12 lg:py-3">
+    <div id="logo-container" class="flex items-center justify-center">
+      <a href="/">
+        <Image alt="logo" src={logo} />
+      </a>
+    </div>
+  
+    <a id="customers-button" href={navElements.find(element => element.title === "Customers")?.href} class="hidden px-4 py-2 rounded-md lg:flex bg-pheromone-purple w-fit">Customers</a>
+    
+    <div id="menu-container" class="flex items-center justify-center lg:hidden">
+      <svg id="open-hamburger-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+        <Fragment set:html={openHamburgerMenu} />
+      </svg>
+      <svg id="close-hamburger-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden size-8">
+        <Fragment set:html={closeHamburgerMenu} />
+      </svg>
+    </div>
   </div>
-  <div id="navbar-container" class="items-center justify-center hidden lg:flex">
+
+  <div id="navbar-container" class="fixed hidden top-[4.5rem] inset-0 items-center backdrop-blur-lg bg-obsidian-shard/50 justify-center w-full h-screen px-4 py-12 lg:backdrop-blur-none lg:w-auto lg:py-0 lg:px-0 lg:h-auto lg:bg-transparent lg:static lg:flex">
     <nav>
-      <ul class="flex items-center gap-x-5 [&>li]:whitespace-nowrap">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">About us</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Partners</a></li>
-        <li><a href="#">FAQ</a></li>
+      <ul class="flex flex-col text-lg lg:items-center gap-y-2 gap-x-5 lg:flex-row lg:text-base">
+        {navElements.map(({ href, title }) => (
+          <>
+            {title === "Customers" && (
+              <div class="h-px bg-white rounded lg:hidden"></div>
+            )}
+
+            <li>
+              <a href={href} class={`whitespace-nowrap block px-2 py-1.5 ${title === 'Customers' ? 'lg:hidden' : ''}`}>{title}</a>
+            </li>
+          </>
+        ))}
       </ul>
     </nav>
   </div>
-  <div class="flex items-center justify-center">
-    <a id="customers-button" href="#" class="hidden px-4 py-2 rounded-md lg:flex bg-pheromone-purple w-fit">Customers</a>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 lg:hidden">
-      <Fragment set:html={hamburguerMenu} />
-    </svg>
-  </div>
 </header>
+
+<script>
+  const navbarContainer = document.getElementById('navbar-container') as HTMLDivElement;
+  const logoContainer = document.getElementById('logo-container') as HTMLDivElement;
+  const openHamburgerMenu = document.getElementById('open-hamburger-menu') as HTMLElement & SVGElement;
+  const closeHamburgerMenu = document.getElementById('close-hamburger-menu') as HTMLElement & SVGElement;
+  const customerButton = document.getElementById('customers-button') as HTMLAnchorElement;
+  
+  function adjustNavbarLayout() {
+    if (window.innerWidth >= 1024) {
+      logoContainer?.parentElement?.insertBefore(navbarContainer, logoContainer.nextSibling);
+    } else {
+      document.querySelector('header')?.appendChild(navbarContainer);
+    }
+  }
+
+  function debounce(callback: Function, wait: number) {
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+    return (...args: any[]) => {
+      if (timeoutId) clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(() => callback(...args) , wait);
+    };
+  }
+
+  openHamburgerMenu?.addEventListener('click', () => {
+    navbarContainer?.classList.remove('hidden');
+    closeHamburgerMenu?.classList.remove('hidden');
+    openHamburgerMenu?.classList.add('hidden');
+  });
+
+  closeHamburgerMenu?.addEventListener('click', () => {
+    navbarContainer?.classList.add('hidden');
+    closeHamburgerMenu?.classList.add('hidden');
+    openHamburgerMenu?.classList.remove('hidden');
+  });
+
+  adjustNavbarLayout();
+
+  window.addEventListener('resize', debounce(adjustNavbarLayout, 250));
+</script>

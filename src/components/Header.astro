@@ -34,14 +34,19 @@ const navElements: NavElement[] = [
       <svg id="open-hamburger-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
         <Fragment set:html={openHamburgerMenu} />
       </svg>
+    </div>
+  </div>
+
+  <div id="navbar-container" class="fixed inset-0 items-center justify-center hidden w-full h-screen px-4 lg:px-0 backdrop-blur-lg bg-obsidian-shard/50 lg:backdrop-blur-none lg:w-auto lg:h-auto lg:bg-transparent lg:static lg:flex">
+    <div class="flex justify-between py-5 lg:hidden">
+      <a href="/">
+        <Image alt="logo" src={logo} />
+      </a>
       <svg id="close-hamburger-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden size-8">
         <Fragment set:html={closeHamburgerMenu} />
       </svg>
     </div>
-  </div>
-
-  <div id="navbar-container" class="fixed hidden top-[4.5rem] inset-0 items-center backdrop-blur-lg bg-obsidian-shard/50 justify-center w-full h-screen px-4 py-12 lg:backdrop-blur-none lg:w-auto lg:py-0 lg:px-0 lg:h-auto lg:bg-transparent lg:static lg:flex">
-    <nav>
+    <nav class="py-12 lg:py-0">
       <ul class="flex flex-col text-lg lg:items-center gap-y-2 gap-x-5 lg:flex-row lg:text-base">
         {navElements.map(({ href, title }) => (
           <>
@@ -72,6 +77,14 @@ const navElements: NavElement[] = [
     } else {
       document.querySelector('header')?.appendChild(navbarContainer);
     }
+
+    if (navbarContainer?.parentElement === document.querySelector('header')) {
+      if (!navbarContainer.classList.contains('hidden')) {
+        document.querySelector('header')?.firstElementChild?.classList.remove('bg-obsidian-shard/50');
+      }
+    } else {
+      document.querySelector('header')?.firstElementChild?.classList.add('bg-obsidian-shard/50');
+    }
   }
 
   function debounce(callback: Function, wait: number) {
@@ -82,19 +95,17 @@ const navElements: NavElement[] = [
     };
   }
 
-  openHamburgerMenu?.addEventListener('click', () => {
-    navbarContainer?.classList.remove('hidden');
-    closeHamburgerMenu?.classList.remove('hidden');
-    openHamburgerMenu?.classList.add('hidden');
-  });
+  function handleHamburgerMenu() {
+    navbarContainer?.classList.toggle('hidden');
+    openHamburgerMenu?.classList.toggle('hidden');
+    closeHamburgerMenu?.classList.toggle('hidden');
+    document.querySelector('header')?.firstElementChild?.classList.toggle('bg-obsidian-shard/50');
+  }
 
-  closeHamburgerMenu?.addEventListener('click', () => {
-    navbarContainer?.classList.add('hidden');
-    closeHamburgerMenu?.classList.add('hidden');
-    openHamburgerMenu?.classList.remove('hidden');
-  });
+  openHamburgerMenu?.addEventListener('click', () => handleHamburgerMenu());
+  closeHamburgerMenu?.addEventListener('click', () => handleHamburgerMenu());
 
   adjustNavbarLayout();
-
-  window.addEventListener('resize', debounce(adjustNavbarLayout, 250));
+  
+  window.addEventListener('resize', debounce(adjustNavbarLayout, 50));
 </script>

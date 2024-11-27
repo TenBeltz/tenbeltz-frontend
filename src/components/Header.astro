@@ -21,14 +21,14 @@ const navElements: NavElement[] = [
 ---
 
 <header class="fixed w-full text-white">
-  <div class="flex justify-between px-4 py-5 bg-obsidian-shard/50 backdrop-blur-lg lg:px-12 lg:py-3">
+  <div class="flex justify-between px-4 py-5 transition-colors duration-500 bg-obsidian-shard/50 backdrop-blur-lg lg:px-12 lg:py-3">
     <div id="logo-container" class="flex items-center justify-center">
       <a href="/">
         <Image alt="logo" src={logo} />
       </a>
     </div>
   
-    <a id="customers-button" href={navElements.find(element => element.title === "Customers")?.href} class="hidden px-4 py-2 rounded-md lg:flex bg-pheromone-purple w-fit">Customers</a>
+    <a id="customers-button" href={navElements.find(({ title }) => title === "Customers")?.href} class="hidden px-4 py-2 rounded-md lg:flex bg-pheromone-purple w-fit">Customers</a>
     
     <div id="menu-container" class="flex items-center justify-center lg:hidden">
       <svg id="open-hamburger-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
@@ -37,7 +37,7 @@ const navElements: NavElement[] = [
     </div>
   </div>
 
-  <div id="navbar-container" class="fixed inset-0 items-center justify-center hidden w-full h-screen px-4 lg:px-0 backdrop-blur-lg bg-obsidian-shard/50 lg:backdrop-blur-none lg:w-auto lg:h-auto lg:bg-transparent lg:static lg:flex">
+  <div id="navbar-container" class="fixed inset-0 items-center justify-center w-full h-screen px-4 overflow-y-scroll transition-transform duration-500 translate-x-full scrollbar-hidden lg:translate-x-0 lg:px-0 backdrop-blur-lg bg-obsidian-shard/50 lg:backdrop-blur-none lg:w-auto lg:h-auto lg:bg-transparent lg:flex">
     <div class="flex justify-between py-5 lg:hidden">
       <a href="/">
         <Image alt="logo" src={logo} />
@@ -49,15 +49,9 @@ const navElements: NavElement[] = [
     <nav class="py-12 lg:py-0">
       <ul class="flex flex-col text-lg lg:items-center gap-y-2 gap-x-5 lg:flex-row lg:text-base">
         {navElements.map(({ href, title }) => (
-          <>
-            {title === "Customers" && (
-              <div class="h-px bg-white rounded lg:hidden"></div>
-            )}
-
-            <li>
-              <a href={href} class={`whitespace-nowrap block px-2 py-1.5 ${title === 'Customers' ? 'lg:hidden' : ''}`}>{title}</a>
-            </li>
-          </>
+          <li>
+            <a href={href} class={`whitespace-nowrap block px-2 py-1.5 ${title === 'Customers' ? 'lg:hidden' : ''} ${title === 'Customers' ? 'border-t pt-3.5' : ''}`}>{title}</a>
+          </li>
         ))}
       </ul>
     </nav>
@@ -67,11 +61,13 @@ const navElements: NavElement[] = [
 <script>
   const navbarContainer = document.getElementById('navbar-container') as HTMLDivElement;
   const logoContainer = document.getElementById('logo-container') as HTMLDivElement;
-  const openHamburgerMenu = document.getElementById('open-hamburger-menu') as HTMLElement & SVGElement;
-  const closeHamburgerMenu = document.getElementById('close-hamburger-menu') as HTMLElement & SVGElement;
-  const customerButton = document.getElementById('customers-button') as HTMLAnchorElement;
+  const openMenuButton = document.getElementById('open-hamburger-menu') as HTMLElement & SVGElement;
+  const closeMenuButton = document.getElementById('close-hamburger-menu') as HTMLElement & SVGElement;
+  // const customerButton = document.getElementById('customers-button') as HTMLAnchorElement;
   
-  function adjustNavbarLayout() {
+  function adjustNavbarLayout(): void {
+    const header = document.querySelector("header")?.firstElementChild;
+
     if (window.innerWidth >= 1024) {
       logoContainer?.parentElement?.insertBefore(navbarContainer, logoContainer.nextSibling);
     } else {
@@ -79,15 +75,15 @@ const navElements: NavElement[] = [
     }
 
     if (navbarContainer?.parentElement === document.querySelector('header')) {
-      if (!navbarContainer.classList.contains('hidden')) {
-        document.querySelector('header')?.firstElementChild?.classList.remove('bg-obsidian-shard/50');
+      if (!navbarContainer.classList.contains('translate-x-full')) {
+        header?.classList.remove('bg-obsidian-shard/50');
       }
     } else {
-      document.querySelector('header')?.firstElementChild?.classList.add('bg-obsidian-shard/50');
+      header?.classList.add('bg-obsidian-shard/50');
     }
   }
 
-  function debounce(callback: Function, wait: number) {
+  function debounce(callback: Function, wait: number): (...args: any[]) => void {
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
     return (...args: any[]) => {
       if (timeoutId) clearTimeout(timeoutId);
@@ -95,17 +91,24 @@ const navElements: NavElement[] = [
     };
   }
 
-  function handleHamburgerMenu() {
-    navbarContainer?.classList.toggle('hidden');
-    openHamburgerMenu?.classList.toggle('hidden');
-    closeHamburgerMenu?.classList.toggle('hidden');
+  function toggleHamburgerMenu(): void {
+    navbarContainer?.classList.toggle('translate-x-full');
+    openMenuButton?.classList.toggle('hidden');
+    closeMenuButton?.classList.toggle('hidden');
     document.querySelector('header')?.firstElementChild?.classList.toggle('bg-obsidian-shard/50');
   }
 
-  openHamburgerMenu?.addEventListener('click', () => handleHamburgerMenu());
-  closeHamburgerMenu?.addEventListener('click', () => handleHamburgerMenu());
+  openMenuButton?.addEventListener('click', () => toggleHamburgerMenu());
+  closeMenuButton?.addEventListener('click', () => toggleHamburgerMenu());
 
+  const debouncedAdjustNavbarLayout = debounce(adjustNavbarLayout, 50);
   adjustNavbarLayout();
   
-  window.addEventListener('resize', debounce(adjustNavbarLayout, 50));
+  window.addEventListener('resize', debouncedAdjustNavbarLayout);
+
+  window.addEventListener('pagehide', () => {
+    openMenuButton.removeEventListener("click", toggleHamburgerMenu);
+    closeMenuButton.removeEventListener("click", toggleHamburgerMenu);
+    window.removeEventListener("resize", debouncedAdjustNavbarLayout);
+  });
 </script>

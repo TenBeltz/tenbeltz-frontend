@@ -1,0 +1,36 @@
+---
+interface Service {
+  logo: string;
+  title: string;
+  description: string;
+}
+
+const services: Service[] = [
+  { logo: '', title: 'Web development', description: `We create unique software that perfectly aligns with each client's goals and requirements.`},
+  { logo: '', title: 'Custom software development', description: `We create unique software that perfectly aligns with each client's goals and requirements.`},
+  { logo: '', title: 'AI integrations', description: `We create unique software that perfectly aligns with each client's goals and requirements.`},
+]
+---
+
+<section class="max-w-screen-xl mx-auto text-white">
+  <div class="px-4 py-20 lg:px-16 lg:py-28">
+    <h2 class="mb-20 text-4xl font-bold text-center">What we offer you</h2>
+    <div id="services" class="grid grid-cols-1 lg:grid-cols-3 gap-x-9 gap-y-7">
+      {services.map(service => (
+        <div class="p-px rounded-lg bg-gradient-to-tr from-[#3B0267] to-[#7504CD]">
+          <div class="flex flex-col h-full max-w-xs px-6 rounded-lg bg-blacklist gap-y-4 py-7">
+            <div class="flex items-center justify-center">
+              <span>X</span>
+            </div>
+            <div class="flex items-center justify-center flex-1">
+              <h3 class="text-xl font-semibold leading-6 text-center">{service.title}</h3>
+            </div>
+            <div class="flex items-center justify-center">
+              <p class="text-sm leading-4 text-slate-300">{service.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

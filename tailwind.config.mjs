@@ -14,7 +14,8 @@ export default {
 				'vivid-blue': '#2140FF',
 				'child-of-the-night': '#1A0076',
 				'white-smoke': '#F2F2F2',
-				'obsidian-shard': '#02010A'
+				'obsidian-shard': '#02010A',
+				'blacklist': '#1C1232'
 			}
 		},
 	},

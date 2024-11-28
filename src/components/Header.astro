@@ -1,8 +1,8 @@
 ---
 import Image from "astro/components/Image.astro";
-import logo from "../../public/images/svg/logo-tenbeltz-navbar.svg"
-import openHamburgerMenu from "../../public/images/svg/bars-3.svg?raw"
-import closeHamburgerMenu from "../../public/images/svg/x-mark.svg?raw"
+import logo from "/public/images/svg/logo-tenbeltz-navbar.svg"
+import openHamburgerMenu from "/public/images/svg/bars-3.svg?raw"
+import closeHamburgerMenu from "/public/images/svg/x-mark.svg?raw"
 
 interface NavElement {
   title: string;
@@ -20,41 +20,43 @@ const navElements: NavElement[] = [
 ]
 ---
 
-<header class="fixed w-full text-white">
-  <div class="flex justify-between px-4 py-5 transition-colors duration-500 bg-obsidian-shard/50 backdrop-blur-lg lg:px-12 lg:py-3">
-    <div id="logo-container" class="flex items-center justify-center">
-      <a href="/">
-        <Image alt="logo" src={logo} />
-      </a>
+<header class="fixed z-20 w-full text-white">
+  <div class="transition-colors duration-500 backdrop-blur-lg bg-obsidian-shard/50">
+    <div class="flex items-center justify-between px-4 py-5 mx-auto max-w-screen-2xl lg:px-12 lg:py-3">
+      <div id="logo-container" class="flex items-center justify-center">
+        <a href="/">
+          <Image alt="logo" src={logo} />
+        </a>
+      </div>
+    
+      <a id="customers-button" href={navElements.find(({ title }) => title === "Customers")?.href} class="hidden px-4 py-2 rounded-md lg:flex bg-pheromone-purple w-fit">Customers</a>
+      
+      <div id="menu-container" class="flex items-center justify-center lg:hidden">
+        <svg id="open-hamburger-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+          <Fragment set:html={openHamburgerMenu} />
+        </svg>
+      </div>
     </div>
   
-    <a id="customers-button" href={navElements.find(({ title }) => title === "Customers")?.href} class="hidden px-4 py-2 rounded-md lg:flex bg-pheromone-purple w-fit">Customers</a>
-    
-    <div id="menu-container" class="flex items-center justify-center lg:hidden">
-      <svg id="open-hamburger-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
-        <Fragment set:html={openHamburgerMenu} />
-      </svg>
+    <div id="navbar-container" class="fixed inset-0 items-center justify-center w-full h-screen px-4 overflow-y-scroll transition-transform duration-500 translate-x-full lg:static lg:inset-auto scrollbar-hidden backdrop-blur-lg lg:translate-x-0 lg:px-0 bg-obsidian-shard/50 lg:backdrop-blur-none lg:w-auto lg:h-auto lg:bg-transparent lg:flex">
+      <div class="flex justify-between py-5 lg:hidden">
+        <a href="/">
+          <Image alt="logo" src={logo} />
+        </a>
+        <svg id="close-hamburger-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden size-8">
+          <Fragment set:html={closeHamburgerMenu} />
+        </svg>
+      </div>
+      <nav class="py-12 lg:py-0">
+        <ul class="flex flex-col text-lg lg:items-center gap-y-2 gap-x-5 lg:flex-row lg:text-base">
+          {navElements.map(({ href, title }) => (
+            <li>
+              <a href={href} class={`whitespace-nowrap block px-2 py-1.5 ${title === 'Customers' ? 'lg:hidden' : ''} ${title === 'Customers' ? 'border-t pt-3.5' : ''}`}>{title}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
-  </div>
-
-  <div id="navbar-container" class="fixed inset-0 items-center justify-center w-full h-screen px-4 overflow-y-scroll transition-transform duration-500 translate-x-full scrollbar-hidden lg:translate-x-0 lg:px-0 backdrop-blur-lg bg-obsidian-shard/50 lg:backdrop-blur-none lg:w-auto lg:h-auto lg:bg-transparent lg:flex">
-    <div class="flex justify-between py-5 lg:hidden">
-      <a href="/">
-        <Image alt="logo" src={logo} />
-      </a>
-      <svg id="close-hamburger-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden size-8">
-        <Fragment set:html={closeHamburgerMenu} />
-      </svg>
-    </div>
-    <nav class="py-12 lg:py-0">
-      <ul class="flex flex-col text-lg lg:items-center gap-y-2 gap-x-5 lg:flex-row lg:text-base">
-        {navElements.map(({ href, title }) => (
-          <li>
-            <a href={href} class={`whitespace-nowrap block px-2 py-1.5 ${title === 'Customers' ? 'lg:hidden' : ''} ${title === 'Customers' ? 'border-t pt-3.5' : ''}`}>{title}</a>
-          </li>
-        ))}
-      </ul>
-    </nav>
   </div>
 </header>
 

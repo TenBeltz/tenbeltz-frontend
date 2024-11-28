@@ -1,14 +1,18 @@
 ---
-import Banner from '../components/Banner.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import Offer from '../components/Offer.astro';
-import Layout from '../layouts/Layout.astro';
+import Banner from '@/components/Banner.astro';
+import Header from '@/components/Header.astro';
+import Hero from '@/components/Hero.astro';
+import Offer from '@/components/Offer.astro';
+import Layout from '@/layouts/Layout.astro';
 ---
 
-<Layout title="TenBeltz" description="TenBeltz" canonical="https://tenbeltz.com">
-	<main>
-		<Header />
+<Layout	
+	title="TenBeltz"	
+	description="TenBeltz enables you to develop high-quality software applications, customized to the specific needs of your business."
+	canonical="https://tenbeltz.com"
+>
+	<Header />
+	<main class="relative z-10 flex flex-col flex-1">
 		<Hero />
 		<Banner />
 		<Offer />

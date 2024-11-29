@@ -1,14 +1,19 @@
 ---
+import { Image } from 'astro:assets';
+import webDevelopmentIcon from '/public/images/svg/web-development-icon.svg'
+import customSoftwareDevelopmentIcon from '/public/images/svg/custom-software-development-icon.svg'
+import aiIntegrationsIcon from '/public/images/svg/ai-integrations-icon.svg'
+
 interface Service {
-  logo: string;
+  logo: ImageMetadata;
   title: string;
   description: string;
 }
 
 const services: Service[] = [
-  { logo: '', title: 'Web development', description: `We create unique software that perfectly aligns with each client's goals and requirements.`},
-  { logo: '', title: 'Custom software development', description: `We create unique software that perfectly aligns with each client's goals and requirements.`},
-  { logo: '', title: 'AI integrations', description: `We create unique software that perfectly aligns with each client's goals and requirements.`},
+  { logo: webDevelopmentIcon, title: 'Web development', description: `We create unique software that perfectly aligns with each client's goals and requirements.`},
+  { logo: customSoftwareDevelopmentIcon, title: 'Custom software development', description: `We create unique software that perfectly aligns with each client's goals and requirements.`},
+  { logo: aiIntegrationsIcon, title: 'AI integrations', description: `We create unique software that perfectly aligns with each client's goals and requirements.`},
 ]
 ---
 
@@ -20,7 +25,11 @@ const services: Service[] = [
         <div class="p-px rounded-lg bg-gradient-to-tr from-[#3B0267] to-[#7504CD]">
           <div class="flex flex-col h-full max-w-xs px-6 rounded-lg bg-blacklist gap-y-4 py-7">
             <div class="flex items-center justify-center">
-              <span>X</span>
+              {service.logo ? (
+                <Image src={service.logo} alt={`${service.title} logo`}/>
+              ) : (
+                <span>X</span>
+              )}
             </div>
             <div class="flex items-center justify-center flex-1">
               <h3 class="text-xl font-semibold leading-6 text-center">{service.title}</h3>

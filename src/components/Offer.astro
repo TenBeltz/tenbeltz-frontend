@@ -1,19 +1,34 @@
 ---
-import { Image } from 'astro:assets';
-import webDevelopmentIcon from '/public/images/svg/web-development-icon.svg'
-import customSoftwareDevelopmentIcon from '/public/images/svg/custom-software-development-icon.svg'
-import aiIntegrationsIcon from '/public/images/svg/ai-integrations-icon.svg'
+import { ReactComponent as WebDevelopmentIcon } from '/public/images/svg/web-development-icon.svg';
+import { ReactComponent as CustomSoftwareDevelopmentIcon } from '/public/images/svg/custom-software-development-icon.svg';
+import { ReactComponent as AiIntegrationsIcon } from '/public/images/svg/ai-integrations-icon.svg';
 
 interface Service {
-  logo: ImageMetadata;
+  logo: React.FC<React.SVGProps<SVGSVGElement>>;
   title: string;
   description: string;
+  logoProps?: React.SVGProps<SVGSVGElement>;
 }
 
 const services: Service[] = [
-  { logo: webDevelopmentIcon, title: 'Web development', description: `We create unique software that perfectly aligns with each client's goals and requirements.`},
-  { logo: customSoftwareDevelopmentIcon, title: 'Custom software development', description: `We create unique software that perfectly aligns with each client's goals and requirements.`},
-  { logo: aiIntegrationsIcon, title: 'AI integrations', description: `We create unique software that perfectly aligns with each client's goals and requirements.`},
+  {
+    logo: WebDevelopmentIcon,
+    title: 'Web development',
+    description: `We create unique software that perfectly aligns with each client's goals and requirements.`,
+    logoProps: { width: 36, height: 36, fill: '#ffffff' },
+  },
+  {
+    logo: CustomSoftwareDevelopmentIcon,
+    title: 'Custom software development',
+    description: `We create unique software that perfectly aligns with each client's goals and requirements.`,
+    logoProps: { width: 36, height: 36, fill: '#ffffff' },
+  },
+  {
+    logo: AiIntegrationsIcon,
+    title: 'AI integrations',
+    description: `We create unique software that perfectly aligns with each client's goals and requirements.`,
+    logoProps: { width: 36, height: 36, fill: '#ffffff' },
+  },
 ]
 ---
 
@@ -26,7 +41,7 @@ const services: Service[] = [
           <div class="flex flex-col h-full max-w-xs px-6 rounded-lg bg-blacklist gap-y-4 py-7">
             <div class="flex items-center justify-center">
               {service.logo ? (
-                <Image src={service.logo} alt={`${service.title} logo`}/>
+                <service.logo {...(service.logoProps || {})} />
               ) : (
                 <span>X</span>
               )}

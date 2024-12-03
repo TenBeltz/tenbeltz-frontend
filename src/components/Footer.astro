@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../public/images/svg/logo-tenbeltz-navbar.svg';
+import { ReactComponent as LogoInstagram } from '/public/images/svg/logo-instagram.svg';
+
+interface SocialMedia {
+  name: string;
+  logo: React.FC<React.SVGProps<SVGSVGElement>>;
+  logoProps?: React.SVGProps<SVGSVGElement>;
+  url: string;
+}
+
+const socialMedias: SocialMedia[] = [
+  {
+    name: 'Instagram',
+    logo: LogoInstagram,
+    logoProps: { width: 20, height: 20, fill: '#94A3B8' },
+    url: 'https://www.instagram.com/tenbeltz/',
+  },
+  {
+    name: 'Instagram',
+    logo: LogoInstagram,
+    logoProps: { width: 20, height: 20, fill: '#94A3B8' },
+    url: 'https://www.instagram.com/tenbeltz/',
+  },
+  {
+    name: 'Instagram',
+    logo: LogoInstagram,
+    logoProps: { width: 20, height: 20, fill: '#94A3B8' },
+    url: 'https://www.instagram.com/tenbeltz/',
+  }
+]
+---
+
+<footer class="flex flex-col p-4 py-8 text-white bg-obsidian-shard gap-y-8 lg:p-16">
+  <div>
+    <a href="/">
+      <Image src={logo} alt="logo" />
+    </a>
+  </div>
+
+  <div>
+    <!-- TODO: footer content -->
+  </div>
+  
+  <div class="flex justify-between py-3 text-sm border-t border-slate-400 text-slate-400">
+    <span>
+      &copy; 2024 TenBeltz. All Rights Reserved.
+    </span>
+    <span class="flex gap-x-4 [&>a]:hover:cursor-pointer">
+      {socialMedias.map(socialMedia => (
+        <a href={socialMedia.url} target="_blank">
+          <socialMedia.logo {...(socialMedia.logoProps || {})} />
+        </a>
+      ))}
+    </span>
+  </div>
+</footer>

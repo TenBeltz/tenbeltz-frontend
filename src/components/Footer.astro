@@ -1,12 +1,17 @@
 ---
 import { Image } from 'astro:assets';
-import logo from '../../public/images/svg/logo-tenbeltz-navbar.svg';
 import { ReactComponent as LogoInstagram } from '/public/images/svg/logo-instagram.svg';
+import logo from '../../public/images/svg/logo-tenbeltz-navbar.svg';
 
 interface SocialMedia {
   name: string;
   logo: React.FC<React.SVGProps<SVGSVGElement>>;
   logoProps?: React.SVGProps<SVGSVGElement>;
+  url: string;
+}
+
+interface FooterLink {
+  name: string;
   url: string;
 }
 
@@ -16,43 +21,68 @@ const socialMedias: SocialMedia[] = [
     logo: LogoInstagram,
     logoProps: { width: 20, height: 20, fill: '#94A3B8' },
     url: 'https://www.instagram.com/tenbeltz/',
-  },
-  {
-    name: 'Instagram',
-    logo: LogoInstagram,
-    logoProps: { width: 20, height: 20, fill: '#94A3B8' },
-    url: 'https://www.instagram.com/tenbeltz/',
-  },
-  {
-    name: 'Instagram',
-    logo: LogoInstagram,
-    logoProps: { width: 20, height: 20, fill: '#94A3B8' },
-    url: 'https://www.instagram.com/tenbeltz/',
   }
-]
+];
+
+const services: FooterLink[] = [
+  { name: 'Custom Software Development', url: '#' },
+  { name: 'Web Development', url: '#' },
+  { name: 'Mobile App Development', url: '#' },
+  { name: 'Graphic Design', url: '#' },
+  { name: 'Internal Management Tools', url: '#' },
+  { name: 'Tailored Solutions', url: '#' },
+  { name: 'Cloud Services', url: '#' },
+];
+
+const sections: FooterLink[] = [
+  { name: 'Home', url: '/' },
+  { name: 'Services', url: '#' },
+  { name: 'Portfolio', url: '#' },
+  { name: 'Customers', url: '#' },
+  { name: 'About Us', url: '#' },
+];
 ---
 
-<footer class="flex flex-col p-4 py-8 text-white bg-obsidian-shard gap-y-8 lg:p-16">
-  <div>
-    <a href="/">
-      <Image src={logo} alt="logo" />
-    </a>
-  </div>
-
-  <div>
-    <!-- TODO: footer content -->
-  </div>
-  
-  <div class="flex justify-between py-3 text-sm border-t border-slate-400 text-slate-400">
-    <span>
-      &copy; 2024 TenBeltz. All Rights Reserved.
-    </span>
-    <span class="flex gap-x-4 [&>a]:hover:cursor-pointer">
-      {socialMedias.map(socialMedia => (
-        <a href={socialMedia.url} target="_blank">
-          <socialMedia.logo {...(socialMedia.logoProps || {})} />
+<footer class="text-white bg-obsidian-shard">
+  <div class="flex flex-col p-4 py-8 mx-auto gap-y-14 lg:p-16 max-w-screen-2xl">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-x-20 gap-y-10">
+      <div>
+        <a href="/" class="flex items-center gap-x-3">
+          <Image src={logo} alt="logo" width="42" height="42" />
         </a>
-      ))}
-    </span>
+      </div>
+      <div class="flex flex-col gap-y-5">
+        <h4 class="font-semibold">Services</h4>
+        <ul class="flex flex-col text-slate-300 gap-y-3">
+          {services.map(service => <li><a href={service.url}>{service.name}</a></li>)}
+        </ul>
+      </div>
+      <div class="flex flex-col gap-y-5">
+        <h4 class="font-semibold">Pages</h4>
+        <ul class="flex flex-col text-slate-300 gap-y-3">
+          {sections.map(section => <li><a href={section.url}>{section.name}</a></li>)}
+        </ul>
+      </div>
+      <div class="flex flex-col gap-y-5">
+        <h4 class="font-semibold">Contact</h4>
+        <ul class="flex flex-col text-slate-300 gap-y-3">
+          <li><a href="mailto:hello@tenbeltz.com">hello@tenbeltz.com</a></li>
+          <li><a href="tel:+34640520819"></a>+34 640 52 08 19</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="flex justify-between py-3 text-sm border-t border-slate-400 text-slate-400">
+      <span>
+        &copy; 2024 TenBeltz. All Rights Reserved.
+      </span>
+      <span class="flex gap-x-4 [&>a]:hover:cursor-pointer">
+        {socialMedias.map(socialMedia => (
+          <a href={socialMedia.url} target="_blank">
+            <socialMedia.logo {...(socialMedia.logoProps || {})} />
+          </a>
+        ))}
+      </span>
+    </div>
   </div>
 </footer>

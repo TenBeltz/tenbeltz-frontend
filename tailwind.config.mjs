@@ -16,6 +16,9 @@ export default {
 				'white-smoke': '#F2F2F2',
 				'obsidian-shard': '#02010A',
 				'blacklist': '#1C1232'
+			},
+			screens: {
+				'xs': '512px'
 			}
 		},
 	},

@@ -1,39 +1,50 @@
-<section class="px-4 py-20 lg:px-8">
-  <div class="grid max-w-screen-lg grid-cols-1 grid-rows-5 gap-5 mx-auto lg:grid-cols-4 lg:gap-4">
-    <div id="about-us" class="px-4 py-10 bg-white border rounded-md lg:col-span-2 lg:row-span-5">
-      <div class="flex flex-col lg:gap-y-8">
-        <div>
-          <!-- logo -->
+---
+import { Image } from "astro:assets";
+import logo from "/public/images/svg/tenbeltz-logo-about.svg";
+---
+
+<section class="px-4 py-20 text-white lg:px-8">
+  <div class="grid max-w-screen-lg grid-cols-1 gap-5 mx-auto lg:grid-rows-5 lg:grid-cols-4 lg:gap-4">
+    <div id="about-us" class="px-4 py-10 bg-white border rounded-md lg:col-span-2 lg:row-span-5 border-[#8A20FF]">
+      <div class="flex flex-col gap-y-8">
+        <div class="flex items-center justify-center">
+          <Image src={logo} alt="logo" />
         </div>
-        <div class="flex flex-col lg:gap-y-8">
-          <h4 class="text-3xl font-bold text-center">About us</h4>
-          <p class="text-lg">At TenBeltz, we stand at the forefront of software development and technology solutions. As an industry leader, our mission is to drive business innovation by providing customized tools and digital platforms that transform the way companies operate in the digital age.</p>
+        <div class="flex flex-col gap-y-8">
+          <h4 class="text-3xl font-bold text-center bg-gradient-to-r from-[#21EFE3] to-[#11B2FC] bg-clip-text text-transparent">About us</h4>
+          <p class="text-lg text-slate-300">At TenBeltz, we stand at the forefront of software development and technology solutions. As an industry leader, our mission is to drive business innovation by providing customized tools and digital platforms that transform the way companies operate in the digital age.</p>
         </div>
       </div>
     </div>
-    <div id="experience" class="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-1">
+    <div id="experience" class="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-1 border-[#8A20FF]">
       <h5 class="flex items-center h-full gap-x-2">
-        <span class="text-4xl font-extrabold">+3</span>
-        <span class="font-semibold leading-none ">Years of experience</span>
+        <span class="text-4xl font-bold text-petal-plush">+3</span>
+        <span class="text-lg font-semibold leading-none">Years of experience</span>
       </h5>
     </div>
-    <div id="commitment" class="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-4">
-      <div class="flex flex-col lg:gap-y-7">
-        <h4 class="text-2xl font-semibold">Our commitment</h4>
-        <p>We are committed to technical excellence and customer satisfaction. We maintain a long-term vision, constantly adapting to emerging technological trends to ensure our customers are always one step ahead in the digital world.</p>
+    <div id="commitment" class="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-4 border-[#8A20FF]">
+      <div class="flex flex-col gap-y-7">
+        <h4 class="text-2xl font-semibold">Our <span class="text-petal-plush">commitment</span></h4>
+        <p class="text-slate-300">We are committed to technical excellence and customer satisfaction. We maintain a long-term vision, constantly adapting to emerging technological trends to ensure our customers are always one step ahead in the digital world.</p>
       </div>
     </div>
-    <div id="specialty" class="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-4">
-      <div class="flex flex-col lg:gap-y-7">
-        <h4 class="text-2xl font-semibold">Our specialty</h4>
-        <p>We specialize in developing software tailored to our clients' needs, offering solutions with artificial intelligence and customized web platforms. Our team is dedicated to providing advanced technology that optimizes processes and boosts business growth.</p>
+    <div id="specialty" class="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-4 border-[#8A20FF]">
+      <div class="flex flex-col gap-y-7">
+        <h4 class="text-2xl font-semibold">Our <span class="text-petal-plush">specialty</span></h4>
+        <p class="text-slate-300">We specialize in developing software tailored to our clients' needs, offering solutions with artificial intelligence and customized web platforms. Our team is dedicated to providing advanced technology that optimizes processes and boosts business growth.</p>
       </div>
     </div>
-    <div id="projects" class="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-1">
+    <div id="projects" class="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-1 border-[#8A20FF]">
       <h5 class="flex items-center h-full gap-x-2">
-        <span class="text-4xl font-extrabold">+100</span>
-        <span class="font-semibold leading-none">Completed Projects</span>
+        <span class="text-4xl font-bold text-petal-plush">+100</span>
+        <span class="font-semibold leading-none bg-gradient-to-tr from-[#1d0043] to-[#340076]">Completed Projects</span>
       </h5>
     </div>
   </div>
 </section>
+
+<style>
+  section > div > div {
+    background-image: linear-gradient(40deg, #1d0043, #340076);
+  }
+</style>

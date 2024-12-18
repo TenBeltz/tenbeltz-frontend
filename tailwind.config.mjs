@@ -19,6 +19,12 @@ export default {
 			},
 			screens: {
 				'xs': '512px'
+			},
+			backgroundImage: {
+				grid: 'linear-gradient(to right, #581a7366 1px, transparent 1px), linear-gradient(to bottom, #581a7366 1px, transparent 1px)'
+			},
+			backgroundSize: {
+				grid: '50px 50px',
 			}
 		},
 	},

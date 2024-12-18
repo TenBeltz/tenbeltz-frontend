@@ -10,9 +10,9 @@ interface NavElement {
 }
 
 const navElements: NavElement[] = [
-  { title: 'Home', href: '#' },
-  { title: 'Services', href: '#' },
-  { title: 'About us', href: '#' },
+  { title: 'Home', href: '/' },
+  { title: 'Services', href: '#offer' },
+  { title: 'About us', href: '#about-us' },
   { title: 'Portfolio', href: '#' },
   { title: 'Partners', href: '#' },
   { title: 'FAQ', href: '#' },
@@ -28,7 +28,7 @@ const navElements: NavElement[] = [
           <Image alt="logo" src={logo} />
         </a>
       </div>
-    
+
       <a id="customers-button" href={navElements.find(({ title }) => title === "Customers")?.href} class="hidden px-4 py-2 rounded-md lg:flex bg-pheromone-purple w-fit">Customers</a>
       
       <div id="menu-container" class="flex items-center justify-center lg:hidden">

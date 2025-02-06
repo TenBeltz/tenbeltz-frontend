@@ -6,7 +6,7 @@ import backgroundGradientPC from '/public/images/img/contact-gradient-background
 import backgroundGradientMobile from '/public/images/img/contact-gradient-background-mobile.png';
 
 export const contactInfo = {
-  phone: '+34 640 52 08 19',
+  phones: ['+1 678 667 6764', '+34 640 52 08 19'],
   email: 'hello@tenbeltz.com',
 }
 ---
@@ -28,10 +28,12 @@ export const contactInfo = {
               <MailIcon strokeWidth="1.5" className="size-6" stroke="currentColor" />
               <a href={`mailto:${contactInfo.email}`} class="text-xs">{contactInfo.email}</a>
             </li>
-            <li class="flex items-center gap-x-2">
-              <PhoneIcon strokeWidth="1.5" className="size-6" stroke="currentColor" />
-              <a href={`tel:${contactInfo.phone}`} class="text-xs">{contactInfo.phone}</a>
-            </li>
+            {contactInfo.phones.map((phone) => (
+              <li class="flex items-center gap-x-2">
+                <PhoneIcon strokeWidth="1.5" className="size-6" stroke="currentColor" />
+                <a href={`tel:${phone}`} class="text-xs">{phone}</a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

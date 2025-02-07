@@ -34,7 +34,7 @@ const spans: number[] = [6, 3, 6, 3, 4, 3, 3, 2];
     <div class="grid w-max grid-cols-[repeat(5,_minmax(11rem,_1fr))] grid-rows-6 gap-5 h-80 relative">
       <div class="absolute inset-0 z-10 bg-gradient-to-t from-black via-transparent to-transparent"></div>
       {cards.map((card, index) => (
-        <div class={`row-span-${spans[index]} overflow-hidden bg-gray-600 rounded-md`}>
+        <div class={`overflow-hidden bg-gray-600 rounded-md row-span-${spans[index]}`}>
           <Image src={card.image} alt={card.alt} class="object-cover w-full h-full" />
         </div>
       ))}

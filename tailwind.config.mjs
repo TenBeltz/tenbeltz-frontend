@@ -42,4 +42,7 @@ export default {
       addUtilities(newUtilities, ['responsive', 'hover']);
 		}
 	],
+	safelist: [
+    { pattern: /row-span-\d+/ },
+  ],
 }

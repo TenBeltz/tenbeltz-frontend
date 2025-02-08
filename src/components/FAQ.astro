@@ -1,4 +1,6 @@
 ---
+import { ReactComponent as ChevronDown } from "/public/images/svg/chevron-down.svg";
+
 interface FAQ {
   question: string;
   answer: string;
@@ -36,12 +38,15 @@ const FAQs: FAQ[] = [
   <div class="flex flex-col items-center justify-center px-4 py-20 text-white gap-y-16 lg:px-16">
     <div class="flex flex-col max-w-2xl text-center gap-y-7">
       <h2 class="text-4xl font-bold">Frequently Asked Questions</h2>
-      <p class="text-slate-400">Have a different question and can't find the answer you're looking for?  Reach out to our support team by <span class="font-bold text-pheromone-purple">sending us an email</span> and we'll get back to you as soon as we can.</p>
+      <p class="text-slate-400">Have a different question and can't find the answer you're looking for?  Reach out to our support team by <a href="#contact-section" class="font-bold text-pheromone-purple">sending us an email</a> and we'll get back to you as soon as we can.</p>
     </div>
     <div class="grid lg:grid-cols-2 gap-x-40 gap-y-14">
       {FAQs.map(question => (
         <div class="flex flex-col max-w-md gap-y-6">
-          <p class="text-lg font-semibold">{question.question}</p>
+          <p class="flex text-lg font-semibold gap-x-1">
+            <span>{question.question}</span>
+            <span><ChevronDown width="24" height="24" fill="none" strokeWidth="1.5" stroke="currentColor" className="size-6 lg:hidden" /></span>
+          </p>
           <p class="text-slate-400">{question.answer}</p>
         </div>
       ))}

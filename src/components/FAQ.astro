@@ -45,7 +45,7 @@ const FAQs: FAQ[] = [
     </div>
     <div class="grid lg:grid-cols-2 gap-x-40 gap-y-6 lg:gap-y-14">
       {FAQs.map(({ question, answer }) => (
-        <div class="faq-item cursor-pointer flex flex-col max-w-md overflow-hidden">
+        <div class="faq-item cursor-pointer lg:cursor-auto flex flex-col max-w-md overflow-hidden">
           <p class="flex text-lg font-semibold gap-x-1">
             <span>{question}</span>
             <span>
@@ -55,7 +55,7 @@ const FAQs: FAQ[] = [
                 fill="none"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="size-6 lg:hidden"
+                className="size-6 lg:hidden transform transition-transform duration-200"
               />
             </span>
           </p>
@@ -70,9 +70,15 @@ const FAQs: FAQ[] = [
   function initializeFAQ() {
     const faqItems: NodeListOf<Element> = document.querySelectorAll('.faq-item');
 
-    const toggleAnswer = (answer: HTMLParagraphElement) => {
+    const toggleAnswer = (item: Element, answer: HTMLParagraphElement) => {
+      const chevron = item.querySelector('svg');
+
       const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
       answer.style.maxHeight = isOpen ? '0px' : `${answer.scrollHeight}px`;
+
+      if (chevron) {
+        chevron.classList.toggle('rotate-180', !isOpen);
+      }
     };
 
     const handleResize = () => {
@@ -101,7 +107,7 @@ const FAQs: FAQ[] = [
 
       item.addEventListener('click', () => {
         if (window.innerWidth < 1024 && answer) {
-          toggleAnswer(answer);
+          toggleAnswer(item, answer);
         }
       });
     });

@@ -28,16 +28,19 @@ const cards: Card[] = [
 const spans: number[] = [6, 3, 6, 3, 4, 3, 3, 2];
 ---
 
-<section id="portfolio" class="flex flex-col items-center justify-center py-20 text-white gap-y-20">
+<section id="portfolio" class="relative flex flex-col items-center justify-center py-20 text-white gap-y-20">
   <h2 class="text-4xl font-bold text-center">Success stories</h2>
-  <div class="flex justify-center w-full max-w-screen-xl overflow-hidden">
+  <div class="flex flex-col items-center justify-center w-full max-w-screen-xl overflow-hidden">
     <div class="grid w-max grid-cols-[repeat(5,_minmax(11rem,_1fr))] grid-rows-6 gap-5 h-80 relative">
-      <div class="absolute inset-0 z-10 bg-gradient-to-t from-black via-transparent to-transparent"></div>
       {cards.map((card, index) => (
         <div class={`overflow-hidden bg-gray-600 rounded-md row-span-${spans[index]}`}>
           <Image src={card.image} alt={card.alt} class="object-cover w-full h-full" />
         </div>
       ))}
     </div>
+  </div>
+  <div class="absolute w-full -bottom-4 h-52">
+    <div class="inset-0 w-full h-28 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+    <div class="inset-0 w-full h-24 bg-gradient-to-b from-black via-black/60 to-transparent"></div>
   </div>
 </section>

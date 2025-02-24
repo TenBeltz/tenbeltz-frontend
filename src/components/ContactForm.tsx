@@ -26,14 +26,11 @@ export default function ContactForm() {
     }
 
     try {
-      const response = await fetch(
-        "https://api.tenbeltz.com/communications/contact-form/",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch('https://api.tenbeltz.com/communications/contact-form/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
       if (response.ok) {
         form.reset();

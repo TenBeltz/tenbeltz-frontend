@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Alert, { type AlertProps } from "./Alert";
+import { sendContactForm } from "@/services/api";
 
 export default function ContactForm() {
   const [alert, setAlert] = useState<AlertProps | null>(null);
@@ -25,39 +26,16 @@ export default function ContactForm() {
       return;
     }
 
-    try {
-      const response = await fetch('https://api.tenbeltz.com/communications/contact-form/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+    const result = await sendContactForm(data);
 
-      if (response.ok) {
-        form.reset();
-        setAlert({
-          id: Date.now(),
-          type: "success",
-          title: "Success!",
-          message: "Your message has been sent successfully.",
-        });
-      } else {
-        const error = await response.json();
-        setAlert({
-          id: Date.now(),
-          type: "error",
-          title: "Error!",
-          message: error.message || "Something went wrong.",
-        });
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setAlert({
-        id: Date.now(),
-        type: "error",
-        title: "Error!",
-        message: "Unable to send your message at the moment. Please try again later.",
-      });
-    }
+    setAlert({
+      id: Date.now(),
+      type: result.success ? "success" : "error",
+      title: result.success ? "Success!" : "Error!",
+      message: result.message,
+    });
+
+    if (result.success) form.reset();
   };
 
   return (

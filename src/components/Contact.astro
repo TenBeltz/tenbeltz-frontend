@@ -4,6 +4,7 @@ import { ReactComponent as MailIcon } from '/public/images/svg/envelope.svg';
 import { Picture } from 'astro:assets';
 import backgroundGradientPC from '/public/images/img/contact-gradient-background-pc.png';
 import backgroundGradientMobile from '/public/images/img/contact-gradient-background-mobile.png';
+import ContactForm from './ContactForm.tsx';
 
 export const contactInfo = {
   phones: ['+1 678 667 6764', '+34 640 52 08 19'],
@@ -39,92 +40,9 @@ export const contactInfo = {
       </div>
     </div>
     <div class="px-4 py-20 lg:border-x lg:border-berry-blackmail md:flex-1 lg:px-16 bg-gradient-to-r backdrop-blur-[2px] from-[#561B834D] to-[#1A00764D]">
-      <form method="post" class="flex flex-col gap-y-6">
-        <div class="grid grid-cols-2 gap-x-14 gap-y-8">
-          <div class="flex flex-col col-span-2 gap-y-3">
-            <label for="name" class="font-semibold">Name</label>
-            <input id="name" name="name" type="text" required class="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none">
-          </div>
-          <div class="flex flex-col col-span-2 gap-y-3">
-            <label for="email" class="font-semibold">Email</label>
-            <input id="email" name="email" type="email" required class="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none">
-          </div>
-          <div class="flex flex-col col-span-2 gap-y-3">
-            <label for="phone" class="font-semibold">Phone number</label>
-            <input id="phone" name="phone" type="text" class="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none">
-          </div>
-          <div class="flex flex-col col-span-2 gap-y-3">
-            <label for="message" class="font-semibold">Message</label>
-            <textarea id="message" name="message" rows="3" required class="px-3 py-2 text-white border rounded-md resize-none border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"></textarea>
-          </div>
-        </div>
-        <button id="submit-form-button" class="self-end px-4 py-2 font-semibold leading-none border rounded-md border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20">Send message</button>
-      </form>
+      <ContactForm client:load />
     </div>
   </div>
   <Picture src={backgroundGradientPC} sizes="" alt="" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 hidden object-cover w-full h-full -z-50 lg:block" />
   <Picture src={backgroundGradientMobile} sizes="" alt="" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 object-cover w-full h-full -z-50 lg:hidden" />
 </section>
-
-<script>
-  import Swal from 'sweetalert2';
-
-  document.querySelector('form')?.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const form = event.currentTarget as HTMLFormElement;
-    const formData = new FormData(form);
-
-    const data = {
-      name: formData.get('name') as string,
-      email: formData.get('email') as string,
-      phone: formData.get('phone') as string | undefined,
-      message: formData.get('message') as string,
-    }
-
-    // Validate form fields
-    if (!data.name || !data.email || !data.message) {
-      Swal.fire({
-        title: 'Error!',
-        text: 'Please fill out all required fields.',
-        icon: 'error',
-        confirmButtonText: 'Okay',
-      });
-      return;
-    }
-
-    try {
-      const response = await fetch('https://api.tenbeltz.com/communications/contact-form/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        form.reset();
-        Swal.fire({
-          title: 'Success!',
-          text: 'Your message has been sent successfully.',
-          icon: 'success',
-          confirmButtonText: 'Great!',
-        });
-      } else {
-        const error = await response.json();
-        Swal.fire({
-          title: 'Error!',
-          text: error.message || 'Something went wrong.',
-          icon: 'error',
-          confirmButtonText: 'Okay',
-        });
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      Swal.fire({
-        title: 'Error!',
-        text: 'Unable to send your message at the moment. Please try again later.',
-        icon: 'error',
-        confirmButtonText: 'Okay',
-      });
-    }
-  });
-</script>

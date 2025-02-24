@@ -5,12 +5,13 @@ import withReactContent from "sweetalert2-react-content";
 const MySwal = withReactContent(Swal);
 
 export interface AlertProps {
+  id: number;
   type: "success" | "error" | "warning" | "info";
   title: string;
   message: string;
 }
 
-export default function Alert({ type, title, message }: AlertProps) {
+export default function Alert({ id, type, title, message }: AlertProps) {
   useEffect(() => {
     if (title && message) {
       MySwal.fire({
@@ -19,7 +20,7 @@ export default function Alert({ type, title, message }: AlertProps) {
         text: message,
       });
     }
-  }, [type, title, message]);
+  }, [id, type, title, message]); // ahora incluimos id en las dependencias
 
-  return null; // No renderiza nada en la UI
+  return null;
 }

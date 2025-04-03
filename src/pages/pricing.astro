@@ -1,0 +1,120 @@
+---
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Layout from '@/layouts/Layout.astro';
+import FormComponent from '@/components/FormComponent.jsx';
+---
+
+<Layout	
+	title="TenBeltz"
+	description="TenBeltz enables you to develop high-quality software applications, customized to the specific needs of your business."
+	canonical="https://tenbeltz.com"
+>
+	<Header />
+	<main class="relative z-10 flex flex-col flex-1 mt-20">
+        <section class="h-4/5">
+            <div class="flex flex-col max-w-screen-xl mx-auto lg:flex-row">
+                <div class="px-4 py-20 lg:flex-1 lg:px-16 ">
+                  <div class="flex flex-col gap-y-8  lg:mt-10">
+                    <div class="flex flex-col max-w-[21rem] gap-y-6">
+                        <h3 class="text-4xl font-bold text-white">
+                            How much is it? 
+                        </h3>
+                        <p class="text-lg text-slate-300">
+                            If you want to know how much your idea would cost you, just send it 
+                            to us over here! By sending us your details and the idea on a PDF or
+                            a text we can send you an AI generated estimate of the price via email.
+                        </p>
+                    </div>
+                    <div>
+                    </div>
+                  </div>
+                </div>
+                <FormComponent />
+              </div>
+        </section>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+        input[type="range"] {
+        -webkit-appearance: none;  /* Remove default appearance in Webkit browsers */
+        -moz-appearance: none;     /* Remove default appearance in Firefox */
+        appearance: none;
+        width: 100%;                /* Make the range slider span the full width */
+        height: 3px;               /* Height of the track */
+        background-color: #000;     /* Black color for the track */
+        border-radius: 50px;         /* Rounded corners for the track */
+        outline: none;              /* Remove the outline when focused */
+    }
+
+    /* Style for the thumb (circle) of the range slider */
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;   /* Remove default thumb appearance */
+        appearance: none;
+        width: 20px;                /* Thumb width */
+        height: 20px;               /* Thumb height */
+        background-color: #800080;  /* Purple color for the thumb */
+        border-radius: 50%;         /* Make it a circle */
+        cursor: pointer;            /* Cursor pointer when hovering over the thumb */
+        transition: background-color 0.3s ease; /* Smooth transition on hover */
+    }
+
+    input[type="range"]::-moz-range-thumb {
+        width: 20px;                /* Thumb width */
+        height: 20px;               /* Thumb height */
+        background-color: #800080;  /* Purple color for the thumb */
+        border-radius: 50%;         /* Make it a circle */
+        cursor: pointer;            /* Cursor pointer when hovering over the thumb */
+        transition: background-color 0.3s ease; /* Smooth transition on hover */
+    }
+
+    /* Optional: Change thumb color on hover */
+    input[type="range"]::-webkit-slider-thumb:hover {
+        background-color: #9b59b6;  /* Slightly lighter purple on hover */
+    }
+
+    input[type="range"]::-moz-range-thumb:hover {
+        background-color: #9b59b6;  /* Slightly lighter purple on hover for Firefox */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const pdfRadioButton = document.getElementById('pdf') as HTMLInputElement;
+        const txtRadioButton = document.getElementById('txt') as HTMLInputElement;
+        const pdfContainer = document.getElementById('pdf-container');
+        const txtContainer = document.getElementById('txt-container');
+
+        function toggleVisibility() {
+            if (pdfRadioButton.checked) {
+            pdfContainer?.classList.remove('hidden');
+            txtContainer?.classList.add('hidden');
+            } else if (txtRadioButton.checked) {
+            txtContainer?.classList.remove('hidden');
+            pdfContainer?.classList.add('hidden');
+            }
+        }
+        pdfRadioButton.addEventListener('change', toggleVisibility);
+        txtRadioButton.addEventListener('change', toggleVisibility);
+    });
+
+    var priceSlider = document.querySelector('#price');
+
+    priceSlider?.addEventListener('input', function() {
+        updatePriceValue();
+    }, false);
+
+    function updatePriceValue() {
+        const priceValue = document.getElementById('price-value');
+
+        const price = priceSlider?.value;
+        if(price>50000){
+            priceValue.textContent = "Any price";
+        } else {
+            priceValue.textContent = price + "€";
+        }
+
+    }
+</script>

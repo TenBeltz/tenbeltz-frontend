@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --color-petal-plush: oklch(0.87 0.0695 315.31);
+  --color-blueberry-glaze: oklch(0.68 0.1745 314.62);
+  --color-pheromone-purple: oklch(0.52 0.2214 312.91);
+  --color-sapphire-siren: oklch(0.42 0.1726 313.5);
+  --color-berry-blackmail: oklch(0.36 0.148 313.23);
+  --color-cold-heights: oklch(0.86 0.1456 188.24);
+  --color-spiro-disco-ball: oklch(0.72 0.1574 237.74);
+  --color-vivid-blue: oklch(0.51 0.2764 266.37);
+  --color-child-of-the-night: oklch(0.27 0.169568 274.8082);
+  --color-white-smoke: oklch(0.96 0 0);
+  --color-obsidian-shard: oklch(0.09 0.0338 286.5);
+  --color-blacklist: oklch(0.21 0.061 295.19);
+
+  --breakpoint-xs: 32rem;
+
+  --bg-size-grid: 50px 50px;
+
+  --bg-grid: linear-gradient(to right, #581a7366 1px, transparent 1px), linear-gradient(to bottom, #581a7366 1px, transparent 1px);
+}
+
+@layer utilities {
+  .scrollbar-hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bg-grid {
+    background-image: var(--bg-grid);
+    background-size: var(--bg-size-grid);
+  }
+}

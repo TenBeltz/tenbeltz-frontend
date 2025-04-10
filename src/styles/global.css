@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tailwindcss-animated";
 
 @theme {
   --color-petal-plush: oklch(0.87 0.0695 315.31);

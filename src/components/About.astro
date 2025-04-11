@@ -3,11 +3,12 @@ import { Image } from "astro:assets";
 import logo from "/public/images/svg/tenbeltz-logo-about.svg";
 import graphicDesktop from "/public/images/svg/graphic-why-tenbeltz-desktop.svg";
 import graphicMobile from "/public/images/svg/graphic-why-tenbeltz-mobile.svg";
+import { ScrollReveal } from "./ScrollReveal";
 ---
 
 <section id="about-us" class="relative flex flex-col px-4 py-20 text-white gap-y-20 lg:px-8">
   <div class="grid max-w-screen-lg grid-cols-1 gap-5 mx-auto lg:grid-rows-5 lg:grid-cols-4 lg:gap-4">
-    <div id="about-us" class="px-4 py-10 bg-white border rounded-md lg:col-span-2 lg:row-span-5 border-[#8A20FF]">
+    <ScrollReveal client:load direction="right" className="px-4 py-10 bg-white border rounded-md lg:col-span-2 lg:row-span-5 border-[#8A20FF] about-grid-card">
       <div class="flex flex-col gap-y-8">
         <div class="flex items-center justify-center">
           <Image src={logo} alt="logo" />
@@ -17,43 +18,41 @@ import graphicMobile from "/public/images/svg/graphic-why-tenbeltz-mobile.svg";
           <p class="text-lg text-slate-300">At TenBeltz, we stand at the forefront of software development and technology solutions. As an industry leader, our mission is to drive business innovation by providing customized tools and digital platforms that transform the way companies operate in the digital age.</p>
         </div>
       </div>
-    </div>
-    <div id="experience" class="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-1 border-[#8A20FF]">
+    </ScrollReveal>
+    <ScrollReveal client:load direction="down" className="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-1 border-[#8A20FF] about-grid-card">
       <h5 class="flex items-center h-full gap-x-2">
         <span class="text-4xl font-bold text-petal-plush">+3</span>
         <span class="text-lg font-semibold leading-none">Years of experience</span>
       </h5>
-    </div>
-    <div id="commitment" class="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-4 border-[#8A20FF]">
+    </ScrollReveal>
+    <ScrollReveal client:load direction="left" className="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-4 border-[#8A20FF] about-grid-card">
       <div class="flex flex-col gap-y-7">
         <h4 class="text-2xl font-semibold">Our <span class="text-petal-plush">commitment</span></h4>
         <p class="text-slate-300">We are committed to technical excellence and customer satisfaction. We maintain a long-term vision, constantly adapting to emerging technological trends to ensure our customers are always one step ahead in the digital world.</p>
       </div>
-    </div>
-    <div id="specialty" class="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-4 border-[#8A20FF]">
+    </ScrollReveal>
+    <ScrollReveal client:load direction="up" className="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-4 border-[#8A20FF] about-grid-card">
       <div class="flex flex-col gap-y-7">
         <h4 class="text-2xl font-semibold">Our <span class="text-petal-plush">specialty</span></h4>
         <p class="text-slate-300">We specialize in developing software tailored to our clients' needs, offering solutions with artificial intelligence and customized web platforms. Our team is dedicated to providing advanced technology that optimizes processes and boosts business growth.</p>
       </div>
-    </div>
-    <div id="projects" class="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-1 border-[#8A20FF]">
+    </ScrollReveal>
+    <ScrollReveal client:load direction="up" className="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-1 border-[#8A20FF] about-grid-card">
       <h5 class="flex items-center h-full gap-x-2">
         <span class="text-4xl font-bold text-petal-plush">+100</span>
         <span class="font-semibold leading-none bg-gradient-to-tr from-[#1d0043] to-[#340076]">Completed Projects</span>
       </h5>
-    </div>
+    </ScrollReveal>
   </div>
-  <div class="mx-auto">
+  <ScrollReveal client:load className="mx-auto">
     <picture>
       <source srcset={graphicDesktop.src} media="(min-width: 641px)" />
       <source srcset={graphicMobile.src} media="(max-width: 640px)" />
       <img src={graphicMobile.src} alt="Graphic showing why TenBeltz is the best choice" />
     </picture>
-  </div>
+  </ScrollReveal>
 </section>
 
-<style>
-  section > div > div {
-    background-image: linear-gradient(40deg, #1d0043, #340076);
-  }
+<style is:inline>
+  .about-grid-card { background-image: linear-gradient(40deg, #1d0043, #340076);}
 </style>

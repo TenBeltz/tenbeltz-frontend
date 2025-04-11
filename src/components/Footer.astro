@@ -1,6 +1,7 @@
 ---
 import { ReactComponent as LogoInstagram } from '/public/images/svg/logo-instagram.svg';
 import { contactInfo } from './Contact.astro';
+import { ScrollReveal } from './ScrollReveal';
 
 interface SocialMedia {
   name: string;
@@ -35,22 +36,22 @@ const sections: FooterLink[] = [
 <footer class="text-white bg-obsidian-shard">
   <div class="flex flex-col p-4 py-8 mx-auto gap-y-14 lg:p-16 max-w-screen-2xl">
     <div class="flex flex-col flex-wrap xs:flex-row gap-x-20 gap-y-10">
-      <div class="flex flex-col gap-y-5">
+      <ScrollReveal client:load className="flex flex-col gap-y-5">
         <h4 class="font-semibold">Pages</h4>
         <ul class="flex flex-col gap-y-3">
           {sections.map(section => <li><a href={section.url} class="transition-colors text-slate-300 hover:text-slate-100">{section.name}</a></li>)}
         </ul>
-      </div>
-      <div class="flex flex-col gap-y-5">
+      </ScrollReveal>
+      <ScrollReveal client:load delay={200} className="flex flex-col gap-y-5">
         <h4 class="font-semibold">Contact</h4>
         <ul class="flex flex-col gap-y-3">
           <li><a href={`mailto:${contactInfo.email}`} class="transition-colors text-slate-300 hover:text-slate-100">{contactInfo.email}</a></li>
           {contactInfo.phones.map(phone => <li><a href={`tel:${phone}`} class="transition-colors text-slate-300 hover:text-slate-100">{phone}</a></li>)}
         </ul>
-      </div>
+      </ScrollReveal>
     </div>
     
-    <div class="flex justify-between py-3 text-sm border-t border-slate-400 text-slate-400">
+    <ScrollReveal client:load className="flex justify-between py-3 text-sm border-t border-slate-400 text-slate-400">
       <span>
         &copy; 2024 TenBeltz. All Rights Reserved.
       </span>
@@ -61,6 +62,6 @@ const sections: FooterLink[] = [
           </a>
         ))}
       </span>
-    </div>
+    </ScrollReveal>
   </div>
 </footer>

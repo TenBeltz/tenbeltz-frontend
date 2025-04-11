@@ -95,7 +95,7 @@ export default function ContactForm() {
           <button
             type="submit"
             id="submit-form-button"
-            className="px-4 py-2 font-semibold leading-none border rounded-md border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20"
+            className="btn font-semibold leading-none border border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20"
           >
             Send message
           </button>

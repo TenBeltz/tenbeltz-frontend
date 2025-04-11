@@ -24,7 +24,7 @@
 
 @layer components {
   .btn {
-    @apply rounded-md px-4 py-2
+    @apply rounded-md px-4 py-2 transition-colors
   }
 }
 

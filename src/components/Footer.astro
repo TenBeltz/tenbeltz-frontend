@@ -1,5 +1,6 @@
 ---
 import { ReactComponent as LogoInstagram } from '/public/images/svg/logo-instagram.svg';
+import { ReactComponent as LogoLinkedin } from '/public/images/svg/logo-linkedin.svg';
 import { contactInfo } from './Contact.astro';
 import { ScrollReveal } from './ScrollReveal';
 
@@ -21,6 +22,12 @@ const socialMedias: SocialMedia[] = [
     logo: LogoInstagram,
     logoProps: { width: 20, height: 20, fill: '#94A3B8' },
     url: 'https://www.instagram.com/tenbeltz/',
+  },
+  {
+    name: 'Linkedin',
+    logo: LogoLinkedin,
+    logoProps: { width: 20, height: 20, fill: '#94A3B8' },
+    url: 'https://www.linkedin.com/company/tenbeltz/',
   }
 ];
 

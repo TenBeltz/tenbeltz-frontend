@@ -95,7 +95,7 @@ export default function ContactForm() {
           <button
             type="submit"
             id="submit-form-button"
-            className="btn font-semibold leading-none border border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20"
+            className="btn font-semibold leading-none border border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20 hover:bg-pheromone-purple/25 hover:cursor-pointer"
           >
             Send message
           </button>

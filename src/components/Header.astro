@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import logo from "/public/images/svg/logo-tenbeltz-navbar.svg"
-import { ReactComponent as OpenHamburgerMenu } from "/public/images/svg/bars-3.svg";
-import { ReactComponent as CloseHamburgerMenu } from "/public/images/svg/x-mark.svg";
+import logo from "@/assets/icons/logo-tenbeltz-navbar-solid.svg"
+import { ReactComponent as OpenHamburgerMenu } from "@/assets/icons/bars-3-outline.svg";
+import { ReactComponent as CloseHamburgerMenu } from "@/assets/icons/x-mark-outline.svg";
 
 interface NavElement {
   title: string;
@@ -29,7 +29,7 @@ const navElements: NavElement[] = [
         </a>
       </div>
 
-      <a id="customers-button" href={navElements.find(({ title }) => title === "Customers")?.href} class="hidden px-4 py-2 rounded-md lg:flex bg-pheromone-purple w-fit">Customers</a>
+      <a id="customers-button" href={navElements.find(({ title }) => title === "Customers")?.href} class="hidden btn lg:flex bg-pheromone-purple hover:bg-sapphire-siren w-fit">Customers</a>
       
       <div id="menu-container" class="flex items-center justify-center lg:hidden">
         <OpenHamburgerMenu id="open-hamburger-menu" width="36" height="36" fill="#ffffff" className="size-8" stroke="currentColor" strokeWidth="1.5" />
@@ -47,7 +47,16 @@ const navElements: NavElement[] = [
         <ul class="flex flex-col text-lg lg:items-center gap-y-2 gap-x-5 lg:flex-row lg:text-base">
           {navElements.map(({ href, title }) => (
             <li>
-              <a href={href} class={`whitespace-nowrap block px-2 py-1.5 ${title === 'Customers' ? 'lg:hidden' : ''} ${title === 'Customers' ? 'border-t pt-3.5' : ''}`}>{title}</a>
+                <a
+                href={href}
+                class={`relative whitespace-nowrap block px-2 py-1.5 transition-all duration-300 
+                    hover:text-pheromone-purple 
+                    after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-pheromone-purple 
+                    hover:after:w-full after:transition-all after:duration-300
+                    ${title === 'Customers' ? 'lg:hidden border-t pt-3.5' : ''}`}
+                >
+                {title}
+              </a>
             </li>
           ))}
         </ul>

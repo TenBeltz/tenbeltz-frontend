@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Alert, { type AlertProps } from "./Alert";
 import { sendContactForm } from "@/services/api";
+import { ScrollReveal } from "./ScrollReveal";
 
 export default function ContactForm() {
   const [alert, setAlert] = useState<AlertProps | null>(null);
@@ -42,7 +43,7 @@ export default function ContactForm() {
     <>
       <form onSubmit={handleSubmit} className="flex flex-col gap-y-6">
         <div className="grid grid-cols-2 gap-x-14 gap-y-8">
-          <div className="flex flex-col col-span-2 gap-y-3">
+          <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
             <label htmlFor="name" className="font-semibold">
               Name
             </label>
@@ -53,8 +54,8 @@ export default function ContactForm() {
               required
               className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
             />
-          </div>
-          <div className="flex flex-col col-span-2 gap-y-3">
+          </ScrollReveal>
+          <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
             <label htmlFor="email" className="font-semibold">
               Email
             </label>
@@ -65,8 +66,8 @@ export default function ContactForm() {
               required
               className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
             />
-          </div>
-          <div className="flex flex-col col-span-2 gap-y-3">
+          </ScrollReveal>
+          <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
             <label htmlFor="phone" className="font-semibold">
               Phone number
             </label>
@@ -76,8 +77,8 @@ export default function ContactForm() {
               type="text"
               className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
             />
-          </div>
-          <div className="flex flex-col col-span-2 gap-y-3">
+          </ScrollReveal>
+          <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
             <label htmlFor="message" className="font-semibold">
               Message
             </label>
@@ -88,15 +89,17 @@ export default function ContactForm() {
               required
               className="px-3 py-2 text-white border rounded-md resize-none border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
             />
-          </div>
+          </ScrollReveal>
         </div>
-        <button
-          type="submit"
-          id="submit-form-button"
-          className="self-end px-4 py-2 font-semibold leading-none border rounded-md border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20"
-        >
-          Send message
-        </button>
+        <ScrollReveal className="self-end">
+          <button
+            type="submit"
+            id="submit-form-button"
+            className="btn font-semibold leading-none border border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20 hover:bg-pheromone-purple/25 hover:cursor-pointer"
+          >
+            Send message
+          </button>
+        </ScrollReveal>
       </form>
       {alert && <Alert {...alert} />}
     </>

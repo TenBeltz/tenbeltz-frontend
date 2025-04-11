@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tailwindcss-animated";
 
 @theme {
   --color-petal-plush: oklch(0.87 0.0695 315.31);
@@ -21,18 +22,22 @@
   --bg-grid: linear-gradient(to right, #581a7366 1px, transparent 1px), linear-gradient(to bottom, #581a7366 1px, transparent 1px);
 }
 
-@layer utilities {
-  .scrollbar-hidden {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+@layer components {
+  .btn {
+    @apply rounded-md px-4 py-2 transition-colors
   }
+}
 
-  .scrollbar-hidden::-webkit-scrollbar {
+@utility scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
     display: none;
   }
+}
 
-  .bg-grid {
-    background-image: var(--bg-grid);
-    background-size: var(--bg-size-grid);
-  }
+@utility bg-grid {
+  background-image: var(--bg-grid);
+  background-size: var(--bg-size-grid);
 }

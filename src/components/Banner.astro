@@ -1,10 +1,20 @@
+---
+import { ScrollReveal } from '@/components/ScrollReveal';
+
+---
+
 <section class="flex flex-col text-center items-center gap-y-9 lg:gap-y-8 justify-center px-4 text-white bg-gradient-to-r from-[#1A0076] to-[#561B83] lg:py-12 py-14 lg:px-16">
-  <h2 class="text-5xl font-extrabold leading-">¡Yes!</h2>
-  <div class="flex flex-col items-center justify-center gap-y-4">
-    <h3 class="text-2xl font-semibold lg:font-bold lg:text-3xl">We develop the software that your business needs customized for you, without additional cost</h3>
-    <p class="text-lg font-normal lg:text-xl lg:font-semibold">Would you like more information on how we can help you?</p>
-  </div>
-  <button class="rounded-md bg-pheromone-purple w-fit">
-    <a href="#contact-section" class="block px-4 py-2 text-xl font-medium leading-6">Contact us</a>
+  <ScrollReveal client:load direction="left">
+    <h2 class="text-5xl font-extrabold">¡Yes!</h2>
+  </ScrollReveal>
+  <ScrollReveal client:load direction="right">
+    <div class="flex flex-col items-center justify-center gap-y-4">
+      <h3 class="text-2xl font-semibold lg:font-bold lg:text-3xl">We develop the software that your business needs customized for you, without additional cost</h3>
+      <p class="text-lg font-normal lg:text-xl lg:font-semibold">Would you like more information on how we can help you?</p>
+    </div>
+  </ScrollReveal>
+  <ScrollReveal client:load direction="left">
+    <a href="#contact-section" class="btn bg-pheromone-purple hover:bg-sapphire-siren text-xl font-medium leading-6 block w-fit">Contact us</a>
+  </ScrollReveal>
   </button>
 </section>

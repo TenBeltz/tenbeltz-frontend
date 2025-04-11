@@ -44,13 +44,9 @@ const services: Service[] = [
     <div id="services" class="grid grid-cols-1 mb-10 lg:grid-cols-3 gap-x-9 gap-y-7">
       {services.map((service, index) => (
         <ScrollReveal client:load delay={index * 200}>
-          <div class="flex flex-col h-full max-w-xs px-6 rounded-lg bg-blacklist/70 gap-y-4 py-7 border border-[#4A0386]">
+          <div class="flex flex-col h-full max-w-xs px-6 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-4 py-7 border border-[#922ABF]/30 hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:shadow-[0px_0px_20px_0px_rgba(117,4,205,1.00)] to-[#1D0043]/90">
             <div class="flex items-center justify-center">
-              {service.logo ? (
-                <service.logo {...(service.logoProps || {})} />
-              ) : (
-                <span>X</span>
-              )}
+              <service.logo {...(service.logoProps || {})} />
             </div>
             <div class="flex items-center justify-center flex-1">
               <h3 class="text-xl font-semibold leading-6 text-center">{service.title}</h3>
@@ -62,7 +58,7 @@ const services: Service[] = [
         </ScrollReveal>
       ))}
     </div>
-    <a href="#" class="btn font-semibold leading-none border border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20 hover:bg-pheromone-purple/25">View all services</a>
+    <a href="#" class="font-semibold leading-none border btn border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20 hover:bg-pheromone-purple/25">View all services</a>
   </div>
   <Picture src={backgroundGradientPC} alt="backgroundGradientPC" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 hidden object-cover w-full h-full -z-50 lg:block" />
   <Picture src={backgroundGradientMobile} alt="backgroundGradientMobile" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 object-cover w-full h-full -z-50 lg:hidden" />

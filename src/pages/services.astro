@@ -4,7 +4,7 @@ import Header from '@/components/Header.astro';
 import Hero from '@/components/Hero.astro';
 import Footer from '@/components/Footer.astro';
 import Divider from '@/components/Divider.astro';
-import Banner from '@/components/Banner.astro';
+import ServicesCards from '@/components/ServicesCards.astro';
 ---
 
 <Layout	
@@ -13,7 +13,7 @@ import Banner from '@/components/Banner.astro';
 	canonical="https://tenbeltz.com/services"
 >
 	<Header />
-	<main class="relative z-10 flex flex-col flex-1 overflow-x-hidden">
+	<main class="z-10 flex flex-col flex-1 overflow-x-hidden">
 		<Hero 
 			title="What we offer"
 			highlight="you"
@@ -23,14 +23,8 @@ import Banner from '@/components/Banner.astro';
 			animateHighlight={false}
 			showCursor={false}
 		/>
-		
 		<Divider text="We build custom tech that makes your day-to-day simpler and smarter. Solutions that adapt to your way of working." />
-		<Banner 
-			title="Descubre cómo impulsamos el crecimiento de otras marcas"
-			paragraph="Explora nuestros casos de éxito, conoce las estrategias que han transformado negocios y visualiza cómo podemos desatar el potencial de tu empresa con soluciones personalizadas."
-			buttonText="Ver portafolio"
-			buttonHref=""
-		/>
+		<ServicesCards />
 	</main>
 	<Footer />
 </Layout>

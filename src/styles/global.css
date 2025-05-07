@@ -5,6 +5,7 @@
   --color-petal-plush: oklch(0.87 0.0695 315.31);
   --color-blueberry-glaze: oklch(0.68 0.1745 314.62);
   --color-pheromone-purple: oklch(0.52 0.2214 312.91);
+  --color-pheromone-light: oklch(0.62 0.2611 316.97);
   --color-sapphire-siren: oklch(0.42 0.1726 313.5);
   --color-berry-blackmail: oklch(0.36 0.148 313.23);
   --color-cold-heights: oklch(0.86 0.1456 188.24);
@@ -24,8 +25,13 @@
 
 @layer components {
   .btn {
-    @apply rounded-md px-4 py-2 transition-colors
+    @apply px-4 py-2 transition-all rounded-md;
   }
+}
+
+@utility glow-* {
+  box-shadow: 0 0 --value(integer)px 0 var(--button-glow-color, var(--color-pheromone-purple));
+  --button-glow-color: --value(--color-*);
 }
 
 @utility scrollbar-hidden {

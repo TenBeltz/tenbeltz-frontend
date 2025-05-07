@@ -1,0 +1,24 @@
+---
+export interface Props {
+  title: string
+  subtitle: string
+  buttonHref?: string
+}
+
+const {
+  title,
+  subtitle,
+  buttonHref = '#',
+} = Astro.props;
+---
+
+<section class="flex flex-col px-4 lg:px-12 gap-y-14 lg:py-20 py-28">
+  <div class="flex flex-col text-center gap-y-7">
+    <h3 class="text-4xl font-bold">{title}</h3>
+    <h4 class="font-medium">{subtitle}</h4>
+  </div>
+  <slot /> 
+  <div class="flex items-center justify-center">
+    <a href={buttonHref} class="text-white border border-berry-blackmail btn hover:bg-pheromone-purple/30 hover:border-pheromone-purple hover:button-glow">Let's talk about your project</a>
+  </div>
+</section>

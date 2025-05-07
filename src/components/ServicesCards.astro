@@ -1,0 +1,51 @@
+---
+import Banner from './Banner.astro';
+import ServiceCard from './ServiceCard.astro';
+import TopLeftGradientBackgroundPC from '/public/images/img/top-left-gradient-background-pc.png';
+import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradient-background-mobile.png';
+import { Picture } from 'astro:assets';
+import ContactCTA from './ContactCTA.astro';
+---
+
+<div class="text-white">
+  <div class="flex flex-col">
+    <div class="relative bg-grid">
+      <div class="flex flex-col">
+        <ServiceCard title="Custom Software Development" subtitle="Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits.">
+
+        </ServiceCard>
+        <ServiceCard title="Web Development" subtitle="Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits.">
+
+        </ServiceCard>
+        <ServiceCard title="AI Integrations" subtitle="Boost your efficiency with artificial intelligence. We connect AI to your systems to optimize processes and decisions. Take your business to a new level of precision and productivity.">
+
+        </ServiceCard>
+      </div>
+      <Picture src={TopLeftGradientBackgroundPC} alt="backgroundGradientPC" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 hidden object-cover w-full -z-50 lg:block" />
+      <Picture src={TopLeftGradientBackgroundMobile} alt="backgroundGradientMobile" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 object-cover w-full -z-50 lg:hidden" />
+    </div>
+    <Banner 
+      title="Discover how we drive growth for other brands"
+      paragraph="Explore our success stories, learn about the strategies that have transformed businesses, and see how we can unlock your company's potential with tailored solutions."
+      buttonText="View portfolio"
+      buttonHref=""
+    />
+    <div class="bg-grid">
+      <div class="flex flex-col">
+        <ServiceCard title="Mobile App Development" subtitle="Take your business to where your customers are, with an intuitive and functional app that meets your users' needs, improving interaction and facilitating ongoing communication.">
+          
+        </ServiceCard>
+        <ServiceCard title="Internal Management Tools" subtitle="Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits.">
+          
+        </ServiceCard>
+        <ServiceCard title="Cloud Services" subtitle="Access your data from anywhere, securely. With our cloud solutions, you will have access to your files and applications at all times, ensuring the security and flexibility your business needs to grow.">
+          
+        </ServiceCard>
+        <ServiceCard title="Graphic Design" subtitle="Make your brand stand out with impactful design. We help you create a visual identity that effectively communicates your message, highlighting your business with a professional and coherent design that attracts your audience.">
+          
+        </ServiceCard>
+      </div>
+      <ContactCTA />
+    </div>
+  </div>
+</div>

@@ -8,11 +8,11 @@ export interface Props {
 const {
   title,
   subtitle,
-  buttonHref = '#',
+  buttonHref = '/#contact-section',
 } = Astro.props;
 ---
 
-<section class="flex flex-col px-4 lg:px-12 gap-y-14 lg:py-20 py-28">
+<section class="flex flex-col max-w-6xl px-4 py-20 mx-auto lg:px-12 gap-y-14">
   <div class="flex flex-col text-center gap-y-7">
     <h3 class="text-4xl font-bold">{title}</h3>
     <h4 class="font-medium">{subtitle}</h4>

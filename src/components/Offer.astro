@@ -44,7 +44,7 @@ const services: Service[] = [
     <div id="services" class="grid grid-cols-1 mb-10 lg:grid-cols-3 gap-x-9 gap-y-7">
       {services.map((service, index) => (
         <ScrollReveal client:load delay={index * 200}>
-          <div class="flex flex-col h-full max-w-xs px-6 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-4 py-7 border border-[#922ABF]/30 hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:shadow-[0px_0px_20px_0px_rgba(117,4,205,1.00)] to-[#1D0043]/90">
+          <div class="flex flex-col h-full max-w-xs px-6 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-4 py-7 border border-pheromone-purple/30 hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:shadow-[0px_0px_20px_0px_rgba(117,4,205,1.00)] to-[#1D0043]/90">
             <div class="flex items-center justify-center">
               <service.logo {...(service.logoProps || {})} />
             </div>

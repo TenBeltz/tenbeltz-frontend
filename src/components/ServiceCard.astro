@@ -1,4 +1,6 @@
 ---
+import { ScrollReveal } from './ScrollReveal';
+
 export interface Props {
   title: string
   subtitle: string
@@ -14,11 +16,17 @@ const {
 
 <section class="flex flex-col max-w-6xl px-4 py-20 mx-auto lg:px-12 gap-y-14">
   <div class="flex flex-col text-center gap-y-7">
-    <h3 class="text-4xl font-bold">{title}</h3>
-    <h4 class="font-medium">{subtitle}</h4>
+    <ScrollReveal client:load>
+      <h3 class="text-4xl font-bold">{title}</h3>
+    </ScrollReveal>
+    <ScrollReveal client:load>
+      <h4 class="font-medium">{subtitle}</h4>
+    </ScrollReveal>
   </div>
   <slot /> 
   <div class="flex items-center justify-center">
-    <a href={buttonHref} class="text-white border border-berry-blackmail btn hover:bg-pheromone-purple/30 hover:border-pheromone-purple hover:button-glow">Let's talk about your project</a>
+    <ScrollReveal client:load>
+      <a href={buttonHref} class="text-white border border-berry-blackmail btn hover:bg-pheromone-purple/30 hover:border-pheromone-purple hover:button-glow">Let's talk about your project</a>
+    </ScrollReveal>
   </div>
 </section>

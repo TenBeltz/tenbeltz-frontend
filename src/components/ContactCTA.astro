@@ -1,16 +1,23 @@
 ---
 import BottomMiddleGradientBackground from '/public/images/img/bottom-middle-gradient-background.png';
 import { Picture } from 'astro:assets';
+import { ScrollReveal } from './ScrollReveal';
 ---
 
 <div class="relative">
   <div class="flex flex-col px-12 py-20 text-white gap-y-12">
     <div class="flex flex-col text-center gap-y-6">
-      <h3 class="text-3xl font-extrabold">Choose the solution that will drive your business forward</h3>
-      <h4 class="text-lg font-semibold text-slate-300">Each tool is designed to enhance a key aspect of your company, whether it's optimizing processes, strengthening your digital presence, or improving internal management. Discover how to find the best solution for your business.</h4>
+      <ScrollReveal client:load>
+        <h3 class="text-3xl font-extrabold">Choose the solution that will drive your business forward</h3>
+      </ScrollReveal>
+      <ScrollReveal client:load delay={100}>
+        <h4 class="text-lg font-semibold text-slate-300">Each tool is designed to enhance a key aspect of your company, whether it's optimizing processes, strengthening your digital presence, or improving internal management. Discover how to find the best solution for your business.</h4>
+      </ScrollReveal>
     </div>
     <div class="flex items-center justify-center">
-      <a href="/#contact-section" class="text-xl font-semibold btn duration-300 bg-pheromone-purple glow-12 hover:glow-16 glow-pheromone-purple hover:glow-pheromone-light">Schedule a free consultation</a>
+      <ScrollReveal client:load delay={200}>
+        <a href="/#contact-section" class="text-xl font-semibold btn duration-300 bg-pheromone-purple glow-12 hover:glow-16 glow-pheromone-purple hover:glow-pheromone-light">Schedule a free consultation</a>
+      </ScrollReveal>
     </div>
   </div>
   <Picture src={BottomMiddleGradientBackground} alt="backgroundGradientPC" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 object-cover w-full h-full -z-50 lg:block" />

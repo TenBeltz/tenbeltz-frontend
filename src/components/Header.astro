@@ -82,7 +82,7 @@ const navElements: NavElement[] = [
   }
 
   function debounce(callback: Function, wait: number): (...args: any[]) => void {
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+    let timeoutId: number | null = null;
     return (...args: any[]) => {
       if (timeoutId) clearTimeout(timeoutId);
       timeoutId = window.setTimeout(() => callback(...args) , wait);

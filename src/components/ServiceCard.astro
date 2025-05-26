@@ -5,12 +5,14 @@ export interface Props {
   title: string
   subtitle: string
   buttonHref?: string
+  gridCols?: string
 }
 
 const {
   title,
   subtitle,
   buttonHref = '/#contact-section',
+  gridCols = 'lg:grid-cols-5',
 } = Astro.props;
 ---
 
@@ -23,7 +25,9 @@ const {
       <h4 class="font-medium">{subtitle}</h4>
     </ScrollReveal>
   </div>
-  <slot /> 
+  <div class={`grid gap-5 ${gridCols}`}>
+    <slot /> 
+  </div>
   <div class="flex items-center justify-center">
     <ScrollReveal client:load>
       <a href={buttonHref} class="text-white border border-berry-blackmail btn hover:bg-pheromone-purple/30 hover:border-pheromone-purple hover:button-glow">Let's talk about your project</a>

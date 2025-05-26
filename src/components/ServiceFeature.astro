@@ -1,0 +1,13 @@
+---
+import { ScrollReveal } from './ScrollReveal';
+const { direction = 'up', colSpan = '', title, description } = Astro.props;
+---
+<ScrollReveal client:load direction={direction} className={colSpan + " border flex items-center gap-x-4 transition-all rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30 hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]"}>
+  <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
+    <slot />
+  </div>
+  <div class="flex flex-col gap-3">
+    <h5 class="text-lg font-bold">{title}</h5>
+    <h6 class="text-slate-300">{description}</h6>
+  </div>
+</ScrollReveal>

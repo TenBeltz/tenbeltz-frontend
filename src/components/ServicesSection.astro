@@ -31,51 +31,98 @@ import { ReactComponent as MegaphoneOutline } from '@/assets/icons/megaphone-out
 
 import TopLeftGradientBackgroundPC from '/public/images/img/top-left-gradient-background-pc.png';
 import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradient-background-mobile.png';
----
 
+const services = [
+  {
+    title: 'Custom Software Development',
+    subtitle: `Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits.`,
+    gridCols: 'lg:grid-cols-5',
+    features: [
+      { direction: 'down', colSpan: 'lg:col-span-3', title: 'Task Automation', description: 'Save time and resources by eliminating repetitive tasks with automated systems.', icon: GardenWorkflowOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'left', colSpan: 'lg:col-span-2', title: 'Tailored Solutions', description: 'Created to meet your unique processes and objectives.', icon: ThreeLightOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3', strokeWidth: 1, stroke: '#E5C6F3' } },
+      { direction: 'right', colSpan: 'lg:col-span-2', title: 'Process Optimization', description: 'Improve your processes with solutions that enhance your efficiency.', icon: ProcessOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'up', colSpan: 'lg:col-span-3', title: 'Guaranteed Scalability', description: 'Receive a system that grows with you without affecting performance or creating technical limits.', icon: ChartLineOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3' } },
+    ]
+  },
+  {
+    title: 'Web Development',
+    subtitle: `Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits.`,
+    gridCols: 'lg:grid-cols-2 lg-grid-rows-3',
+    features: [
+      { direction: 'down', colSpan: '', title: 'Responsive Design', description: 'Web design that adapts to all screens while maintaining quality and visual consistency.', icon: WebGridOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'up', colSpan: '', title: 'Conversion Optimization', description: 'We design your website to guide users and achieve conversions according to your goals.', icon: FileConvertionOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3', strokeLinecap: 'round', strokeLinejoin: 'round' } },
+      { direction: 'left', colSpan: 'lg:col-span-full', title: 'Integrated SEO', description: 'Increase your visibility on Google with a website ready to rank.', icon: GlassesOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3', strokeLinecap: 'round', strokeLinejoin: 'round' } },
+    ]
+  },
+  {
+    title: 'AI Integrations',
+    subtitle: 'Boost your efficiency with artificial intelligence. We connect AI to your systems to optimize processes and decisions. Take your business to a new level of precision and productivity.',
+    gridCols: 'lg:grid-cols-5',
+    features: [
+      { direction: 'down', colSpan: 'lg:col-span-2', title: 'Continuous Optimization', description: 'Make your business grow with AI that analyzes and improves processes.', icon: ProcessOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'up', colSpan: 'lg:col-span-3', title: 'Process Automation', description: 'Integrate intelligent bots that perform repetitive tasks, optimizing operational flows effortlessly.', icon: GardenWorkflowOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'left', colSpan: 'lg:col-span-3', title: 'More Accurate Decisions', description: 'Minimize errors with data processed in seconds, providing reliable and actionable insights for your business.', icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
+      { direction: 'right', colSpan: 'lg:col-span-2', title: 'Intelligent Customer Service', description: `Enhance your customers' experience with virtual assistants.`, icon: ChatBubbleLeftOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
+    ]
+  },
+  {
+    title: 'Mobile App Development',
+    subtitle: `Take your business to where your customers are, with an intuitive and functional app that meets your users' needs, improving interaction and facilitating ongoing communication.`,
+    gridCols: 'lg:grid-cols-5',
+    features: [
+      { direction: 'down', colSpan: 'lg:col-span-3', title: 'User-Friendly Interface', description: 'Make every interaction smooth and intuitive, enhancing the experience and satisfaction of your users.', icon: WebGridOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'up', colSpan: 'lg:col-span-2', title: 'Push Notifications', description: 'Keep your users informed with direct messages from the app.', icon: NotificationOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
+      { direction: 'left', colSpan: 'lg:col-span-2', title: 'Cross-Platform Development', description: 'Reach more users with a functional app on Android, iOS, and more.', icon: DevicesOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'right', colSpan: 'lg:col-span-3', title: 'Integration with External Services', description: 'Provide your users with a seamless experience by connecting to external platforms like payment gateways.', icon: AppsOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+    ]
+  },
+  {
+    title: 'Internal Management Tools',
+    subtitle: `Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits.`,
+    gridCols: 'lg:grid-cols-2 lg-grid-rows-3',
+    features: [
+      { direction: 'down', colSpan: '', title: 'Report Automation', description: 'Generate automatic reports to make decisions with accurate data at the right moment.', icon: DocumentsOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
+      { direction: 'up', colSpan: '', title: 'Project Management', description: 'Organize tasks, deadlines, and responsibilities to maintain a clear and efficient flow.', icon: TaskDoneOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3', strokeLinecap: 'round', strokeLinejoin: 'round' } },
+      { direction: 'left', colSpan: 'lg:col-span-full', title: 'Inventory Control', description: 'Monitor products in real-time and avoid losses or shortages.', icon: PackageSearchOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3', strokeLinecap: 'round', strokeLinejoin: 'round' } },
+    ]
+  },
+  {
+    title: 'Cloud Services',
+    subtitle: 'Access your data from anywhere, securely. With our cloud solutions, you will have access to your files and applications at all times, ensuring the security and flexibility your business needs to grow.',
+    gridCols: 'lg:grid-cols-5',
+    features: [
+      { direction: 'down', colSpan: 'lg:col-span-2', title: 'Remote Access', description: 'Connect securely and work from anywhere.', icon: RemoteOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'up', colSpan: 'lg:col-span-3', title: 'Secure Storage', description: 'Protect your data with cloud backups and end-to-end encryption.', icon: SecureOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
+      { direction: 'left', colSpan: 'lg:col-span-3', title: 'Easy Scalability', description: 'Expand your digital capacity without the need for infrastructure investment.', icon: ExpandOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
+      { direction: 'right', colSpan: 'lg:col-span-2', title: 'Automatic Backup', description: 'Prevent losses with automatic and constant backups.', icon: BackupOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
+    ]
+  },
+  {
+    title: 'Graphic Design',
+    subtitle: 'Make your brand stand out with impacfgheggftful design. We help you create a visual identity that effectively communicates your message, highlighting your business with a professional and coherent design that attracts your audience.',
+    gridCols: 'lg:grid-cols-5',
+    features: [
+      { direction: 'down', colSpan: 'lg:col-span-3', title: 'Design for Web and Mobile', description: 'Intuitive and modern interfaces that connect with your audience and your vision.', icon: DevicesOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'up', colSpan: 'lg:col-span-2', title: 'Brand Identity', description: 'Stand out with a strong and memorable visual identity.', icon: PeopleOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
+      { direction: 'left', colSpan: 'lg:col-span-2', title: 'Image Redesign', description: 'Update your brand with a new style that reflects your evolution.', icon: PenOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
+      { direction: 'right', colSpan: 'lg:col-span-3', title: 'Promotional Material Design', description: 'Create graphic pieces that communicate your message and stand out in any medium.', icon: MegaphoneOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
+    ]
+  },
+];
+---
 <div class="text-white">
   <div class="flex flex-col">
     <div class="relative bg-grid">
       <div class="flex flex-col">
-        <ServiceCard title="Custom Software Development" subtitle="Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits." gridCols="lg:grid-cols-5">
-          <ServiceFeature direction="down" colSpan="lg:col-span-3" title="Task Automation" description="Save time and resources by eliminating repetitive tasks with automated systems.">
-            <GardenWorkflowOutline width={32} height={32} fill="#E5C6F3" />
-          </ServiceFeature>
-          <ServiceFeature direction="left" colSpan="lg:col-span-2" title="Tailored Solutions" description="Created to meet your unique processes and objectives.">
-            <ThreeLightOutline width={32} height={32} fill="#E5C6F3" strokeWidth={1} stroke="#E5C6F3" />
-          </ServiceFeature>
-          <ServiceFeature direction="right" colSpan="lg:col-span-2" title="Process Optimization" description="Improve your processes with solutions that enhance your efficiency.">
-            <ProcessOutline width={32} height={32} fill="#E5C6F3" />
-          </ServiceFeature>
-          <ServiceFeature direction="up" colSpan="lg:col-span-3" title="Guaranteed Scalability" description="Receive a system that grows with you without affecting performance or creating technical limits.">
-            <ChartLineOutline width={32} height={32} fill="none" stroke="#E5C6F3" />
-          </ServiceFeature>
-        </ServiceCard>
-        <ServiceCard title="Web Development" subtitle="Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits." gridCols="lg:grid-cols-2 lg-grid-rows-3">
-          <ServiceFeature direction="down" colSpan="" title="Responsive Design" description="Web design that adapts to all screens while maintaining quality and visual consistency.">
-            <WebGridOutline width={32} height={32} fill="#E5C6F3" />
-          </ServiceFeature>
-          <ServiceFeature direction="up" colSpan="" title="Conversion Optimization" description="We design your website to guide users and achieve conversions according to your goals.">
-            <FileConvertionOutline width={32} height={32} fill="none" strokeWidth="2" stroke="#E5C6F3" strokeLinecap="round" strokeLinejoin="round" />
-          </ServiceFeature>
-          <ServiceFeature direction="left" colSpan="lg:col-span-full" title="Integrated SEO" description="Increase your visibility on Google with a website ready to rank.">
-            <GlassesOutline width={32} height={32} fill="none" strokeWidth="2" stroke="#E5C6F3" strokeLinecap="round" strokeLinejoin="round" />
-          </ServiceFeature>
-        </ServiceCard>
-        <ServiceCard title="AI Integrations" subtitle="Boost your efficiency with artificial intelligence. We connect AI to your systems to optimize processes and decisions. Take your business to a new level of precision and productivity." gridCols="lg:grid-cols-5">
-          <ServiceFeature direction="down" colSpan="lg:col-span-2" title="Continuous Optimization" description="Make your business grow with AI that analyzes and improves processes.">
-            <ProcessOutline width={32} height={32} fill="#E5C6F3" />
-          </ServiceFeature>
-          <ServiceFeature direction="up" colSpan="lg:col-span-3" title="Process Automation" description="Integrate intelligent bots that perform repetitive tasks, optimizing operational flows effortlessly.">
-            <GardenWorkflowOutline width={32} height={32} fill="#E5C6F3" />
-          </ServiceFeature>
-          <ServiceFeature direction="left" colSpan="lg:col-span-3" title="More Accurate Decisions" description="Minimize errors with data processed in seconds, providing reliable and actionable insights for your business.">
-            <ChartOutline width={32} height={32} fill="none" stroke="#E5C6F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </ServiceFeature>
-          <ServiceFeature direction="right" colSpan="lg:col-span-2" title="Intelligent Customer Service" description="Enhance your customers' experience with virtual assistants.">
-            <ChatBubbleLeftOutline width={32} height={32} fill="none" stroke="#E5C6F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </ServiceFeature>
-        </ServiceCard>
+        {services.slice(0, 3).map(service => (
+          <ServiceCard title={service.title} subtitle={service.subtitle} gridCols={service.gridCols}>
+            {service.features.map(feature => (
+              <ServiceFeature direction={feature.direction} colSpan={feature.colSpan} title={feature.title} description={feature.description}>
+                <feature.icon {...(feature.iconProps as any)} />
+              </ServiceFeature>
+            ))}
+          </ServiceCard>
+        ))}
       </div>
       <Picture src={TopLeftGradientBackgroundPC} alt="backgroundGradientPC" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 hidden object-cover w-full -z-50 lg:block" />
       <Picture src={TopLeftGradientBackgroundMobile} alt="backgroundGradientMobile" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 object-cover w-full -z-50 lg:hidden" />
@@ -88,59 +135,15 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
     />
     <div class="bg-grid">
       <div class="flex flex-col">
-        <ServiceCard title="Mobile App Development" subtitle="Take your business to where your customers are, with an intuitive and functional app that meets your users' needs, improving interaction and facilitating ongoing communication." gridCols="lg:grid-cols-5">
-          <ServiceFeature direction="down" colSpan="lg:col-span-3" title="User-Friendly Interface" description="Make every interaction smooth and intuitive, enhancing the experience and satisfaction of your users.">
-            <WebGridOutline width={32} height={32} fill="#E5C6F3" />
-          </ServiceFeature>
-          <ServiceFeature direction="up" colSpan="lg:col-span-2" title="Push Notifications" description="Keep your users informed with direct messages from the app.">
-            <NotificationOutline width={32} height={32} fill="none" strokeWidth={2} stroke="#E5C6F3" />
-          </ServiceFeature>
-          <ServiceFeature direction="left" colSpan="lg:col-span-2" title="Cross-Platform Development" description="Reach more users with a functional app on Android, iOS, and more.">
-            <DevicesOutline width={32} height={32} fill="#E5C6F3" />
-          </ServiceFeature>
-          <ServiceFeature direction="right" colSpan="lg:col-span-3" title="Integration with External Services" description="Provide your users with a seamless experience by connecting to external platforms like payment gateways.">
-            <AppsOutline width={32} height={32} fill="#E5C6F3" />
-          </ServiceFeature>
-        </ServiceCard>
-        <ServiceCard title="Internal Management Tools" subtitle="Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits." gridCols="lg:grid-cols-2 lg-grid-rows-3">
-          <ServiceFeature direction="down" colSpan="" title="Report Automation" description="Generate automatic reports to make decisions with accurate data at the right moment.">
-            <DocumentsOutline width={32} height={32} fill="none" stroke="#E5C6F3" strokeWidth={2} />
-          </ServiceFeature>
-          <ServiceFeature direction="up" colSpan="" title="Project Management" description="Organize tasks, deadlines, and responsibilities to maintain a clear and efficient flow.">
-            <TaskDoneOutline width={32} height={32} fill="none" strokeWidth="2" stroke="#E5C6F3" strokeLinecap="round" strokeLinejoin="round" />
-          </ServiceFeature>
-          <ServiceFeature direction="left" colSpan="lg:col-span-full" title="Inventory Control" description="Monitor products in real-time and avoid losses or shortages.">
-            <PackageSearchOutline width={32} height={32} fill="none" strokeWidth="2" stroke="#E5C6F3" strokeLinecap="round" strokeLinejoin="round" />
-          </ServiceFeature>
-        </ServiceCard>
-        <ServiceCard title="Cloud Services" subtitle="Access your data from anywhere, securely. With our cloud solutions, you will have access to your files and applications at all times, ensuring the security and flexibility your business needs to grow." gridCols="lg:grid-cols-5">
-          <ServiceFeature direction="down" colSpan="lg:col-span-2" title="Remote Access" description="Connect securely and work from anywhere.">
-            <RemoteOutline width={32} height={32} fill="#E5C6F3" />
-          </ServiceFeature>
-          <ServiceFeature direction="up" colSpan="lg:col-span-3" title="Secure Storage" description="Protect your data with cloud backups and end-to-end encryption.">
-            <SecureOutline width={32} height={32} fill="none" stroke="#E5C6F3" strokeWidth={2} />
-          </ServiceFeature>
-          <ServiceFeature direction="left" colSpan="lg:col-span-3" title="Easy Scalability" description="Expand your digital capacity without the need for infrastructure investment.">
-            <ExpandOutline width={32} height={32} fill="none" stroke="#E5C6F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </ServiceFeature>
-          <ServiceFeature direction="right" colSpan="lg:col-span-2" title="Automatic Backup" description="Prevent losses with automatic and constant backups.">
-            <BackupOutline width={32} height={32} fill="none" stroke="#E5C6F3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </ServiceFeature>
-        </ServiceCard>
-        <ServiceCard title="Graphic Design" subtitle="Make your brand stand out with impacfgheggftful design. We help you create a visual identity that effectively communicates your message, highlighting your business with a professional and coherent design that attracts your audience." gridCols="lg:grid-cols-5">
-          <ServiceFeature direction="down" colSpan="lg:col-span-3" title="Design for Web and Mobile" description="Intuitive and modern interfaces that connect with your audience and your vision.">
-            <DevicesOutline width={32} height={32} fill="#E5C6F3" />
-          </ServiceFeature>
-          <ServiceFeature direction="up" colSpan="lg:col-span-2" title="Brand Identity" description="Stand out with a strong and memorable visual identity.">
-            <PeopleOutline width={32} height={32} fill="none" strokeWidth={2} stroke="#E5C6F3" />
-          </ServiceFeature>
-          <ServiceFeature direction="left" colSpan="lg:col-span-2" title="Image Redesign" description="Update your brand with a new style that reflects your evolution.">
-            <PenOutline width={32} height={32} fill="none" strokeWidth={2} stroke="#E5C6F3" />
-          </ServiceFeature>
-          <ServiceFeature direction="right" colSpan="lg:col-span-3" title="Promotional Material Design" description="Create graphic pieces that communicate your message and stand out in any medium.">
-            <MegaphoneOutline width={32} height={32} fill="none" stroke="#E5C6F3" strokeWidth={2} />
-          </ServiceFeature>
-        </ServiceCard>
+        {services.slice(3).map(service => (
+          <ServiceCard title={service.title} subtitle={service.subtitle} gridCols={service.gridCols}>
+            {service.features.map(feature => (
+              <ServiceFeature direction={feature.direction} colSpan={feature.colSpan} title={feature.title} description={feature.description}>
+                <feature.icon {...(feature.iconProps as any)} />
+              </ServiceFeature>
+            ))}
+          </ServiceCard>
+        ))}
       </div>
       <ContactCTA />
     </div>

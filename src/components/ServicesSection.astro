@@ -2,6 +2,7 @@
 import Banner from './Banner.astro';
 import ServiceCard from './ServiceCard.astro';
 import ContactCTA from './ContactCTA.astro';
+import { ScrollReveal } from './ScrollReveal';
 
 import { Picture } from 'astro:assets';
 
@@ -38,7 +39,7 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
       <div class="flex flex-col">
         <ServiceCard title="Custom Software Development" subtitle="Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits.">
           <div class="grid gap-5 lg:grid-cols-5">
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            <ScrollReveal client:load direction="down" className="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <GardenWorkflowOutline width={32} height={32} fill='#E5C6F3' />
               </div>
@@ -46,8 +47,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Task Automation</h5>
                 <h6 class="text-slate-300">Save time and resources by eliminating repetitive tasks with automated systems.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="left" className="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <ThreeLightOutline width={32} height={32} fill='#E5C6F3' strokeWidth={1} stroke='#E5C6F3' />
               </div>
@@ -55,8 +56,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Tailored Solutions</h5>
                 <h6 class="text-slate-300">Created to meet your unique processes and objectives.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="right" className="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <ProcessOutline width={32} height={32} fill='#E5C6F3' />
               </div>
@@ -64,8 +65,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Process Optimization</h5>
                 <h6 class="text-slate-300">Improve your processes with solutions that enhance your efficiency.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="up" className="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <ChartLineOutline width={32} height={32} fill='none' stroke='#E5C6F3' />
               </div>
@@ -73,12 +74,12 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Guaranteed Scalability</h5>
                 <h6 class="text-slate-300">Receive a system that grows with you without affecting performance or creating technical limits.</h6>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </ServiceCard>
         <ServiceCard title="Web Development" subtitle="Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits.">
           <div class="grid gap-5 lg:grid-cols-2 lg-grid-rows-3">
-            <div class="border flex flex-col gap-y-4 items-center justify-center transition-all rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            <ScrollReveal client:load direction="down" className="border flex flex-col gap-y-4 items-center justify-center transition-all rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <WebGridOutline width={32} height={32} fill='#E5C6F3' />
               </div>
@@ -86,8 +87,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Responsive Design</h5>
                 <h6 class="text-slate-300">Web design that adapts to all screens while maintaining quality and visual consistency.</h6>
               </div>
-            </div>
-            <div class="border flex flex-col gap-y-4 items-center justify-center transition-all rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="up" className="border flex flex-col gap-y-4 items-center justify-center transition-all rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <FileConvertionOutline width={32} height={32} fill='none' strokeWidth='2' stroke='#E5C6F3' strokeLinecap='round' strokeLinejoin='round' />
               </div>
@@ -95,8 +96,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Conversion Optimization</h5>
                 <h6 class="text-slate-300">We design your website to guide users and achieve conversions according to your goals.</h6>
               </div>
-            </div>
-            <div class="border flex items-center lg:col-span-full gap-x-4 transition-all rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="left" className="border flex items-center lg:col-span-full gap-x-4 transition-all rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <GlassesOutline width={32} height={32} fill='none' strokeWidth='2' stroke='#E5C6F3' strokeLinecap='round' strokeLinejoin='round' />
               </div>
@@ -104,12 +105,12 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Integrated SEO</h5>
                 <h6 class="text-slate-300">Increase your visibility on Google with a website ready to rank.</h6>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </ServiceCard>
         <ServiceCard title="AI Integrations" subtitle="Boost your efficiency with artificial intelligence. We connect AI to your systems to optimize processes and decisions. Take your business to a new level of precision and productivity.">
           <div class="grid gap-5 lg:grid-cols-5">
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            <ScrollReveal client:load direction="down" className="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <ProcessOutline width={32} height={32} fill='#E5C6F3' />
               </div>
@@ -117,8 +118,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Continuous Optimization</h5>
                 <h6 class="text-slate-300">Make your business grow with AI that analyzes and improves processes.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="up" className="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <GardenWorkflowOutline width={32} height={32} fill='#E5C6F3' />
               </div>
@@ -126,8 +127,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Process Automation</h5>
                 <h6 class="text-slate-300">Integrate intelligent bots that perform repetitive tasks, optimizing operational flows effortlessly.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="left" className="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <ChartOutline width={32} height={32} fill='none' stroke='#E5C6F3' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
               </div>
@@ -135,8 +136,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">More Accurate Decisions</h5>
                 <h6 class="text-slate-300">Minimize errors with data processed in seconds, providing reliable and actionable insights for your business.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="right" className="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <ChatBubbleLeftOutline width={32} height={32} fill='none' stroke='#E5C6F3' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
               </div>
@@ -144,7 +145,7 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Intelligent Customer Service</h5>
                 <h6 class="text-slate-300">Enhance your customers' experience with virtual assistants.</h6>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </ServiceCard>
       </div>
@@ -161,7 +162,7 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
       <div class="flex flex-col">
         <ServiceCard title="Mobile App Development" subtitle="Take your business to where your customers are, with an intuitive and functional app that meets your users' needs, improving interaction and facilitating ongoing communication.">
           <div class="grid gap-5 lg:grid-cols-5">
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            <ScrollReveal client:load direction="down" className="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <WebGridOutline width={32} height={32} fill='#E5C6F3' />
               </div>
@@ -169,8 +170,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">User-Friendly Interface</h5>
                 <h6 class="text-slate-300">Make every interaction smooth and intuitive, enhancing the experience and satisfaction of your users.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="up" className="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <NotificationOutline width={32} height={32} fill='none' strokeWidth={2} stroke='#E5C6F3' />
               </div>
@@ -178,8 +179,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Push Notifications</h5>
                 <h6 class="text-slate-300">Keep your users informed with direct messages from the app.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="left" className="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <DevicesOutline width={32} height={32} fill='#E5C6F3' />
               </div>
@@ -187,8 +188,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Cross-Platform Development</h5>
                 <h6 class="text-slate-300">Reach more users with a functional app on Android, iOS, and more.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="right" className="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <AppsOutline width={32} height={32} fill='#E5C6F3' />
               </div>
@@ -196,12 +197,12 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Integration with External Services</h5>
                 <h6 class="text-slate-300">Provide your users with a seamless experience by connecting to external platforms like payment gateways.</h6>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </ServiceCard>
         <ServiceCard title="Internal Management Tools" subtitle="Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits.">
           <div class="grid gap-5 lg:grid-cols-2 lg-grid-rows-3">
-            <div class="border flex flex-col gap-y-4 items-center justify-center transition-all rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            <ScrollReveal client:load direction="down" className="border flex flex-col gap-y-4 items-center justify-center transition-all rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <DocumentsOutline width={32} height={32} fill='none' stroke='#E5C6F3' strokeWidth={2} />
               </div>
@@ -209,8 +210,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Report Automation</h5>
                 <h6 class="text-slate-300">Generate automatic reports to make decisions with accurate data at the right moment.</h6>
               </div>
-            </div>
-            <div class="border flex flex-col gap-y-4 items-center justify-center transition-all rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="up" className="border flex flex-col gap-y-4 items-center justify-center transition-all rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <TaskDoneOutline width={32} height={32} fill='none' strokeWidth='2' stroke='#E5C6F3' strokeLinecap='round' strokeLinejoin='round' />
               </div>
@@ -218,8 +219,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Project Management</h5>
                 <h6 class="text-slate-300">Organize tasks, deadlines, and responsibilities to maintain a clear and efficient flow.</h6>
               </div>
-            </div>
-            <div class="border flex items-center lg:col-span-full gap-x-4 transition-all rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="left" className="border flex items-center lg:col-span-full gap-x-4 transition-all rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <PackageSearchOutline width={32} height={32} fill='none' strokeWidth='2' stroke='#E5C6F3' strokeLinecap='round' strokeLinejoin='round' />
               </div>
@@ -227,12 +228,12 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Inventory Control</h5>
                 <h6 class="text-slate-300">Monitor products in real-time and avoid losses or shortages.</h6>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </ServiceCard>
         <ServiceCard title="Cloud Services" subtitle="Access your data from anywhere, securely. With our cloud solutions, you will have access to your files and applications at all times, ensuring the security and flexibility your business needs to grow.">
           <div class="grid gap-5 lg:grid-cols-5">
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            <ScrollReveal client:load direction="down" className="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <RemoteOutline width={32} height={32} fill='#E5C6F3' />
               </div>
@@ -240,8 +241,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Remote Access</h5>
                 <h6 class="text-slate-300">Connect securely and work from anywhere.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="up" className="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <SecureOutline width={32} height={32} fill='none' stroke='#E5C6F3' strokeWidth={2} />
               </div>
@@ -249,8 +250,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Secure Storage</h5>
                 <h6 class="text-slate-300">Protect your data with cloud backups and end-to-end encryption.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="left" className="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <ExpandOutline width={32} height={32} fill='none' stroke='#E5C6F3' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
               </div>
@@ -258,8 +259,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Easy Scalability</h5>
                 <h6 class="text-slate-300">Expand your digital capacity without the need for infrastructure investment.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="right" className="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <BackupOutline width={32} height={32} fill='none' stroke='#E5C6F3' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' />
               </div>
@@ -267,12 +268,12 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Automatic Backup</h5>
                 <h6 class="text-slate-300">Prevent losses with automatic and constant backups.</h6>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </ServiceCard>
         <ServiceCard title="Graphic Design" subtitle="Make your brand stand out with impacfgheggftful design. We help you create a visual identity that effectively communicates your message, highlighting your business with a professional and coherent design that attracts your audience.">
           <div class="grid gap-5 lg:grid-cols-5">
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            <ScrollReveal client:load direction="down" className="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of_type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <DevicesOutline width={32} height={32} fill='#E5C6F3' />
               </div>
@@ -280,8 +281,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Design for Web and Mobile</h5>
                 <h6 class="text-slate-300">Intuitive and modern interfaces that connect with your audience and your vision.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="up" className="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <PeopleOutline width={32} height={32} fill='none' strokeWidth={2} stroke='#E5C6F3' />
               </div>
@@ -289,8 +290,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Brand Identity</h5>
                 <h6 class="text-slate-300">Stand out with a strong and memorable visual identity.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="left" className="border flex items-center gap-x-4 transition-all lg:col-span-2 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <PenOutline width={32} height={32} fill='none' strokeWidth={2} stroke='#E5C6F3' />
               </div>
@@ -298,8 +299,8 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Image Redesign</h5>
                 <h6 class="text-slate-300">Update your brand with a new style that reflects your evolution.</h6>
               </div>
-            </div>
-            <div class="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
+            </ScrollReveal>
+            <ScrollReveal client:load direction="right" className="border flex items-center gap-x-4 transition-all lg:col-span-3 rounded-lg py-6 px-4 bg-[#0B0122CC]/80 border-pheromone-purple/30  hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:glow-20 hover:glow-[#7504cd] to-[#1D0043]/90 hover:[&>div:first-of-type]:bg-blueberry-glaze hover:[&>div:first-of-type]:glow-20 hover:[&>div:first-of-type]:glow-[#7504cd]">
               <div class="flex items-center justify-center p-1 transition-all rounded-full bg-pheromone-purple/30 hover:bg-blueberry-glaze hover:border-blueberry-glaze hover:bg-gradient-to-bl">
                 <MegaphoneOutline width={32} height={32} fill='none' stroke='#E5C6F3' strokeWidth={2} />
               </div>
@@ -307,7 +308,7 @@ import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradien
                 <h5 class="text-lg font-bold">Promotional Material Design</h5>
                 <h6 class="text-slate-300">Create graphic pieces that communicate your message and stand out in any medium.</h6>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </ServiceCard>
       </div>

@@ -9,6 +9,12 @@ export const prerender = false;
 
 const { id } = Astro.params;
 const canonicalUrl = id ? `https://tenbeltz.com/contenido/${id}` : 'https://tenbeltz.com/contenido';
+const url = new URL(Astro.request.url);
+const token = url.searchParams.get('token');
+
+if (token) {
+  return Astro.redirect(`https://api.tenbeltz.com/communications/lead-magnets/download/${token}/`);
+}
 ---
 
 <Layout

@@ -16,11 +16,37 @@ type LeadMagnet = {
   title: string;
   description?: string;
   fields: LeadMagnetField[];
+  file_name?: string | null;
+  file_size?: number | null;
+  file_extension?: string | null;
 };
 
 const API_BASE = "https://api.tenbeltz.com/communications";
 
-export default function LeadMagnetForm({ magnetId }: { magnetId: string }) {
+function formatFileSize(value?: number | null) {
+  if (!value) return "";
+  const units = ["B", "KB", "MB", "GB"];
+  let size = value;
+  let index = 0;
+  while (size >= 1024 && index < units.length - 1) {
+    size /= 1024;
+    index += 1;
+  }
+  return `${size.toFixed(size >= 10 || index === 0 ? 0 : 1)} ${units[index]}`;
+}
+
+function getPreviewLabel(extension?: string | null) {
+  if (!extension) return "Recurso";
+  return extension.toUpperCase();
+}
+
+export default function LeadMagnetForm({
+  magnetId,
+  downloadToken,
+}: {
+  magnetId: string;
+  downloadToken?: string;
+}) {
   const [leadMagnet, setLeadMagnet] = useState<LeadMagnet | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -67,6 +93,9 @@ export default function LeadMagnetForm({ magnetId }: { magnetId: string }) {
   }, [magnetId]);
 
   const fields = useMemo(() => leadMagnet?.fields || [], [leadMagnet]);
+  const downloadUrl = downloadToken
+    ? `${API_BASE}/lead-magnets/download/${downloadToken}/`
+    : null;
 
   const handleFieldChange = (key: string, value: string) => {
     setFieldValues((prev) => ({ ...prev, [key]: value }));
@@ -176,14 +205,34 @@ export default function LeadMagnetForm({ magnetId }: { magnetId: string }) {
 
       <ScrollReveal className="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-6 border border-pheromone-purple/30">
         <div>
-          <h2 className="text-2xl font-semibold">Recibe el enlace de descarga</h2>
+          <h2 className="text-2xl font-semibold">Accede al contenido</h2>
           <p className="mt-2 text-sm text-slate-300">
-            Te enviaremos el acceso directo al contenido en cuanto completes el formulario.
+            Completa el formulario y te enviaremos el acceso directo por email.
           </p>
         </div>
 
         {error && (
           <p className="text-sm text-red-300">{error}</p>
+        )}
+
+        {leadMagnet?.file_name && (
+          <div className="flex items-center gap-4 rounded-lg border border-pheromone-purple/20 bg-[#0B0122]/60 px-4 py-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-pheromone-purple/20 text-sm font-semibold text-pheromone-purple">
+              {getPreviewLabel(leadMagnet.file_extension)}
+            </div>
+            <div className="flex flex-col">
+              <span className="text-sm font-semibold text-white">{leadMagnet.file_name}</span>
+              <span className="text-xs text-slate-400">{formatFileSize(leadMagnet.file_size)}</span>
+            </div>
+            {downloadUrl && (
+              <a
+                href={downloadUrl}
+                className="ml-auto text-xs font-semibold text-pheromone-purple hover:text-pheromone-light"
+              >
+                Descargar
+              </a>
+            )}
+          </div>
         )}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-y-5">
@@ -259,6 +308,15 @@ export default function LeadMagnetForm({ magnetId }: { magnetId: string }) {
           >
             {submitting ? "Enviando..." : "Recibir contenido"}
           </button>
+
+          {downloadUrl && (
+            <a
+              href={downloadUrl}
+              className="btn border border-pheromone-purple text-pheromone-purple w-full text-center bg-pheromone-purple/10 hover:bg-pheromone-purple/20"
+            >
+              Descargar ahora
+            </a>
+          )}
         </form>
       </ScrollReveal>
 

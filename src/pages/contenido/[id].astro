@@ -11,10 +11,6 @@ const { id } = Astro.params;
 const canonicalUrl = id ? `https://tenbeltz.com/contenido/${id}` : 'https://tenbeltz.com/contenido';
 const url = new URL(Astro.request.url);
 const token = url.searchParams.get('token');
-
-if (token) {
-  return Astro.redirect(`https://api.tenbeltz.com/communications/lead-magnets/download/${token}/`);
-}
 ---
 
 <Layout
@@ -38,7 +34,7 @@ if (token) {
 
     <section class="relative text-white bg-grid">
       <div class="max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24">
-        <LeadMagnetForm client:load magnetId={id || ''} />
+        <LeadMagnetForm client:load magnetId={id || ''} downloadToken={token || undefined} />
       </div>
     </section>
   </main>

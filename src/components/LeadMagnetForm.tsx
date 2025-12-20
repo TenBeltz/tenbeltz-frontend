@@ -40,7 +40,13 @@ function getPreviewLabel(extension?: string | null) {
   return extension.toUpperCase();
 }
 
-export default function LeadMagnetForm({ magnetId }: { magnetId: string }) {
+export default function LeadMagnetForm({
+  magnetId,
+  downloadToken,
+}: {
+  magnetId: string;
+  downloadToken?: string;
+}) {
   const [leadMagnet, setLeadMagnet] = useState<LeadMagnet | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -87,6 +93,10 @@ export default function LeadMagnetForm({ magnetId }: { magnetId: string }) {
   }, [magnetId]);
 
   const fields = useMemo(() => leadMagnet?.fields || [], [leadMagnet]);
+  const downloadUrl = downloadToken
+    ? `${API_BASE}/lead-magnets/download/${downloadToken}/`
+    : null;
+  const isDownloadReady = Boolean(downloadToken);
 
   const handleFieldChange = (key: string, value: string) => {
     setFieldValues((prev) => ({ ...prev, [key]: value }));
@@ -196,9 +206,13 @@ export default function LeadMagnetForm({ magnetId }: { magnetId: string }) {
 
       <ScrollReveal className="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-6 border border-pheromone-purple/30">
         <div>
-          <h2 className="text-2xl font-semibold">Accede al contenido</h2>
+          <h2 className="text-2xl font-semibold">
+            {isDownloadReady ? "Tu acceso está verificado" : "Accede al contenido"}
+          </h2>
           <p className="mt-2 text-sm text-slate-300">
-            Completa el formulario y te enviaremos el acceso directo por email.
+            {isDownloadReady
+              ? "Descarga el contenido desde el botón inferior. El enlace es personal y seguro."
+              : "Completa el formulario y te enviaremos el acceso directo por email."}
           </p>
         </div>
 
@@ -218,81 +232,97 @@ export default function LeadMagnetForm({ magnetId }: { magnetId: string }) {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-y-5">
-          <label className="flex flex-col gap-y-2 text-sm font-semibold">
-            Email
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
-              placeholder="tu@email.com"
-            />
-          </label>
-
-          {fields.map((field) => (
-            <label key={field.key} className="flex flex-col gap-y-2 text-sm font-semibold">
-              {field.label}
-              {field.type === "textarea" ? (
-                <textarea
-                  rows={4}
-                  required={Boolean(field.required)}
-                  value={fieldValues[field.key] || ""}
-                  onChange={(event) => handleFieldChange(field.key, event.target.value)}
-                  className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
-                  placeholder={field.placeholder || ""}
-                />
-              ) : field.type === "select" ? (
-                <select
-                  required={Boolean(field.required)}
-                  value={fieldValues[field.key] || ""}
-                  onChange={(event) => handleFieldChange(field.key, event.target.value)}
-                  className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
-                >
-                  <option value="">Selecciona una opción</option>
-                  {(field.options || []).map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              ) : (
-                <input
-                  type={field.type || "text"}
-                  required={Boolean(field.required)}
-                  value={fieldValues[field.key] || ""}
-                  onChange={(event) => handleFieldChange(field.key, event.target.value)}
-                  className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
-                  placeholder={field.placeholder || ""}
-                />
-              )}
+        {isDownloadReady ? (
+          <div className="flex flex-col gap-y-4">
+            <div className="flex items-center gap-3 rounded-lg border border-pheromone-purple/20 bg-[#0B0122]/60 px-4 py-3 text-sm text-slate-300">
+              <span className="inline-flex h-2 w-2 rounded-full bg-pheromone-purple"></span>
+              Enlace verificado. Descarga disponible para este email.
+            </div>
+            {downloadUrl && (
+              <a
+                href={downloadUrl}
+                className="btn bg-pheromone-purple hover:bg-sapphire-siren text-white text-center font-semibold"
+              >
+                Descargar contenido
+              </a>
+            )}
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex flex-col gap-y-5">
+            <label className="flex flex-col gap-y-2 text-sm font-semibold">
+              Email
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+                placeholder="tu@email.com"
+              />
             </label>
-          ))}
 
-          <label className="flex items-start gap-3 text-xs text-slate-300">
-            <input
-              type="checkbox"
-              checked={acceptedPolicy}
-              onChange={(event) => setAcceptedPolicy(event.target.checked)}
-              className="mt-1"
-              required
-            />
-            <span>
-              Acepto las políticas de uso y privacidad. Esta información se almacenará con fines comerciales para enviarte
-              ofertas o contenido informativo y no se compartirá con terceros.
-            </span>
-          </label>
+            {fields.map((field) => (
+              <label key={field.key} className="flex flex-col gap-y-2 text-sm font-semibold">
+                {field.label}
+                {field.type === "textarea" ? (
+                  <textarea
+                    rows={4}
+                    required={Boolean(field.required)}
+                    value={fieldValues[field.key] || ""}
+                    onChange={(event) => handleFieldChange(field.key, event.target.value)}
+                    className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+                    placeholder={field.placeholder || ""}
+                  />
+                ) : field.type === "select" ? (
+                  <select
+                    required={Boolean(field.required)}
+                    value={fieldValues[field.key] || ""}
+                    onChange={(event) => handleFieldChange(field.key, event.target.value)}
+                    className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+                  >
+                    <option value="">Selecciona una opción</option>
+                    {(field.options || []).map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <input
+                    type={field.type || "text"}
+                    required={Boolean(field.required)}
+                    value={fieldValues[field.key] || ""}
+                    onChange={(event) => handleFieldChange(field.key, event.target.value)}
+                    className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+                    placeholder={field.placeholder || ""}
+                  />
+                )}
+              </label>
+            ))}
 
-          <button
-            type="submit"
-            disabled={loading || submitting}
-            className="btn bg-pheromone-purple hover:bg-sapphire-siren text-white text-center font-semibold disabled:opacity-60"
-          >
-            {submitting ? "Enviando..." : "Recibir contenido"}
-          </button>
+            <label className="flex items-start gap-3 text-xs text-slate-300">
+              <input
+                type="checkbox"
+                checked={acceptedPolicy}
+                onChange={(event) => setAcceptedPolicy(event.target.checked)}
+                className="mt-1"
+                required
+              />
+              <span>
+                Acepto las políticas de uso y privacidad. Esta información se almacenará con fines comerciales para enviarte
+                ofertas o contenido informativo y no se compartirá con terceros.
+              </span>
+            </label>
 
-        </form>
+            <button
+              type="submit"
+              disabled={loading || submitting}
+              className="btn bg-pheromone-purple hover:bg-sapphire-siren text-white text-center font-semibold disabled:opacity-60"
+            >
+              {submitting ? "Enviando..." : "Recibir contenido"}
+            </button>
+          </form>
+        )}
       </ScrollReveal>
 
       {alert && <Alert {...alert} />}

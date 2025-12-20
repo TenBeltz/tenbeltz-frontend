@@ -40,13 +40,7 @@ function getPreviewLabel(extension?: string | null) {
   return extension.toUpperCase();
 }
 
-export default function LeadMagnetForm({
-  magnetId,
-  downloadToken,
-}: {
-  magnetId: string;
-  downloadToken?: string;
-}) {
+export default function LeadMagnetForm({ magnetId }: { magnetId: string }) {
   const [leadMagnet, setLeadMagnet] = useState<LeadMagnet | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -93,9 +87,6 @@ export default function LeadMagnetForm({
   }, [magnetId]);
 
   const fields = useMemo(() => leadMagnet?.fields || [], [leadMagnet]);
-  const downloadUrl = downloadToken
-    ? `${API_BASE}/lead-magnets/download/${downloadToken}/`
-    : null;
 
   const handleFieldChange = (key: string, value: string) => {
     setFieldValues((prev) => ({ ...prev, [key]: value }));
@@ -224,14 +215,6 @@ export default function LeadMagnetForm({
               <span className="text-sm font-semibold text-white">{leadMagnet.file_name}</span>
               <span className="text-xs text-slate-400">{formatFileSize(leadMagnet.file_size)}</span>
             </div>
-            {downloadUrl && (
-              <a
-                href={downloadUrl}
-                className="ml-auto text-xs font-semibold text-pheromone-purple hover:text-pheromone-light"
-              >
-                Descargar
-              </a>
-            )}
           </div>
         )}
 
@@ -309,14 +292,6 @@ export default function LeadMagnetForm({
             {submitting ? "Enviando..." : "Recibir contenido"}
           </button>
 
-          {downloadUrl && (
-            <a
-              href={downloadUrl}
-              className="btn border border-pheromone-purple text-pheromone-purple w-full text-center bg-pheromone-purple/10 hover:bg-pheromone-purple/20"
-            >
-              Descargar ahora
-            </a>
-          )}
         </form>
       </ScrollReveal>
 

@@ -100,10 +100,17 @@ import { ReactComponent as ChartLineIcon } from '@/assets/icons/chart-line-outli
               </div>
               <button
                 type="button"
-                class="btn bg-pheromone-purple hover:bg-pheromone-light text-white text-center font-semibold"
+                id="client-login-button"
+                class="btn bg-pheromone-purple hover:bg-pheromone-light text-white text-center font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Entrar
+                <span class="inline-flex items-center gap-2">
+                  <span id="client-login-label">Entrar</span>
+                  <span id="client-login-spinner" class="hidden h-4 w-4 animate-spin rounded-full border-2 border-white/70 border-t-transparent"></span>
+                </span>
               </button>
+              <p id="client-login-error" class="hidden text-xs text-rose-200">
+                Credenciales inválidas. Revisa tu email y contraseña.
+              </p>
               <p class="text-xs text-slate-400">
                 Acceso disponible solo para clientes activos.
               </p>
@@ -115,3 +122,26 @@ import { ReactComponent as ChartLineIcon } from '@/assets/icons/chart-line-outli
   </main>
   <Footer />
 </Layout>
+
+<script is:inline>
+  const loginButton = document.getElementById('client-login-button');
+  const loginLabel = document.getElementById('client-login-label');
+  const loginSpinner = document.getElementById('client-login-spinner');
+  const loginError = document.getElementById('client-login-error');
+
+  if (loginButton && loginLabel && loginSpinner && loginError) {
+    loginButton.addEventListener('click', () => {
+      loginError.classList.add('hidden');
+      loginButton.setAttribute('disabled', 'true');
+      loginLabel.textContent = 'Verificando...';
+      loginSpinner.classList.remove('hidden');
+
+      window.setTimeout(() => {
+        loginButton.removeAttribute('disabled');
+        loginLabel.textContent = 'Entrar';
+        loginSpinner.classList.add('hidden');
+        loginError.classList.remove('hidden');
+      }, 1400);
+    });
+  }
+</script>

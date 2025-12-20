@@ -19,6 +19,7 @@ type LeadMagnet = {
   file_name?: string | null;
   file_size?: number | null;
   file_extension?: string | null;
+  file_url?: string | null;
 };
 
 const API_BASE = "https://api.tenbeltz.com/communications";
@@ -38,6 +39,16 @@ function formatFileSize(value?: number | null) {
 function getPreviewLabel(extension?: string | null) {
   if (!extension) return "Recurso";
   return extension.toUpperCase();
+}
+
+function getPreviewKind(extension?: string | null) {
+  const ext = extension?.toLowerCase();
+  if (!ext) return "unknown";
+  if (["png", "jpg", "jpeg", "gif", "webp", "svg"].includes(ext)) return "image";
+  if (["mp4", "webm", "mov"].includes(ext)) return "video";
+  if (["pdf"].includes(ext)) return "pdf";
+  if (["ppt", "pptx"].includes(ext)) return "ppt";
+  return "unknown";
 }
 
 export default function LeadMagnetForm({
@@ -97,6 +108,34 @@ export default function LeadMagnetForm({
     ? `${API_BASE}/lead-magnets/download/${downloadToken}/`
     : null;
   const isDownloadReady = Boolean(downloadToken);
+  const previewKind = getPreviewKind(leadMagnet?.file_extension);
+
+  const handleDownload = async () => {
+    if (!downloadUrl) return;
+    try {
+      const response = await fetch(downloadUrl);
+      if (!response.ok) {
+        throw new Error("No se pudo descargar el archivo.");
+      }
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = leadMagnet?.file_name || "contenido";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Error al descargar.";
+      setAlert({
+        id: Date.now(),
+        type: "error",
+        title: "Error",
+        message,
+      });
+    }
+  };
 
   const handleFieldChange = (key: string, value: string) => {
     setFieldValues((prev) => ({ ...prev, [key]: value }));
@@ -232,20 +271,57 @@ export default function LeadMagnetForm({
           </div>
         )}
 
+        {isDownloadReady && leadMagnet?.file_url && (
+          <div className="overflow-hidden rounded-xl border border-pheromone-purple/20 bg-black/30">
+            {previewKind === "image" && (
+              <img
+                src={leadMagnet.file_url}
+                alt={leadMagnet.title}
+                className="w-full max-h-64 object-cover"
+              />
+            )}
+            {previewKind === "video" && (
+              <video controls className="w-full max-h-64 bg-black">
+                <source src={leadMagnet.file_url} />
+              </video>
+            )}
+            {previewKind === "pdf" && (
+              <iframe
+                src={leadMagnet.file_url}
+                className="w-full h-72 bg-black"
+                title="Preview PDF"
+              />
+            )}
+            {previewKind === "ppt" && (
+              <iframe
+                src={`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(
+                  leadMagnet.file_url,
+                )}`}
+                className="w-full h-72 bg-black"
+                title="Preview PPT"
+              />
+            )}
+            {previewKind === "unknown" && (
+              <div className="px-4 py-6 text-sm text-slate-400">
+                Vista previa no disponible para este formato.
+              </div>
+            )}
+          </div>
+        )}
+
         {isDownloadReady ? (
           <div className="flex flex-col gap-y-4">
             <div className="flex items-center gap-3 rounded-lg border border-pheromone-purple/20 bg-[#0B0122]/60 px-4 py-3 text-sm text-slate-300">
               <span className="inline-flex h-2 w-2 rounded-full bg-pheromone-purple"></span>
               Enlace verificado. Descarga disponible para este email.
             </div>
-            {downloadUrl && (
-              <a
-                href={downloadUrl}
-                className="btn bg-pheromone-purple hover:bg-sapphire-siren text-white text-center font-semibold"
-              >
-                Descargar contenido
-              </a>
-            )}
+            <button
+              type="button"
+              onClick={handleDownload}
+              className="btn bg-pheromone-purple hover:bg-sapphire-siren text-white text-center font-semibold"
+            >
+              Descargar contenido
+            </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-y-5">

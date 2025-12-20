@@ -1,0 +1,116 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<Layout
+  title="TenBeltz | Politicas de uso y privacidad"
+  description="Politicas de uso, privacidad y cookies de TenBeltz."
+  canonical="https://tenbeltz.com/politicas"
+>
+  <Header />
+  <main class="relative z-10 flex flex-col flex-1 overflow-x-hidden">
+    <section class="relative text-white bg-grid">
+      <div class="pointer-events-none absolute -top-16 left-10 h-64 w-64 rounded-full bg-pheromone-purple/20 blur-3xl"></div>
+      <div class="mx-auto flex w-full max-w-screen-lg flex-col gap-10 px-4 py-20 lg:px-12 lg:py-24">
+        <div class="flex flex-col gap-4">
+          <span class="text-xs font-semibold tracking-[0.4em] text-pheromone-purple/70">LEGAL</span>
+          <h1 class="text-4xl font-extrabold lg:text-5xl">Politica de uso y privacidad</h1>
+          <p class="text-base text-slate-300">
+            Esta politica explica como tratamos tus datos cuando visitas nuestro sitio o completas un formulario.
+            Tambien describe el uso de cookies de analitica y como puedes gestionarlas.
+          </p>
+        </div>
+
+        <div class="grid gap-6">
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">Responsable</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              TenBeltz es responsable del tratamiento de los datos. Para cualquier consulta puedes escribir a
+              <a
+                href="mailto:hello@tenbeltz.com"
+                class="ml-1 text-pheromone-purple underline underline-offset-2 hover:text-pheromone-light"
+              >
+                hello@tenbeltz.com
+              </a>
+              .
+            </p>
+          </section>
+
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">Datos que recogemos</h2>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li>Datos de contacto como nombre, email y empresa cuando completas un formulario.</li>
+              <li>Informacion relacionada con tu interes en nuestros servicios o contenidos.</li>
+              <li>Datos de navegacion anonimizados para medir el uso del sitio.</li>
+            </ul>
+          </section>
+
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">Finalidades y base legal</h2>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li>Responder a tus solicitudes y darte acceso a contenidos solicitados.</li>
+              <li>Enviar comunicaciones relacionadas con tu consulta, si has dado consentimiento.</li>
+              <li>Mejorar el rendimiento del sitio mediante analitica agregada.</li>
+            </ul>
+          </section>
+
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">Conservacion</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              Conservamos los datos el tiempo necesario para atender tu solicitud o mientras exista una relacion
+              comercial activa. Puedes solicitar la eliminacion en cualquier momento.
+            </p>
+          </section>
+
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">Destinatarios</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              Solo compartimos datos con proveedores que nos ayudan a operar el sitio y enviar comunicaciones, bajo
+              acuerdos de confidencialidad y tratamiento de datos.
+            </p>
+          </section>
+
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">Tus derechos</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              Puedes acceder, rectificar o eliminar tus datos, asi como retirar tu consentimiento, escribiendo a
+              hello@tenbeltz.com.
+            </p>
+          </section>
+
+          <section
+            id="cookies"
+            class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6"
+          >
+            <h2 class="text-xl font-semibold">Cookies</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              Usamos cookies de analitica para entender el uso del sitio y mejorar la experiencia. Estas cookies solo
+              se activan si aceptas desde el aviso de cookies.
+            </p>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li>
+                <span class="font-semibold text-white">tbz_cookie_consent</span>: guarda tu decision durante 180 dias.
+              </li>
+              <li>Ahrefs Analytics: cookies de analitica agregada.</li>
+            </ul>
+            <p class="mt-3 text-sm text-slate-300">
+              Puedes cambiar tu decision eliminando las cookies del navegador y volviendo a aceptar o rechazar en el
+              banner.
+            </p>
+          </section>
+
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">Uso del sitio</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              El contenido es informativo. No esta permitido copiarlo o redistribuirlo sin autorizacion. Nos reservamos
+              el derecho de actualizar estas politicas cuando sea necesario.
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,104 @@
+<div
+  id="cookie-consent"
+  class="fixed bottom-5 right-5 z-50 hidden max-w-sm rounded-2xl border border-pheromone-purple/30 bg-[#0B0122F2] p-5 text-white shadow-[0_18px_50px_-25px_rgba(110,0,255,0.6)] backdrop-blur-md"
+  role="dialog"
+  aria-live="polite"
+  aria-modal="false"
+  aria-label="Aviso de cookies"
+>
+  <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-1">
+      <span class="text-xs font-semibold tracking-[0.3em] text-pheromone-purple/80">COOKIES</span>
+      <h2 class="text-lg font-semibold">Solo lo esencial</h2>
+    </div>
+    <p class="text-sm text-slate-300">
+      Usamos cookies de analitica para entender el uso del sitio y mejorar la experiencia. Puedes aceptarlas o
+      rechazarlas cuando quieras.
+    </p>
+    <div class="flex flex-wrap items-center gap-3">
+      <button
+        id="cookie-accept"
+        type="button"
+        class="rounded-full bg-pheromone-purple px-4 py-2 text-xs font-semibold text-white transition hover:bg-pheromone-light"
+      >
+        Aceptar
+      </button>
+      <button
+        id="cookie-decline"
+        type="button"
+        class="rounded-full border border-pheromone-purple/60 px-4 py-2 text-xs font-semibold text-pheromone-purple transition hover:border-pheromone-purple hover:text-white"
+      >
+        Rechazar
+      </button>
+      <a
+        href="/politicas#cookies"
+        class="text-xs font-semibold text-slate-300 underline underline-offset-4 transition hover:text-white"
+      >
+        Ver politica
+      </a>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const CONSENT_COOKIE = "tbz_cookie_consent";
+  const CONSENT_MAX_AGE = 60 * 60 * 24 * 180;
+  const ANALYTICS_SRC = "https://analytics.ahrefs.com/analytics.js";
+  const ANALYTICS_KEY = "+xbnrKRX+hWN03i9D86kJg";
+
+  const banner = document.getElementById("cookie-consent");
+  const acceptButton = document.getElementById("cookie-accept");
+  const declineButton = document.getElementById("cookie-decline");
+
+  const getConsentValue = () => {
+    if (!document.cookie) return null;
+    const item = document.cookie
+      .split("; ")
+      .find((entry) => entry.startsWith(`${CONSENT_COOKIE}=`));
+    return item ? item.split("=")[1] : null;
+  };
+
+  const setConsentValue = (value) => {
+    document.cookie = `${CONSENT_COOKIE}=${value}; path=/; max-age=${CONSENT_MAX_AGE}; samesite=lax`;
+  };
+
+  const loadAnalytics = () => {
+    if (document.querySelector('script[data-analytics="ahrefs"]')) return;
+    const script = document.createElement("script");
+    script.src = ANALYTICS_SRC;
+    script.async = true;
+    script.dataset.key = ANALYTICS_KEY;
+    script.dataset.analytics = "ahrefs";
+    document.head.appendChild(script);
+  };
+
+  const hideBanner = () => {
+    if (banner) banner.classList.add("hidden");
+  };
+
+  const existingConsent = getConsentValue();
+  if (existingConsent === "accepted") {
+    loadAnalytics();
+  }
+
+  if (!existingConsent && banner) {
+    window.setTimeout(() => {
+      banner.classList.remove("hidden");
+    }, 700);
+  }
+
+  if (acceptButton) {
+    acceptButton.addEventListener("click", () => {
+      setConsentValue("accepted");
+      loadAnalytics();
+      hideBanner();
+    });
+  }
+
+  if (declineButton) {
+    declineButton.addEventListener("click", () => {
+      setConsentValue("rejected");
+      hideBanner();
+    });
+  }
+</script>

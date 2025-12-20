@@ -363,8 +363,14 @@ export default function LeadMagnetForm({
                 required
               />
               <span>
-                Acepto las políticas de uso y privacidad. Esta información se almacenará con fines comerciales para enviarte
-                ofertas o contenido informativo y no se compartirá con terceros.
+                Acepto las{" "}
+                <a
+                  href="/politicas"
+                  className="text-pheromone-purple hover:text-pheromone-light underline underline-offset-2"
+                >
+                  políticas de uso y privacidad
+                </a>
+                .
               </span>
             </label>
 

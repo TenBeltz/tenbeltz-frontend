@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import SEO from "@/components/SEO.astro"
+import CookieConsent from "@/components/CookieConsent.astro";
 
 interface Props {
 	title: string
@@ -19,9 +20,10 @@ const { title, description, canonical } = Astro.props
 			canonical={canonical}
 			description={description}
 		/>
-<script is:inline defer src="https://umami.tenbeltz.com/script.js" data-website-id="91edd3ea-59e0-4eef-86b4-7bd11019e619"></script>	</head>
+	</head>
 	<body class="flex flex-col min-h-screen overflow-x-hidden bg-obsidian-shard">
 		<slot />
+		<CookieConsent />
 	</body>
 </html>
 <style is:global>

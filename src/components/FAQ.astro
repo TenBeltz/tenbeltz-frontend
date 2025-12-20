@@ -9,39 +9,39 @@ interface FAQ {
 
 const FAQs: FAQ[] = [
   { 
-    question: 'How can AI integration benefit my business, and what specific AI services do you provide?',
-    answer: 'AI can automate tasks, improve decision-making, and enhance customer experiences. We offer AI chatbots, predictive analytics, and machine learning solutions.',
+    question: '¿Cómo saber si mi SaaS necesita IA y en qué caso de uso empezar?',
+    answer: 'Definimos el caso de uso, la métrica y el riesgo principal antes de construir nada. Si no se puede medir, no se lanza.',
   },
   { 
-    question: 'What data science services do you offer, and how can they help improve my business operations?',
-    answer: 'We provide data analysis, visualization, and predictive modeling to help you make data-driven decisions and optimize operations.',
+    question: '¿Cómo evitáis alucinaciones y respuestas inconsistentes?',
+    answer: 'Combinamos evals automáticas, revisión humana, guardrails y fallback a reglas cuando el modelo falla.',
   },
   { 
-    question: 'What is your typical project timeline from initial consultation to final delivery?',
-    answer: 'Our project timelines vary, but typically range from 4 to 12 weeks depending on the complexity of the project.',
+    question: '¿Cómo controláis costes y latencia en producción?',
+    answer: 'Usamos rutas baratas, caching, batching, límites por feature y presupuestos de coste por petición.',
   },
   { 
-    question: 'What is your approach to ensuring project success and client satisfaction?',
-    answer: 'We ensure project success and client satisfaction through clear communication, tailored solutions, agile methodology, rigorous quality assurance, and ongoing support.',
+    question: '¿Qué pasa con datos sensibles y privacidad?',
+    answer: 'Aplicamos clasificación de datos, redacción de PII, políticas de acceso y trazabilidad completa.',
   },
   { 
-    question: 'How do you ensure the security and privacy of the data used in your projects?',
-    answer: 'We implement robust security measures, including encryption, regular audits, and compliance with data protection regulations.',
+    question: '¿Qué entregables incluye un Audit o un Sprint?',
+    answer: 'Hoja de ruta por fases, arquitectura recomendada, métricas de éxito, evals iniciales y un plan de producción claro.',
   },
   { 
-    question: 'What types of web development services do you offer?',
-    answer: 'We offer custom software development, web and mobile development, and cloud solutions. Our expertise includes front-end, back-end, and full-stack development, as well as internal management tools tailored to your business needs. Additionally, we provide graphic design services to enhance your digital presence.',
+    question: '¿Trabajáis con nuestro equipo y stack actual?',
+    answer: 'Sí. Nos integramos con tu equipo de producto e ingeniería, dejando documentación y handoff para que todo quede operativo.',
   },
 ]
 ---
 
-<section>
+<section id="faq">
   <div class="flex flex-col items-center justify-center px-4 py-20 text-white gap-y-16 lg:px-16">
     <ScrollReveal client:load className="flex flex-col max-w-2xl text-center gap-y-7">
-      <h2 class="text-4xl font-bold">Frequently Asked Questions</h2>
+      <h2 class="text-4xl font-bold">Preguntas frecuentes</h2>
       <p class="text-slate-400">
-        Have a different question and can't find the answer you're looking for? Reach out to our support team by 
-        <a href="#contact-section" class="font-bold text-pheromone-purple">sending us an email</a> and we'll get back to you as soon as we can.
+        ¿Tienes otra pregunta y no encuentras la respuesta? 
+        <a href="#contact-section" class="font-bold text-pheromone-purple">Escríbenos</a> y te respondemos cuanto antes.
       </p>
     </ScrollReveal>
     <div class="grid lg:grid-cols-2 gap-x-40 gap-y-6 lg:gap-y-14">

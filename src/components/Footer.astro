@@ -32,11 +32,12 @@ const socialMedias: SocialMedia[] = [
 ];
 
 const sections: FooterLink[] = [
-  { name: 'Home', url: '/' },
-  { name: 'Services', url: '/services' },
-  // { name: 'Portfolio', url: '' },
-  // { name: 'Customers', url: '' },
-  { name: 'About Us', url: '/#about-us' },
+  { name: 'Inicio', url: '/' },
+  { name: 'Enfoque', url: '/#enfoque' },
+  { name: 'Método', url: '/#metodo' },
+  { name: 'Precios', url: '/precios' },
+  { name: 'Preguntas', url: '/#faq' },
+  { name: 'Contacto', url: '/#contact-section' },
 ];
 ---
 
@@ -44,13 +45,13 @@ const sections: FooterLink[] = [
   <div class="flex flex-col p-4 py-8 mx-auto gap-y-14 lg:p-16 max-w-screen-2xl">
     <div class="flex flex-col flex-wrap xs:flex-row gap-x-20 gap-y-10">
       <ScrollReveal client:load className="flex flex-col gap-y-5">
-        <h4 class="font-semibold">Pages</h4>
+        <h4 class="font-semibold">Secciones</h4>
         <ul class="flex flex-col gap-y-3">
           {sections.map(section => <li><a href={section.url} class="transition-colors text-slate-300 hover:text-slate-100">{section.name}</a></li>)}
         </ul>
       </ScrollReveal>
       <ScrollReveal client:load delay={200} className="flex flex-col gap-y-5">
-        <h4 class="font-semibold">Contact</h4>
+        <h4 class="font-semibold">Contacto</h4>
         <ul class="flex flex-col gap-y-3">
           <li><a href={`mailto:${contactInfo.email}`} class="transition-colors text-slate-300 hover:text-slate-100">{contactInfo.email}</a></li>
           {contactInfo.phones.map(phone => <li><a href={`tel:${phone}`} class="transition-colors text-slate-300 hover:text-slate-100">{phone}</a></li>)}
@@ -60,7 +61,7 @@ const sections: FooterLink[] = [
     
     <ScrollReveal client:load className="flex justify-between py-3 text-sm border-t border-slate-400 text-slate-400">
       <span>
-        &copy; 2024 TenBeltz. All Rights Reserved.
+        &copy; 2024 TenBeltz. Todos los derechos reservados.
       </span>
       <span class="flex gap-x-4 [&>a]:hover:cursor-pointer">
         {socialMedias.map(socialMedia => (

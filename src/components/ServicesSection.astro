@@ -6,106 +6,64 @@ import ServiceFeature from './ServiceFeature.astro';
 
 import { Picture } from 'astro:assets';
 
-import { ReactComponent as GardenWorkflowOutline } from '@/assets/icons/garden-workflow-outline.svg';
-import { ReactComponent as ThreeLightOutline } from '@/assets/icons/three-light-outline.svg';
 import { ReactComponent as ProcessOutline } from '@/assets/icons/process-outline.svg';
-import { ReactComponent as ChartLineOutline } from '@/assets/icons/chart-line-outline.svg';
-import { ReactComponent as GlassesOutline } from '@/assets/icons/glasses-outline.svg';
-import { ReactComponent as FileConvertionOutline } from '@/assets/icons/file-convertion-outline.svg';
-import { ReactComponent as WebGridOutline } from '@/assets/icons/web-grid-outline.svg';
 import { ReactComponent as ChartOutline } from '@/assets/icons/chart-outline.svg';
-import { ReactComponent as ChatBubbleLeftOutline } from '@/assets/icons/chat-bubble-left-outline.svg';
-import { ReactComponent as NotificationOutline } from '@/assets/icons/notification-outline.svg';
-import { ReactComponent as DevicesOutline } from '@/assets/icons/devices-outline.svg';
-import { ReactComponent as AppsOutline } from '@/assets/icons/apps-outline.svg';
+import { ReactComponent as SecureOutline } from '@/assets/icons/secure-outline.svg';
 import { ReactComponent as DocumentsOutline } from '@/assets/icons/documents-outline.svg';
 import { ReactComponent as TaskDoneOutline } from '@/assets/icons/task-done-outline.svg';
 import { ReactComponent as PackageSearchOutline } from '@/assets/icons/package-search-outline.svg';
+import { ReactComponent as ChartLineOutline } from '@/assets/icons/chart-line-outline.svg';
+import { ReactComponent as ChatBubbleLeftOutline } from '@/assets/icons/chat-bubble-left-outline.svg';
 import { ReactComponent as ExpandOutline } from '@/assets/icons/expand-outline.svg';
-import { ReactComponent as RemoteOutline } from '@/assets/icons/remote-outline.svg';
-import { ReactComponent as SecureOutline } from '@/assets/icons/secure-outline.svg';
-import { ReactComponent as BackupOutline } from '@/assets/icons/backup-outline.svg';
-import { ReactComponent as PenOutline } from '@/assets/icons/pen-outline.svg';
-import { ReactComponent as PeopleOutline } from '@/assets/icons/people-outline.svg';
-import { ReactComponent as MegaphoneOutline } from '@/assets/icons/megaphone-outline.svg';
+import { ReactComponent as ThreeLightOutline } from '@/assets/icons/three-light-outline.svg';
+import { ReactComponent as NotificationOutline } from '@/assets/icons/notification-outline.svg';
 
 import TopLeftGradientBackgroundPC from '/public/images/img/top-left-gradient-background-pc.png';
 import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradient-background-mobile.png';
 
 const services = [
   {
-    title: 'Custom Software Development',
-    subtitle: `Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits.`,
+    title: 'IA Feature Audit',
+    subtitle: 'Diagnóstico para definir caso de uso, métricas, riesgos y costes antes de construir. Sales con un plan por fases.',
     gridCols: 'lg:grid-cols-5',
     features: [
-      { direction: 'down', colSpan: 'lg:col-span-3', title: 'Task Automation', description: 'Save time and resources by eliminating repetitive tasks with automated systems.', icon: GardenWorkflowOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
-      { direction: 'left', colSpan: 'lg:col-span-2', title: 'Tailored Solutions', description: 'Created to meet your unique processes and objectives.', icon: ThreeLightOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3', strokeWidth: 1, stroke: '#E5C6F3' } },
-      { direction: 'right', colSpan: 'lg:col-span-2', title: 'Process Optimization', description: 'Improve your processes with solutions that enhance your efficiency.', icon: ProcessOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
-      { direction: 'up', colSpan: 'lg:col-span-3', title: 'Guaranteed Scalability', description: 'Receive a system that grows with you without affecting performance or creating technical limits.', icon: ChartLineOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3' } },
+      { direction: 'down', colSpan: 'lg:col-span-3', title: 'Mapa de caso de uso', description: 'Delimitamos la tarea, usuarios y criterio de éxito.', icon: ProcessOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'left', colSpan: 'lg:col-span-2', title: 'Métricas y evals', description: 'Definimos el golden set y los indicadores clave.', icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
+      { direction: 'right', colSpan: 'lg:col-span-2', title: 'Riesgos y privacidad', description: 'Revisamos datos sensibles, guardrails y compliance.', icon: SecureOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
+      { direction: 'up', colSpan: 'lg:col-span-3', title: 'Plan por fases', description: 'Hoja de ruta clara con entregables y prioridades.', icon: DocumentsOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
     ]
   },
   {
-    title: 'Web Development',
-    subtitle: `Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits.`,
-    gridCols: 'lg:grid-cols-2 lg-grid-rows-3',
-    features: [
-      { direction: 'down', colSpan: '', title: 'Responsive Design', description: 'Web design that adapts to all screens while maintaining quality and visual consistency.', icon: WebGridOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
-      { direction: 'up', colSpan: '', title: 'Conversion Optimization', description: 'We design your website to guide users and achieve conversions according to your goals.', icon: FileConvertionOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3', strokeLinecap: 'round', strokeLinejoin: 'round' } },
-      { direction: 'left', colSpan: 'lg:col-span-full', title: 'Integrated SEO', description: 'Increase your visibility on Google with a website ready to rank.', icon: GlassesOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3', strokeLinecap: 'round', strokeLinejoin: 'round' } },
-    ]
-  },
-  {
-    title: 'AI Integrations',
-    subtitle: 'Boost your efficiency with artificial intelligence. We connect AI to your systems to optimize processes and decisions. Take your business to a new level of precision and productivity.',
+    title: 'Prototype Sprint',
+    subtitle: 'Sprint de 10-15 días con POC funcional, demo interna y base para escalar.',
     gridCols: 'lg:grid-cols-5',
     features: [
-      { direction: 'down', colSpan: 'lg:col-span-2', title: 'Continuous Optimization', description: 'Make your business grow with AI that analyzes and improves processes.', icon: ProcessOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
-      { direction: 'up', colSpan: 'lg:col-span-3', title: 'Process Automation', description: 'Integrate intelligent bots that perform repetitive tasks, optimizing operational flows effortlessly.', icon: GardenWorkflowOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
-      { direction: 'left', colSpan: 'lg:col-span-3', title: 'More Accurate Decisions', description: 'Minimize errors with data processed in seconds, providing reliable and actionable insights for your business.', icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
-      { direction: 'right', colSpan: 'lg:col-span-2', title: 'Intelligent Customer Service', description: `Enhance your customers' experience with virtual assistants.`, icon: ChatBubbleLeftOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
+      { direction: 'down', colSpan: 'lg:col-span-3', title: 'Flujo funcional', description: 'Un caso de uso completo integrado al producto.', icon: TaskDoneOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
+      { direction: 'up', colSpan: 'lg:col-span-2', title: 'Dataset y golden set', description: 'Ejemplos reales para medir calidad desde el día uno.', icon: PackageSearchOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3', strokeLinecap: 'round', strokeLinejoin: 'round' } },
+      { direction: 'left', colSpan: 'lg:col-span-2', title: 'Logging y tracing', description: 'Visibilidad básica de costes, tiempos y fallos.', icon: ChartLineOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3' } },
+      { direction: 'right', colSpan: 'lg:col-span-3', title: 'Demo interna', description: 'Validación rápida con tu equipo antes de escalar.', icon: ChatBubbleLeftOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
     ]
   },
   {
-    title: 'Mobile App Development',
-    subtitle: `Take your business to where your customers are, with an intuitive and functional app that meets your users' needs, improving interaction and facilitating ongoing communication.`,
+    title: 'Producción y escalado',
+    subtitle: 'Feature integrada con observabilidad, guardrails, seguridad y control de costes y latencia.',
     gridCols: 'lg:grid-cols-5',
     features: [
-      { direction: 'down', colSpan: 'lg:col-span-3', title: 'User-Friendly Interface', description: 'Make every interaction smooth and intuitive, enhancing the experience and satisfaction of your users.', icon: WebGridOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
-      { direction: 'up', colSpan: 'lg:col-span-2', title: 'Push Notifications', description: 'Keep your users informed with direct messages from the app.', icon: NotificationOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
-      { direction: 'left', colSpan: 'lg:col-span-2', title: 'Cross-Platform Development', description: 'Reach more users with a functional app on Android, iOS, and more.', icon: DevicesOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
-      { direction: 'right', colSpan: 'lg:col-span-3', title: 'Integration with External Services', description: 'Provide your users with a seamless experience by connecting to external platforms like payment gateways.', icon: AppsOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'down', colSpan: 'lg:col-span-2', title: 'Guardrails y fallback', description: 'Diseño de seguridad para evitar alucinaciones.', icon: SecureOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
+      { direction: 'up', colSpan: 'lg:col-span-3', title: 'Observabilidad', description: 'Tracing, métricas y logs para entender el comportamiento.', icon: ChartLineOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3' } },
+      { direction: 'left', colSpan: 'lg:col-span-3', title: 'Coste y latencia', description: 'Rutas baratas, caching y límites por feature.', icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
+      { direction: 'right', colSpan: 'lg:col-span-2', title: 'Escalabilidad', description: 'De 100 a 10.000 solicitudes sin sorpresas.', icon: ExpandOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
     ]
   },
   {
-    title: 'Internal Management Tools',
-    subtitle: `Is your company falling behind with tools that don't work for you? Optimize your operations with custom software that adapts to your needs, allowing you to save time, increase efficiency, and grow without limits.`,
-    gridCols: 'lg:grid-cols-2 lg-grid-rows-3',
-    features: [
-      { direction: 'down', colSpan: '', title: 'Report Automation', description: 'Generate automatic reports to make decisions with accurate data at the right moment.', icon: DocumentsOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
-      { direction: 'up', colSpan: '', title: 'Project Management', description: 'Organize tasks, deadlines, and responsibilities to maintain a clear and efficient flow.', icon: TaskDoneOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3', strokeLinecap: 'round', strokeLinejoin: 'round' } },
-      { direction: 'left', colSpan: 'lg:col-span-full', title: 'Inventory Control', description: 'Monitor products in real-time and avoid losses or shortages.', icon: PackageSearchOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3', strokeLinecap: 'round', strokeLinejoin: 'round' } },
-    ]
-  },
-  {
-    title: 'Cloud Services',
-    subtitle: 'Access your data from anywhere, securely. With our cloud solutions, you will have access to your files and applications at all times, ensuring the security and flexibility your business needs to grow.',
+    title: 'Optimización continua',
+    subtitle: 'Iteración mensual basada en datos: re-evals, mejora de calidad y reducción de costes.',
     gridCols: 'lg:grid-cols-5',
     features: [
-      { direction: 'down', colSpan: 'lg:col-span-2', title: 'Remote Access', description: 'Connect securely and work from anywhere.', icon: RemoteOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
-      { direction: 'up', colSpan: 'lg:col-span-3', title: 'Secure Storage', description: 'Protect your data with cloud backups and end-to-end encryption.', icon: SecureOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
-      { direction: 'left', colSpan: 'lg:col-span-3', title: 'Easy Scalability', description: 'Expand your digital capacity without the need for infrastructure investment.', icon: ExpandOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
-      { direction: 'right', colSpan: 'lg:col-span-2', title: 'Automatic Backup', description: 'Prevent losses with automatic and constant backups.', icon: BackupOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
-    ]
-  },
-  {
-    title: 'Graphic Design',
-    subtitle: 'Make your brand stand out with impactful design. We help you create a visual identity that effectively communicates your message, highlighting your business with a professional and coherent design that attracts your audience.',
-    gridCols: 'lg:grid-cols-5',
-    features: [
-      { direction: 'down', colSpan: 'lg:col-span-3', title: 'Design for Web and Mobile', description: 'Intuitive and modern interfaces that connect with your audience and your vision.', icon: DevicesOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
-      { direction: 'up', colSpan: 'lg:col-span-2', title: 'Brand Identity', description: 'Stand out with a strong and memorable visual identity.', icon: PeopleOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
-      { direction: 'left', colSpan: 'lg:col-span-2', title: 'Image Redesign', description: 'Update your brand with a new style that reflects your evolution.', icon: PenOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
-      { direction: 'right', colSpan: 'lg:col-span-3', title: 'Promotional Material Design', description: 'Create graphic pieces that communicate your message and stand out in any medium.', icon: MegaphoneOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
+      { direction: 'down', colSpan: 'lg:col-span-3', title: 'Re-evals y drift', description: 'Reentrenar y ajustar métricas según el uso real.', icon: ProcessOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'up', colSpan: 'lg:col-span-2', title: 'Optimización de costes', description: 'Reducimos gasto sin perder calidad.', icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
+      { direction: 'left', colSpan: 'lg:col-span-2', title: 'Nuevos casos de uso', description: 'Expansión controlada con ROI claro.', icon: ThreeLightOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3', strokeWidth: 1, stroke: '#E5C6F3' } },
+      { direction: 'right', colSpan: 'lg:col-span-3', title: 'Alertas y reporting', description: 'Visibilidad continua del rendimiento y coste.', icon: NotificationOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
     ]
   },
 ];
@@ -128,10 +86,10 @@ const services = [
       <Picture src={TopLeftGradientBackgroundMobile} alt="backgroundGradientMobile" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 object-cover w-full -z-50 lg:hidden" />
     </div>
     <Banner 
-      title="Discover how we drive growth for other brands"
-      paragraph="Explore our success stories, learn about the strategies that have transformed businesses, and see how we can unlock your company's potential with tailored solutions."
-      buttonText="View portfolio"
-      buttonHref=""
+      title="Casos reales en producción"
+      paragraph="Conoce cómo diseñamos features de IA fiables y escalables, y qué decisiones tomamos para controlar coste y calidad."
+      buttonText="Ver casos"
+      buttonHref="/#contact-section"
     />
     <div class="bg-grid">
       <div class="flex flex-col">

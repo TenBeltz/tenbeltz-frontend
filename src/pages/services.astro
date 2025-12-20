@@ -5,25 +5,31 @@ import Hero from '@/components/Hero.astro';
 import Footer from '@/components/Footer.astro';
 import Divider from '@/components/Divider.astro';
 import ServicesSection from '@/components/ServicesSection.astro';
+
+const hideServices = true;
+
+if (hideServices) {
+	return Astro.redirect('/');
+}
 ---
 
 <Layout	
-	title="TenBeltz | Services"
-	description="Discover how TenBeltz helps businesses grow with custom AI solutions and high-quality software tailored to your unique needs."
+	title="TenBeltz | Servicios"
+	description="Descubre cómo TenBeltz ayuda a empresas de software a integrar IA fiable y escalable."
 	canonical="https://tenbeltz.com/services"
 >
 	<Header />
 	<main class="z-10 flex flex-col flex-1 overflow-x-hidden">
 		<Hero 
-			title="What we offer"
-			highlight="you"
-			subtitle="We create tailored solutions that fit your business — so you can work more efficiently and grow faster." 
+			title="Lo que hacemos"
+			highlight="contigo"
+			subtitle="Creamos soluciones que encajan con tu producto para que avances con claridad y velocidad." 
 			buttonHref="/#contact-section" 
-			buttonText="Let's turn your ideas into results" 
+			buttonText="Convirtamos ideas en resultados" 
 			animateHighlight={false}
 			showCursor={false}
 		/>
-		<Divider text="We build custom tech that makes your day-to-day simpler and smarter. Solutions that adapt to your way of working." />
+		<Divider text="Construimos tecnología que hace tu día a día más simple y escalable." />
 		<ServicesSection />
 	</main>
 	<Footer />

@@ -21,8 +21,8 @@ export default function ContactForm() {
       setAlert({
         id: Date.now(),
         type: "error",
-        title: "Error!",
-        message: "Please fill out all required fields.",
+        title: "Error",
+        message: "Por favor completa los campos obligatorios.",
       });
       return;
     }
@@ -32,7 +32,7 @@ export default function ContactForm() {
     setAlert({
       id: Date.now(),
       type: result.success ? "success" : "error",
-      title: result.success ? "Success!" : "Error!",
+      title: result.success ? "Enviado" : "Error",
       message: result.message,
     });
 
@@ -45,7 +45,7 @@ export default function ContactForm() {
         <div className="grid grid-cols-2 gap-x-14 gap-y-8">
           <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
             <label htmlFor="name" className="font-semibold">
-              Name
+              Nombre
             </label>
             <input
               id="name"
@@ -69,7 +69,7 @@ export default function ContactForm() {
           </ScrollReveal>
           <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
             <label htmlFor="phone" className="font-semibold">
-              Phone number
+              Teléfono
             </label>
             <input
               id="phone"
@@ -80,7 +80,7 @@ export default function ContactForm() {
           </ScrollReveal>
           <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
             <label htmlFor="message" className="font-semibold">
-              Message
+              Mensaje
             </label>
             <textarea
               id="message"
@@ -97,7 +97,7 @@ export default function ContactForm() {
             id="submit-form-button"
             className="btn font-semibold leading-none border border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20 hover:bg-pheromone-purple/25 hover:cursor-pointer"
           >
-            Send message
+            Enviar mensaje
           </button>
         </ScrollReveal>
       </form>

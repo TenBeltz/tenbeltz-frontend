@@ -18,21 +18,21 @@ export async function sendContactForm(data: { name: string; email: string; phone
     clearTimeout(timeoutId);
 
     if (!response.ok) {
-      const error = await response.json().catch(() => ({ message: "An unexpected error occurred" }));
-      throw new Error(error.message || "Something went wrong.");
+      const error = await response.json().catch(() => ({ message: "Ha ocurrido un error inesperado" }));
+      throw new Error(error.message || "Algo salió mal.");
     }
 
-    return { success: true, message: "Your message has been sent successfully." };
+    return { success: true, message: "Tu mensaje se ha enviado correctamente." };
   } catch (error) {
     console.error("Error submitting form:", error);
     
     if (error instanceof Error) {
       if (error.name === "AbortError") {
-        return { success: false, message: "Request timed out. Please try again." };
+        return { success: false, message: "La solicitud excedió el tiempo. Intenta de nuevo." };
       }
       return { success: false, message: error.message };
     }
     
-    return { success: false, message: "Unable to send your message at the moment. Please try again later." };
+    return { success: false, message: "No se pudo enviar el mensaje. Intenta más tarde." };
   }
 }

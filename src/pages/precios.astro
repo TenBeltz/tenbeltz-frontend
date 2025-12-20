@@ -1,0 +1,207 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Hero from '@/components/Hero.astro';
+import Divider from '@/components/Divider.astro';
+import Footer from '@/components/Footer.astro';
+import Contact from '@/components/Contact.astro';
+import { ScrollReveal } from '@/components/ScrollReveal';
+
+const tripwirePlans = [
+  {
+    title: 'Workshop en directo',
+    tag: '2h',
+    price: '149€',
+    description: 'Diseña una feature de IA fiable en tu SaaS.',
+    bullets: ['Plantilla de arquitectura', 'Checklist lista para producción', 'Preguntas y respuestas en vivo'],
+    ctaLabel: 'Reservar workshop',
+    ctaHref: 'https://calendly.com/tenbeltz/ia-workshop',
+  },
+  {
+    title: 'Curso corto grabado',
+    tag: '90 min',
+    price: '99€',
+    description: 'De prototipo a producción: lo mínimo que debes medir.',
+    bullets: ['Marco de métricas', 'Errores comunes', 'Plantillas listas para usar'],
+    ctaLabel: 'Comprar curso',
+    ctaHref: 'https://checkout.tenbeltz.com/curso-ia',
+  },
+];
+
+const auditPlans = [
+  {
+    title: 'Auditoría Lite',
+    tag: '90 min',
+    price: '1.500€',
+    bullets: ['Revisión de documentación', '1 página de recomendaciones', 'Riesgos priorizados'],
+    ctaLabel: 'Solicitar auditoría',
+    ctaHref: '/#contact-section',
+  },
+  {
+    title: 'Auditoría Estándar',
+    tag: '1 semana',
+    price: '3.500€',
+    bullets: ['2-3 sesiones', 'Informe 8-12 páginas', 'Arquitectura, riesgos y costes'],
+    ctaLabel: 'Solicitar auditoría',
+    ctaHref: '/#contact-section',
+  },
+  {
+    title: 'Auditoría Pro',
+    tag: '2 semanas',
+    price: '5.000€',
+    bullets: ['Diseño de evals', 'Plan de observabilidad', 'Modelo de amenazas básico', 'Estimación de costes'],
+    ctaLabel: 'Solicitar auditoría',
+    ctaHref: '/#contact-section',
+  },
+];
+
+const sprintPlans = [
+  {
+    title: 'Prototype Sprint S',
+    tag: '10 días',
+    price: '4.500€',
+    bullets: ['1 flujo', '1 dataset', '1 métrica de éxito', 'Demo interna'],
+    ctaLabel: 'Quiero este sprint',
+    ctaHref: '/#contact-section',
+  },
+  {
+    title: 'Prototype Sprint M',
+    tag: '2 semanas',
+    price: '7.000€',
+    bullets: ['2 flujos', 'Evaluación básica', 'Logging/tracing mínimo', 'README de despliegue'],
+    ctaLabel: 'Quiero este sprint',
+    ctaHref: '/#contact-section',
+  },
+  {
+    title: 'Prototype Sprint L',
+    tag: '2 semanas',
+    price: '10.000€',
+    bullets: ['3 flujos', 'Evals automáticas', 'Guardrails', 'Prueba con usuarios', 'Plan de producción'],
+    ctaLabel: 'Quiero este sprint',
+    ctaHref: '/#contact-section',
+  },
+];
+---
+
+<Layout
+  title="TenBeltz | Precios IA en producto"
+  description="Precios por fases para llevar tu IA a producción con calidad, observabilidad y control de costes."
+  canonical="https://tenbeltz.com/precios"
+>
+  <Header />
+  <main class="relative z-10 flex flex-col flex-1 overflow-x-hidden">
+    <Hero
+      title="Precios"
+      highlight="por fases"
+      subtitle="Paquetes claros para pasar de idea a feature en producción con evaluaciones, observabilidad y costes controlados."
+      buttonHref="#contact-section"
+      buttonText="Solicitar propuesta"
+      animateHighlight={false}
+      showCursor={false}
+    />
+
+    <Divider text="Elige el punto de entrada adecuado y escala sin sorpresas." />
+
+    <section class="relative text-white bg-grid">
+      <div class="flex flex-col items-center justify-center max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
+        <ScrollReveal client:load>
+          <div class="text-center">
+            <h2 class="text-4xl font-bold">Primer paso</h2>
+            <p class="mt-3 text-slate-300">Opciones rápidas para aterrizar el caso de uso y decidir el siguiente paso.</p>
+          </div>
+        </ScrollReveal>
+        <div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-2">
+          {tripwirePlans.map((plan, index) => (
+            <ScrollReveal client:load delay={index * 150}>
+              <div class="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-5 border border-pheromone-purple/30 hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:shadow-[0px_0px_20px_0px_rgba(117,4,205,1.00)] to-[#1D0043]/90">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-2xl font-semibold">{plan.title}</h3>
+                  <span class="px-3 py-1 text-xs font-semibold border rounded-full border-pheromone-purple/50 text-pheromone-purple">{plan.tag}</span>
+                </div>
+                <p class="text-slate-300">{plan.description}</p>
+                <p class="text-3xl font-bold text-white">{plan.price}</p>
+                <ul class="flex flex-col gap-2 text-sm text-slate-300">
+                  {plan.bullets.map(item => (
+                    <li>• {item}</li>
+                  ))}
+                </ul>
+                <a href={plan.ctaHref} class="w-full mt-auto text-center btn bg-pheromone-purple hover:bg-sapphire-siren text-white">
+                  {plan.ctaLabel}
+                </a>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="relative text-white bg-grid">
+      <div class="flex flex-col items-center justify-center max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
+        <ScrollReveal client:load>
+          <div class="text-center">
+            <h2 class="text-4xl font-bold">Auditoría de IA</h2>
+            <p class="mt-3 text-slate-300">Diagnóstico con entregables claros: riesgos, métricas, costes y hoja de ruta.</p>
+          </div>
+        </ScrollReveal>
+        <div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-3">
+          {auditPlans.map((plan, index) => (
+            <ScrollReveal client:load delay={index * 150}>
+              <div class="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-5 border border-pheromone-purple/30 hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:shadow-[0px_0px_20px_0px_rgba(117,4,205,1.00)] to-[#1D0043]/90">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-2xl font-semibold">{plan.title}</h3>
+                  <span class="px-3 py-1 text-xs font-semibold border rounded-full border-pheromone-purple/50 text-pheromone-purple">{plan.tag}</span>
+                </div>
+                <p class="text-3xl font-bold text-white">{plan.price}</p>
+                <ul class="flex flex-col gap-2 text-sm text-slate-300">
+                  {plan.bullets.map(item => (
+                    <li>• {item}</li>
+                  ))}
+                </ul>
+                <a href={plan.ctaHref} class="w-full mt-auto text-center btn bg-pheromone-purple hover:bg-sapphire-siren text-white">
+                  {plan.ctaLabel}
+                </a>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="relative text-white bg-grid">
+      <div class="flex flex-col items-center justify-center max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
+        <ScrollReveal client:load>
+          <div class="text-center">
+            <h2 class="text-4xl font-bold">Prototype Sprint</h2>
+            <p class="mt-3 text-slate-300">Sprints con precio cerrado para validar rápido antes de escalar.</p>
+          </div>
+        </ScrollReveal>
+        <div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-3">
+          {sprintPlans.map((plan, index) => (
+            <ScrollReveal client:load delay={index * 150}>
+              <div class="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-5 border border-pheromone-purple/30 hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:shadow-[0px_0px_20px_0px_rgba(117,4,205,1.00)] to-[#1D0043]/90">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-2xl font-semibold">{plan.title}</h3>
+                  <span class="px-3 py-1 text-xs font-semibold border rounded-full border-pheromone-purple/50 text-pheromone-purple">{plan.tag}</span>
+                </div>
+                <p class="text-3xl font-bold text-white">{plan.price}</p>
+                <ul class="flex flex-col gap-2 text-sm text-slate-300">
+                  {plan.bullets.map(item => (
+                    <li>• {item}</li>
+                  ))}
+                </ul>
+                <a href={plan.ctaHref} class="w-full mt-auto text-center btn bg-pheromone-purple hover:bg-sapphire-siren text-white">
+                  {plan.ctaLabel}
+                </a>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Divider text="Si ya tienes un caso de uso claro, te decimos el mejor paquete en < 24h." />
+
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

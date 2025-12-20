@@ -11,6 +11,7 @@ interface Props {
   buttonText: string;
   animateHighlight?: boolean;
   showCursor?: boolean;
+  stackHighlight?: boolean;
 }
 
 const {
@@ -20,17 +21,18 @@ const {
   buttonHref,
   buttonText,
   animateHighlight = true,
-  showCursor = true
+  showCursor = true,
+  stackHighlight = false
 } = Astro.props as Props;
 ---
 
 <section class="relative h-screen text-white">
   <div class="flex flex-col items-center justify-center h-full px-4 py-20 mx-auto text-center max-w-screen-2xl gap-y-6 lg:px-16 lg:py-28">
     <div class="flex gap-x-2">
-      <h1 class="inline-flex flex-col items-center text-5xl font-extrabold lg:flex-row lg:text-6xl lg:whitespace-nowrap">
-        {title}&nbsp;
+      <h1 class={`inline-flex flex-col items-center gap-x-2 gap-y-2 text-5xl font-extrabold lg:text-6xl ${stackHighlight ? 'lg:flex-col lg:whitespace-normal' : 'lg:flex-row lg:whitespace-nowrap'}`}>
+        <span>{title}</span>
         <div class="inline-flex">
-          <span class={`inline-block bg-gradient-to-r from-[#9238D6] to-[#11B2FC] bg-clip-text text-transparent overflow-hidden whitespace-nowrap ${animateHighlight ? 'w-[10.6875rem] lg:w-52 animate-typing' : ''}`}>
+          <span class={`inline-block bg-gradient-to-r from-[#9238D6] to-[#11B2FC] bg-clip-text text-transparent overflow-hidden whitespace-nowrap ${animateHighlight ? 'w-[14ch] lg:w-[16ch] animate-typing' : ''}`}>
             {highlight}
           </span>
           {showCursor && (

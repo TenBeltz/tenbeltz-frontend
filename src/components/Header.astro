@@ -10,12 +10,12 @@ interface NavElement {
 }
 
 const navElements: NavElement[] = [
-  { title: 'Home', href: '/' },
-  { title: 'Services', href: '/services' },
-  { title: 'About us', href: '/#about-us' },
-  // { title: 'Portfolio', href: '' },
-  { title: 'Contact', href: '/#contact-section' },
-  { title: 'Customers', href: '' },
+  { title: 'Inicio', href: '/' },
+  { title: 'Enfoque', href: '/#enfoque' },
+  { title: 'Método', href: '/#metodo' },
+  { title: 'Precios', href: '/precios' },
+  { title: 'Preguntas', href: '/#faq' },
+  { title: 'Contacto', href: '/#contact-section' },
 ]
 ---
 
@@ -28,8 +28,6 @@ const navElements: NavElement[] = [
         </a>
       </div>
 
-      <a id="customers-button" href={navElements.find(({ title }) => title === "Customers")?.href} class="hidden btn lg:flex bg-pheromone-purple hover:bg-sapphire-siren w-fit">Customers</a>
-      
       <div id="menu-container" class="flex items-center justify-center lg:hidden">
         <OpenHamburgerMenu id="open-hamburger-menu" width="36" height="36" fill="#ffffff" className="size-8" stroke="currentColor" strokeWidth="1.5" />
       </div>
@@ -46,7 +44,7 @@ const navElements: NavElement[] = [
         <ul class="flex flex-col text-lg lg:items-center gap-y-2 gap-x-5 lg:flex-row lg:text-base">
           {navElements.map(({ href, title }) => (
             <li>
-              <a href={href} class={`relative whitespace-nowrap block px-2 py-1.5 transition-all duration-300 hover:text-pheromone-purple after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-pheromone-purple hover:after:w-full after:transition-all after:duration-300 ${title === 'Customers' ? 'lg:hidden border-t border-t-white pt-3.5' : ''}`}>
+              <a href={href} class="relative whitespace-nowrap block px-2 py-1.5 transition-all duration-300 hover:text-pheromone-purple after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-pheromone-purple hover:after:w-full after:transition-all after:duration-300">
                 {title}
               </a>
             </li>

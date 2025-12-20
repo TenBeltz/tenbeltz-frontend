@@ -5,9 +5,11 @@ import { ScrollReveal } from "./ScrollReveal";
 
 export default function ContactForm() {
   const [alert, setAlert] = useState<AlertProps | null>(null);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (submitting) return;
     const form = event.currentTarget;
     const formData = new FormData(form);
     const company = (formData.get("company") as string) || "";
@@ -37,6 +39,7 @@ export default function ContactForm() {
       return;
     }
 
+    setSubmitting(true);
     const result = await sendContactForm(data);
 
     setAlert({
@@ -47,6 +50,7 @@ export default function ContactForm() {
     });
 
     if (result.success) form.reset();
+    setSubmitting(false);
   };
 
   return (
@@ -117,9 +121,10 @@ export default function ContactForm() {
             <button
               type="submit"
               id="submit-form-button"
-              className="btn font-semibold leading-none border border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20 hover:bg-pheromone-purple/25 hover:cursor-pointer"
+              disabled={submitting}
+              className="btn font-semibold leading-none border border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20 hover:bg-pheromone-purple/25 hover:cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Hablar con TenBeltz
+              {submitting ? "Enviando..." : "Hablar con TenBeltz"}
             </button>
             <span className="text-xs text-slate-400">Respondemos en menos de 48h</span>
           </div>

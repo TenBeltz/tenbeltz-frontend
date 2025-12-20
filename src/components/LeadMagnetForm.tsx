@@ -110,31 +110,9 @@ export default function LeadMagnetForm({
   const isDownloadReady = Boolean(downloadToken);
   const previewKind = getPreviewKind(leadMagnet?.file_extension);
 
-  const handleDownload = async () => {
+  const handleDownload = () => {
     if (!downloadUrl) return;
-    try {
-      const response = await fetch(downloadUrl);
-      if (!response.ok) {
-        throw new Error("No se pudo descargar el archivo.");
-      }
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = leadMagnet?.file_name || "contenido";
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      window.URL.revokeObjectURL(url);
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "Error al descargar.";
-      setAlert({
-        id: Date.now(),
-        type: "error",
-        title: "Error",
-        message,
-      });
-    }
+    window.location.assign(downloadUrl);
   };
 
   const handleFieldChange = (key: string, value: string) => {
@@ -212,7 +190,7 @@ export default function LeadMagnetForm({
 
   return (
     <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-      <div className="flex flex-col gap-y-6">
+      <div className="flex flex-col gap-y-6 min-w-0">
         <ScrollReveal className="flex flex-col gap-y-4">
           <span className="text-sm font-semibold tracking-[0.2em] text-pheromone-purple/80">
             CONTENIDO GRATUITO
@@ -225,7 +203,7 @@ export default function LeadMagnetForm({
               "Completa el formulario y recibe el material por email en minutos."}
           </p>
         </ScrollReveal>
-        <ScrollReveal className="grid gap-4 md:grid-cols-2">
+        <ScrollReveal className="grid gap-4 md:grid-cols-2 min-w-0">
           {[
             "Acceso inmediato por email",
             "Contenido aplicable a IA en SaaS",
@@ -234,7 +212,7 @@ export default function LeadMagnetForm({
           ].map((item) => (
             <div
               key={item}
-              className="flex items-center gap-3 rounded-lg border border-pheromone-purple/30 bg-[#0B0122CC]/80 px-4 py-3"
+              className="flex items-center gap-3 rounded-lg border border-pheromone-purple/30 bg-[#0B0122CC]/80 px-4 py-3 min-w-0"
             >
               <span className="inline-flex h-2 w-2 rounded-full bg-pheromone-purple"></span>
               <span className="text-sm text-slate-300">{item}</span>
@@ -243,7 +221,7 @@ export default function LeadMagnetForm({
         </ScrollReveal>
       </div>
 
-      <ScrollReveal className="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-6 border border-pheromone-purple/30">
+      <ScrollReveal className="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-6 border border-pheromone-purple/30 min-w-0">
         <div>
           <h2 className="text-2xl font-semibold">
             {isDownloadReady ? "Tu acceso está verificado" : "Accede al contenido"}
@@ -260,12 +238,12 @@ export default function LeadMagnetForm({
         )}
 
         {leadMagnet?.file_name && (
-          <div className="flex items-center gap-4 rounded-lg border border-pheromone-purple/20 bg-[#0B0122]/60 px-4 py-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-pheromone-purple/20 text-sm font-semibold text-pheromone-purple">
+          <div className="flex items-center gap-4 rounded-lg border border-pheromone-purple/20 bg-[#0B0122]/60 px-4 py-3 min-w-0">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-pheromone-purple/20 text-sm font-semibold text-pheromone-purple shrink-0">
               {getPreviewLabel(leadMagnet.file_extension)}
             </div>
-            <div className="flex flex-col">
-              <span className="text-sm font-semibold text-white">{leadMagnet.file_name}</span>
+            <div className="flex flex-col min-w-0">
+              <span className="text-sm font-semibold text-white break-words">{leadMagnet.file_name}</span>
               <span className="text-xs text-slate-400">{formatFileSize(leadMagnet.file_size)}</span>
             </div>
           </div>

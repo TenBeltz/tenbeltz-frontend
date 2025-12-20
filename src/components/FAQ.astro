@@ -9,16 +9,16 @@ interface FAQ {
 
 const FAQs: FAQ[] = [
   { 
-    question: '¿Cómo saber si mi SaaS necesita IA y en qué caso de uso empezar?',
-    answer: 'Definimos el caso de uso, la métrica y el riesgo principal antes de construir nada. Si no se puede medir, no se lanza.',
+    question: '¿Cómo saber si un caso de uso de IA es viable en costes y escalabilidad?',
+    answer: 'Definimos el volumen esperado, el coste objetivo por petición y la métrica de fiabilidad antes de construir.',
   },
   { 
-    question: '¿Cómo evitáis alucinaciones y respuestas inconsistentes?',
-    answer: 'Combinamos evals automáticas, revisión humana, guardrails y fallback a reglas cuando el modelo falla.',
+    question: '¿Cómo medís la fiabilidad en producción?',
+    answer: 'Combinamos evals automáticas, golden set, revisión humana y guardrails con fallback cuando el modelo falla.',
   },
   { 
-    question: '¿Cómo controláis costes y latencia en producción?',
-    answer: 'Usamos rutas baratas, caching, batching, límites por feature y presupuestos de coste por petición.',
+    question: '¿Cómo reducís costes sin perder calidad?',
+    answer: 'Usamos rutas baratas, caching, batching, modelos mixtos y límites por feature.',
   },
   { 
     question: '¿Qué pasa con datos sensibles y privacidad?',
@@ -26,7 +26,7 @@ const FAQs: FAQ[] = [
   },
   { 
     question: '¿Qué entregables incluye un Audit o un Sprint?',
-    answer: 'Hoja de ruta por fases, arquitectura recomendada, métricas de éxito, evals iniciales y un plan de producción claro.',
+    answer: 'Hoja de ruta por fases, métricas de fiabilidad, baseline de costes y plan de escalado.',
   },
   { 
     question: '¿Trabajáis con nuestro equipo y stack actual?',

@@ -1,56 +1,262 @@
 ---
 import Banner from '@/components/Banner.astro';
-import Divider from '@/components/Divider.astro';
 import Header from '@/components/Header.astro';
 import Hero from '@/components/Hero.astro';
-import Offer from '@/components/Offer.astro';
 import Footer from '@/components/Footer.astro';
 import Layout from '@/layouts/Layout.astro';
 import Contact from '@/components/Contact.astro';
-import FAQ from '@/components/FAQ.astro';
-import About from '@/components/About.astro';
+import { ScrollReveal } from '@/components/ScrollReveal';
+import graphicDesktop from '@/assets/images/graphic-why-tenbeltz-desktop.svg';
+import graphicMobile from '@/assets/images/graphic-why-tenbeltz-mobile.svg';
+import { ReactComponent as ChartOutlineIcon } from '@/assets/icons/chart-outline.svg';
+import { ReactComponent as ChartLineIcon } from '@/assets/icons/chart-line-outline.svg';
+import { ReactComponent as NotificationIcon } from '@/assets/icons/notification-outline.svg';
+import { ReactComponent as ExpandIcon } from '@/assets/icons/expand-outline.svg';
+import { ReactComponent as ProcessIcon } from '@/assets/icons/process-outline.svg';
+import { ReactComponent as AiIntegrationsIcon } from '@/assets/icons/ai-integrations-outline.svg';
+import { ReactComponent as TaskDoneIcon } from '@/assets/icons/task-done-outline.svg';
+import { ReactComponent as DocumentsIcon } from '@/assets/icons/documents-outline.svg';
+import { ReactComponent as PackageSearchIcon } from '@/assets/icons/package-search-outline.svg';
+import { ReactComponent as SecureIcon } from '@/assets/icons/secure-outline.svg';
+import { ReactComponent as PeopleIcon } from '@/assets/icons/people-outline.svg';
+import { ReactComponent as XMarkIcon } from '@/assets/icons/x-mark-outline.svg';
 
-import { Picture } from 'astro:assets';
-import backgroundGradientPC from '/public/images/img/about-gradient-background-pc.png';
-import backgroundGradientMobile from '/public/images/img/about-gradient-background-mobile.png';
+const fillIconProps = { width: 22, height: 22, fill: '#E5C6F3' };
+const strokeIconProps = { width: 22, height: 22, fill: 'none', stroke: '#E5C6F3', strokeWidth: 1.5 };
+
+const painPoints = [
+	{ icon: ChartOutlineIcon, text: 'El coste por request nadie lo tiene claro', iconProps: fillIconProps },
+	{ icon: ChartLineIcon, text: 'La fiabilidad cae cuando entra tráfico real', iconProps: fillIconProps },
+	{ icon: NotificationIcon, text: 'Nadie sabe cuándo el modelo empieza a fallar', iconProps: strokeIconProps },
+	{ icon: ExpandIcon, text: 'Escalar usuarios significa escalar gasto', iconProps: strokeIconProps },
+];
+
+const systemCapabilities = [
+	{ icon: TaskDoneIcon, text: 'Se pueden medir', iconProps: strokeIconProps },
+	{ icon: ChartLineIcon, text: 'Se pueden monitorizar', iconProps: fillIconProps },
+	{ icon: ExpandIcon, text: 'Se pueden escalar', iconProps: strokeIconProps },
+	{ icon: ChartOutlineIcon, text: 'Se pueden mantener en costes', iconProps: fillIconProps },
+];
+
+const whatWeDo = [
+	{ icon: ProcessIcon, text: 'Diseño de features de IA listas para producción', iconProps: fillIconProps },
+	{ icon: AiIntegrationsIcon, text: 'Arquitectura (RAG, agentes, tool-use)', iconProps: fillIconProps },
+	{ icon: TaskDoneIcon, text: 'Evaluaciones automáticas de fiabilidad', iconProps: strokeIconProps },
+	{ icon: ChartLineIcon, text: 'Observabilidad y guardrails', iconProps: fillIconProps },
+	{ icon: ChartOutlineIcon, text: 'Optimización de latencia y costes', iconProps: fillIconProps },
+];
+
+const methodSteps = [
+	{ icon: DocumentsIcon, title: 'Audit', detail: 'Decidir con datos', iconProps: strokeIconProps },
+	{ icon: PackageSearchIcon, title: 'Sprint', detail: 'Validar rápido y medir', iconProps: strokeIconProps },
+	{ icon: SecureIcon, title: 'Producción', detail: 'Integrar y proteger', iconProps: strokeIconProps },
+	{ icon: NotificationIcon, title: 'Acompañamiento', detail: 'Mejorar sin romper', iconProps: strokeIconProps },
+];
 ---
 
 <Layout	
-	title="TenBeltz | IA en producto lista para producción"
-	description="Ayudamos a empresas de software a implementar IA fiable y escalable con evaluación continua, observabilidad y control de costes."
+	title="TenBeltz | IA en producción sin sorpresas"
+	description="Diseñamos y construimos funcionalidades de IA para productos SaaS con fiabilidad medible, observabilidad y costes controlados."
 	canonical="https://tenbeltz.com"
 >
 	<Header />
 	<main class="relative z-10 flex flex-col flex-1 overflow-x-hidden">
 		<Hero 
-			title="IA para tu SaaS"
-			highlight="escalable" 
-			subtitle="Ayudamos a empresas de software que quieren añadir IA a su SaaS pero no saben por dónde empezar ni cómo llevarla a producción de forma escalable y con costes controlados." 
+			title="Lleva IA a producción"
+			highlight="sin que se rompa en escala ni se dispare el coste" 
+			subtitle="IA pensada para producción desde el primer día." 
 			buttonHref="#contact-section" 
-			buttonText="Solicitar diagnóstico" 
-			animateHighlight={true}
-			showCursor={true}
+			buttonText="Evaluar mi caso de uso" 
+			microcopy="15 min · sin compromiso · sales con claridad"
+			animateHighlight={false}
+			showCursor={false}
 			stackHighlight={true}
 		/>
-	
-		<Divider text="De prototipo a producción con evaluación continua, observabilidad y costes controlados." />
-		<Offer />
+
+		<section id="contexto" class="relative text-white">
+			<div class="max-w-screen-xl px-4 py-14 mx-auto lg:px-16 lg:py-16">
+				<ScrollReveal client:load>
+					<p class="max-w-3xl text-lg text-slate-300">
+						Diseñamos y construimos funcionalidades de IA para productos SaaS, con fiabilidad medible, observabilidad y costes controlados desde el día uno.
+					</p>
+					<p class="mt-4 text-lg text-slate-300">
+						Para equipos de producto e ingeniería que ya saben que un demo no es suficiente.
+					</p>
+				</ScrollReveal>
+			</div>
+		</section>
+
+		<section id="realidad" class="relative text-white bg-grid">
+			<div class="pointer-events-none absolute -top-16 right-0 h-64 w-64 rounded-full bg-pheromone-purple/20 blur-3xl"></div>
+			<div class="grid max-w-screen-xl grid-cols-1 gap-12 px-4 py-20 mx-auto lg:grid-cols-[1.1fr_1fr] lg:px-16 lg:py-24">
+				<ScrollReveal client:load>
+					<div class="max-w-xl">
+						<h2 class="text-4xl font-bold">El problema no es hacer IA. Es mantenerla en producción.</h2>
+						<p class="mt-4 text-lg text-slate-300">La mayoría de equipos consiguen un prototipo que "funciona". Lo difícil viene después:</p>
+					</div>
+				</ScrollReveal>
+				<ScrollReveal client:load>
+					<div class="flex flex-col gap-y-4">
+						{painPoints.map((item, index) => (
+							<div class="flex items-center gap-4 rounded-xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-5 py-4" key={`pain-${index}`}>
+								<span class="flex h-11 w-11 items-center justify-center rounded-full bg-pheromone-purple/20">
+									<item.icon {...item.iconProps} />
+								</span>
+								<p class="text-slate-200">{item.text}</p>
+							</div>
+						))}
+						<p class="text-lg font-semibold text-white">Ahí es donde entramos nosotros.</p>
+					</div>
+				</ScrollReveal>
+			</div>
+		</section>
+
+		<section id="propuesta" class="relative text-white">
+			<div class="pointer-events-none absolute -bottom-10 left-0 h-64 w-64 rounded-full bg-pheromone-purple/20 blur-3xl"></div>
+			<div class="grid max-w-screen-xl grid-cols-1 gap-12 px-4 py-20 mx-auto lg:grid-cols-[1.1fr_1fr] lg:px-16 lg:py-24">
+				<ScrollReveal client:load>
+					<div class="max-w-xl">
+						<h2 class="text-4xl font-bold">IA en producto, pensada para producción desde el inicio</h2>
+						<p class="mt-4 text-lg text-slate-300">En TenBeltz ayudamos a equipos SaaS a convertir ideas de IA en features estables, escalables y rentables.</p>
+					</div>
+				</ScrollReveal>
+				<ScrollReveal client:load>
+					<div class="flex flex-col gap-y-4">
+						<div class="flex items-center gap-3 rounded-xl border border-slate-700/60 bg-[#12011F]/85 px-5 py-4">
+							<span class="flex h-10 w-10 items-center justify-center rounded-full bg-berry-blackmail/60">
+								<XMarkIcon width="20" height="20" fill="none" stroke="#E5C6F3" strokeWidth="1.5" />
+							</span>
+							<p class="text-lg font-semibold text-white">No hacemos demos.</p>
+						</div>
+						<div class="flex items-center gap-3 rounded-xl border border-slate-700/60 bg-[#12011F]/85 px-5 py-4">
+							<span class="flex h-10 w-10 items-center justify-center rounded-full bg-berry-blackmail/60">
+								<XMarkIcon width="20" height="20" fill="none" stroke="#E5C6F3" strokeWidth="1.5" />
+							</span>
+							<p class="text-lg font-semibold text-white">No vendemos horas.</p>
+						</div>
+						<div class="rounded-2xl border border-pheromone-purple/30 bg-gradient-to-br from-[#16002E] to-[#240044] px-5 py-5">
+							<p class="text-lg font-semibold text-white">Diseñamos sistemas de IA que:</p>
+							<div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+								{systemCapabilities.map((item, index) => (
+									<div class="flex items-center gap-3 rounded-lg border border-slate-700/40 bg-[#14002A]/70 px-4 py-3" key={`cap-${index}`}>
+										<span class="flex h-9 w-9 items-center justify-center rounded-full bg-pheromone-purple/20">
+											<item.icon {...item.iconProps} width="18" height="18" />
+										</span>
+										<p class="text-slate-200">{item.text}</p>
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+				</ScrollReveal>
+			</div>
+		</section>
+
+		<section id="que-hacemos" class="relative text-white bg-grid">
+			<div class="flex flex-col max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
+				<ScrollReveal client:load>
+					<div class="max-w-3xl">
+						<h2 class="text-4xl font-bold">Qué hacemos exactamente</h2>
+					</div>
+				</ScrollReveal>
+				<ScrollReveal client:load>
+					<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+						{whatWeDo.map((item, index) => (
+							<div class="flex flex-col gap-y-4 rounded-2xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-5 py-6 shadow-[0_0_25px_rgba(3,7,18,0.35)]" key={`what-${index}`}>
+								<span class="flex h-11 w-11 items-center justify-center rounded-full bg-pheromone-purple/20">
+									<item.icon {...item.iconProps} />
+								</span>
+								<p class="text-lg font-semibold text-white">{item.text}</p>
+							</div>
+						))}
+					</div>
+				</ScrollReveal>
+				<ScrollReveal client:load>
+					<p class="text-lg text-slate-300">Siempre con métricas claras y precios por fases.</p>
+				</ScrollReveal>
+			</div>
+		</section>
+
+		<section id="metodo" class="relative text-white">
+			<div class="pointer-events-none absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_20%_20%,rgba(135,45,255,0.18),transparent_45%)]"></div>
+			<div class="flex flex-col items-center justify-center max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
+				<ScrollReveal client:load>
+					<div class="max-w-3xl text-center">
+						<h2 class="text-4xl font-bold">Nuestro método: producción primero</h2>
+						<p class="mt-4 text-lg text-slate-300">Antes de escalar, medimos. Antes de crecer, controlamos costes.</p>
+					</div>
+				</ScrollReveal>
+				<ScrollReveal client:load>
+					<div class="relative w-full">
+						<div class="hidden lg:block absolute left-6 right-6 top-6 h-px bg-pheromone-purple/30"></div>
+						<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+							{methodSteps.map((step, index) => (
+								<div class="relative rounded-2xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-5 py-6" key={`step-${index}`}>
+									<div class="flex items-center gap-3">
+										<span class="flex h-10 w-10 items-center justify-center rounded-full bg-pheromone-purple/20">
+											<step.icon {...step.iconProps} width="20" height="20" />
+										</span>
+										<p class="text-sm font-semibold uppercase tracking-widest text-slate-400">{step.title}</p>
+									</div>
+									<p class="mt-4 text-lg font-semibold text-white">{step.detail}</p>
+								</div>
+							))}
+						</div>
+					</div>
+				</ScrollReveal>
+				<ScrollReveal client:load className="mx-auto">
+					<picture>
+						<source srcset={graphicDesktop.src} media="(min-width: 641px)" />
+						<source srcset={graphicMobile.src} media="(max-width: 640px)" />
+						<img src={graphicMobile.src} alt="Gráfico que resume el método de TenBeltz" />
+					</picture>
+				</ScrollReveal>
+			</div>
+		</section>
+
+		<section id="para-quien" class="relative text-white bg-grid">
+			<div class="flex flex-col max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
+				<ScrollReveal client:load>
+					<h2 class="text-4xl font-bold">¿Es TenBeltz para ti?</h2>
+				</ScrollReveal>
+				<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+					<ScrollReveal client:load>
+						<div class="flex flex-col h-full px-6 py-7 transition-all rounded-2xl bg-gradient-to-br from-[#110126] to-[#1C0434] gap-y-4 border border-pheromone-purple/35">
+							<span class="flex h-11 w-11 items-center justify-center rounded-full bg-pheromone-purple/20">
+								<PeopleIcon width="22" height="22" fill="none" stroke="#E5C6F3" strokeWidth="1.5" />
+							</span>
+							<h3 class="text-2xl font-semibold">Sí, si:</h3>
+							<ul class="flex flex-col gap-y-2 text-slate-300">
+								<li>• Tienes un producto SaaS</li>
+								<li>• Estás explorando o construyendo una feature de IA</li>
+								<li>• Te preocupa la fiabilidad y el coste en producción</li>
+								<li>• Tu equipo es técnico o técnico-producto</li>
+							</ul>
+						</div>
+					</ScrollReveal>
+					<ScrollReveal client:load>
+						<div class="flex flex-col h-full px-6 py-7 transition-all rounded-2xl bg-gradient-to-br from-[#1A0032] to-[#2A0A44] gap-y-4 border border-pheromone-purple/35">
+							<span class="flex h-11 w-11 items-center justify-center rounded-full bg-pheromone-purple/20">
+								<XMarkIcon width="22" height="22" fill="none" stroke="#E5C6F3" strokeWidth="1.5" />
+							</span>
+							<h3 class="text-2xl font-semibold">No, si:</h3>
+							<ul class="flex flex-col gap-y-2 text-slate-300">
+								<li>• Buscas una demo para inversores</li>
+								<li>• Quieres "probar IA" sin objetivo claro</li>
+								<li>• No te importa el coste ni la calidad en producción</li>
+							</ul>
+						</div>
+					</ScrollReveal>
+				</div>
+			</div>
+		</section>
+
 		<Banner 
-			title="Checklist IA lista para producción"
-			subtitle="Evalúa fiabilidad, coste, privacidad y escalabilidad antes de lanzar."
-			paragraph="Te ayudamos a pasar de idea a feature estable sin sorpresas."
-			buttonText="Pedir checklist"
-			buttonHref="#contact-section"
+			title="Precios claros, por fases"
+			paragraph="Trabajamos por fases y con precios cerrados, para que sepas desde el inicio cuánto cuesta llevar IA a producción."
+			buttonText="Ver precios"
+			buttonHref="/precios"
 		/>
-		<div class="relative bg-grid">
-			<About />
-			<FAQ />
-
-			<Picture src={backgroundGradientPC} alt="" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 hidden object-cover w-full h-full -z-50 lg:block" />
-			<Picture src={backgroundGradientMobile} alt="" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 object-cover w-full h-full -z-50 lg:hidden" />
-		</div>
-		<Divider text="Tu próxima feature de IA empieza con una conversación." />
-
 		<Contact />
 	</main>
 	<Footer />

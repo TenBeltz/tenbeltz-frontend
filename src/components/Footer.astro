@@ -3,6 +3,7 @@ import { ReactComponent as LogoInstagram } from '@/assets/icons/logo-instagram-o
 import { ReactComponent as LogoLinkedin } from '@/assets/icons/logo-linkedin-outline.svg';
 import { contactInfo } from './Contact.astro';
 import { ScrollReveal } from './ScrollReveal';
+import NewsletterForm from './NewsletterForm.tsx';
 
 interface SocialMedia {
   name: string;
@@ -57,6 +58,15 @@ const sections: FooterLink[] = [
           <li><a href={`mailto:${contactInfo.email}`} class="transition-colors text-slate-300 hover:text-slate-100">{contactInfo.email}</a></li>
           {contactInfo.phones.map(phone => <li><a href={`tel:${phone}`} class="transition-colors text-slate-300 hover:text-slate-100">{phone}</a></li>)}
         </ul>
+      </ScrollReveal>
+      <ScrollReveal client:load delay={300} className="flex flex-col gap-y-5 min-w-[220px] max-w-[320px]">
+        <div>
+          <h4 class="font-semibold">Newsletter</h4>
+          <p class="mt-2 text-xs text-slate-300">
+            Ideas y recursos de IA en producción. Sin spam.
+          </p>
+        </div>
+        <NewsletterForm client:load variant="footer" source="footer" />
       </ScrollReveal>
     </div>
     

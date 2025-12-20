@@ -1,0 +1,81 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import NewsletterForm from '@/components/NewsletterForm.tsx';
+import { ScrollReveal } from '@/components/ScrollReveal';
+import { ReactComponent as NotificationIcon } from '@/assets/icons/notification-outline.svg';
+import { ReactComponent as ChartLineIcon } from '@/assets/icons/chart-line-outline.svg';
+import { ReactComponent as TaskDoneIcon } from '@/assets/icons/task-done-outline.svg';
+
+const highlights = [
+  {
+    title: 'Notas accionables',
+    detail: 'Ideas para llevar IA a produccion con fiabilidad.',
+    icon: NotificationIcon,
+    iconProps: { width: 20, height: 20, fill: 'none', stroke: '#E5C6F3', strokeWidth: 1.5 },
+  },
+  {
+    title: 'Metricas reales',
+    detail: 'Costes, latencia y guardrails explicados claro.',
+    icon: ChartLineIcon,
+    iconProps: { width: 20, height: 20, fill: '#E5C6F3' },
+  },
+  {
+    title: 'Casos reales',
+    detail: 'Lecciones de implementaciones en SaaS.',
+    icon: TaskDoneIcon,
+    iconProps: { width: 20, height: 20, fill: 'none', stroke: '#E5C6F3', strokeWidth: 1.5 },
+  },
+];
+---
+
+<Layout
+  title="TenBeltz | Newsletter"
+  description="Suscribete a la newsletter de TenBeltz y recibe estrategias para llevar IA a produccion."
+  canonical="https://tenbeltz.com/news-letter"
+>
+  <Header />
+  <main class="relative z-10 flex flex-col flex-1 overflow-x-hidden">
+    <section class="relative text-white bg-grid">
+      <div class="pointer-events-none absolute -top-16 right-0 h-72 w-72 rounded-full bg-pheromone-purple/20 blur-3xl"></div>
+      <div class="grid max-w-screen-xl grid-cols-1 gap-12 px-4 py-20 mx-auto lg:grid-cols-[1.1fr_0.9fr] lg:px-16 lg:py-24">
+        <ScrollReveal client:load>
+          <div class="flex flex-col gap-y-6">
+            <span class="text-xs font-semibold tracking-[0.4em] text-pheromone-purple/70">NEWSLETTER</span>
+            <h1 class="text-4xl font-extrabold lg:text-5xl">IA en produccion, sin sorpresas</h1>
+            <p class="max-w-xl text-lg text-slate-300">
+              Recibe notas estrategicas, frameworks y aprendizajes reales sobre IA en SaaS. Sin ruido, sin humo.
+            </p>
+            <div class="grid gap-4 sm:grid-cols-2">
+              {highlights.map((item) => (
+                <div class="flex items-center gap-3 rounded-xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-4 py-3">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-full bg-pheromone-purple/20">
+                    <item.icon {...item.iconProps} />
+                  </span>
+                  <div>
+                    <p class="text-sm font-semibold text-white">{item.title}</p>
+                    <p class="text-xs text-slate-400">{item.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal client:load>
+          <div class="flex flex-col gap-y-6 rounded-2xl border border-pheromone-purple/30 bg-[#0B0122CC]/80 px-6 py-7 backdrop-blur-[1px]">
+            <div>
+              <h2 class="text-2xl font-semibold">Suscribete</h2>
+              <p class="mt-2 text-sm text-slate-300">
+                Te enviaremos insights claros y recursos descargables. Puedes darte de baja cuando quieras.
+              </p>
+            </div>
+            <NewsletterForm client:load />
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,39 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { ScrollReveal } from '@/components/ScrollReveal';
+---
+
+<Layout
+  title="TenBeltz | Baja de newsletter"
+  description="Confirmacion de baja de la newsletter de TenBeltz."
+  canonical="https://tenbeltz.com/news-letter/baja"
+>
+  <Header />
+  <main class="relative z-10 flex flex-col flex-1 overflow-x-hidden">
+    <section class="relative text-white bg-grid">
+      <div class="pointer-events-none absolute -top-16 left-10 h-64 w-64 rounded-full bg-pheromone-purple/20 blur-3xl"></div>
+      <div class="mx-auto flex w-full max-w-screen-md flex-col gap-10 px-4 py-20 lg:px-12 lg:py-24">
+        <ScrollReveal client:load>
+          <div class="flex flex-col gap-4 rounded-2xl border border-pheromone-purple/30 bg-[#0B0122CC]/80 px-6 py-8 backdrop-blur-[1px]">
+            <span class="text-xs font-semibold tracking-[0.4em] text-pheromone-purple/70">NEWSLETTER</span>
+            <h1 class="text-3xl font-extrabold lg:text-4xl">Te hemos dado de baja</h1>
+            <p class="text-base text-slate-300">
+              Tu suscripcion se ha cancelado correctamente. Si cambias de idea, puedes volver a suscribirte cuando quieras.
+            </p>
+            <div>
+              <a
+                href="/news-letter"
+                class="btn inline-flex w-fit bg-pheromone-purple/20 text-pheromone-purple hover:bg-pheromone-purple/30"
+              >
+                Volver a suscribirme
+              </a>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -22,5 +22,15 @@ if ! npm run build; then
     exit 1
 fi
 
-echo "Deployment completed successfully!"
+echo "Starting frontend server on port 3001 with PM2..."
+APP_NAME="tenbeltz-frontend"
+export HOST=0.0.0.0
+export PORT=3001
 
+if pm2 describe "$APP_NAME" > /dev/null 2>&1; then
+    pm2 restart "$APP_NAME"
+else
+    pm2 start ./dist/server/entry.mjs --name "$APP_NAME"
+fi
+
+pm2 save

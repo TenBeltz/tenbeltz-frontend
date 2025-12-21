@@ -10,6 +10,7 @@ export default function NewsletterForm({
   source?: "newsletter" | "footer";
 }) {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [acceptedPolicy, setAcceptedPolicy] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [alert, setAlert] = useState<AlertProps | null>(null);
@@ -31,6 +32,16 @@ export default function NewsletterForm({
       return;
     }
 
+    if (!name) {
+      setAlert({
+        id: Date.now(),
+        type: "error",
+        title: "Falta el nombre",
+        message: "Completa tu nombre para suscribirte.",
+      });
+      return;
+    }
+
     if (!acceptedPolicy) {
       setAlert({
         id: Date.now(),
@@ -43,6 +54,7 @@ export default function NewsletterForm({
 
     setSubmitting(true);
     const result = await subscribeToNewsletter({
+      name,
       email,
       acceptedPolicy,
       source: source || (isFooter ? "footer" : "newsletter"),
@@ -57,6 +69,7 @@ export default function NewsletterForm({
 
     if (result.success) {
       setEmail("");
+      setName("");
       setAcceptedPolicy(false);
     }
 
@@ -66,6 +79,22 @@ export default function NewsletterForm({
   return (
     <>
       <form onSubmit={handleSubmit} className={isFooter ? "flex flex-col gap-3" : "flex flex-col gap-5"}>
+        <label className={isFooter ? "text-xs font-semibold text-slate-300" : "text-sm font-semibold"}>
+          Nombre
+          <input
+            type="text"
+            required
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            className={
+              isFooter
+                ? "mt-2 w-full rounded-md border border-berry-blackmail bg-berry-blackmail px-3 py-2 text-sm text-white focus:border-petal-plush focus-visible:outline-none"
+                : "mt-2 w-full rounded-md border border-berry-blackmail bg-berry-blackmail px-3 py-2 text-white focus:border-petal-plush focus-visible:outline-none"
+            }
+            placeholder="Tu nombre"
+          />
+        </label>
+
         <label className={isFooter ? "text-xs font-semibold text-slate-300" : "text-sm font-semibold"}>
           Email
           <input

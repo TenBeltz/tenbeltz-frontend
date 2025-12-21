@@ -63,6 +63,7 @@ export default function LeadMagnetForm({
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [alert, setAlert] = useState<AlertProps | null>(null);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [acceptedPolicy, setAcceptedPolicy] = useState(false);
   const [fieldValues, setFieldValues] = useState<Record<string, string>>({});
@@ -139,6 +140,7 @@ export default function LeadMagnetForm({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          name,
           email,
           accepted_policy: acceptedPolicy,
           fields: fieldValues,
@@ -167,6 +169,7 @@ export default function LeadMagnetForm({
         title: "Listo",
         message: "Te hemos enviado un enlace de descarga a tu email.",
       });
+      setName("");
       setEmail("");
       setAcceptedPolicy(false);
       setFieldValues((prev) =>
@@ -303,6 +306,18 @@ export default function LeadMagnetForm({
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-y-5">
+            <label className="flex flex-col gap-y-2 text-sm font-semibold">
+              Nombre
+              <input
+                type="text"
+                required
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+                placeholder="Tu nombre"
+              />
+            </label>
+
             <label className="flex flex-col gap-y-2 text-sm font-semibold">
               Email
               <input

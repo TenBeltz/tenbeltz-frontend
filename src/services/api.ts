@@ -38,6 +38,7 @@ export async function sendContactForm(data: { name: string; email: string; phone
 }
 
 export async function subscribeToNewsletter(data: {
+  name: string;
   email: string;
   acceptedPolicy: boolean;
   source?: "newsletter" | "footer";
@@ -53,6 +54,7 @@ export async function subscribeToNewsletter(data: {
         "Accept": "application/json",
       },
       body: JSON.stringify({
+        name: data.name,
         email: data.email,
         accepted_policy: data.acceptedPolicy,
         source: data.source,

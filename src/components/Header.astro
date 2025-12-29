@@ -67,8 +67,8 @@ const navElements: NavElement[] = [
 <script>
   const navbarContainer = document.getElementById('navbar-container') as HTMLDivElement;
   const logoContainer = document.getElementById('logo-container') as HTMLDivElement;
-  const openMenuButton = document.getElementById('open-hamburger-menu') as SVGSVGElement | null;
-  const closeMenuButton = document.getElementById('close-hamburger-menu') as SVGSVGElement | null;
+  const openMenuButton = document.getElementById('open-hamburger-menu') as unknown as SVGSVGElement | null;
+  const closeMenuButton = document.getElementById('close-hamburger-menu') as unknown as SVGSVGElement | null;
   
   function adjustNavbarLayout(): void {
     const header = document.querySelector("header")?.firstElementChild;

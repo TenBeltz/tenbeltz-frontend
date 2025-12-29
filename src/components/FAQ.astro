@@ -77,9 +77,7 @@ const FAQs: FAQ[] = [
       const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
       answer.style.maxHeight = isOpen ? '0px' : `${answer.scrollHeight}px`;
 
-      if (chevron) {
-        chevron.classList.toggle('rotate-180', !isOpen);
-      }
+      if (chevron) chevron.classList.toggle('rotate-180', !isOpen);
     };
 
     const handleResize = () => {
@@ -107,9 +105,7 @@ const FAQs: FAQ[] = [
       const answer = item.querySelector('.faq-answer') as HTMLParagraphElement;
 
       item.addEventListener('click', () => {
-        if (window.innerWidth < 1024 && answer) {
-          toggleAnswer(item, answer);
-        }
+        if (window.innerWidth < 1024 && answer) toggleAnswer(item, answer);
       });
     });
 

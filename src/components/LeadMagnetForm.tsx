@@ -73,9 +73,7 @@ export default function LeadMagnetForm({
     setLoading(true);
     fetch(`${API_BASE}/lead-magnets/${magnetId}/`)
       .then(async (response) => {
-        if (!response.ok) {
-          throw new Error("No se pudo cargar el contenido.");
-        }
+        if (!response.ok) throw new Error("No se pudo cargar el contenido.");
         return response.json();
       })
       .then((data: LeadMagnet) => {
@@ -91,9 +89,7 @@ export default function LeadMagnetForm({
         }
       })
       .catch((err: Error) => {
-        if (isMounted) {
-          setError(err.message || "Error al cargar el contenido.");
-        }
+        if (isMounted) setError(err.message || "Error al cargar el contenido.");
       })
       .finally(() => {
         if (isMounted) setLoading(false);
@@ -275,9 +271,7 @@ export default function LeadMagnetForm({
             )}
             {previewKind === "ppt" && (
               <iframe
-                src={`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(
-                  leadMagnet.file_url,
-                )}`}
+                src={`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(leadMagnet.file_url,)}`}
                 className="w-full h-72 bg-black"
                 title="Preview PPT"
               />
@@ -369,23 +363,15 @@ export default function LeadMagnetForm({
               </label>
             ))}
 
-            <label className="flex items-start gap-3 text-xs text-slate-300">
+            <label className="flex items-center gap-2 text-xs text-slate-300">
               <input
                 type="checkbox"
                 checked={acceptedPolicy}
                 onChange={(event) => setAcceptedPolicy(event.target.checked)}
-                className="mt-1"
                 required
               />
               <span>
-                Acepto las{" "}
-                <a
-                  href="/politicas"
-                  className="text-pheromone-purple hover:text-pheromone-light underline underline-offset-2"
-                >
-                  políticas de uso y privacidad
-                </a>
-                .
+                Acepto las <a href="/politicas" className="text-pheromone-purple hover:text-pheromone-light underline underline-offset-2">políticas de uso y privacidad</a>.
               </span>
             </label>
 

@@ -27,9 +27,7 @@ export function ScrollReveal({
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
-          if (once && ref.current) {
-            observer.unobserve(ref.current)
-          }
+          if (once && ref.current) observer.unobserve(ref.current)
         } else if (!once) {
           setIsVisible(false)
         }
@@ -41,14 +39,10 @@ export function ScrollReveal({
       },
     )
 
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
+    if (ref.current) observer.observe(ref.current)
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current)
-      }
+      if (ref.current) observer.unobserve(ref.current)
     }
   }, [once])
 

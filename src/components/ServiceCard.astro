@@ -18,10 +18,10 @@ const {
 
 <section class="flex flex-col max-w-6xl px-4 py-20 mx-auto lg:px-12 gap-y-14">
   <div class="flex flex-col text-center gap-y-7">
-    <ScrollReveal client:load>
+    <ScrollReveal client:visible>
       <h3 class="text-4xl font-bold">{title}</h3>
     </ScrollReveal>
-    <ScrollReveal client:load>
+    <ScrollReveal client:visible>
       <h4 class="font-medium">{subtitle}</h4>
     </ScrollReveal>
   </div>
@@ -29,7 +29,7 @@ const {
     <slot /> 
   </div>
   <div class="flex items-center justify-center">
-    <ScrollReveal client:load>
+    <ScrollReveal client:visible>
       <a href={buttonHref} class="text-white border border-berry-blackmail btn hover:bg-pheromone-purple/30 hover:border-pheromone-purple hover:button-glow">Hablemos de tu proyecto</a>
     </ScrollReveal>
   </div>

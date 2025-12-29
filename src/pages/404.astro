@@ -16,18 +16,18 @@ import { ScrollReveal } from "@/components/ScrollReveal";
       <div class="pointer-events-none absolute -top-24 right-8 h-64 w-64 rounded-full bg-pheromone-purple/30 blur-3xl"></div>
       <div class="pointer-events-none absolute bottom-10 left-10 h-72 w-72 rounded-full bg-sapphire-siren/20 blur-3xl"></div>
       <div class="mx-auto flex w-full max-w-screen-lg flex-col items-center gap-8 px-4 py-20 text-center lg:px-12 lg:py-28">
-        <ScrollReveal client:load>
+        <ScrollReveal client:visible>
           <span class="text-xs font-semibold tracking-[0.4em] text-pheromone-purple/70">ERROR 404</span>
         </ScrollReveal>
-        <ScrollReveal client:load>
+        <ScrollReveal client:visible>
           <h1 class="text-4xl font-extrabold lg:text-6xl">Pagina no encontrada</h1>
         </ScrollReveal>
-        <ScrollReveal client:load>
+        <ScrollReveal client:visible>
           <p class="max-w-xl text-base text-slate-300 lg:text-lg">
             La ruta que has abierto no existe o ha sido movida. Puedes volver a la pagina anterior o ir al inicio.
           </p>
         </ScrollReveal>
-        <ScrollReveal client:load>
+        <ScrollReveal client:visible>
           <div class="flex flex-wrap items-center justify-center gap-4">
             <button
               id="go-back-button"

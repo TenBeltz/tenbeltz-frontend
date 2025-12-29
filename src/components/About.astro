@@ -8,7 +8,7 @@ import { ScrollReveal } from "./ScrollReveal";
 
 <section id="metodo" class="relative flex flex-col px-4 py-20 text-white gap-y-20 lg:px-8">
   <div class="grid max-w-screen-lg grid-cols-1 gap-5 mx-auto lg:grid-rows-5 lg:grid-cols-4 lg:gap-4">
-    <ScrollReveal client:load direction="right" className="px-4 py-10 bg-white border rounded-md lg:col-span-2 lg:row-span-5 border-[#8A20FF] about-grid-card">
+    <ScrollReveal client:visible direction="right" className="px-4 py-10 bg-white border rounded-md lg:col-span-2 lg:row-span-5 border-[#8A20FF] about-grid-card">
       <div class="flex flex-col gap-y-8">
         <div class="flex items-center justify-center">
           <Image src={logo} alt="logo" />
@@ -19,32 +19,32 @@ import { ScrollReveal } from "./ScrollReveal";
         </div>
       </div>
     </ScrollReveal>
-    <ScrollReveal client:load direction="down" className="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-1 border-[#8A20FF] about-grid-card">
+    <ScrollReveal client:visible direction="down" className="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-1 border-[#8A20FF] about-grid-card">
       <h5 class="flex items-center h-full gap-x-2">
         <span class="text-4xl font-bold text-petal-plush">3</span>
         <span class="text-lg font-semibold leading-none">pilares: fiabilidad, escalabilidad y reducción de costes</span>
       </h5>
     </ScrollReveal>
-    <ScrollReveal client:load direction="left" className="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-4 border-[#8A20FF] about-grid-card">
+    <ScrollReveal client:visible direction="left" className="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-4 border-[#8A20FF] about-grid-card">
       <div class="flex flex-col gap-y-7">
         <h4 class="text-2xl font-semibold">Nuestro <span class="text-petal-plush">compromiso</span></h4>
         <p class="text-slate-300">Producción primero: medimos fiabilidad, probamos escalado y reducimos costes antes de crecer. Optimizamos latencia y gasto para que tu IA sea sostenible.</p>
       </div>
     </ScrollReveal>
-    <ScrollReveal client:load direction="up" className="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-4 border-[#8A20FF] about-grid-card">
+    <ScrollReveal client:visible direction="up" className="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-4 border-[#8A20FF] about-grid-card">
       <div class="flex flex-col gap-y-7">
         <h4 class="text-2xl font-semibold">Nuestra <span class="text-petal-plush">especialidad</span></h4>
         <p class="text-slate-300">IA en producto SaaS: arquitectura (RAG, agentes, tool-use), evals automáticas, observabilidad y optimización de costes. Convertimos ideas en funcionalidades estables y escalables.</p>
       </div>
     </ScrollReveal>
-    <ScrollReveal client:load direction="up" className="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-1 border-[#8A20FF] about-grid-card">
+    <ScrollReveal client:visible direction="up" className="px-4 py-5 bg-white border rounded-md lg:col-span-1 lg:row-span-1 border-[#8A20FF] about-grid-card">
       <h5 class="flex items-center h-full gap-x-2">
         <span class="text-4xl font-bold text-petal-plush">4</span>
         <span class="font-semibold leading-none bg-gradient-to-tr from-[#1d0043] to-[#340076]">fases: Audit - Sprint - Producción - Acompañamiento</span>
       </h5>
     </ScrollReveal>
   </div>
-  <ScrollReveal client:load className="mx-auto">
+  <ScrollReveal client:visible className="mx-auto">
     <picture>
       <source srcset={graphicDesktop.src} media="(min-width: 641px)" />
       <source srcset={graphicMobile.src} media="(max-width: 640px)" />

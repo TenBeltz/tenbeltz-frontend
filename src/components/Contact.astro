@@ -18,13 +18,13 @@ export const contactInfo = {
     <div class="px-4 py-20 lg:flex-1 lg:px-16">
       <div class="flex flex-col gap-y-8">
         <div class="flex flex-col max-w-[21rem] gap-y-6">
-          <ScrollReveal client:load>
+          <ScrollReveal client:visible>
             <h3 class="text-4xl font-bold">
               Hablemos de 
               <span class="bg-gradient-to-r from-[#9238D6] to-[#C45BFF] bg-clip-text text-transparent">tu caso de uso</span>
             </h3>
           </ScrollReveal>
-          <ScrollReveal client:load>
+          <ScrollReveal client:visible>
             <div class="flex flex-col gap-y-4 text-lg text-slate-300">
               <p>Cuéntanos tu contexto y te diremos:</p>
               <ul class="flex flex-col gap-y-2">
@@ -35,24 +35,22 @@ export const contactInfo = {
             </div>
           </ScrollReveal>
         </div>
-        <div>
-            <ul class="flex flex-col gap-y-4 text-slate-300">
-            <ScrollReveal client:load>
-              <li class="flex items-center gap-x-2">
+        <ul class="flex flex-col gap-y-4 text-slate-300">
+          <ScrollReveal client:visible>
+            <li class="flex items-center gap-x-2">
               <MailIcon strokeWidth="1.5" className="size-6" stroke="currentColor" />
               <a href={`mailto:${contactInfo.email}`} class="text-xs">{contactInfo.email}</a>
-              </li>
-            </ScrollReveal>
-            {contactInfo.phones.map((phone, index) => (
-              <ScrollReveal client:load delay={(index + 1) * 100}>
+            </li>
+          </ScrollReveal>
+          {contactInfo.phones.map((phone, index) => (
+            <ScrollReveal client:visible delay={(index + 1) * 100}>
               <li class="flex items-center gap-x-2">
                 <PhoneIcon strokeWidth="1.5" className="size-6" stroke="currentColor" />
                 <a href={`tel:${phone}`} class="text-xs">{phone}</a>
               </li>
-              </ScrollReveal>
-            ))}
-            </ul>
-        </div>
+            </ScrollReveal>
+          ))}
+        </ul>
       </div>
     </div>
     <div class="px-4 py-20 lg:border-x lg:border-berry-blackmail md:flex-1 lg:px-16 bg-gradient-to-r backdrop-blur-[2px] from-[#561B834D] to-[#1A00764D]">

@@ -19,16 +19,16 @@ const {
 ---
 
 <section class="flex flex-col text-center items-center gap-y-9 lg:gap-y-8 justify-center px-4 text-white bg-gradient-to-r from-[#1A0076] to-[#561B83] lg:py-12 py-14 lg:px-16">
-  <ScrollReveal client:load direction="left">
+  <ScrollReveal client:visible direction="left">
     <h2 class="text-5xl font-extrabold">{title}</h2>
   </ScrollReveal>
-  <ScrollReveal client:load direction="right">
+  <ScrollReveal client:visible direction="right">
     <div class="flex flex-col items-center justify-center gap-y-4">
       {subtitle && <h3 class="text-2xl font-semibold lg:font-bold lg:text-3xl">{subtitle}</h3>}
       {paragraph && <p class="text-lg font-normal lg:text-xl lg:font-semibold">{paragraph}</p>}
     </div>
   </ScrollReveal>
-  <ScrollReveal client:load direction="left">
+  <ScrollReveal client:visible direction="left">
     <a href={buttonHref} class="btn bg-pheromone-purple hover:bg-sapphire-siren text-xl font-medium leading-6 block w-fit">{buttonText}</a>
   </ScrollReveal>
 </section>

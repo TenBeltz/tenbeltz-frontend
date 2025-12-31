@@ -1,0 +1,156 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { ScrollReveal } from '@/components/ScrollReveal';
+import { ReactComponent as SecureIcon } from '@/assets/icons/secure-outline.svg';
+import { ReactComponent as DocumentsIcon } from '@/assets/icons/documents-outline.svg';
+import { ReactComponent as ChartLineIcon } from '@/assets/icons/chart-line-outline.svg';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout
+  title={t('clients.seo.title')}
+  description={t('clients.seo.desc')}
+  canonical="https://tenbeltz.com/clientes"
+>
+  <Header />
+  <main class="relative z-10 flex flex-col flex-1 overflow-x-hidden">
+    <section class="relative text-white bg-grid">
+      <div class="pointer-events-none absolute -top-20 right-0 h-72 w-72 rounded-full bg-pheromone-purple/20 blur-3xl"></div>
+      <div class="grid max-w-screen-xl grid-cols-1 gap-12 px-4 py-20 mx-auto lg:grid-cols-[1.1fr_0.9fr] lg:px-16 lg:py-24">
+        <ScrollReveal client:visible>
+          <div class="flex flex-col gap-y-6">
+            <span class="text-xs font-semibold tracking-[0.4em] text-pheromone-purple/70">{t('clients.hero.tag')}</span>
+            <h1 class="text-4xl font-extrabold lg:text-5xl">{t('clients.hero.title')}</h1>
+            <p class="max-w-xl text-lg text-slate-300">
+              {t('clients.hero.desc')}
+            </p>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="flex items-center gap-3 rounded-xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-4 py-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-pheromone-purple/20">
+                  <SecureIcon width="20" height="20" fill="none" stroke="#E5C6F3" strokeWidth="1.5" />
+                </span>
+                <div>
+                  <p class="text-sm font-semibold text-white">{t('clients.card.secure.title')}</p>
+                  <p class="text-xs text-slate-400">{t('clients.card.secure.desc')}</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 rounded-xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-4 py-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-pheromone-purple/20">
+                  <DocumentsIcon width="20" height="20" fill="none" stroke="#E5C6F3" strokeWidth="1.5" />
+                </span>
+                <div>
+                  <p class="text-sm font-semibold text-white">{t('clients.card.docs.title')}</p>
+                  <p class="text-xs text-slate-400">{t('clients.card.docs.desc')}</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 rounded-xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-4 py-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-pheromone-purple/20">
+                  <ChartLineIcon width="20" height="20" fill="#E5C6F3" />
+                </span>
+                <div>
+                  <p class="text-sm font-semibold text-white">{t('clients.card.metrics.title')}</p>
+                  <p class="text-xs text-slate-400">{t('clients.card.metrics.desc')}</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 rounded-xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-4 py-3">
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-pheromone-purple/20">
+                  <SecureIcon width="20" height="20" fill="none" stroke="#E5C6F3" strokeWidth="1.5" />
+                </span>
+                <div>
+                  <p class="text-sm font-semibold text-white">{t('clients.card.history.title')}</p>
+                  <p class="text-xs text-slate-400">{t('clients.card.history.desc')}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal client:visible>
+          <div class="flex flex-col gap-y-6 rounded-2xl border border-pheromone-purple/30 bg-[#0B0122CC]/80 px-6 py-7 backdrop-blur-[1px]">
+            <div>
+              <h2 class="text-2xl font-semibold">{t('clients.form.title')}</h2>
+            </div>
+            <form class="flex flex-col gap-y-5">
+              <label class="flex flex-col gap-y-2 text-sm font-semibold">
+                {t('clients.form.email')}
+                <input
+                  type="email"
+                  required
+                  autocomplete="email"
+                  class="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+                  placeholder="tu@email.com"
+                />
+              </label>
+              <label class="flex flex-col gap-y-2 text-sm font-semibold">
+                {t('clients.form.password')}
+                <input
+                  type="password"
+                  required
+                  autocomplete="current-password"
+                  class="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+                  placeholder="••••••••"
+                />
+              </label>
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" />
+                  {t('clients.form.remember')}
+                </label>
+              </div>
+              <button
+                type="button"
+                id="client-login-button"
+                data-verifying-text={t('clients.form.verifying')}
+                data-default-text={t('clients.form.submit')}
+                class="btn bg-pheromone-purple hover:bg-pheromone-light text-white text-center font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                <span class="inline-flex items-center gap-2">
+                  <span id="client-login-label">{t('clients.form.submit')}</span>
+                  <span id="client-login-spinner" class="hidden h-4 w-4 animate-spin rounded-full border-2 border-white/70 border-t-transparent"></span>
+                </span>
+              </button>
+              <p id="client-login-error" class="hidden text-xs text-rose-200">
+                {t('clients.form.error')}
+              </p>
+              <p class="text-xs text-slate-400">
+                {t('clients.form.note')}
+              </p>
+            </form>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script is:inline>
+  const loginButton = document.getElementById('client-login-button');
+  const loginLabel = document.getElementById('client-login-label');
+  const loginSpinner = document.getElementById('client-login-spinner');
+  const loginError = document.getElementById('client-login-error');
+
+  if (loginButton && loginLabel && loginSpinner && loginError) {
+    loginButton.addEventListener('click', () => {
+      loginError.classList.add('hidden');
+      loginButton.setAttribute('disabled', 'true');
+      const verifyingText = loginButton.getAttribute('data-verifying-text');
+      const defaultText = loginButton.getAttribute('data-default-text');
+      
+      loginLabel.textContent = verifyingText || 'Verificando...';
+      loginSpinner.classList.remove('hidden');
+
+      window.setTimeout(() => {
+        loginButton.removeAttribute('disabled');
+        loginLabel.textContent = defaultText || 'Entrar';
+        loginSpinner.classList.add('hidden');
+        loginError.classList.remove('hidden');
+      }, 1400);
+    });
+  }
+</script>

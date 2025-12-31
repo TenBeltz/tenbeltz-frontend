@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import Alert, { type AlertProps } from "./Alert";
 import { subscribeToNewsletter } from "@/services/api";
+import { ui, defaultLang } from "../i18n/ui";
+
+function useReactTranslation(lang: keyof typeof ui) {
+  return function t(key: keyof typeof ui[typeof defaultLang]) {
+    return ui[lang]?.[key] || ui[defaultLang][key];
+  };
+}
 
 export default function NewsletterForm({
   variant = "page",
   source,
+  lang = defaultLang,
 }: {
   variant?: "page" | "footer";
   source?: "newsletter" | "footer";
+  lang?: keyof typeof ui;
 }) {
+  const t = useReactTranslation(lang);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [acceptedPolicy, setAcceptedPolicy] = useState(false);
@@ -16,7 +26,7 @@ export default function NewsletterForm({
   const [alert, setAlert] = useState<AlertProps | null>(null);
 
   const isFooter = variant === "footer";
-  const buttonText = submitting ? "Enviando..." : "Suscribirme";
+  const buttonText = submitting ? t('newsletter.form.submitting') : t('newsletter.form.submit');
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,8 +36,8 @@ export default function NewsletterForm({
       setAlert({
         id: Date.now(),
         type: "error",
-        title: "Falta el email",
-        message: "Completa tu email para suscribirte.",
+        title: t('newsletter.form.error.email'),
+        message: t('newsletter.form.error.emailDesc'),
       });
       return;
     }
@@ -36,8 +46,8 @@ export default function NewsletterForm({
       setAlert({
         id: Date.now(),
         type: "error",
-        title: "Falta el nombre",
-        message: "Completa tu nombre para suscribirte.",
+        title: t('newsletter.form.error.name'),
+        message: t('newsletter.form.error.nameDesc'),
       });
       return;
     }
@@ -46,8 +56,8 @@ export default function NewsletterForm({
       setAlert({
         id: Date.now(),
         type: "error",
-        title: "Falta el consentimiento",
-        message: "Debes aceptar las políticas para continuar.",
+        title: t('newsletter.form.error.policy'),
+        message: t('newsletter.form.error.policyDesc'),
       });
       return;
     }
@@ -63,7 +73,7 @@ export default function NewsletterForm({
     setAlert({
       id: Date.now(),
       type: result.success ? "success" : "error",
-      title: result.success ? "Listo" : "Error",
+      title: result.success ? t('newsletter.form.success.title') : t('leadMagnet.form.error.title'),
       message: result.message,
     });
 
@@ -80,7 +90,7 @@ export default function NewsletterForm({
     <>
       <form onSubmit={handleSubmit} className={isFooter ? "flex flex-col gap-3" : "flex flex-col gap-5"}>
         <label className={isFooter ? "text-xs font-semibold text-slate-300" : "text-sm font-semibold"}>
-          Nombre
+          {t('newsletter.form.name')}
           <input
             type="text"
             required
@@ -91,12 +101,12 @@ export default function NewsletterForm({
                 ? "mt-2 w-full rounded-md border border-berry-blackmail bg-berry-blackmail px-3 py-2 text-sm text-white focus:border-petal-plush focus-visible:outline-none"
                 : "mt-2 w-full rounded-md border border-berry-blackmail bg-berry-blackmail px-3 py-2 text-white focus:border-petal-plush focus-visible:outline-none"
             }
-            placeholder="Tu nombre"
+            placeholder={t('newsletter.form.namePlaceholder')}
           />
         </label>
 
         <label className={isFooter ? "text-xs font-semibold text-slate-300" : "text-sm font-semibold"}>
-          Email
+          {t('newsletter.form.email')}
           <input
             type="email"
             required
@@ -107,7 +117,7 @@ export default function NewsletterForm({
                 ? "mt-2 w-full rounded-md border border-berry-blackmail bg-berry-blackmail px-3 py-2 text-sm text-white focus:border-petal-plush focus-visible:outline-none"
                 : "mt-2 w-full rounded-md border border-berry-blackmail bg-berry-blackmail px-3 py-2 text-white focus:border-petal-plush focus-visible:outline-none"
             }
-            placeholder="tu@email.com"
+            placeholder={t('newsletter.form.emailPlaceholder')}
           />
         </label>
 
@@ -120,12 +130,12 @@ export default function NewsletterForm({
             required
           />
           <span>
-            Acepto las{" "}
+            {t('newsletter.form.policy').replace(t('newsletter.form.policyLink'), '')}
             <a
               href="/politicas"
               className="text-pheromone-purple hover:text-pheromone-light underline underline-offset-2"
             >
-              políticas de uso y privacidad
+              {t('newsletter.form.policyLink')}
             </a>
             .
           </span>

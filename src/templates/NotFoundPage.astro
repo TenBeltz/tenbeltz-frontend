@@ -1,0 +1,69 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { ScrollReveal } from "@/components/ScrollReveal";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout
+  title={t('404.title')}
+  description={t('404.desc')}
+  canonical="https://tenbeltz.com/404"
+>
+  <Header />
+  <main class="relative z-10 flex flex-1 flex-col overflow-x-hidden text-white">
+    <section class="relative bg-grid">
+      <div class="pointer-events-none absolute -top-24 right-8 h-64 w-64 rounded-full bg-pheromone-purple/30 blur-3xl"></div>
+      <div class="pointer-events-none absolute bottom-10 left-10 h-72 w-72 rounded-full bg-sapphire-siren/20 blur-3xl"></div>
+      <div class="mx-auto flex w-full max-w-screen-lg flex-col items-center gap-8 px-4 py-20 text-center lg:px-12 lg:py-28">
+        <ScrollReveal client:visible>
+          <span class="text-xs font-semibold tracking-[0.4em] text-pheromone-purple/70">{t('404.tag')}</span>
+        </ScrollReveal>
+        <ScrollReveal client:visible>
+          <h1 class="text-4xl font-extrabold lg:text-6xl">{t('404.h1')}</h1>
+        </ScrollReveal>
+        <ScrollReveal client:visible>
+          <p class="max-w-xl text-base text-slate-300 lg:text-lg">
+            {t('404.p')}
+          </p>
+        </ScrollReveal>
+        <ScrollReveal client:visible>
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <button
+              id="go-back-button"
+              type="button"
+              class="btn bg-pheromone-purple hover:bg-pheromone-light text-white text-center font-semibold"
+            >
+              {t('404.back')}
+            </button>
+            <a
+              href={getRelativeLocaleUrl(lang, '/')}
+              class="btn border border-pheromone-purple/60 text-pheromone-purple hover:text-white hover:bg-pheromone-purple/20"
+            >
+              {t('404.home')}
+            </a>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script is:inline>
+  const backButton = document.getElementById("go-back-button");
+  if (backButton) {
+    backButton.addEventListener("click", () => {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.assign("/");
+      }
+    });
+  }
+</script>

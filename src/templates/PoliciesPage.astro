@@ -1,0 +1,118 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout
+  title={t('policies.title')}
+  description={t('policies.description')}
+  canonical="https://tenbeltz.com/politicas"
+>
+  <Header />
+  <main class="relative z-10 flex flex-col flex-1 overflow-x-hidden">
+    <section class="relative text-white bg-grid">
+      <div class="pointer-events-none absolute -top-16 left-10 h-64 w-64 rounded-full bg-pheromone-purple/20 blur-3xl"></div>
+      <div class="mx-auto flex w-full max-w-screen-lg flex-col gap-10 px-4 py-20 lg:px-12 lg:py-24">
+        <div class="flex flex-col gap-4">
+          <span class="text-xs font-semibold tracking-[0.4em] text-pheromone-purple/70">{t('policies.tag')}</span>
+          <h1 class="text-4xl font-extrabold lg:text-5xl">{t('policies.h1')}</h1>
+          <p class="text-base text-slate-300">
+            {t('policies.intro')}
+          </p>
+        </div>
+
+        <div class="grid gap-6">
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">{t('policies.responsible.title')}</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              {t('policies.responsible.text')}
+              <a
+                href="mailto:hello@tenbeltz.com"
+                class="ml-1 text-pheromone-purple underline underline-offset-2 hover:text-pheromone-light"
+              >
+                hello@tenbeltz.com
+              </a>
+              .
+            </p>
+          </section>
+
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">{t('policies.data.title')}</h2>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li>{t('policies.data.list.1')}</li>
+              <li>{t('policies.data.list.2')}</li>
+              <li>{t('policies.data.list.3')}</li>
+            </ul>
+          </section>
+
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">{t('policies.purpose.title')}</h2>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li>{t('policies.purpose.list.1')}</li>
+              <li>{t('policies.purpose.list.2')}</li>
+              <li>{t('policies.purpose.list.3')}</li>
+            </ul>
+          </section>
+
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">{t('policies.newsletter.title')}</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              {t('policies.newsletter.text')}
+            </p>
+          </section>
+
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">{t('policies.retention.title')}</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              {t('policies.retention.text')}
+            </p>
+          </section>
+
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">{t('policies.recipients.title')}</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              {t('policies.recipients.text')}
+            </p>
+          </section>
+
+          <section class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6">
+            <h2 class="text-xl font-semibold">{t('policies.rights.title')}</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              {t('policies.rights.text')}
+            </p>
+          </section>
+
+          <section
+            id="cookies"
+            class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-6"
+          >
+            <h2 class="text-xl font-semibold">{t('policies.cookies.title')}</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              {t('policies.cookies.intro')}
+            </p>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li>
+                <span class="font-semibold text-white">{t('policies.cookies.list.1.name')}</span>{t('policies.cookies.list.1.desc')}
+              </li>
+              <li>
+                <span class="font-semibold text-white">{t('policies.cookies.list.2.name')}</span>{t('policies.cookies.list.2.desc')}
+              </li>
+              <li>
+                <span class="font-semibold text-white">{t('policies.cookies.list.3.name')}</span>{t('policies.cookies.list.3.desc')}
+              </li>
+              <li>
+                <span class="font-semibold text-white">{t('policies.cookies.list.4.name')}</span>{t('policies.cookies.list.4.desc')}
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

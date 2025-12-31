@@ -1,6 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Alert, { type AlertProps } from "./Alert";
 import { ScrollReveal } from "./ScrollReveal";
+import { ui, defaultLang } from "../i18n/ui";
+
+function useReactTranslation(lang: keyof typeof ui) {
+  return function t(key: keyof typeof ui[typeof defaultLang]) {
+    return ui[lang]?.[key] || ui[defaultLang][key];
+  };
+}
 
 type LeadMagnetField = {
   key: string;
@@ -36,8 +43,8 @@ function formatFileSize(value?: number | null) {
   return `${size.toFixed(size >= 10 || index === 0 ? 0 : 1)} ${units[index]}`;
 }
 
-function getPreviewLabel(extension?: string | null) {
-  if (!extension) return "Recurso";
+function getPreviewLabel(extension?: string | null, t?: (key: keyof typeof ui[typeof defaultLang]) => string) {
+  if (!extension) return t ? t('leadMagnet.preview.resource') : "Recurso";
   return extension.toUpperCase();
 }
 
@@ -54,10 +61,13 @@ function getPreviewKind(extension?: string | null) {
 export default function LeadMagnetForm({
   magnetId,
   downloadToken,
+  lang = defaultLang,
 }: {
   magnetId: string;
   downloadToken?: string;
+  lang?: keyof typeof ui;
 }) {
+  const t = useReactTranslation(lang);
   const [leadMagnet, setLeadMagnet] = useState<LeadMagnet | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -124,8 +134,8 @@ export default function LeadMagnetForm({
       setAlert({
         id: Date.now(),
         type: "error",
-        title: "Falta el consentimiento",
-        message: "Debes aceptar las políticas para continuar.",
+        title: t('leadMagnet.form.alert.policy'),
+        message: t('leadMagnet.form.alert.policyDesc'),
       });
       return;
     }
@@ -162,8 +172,8 @@ export default function LeadMagnetForm({
       setAlert({
         id: Date.now(),
         type: "success",
-        title: "Listo",
-        message: "Te hemos enviado un enlace de descarga a tu email.",
+        title: t('leadMagnet.form.success.title'),
+        message: t('leadMagnet.form.success.desc'),
       });
       setName("");
       setEmail("");
@@ -175,11 +185,11 @@ export default function LeadMagnetForm({
         }, {} as Record<string, string>),
       );
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Error inesperado.";
+      const message = err instanceof Error ? err.message : t('leadMagnet.form.error.default');
       setAlert({
         id: Date.now(),
         type: "error",
-        title: "Error",
+        title: t('leadMagnet.form.error.title'),
         message,
       });
     } finally {
@@ -192,10 +202,10 @@ export default function LeadMagnetForm({
       <div className="flex flex-col gap-y-6 min-w-0">
         <ScrollReveal className="flex flex-col gap-y-4">
           <span className="text-sm font-semibold tracking-[0.2em] text-pheromone-purple/80">
-            CONTENIDO GRATUITO
+            {t('leadMagnet.tag')}
           </span>
           <h1 className="text-4xl font-extrabold lg:text-5xl">
-            {loading ? "Cargando contenido..." : leadMagnet?.title || "Contenido premium"}
+            {loading ? t('leadMagnet.loading') : leadMagnet?.title || t('leadMagnet.defaultTitle')}
           </h1>
           <p className="text-lg text-slate-300">
             {leadMagnet?.description ||
@@ -239,7 +249,7 @@ export default function LeadMagnetForm({
         {leadMagnet?.file_name && (
           <div className="flex items-center gap-4 rounded-lg border border-pheromone-purple/20 bg-[#0B0122]/60 px-4 py-3 min-w-0">
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-pheromone-purple/20 text-sm font-semibold text-pheromone-purple shrink-0">
-              {getPreviewLabel(leadMagnet.file_extension)}
+              {getPreviewLabel(leadMagnet.file_extension, t)}
             </div>
             <div className="flex flex-col min-w-0">
               <span className="text-sm font-semibold text-white break-words">{leadMagnet.file_name}</span>
@@ -301,26 +311,26 @@ export default function LeadMagnetForm({
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-y-5">
             <label className="flex flex-col gap-y-2 text-sm font-semibold">
-              Nombre
+              {t('newsletter.form.name')}
               <input
                 type="text"
                 required
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
-                placeholder="Tu nombre"
+                placeholder={t('newsletter.form.namePlaceholder')}
               />
             </label>
 
             <label className="flex flex-col gap-y-2 text-sm font-semibold">
-              Email
+              {t('newsletter.form.email')}
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
-                placeholder="tu@email.com"
+                placeholder={t('newsletter.form.emailPlaceholder')}
               />
             </label>
 

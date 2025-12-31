@@ -6,6 +6,10 @@ import backgroundGradientPC from '/public/images/img/contact-gradient-background
 import backgroundGradientMobile from '/public/images/img/contact-gradient-background-mobile.png';
 import ContactForm from './ContactForm';
 import { ScrollReveal } from './ScrollReveal';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 export const contactInfo = {
   phones: ['+34 640 520 819'],
@@ -20,17 +24,17 @@ export const contactInfo = {
         <div class="flex flex-col max-w-[21rem] gap-y-6">
           <ScrollReveal client:visible>
             <h3 class="text-4xl font-bold">
-              Hablemos de 
-              <span class="bg-gradient-to-r from-[#9238D6] to-[#C45BFF] bg-clip-text text-transparent">tu caso de uso</span>
+              {t('contact.title')} 
+              <span class="bg-gradient-to-r from-[#9238D6] to-[#C45BFF] bg-clip-text text-transparent">{t('contact.titleHighlight')}</span>
             </h3>
           </ScrollReveal>
           <ScrollReveal client:visible>
             <div class="flex flex-col gap-y-4 text-lg text-slate-300">
-              <p>Cuéntanos tu contexto y te diremos:</p>
+              <p>{t('contact.subtitle')}</p>
               <ul class="flex flex-col gap-y-2">
-                <li>• 1 riesgo real que deberías evitar</li>
-                <li>• 1 métrica clave de fiabilidad</li>
-                <li>• 1 palanca clara de reducción de costes</li>
+                <li>{t('contact.list.1')}</li>
+                <li>{t('contact.list.2')}</li>
+                <li>{t('contact.list.3')}</li>
               </ul>
             </div>
           </ScrollReveal>
@@ -54,7 +58,7 @@ export const contactInfo = {
       </div>
     </div>
     <div class="px-4 py-20 lg:border-x lg:border-berry-blackmail md:flex-1 lg:px-16 bg-gradient-to-r backdrop-blur-[2px] from-[#561B834D] to-[#1A00764D]">
-      <ContactForm client:load />
+      <ContactForm client:load lang={lang} />
     </div>
   </div>
   <Picture src={backgroundGradientPC} alt="backgroundGradientPC" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 hidden object-cover w-full h-full -z-50 lg:block" />

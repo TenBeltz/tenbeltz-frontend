@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import Alert, { type AlertProps } from "./Alert";
 import { sendContactForm } from "@/services/api";
 import { ScrollReveal } from "./ScrollReveal";
+import { useTranslations } from "@/i18n/utils";
+import type { ui } from "@/i18n/ui";
 
-export default function ContactForm() {
+interface ContactFormProps {
+  lang?: keyof typeof ui;
+}
+
+export default function ContactForm({ lang = 'es' }: ContactFormProps) {
+  const t = useTranslations(lang);
   const [alert, setAlert] = useState<AlertProps | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
@@ -16,8 +23,8 @@ export default function ContactForm() {
     const role = (formData.get("role") as string) || "";
     const rawMessage = (formData.get("message") as string) || "";
     const contextLines = [
-      company ? `Empresa: ${company}` : "",
-      role ? `Rol: ${role}` : "",
+      company ? `${t('contact.form.company')}: ${company}` : "",
+      role ? `${t('contact.form.role')}: ${role}` : "",
     ].filter(Boolean);
     const message = contextLines.length
       ? `${contextLines.join("\n")}\n\n${rawMessage}`
@@ -33,8 +40,8 @@ export default function ContactForm() {
       setAlert({
         id: Date.now(),
         type: "error",
-        title: "Error",
-        message: "Por favor completa los campos obligatorios.",
+        title: t('contact.form.error'),
+        message: t('contact.form.error.required'),
       });
       return;
     }
@@ -45,7 +52,7 @@ export default function ContactForm() {
     setAlert({
       id: Date.now(),
       type: result.success ? "success" : "error",
-      title: result.success ? "Enviado" : "Error",
+      title: result.success ? t('contact.form.success') : t('contact.form.error'),
       message: result.message,
     });
 
@@ -59,7 +66,7 @@ export default function ContactForm() {
         <div className="grid grid-cols-2 gap-x-14 gap-y-8">
           <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
             <label htmlFor="name" className="font-semibold">
-              Nombre
+              {t('contact.form.name')}
             </label>
             <input
               id="name"
@@ -71,7 +78,7 @@ export default function ContactForm() {
           </ScrollReveal>
           <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
             <label htmlFor="email" className="font-semibold">
-              Email
+              {t('contact.form.email')}
             </label>
             <input
               id="email"
@@ -83,7 +90,7 @@ export default function ContactForm() {
           </ScrollReveal>
           <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
             <label htmlFor="company" className="font-semibold">
-              Empresa
+              {t('contact.form.company')}
             </label>
             <input
               id="company"
@@ -94,7 +101,7 @@ export default function ContactForm() {
           </ScrollReveal>
           <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
             <label htmlFor="role" className="font-semibold">
-              Rol
+              {t('contact.form.role')}
             </label>
             <input
               id="role"
@@ -105,7 +112,7 @@ export default function ContactForm() {
           </ScrollReveal>
           <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
             <label htmlFor="message" className="font-semibold">
-              Mensaje (¿qué quieres construir?)
+              {t('contact.form.message')}
             </label>
             <textarea
               id="message"
@@ -124,9 +131,9 @@ export default function ContactForm() {
               disabled={submitting}
               className="btn font-semibold leading-none border border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20 hover:bg-pheromone-purple/25 hover:cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {submitting ? "Enviando..." : "Hablar con TenBeltz"}
+              {submitting ? t('contact.form.submitting') : t('contact.form.submit')}
             </button>
-            <span className="text-xs text-slate-400">Respondemos en menos de 48h</span>
+            <span className="text-xs text-slate-400">{t('contact.form.note')}</span>
           </div>
         </ScrollReveal>
       </form>

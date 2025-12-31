@@ -14,6 +14,13 @@ export default defineConfig({
   output: 'server',
   adapter: node({ mode: 'standalone' }),
   integrations: [react()],
+  i18n: {
+    defaultLocale: "es",
+    locales: ["es", "en"],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
   site: 'https://tenbeltz.com/',
   vite: {
     plugins: [

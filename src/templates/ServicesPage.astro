@@ -1,0 +1,41 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Hero from '@/components/Hero.astro';
+import Footer from '@/components/Footer.astro';
+import Divider from '@/components/Divider.astro';
+import ServicesSection from '@/components/ServicesSection.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// const hideServices = true;
+// if (hideServices) {
+// 	return Astro.redirect('/');
+// }
+// Note: Redirect logic should probably stay in the page or be handled here. 
+// If I put it here, it redirects.
+---
+
+<Layout	
+	title={t('services.page.title')}
+	description={t('services.page.description')}
+	canonical="https://tenbeltz.com/services"
+>
+	<Header />
+	<main class="z-10 flex flex-col flex-1 overflow-x-hidden">
+		<Hero 
+			title={t('services.hero.title')}
+			highlight={t('services.hero.highlight')}
+			subtitle={t('services.hero.subtitle')} 
+			buttonHref="/#contact-section" 
+			buttonText={t('services.hero.button')} 
+			animateHighlight={false}
+			showCursor={false}
+		/>
+		<Divider text={t('services.divider')} />
+		<ServicesSection />
+	</main>
+	<Footer />
+</Layout>

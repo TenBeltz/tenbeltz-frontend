@@ -21,49 +21,54 @@ import { ReactComponent as NotificationOutline } from '@/assets/icons/notificati
 import TopLeftGradientBackgroundPC from '/public/images/img/top-left-gradient-background-pc.png';
 import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradient-background-mobile.png';
 
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const services = [
   {
-    title: 'IA Feature Audit',
-    subtitle: 'Diagnóstico para definir caso de uso, métricas, riesgos y costes antes de construir. Sales con un plan por fases.',
+    title: t('services.audit.title'),
+    subtitle: t('services.audit.subtitle'),
     gridCols: 'lg:grid-cols-5',
     features: [
-      { direction: 'down', colSpan: 'lg:col-span-3', title: 'Mapa de caso de uso', description: 'Delimitamos la tarea, usuarios y criterio de éxito.', icon: ProcessOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
-      { direction: 'left', colSpan: 'lg:col-span-2', title: 'Métricas y evals', description: 'Definimos el golden set y los indicadores clave.', icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
-      { direction: 'right', colSpan: 'lg:col-span-2', title: 'Riesgos y privacidad', description: 'Revisamos datos sensibles, guardrails y compliance.', icon: SecureOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
-      { direction: 'up', colSpan: 'lg:col-span-3', title: 'Plan por fases', description: 'Hoja de ruta clara con entregables y prioridades.', icon: DocumentsOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
+      { direction: 'down', colSpan: 'lg:col-span-3', title: t('services.audit.features.1.title'), description: t('services.audit.features.1.desc'), icon: ProcessOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'left', colSpan: 'lg:col-span-2', title: t('services.audit.features.2.title'), description: t('services.audit.features.2.desc'), icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
+      { direction: 'right', colSpan: 'lg:col-span-2', title: t('services.audit.features.3.title'), description: t('services.audit.features.3.desc'), icon: SecureOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
+      { direction: 'up', colSpan: 'lg:col-span-3', title: t('services.audit.features.4.title'), description: t('services.audit.features.4.desc'), icon: DocumentsOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
     ]
   },
   {
-    title: 'Prototype Sprint',
-    subtitle: 'Sprint de 10-15 días con POC funcional, demo interna y base para escalar.',
+    title: t('services.sprint.title'),
+    subtitle: t('services.sprint.subtitle'),
     gridCols: 'lg:grid-cols-5',
     features: [
-      { direction: 'down', colSpan: 'lg:col-span-3', title: 'Flujo funcional', description: 'Un caso de uso completo integrado al producto.', icon: TaskDoneOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
-      { direction: 'up', colSpan: 'lg:col-span-2', title: 'Dataset y golden set', description: 'Ejemplos reales para medir calidad desde el día uno.', icon: PackageSearchOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3', strokeLinecap: 'round', strokeLinejoin: 'round' } },
-      { direction: 'left', colSpan: 'lg:col-span-2', title: 'Logging y tracing', description: 'Visibilidad básica de costes, tiempos y fallos.', icon: ChartLineOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3' } },
-      { direction: 'right', colSpan: 'lg:col-span-3', title: 'Demo interna', description: 'Validación rápida con tu equipo antes de escalar.', icon: ChatBubbleLeftOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
+      { direction: 'down', colSpan: 'lg:col-span-3', title: t('services.sprint.features.1.title'), description: t('services.sprint.features.1.desc'), icon: TaskDoneOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
+      { direction: 'up', colSpan: 'lg:col-span-2', title: t('services.sprint.features.2.title'), description: t('services.sprint.features.2.desc'), icon: PackageSearchOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3', strokeLinecap: 'round', strokeLinejoin: 'round' } },
+      { direction: 'left', colSpan: 'lg:col-span-2', title: t('services.sprint.features.3.title'), description: t('services.sprint.features.3.desc'), icon: ChartLineOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3' } },
+      { direction: 'right', colSpan: 'lg:col-span-3', title: t('services.sprint.features.4.title'), description: t('services.sprint.features.4.desc'), icon: ChatBubbleLeftOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
     ]
   },
   {
-    title: 'Producción y escalado',
-    subtitle: 'Feature integrada con observabilidad, guardrails, seguridad y control de costes y latencia.',
+    title: t('services.production.title'),
+    subtitle: t('services.production.subtitle'),
     gridCols: 'lg:grid-cols-5',
     features: [
-      { direction: 'down', colSpan: 'lg:col-span-2', title: 'Guardrails y fallback', description: 'Diseño de seguridad para evitar alucinaciones.', icon: SecureOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
-      { direction: 'up', colSpan: 'lg:col-span-3', title: 'Observabilidad', description: 'Tracing, métricas y logs para entender el comportamiento.', icon: ChartLineOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3' } },
-      { direction: 'left', colSpan: 'lg:col-span-3', title: 'Coste y latencia', description: 'Rutas baratas, caching y límites por feature.', icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
-      { direction: 'right', colSpan: 'lg:col-span-2', title: 'Escalabilidad', description: 'De 100 a 10.000 solicitudes sin sorpresas.', icon: ExpandOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
+      { direction: 'down', colSpan: 'lg:col-span-2', title: t('services.production.features.1.title'), description: t('services.production.features.1.desc'), icon: SecureOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
+      { direction: 'up', colSpan: 'lg:col-span-3', title: t('services.production.features.2.title'), description: t('services.production.features.2.desc'), icon: ChartLineOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3' } },
+      { direction: 'left', colSpan: 'lg:col-span-3', title: t('services.production.features.3.title'), description: t('services.production.features.3.desc'), icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
+      { direction: 'right', colSpan: 'lg:col-span-2', title: t('services.production.features.4.title'), description: t('services.production.features.4.desc'), icon: ExpandOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
     ]
   },
   {
-    title: 'Optimización continua',
-    subtitle: 'Iteración mensual basada en datos: re-evals, mejora de calidad y reducción de costes.',
+    title: t('services.optimization.title'),
+    subtitle: t('services.optimization.subtitle'),
     gridCols: 'lg:grid-cols-5',
     features: [
-      { direction: 'down', colSpan: 'lg:col-span-3', title: 'Re-evals y drift', description: 'Reentrenar y ajustar métricas según el uso real.', icon: ProcessOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
-      { direction: 'up', colSpan: 'lg:col-span-2', title: 'Optimización de costes', description: 'Reducimos gasto sin perder calidad.', icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
-      { direction: 'left', colSpan: 'lg:col-span-2', title: 'Nuevos casos de uso', description: 'Expansión controlada con ROI claro.', icon: ThreeLightOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3', strokeWidth: 1, stroke: '#E5C6F3' } },
-      { direction: 'right', colSpan: 'lg:col-span-3', title: 'Alertas y reporting', description: 'Visibilidad continua del rendimiento y coste.', icon: NotificationOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
+      { direction: 'down', colSpan: 'lg:col-span-3', title: t('services.optimization.features.1.title'), description: t('services.optimization.features.1.desc'), icon: ProcessOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
+      { direction: 'up', colSpan: 'lg:col-span-2', title: t('services.optimization.features.2.title'), description: t('services.optimization.features.2.desc'), icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
+      { direction: 'left', colSpan: 'lg:col-span-2', title: t('services.optimization.features.3.title'), description: t('services.optimization.features.3.desc'), icon: ThreeLightOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3', strokeWidth: 1, stroke: '#E5C6F3' } },
+      { direction: 'right', colSpan: 'lg:col-span-3', title: t('services.optimization.features.4.title'), description: t('services.optimization.features.4.desc'), icon: NotificationOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
     ]
   },
 ];
@@ -86,9 +91,9 @@ const services = [
       <Picture src={TopLeftGradientBackgroundMobile} alt="backgroundGradientMobile" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 object-cover w-full -z-50 lg:hidden" />
     </div>
     <Banner 
-      title="Casos reales en producción"
-      paragraph="Conoce cómo diseñamos features de IA fiables y escalables, y qué decisiones tomamos para controlar coste y calidad."
-      buttonText="Ver casos"
+      title={t('services.banner.title')}
+      paragraph={t('services.banner.paragraph')}
+      buttonText={t('services.banner.button')}
       buttonHref="/#contact-section"
     />
     <div class="bg-grid">

@@ -1,0 +1,296 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Hero from '@/components/Hero.astro';
+import Footer from '@/components/Footer.astro';
+import Contact from '@/components/Contact.astro';
+import Banner from '@/components/Banner.astro';
+import { ScrollReveal } from '@/components/ScrollReveal';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const orienterSteps = [
+  {
+    title: t('pricing.orienter.0.title'),
+    description: t('pricing.orienter.0.desc'),
+    recommendation: t('pricing.orienter.0.rec'),
+    href: '#primer-paso',
+  },
+  {
+    title: t('pricing.orienter.1.title'),
+    description: t('pricing.orienter.1.desc'),
+    recommendation: t('pricing.orienter.1.rec'),
+    href: '#auditorias',
+  },
+  {
+    title: t('pricing.orienter.2.title'),
+    description: t('pricing.orienter.2.desc'),
+    recommendation: t('pricing.orienter.2.rec'),
+    href: '#sprints',
+  },
+];
+
+const tripwirePlans = [
+  {
+    title: t('pricing.tripwire.0.title'),
+    tag: '2h',
+    price: '149€',
+    description: t('pricing.tripwire.0.desc'),
+    bullets: [
+      t('pricing.tripwire.0.bullet.0'),
+      t('pricing.tripwire.0.bullet.1'),
+      t('pricing.tripwire.0.bullet.2')
+    ],
+    ctaLabel: t('pricing.tripwire.0.cta'),
+    ctaHref: 'https://calendly.com/tenbeltz/ia-workshop',
+  },
+  {
+    title: t('pricing.tripwire.1.title'),
+    tag: '90 min',
+    price: '99€',
+    description: t('pricing.tripwire.1.desc'),
+    bullets: [
+      t('pricing.tripwire.1.bullet.0'),
+      t('pricing.tripwire.1.bullet.1'),
+      t('pricing.tripwire.1.bullet.2')
+    ],
+    ctaLabel: t('pricing.tripwire.1.cta'),
+    ctaHref: 'https://checkout.tenbeltz.com/curso-ia',
+  },
+];
+
+const auditPlans = [
+  {
+    title: t('pricing.audit.0.title'),
+    tag: '90 min',
+    price: '1.500€',
+    bullets: [
+      t('pricing.audit.0.bullet.0'),
+      t('pricing.audit.0.bullet.1'),
+      t('pricing.audit.0.bullet.2')
+    ],
+    ctaLabel: t('pricing.audit.0.cta'),
+    ctaHref: '/#contact-section',
+  },
+  {
+    title: t('pricing.audit.1.title'),
+    tag: '1 semana',
+    price: '3.500€',
+    bullets: [
+      t('pricing.audit.1.bullet.0'),
+      t('pricing.audit.1.bullet.1'),
+      t('pricing.audit.1.bullet.2'),
+      t('pricing.audit.1.bullet.3')
+    ],
+    ctaLabel: t('pricing.audit.1.cta'),
+    ctaHref: '/#contact-section',
+  },
+  {
+    title: t('pricing.audit.2.title'),
+    tag: '2 semanas',
+    price: '5.000€',
+    bullets: [
+      t('pricing.audit.2.bullet.0'),
+      t('pricing.audit.2.bullet.1'),
+      t('pricing.audit.2.bullet.2'),
+      t('pricing.audit.2.bullet.3')
+    ],
+    ctaLabel: t('pricing.audit.2.cta'),
+    ctaHref: '/#contact-section',
+  },
+];
+
+const sprintPlans = [
+  {
+    title: t('pricing.sprint.0.title'),
+    tag: t('pricing.sprint.0.tag'),
+    price: '4.500€',
+    bullets: [
+      t('pricing.sprint.0.bullet.0'),
+      t('pricing.sprint.0.bullet.1'),
+      t('pricing.sprint.0.bullet.2'),
+      t('pricing.sprint.0.bullet.3')
+    ],
+    ctaLabel: t('pricing.sprint.cta'),
+    ctaHref: '/#contact-section',
+  },
+  {
+    title: t('pricing.sprint.1.title'),
+    tag: t('pricing.sprint.1.tag'),
+    price: '7.000€',
+    bullets: [
+      t('pricing.sprint.1.bullet.0'),
+      t('pricing.sprint.1.bullet.1'),
+      t('pricing.sprint.1.bullet.2'),
+      t('pricing.sprint.1.bullet.3')
+    ],
+    ctaLabel: t('pricing.sprint.cta'),
+    ctaHref: '/#contact-section',
+  },
+  {
+    title: t('pricing.sprint.2.title'),
+    tag: t('pricing.sprint.2.tag'),
+    price: '10.000€',
+    bullets: [
+      t('pricing.sprint.2.bullet.0'),
+      t('pricing.sprint.2.bullet.1'),
+      t('pricing.sprint.2.bullet.2'),
+      t('pricing.sprint.2.bullet.3'),
+      t('pricing.sprint.2.bullet.4')
+    ],
+    ctaLabel: t('pricing.sprint.cta'),
+    ctaHref: '/#contact-section',
+  },
+];
+---
+
+<Layout
+  title={t('pricing.seo.title')}
+  description={t('pricing.seo.desc')}
+  canonical="https://tenbeltz.com/precios"
+>
+  <Header />
+  <main class="relative z-10 flex flex-col flex-1 overflow-x-hidden">
+    <Hero
+      title={t('pricing.hero.title')}
+      highlight={t('pricing.hero.highlight')}
+      subtitle={t('pricing.hero.subtitle')}
+      buttonHref="#contact-section"
+      buttonText={t('pricing.hero.button')}
+      animateHighlight={false}
+      showCursor={false}
+      stackHighlight={true}
+    />
+
+    <section class="relative text-white bg-grid">
+      <div class="flex flex-col items-center justify-center max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
+        <ScrollReveal client:visible>
+          <div class="text-center">
+            <h2 class="text-4xl font-bold">{t('pricing.orienter.title')}</h2>
+          </div>
+        </ScrollReveal>
+        <div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-3">
+          {orienterSteps.map((step, index) => (
+            <ScrollReveal client:visible delay={index * 150}>
+              <div class="flex flex-col h-full px-6 py-7 transition-all rounded-lg bg-[#0B0122CC]/80 gap-y-4 border border-pheromone-purple/30">
+                <h3 class="text-xl font-semibold">{step.title}</h3>
+                <p class="text-slate-300">{step.description}</p>
+                <a href={step.href} class="mt-auto text-sm font-semibold text-pheromone-purple hover:text-pheromone-light">{t('pricing.rec_label')} {step.recommendation}</a>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="primer-paso" class="relative text-white bg-grid">
+      <div class="flex flex-col items-center justify-center max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
+        <ScrollReveal client:visible>
+          <div class="text-center">
+            <h2 class="text-4xl font-bold">{t('pricing.tripwire.title')}</h2>
+            <p class="mt-3 text-slate-300">{t('pricing.tripwire.desc')}</p>
+          </div>
+        </ScrollReveal>
+        <div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-2">
+          {tripwirePlans.map((plan, index) => (
+            <ScrollReveal client:visible delay={index * 150}>
+              <div class="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-5 border border-pheromone-purple/30 hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:shadow-[0px_0px_20px_0px_rgba(117,4,205,1.00)] to-[#1D0043]/90">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-2xl font-semibold">{plan.title}</h3>
+                  <span class="px-3 py-1 text-xs font-semibold border rounded-full border-pheromone-purple/50 text-pheromone-purple">{plan.tag}</span>
+                </div>
+                <p class="text-slate-300">{plan.description}</p>
+                <p class="text-3xl font-bold text-white">{plan.price}</p>
+                <p class="text-sm font-semibold text-slate-400">{t('pricing.includes')}</p>
+                <ul class="flex flex-col gap-2 text-sm text-slate-300">
+                  {plan.bullets.map(item => (
+                    <li>• {item}</li>
+                  ))}
+                </ul>
+                <a href={plan.ctaHref} class="w-full mt-auto text-center btn bg-pheromone-purple hover:bg-sapphire-siren text-white">
+                  {plan.ctaLabel}
+                </a>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="auditorias" class="relative text-white bg-grid">
+      <div class="flex flex-col items-center justify-center max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
+        <ScrollReveal client:visible>
+          <div class="text-center">
+            <h2 class="text-4xl font-bold">{t('pricing.audit.title')}</h2>
+            <p class="mt-3 text-slate-300">{t('pricing.audit.desc')}</p>
+          </div>
+        </ScrollReveal>
+        <div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-3">
+          {auditPlans.map((plan, index) => (
+            <ScrollReveal client:visible delay={index * 150}>
+              <div class="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-5 border border-pheromone-purple/30 hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:shadow-[0px_0px_20px_0px_rgba(117,4,205,1.00)] to-[#1D0043]/90">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-2xl font-semibold">{plan.title}</h3>
+                  <span class="px-3 py-1 text-xs font-semibold border rounded-full border-pheromone-purple/50 text-pheromone-purple">{plan.tag}</span>
+                </div>
+                <p class="text-3xl font-bold text-white">{plan.price}</p>
+                <p class="text-sm font-semibold text-slate-400">{t('pricing.result')}</p>
+                <ul class="flex flex-col gap-2 text-sm text-slate-300">
+                  {plan.bullets.map(item => (
+                    <li>• {item}</li>
+                  ))}
+                </ul>
+                <a href={plan.ctaHref} class="w-full mt-auto text-center btn bg-pheromone-purple hover:bg-sapphire-siren text-white">
+                  {plan.ctaLabel}
+                </a>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="sprints" class="relative text-white bg-grid">
+      <div class="flex flex-col items-center justify-center max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
+        <ScrollReveal client:visible>
+          <div class="text-center">
+            <h2 class="text-4xl font-bold">{t('pricing.sprint.title')}</h2>
+            <p class="mt-3 text-slate-300">{t('pricing.sprint.desc')}</p>
+          </div>
+        </ScrollReveal>
+        <div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-3">
+          {sprintPlans.map((plan, index) => (
+            <ScrollReveal client:visible delay={index * 150}>
+              <div class="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-5 border border-pheromone-purple/30 hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:shadow-[0px_0px_20px_0px_rgba(117,4,205,1.00)] to-[#1D0043]/90">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-2xl font-semibold">{plan.title}</h3>
+                  <span class="px-3 py-1 text-xs font-semibold border rounded-full border-pheromone-purple/50 text-pheromone-purple">{plan.tag}</span>
+                </div>
+                <p class="text-3xl font-bold text-white">{plan.price}</p>
+                <ul class="flex flex-col gap-2 text-sm text-slate-300">
+                  {plan.bullets.map(item => (
+                    <li>• {item}</li>
+                  ))}
+                </ul>
+                <a href={plan.ctaHref} class="w-full mt-auto text-center btn bg-pheromone-purple hover:bg-sapphire-siren text-white">
+                  {plan.ctaLabel}
+                </a>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Banner
+      title={t('contact.title') + ' ' + t('contact.titleHighlight')}
+      paragraph={t('contact.subtitle')}
+      buttonText={t('home.hero.button')}
+      buttonHref="#contact-section"
+    />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

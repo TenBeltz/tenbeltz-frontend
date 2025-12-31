@@ -1,0 +1,85 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import NewsletterForm from '@/components/NewsletterForm';
+import { ScrollReveal } from '@/components/ScrollReveal';
+import { ReactComponent as NotificationIcon } from '@/assets/icons/notification-outline.svg';
+import { ReactComponent as ChartLineIcon } from '@/assets/icons/chart-line-outline.svg';
+import { ReactComponent as TaskDoneIcon } from '@/assets/icons/task-done-outline.svg';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const highlights = [
+  {
+    title: t('newsletter.highlights.1.title'),
+    detail: t('newsletter.highlights.1.detail'),
+    icon: NotificationIcon,
+    iconProps: { width: 20, height: 20, fill: 'none', stroke: '#E5C6F3', strokeWidth: 1.5 },
+  },
+  {
+    title: t('newsletter.highlights.2.title'),
+    detail: t('newsletter.highlights.2.detail'),
+    icon: ChartLineIcon,
+    iconProps: { width: 20, height: 20, fill: '#E5C6F3' },
+  },
+  {
+    title: t('newsletter.highlights.3.title'),
+    detail: t('newsletter.highlights.3.detail'),
+    icon: TaskDoneIcon,
+    iconProps: { width: 20, height: 20, fill: 'none', stroke: '#E5C6F3', strokeWidth: 1.5 },
+  },
+];
+---
+
+<Layout
+  title={t('newsletter.page.title')}
+  description={t('newsletter.page.description')}
+  canonical="https://tenbeltz.com/news-letter"
+>
+  <Header />
+  <main class="relative z-10 flex flex-col flex-1 overflow-x-hidden">
+    <section class="relative text-white bg-grid">
+      <div class="pointer-events-none absolute -top-16 right-0 h-72 w-72 rounded-full bg-pheromone-purple/20 blur-3xl"></div>
+      <div class="grid max-w-screen-xl grid-cols-1 gap-12 px-4 py-20 mx-auto lg:grid-cols-[1.1fr_0.9fr] lg:px-16 lg:py-24">
+        <ScrollReveal client:visible>
+          <div class="flex flex-col gap-y-6">
+            <span class="text-xs font-semibold tracking-[0.4em] text-pheromone-purple/70">{t('newsletter.tag')}</span>
+            <h1 class="text-4xl font-extrabold lg:text-5xl">{t('newsletter.h1')}</h1>
+            <p class="max-w-xl text-lg text-slate-300">
+              {t('newsletter.desc')}
+            </p>
+            <div class="grid gap-4 sm:grid-cols-2">
+              {highlights.map((item) => (
+                <div class="flex items-center gap-3 rounded-xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-4 py-3">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-full bg-pheromone-purple/20">
+                    <item.icon {...item.iconProps} />
+                  </span>
+                  <div>
+                    <p class="text-sm font-semibold text-white">{item.title}</p>
+                    <p class="text-xs text-slate-400">{item.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal client:visible>
+          <div class="flex flex-col gap-y-6 rounded-2xl border border-pheromone-purple/30 bg-[#0B0122CC]/80 px-6 py-7 backdrop-blur-[1px]">
+            <div>
+              <h2 class="text-2xl font-semibold">{t('newsletter.form.title')}</h2>
+              <p class="mt-2 text-sm text-slate-300">
+                {t('newsletter.form.desc')}
+              </p>
+            </div>
+            <NewsletterForm client:load lang={lang} />
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -4,20 +4,37 @@ import logo from "@/assets/icons/logo-tenbeltz-navbar-solid.svg"
 import { ReactComponent as OpenHamburgerMenu } from "@/assets/icons/bars-3-outline.svg";
 import { ReactComponent as CloseHamburgerMenu } from "@/assets/icons/x-mark-outline.svg";
 
+import { getLangFromUrl, useTranslations, languages } from "@/i18n/utils";
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { ReactComponent as ChevronDownIcon } from "@/assets/icons/chevron-down-outline.svg";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 interface NavElement {
   title: string;
   href: string;
 }
 
 const navElements: NavElement[] = [
-  { title: 'Inicio', href: '/' },
-  { title: 'Problema', href: '/#realidad' },
-  { title: 'Propuesta', href: '/#propuesta' },
-  { title: 'Qué hacemos', href: '/#que-hacemos' },
-  { title: 'Método', href: '/#metodo' },
-  { title: 'Precios', href: '/precios' },
-  { title: 'Contacto', href: '/#contact-section' },
+  { title: t('nav.home'), href: getRelativeLocaleUrl(lang, '/') },
+  { title: t('nav.problem'), href: getRelativeLocaleUrl(lang, '/') + '#realidad' },
+  { title: t('nav.proposal'), href: getRelativeLocaleUrl(lang, '/') + '#propuesta' },
+  { title: t('nav.whatWeDo'), href: getRelativeLocaleUrl(lang, '/') + '#que-hacemos' },
+  { title: t('nav.method'), href: getRelativeLocaleUrl(lang, '/') + '#metodo' },
+  { title: t('nav.pricing'), href: getRelativeLocaleUrl(lang, 'precios') },
+  { title: t('nav.contact'), href: getRelativeLocaleUrl(lang, '/') + '#contact-section' },
 ]
+
+function getPathWithoutLang(url: URL) {
+  const [, first, ...rest] = url.pathname.split('/');
+  if (first in languages) {
+    return rest.join('/');
+  }
+  return [first, ...rest].join('/');
+}
+
+const currentPath = getPathWithoutLang(Astro.url);
 ---
 
 <header class="fixed z-20 w-full text-white">
@@ -34,9 +51,9 @@ const navElements: NavElement[] = [
       </div>
     </div>
   
-    <div id="navbar-container" class="fixed inset-0 items-center justify-center w-full h-screen px-4 overflow-y-scroll transition-transform duration-500 translate-x-full lg:static lg:inset-auto scrollbar-hidden backdrop-blur-lg lg:translate-x-0 lg:px-0 bg-obsidian-shard/50 lg:backdrop-blur-none lg:w-auto lg:h-auto lg:bg-transparent lg:flex">
+    <div id="navbar-container" class="fixed inset-0 items-center justify-center w-full h-screen px-4 overflow-y-scroll transition-transform duration-500 translate-x-full lg:static lg:inset-auto scrollbar-hidden backdrop-blur-lg lg:translate-x-0 lg:px-0 bg-obsidian-shard/50 lg:backdrop-blur-none lg:w-auto lg:h-auto lg:bg-transparent lg:flex lg:overflow-visible">
       <div class="flex justify-between py-5 lg:hidden">
-        <a href="/">
+        <a href={getRelativeLocaleUrl(lang, '/')}>
           <Image alt="logo" src={logo} />
         </a>
         <CloseHamburgerMenu id="close-hamburger-menu" width="36" height="36" fill="#ffffff" strokeWidth="1.5" stroke="currentColor" className="hidden size-8" />
@@ -50,12 +67,32 @@ const navElements: NavElement[] = [
               </a>
             </li>
           ))}
+          <li class="relative group">
+            <button class="flex items-center gap-x-1 px-2 py-1.5 text-white hover:text-pheromone-purple transition-colors">
+              <span class="uppercase">{lang}</span>
+              <ChevronDownIcon className="w-4 h-4 transition-transform group-hover:rotate-180" strokeWidth={2} />
+            </button>
+            <div class="absolute left-0 lg:left-auto lg:right-0 hidden pt-2 group-hover:block min-w-[120px]">
+              <ul class="py-2 bg-obsidian-shard border border-white/10 rounded-lg shadow-xl backdrop-blur-lg">
+                {Object.entries(languages).map(([l, label]) => (
+                  <li>
+                    <a
+                      href={getRelativeLocaleUrl(l, currentPath)}
+                      class={`block px-4 py-2 hover:bg-white/5 transition-colors ${l === lang ? 'text-pheromone-purple font-medium' : 'text-slate-300 hover:text-white'}`}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
           <li>
             <a
-              href="/clientes"
+              href={getRelativeLocaleUrl(lang, 'clientes')}
               class="inline-flex items-center justify-center px-3 py-1.5 text-sm font-semibold border rounded-full border-pheromone-purple/60 text-pheromone-light bg-pheromone-purple/10 hover:bg-pheromone-purple/20 transition-all duration-300"
             >
-              Área Cliente
+              {t('nav.clientArea')}
             </a>
           </li>
         </ul>
@@ -108,6 +145,26 @@ const navElements: NavElement[] = [
     closeMenuButton.addEventListener('click', () => toggleHamburgerMenu());
   } else {
     console.error("Hamburger menu buttons are missing.");
+  }
+
+  // Language Selector
+  const langButton = document.getElementById('lang-selector-button');
+  const langDropdown = document.getElementById('lang-selector-dropdown');
+  const langChevron = document.getElementById('lang-selector-chevron');
+
+  if (langButton && langDropdown && langChevron) {
+    langButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langDropdown.classList.toggle('hidden');
+      langChevron.classList.toggle('rotate-180');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!langButton.contains(e.target as Node) && !langDropdown.contains(e.target as Node)) {
+        langDropdown.classList.add('hidden');
+        langChevron.classList.remove('rotate-180');
+      }
+    });
   }
 
   const debouncedAdjustNavbarLayout = debounce(adjustNavbarLayout, 50);

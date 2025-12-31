@@ -1,0 +1,268 @@
+---
+import Banner from '@/components/Banner.astro';
+import Header from '@/components/Header.astro';
+import Hero from '@/components/Hero.astro';
+import Footer from '@/components/Footer.astro';
+import Layout from '@/layouts/Layout.astro';
+import Contact from '@/components/Contact.astro';
+import { ScrollReveal } from '@/components/ScrollReveal';
+import graphicDesktop from '@/assets/images/graphic-why-tenbeltz-desktop.svg';
+import graphicMobile from '@/assets/images/graphic-why-tenbeltz-mobile.svg';
+import { ReactComponent as ChartOutlineIcon } from '@/assets/icons/chart-outline.svg';
+import { ReactComponent as ChartLineIcon } from '@/assets/icons/chart-line-outline.svg';
+import { ReactComponent as NotificationIcon } from '@/assets/icons/notification-outline.svg';
+import { ReactComponent as ExpandIcon } from '@/assets/icons/expand-outline.svg';
+import { ReactComponent as ProcessIcon } from '@/assets/icons/process-outline.svg';
+import { ReactComponent as AiIntegrationsIcon } from '@/assets/icons/ai-integrations-outline.svg';
+import { ReactComponent as TaskDoneIcon } from '@/assets/icons/task-done-outline.svg';
+import { ReactComponent as DocumentsIcon } from '@/assets/icons/documents-outline.svg';
+import { ReactComponent as PackageSearchIcon } from '@/assets/icons/package-search-outline.svg';
+import { ReactComponent as SecureIcon } from '@/assets/icons/secure-outline.svg';
+import { ReactComponent as PeopleIcon } from '@/assets/icons/people-outline.svg';
+import { ReactComponent as XMarkIcon } from '@/assets/icons/x-mark-outline.svg';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const fillIconProps = { width: 22, height: 22, fill: '#E5C6F3' };
+const strokeIconProps = { width: 22, height: 22, fill: 'none', stroke: '#E5C6F3', strokeWidth: 1.5 };
+
+const painPoints = [
+	{ icon: ChartOutlineIcon, text: t('home.painPoints.0.text'), iconProps: fillIconProps },
+	{ icon: ChartLineIcon, text: t('home.painPoints.1.text'), iconProps: fillIconProps },
+	{ icon: NotificationIcon, text: t('home.painPoints.2.text'), iconProps: strokeIconProps },
+	{ icon: ExpandIcon, text: t('home.painPoints.3.text'), iconProps: strokeIconProps },
+];
+
+const systemCapabilities = [
+	{ icon: TaskDoneIcon, text: t('home.capabilities.0.text'), iconProps: strokeIconProps },
+	{ icon: ChartLineIcon, text: t('home.capabilities.1.text'), iconProps: fillIconProps },
+	{ icon: ExpandIcon, text: t('home.capabilities.2.text'), iconProps: strokeIconProps },
+	{ icon: ChartOutlineIcon, text: t('home.capabilities.3.text'), iconProps: fillIconProps },
+];
+
+const whatWeDo = [
+	{ icon: ProcessIcon, text: t('home.whatWeDo.0.text'), iconProps: fillIconProps },
+	{ icon: AiIntegrationsIcon, text: t('home.whatWeDo.1.text'), iconProps: fillIconProps },
+	{ icon: TaskDoneIcon, text: t('home.whatWeDo.2.text'), iconProps: strokeIconProps },
+	{ icon: ChartLineIcon, text: t('home.whatWeDo.3.text'), iconProps: fillIconProps },
+	{ icon: ChartOutlineIcon, text: t('home.whatWeDo.4.text'), iconProps: fillIconProps },
+];
+
+const methodSteps = [
+	{ icon: DocumentsIcon, title: t('home.method.0.title'), detail: t('home.method.0.detail'), iconProps: strokeIconProps },
+	{ icon: PackageSearchIcon, title: t('home.method.1.title'), detail: t('home.method.1.detail'), iconProps: strokeIconProps },
+	{ icon: SecureIcon, title: t('home.method.2.title'), detail: t('home.method.2.detail'), iconProps: strokeIconProps },
+	{ icon: NotificationIcon, title: t('home.method.3.title'), detail: t('home.method.3.detail'), iconProps: strokeIconProps },
+];
+---
+
+<Layout	
+	title={t('home.seo.title')}
+	description={t('home.seo.description')}
+	canonical="https://tenbeltz.com"
+>
+	<Header />
+	<main class="relative z-10 flex flex-col flex-1 overflow-x-hidden">
+		<Hero 
+			title={t('home.hero.title')}
+			highlight={t('home.hero.highlight')}
+			subtitle={t('home.hero.subtitle')}
+			buttonHref="#contact-section" 
+			buttonText={t('home.hero.button')}
+			microcopy={t('home.hero.microcopy')}
+			animateHighlight={false}
+			showCursor={false}
+			stackHighlight={true}
+		/>
+
+		<section id="contexto" class="relative text-white">
+			<div class="max-w-screen-xl px-4 py-14 mx-auto lg:px-16 lg:py-16">
+				<ScrollReveal client:visible>
+					<p class="max-w-3xl text-lg text-slate-300">
+						{t('home.context.p1')}
+					</p>
+					<p class="mt-4 text-lg text-slate-300">
+						{t('home.context.p2')}
+					</p>
+				</ScrollReveal>
+			</div>
+		</section>
+
+		<section id="realidad" class="relative text-white bg-grid">
+			<div class="pointer-events-none absolute -top-16 right-0 h-64 w-64 rounded-full bg-pheromone-purple/20 blur-3xl"></div>
+			<div class="grid max-w-screen-xl grid-cols-1 gap-12 px-4 py-20 mx-auto lg:grid-cols-[1.1fr_1fr] lg:px-16 lg:py-24">
+				<ScrollReveal client:visible>
+					<div class="max-w-xl">
+						<h2 class="text-4xl font-bold">{t('home.problem.title')}</h2>
+						<p class="mt-4 text-lg text-slate-300">{t('home.problem.desc')}</p>
+					</div>
+				</ScrollReveal>
+				<ScrollReveal client:visible>
+					<div class="flex flex-col gap-y-4">
+						{painPoints.map((item) => (
+							<div class="flex items-center gap-4 rounded-xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-5 py-4">
+								<span class="flex h-11 w-11 items-center justify-center rounded-full bg-pheromone-purple/20">
+									<item.icon {...item.iconProps} />
+								</span>
+								<p class="text-slate-200">{item.text}</p>
+							</div>
+						))}
+						<p class="text-lg font-semibold text-white">Ahí es donde entramos nosotros.</p>
+					</div>
+				</ScrollReveal>
+			</div>
+		</section>
+
+		<section id="propuesta" class="relative text-white">
+			<div class="pointer-events-none absolute -bottom-10 left-0 h-64 w-64 rounded-full bg-pheromone-purple/20 blur-3xl"></div>
+			<div class="grid max-w-screen-xl grid-cols-1 gap-12 px-4 py-20 mx-auto lg:grid-cols-[1.1fr_1fr] lg:px-16 lg:py-24">
+				<ScrollReveal client:visible>
+					<div class="max-w-xl">
+						<h2 class="text-4xl font-bold">IA en producto, pensada para producción desde el inicio</h2>
+						<p class="mt-4 text-lg text-slate-300">En TenBeltz ayudamos a equipos SaaS a convertir ideas de IA en features estables, escalables y rentables.</p>
+					</div>
+				</ScrollReveal>
+				<ScrollReveal client:visible>
+					<div class="flex flex-col gap-y-4">
+						<div class="flex items-center gap-3 rounded-xl border border-slate-700/60 bg-[#12011F]/85 px-5 py-4">
+							<span class="flex h-10 w-10 items-center justify-center rounded-full bg-berry-blackmail/60">
+								<XMarkIcon width="20" height="20" fill="none" stroke="#E5C6F3" strokeWidth="1.5" />
+							</span>
+							<p class="text-lg font-semibold text-white">No hacemos demos.</p>
+						</div>
+						<div class="flex items-center gap-3 rounded-xl border border-slate-700/60 bg-[#12011F]/85 px-5 py-4">
+							<span class="flex h-10 w-10 items-center justify-center rounded-full bg-berry-blackmail/60">
+								<XMarkIcon width="20" height="20" fill="none" stroke="#E5C6F3" strokeWidth="1.5" />
+							</span>
+							<p class="text-lg font-semibold text-white">No vendemos horas.</p>
+						</div>
+						<div class="rounded-2xl border border-pheromone-purple/30 bg-gradient-to-br from-[#16002E] to-[#240044] px-5 py-5">
+							<p class="text-lg font-semibold text-white">Diseñamos sistemas de IA que:</p>
+							<div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+								{systemCapabilities.map((item) => (
+									<div class="flex items-center gap-3 rounded-lg border border-slate-700/40 bg-[#14002A]/70 px-4 py-3">
+										<span class="flex h-9 w-9 items-center justify-center rounded-full bg-pheromone-purple/20">
+											<item.icon {...item.iconProps} width="18" height="18" />
+										</span>
+										<p class="text-slate-200">{item.text}</p>
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+				</ScrollReveal>
+			</div>
+		</section>
+
+		<section id="que-hacemos" class="relative text-white bg-grid">
+			<div class="flex flex-col max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
+				<ScrollReveal client:visible>
+					<div class="max-w-3xl">
+						<h2 class="text-4xl font-bold">Qué hacemos exactamente</h2>
+					</div>
+				</ScrollReveal>
+				<ScrollReveal client:visible>
+					<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+						{whatWeDo.map((item) => (
+							<div class="flex flex-col gap-y-4 rounded-2xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-5 py-6 shadow-[0_0_25px_rgba(3,7,18,0.35)]">
+								<span class="flex h-11 w-11 items-center justify-center rounded-full bg-pheromone-purple/20">
+									<item.icon {...item.iconProps} />
+								</span>
+								<p class="text-lg font-semibold text-white">{item.text}</p>
+							</div>
+						))}
+					</div>
+				</ScrollReveal>
+				<ScrollReveal client:visible>
+					<p class="text-lg text-slate-300">Siempre con métricas claras y precios por fases.</p>
+				</ScrollReveal>
+			</div>
+		</section>
+
+		<section id="metodo" class="relative text-white">
+			<div class="pointer-events-none absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_20%_20%,rgba(135,45,255,0.18),transparent_45%)]"></div>
+			<div class="flex flex-col items-center justify-center max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
+				<ScrollReveal client:visible>
+					<div class="max-w-3xl text-center">
+						<h2 class="text-4xl font-bold">Nuestro método: producción primero</h2>
+						<p class="mt-4 text-lg text-slate-300">Antes de escalar, medimos. Antes de crecer, controlamos costes.</p>
+					</div>
+				</ScrollReveal>
+				<ScrollReveal client:visible className="w-full max-w-5xl">
+					<div class="relative">
+						<div class="hidden lg:block absolute left-6 right-6 top-6 h-px bg-pheromone-purple/30"></div>
+						<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+							{methodSteps.map((step) => (
+								<div class="relative rounded-2xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-5 py-6">
+									<div class="flex items-center gap-3">
+										<span class="flex h-10 w-10 items-center justify-center rounded-full bg-pheromone-purple/20">
+											<step.icon {...step.iconProps} width="20" height="20" />
+										</span>
+										<p class="text-sm font-semibold uppercase tracking-widest text-slate-400">{step.title}</p>
+									</div>
+									<p class="mt-4 text-lg font-semibold text-white">{step.detail}</p>
+								</div>
+							))}
+						</div>
+					</div>
+				</ScrollReveal>
+				<ScrollReveal client:visible className="mx-auto">
+					<picture>
+						<source srcset={graphicDesktop.src} media="(min-width: 641px)" />
+						<source srcset={graphicMobile.src} media="(max-width: 640px)" />
+						<img src={graphicMobile.src} alt="Gráfico que resume el método de TenBeltz" />
+					</picture>
+				</ScrollReveal>
+			</div>
+		</section>
+
+		<section id="para-quien" class="relative text-white bg-grid">
+			<div class="flex flex-col max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
+				<ScrollReveal client:visible>
+					<h2 class="text-4xl font-bold">{t('home.forYou.title')}</h2>
+				</ScrollReveal>
+				<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+					<ScrollReveal client:visible>
+						<div class="flex flex-col h-full px-6 py-7 transition-all rounded-2xl bg-gradient-to-br from-[#110126] to-[#1C0434] gap-y-4 border border-pheromone-purple/35">
+							<span class="flex h-11 w-11 items-center justify-center rounded-full bg-pheromone-purple/20">
+								<PeopleIcon width="22" height="22" fill="none" stroke="#E5C6F3" strokeWidth="1.5" />
+							</span>
+							<h3 class="text-2xl font-semibold">{t('home.forYou.yes.title')}</h3>
+							<ul class="flex flex-col gap-y-2 text-slate-300">
+								<li>• {t('home.forYou.yes.list.0')}</li>
+								<li>• {t('home.forYou.yes.list.1')}</li>
+								<li>• {t('home.forYou.yes.list.2')}</li>
+								<li>• {t('home.forYou.yes.list.3')}</li>
+							</ul>
+						</div>
+					</ScrollReveal>
+					<ScrollReveal client:visible>
+						<div class="flex flex-col h-full px-6 py-7 transition-all rounded-2xl bg-gradient-to-br from-[#1A0032] to-[#2A0A44] gap-y-4 border border-pheromone-purple/35">
+							<span class="flex h-11 w-11 items-center justify-center rounded-full bg-pheromone-purple/20">
+								<XMarkIcon width="22" height="22" fill="none" stroke="#E5C6F3" strokeWidth="1.5" />
+							</span>
+							<h3 class="text-2xl font-semibold">{t('home.forYou.no.title')}</h3>
+							<ul class="flex flex-col gap-y-2 text-slate-300">
+								<li>• {t('home.forYou.no.list.0')}</li>
+								<li>• {t('home.forYou.no.list.1')}</li>
+								<li>• {t('home.forYou.no.list.2')}</li>
+							</ul>
+						</div>
+					</ScrollReveal>
+				</div>
+			</div>
+		</section>
+
+		<Banner 
+			title={t('home.banner.title')}
+			paragraph={t('home.banner.paragraph')}
+			buttonText={t('home.banner.button')}
+			buttonHref={getRelativeLocaleUrl(lang, 'precios')}
+		/>
+		<Contact />
+	</main>
+	<Footer />
+</Layout>

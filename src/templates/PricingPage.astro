@@ -35,70 +35,48 @@ const orienterSteps = [
 const tripwirePlans = [
   {
     title: t('pricing.tripwire.0.title'),
-    tag: '2h',
-    price: '149€',
+    tag: '90 min',
+    price: '750€',
     description: t('pricing.tripwire.0.desc'),
     bullets: [
       t('pricing.tripwire.0.bullet.0'),
       t('pricing.tripwire.0.bullet.1'),
-      t('pricing.tripwire.0.bullet.2')
+      t('pricing.tripwire.0.bullet.2'),
+      t('pricing.tripwire.0.bullet.3')
     ],
     ctaLabel: t('pricing.tripwire.0.cta'),
-    ctaHref: 'https://calendly.com/tenbeltz/ia-workshop',
-  },
-  {
-    title: t('pricing.tripwire.1.title'),
-    tag: '90 min',
-    price: '99€',
-    description: t('pricing.tripwire.1.desc'),
-    bullets: [
-      t('pricing.tripwire.1.bullet.0'),
-      t('pricing.tripwire.1.bullet.1'),
-      t('pricing.tripwire.1.bullet.2')
-    ],
-    ctaLabel: t('pricing.tripwire.1.cta'),
-    ctaHref: 'https://checkout.tenbeltz.com/curso-ia',
+    ctaHref: '#contact-section',
   },
 ];
 
 const auditPlans = [
   {
-    title: t('pricing.audit.0.title'),
-    tag: '90 min',
-    price: '1.500€',
-    bullets: [
-      t('pricing.audit.0.bullet.0'),
-      t('pricing.audit.0.bullet.1'),
-      t('pricing.audit.0.bullet.2')
-    ],
-    ctaLabel: t('pricing.audit.0.cta'),
-    ctaHref: '/#contact-section',
-  },
-  {
     title: t('pricing.audit.1.title'),
-    tag: '1 semana',
+    tag: t('pricing.audit.1.tag'),
     price: '3.500€',
     bullets: [
       t('pricing.audit.1.bullet.0'),
       t('pricing.audit.1.bullet.1'),
       t('pricing.audit.1.bullet.2'),
-      t('pricing.audit.1.bullet.3')
+      t('pricing.audit.1.bullet.3'),
+      t('pricing.audit.1.bullet.4')
     ],
     ctaLabel: t('pricing.audit.1.cta'),
-    ctaHref: '/#contact-section',
+    ctaHref: '#contact-section',
   },
   {
     title: t('pricing.audit.2.title'),
-    tag: '2 semanas',
-    price: '5.000€',
+    tag: t('pricing.audit.2.tag'),
+    price: '6.000€',
     bullets: [
       t('pricing.audit.2.bullet.0'),
       t('pricing.audit.2.bullet.1'),
       t('pricing.audit.2.bullet.2'),
-      t('pricing.audit.2.bullet.3')
+      t('pricing.audit.2.bullet.3'),
+      t('pricing.audit.2.bullet.4')
     ],
     ctaLabel: t('pricing.audit.2.cta'),
-    ctaHref: '/#contact-section',
+    ctaHref: '#contact-section',
   },
 ];
 
@@ -111,28 +89,30 @@ const sprintPlans = [
       t('pricing.sprint.0.bullet.0'),
       t('pricing.sprint.0.bullet.1'),
       t('pricing.sprint.0.bullet.2'),
-      t('pricing.sprint.0.bullet.3')
+      t('pricing.sprint.0.bullet.3'),
+      t('pricing.sprint.0.bullet.4')
     ],
     ctaLabel: t('pricing.sprint.cta'),
-    ctaHref: '/#contact-section',
+    ctaHref: '#contact-section',
   },
   {
     title: t('pricing.sprint.1.title'),
     tag: t('pricing.sprint.1.tag'),
-    price: '7.000€',
+    price: '7.500€',
     bullets: [
       t('pricing.sprint.1.bullet.0'),
       t('pricing.sprint.1.bullet.1'),
       t('pricing.sprint.1.bullet.2'),
-      t('pricing.sprint.1.bullet.3')
+      t('pricing.sprint.1.bullet.3'),
+      t('pricing.sprint.1.bullet.4')
     ],
     ctaLabel: t('pricing.sprint.cta'),
-    ctaHref: '/#contact-section',
+    ctaHref: '#contact-section',
   },
   {
     title: t('pricing.sprint.2.title'),
     tag: t('pricing.sprint.2.tag'),
-    price: '10.000€',
+    price: '11.000€',
     bullets: [
       t('pricing.sprint.2.bullet.0'),
       t('pricing.sprint.2.bullet.1'),
@@ -141,7 +121,7 @@ const sprintPlans = [
       t('pricing.sprint.2.bullet.4')
     ],
     ctaLabel: t('pricing.sprint.cta'),
-    ctaHref: '/#contact-section',
+    ctaHref: '#contact-section',
   },
 ];
 ---
@@ -193,13 +173,13 @@ const sprintPlans = [
             <p class="mt-3 text-slate-300">{t('pricing.tripwire.desc')}</p>
           </div>
         </ScrollReveal>
-        <div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-2">
+        <div class="grid w-full grid-cols-1 gap-8 lg:max-w-2xl lg:mx-auto">
           {tripwirePlans.map((plan, index) => (
             <ScrollReveal client:visible delay={index * 150}>
               <div class="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-5 border border-pheromone-purple/30 hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:shadow-[0px_0px_20px_0px_rgba(117,4,205,1.00)] to-[#1D0043]/90">
                 <div class="flex items-center justify-between">
                   <h3 class="text-2xl font-semibold">{plan.title}</h3>
-                  <span class="px-3 py-1 text-xs font-semibold border rounded-full border-pheromone-purple/50 text-pheromone-purple">{plan.tag}</span>
+                  <span class="px-3 py-1 text-xs font-semibold border rounded-full border-pheromone-purple/50 text-pheromone-purple whitespace-nowrap">{plan.tag}</span>
                 </div>
                 <p class="text-slate-300">{plan.description}</p>
                 <p class="text-3xl font-bold text-white">{plan.price}</p>
@@ -227,13 +207,13 @@ const sprintPlans = [
             <p class="mt-3 text-slate-300">{t('pricing.audit.desc')}</p>
           </div>
         </ScrollReveal>
-        <div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-3">
+        <div class="grid w-full grid-cols-1 gap-8 lg:grid-cols-2">
           {auditPlans.map((plan, index) => (
             <ScrollReveal client:visible delay={index * 150}>
               <div class="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-5 border border-pheromone-purple/30 hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:shadow-[0px_0px_20px_0px_rgba(117,4,205,1.00)] to-[#1D0043]/90">
                 <div class="flex items-center justify-between">
                   <h3 class="text-2xl font-semibold">{plan.title}</h3>
-                  <span class="px-3 py-1 text-xs font-semibold border rounded-full border-pheromone-purple/50 text-pheromone-purple">{plan.tag}</span>
+                  <span class="px-3 py-1 text-xs font-semibold border rounded-full border-pheromone-purple/50 text-pheromone-purple whitespace-nowrap">{plan.tag}</span>
                 </div>
                 <p class="text-3xl font-bold text-white">{plan.price}</p>
                 <p class="text-sm font-semibold text-slate-400">{t('pricing.result')}</p>
@@ -266,7 +246,7 @@ const sprintPlans = [
               <div class="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-5 border border-pheromone-purple/30 hover:border-blueberry-glaze hover:bg-gradient-to-bl from-[#340076]/80 hover:shadow-[0px_0px_20px_0px_rgba(117,4,205,1.00)] to-[#1D0043]/90">
                 <div class="flex items-center justify-between">
                   <h3 class="text-2xl font-semibold">{plan.title}</h3>
-                  <span class="px-3 py-1 text-xs font-semibold border rounded-full border-pheromone-purple/50 text-pheromone-purple">{plan.tag}</span>
+                  <span class="px-3 py-1 text-xs font-semibold border rounded-full border-pheromone-purple/50 text-pheromone-purple whitespace-nowrap">{plan.tag}</span>
                 </div>
                 <p class="text-3xl font-bold text-white">{plan.price}</p>
                 <ul class="flex flex-col gap-2 text-sm text-slate-300">

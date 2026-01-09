@@ -110,7 +110,7 @@ const methodSteps = [
 								<p class="text-slate-200">{item.text}</p>
 							</div>
 						))}
-						<p class="text-lg font-semibold text-white">Ahí es donde entramos nosotros.</p>
+						<p class="text-lg font-semibold text-white">{t('home.problem.closer')}</p>
 					</div>
 				</ScrollReveal>
 			</div>
@@ -121,8 +121,8 @@ const methodSteps = [
 			<div class="grid max-w-screen-xl grid-cols-1 gap-12 px-4 py-20 mx-auto lg:grid-cols-[1.1fr_1fr] lg:px-16 lg:py-24">
 				<ScrollReveal client:visible>
 					<div class="max-w-xl">
-						<h2 class="text-4xl font-bold">IA en producto, pensada para producción desde el inicio</h2>
-						<p class="mt-4 text-lg text-slate-300">En TenBeltz ayudamos a equipos SaaS a convertir ideas de IA en features estables, escalables y rentables.</p>
+						<h2 class="text-4xl font-bold">{t('home.proposal.title')}</h2>
+						<p class="mt-4 text-lg text-slate-300">{t('home.proposal.desc')}</p>
 					</div>
 				</ScrollReveal>
 				<ScrollReveal client:visible>
@@ -131,16 +131,16 @@ const methodSteps = [
 							<span class="flex h-10 w-10 items-center justify-center rounded-full bg-berry-blackmail/60">
 								<XMarkIcon width="20" height="20" fill="none" stroke="#E5C6F3" strokeWidth="1.5" />
 							</span>
-							<p class="text-lg font-semibold text-white">No hacemos demos.</p>
+							<p class="text-lg font-semibold text-white">{t('home.proposal.noDemos')}</p>
 						</div>
 						<div class="flex items-center gap-3 rounded-xl border border-slate-700/60 bg-[#12011F]/85 px-5 py-4">
 							<span class="flex h-10 w-10 items-center justify-center rounded-full bg-berry-blackmail/60">
 								<XMarkIcon width="20" height="20" fill="none" stroke="#E5C6F3" strokeWidth="1.5" />
 							</span>
-							<p class="text-lg font-semibold text-white">No vendemos horas.</p>
+							<p class="text-lg font-semibold text-white">{t('home.proposal.noHours')}</p>
 						</div>
 						<div class="rounded-2xl border border-pheromone-purple/30 bg-gradient-to-br from-[#16002E] to-[#240044] px-5 py-5">
-							<p class="text-lg font-semibold text-white">Diseñamos sistemas de IA que:</p>
+							<p class="text-lg font-semibold text-white">{t('home.proposal.systemsTitle')}</p>
 							<div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
 								{systemCapabilities.map((item) => (
 									<div class="flex items-center gap-3 rounded-lg border border-slate-700/40 bg-[#14002A]/70 px-4 py-3">
@@ -161,7 +161,7 @@ const methodSteps = [
 			<div class="flex flex-col max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
 				<ScrollReveal client:visible>
 					<div class="max-w-3xl">
-						<h2 class="text-4xl font-bold">Qué hacemos exactamente</h2>
+						<h2 class="text-4xl font-bold">{t('home.whatWeDo.title')}</h2>
 					</div>
 				</ScrollReveal>
 				<ScrollReveal client:visible>
@@ -177,7 +177,7 @@ const methodSteps = [
 					</div>
 				</ScrollReveal>
 				<ScrollReveal client:visible>
-					<p class="text-lg text-slate-300">Siempre con métricas claras y precios por fases.</p>
+					<p class="text-lg text-slate-300">{t('home.whatWeDo.note')}</p>
 				</ScrollReveal>
 			</div>
 		</section>
@@ -187,8 +187,8 @@ const methodSteps = [
 			<div class="flex flex-col items-center justify-center max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24 gap-y-10">
 				<ScrollReveal client:visible>
 					<div class="max-w-3xl text-center">
-						<h2 class="text-4xl font-bold">Nuestro método: producción primero</h2>
-						<p class="mt-4 text-lg text-slate-300">Antes de escalar, medimos. Antes de crecer, controlamos costes.</p>
+						<h2 class="text-4xl font-bold">{t('home.method.title')}</h2>
+						<p class="mt-4 text-lg text-slate-300">{t('home.method.subtitle')}</p>
 					</div>
 				</ScrollReveal>
 				<ScrollReveal client:visible className="w-full max-w-5xl">
@@ -213,7 +213,7 @@ const methodSteps = [
 					<picture>
 						<source srcset={graphicDesktop.src} media="(min-width: 641px)" />
 						<source srcset={graphicMobile.src} media="(max-width: 640px)" />
-						<img src={graphicMobile.src} alt="Gráfico que resume el método de TenBeltz" />
+						<img src={graphicMobile.src} alt={t('home.method.graphAlt')} />
 					</picture>
 				</ScrollReveal>
 			</div>

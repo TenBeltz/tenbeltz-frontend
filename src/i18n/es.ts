@@ -16,6 +16,15 @@ export const es = {
   'footer.newsletterDesc': 'Ideas y recursos de IA en producción. Sin spam.',
   'footer.copyright': '© 2024 TenBeltz. Todos los derechos reservados.',
 
+  // Cookies
+  'cookies.ariaLabel': 'Aviso de cookies',
+  'cookies.tag': 'COOKIES',
+  'cookies.title': 'Solo lo esencial',
+  'cookies.description': 'Usamos cookies de analitica para entender el uso del sitio y mejorar la experiencia. Puedes aceptarlas o rechazarlas cuando quieras.',
+  'cookies.accept': 'Aceptar',
+  'cookies.decline': 'Rechazar',
+  'cookies.policy': 'Ver politica',
+
   // Home
   'home.seo.title': 'TenBeltz | IA en producción sin sorpresas',
   'home.seo.description': 'Diseñamos y construimos funcionalidades de IA para productos SaaS con fiabilidad medible, observabilidad y costes controlados.',
@@ -30,11 +39,18 @@ export const es = {
 
   'home.problem.title': 'El problema no es hacer IA. Es mantenerla en producción.',
   'home.problem.desc': 'La mayoría de equipos consiguen un prototipo que "funciona". Lo difícil viene después:',
+  'home.problem.closer': 'Ahí es donde entramos nosotros.',
 
   'home.painPoints.0.text': 'El coste por request nadie lo tiene claro',
   'home.painPoints.1.text': 'La fiabilidad cae cuando entra tráfico real',
   'home.painPoints.2.text': 'Nadie sabe cuándo el modelo empieza a fallar',
   'home.painPoints.3.text': 'Escalar usuarios significa escalar gasto',
+
+  'home.proposal.title': 'IA en producto, pensada para producción desde el inicio',
+  'home.proposal.desc': 'En TenBeltz ayudamos a equipos SaaS a convertir ideas de IA en features estables, escalables y rentables.',
+  'home.proposal.noDemos': 'No hacemos demos.',
+  'home.proposal.noHours': 'No vendemos horas.',
+  'home.proposal.systemsTitle': 'Diseñamos sistemas de IA que:',
 
   'home.capabilities.0.text': 'Se pueden medir',
   'home.capabilities.1.text': 'Se pueden monitorizar',
@@ -46,7 +62,11 @@ export const es = {
   'home.whatWeDo.2.text': 'Evaluaciones automáticas de fiabilidad',
   'home.whatWeDo.3.text': 'Observabilidad y guardrails',
   'home.whatWeDo.4.text': 'Optimización de latencia y costes',
+  'home.whatWeDo.title': 'Qué hacemos exactamente',
+  'home.whatWeDo.note': 'Siempre con métricas claras y precios por fases.',
 
+  'home.method.title': 'Nuestro método: producción primero',
+  'home.method.subtitle': 'Antes de escalar, medimos. Antes de crecer, controlamos costes.',
   'home.method.0.title': 'Audit',
   'home.method.0.detail': 'Decidir con datos',
   'home.method.1.title': 'Sprint',
@@ -55,6 +75,7 @@ export const es = {
   'home.method.2.detail': 'Integrar y proteger',
   'home.method.3.title': 'Acompañamiento',
   'home.method.3.detail': 'Mejorar sin romper',
+  'home.method.graphAlt': 'Gráfico que resume el método de TenBeltz',
 
   'home.banner.title': 'Precios claros, por fases',
   'home.banner.paragraph': 'Desde auditorías puntuales hasta sprints de implementación. Sabes lo que pagas y lo que obtienes.',
@@ -295,6 +316,9 @@ export const es = {
   'services.banner.title': 'Casos reales en producción',
   'services.banner.paragraph': 'Conoce cómo diseñamos features de IA fiables y escalables, y qué decisiones tomamos para controlar coste y calidad.',
   'services.banner.button': 'Ver casos',
+  'services.cta.title': 'Elige el siguiente paso para tu IA en producto',
+  'services.cta.subtitle': 'Cada fase está pensada para reducir riesgo: diagnóstico, sprint, producción y optimización continua. Descubre cuál encaja mejor con tu momento.',
+  'services.cta.button': 'Agenda una consulta',
 
   // Newsletter
   'newsletter.page.title': 'TenBeltz | Newsletter',
@@ -344,13 +368,32 @@ export const es = {
   'leadMagnet.loading': 'Cargando contenido...',
   'leadMagnet.defaultTitle': 'Contenido premium',
   'leadMagnet.tag': 'CONTENIDO GRATUITO',
+  'leadMagnet.description.fallback': 'Completa el formulario y recibe el material por email en minutos.',
+  'leadMagnet.bullets.0': 'Acceso inmediato por email',
+  'leadMagnet.bullets.1': 'Contenido aplicable a IA en SaaS',
+  'leadMagnet.bullets.2': 'Guías y plantillas listas para usar',
+  'leadMagnet.bullets.3': 'Enfoque en producción y escalabilidad',
+  'leadMagnet.access.title.ready': 'Tu acceso está verificado',
+  'leadMagnet.access.title.default': 'Accede al contenido',
+  'leadMagnet.access.desc.ready': 'Descarga el contenido desde el botón inferior. El enlace es personal y seguro.',
+  'leadMagnet.access.desc.default': 'Completa el formulario y te enviaremos el acceso directo por email.',
   'leadMagnet.preview.resource': 'Recurso',
+  'leadMagnet.preview.pdf': 'Vista previa PDF',
+  'leadMagnet.preview.ppt': 'Vista previa PPT',
+  'leadMagnet.preview.unavailable': 'Vista previa no disponible para este formato.',
+  'leadMagnet.download.notice': 'Enlace verificado. Descarga disponible para este email.',
+  'leadMagnet.download.button': 'Descargar contenido',
+  'leadMagnet.error.load': 'No se pudo cargar el contenido.',
   'leadMagnet.form.alert.policy': 'Falta el consentimiento',
   'leadMagnet.form.alert.policyDesc': 'Debes aceptar las políticas para continuar.',
+  'leadMagnet.form.error.submit': 'No se pudo enviar el formulario.',
   'leadMagnet.form.success.title': 'Listo',
   'leadMagnet.form.success.desc': 'Te hemos enviado un enlace de descarga a tu email.',
   'leadMagnet.form.error.title': 'Error',
   'leadMagnet.form.error.default': 'Error inesperado.',
+  'leadMagnet.form.selectPlaceholder': 'Selecciona una opción',
+  'leadMagnet.form.submit': 'Recibir contenido',
+  'leadMagnet.form.submitting': 'Enviando...',
 
   // 404
   '404.title': 'Página no encontrada',

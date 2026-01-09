@@ -1,19 +1,27 @@
+---
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const policyHref = `${getRelativeLocaleUrl(lang, 'politicas')}#cookies`;
+---
+
 <div
   id="cookie-consent"
   class="fixed bottom-5 right-5 z-50 hidden max-w-sm rounded-2xl border border-pheromone-purple/30 bg-[#0B0122F2] p-5 text-white shadow-[0_18px_50px_-25px_rgba(110,0,255,0.6)] backdrop-blur-md"
   role="dialog"
   aria-live="polite"
   aria-modal="false"
-  aria-label="Aviso de cookies"
+  aria-label={t('cookies.ariaLabel')}
 >
   <div class="flex flex-col gap-4">
     <div class="flex flex-col gap-1">
-      <span class="text-xs font-semibold tracking-[0.3em] text-pheromone-purple/80">COOKIES</span>
-      <h2 class="text-lg font-semibold">Solo lo esencial</h2>
+      <span class="text-xs font-semibold tracking-[0.3em] text-pheromone-purple/80">{t('cookies.tag')}</span>
+      <h2 class="text-lg font-semibold">{t('cookies.title')}</h2>
     </div>
     <p class="text-sm text-slate-300">
-      Usamos cookies de analitica para entender el uso del sitio y mejorar la experiencia. Puedes aceptarlas o
-      rechazarlas cuando quieras.
+      {t('cookies.description')}
     </p>
     <div class="flex flex-wrap items-center gap-3">
       <button
@@ -21,20 +29,20 @@
         type="button"
         class="rounded-full bg-pheromone-purple px-4 py-2 text-xs font-semibold text-white transition hover:bg-pheromone-light"
       >
-        Aceptar
+        {t('cookies.accept')}
       </button>
       <button
         id="cookie-decline"
         type="button"
         class="rounded-full border border-pheromone-purple/60 px-4 py-2 text-xs font-semibold text-pheromone-purple transition hover:border-pheromone-purple hover:text-white"
       >
-        Rechazar
+        {t('cookies.decline')}
       </button>
       <a
-        href="/politicas#cookies"
+        href={policyHref}
         class="text-xs font-semibold text-slate-300 underline underline-offset-4 transition hover:text-white"
       >
-        Ver politica
+        {t('cookies.policy')}
       </a>
     </div>
   </div>

@@ -68,6 +68,14 @@ export default function LeadMagnetForm({
   lang?: keyof typeof ui;
 }) {
   const t = useReactTranslation(lang);
+  const policyHref = lang === defaultLang ? "/politicas" : `/${lang}/politicas`;
+  const policyText = t("newsletter.form.policy").replace(t("newsletter.form.policyLink"), "");
+  const bulletItems = [
+    t("leadMagnet.bullets.0"),
+    t("leadMagnet.bullets.1"),
+    t("leadMagnet.bullets.2"),
+    t("leadMagnet.bullets.3"),
+  ];
   const [leadMagnet, setLeadMagnet] = useState<LeadMagnet | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -83,7 +91,7 @@ export default function LeadMagnetForm({
     setLoading(true);
     fetch(`${API_BASE}/lead-magnets/${magnetId}/`)
       .then(async (response) => {
-        if (!response.ok) throw new Error("No se pudo cargar el contenido.");
+        if (!response.ok) throw new Error(t("leadMagnet.error.load"));
         return response.json();
       })
       .then((data: LeadMagnet) => {
@@ -99,7 +107,7 @@ export default function LeadMagnetForm({
         }
       })
       .catch((err: Error) => {
-        if (isMounted) setError(err.message || "Error al cargar el contenido.");
+        if (isMounted) setError(err.message || t("leadMagnet.error.load"));
       })
       .finally(() => {
         if (isMounted) setLoading(false);
@@ -108,7 +116,7 @@ export default function LeadMagnetForm({
     return () => {
       isMounted = false;
     };
-  }, [magnetId]);
+  }, [magnetId, lang]);
 
   const fields = useMemo(() => leadMagnet?.fields || [], [leadMagnet]);
   const downloadUrl = downloadToken
@@ -155,7 +163,7 @@ export default function LeadMagnetForm({
 
       const data = await response.json();
       if (!response.ok) {
-        const rawMessage = data?.detail || data?.fields || "No se pudo enviar el formulario.";
+        const rawMessage = data?.detail || data?.fields || t("leadMagnet.form.error.submit");
         let message = "";
         if (typeof rawMessage === "string") {
           message = rawMessage;
@@ -164,7 +172,7 @@ export default function LeadMagnetForm({
         } else if (rawMessage && typeof rawMessage === "object") {
           message = Object.values(rawMessage).flat().join(" ");
         } else {
-          message = "No se pudo enviar el formulario.";
+          message = t("leadMagnet.form.error.submit");
         }
         throw new Error(message);
       }
@@ -209,18 +217,13 @@ export default function LeadMagnetForm({
           </h1>
           <p className="text-lg text-slate-300">
             {leadMagnet?.description ||
-              "Completa el formulario y recibe el material por email en minutos."}
+              t("leadMagnet.description.fallback")}
           </p>
         </ScrollReveal>
         <ScrollReveal className="grid gap-4 md:grid-cols-2 min-w-0">
-          {[
-            "Acceso inmediato por email",
-            "Contenido aplicable a IA en SaaS",
-            "Guías y plantillas listas para usar",
-            "Enfoque en producción y escalabilidad",
-          ].map((item) => (
+          {bulletItems.map((item, index) => (
             <div
-              key={item}
+              key={`${item}-${index}`}
               className="flex items-center gap-3 rounded-lg border border-pheromone-purple/30 bg-[#0B0122CC]/80 px-4 py-3 min-w-0"
             >
               <span className="inline-flex h-2 w-2 rounded-full bg-pheromone-purple"></span>
@@ -233,12 +236,12 @@ export default function LeadMagnetForm({
       <ScrollReveal className="flex flex-col h-full px-6 py-7 transition-all backdrop-blur-[1px] rounded-lg bg-[#0B0122CC]/80 gap-y-6 border border-pheromone-purple/30 min-w-0">
         <div>
           <h2 className="text-2xl font-semibold">
-            {isDownloadReady ? "Tu acceso está verificado" : "Accede al contenido"}
+            {isDownloadReady ? t("leadMagnet.access.title.ready") : t("leadMagnet.access.title.default")}
           </h2>
           <p className="mt-2 text-sm text-slate-300">
             {isDownloadReady
-              ? "Descarga el contenido desde el botón inferior. El enlace es personal y seguro."
-              : "Completa el formulario y te enviaremos el acceso directo por email."}
+              ? t("leadMagnet.access.desc.ready")
+              : t("leadMagnet.access.desc.default")}
           </p>
         </div>
 
@@ -276,19 +279,19 @@ export default function LeadMagnetForm({
               <iframe
                 src={leadMagnet.file_url}
                 className="w-full h-72 bg-black"
-                title="Preview PDF"
+                title={t("leadMagnet.preview.pdf")}
               />
             )}
             {previewKind === "ppt" && (
               <iframe
                 src={`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(leadMagnet.file_url,)}`}
                 className="w-full h-72 bg-black"
-                title="Preview PPT"
+                title={t("leadMagnet.preview.ppt")}
               />
             )}
             {previewKind === "unknown" && (
               <div className="px-4 py-6 text-sm text-slate-400">
-                Vista previa no disponible para este formato.
+                {t("leadMagnet.preview.unavailable")}
               </div>
             )}
           </div>
@@ -298,14 +301,14 @@ export default function LeadMagnetForm({
           <div className="flex flex-col gap-y-4">
             <div className="flex items-center gap-3 rounded-lg border border-pheromone-purple/20 bg-[#0B0122]/60 px-4 py-3 text-sm text-slate-300">
               <span className="inline-flex h-2 w-2 rounded-full bg-pheromone-purple"></span>
-              Enlace verificado. Descarga disponible para este email.
+              {t("leadMagnet.download.notice")}
             </div>
             <button
               type="button"
               onClick={handleDownload}
               className="btn bg-pheromone-purple hover:bg-sapphire-siren text-white text-center font-semibold"
             >
-              Descargar contenido
+              {t("leadMagnet.download.button")}
             </button>
           </div>
         ) : (
@@ -349,11 +352,11 @@ export default function LeadMagnetForm({
                 ) : field.type === "select" ? (
                   <select
                     required={Boolean(field.required)}
-                    value={fieldValues[field.key] || ""}
-                    onChange={(event) => handleFieldChange(field.key, event.target.value)}
-                    className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
-                  >
-                    <option value="">Selecciona una opción</option>
+                  value={fieldValues[field.key] || ""}
+                  onChange={(event) => handleFieldChange(field.key, event.target.value)}
+                  className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+                >
+                    <option value="">{t("leadMagnet.form.selectPlaceholder")}</option>
                     {(field.options || []).map((option) => (
                       <option key={option} value={option}>
                         {option}
@@ -381,7 +384,14 @@ export default function LeadMagnetForm({
                 required
               />
               <span>
-                Acepto las <a href="/politicas" className="text-pheromone-purple hover:text-pheromone-light underline underline-offset-2">políticas de uso y privacidad</a>.
+                {policyText}
+                <a
+                  href={policyHref}
+                  className="text-pheromone-purple hover:text-pheromone-light underline underline-offset-2"
+                >
+                  {t("newsletter.form.policyLink")}
+                </a>
+                .
               </span>
             </label>
 
@@ -390,7 +400,7 @@ export default function LeadMagnetForm({
               disabled={loading || submitting}
               className="btn bg-pheromone-purple hover:bg-sapphire-siren text-white text-center font-semibold disabled:opacity-60"
             >
-              {submitting ? "Enviando..." : "Recibir contenido"}
+              {submitting ? t("leadMagnet.form.submitting") : t("leadMagnet.form.submit")}
             </button>
           </form>
         )}

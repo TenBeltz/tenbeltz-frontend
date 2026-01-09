@@ -16,6 +16,15 @@ export const en = {
   'footer.newsletterDesc': 'Ideas and resources for AI in production. No spam.',
   'footer.copyright': '© 2024 TenBeltz. All rights reserved.',
 
+  // Cookies
+  'cookies.ariaLabel': 'Cookie notice',
+  'cookies.tag': 'COOKIES',
+  'cookies.title': 'Only the essentials',
+  'cookies.description': 'We use analytics cookies to understand site usage and improve the experience. You can accept or reject them anytime.',
+  'cookies.accept': 'Accept',
+  'cookies.decline': 'Decline',
+  'cookies.policy': 'View policy',
+
   // Home
   'home.seo.title': 'TenBeltz | AI in production without surprises',
   'home.seo.description': 'We design and build AI functionalities for SaaS products with measurable reliability, observability, and controlled costs.',
@@ -30,11 +39,18 @@ export const en = {
 
   'home.problem.title': 'The problem isn\'t doing AI. It\'s keeping it in production.',
   'home.problem.desc': 'Most teams get a prototype that "works". The hard part comes later:',
+  'home.problem.closer': 'That\'s where we come in.',
 
   'home.painPoints.0.text': 'Cost per request is unclear',
   'home.painPoints.1.text': 'Reliability drops with real traffic',
   'home.painPoints.2.text': 'No one knows when the model starts failing',
   'home.painPoints.3.text': 'Scaling users means scaling spend',
+
+  'home.proposal.title': 'AI in product, designed for production from the start',
+  'home.proposal.desc': 'At TenBeltz we help SaaS teams turn AI ideas into stable, scalable, and profitable features.',
+  'home.proposal.noDemos': 'We don\'t do demos.',
+  'home.proposal.noHours': 'We don\'t sell hours.',
+  'home.proposal.systemsTitle': 'We design AI systems that:',
 
   'home.capabilities.0.text': 'Measurable',
   'home.capabilities.1.text': 'Monitorable',
@@ -46,7 +62,11 @@ export const en = {
   'home.whatWeDo.2.text': 'Automatic reliability evaluations',
   'home.whatWeDo.3.text': 'Observability and guardrails',
   'home.whatWeDo.4.text': 'Latency and cost optimization',
+  'home.whatWeDo.title': 'What we do exactly',
+  'home.whatWeDo.note': 'Always with clear metrics and phased pricing.',
 
+  'home.method.title': 'Our method: production first',
+  'home.method.subtitle': 'Before scaling, we measure. Before growing, we control costs.',
   'home.method.0.title': 'Audit',
   'home.method.0.detail': 'Decide with data',
   'home.method.1.title': 'Sprint',
@@ -55,6 +75,7 @@ export const en = {
   'home.method.2.detail': 'Integrate and protect',
   'home.method.3.title': 'Support',
   'home.method.3.detail': 'Improve without breaking',
+  'home.method.graphAlt': 'Graphic summarizing the TenBeltz method',
 
   'home.banner.title': 'Clear pricing, by phases',
   'home.banner.paragraph': 'From one-off audits to implementation sprints. You know what you pay and what you get.',
@@ -295,6 +316,9 @@ export const en = {
   'services.banner.title': 'Real cases in production',
   'services.banner.paragraph': 'Learn how we design reliable and scalable AI features, and what decisions we take to control cost and quality.',
   'services.banner.button': 'See cases',
+  'services.cta.title': 'Choose the next step for your AI in product',
+  'services.cta.subtitle': 'Each phase is designed to reduce risk: diagnosis, sprint, production, and continuous optimization. Find what fits your moment.',
+  'services.cta.button': 'Book a consultation',
 
   // Newsletter
   'newsletter.page.title': 'TenBeltz | Newsletter',
@@ -344,13 +368,32 @@ export const en = {
   'leadMagnet.loading': 'Loading content...',
   'leadMagnet.defaultTitle': 'Premium content',
   'leadMagnet.tag': 'FREE CONTENT',
+  'leadMagnet.description.fallback': 'Complete the form and get the material by email in minutes.',
+  'leadMagnet.bullets.0': 'Instant access by email',
+  'leadMagnet.bullets.1': 'Content applicable to AI in SaaS',
+  'leadMagnet.bullets.2': 'Guides and templates ready to use',
+  'leadMagnet.bullets.3': 'Focus on production and scalability',
+  'leadMagnet.access.title.ready': 'Your access is verified',
+  'leadMagnet.access.title.default': 'Access the content',
+  'leadMagnet.access.desc.ready': 'Download the content from the button below. The link is personal and secure.',
+  'leadMagnet.access.desc.default': 'Complete the form and we\'ll send you direct access by email.',
   'leadMagnet.preview.resource': 'Resource',
+  'leadMagnet.preview.pdf': 'PDF preview',
+  'leadMagnet.preview.ppt': 'PPT preview',
+  'leadMagnet.preview.unavailable': 'Preview not available for this format.',
+  'leadMagnet.download.notice': 'Verified link. Download available for this email.',
+  'leadMagnet.download.button': 'Download content',
+  'leadMagnet.error.load': 'Could not load the content.',
   'leadMagnet.form.alert.policy': 'Consent missing',
   'leadMagnet.form.alert.policyDesc': 'You must accept the policies to continue.',
+  'leadMagnet.form.error.submit': 'Could not submit the form.',
   'leadMagnet.form.success.title': 'Done',
   'leadMagnet.form.success.desc': 'We have sent a download link to your email.',
   'leadMagnet.form.error.title': 'Error',
   'leadMagnet.form.error.default': 'Unexpected error.',
+  'leadMagnet.form.selectPlaceholder': 'Select an option',
+  'leadMagnet.form.submit': 'Get content',
+  'leadMagnet.form.submitting': 'Sending...',
 
   // 404
   '404.title': 'Page not found',

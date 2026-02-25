@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 import svgr from '@svgr/rollup';
 import node from '@astrojs/node';
+import sitemap from '@astrojs/sitemap';
 
 import react from '@astrojs/react';
 
@@ -13,7 +14,18 @@ export default defineConfig({
   },
   output: 'server',
   adapter: node({ mode: 'standalone' }),
-  integrations: [react()],
+  integrations: [
+    react(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'es',
+        locales: {
+          es: 'es-ES',
+          en: 'en-US',
+        },
+      },
+    }),
+  ],
   i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],

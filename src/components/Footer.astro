@@ -3,7 +3,6 @@ import { ReactComponent as LogoInstagram } from '@/assets/icons/logo-instagram-o
 import { ReactComponent as LogoLinkedin } from '@/assets/icons/logo-linkedin-outline.svg';
 import { contactInfo } from './Contact.astro';
 import { ScrollReveal } from './ScrollReveal';
-import NewsletterForm from './NewsletterForm';
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
@@ -63,15 +62,6 @@ const sections: FooterLink[] = [
           <li><a href={`mailto:${contactInfo.email}`} class="transition-colors text-slate-300 hover:text-slate-100">{contactInfo.email}</a></li>
           {contactInfo.phones.map(phone => <li><a href={`tel:${phone}`} class="transition-colors text-slate-300 hover:text-slate-100">{phone}</a></li>)}
         </ul>
-      </ScrollReveal>
-      <ScrollReveal client:visible delay={300} className="hidden flex flex-col gap-y-5 min-w-[220px] max-w-[320px]">
-        <div>
-          <h4 class="font-semibold">{t('footer.newsletter')}</h4>
-          <p class="mt-2 text-xs text-slate-300">
-            {t('footer.newsletterDesc')}
-          </p>
-        </div>
-        <NewsletterForm client:idle variant="footer" source="footer" />
       </ScrollReveal>
     </div>
     

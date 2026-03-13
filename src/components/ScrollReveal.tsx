@@ -1,8 +1,8 @@
 "use client"
 
-import { useRef, useEffect, useState, type ReactNode } from "react"
+import { useRef, useEffect, useState, type HTMLAttributes, type ReactNode } from "react"
 
-interface ScrollRevealProps {
+interface ScrollRevealProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
   className?: string
   delay?: number
@@ -18,6 +18,8 @@ export function ScrollReveal({
   direction = "up",
   distance = 50,
   once = true,
+  style,
+  ...rest
 }: ScrollRevealProps) {
   const [isVisible, setIsVisible] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -67,12 +69,14 @@ export function ScrollReveal({
   return (
     <div
       ref={ref}
-      className={`transition-all duration-1000 ease-out ${className}`}
+      className={`transition-all duration-1000 ease-out will-change-transform ${className}`}
       style={{
         transform: getTransform(),
         opacity: isVisible ? 1 : 0,
         transitionDelay: `${delay}ms`,
+        ...style,
       }}
+      {...rest}
     >
       {children}
     </div>

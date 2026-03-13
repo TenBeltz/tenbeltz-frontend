@@ -4,6 +4,8 @@ interface Props {
 	description: string
 	canonical?: string
 	image?: string
+	lang?: string
+	noindex?: boolean
 }
 
 const {
@@ -11,14 +13,26 @@ const {
 	description,
 	canonical,
 	image = './favicon/favicon.svg',
+	lang = 'es',
+	noindex = false,
 } = Astro.props as Props
 
 const determineCanonicalURL = () => {
-	if (Astro.url.host.includes("localhost")) return "http://localhost:4321"
+	if (Astro.url.host.includes("localhost")) return `http://localhost:4321${Astro.url.pathname}`
 	return canonical || Astro.url.pathname;
 }
 
 const canonicalURL = new URL(determineCanonicalURL(), Astro.site)
+
+// Build hreflang alternate URLs from the canonical
+const canonicalPath = canonicalURL.pathname // e.g. /precios or /en/precios
+const isEnglish = canonicalPath.startsWith('/en/') || canonicalPath === '/en'
+const basePath = isEnglish ? canonicalPath.replace(/^\/en/, '') || '/' : canonicalPath
+const esURL = new URL(basePath, Astro.site)
+const enURL = new URL(`/en${basePath === '/' ? '' : basePath}`, Astro.site)
+
+const ogLocale = lang === 'en' ? 'en_US' : 'es_ES'
+const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_US'
 ---
 
 <title>{title}</title>
@@ -27,10 +41,11 @@ const canonicalURL = new URL(determineCanonicalURL(), Astro.site)
 <meta name="description" content={description} />
 
 <link rel="canonical" href={canonicalURL} />
+<link rel="alternate" hreflang="es" href={esURL} />
+<link rel="alternate" hreflang="en" href={enURL} />
+<link rel="alternate" hreflang="x-default" href={esURL} />
 <meta name="viewport" content="width=device-width" />
 <meta name="theme-color" content="#02010A" />
-
-<meta name="keywords" content="IA en producto, IA para SaaS, IA en producción, evaluaciones IA, evals, observabilidad IA, control de costes IA, privacidad y seguridad IA, RAG, agentes, features de IA, despliegue en producción, escalabilidad IA, latencia IA, guardrails IA, desarrollo de producto con IA" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@TenBeltz" />
@@ -44,10 +59,11 @@ const canonicalURL = new URL(determineCanonicalURL(), Astro.site)
 <meta property="og:url" content={Astro.url} />
 <meta property="og:site_name" content="TenBeltz" />
 <meta property="og:type" content="website" />
-<meta property="og:locale" content="es_ES" />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:locale:alternate" content={ogLocaleAlternate} />
 
-<meta name="robots" content="index, follow" />
-<meta name="googlebot" content="index, follow" />
+<meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
+<meta name="googlebot" content={noindex ? 'noindex, follow' : 'index, follow'} />
 
 <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">

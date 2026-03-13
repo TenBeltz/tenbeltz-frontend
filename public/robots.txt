@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://tenbeltz.com/sitemap.xml
+Sitemap: https://tenbeltz.com/sitemap-index.xml

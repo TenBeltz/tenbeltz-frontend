@@ -1,5 +1,6 @@
 ---
 import { Picture } from 'astro:assets';
+import { HeroScene } from '@/components/HeroScene';
 import backgroundGradientPC from '/public/images/img/hero-gradient-background-pc.png';
 import backgroundGradientMobile from '/public/images/img/hero-gradient-background-mobile.png';
 
@@ -30,8 +31,9 @@ const {
 } = Astro.props as Props;
 ---
 
-<section class="relative h-screen text-white">
-  <div class="flex flex-col items-center justify-center h-full px-4 py-20 mx-auto text-center max-w-screen-2xl gap-y-6 lg:px-16 lg:py-28">
+<section class="relative h-screen overflow-hidden text-white section-shell">
+  <HeroScene client:media="(min-width: 1024px)" />
+  <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 py-20 mx-auto text-center max-w-screen-2xl gap-y-6 lg:px-16 lg:py-28">
     <div class="flex gap-x-2">
       <h1 class={`inline-flex flex-col items-center gap-x-2 gap-y-2 text-5xl font-extrabold lg:text-6xl ${stackHighlight ? 'lg:flex-col lg:whitespace-normal' : 'lg:flex-row lg:whitespace-nowrap'}`}>
         <span>{title}</span>
@@ -52,7 +54,10 @@ const {
       <h2 class="text-lg">{subtitle}</h2>
       {supportingLine && <p class="text-base text-slate-300">{supportingLine}</p>}
     </div>
-    <a href={buttonHref} class="text-lg font-medium leading-6 btn bg-pheromone-purple hover:bg-sapphire-siren animate-fade">
+    <a
+      href={buttonHref}
+      class="text-lg font-medium leading-6 btn bg-pheromone-purple hover:bg-sapphire-siren animate-fade hero-cta"
+    >
       {buttonText}
     </a>
     {microcopy && <p class="text-sm text-slate-400">{microcopy}</p>}

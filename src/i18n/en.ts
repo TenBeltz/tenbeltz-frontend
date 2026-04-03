@@ -77,7 +77,7 @@ export const en = {
 
   'home.banner.title': 'Clear pricing, by phases',
   'home.banner.paragraph': 'From one-off audits to implementation sprints. You know what you pay and what you get.',
-  'home.banner.button': 'See pricing',
+  'home.banner.button': 'Request diagnosis',
 
   'home.forYou.title': 'Is TenBeltz for you?',
   'home.forYou.yes.title': 'Yes, if...',

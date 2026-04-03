@@ -77,7 +77,7 @@ export const es = {
 
   'home.banner.title': 'Precios claros, por fases',
   'home.banner.paragraph': 'Desde auditorías puntuales hasta sprints de implementación. Sabes lo que pagas y lo que obtienes.',
-  'home.banner.button': 'Ver precios',
+  'home.banner.button': 'Solicitar diagnóstico',
 
   'home.forYou.title': '¿Es TenBeltz para ti?',
   'home.forYou.yes.title': 'Sí, si...',

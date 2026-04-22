@@ -8,6 +8,7 @@ export const en = {
   'nav.pricing': 'Pricing',
   'nav.contact': 'Contact',
   'nav.clientArea': 'Client Area',
+  'nav.whoBehind': 'Who is behind',
 
   // Footer
   'footer.sections': 'Sections',
@@ -74,6 +75,12 @@ export const en = {
   'home.method.3.title': 'Support',
   'home.method.3.detail': 'Improve without breaking',
   'home.method.graphAlt': 'Graphic summarizing the TenBeltz method',
+
+  // Founder teaser (home, above contact)
+  'home.founderTeaser.eyebrow': 'Before you write',
+  'home.founderTeaser.title': 'Hi, I am Aritz',
+  'home.founderTeaser.description': 'Co-founder of TenBeltz. If you fill in the form, I am the one who reads it and gets back to you.',
+  'home.founderTeaser.cta': 'Meet who is behind',
 
   'home.banner.title': 'Clear pricing, by phases',
   'home.banner.paragraph': 'From one-off audits to implementation sprints. You know what you pay and what you get.',
@@ -315,6 +322,64 @@ export const en = {
   'services.cta.title': 'Choose the next step for your AI in product',
   'services.cta.subtitle': 'Each phase is designed to reduce risk: diagnosis, sprint, production, and continuous optimization. Find what fits your moment.',
   'services.cta.button': 'Book a consultation',
+
+  // Who is behind
+  'whobehind.seo.title': 'Who is behind | TenBeltz',
+  'whobehind.seo.description': 'The person behind TenBeltz: Aritz Jaber, production-AI engineer. Measurable reliability, observability, and cost control.',
+
+  'whobehind.hero.eyebrow': 'Who is behind',
+  'whobehind.hero.title': 'Behind TenBeltz',
+  'whobehind.hero.highlight': 'there is a person',
+  'whobehind.hero.subtitle': 'We are not a faceless consultancy. If you work with us, you work with me. Here is who I am and why I do what I do.',
+  'whobehind.hero.name': 'Aritz Jaber Lopes',
+  'whobehind.hero.role': 'Co-founder and technical lead at TenBeltz',
+  'whobehind.hero.location': 'Bilbao, Spain',
+  'whobehind.hero.chip.0': 'Co-founder TenBeltz',
+  'whobehind.hero.chip.1': 'CTO @ Biiak',
+  'whobehind.hero.chip.2': 'AI Researcher @ Irontec',
+  'whobehind.hero.photoAlt': 'Aritz Jaber Lopes, co-founder of TenBeltz',
+
+  'whobehind.story.eyebrow': 'The story',
+  'whobehind.story.title': 'How I got here',
+  'whobehind.story.p1': 'A few years ago I left a career that did not fulfil me and bet on programming. I found in software a way to combine my curiosity for how things work with the desire to build something useful for others.',
+  'whobehind.story.p2': 'I started as a freelance developer and eventually co-founded TenBeltz. Today we help SaaS teams bring AI to production with measurable reliability, observability, and cost control, and we also partner with consultancies on software projects that cannot fail.',
+  'whobehind.story.quote': 'I do not build for the demo. I build for the day-to-day of teams that cannot afford to fail.',
+  'whobehind.story.quoteAuthor': 'Aritz Jaber, co-founder of TenBeltz',
+
+  'whobehind.principles.eyebrow': 'How I work',
+  'whobehind.principles.title': 'The four principles behind every project',
+  'whobehind.principles.subtitle': 'The same ones I use to help teams go from a demo that impresses to a system that holds.',
+  'whobehind.principles.items.0.title': 'Production, not demos',
+  'whobehind.principles.items.0.desc': 'What looks great in 5 minutes rarely survives real traffic. I design for it from the start.',
+  'whobehind.principles.items.1.title': 'Measurable reliability',
+  'whobehind.principles.items.1.desc': 'Automated evals, golden sets, and clear metrics. If it cannot be measured, it cannot be improved.',
+  'whobehind.principles.items.2.title': 'Observability',
+  'whobehind.principles.items.2.desc': 'Tracing, logs, and alerts from day one. Silent failures are caught before they hit the user.',
+  'whobehind.principles.items.3.title': 'Cost control',
+  'whobehind.principles.items.3.desc': 'Cost per request, caching, and cheap paths. Scaling users must not mean scaling spend.',
+
+  'whobehind.elsewhere.eyebrow': 'Where else I apply this',
+  'whobehind.elsewhere.title': 'TenBeltz is not my only testing ground',
+  'whobehind.elsewhere.subtitle': 'I apply the same philosophy — AI that works in production, with critical data and real constraints — in other projects that sharpen what I bring back to TenBeltz.',
+  'whobehind.elsewhere.biiak.role': 'CTO @ Biiak',
+  'whobehind.elsewhere.biiak.desc': 'I co-founded Biiak to apply private AI to child protection. On-premise architectures, local LLMs, and zero dependency on external APIs for sensitive data.',
+  'whobehind.elsewhere.biiak.cta': 'Visit Biiak',
+  'whobehind.elsewhere.biiak.url': 'https://biiak.com',
+  'whobehind.elsewhere.irontec.role': 'AI Researcher @ Irontec',
+  'whobehind.elsewhere.irontec.desc': 'I research AI solutions that optimise multichannel communication in enterprise environments. Enterprise context sets the real pace of what works.',
+
+  'whobehind.recognition.eyebrow': 'Recognition and teaching',
+  'whobehind.recognition.title': 'Signals along the way',
+  'whobehind.recognition.items.0.label': '1st prize',
+  'whobehind.recognition.items.0.text': 'Providder · 6th edition',
+  'whobehind.recognition.items.1.label': 'Trainer',
+  'whobehind.recognition.items.1.text': 'Imagina · Local LLMs for software companies',
+  'whobehind.recognition.items.2.label': 'Main stack',
+  'whobehind.recognition.items.2.text': 'Python · LangFuse · RAG · Agents · Guardrails',
+
+  'whobehind.cta.title': 'Shall we talk?',
+  'whobehind.cta.paragraph': 'If what you read fits your problem, I am one email away. No templates, no long forms.',
+  'whobehind.cta.button': 'Get in touch',
 
   // 404
   '404.title': 'Page not found',

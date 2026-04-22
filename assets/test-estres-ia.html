@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Test de Estrés de IA — TenBeltz</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+
+  @page {
+    size: A4;
+    margin: 0;
+    background: #0F0E16;
+  }
+
+  :root {
+    --bg: #0F0E16;
+    --bg-2: #16121F;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(125, 31, 162, 0.35);
+    --purple: #7D1FA2;
+    --purple-light: #A855D0;
+    --purple-bright: #C45BFF;
+    --purple-mid: #9238D6;
+    --deep: #3D0858;
+    --text: #FFFFFF;
+    --text-2: #CBD5E1;
+    --text-3: #94A3B8;
+  }
+
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 11pt;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    position: relative;
+    width: 210mm;
+    height: 297mm;
+    padding: 22mm 20mm;
+    page-break-after: always;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Subtle grid pattern (aligned with site's #581a7366) */
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(88, 26, 115, 0.10) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(88, 26, 115, 0.10) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+
+  /* ---------- Header / footer ---------- */
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 9.5pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-2);
+    font-weight: 600;
+  }
+  .brand-mark .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--purple-bright);
+    box-shadow: 0 0 12px var(--purple-bright);
+  }
+  .brand-logo { width: 20px; height: 22px; }
+
+  .footer {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8.5pt;
+    color: var(--text-3);
+    letter-spacing: 0.04em;
+  }
+  .footer strong { color: var(--text-2); font-weight: 600; }
+
+  /* ---------- Cover ---------- */
+  .cover {
+    background: radial-gradient(ellipse at 20% 15%, #1A0076 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 85%, #561B83 0%, transparent 55%),
+                var(--bg);
+  }
+  .cover .glow-a { top: -120px; left: -120px; width: 420px; height: 420px; background: #7D1FA2; }
+  .cover .glow-b { bottom: -100px; right: -120px; width: 460px; height: 460px; background: #C45BFF; opacity: 0.35; }
+
+  .cover .content { padding-top: 10mm; }
+
+  .cover-logo {
+    width: 56px; height: 62px; margin-bottom: 28mm;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 16px;
+    border: 1px solid rgba(196, 91, 255, 0.45);
+    background: rgba(125, 31, 162, 0.12);
+    border-radius: 999px;
+    font-size: 9pt;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--purple-bright);
+    margin-bottom: 24px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--purple-bright);
+    box-shadow: 0 0 10px var(--purple-bright);
+  }
+
+  .cover h1 {
+    font-size: 52pt;
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin: 0 0 18px 0;
+    color: var(--text);
+  }
+  .cover h1 .grad {
+    background: linear-gradient(90deg, #9238D6 0%, #C45BFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .cover .lede {
+    font-size: 15pt;
+    line-height: 1.45;
+    color: var(--text-2);
+    max-width: 155mm;
+    margin: 0 0 36px 0;
+    font-weight: 400;
+  }
+
+  .cover .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+    margin-top: auto;
+  }
+  .cover .meta-grid .cell {
+    border-right: 1px solid var(--border);
+    padding: 0 18px;
+  }
+  .cover .meta-grid .cell:first-child { padding-left: 0; }
+  .cover .meta-grid .cell:last-child { border-right: 0; padding-right: 0; }
+  .meta-label {
+    font-size: 8pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .meta-value {
+    font-size: 10.5pt;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ---------- Question pages ---------- */
+  .q-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18mm;
+  }
+
+  .q-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 80pt;
+    font-weight: 700;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    background: linear-gradient(180deg, #C45BFF 0%, #7D1FA2 70%, rgba(125,31,162,0.05) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin: -10px 0 14px 0;
+  }
+
+  .q-label {
+    font-size: 8.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .q-title {
+    font-size: 22pt;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0 0 14mm 0;
+    max-width: 165mm;
+  }
+  .q-title .accent { color: var(--purple-bright); }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10mm;
+  }
+
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 18px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    page-break-inside: avoid;
+  }
+  .option .letter {
+    flex: 0 0 auto;
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: rgba(125, 31, 162, 0.18);
+    border: 1px solid rgba(196, 91, 255, 0.35);
+    color: var(--purple-bright);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 11pt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .option .body { flex: 1; }
+  .option .body strong {
+    display: block;
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+    letter-spacing: -0.005em;
+  }
+  .option .body p {
+    margin: 0;
+    font-size: 10.5pt;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+
+  .psych {
+    position: relative;
+    padding: 16px 18px 16px 22px;
+    background: linear-gradient(135deg, rgba(125, 31, 162, 0.14) 0%, rgba(86, 27, 131, 0.06) 100%);
+    border: 1px solid rgba(125, 31, 162, 0.35);
+    border-radius: 10px;
+    page-break-inside: avoid;
+  }
+  .psych::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 12px; bottom: 12px;
+    width: 3px;
+    background: linear-gradient(180deg, #C45BFF 0%, #7D1FA2 100%);
+    border-radius: 2px;
+  }
+  .psych-label {
+    font-size: 8pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--purple-bright);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .psych-label::before {
+    content: '';
+    width: 14px; height: 1px;
+    background: var(--purple-bright);
+  }
+  .psych p {
+    margin: 0;
+    font-size: 10pt;
+    color: var(--text-2);
+    line-height: 1.55;
+  }
+  .psych p em {
+    color: var(--purple-bright);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* Closing page */
+  .close {
+    background: radial-gradient(ellipse at 80% 20%, rgba(125, 31, 162, 0.35) 0%, transparent 55%),
+                radial-gradient(ellipse at 15% 85%, rgba(86, 27, 131, 0.45) 0%, transparent 55%),
+                var(--bg);
+  }
+  .close .glow-a { top: -80px; right: -80px; width: 360px; height: 360px; background: #C45BFF; opacity: 0.3; }
+
+  .close .content { justify-content: center; align-items: flex-start; }
+  .close h2 {
+    font-size: 40pt;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin: 0 0 18px 0;
+    max-width: 160mm;
+  }
+  .close h2 .grad {
+    background: linear-gradient(90deg, #9238D6 0%, #C45BFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .close .lede {
+    font-size: 13pt;
+    color: var(--text-2);
+    max-width: 150mm;
+    margin-bottom: 30px;
+  }
+
+  .next-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 10mm;
+  }
+  .step {
+    padding: 20px;
+    border: 1px solid var(--border);
+    background: rgba(22, 18, 31, 0.6);
+    border-radius: 12px;
+  }
+  .step .step-letter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--purple-bright);
+    margin-bottom: 8px;
+  }
+  .step h3 {
+    font-size: 14pt;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .step p {
+    font-size: 10pt;
+    color: var(--text-2);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .close-cta {
+    margin-top: auto;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+  }
+  .close-cta > div { display: flex; flex-direction: column; gap: 6px; }
+  .close-cta > div:last-child { text-align: right; align-items: flex-end; }
+  .close-cta .label {
+    font-size: 8.5pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    font-weight: 600;
+  }
+  .close-cta .url {
+    font-size: 13pt;
+    font-weight: 600;
+    background: linear-gradient(90deg, #9238D6 0%, #C45BFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="page cover">
+  <div class="grid-bg"></div>
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+  <div class="content">
+
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div class="brand-mark">
+        <svg class="brand-logo" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.4643 0.202185C12.4643 0.321143 12.3054 0.737495 12.1099 1.13006C11.4745 2.43859 10.1182 3.39026 7.17336 4.57984C3.78865 5.93596 2.50563 6.70918 1.45479 7.98203C0.538347 9.08834 0.367279 9.69503 0.367279 11.753C0.367279 12.6214 0.391717 13.3232 0.428375 13.3232C0.587224 13.3232 1.47922 12.8474 5.25495 10.7538C6.29358 10.1828 7.67435 9.43332 8.30974 9.10024C12.5009 6.88762 14.1139 5.91216 14.7004 5.19842C15.3358 4.43709 15.5802 3.53301 15.3724 2.72409C15.2136 2.1293 13.1608 0 12.7331 0C12.562 0 12.4643 0.071331 12.4643 0.202185Z" fill="white"/>
+          <path d="M23.3988 2.86702C22.8611 3.18821 22.0913 3.65214 21.6881 3.90195C21.2971 4.13987 20.4295 4.85362 19.7941 5.4722C17.5458 7.63723 16.5805 9.50487 16.8004 11.313C16.9226 12.3004 17.2159 12.7643 18.7799 14.3584C19.5253 15.1316 20.2585 15.9048 20.4051 16.0951C21.0649 16.9159 22.1524 17.0111 23.2888 16.345C23.6798 16.107 24.303 15.7621 24.6696 15.5598C26.2214 14.7152 27.7488 13.6684 27.8588 13.371C27.9321 13.2045 27.981 12.8119 27.981 12.4907C27.981 12.003 27.9077 11.8364 27.5044 11.3368C27.2478 11.0275 26.6857 10.4446 26.2703 10.0521C25.8548 9.65952 25.2928 9.07662 25.0239 8.75544L24.5474 8.17254L24.5596 5.48409C24.584 2.20086 24.584 2.26033 24.4741 2.27223C24.413 2.27223 23.9364 2.54583 23.3988 2.86702Z" fill="white"/>
+          <path d="M11.8533 11.0156C9.95932 12.0029 9.21395 13.4304 9.89822 14.7508C10.1182 15.1791 11.7189 16.9278 14.4804 19.7471C15.0181 20.3062 15.5679 20.9604 15.6779 21.1984C15.8001 21.4482 15.9467 21.6504 16.0078 21.6504C16.2033 21.6504 17.2175 20.2586 17.5963 19.4854C18.0118 18.6527 18.0851 17.7486 17.7918 17.0943C17.6452 16.7493 14.3216 13.252 13.7717 12.8594C13.2585 12.5025 12.8308 11.7531 12.8308 11.2297C12.8308 10.9442 12.7819 10.6944 12.7331 10.6587C12.6842 10.6349 12.281 10.7895 11.8533 11.0156Z" fill="white"/>
+          <path d="M4.93655 14.9891C4.7166 15.0367 4.11786 15.2984 3.59244 15.5839C3.05479 15.8694 2.16279 16.3333 1.58849 16.6307C0.195507 17.3326 0 17.5586 0 18.4151C0 18.8552 0.073315 19.2002 0.219945 19.4024C0.329918 19.5809 1.19748 20.5087 2.13836 21.4604L3.84904 23.2091L3.92236 24.0656C3.97123 24.5414 4.00789 25.8024 4.02011 26.8611L4.03233 28.812L4.85101 28.3719C7.17266 27.1347 9.73868 24.5652 10.5329 22.6976C10.7284 22.2217 10.8018 21.8173 10.8018 20.9965C10.814 19.6404 10.704 19.45 8.59008 17.1898C6.73277 15.2151 5.97518 14.7512 4.93655 14.9891Z" fill="white"/>
+          <path d="M25.4749 18.9265C24.2041 19.6522 22.9822 20.3064 22.7745 20.3897C22.5667 20.4849 22.1635 20.699 21.858 20.8893C21.5648 21.0678 20.966 21.4008 20.5261 21.6269C19.0232 22.3882 15.5774 24.3034 14.7342 24.8506C13.7323 25.493 12.7914 26.3971 12.4493 27.0514C12.1193 27.658 12.0216 28.6216 12.2293 29.1093C12.4126 29.5138 14.722 32 14.9175 32C14.9786 32 15.0519 31.8573 15.0886 31.6788C15.5163 29.6565 16.5182 28.6692 19.3042 27.5272C21.3937 26.6707 22.9211 26.0164 23.0311 25.9331C23.1044 25.8856 23.5321 25.6476 23.9964 25.4097C25.2183 24.7674 26.5746 23.7562 27.0634 23.1138C27.7354 22.2098 27.9554 21.3652 27.992 19.3905C28.0165 18.3793 27.9798 17.6656 27.9187 17.6418C27.8454 17.6299 26.7579 18.2009 25.4749 18.9265Z" fill="white"/>
+        </svg>
+        <span>TenBeltz</span>
+      </div>
+      <div class="brand-mark" style="color: var(--text-3);">
+        <span class="dot"></span>
+        <span>Uso interno</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 26mm;">
+      <div class="eyebrow">Formulario de cualificación</div>
+      <h1>Test de Estrés<br/><span class="grad">de IA</span></h1>
+      <p class="lede">
+        Cuatro preguntas para diagnosticar la madurez, el riesgo económico y la
+        urgencia real de un proyecto de IA antes de meterlo en producción.
+      </p>
+    </div>
+
+    <div class="meta-grid">
+      <div class="cell">
+        <div class="meta-label">Formato</div>
+        <div class="meta-value">4 preguntas · Cerradas</div>
+      </div>
+      <div class="cell">
+        <div class="meta-label">Dirigido a</div>
+        <div class="meta-value">CTOs, PMs, Founders</div>
+      </div>
+      <div class="cell">
+        <div class="meta-label">Resultado</div>
+        <div class="meta-value">Gap / Deep Analysis</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span><strong>TenBeltz</strong> · IA que aguanta producción</span>
+      <span>tenbeltz.com</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Q1 ============ -->
+<section class="page">
+  <div class="grid-bg"></div>
+  <div class="content">
+
+    <div class="brand-mark">
+      <svg class="brand-logo" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.46 0.2C12.46 0.32 12.3 0.74 12.11 1.13C11.47 2.44 10.12 3.39 7.17 4.58C3.79 5.94 2.5 6.71 1.45 7.98C0.54 9.09 0.37 9.7 0.37 11.75C0.37 12.62 0.39 13.32 0.43 13.32C0.59 13.32 1.48 12.85 5.25 10.75C6.29 10.18 7.67 9.43 8.31 9.1C12.5 6.89 14.11 5.91 14.7 5.2C15.34 4.44 15.58 3.53 15.37 2.72C15.21 2.13 13.16 0 12.73 0C12.56 0 12.46 0.07 12.46 0.2Z" fill="white"/>
+        <path d="M23.4 2.87C22.86 3.19 22.09 3.65 21.69 3.9C21.3 4.14 20.43 4.85 19.79 5.47C17.55 7.64 16.58 9.5 16.8 11.31C16.92 12.3 17.22 12.76 18.78 14.36C19.53 15.13 20.26 15.9 20.4 16.1C21.06 16.92 22.15 17.01 23.29 16.35C23.68 16.11 24.3 15.76 24.67 15.56C26.22 14.72 27.75 13.67 27.86 13.37C27.93 13.2 27.98 12.81 27.98 12.49C27.98 12 27.91 11.84 27.5 11.34C27.25 11.03 26.69 10.44 26.27 10.05C25.85 9.66 25.29 9.08 25.02 8.76L24.55 8.17L24.56 5.48C24.58 2.2 24.58 2.26 24.47 2.27C24.41 2.27 23.94 2.55 23.4 2.87Z" fill="white"/>
+        <path d="M11.85 11.02C9.96 12 9.21 13.43 9.9 14.75C10.12 15.18 11.72 16.93 14.48 19.75C15.02 20.31 15.57 20.96 15.68 21.2C15.8 21.45 15.95 21.65 16.01 21.65C16.2 21.65 17.22 20.26 17.6 19.49C18.01 18.65 18.09 17.75 17.79 17.09C17.65 16.75 14.32 13.25 13.77 12.86C13.26 12.5 12.83 11.75 12.83 11.23C12.83 10.94 12.78 10.69 12.73 10.66C12.68 10.63 12.28 10.79 11.85 11.02Z" fill="white"/>
+        <path d="M4.94 14.99C4.72 15.04 4.12 15.3 3.59 15.58C3.05 15.87 2.16 16.33 1.59 16.63C0.2 17.33 0 17.56 0 18.42C0 18.86 0.07 19.2 0.22 19.4C0.33 19.58 1.2 20.51 2.14 21.46L3.85 23.21L3.92 24.07C3.97 24.54 4.01 25.8 4.02 26.86L4.03 28.81L4.85 28.37C7.17 27.13 9.74 24.57 10.53 22.7C10.73 22.22 10.8 21.82 10.8 21C10.81 19.64 10.7 19.45 8.59 17.19C6.73 15.22 5.98 14.75 4.94 14.99Z" fill="white"/>
+        <path d="M25.47 18.93C24.2 19.65 22.98 20.31 22.77 20.39C22.57 20.48 22.16 20.7 21.86 20.89C21.56 21.07 20.97 21.4 20.53 21.63C19.02 22.39 15.58 24.3 14.73 24.85C13.73 25.49 12.79 26.4 12.45 27.05C12.12 27.66 12.02 28.62 12.23 29.11C12.41 29.51 14.72 32 14.92 32C14.98 32 15.05 31.86 15.09 31.68C15.52 29.66 16.52 28.67 19.3 27.53C21.39 26.67 22.92 26.02 23.03 25.93C23.1 25.89 23.53 25.65 23.99 25.41C25.22 24.77 26.57 23.76 27.06 23.11C27.73 22.21 27.96 21.37 27.99 19.39C28.02 18.38 27.98 17.67 27.92 17.64C27.85 17.63 26.76 18.2 25.47 18.93Z" fill="white"/>
+      </svg>
+      <span>TenBeltz · Test de Estrés de IA</span>
+    </div>
+
+    <div style="margin-top: 16mm;">
+      <div class="q-label">Pregunta 01 / 04</div>
+      <div class="q-number">01</div>
+      <h2 class="q-title">¿En qué estado están vuestras <span class="accent">features de IA</span>?</h2>
+    </div>
+
+    <div class="options">
+      <div class="option">
+        <div class="letter">A</div>
+        <div class="body">
+          <strong>Exploración</strong>
+          <p>Queremos hacer algo (o un cliente nos lo pide), pero no sabemos por dónde empezar.</p>
+        </div>
+      </div>
+      <div class="option">
+        <div class="letter">B</div>
+        <div class="body">
+          <strong>Prototipado</strong>
+          <p>Tenemos alguna demo, pero no estamos seguros de si aguantará el paso a producción.</p>
+        </div>
+      </div>
+      <div class="option">
+        <div class="letter">C</div>
+        <div class="body">
+          <strong>Post-Producción</strong>
+          <p>Ya hemos lanzado algo y no ha salido bien (costes disparados, falta de fiabilidad, alucinaciones).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="psych">
+      <div class="psych-label">Psicología detrás</div>
+      <p>
+        Esta pregunta es <em>el espejo de la realidad</em>. Si eligen la C, ya han sentido el
+        dolor de perder dinero. Si eligen la A, les estás forzando a admitir que están
+        perdidos. En ambos casos, la solución es vuestra consultoría.
+      </p>
+    </div>
+
+    <div class="footer">
+      <span>01 · Estado del proyecto</span>
+      <span>Pág. 2 / 6</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Q2 ============ -->
+<section class="page">
+  <div class="grid-bg"></div>
+  <div class="content">
+
+    <div class="brand-mark">
+      <span class="dot"></span>
+      <span>TenBeltz · Test de Estrés de IA</span>
+    </div>
+
+    <div style="margin-top: 16mm;">
+      <div class="q-label">Pregunta 02 / 04</div>
+      <div class="q-number">02</div>
+      <h2 class="q-title">¿Tu sistema de IA te <span class="accent">costará más de lo que te genera</span> cuando llegues a 1.000 usuarios?</h2>
+    </div>
+
+    <div class="options">
+      <div class="option">
+        <div class="letter">A</div>
+        <div class="body">
+          <strong>No lo sé</strong>
+          <p>No tenemos calculado el coste por inferencia.</p>
+        </div>
+      </div>
+      <div class="option">
+        <div class="letter">B</div>
+        <div class="body">
+          <strong>Estimado, con dudas</strong>
+          <p>Lo tenemos estimado, pero no estamos seguros de si escalará linealmente.</p>
+        </div>
+      </div>
+      <div class="option">
+        <div class="letter">C</div>
+        <div class="body">
+          <strong>Plan claro de optimización</strong>
+          <p>Sí, tenemos un plan de optimización de costes claro.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="psych">
+      <div class="psych-label">Psicología detrás</div>
+      <p>
+        La mayoría marcará la A. Esto genera una <em>inseguridad inmediata</em> sobre la
+        rentabilidad de su negocio. Es el gancho perfecto para vender el AI Gap
+        Analysis como un <em>"calculador de viabilidad"</em>.
+      </p>
+    </div>
+
+    <div class="footer">
+      <span>02 · Viabilidad económica</span>
+      <span>Pág. 3 / 6</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Q3 ============ -->
+<section class="page">
+  <div class="grid-bg"></div>
+  <div class="content">
+
+    <div class="brand-mark">
+      <span class="dot"></span>
+      <span>TenBeltz · Test de Estrés de IA</span>
+    </div>
+
+    <div style="margin-top: 16mm;">
+      <div class="q-label">Pregunta 03 / 04</div>
+      <div class="q-number">03</div>
+      <h2 class="q-title">¿Qué <span class="accent">impacto económico</span> tendría que este proyecto fallara o se retrasara 6 meses?</h2>
+    </div>
+
+    <div class="options">
+      <div class="option">
+        <div class="letter">A</div>
+        <div class="body">
+          <strong>Bajo</strong>
+          <p>Es un experimento que podemos permitirnos perder.</p>
+        </div>
+      </div>
+      <div class="option">
+        <div class="letter">B</div>
+        <div class="body">
+          <strong>Medio</strong>
+          <p>Perderíamos ventaja frente a la competencia.</p>
+        </div>
+      </div>
+      <div class="option">
+        <div class="letter">C</div>
+        <div class="body">
+          <strong>Crítico</strong>
+          <p>Estamos perdiendo dinero o eficiencia operativa cada día que no está listo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="psych">
+      <div class="psych-label">Psicología detrás</div>
+      <p>
+        Aquí mides la <em>"temperatura del dinero"</em>. Si marcan la C, no te van a
+        cuestionar el precio de 200&nbsp;€ ni de 1.200&nbsp;€, porque el coste de su
+        inacción es muchísimo más alto.
+      </p>
+    </div>
+
+    <div class="footer">
+      <span>03 · Coste de oportunidad</span>
+      <span>Pág. 4 / 6</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Q4 ============ -->
+<section class="page">
+  <div class="grid-bg"></div>
+  <div class="content">
+
+    <div class="brand-mark">
+      <span class="dot"></span>
+      <span>TenBeltz · Test de Estrés de IA</span>
+    </div>
+
+    <div style="margin-top: 16mm;">
+      <div class="q-label">Pregunta 04 / 04</div>
+      <div class="q-number">04</div>
+      <h2 class="q-title">Para avanzar con seguridad: <span class="accent">¿qué prefieres ahora mismo?</span></h2>
+    </div>
+
+    <div class="options">
+      <div class="option">
+        <div class="letter">A</div>
+        <div class="body">
+          <strong>Claridad · Gap Analysis</strong>
+          <p>Un diagnóstico de bajo coste para entender riesgos, costes y roadmap antes de invertir miles en desarrollo.</p>
+        </div>
+      </div>
+      <div class="option">
+        <div class="letter">B</div>
+        <div class="body">
+          <strong>Diseño · Deep Analysis</strong>
+          <p>Un plan de implementación técnica profundo porque ya sabemos lo que queremos y no podemos fallar.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="psych">
+      <div class="psych-label">Psicología detrás</div>
+      <p>
+        Es una pregunta de <em>cierre asuntivo</em>. Ya no están decidiendo si os
+        contratan o no, están decidiendo <em>cómo os contratan</em>. La opción A es
+        vuestro Gap Analysis y la B es vuestro Deep Analysis.
+      </p>
+    </div>
+
+    <div class="footer">
+      <span>04 · Cierre</span>
+      <span>Pág. 5 / 6</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSE ============ -->
+<section class="page close">
+  <div class="grid-bg"></div>
+  <div class="glow glow-a"></div>
+  <div class="content">
+
+    <div class="brand-mark">
+      <span class="dot"></span>
+      <span>TenBeltz · Test de Estrés de IA</span>
+    </div>
+
+    <div style="margin-top: 28mm;">
+      <div class="eyebrow">Siguiente paso</div>
+      <h2>Del test<br/><span class="grad">al diagnóstico</span>.</h2>
+      <p class="lede">
+        Según la combinación de respuestas, el lead entra por una de estas dos vías.
+        Ninguna empieza por "cotizar desarrollo".
+      </p>
+    </div>
+
+    <div class="next-steps">
+      <div class="step">
+        <div class="step-letter">Ruta A</div>
+        <h3>AI Gap Analysis</h3>
+        <p>Diagnóstico de bajo coste: riesgos, coste por inferencia, roadmap y go/no-go antes de invertir en desarrollo.</p>
+      </div>
+      <div class="step">
+        <div class="step-letter">Ruta B</div>
+        <h3>Deep Analysis</h3>
+        <p>Plan de implementación técnico: arquitectura, guardrails, observabilidad y criterios de producción.</p>
+      </div>
+    </div>
+
+    <div class="close-cta">
+      <div>
+        <div class="label">Contacto</div>
+        <div class="url">tenbeltz.com</div>
+      </div>
+      <div style="text-align: right;">
+        <div class="label">Documento</div>
+        <div class="meta-value" style="color: var(--text-2);">Uso interno · TenBeltz</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

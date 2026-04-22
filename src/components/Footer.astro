@@ -36,12 +36,15 @@ const socialMedias: SocialMedia[] = [
   }
 ];
 
+const whoBehindSlug = lang === 'en' ? '/who-is-behind' : '/quien-esta-detras';
+
 const sections: FooterLink[] = [
   { name: t('nav.home'), url: getRelativeLocaleUrl(lang, '/') },
   { name: t('nav.problem'), url: getRelativeLocaleUrl(lang, '/') + '#realidad' },
   { name: t('nav.proposal'), url: getRelativeLocaleUrl(lang, '/') + '#propuesta' },
   { name: t('nav.whatWeDo'), url: getRelativeLocaleUrl(lang, '/') + '#que-hacemos' },
   { name: t('nav.method'), url: getRelativeLocaleUrl(lang, '/') + '#metodo' },
+  { name: t('nav.whoBehind'), url: getRelativeLocaleUrl(lang, whoBehindSlug) },
   { name: t('nav.contact'), url: getRelativeLocaleUrl(lang, '/') + '#contact-section' },
 ];
 ---

@@ -16,12 +16,15 @@ interface NavElement {
   href: string;
 }
 
+const whoBehindSlug = lang === 'en' ? '/who-is-behind' : '/quien-esta-detras';
+
 const navElements: NavElement[] = [
   { title: t('nav.home'), href: getRelativeLocaleUrl(lang, '/') },
   { title: t('nav.problem'), href: getRelativeLocaleUrl(lang, '/') + '#realidad' },
   { title: t('nav.proposal'), href: getRelativeLocaleUrl(lang, '/') + '#propuesta' },
   { title: t('nav.whatWeDo'), href: getRelativeLocaleUrl(lang, '/') + '#que-hacemos' },
   { title: t('nav.method'), href: getRelativeLocaleUrl(lang, '/') + '#metodo' },
+  { title: t('nav.whoBehind'), href: getRelativeLocaleUrl(lang, whoBehindSlug) },
   { title: t('nav.contact'), href: getRelativeLocaleUrl(lang, '/') + '#contact-section' },
 ]
 
@@ -34,6 +37,17 @@ function getPathWithoutLang(url: URL) {
 }
 
 const currentPath = getPathWithoutLang(Astro.url);
+
+const localizedSlugMap: Record<string, Record<string, string>> = {
+  'quien-esta-detras': { es: 'quien-esta-detras', en: 'who-is-behind' },
+  'who-is-behind': { es: 'quien-esta-detras', en: 'who-is-behind' },
+};
+
+function pathForLang(targetLang: string): string {
+  const normalized = currentPath.replace(/\/$/, '');
+  const map = localizedSlugMap[normalized];
+  return getRelativeLocaleUrl(targetLang, map ? map[targetLang] : currentPath);
+}
 ---
 
 <header class="fixed z-20 w-full text-white">
@@ -76,7 +90,7 @@ const currentPath = getPathWithoutLang(Astro.url);
                 {Object.entries(languages).map(([l, label]) => (
                   <li>
                     <a
-                      href={getRelativeLocaleUrl(l, currentPath)}
+                      href={pathForLang(l)}
                       class={`block px-4 py-2 hover:bg-white/5 transition-colors ${l === lang ? 'text-pheromone-purple font-medium' : 'text-slate-300 hover:text-white'}`}
                     >
                       {label}

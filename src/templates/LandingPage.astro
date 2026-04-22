@@ -27,6 +27,9 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+const whoBehindSlug = lang === 'en' ? '/who-is-behind' : '/quien-esta-detras';
+const whoBehindHref = getRelativeLocaleUrl(lang, whoBehindSlug);
+
 const fillIconProps = { width: 22, height: 22, fill: '#E5C6F3' };
 const strokeIconProps = { width: 22, height: 22, fill: 'none', stroke: '#E5C6F3', strokeWidth: 1.5 };
 
@@ -279,12 +282,50 @@ const methodSteps = [
 			</div>
 		</section>
 
-		<Banner 
+		<Banner
 			title={t('home.banner.title')}
 			paragraph={t('home.banner.paragraph')}
 			buttonText={t('home.banner.button')}
 			buttonHref={getRelativeLocaleUrl(lang, '/') + '#contact-section'}
 		/>
+
+		<section class="relative text-white">
+			<div class="max-w-screen-xl px-4 py-14 mx-auto lg:px-16 lg:py-16">
+				<ScrollReveal client:visible>
+					<a
+						href={whoBehindHref}
+						class="group flex flex-col items-start gap-5 rounded-2xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-6 py-6 shadow-[0_0_25px_rgba(3,7,18,0.35)] backdrop-blur-sm transition-all hover:border-pheromone-purple/60 hover:bg-[#130130CC]/80 sm:flex-row sm:items-center sm:gap-6"
+					>
+						<span class="relative flex-shrink-0">
+							<span aria-hidden="true" class="absolute inset-0 -m-1 rounded-full bg-gradient-to-br from-pheromone-light/50 via-pheromone-purple/30 to-transparent blur-md"></span>
+							<span class="relative block rounded-full p-[2px] bg-gradient-to-br from-pheromone-light via-pheromone-purple to-sapphire-siren">
+								<img
+									src="/images/team/aritz.webp"
+									alt="Aritz Jaber Lopes"
+									width="72"
+									height="72"
+									loading="lazy"
+									decoding="async"
+									class="block h-16 w-16 rounded-full object-cover bg-obsidian-shard"
+								/>
+							</span>
+						</span>
+						<div class="flex flex-1 flex-col gap-y-1">
+							<p class="text-xs font-semibold uppercase tracking-[0.28em] text-pheromone-light/80">
+								{t('home.founderTeaser.eyebrow')}
+							</p>
+							<p class="text-xl font-semibold text-white">{t('home.founderTeaser.title')}</p>
+							<p class="text-base text-slate-300">{t('home.founderTeaser.description')}</p>
+						</div>
+						<span class="inline-flex items-center gap-x-2 whitespace-nowrap text-sm font-semibold text-pheromone-light transition-colors group-hover:text-white">
+							{t('home.founderTeaser.cta')}
+							<span aria-hidden="true" class="transition-transform group-hover:translate-x-1">&rarr;</span>
+						</span>
+					</a>
+				</ScrollReveal>
+			</div>
+		</section>
+
 		<Contact />
 		<LandingPageMotion client:load />
 	</main>

@@ -28,8 +28,17 @@ const canonicalURL = new URL(determineCanonicalURL(), Astro.site)
 const canonicalPath = canonicalURL.pathname // e.g. /precios or /en/precios
 const isEnglish = canonicalPath.startsWith('/en/') || canonicalPath === '/en'
 const basePath = isEnglish ? canonicalPath.replace(/^\/en/, '') || '/' : canonicalPath
-const esURL = new URL(basePath, Astro.site)
-const enURL = new URL(`/en${basePath === '/' ? '' : basePath}`, Astro.site)
+
+// Slugs that differ between locales. Key is the stripped path (from either locale); value is the per-locale slug.
+const localizedSlugMap: Record<string, { es: string; en: string }> = {
+	'/quien-esta-detras': { es: '/quien-esta-detras', en: '/who-is-behind' },
+	'/who-is-behind': { es: '/quien-esta-detras', en: '/who-is-behind' },
+}
+const mapped = localizedSlugMap[basePath.replace(/\/$/, '')]
+const esPath = mapped ? mapped.es : basePath
+const enPath = mapped ? mapped.en : basePath
+const esURL = new URL(esPath, Astro.site)
+const enURL = new URL(`/en${enPath === '/' ? '' : enPath}`, Astro.site)
 
 const ogLocale = lang === 'en' ? 'en_US' : 'es_ES'
 const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_US'

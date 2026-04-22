@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import * as THREE from 'three';
+import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
 import { useMotionPreferences } from '@/hooks/useMotionPreferences';
 
 const GRID_COLUMNS = 30;
@@ -75,8 +76,34 @@ const HERO_NODES: HeroNodeDefinition[] = [
   { column: 24, row: 6, color: '#BBDFFF', scale: 1.02, phase: 3.1, emphasis: 0.94 },
 ];
 
+const LOGO_PATHS = [
+  'M199.423 3.23574C199.423 5.13907 196.881 11.8007 193.753 18.0817C183.587 39.0183 161.886 54.2449 114.769 73.2782C60.6131 94.9762 40.0848 107.348 23.2712 127.713C8.60819 145.414 5.87109 155.121 5.87109 188.049C5.87109 201.943 6.26211 213.173 6.84863 213.173C9.39022 213.173 23.6622 205.56 84.0739 172.061C100.692 162.925 122.784 150.934 132.951 145.605C200.01 110.203 225.816 94.5955 235.201 83.1755C245.367 70.9942 249.277 56.5289 245.954 43.5863C243.412 34.0697 210.567 8.2016e-05 203.724 8.2016e-05C200.987 8.2016e-05 199.423 1.14208 199.423 3.23574Z',
+  'M374.375 45.873C365.772 51.012 353.456 58.435 347.004 62.432C340.748 66.2387 326.867 77.6586 316.7 87.5559C280.727 122.197 265.282 152.079 268.801 181.009C270.756 196.807 275.448 204.23 300.473 229.735C312.399 242.106 324.13 254.478 326.476 257.523C337.033 270.656 354.433 272.179 372.615 261.52C378.871 257.714 388.842 252.194 394.708 248.958C419.537 235.445 443.975 218.695 445.735 213.937C446.908 211.272 447.69 204.991 447.69 199.852C447.69 192.049 446.517 189.384 440.065 181.39C435.959 176.441 426.966 167.115 420.319 160.834C413.672 154.553 404.678 145.227 400.377 140.088L392.752 130.761L392.948 87.7463C393.339 35.2144 393.339 36.1661 391.579 36.3564C390.602 36.3564 382.977 40.734 374.375 45.873Z',
+  'M189.662 176.248C159.358 192.045 147.432 214.885 158.381 236.012C161.9 242.864 187.511 270.843 231.696 315.952C240.298 324.898 249.096 335.366 250.856 339.173C252.811 343.17 255.157 346.405 256.134 346.405C259.262 346.405 275.49 324.136 281.55 311.765C288.197 298.441 289.371 283.976 284.678 273.508C282.332 267.988 229.154 212.03 220.357 205.749C212.145 200.039 205.303 188.048 205.303 179.674C205.303 175.106 204.52 171.109 203.738 170.538C202.956 170.157 196.505 172.631 189.662 176.248Z',
+  'M78.9848 239.823C75.4657 240.585 65.8859 244.772 57.4791 249.34C48.8768 253.908 34.6047 261.331 25.4159 266.089C3.12811 277.319 0 280.935 0 294.639C0 301.682 1.17304 307.201 3.51913 310.437C5.27869 313.292 19.1597 328.138 34.2137 343.365L61.5847 371.343L62.7577 385.047C63.5398 392.661 64.1263 412.836 64.3218 429.776L64.5173 460.99L77.6163 453.948C114.763 434.153 155.819 393.041 168.527 363.159C171.655 355.546 172.828 349.075 172.828 335.942C173.024 314.244 171.264 311.198 137.441 275.035C107.724 243.44 95.6029 236.017 78.9848 239.823Z',
+  'M407.604 302.824C387.271 314.434 367.72 324.903 364.396 326.235C361.073 327.758 354.621 331.184 349.733 334.229C345.041 337.084 335.461 342.413 328.423 346.03C304.376 358.211 249.243 388.855 235.753 397.61C219.721 407.888 204.667 422.353 199.193 432.822C193.914 442.528 192.35 457.945 195.674 465.749C198.607 472.22 235.557 512 238.685 512C239.663 512 240.836 509.716 241.423 506.861C248.265 474.504 264.297 458.707 308.872 440.435C342.304 426.731 366.743 416.263 368.502 414.93C369.675 414.169 376.518 410.362 383.947 406.556C403.498 396.278 425.199 380.099 433.019 369.821C443.772 355.356 447.291 341.842 447.878 310.247C448.269 294.069 447.682 282.649 446.705 282.268C445.532 282.078 428.132 291.214 407.604 302.824Z',
+] as const;
+
+const LOGO_WORLD = {
+  centerX: -0.8,
+  centerY: 0.9,
+  width: 11.8,
+  height: 13.5,
+};
+
 const ROUTE_COLORS = ['#79CAFF', '#D5C7FF', '#A1E4FF', '#C45BFF', '#8BD1FF'];
 const ROUTE_ANCHORS = ROUTES.flat();
+
+const WORLD_ROUTE_ANCHORS = ROUTE_ANCHORS.map(({ column, row }) => ({
+  x: (column - (GRID_COLUMNS - 1) / 2) * GRID_SPACING,
+  y: (row - (GRID_ROWS - 1) / 2) * GRID_SPACING,
+}));
+
+const WORLD_HERO_NODES = HERO_NODES.map((node) => ({
+  ...node,
+  x: (node.column - (GRID_COLUMNS - 1) / 2) * GRID_SPACING,
+  y: (node.row - (GRID_ROWS - 1) / 2) * GRID_SPACING,
+}));
 
 function clamp01(value: number) {
   return THREE.MathUtils.clamp(value, 0, 1);
@@ -84,6 +111,32 @@ function clamp01(value: number) {
 
 function getPointIndex(column: number, row: number) {
   return row * GRID_COLUMNS + column;
+}
+
+function sampleSurfaceHeights(x: number, y: number) {
+  const radialDistance = Math.hypot(x, y);
+  const flat = Math.sin(radialDistance * 0.18) * 0.05;
+
+  let routeField = 0;
+  for (const anchor of WORLD_ROUTE_ANCHORS) {
+    const distance = Math.hypot(x - anchor.x, y - anchor.y);
+    routeField += Math.max(0, 1 - distance / (4.5 * GRID_SPACING)) * 0.12;
+  }
+
+  let nodeField = 0;
+  for (const node of WORLD_HERO_NODES) {
+    const distance = Math.hypot(x - node.x, y - node.y);
+    nodeField += Math.max(0, 1 - distance / (3.8 * GRID_SPACING)) * 0.22 * node.emphasis;
+  }
+
+  return {
+    flat,
+    elevated:
+      Math.cos(radialDistance * 0.34) * 0.44 +
+      Math.sin(x * 0.24 + y * 0.18) * 0.18 +
+      routeField * 1.08 +
+      nodeField * 0.56,
+  };
 }
 
 function drawRadialTexture() {
@@ -190,38 +243,19 @@ export function HomeHeroScene() {
         const index = getPointIndex(column, row);
         const x = (column - (GRID_COLUMNS - 1) / 2) * GRID_SPACING;
         const y = (row - (GRID_ROWS - 1) / 2) * GRID_SPACING;
-        const radialDistance = Math.hypot(x, y);
-        const blueprintHeight = Math.sin(radialDistance * 0.18) * 0.05;
-
-        let routeField = 0;
-        for (const anchor of ROUTE_ANCHORS) {
-          const distance = Math.hypot(column - anchor.column, row - anchor.row);
-          routeField += Math.max(0, 1 - distance / 4.5) * 0.12;
-        }
-
-        let nodeField = 0;
-        for (const node of HERO_NODES) {
-          const distance = Math.hypot(column - node.column, row - node.row);
-          nodeField += Math.max(0, 1 - distance / 3.8) * 0.22 * node.emphasis;
-        }
-
-        const elevatedHeight =
-          Math.cos(radialDistance * 0.34) * 0.44 +
-          Math.sin(x * 0.24 + y * 0.18) * 0.18 +
-          routeField * 1.08 +
-          nodeField * 0.56;
+        const heights = sampleSurfaceHeights(x, y);
 
         const offset = index * 3;
-        flatHeights[index] = blueprintHeight;
-        elevatedHeights[index] = elevatedHeight;
+        flatHeights[index] = heights.flat;
+        elevatedHeights[index] = heights.elevated;
 
         basePositions[offset] = x;
         basePositions[offset + 1] = y;
-        basePositions[offset + 2] = blueprintHeight;
+        basePositions[offset + 2] = heights.flat;
 
         pointPositions[offset] = x;
         pointPositions[offset + 1] = y;
-        pointPositions[offset + 2] = blueprintHeight;
+        pointPositions[offset + 2] = heights.flat;
 
         if (column < GRID_COLUMNS - 1) {
           linePointIndices.push(index, getPointIndex(column + 1, row));
@@ -436,6 +470,80 @@ export function HomeHeroScene() {
       };
     });
 
+    const logoLoader = new SVGLoader();
+    const logoSvgMarkup = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">${LOGO_PATHS.map((d) => `<path d="${d}" />`).join('')}</svg>`;
+    const logoData = logoLoader.parse(logoSvgMarkup);
+    const logoLines = logoData.paths.flatMap((shapePath, shapeIndex) =>
+      shapePath.subPaths.flatMap((subPath, subPathIndex) => {
+        const sampledPoints = subPath.getPoints(120);
+
+        if (sampledPoints.length < 2) {
+          return [];
+        }
+
+        const positions = new Float32Array(sampledPoints.length * 3);
+        const baseXY = new Float32Array(sampledPoints.length * 2);
+        const flat = new Float32Array(sampledPoints.length);
+        const elevated = new Float32Array(sampledPoints.length);
+
+        sampledPoints.forEach((point, index) => {
+          const x = ((point.x / 448) - 0.5) * LOGO_WORLD.width + LOGO_WORLD.centerX;
+          const y = (0.5 - point.y / 512) * LOGO_WORLD.height + LOGO_WORLD.centerY;
+          const heights = sampleSurfaceHeights(x, y);
+          const pointOffset = index * 3;
+          const coordOffset = index * 2;
+
+          baseXY[coordOffset] = x;
+          baseXY[coordOffset + 1] = y;
+          flat[index] = heights.flat;
+          elevated[index] = heights.elevated;
+
+          positions[pointOffset] = x;
+          positions[pointOffset + 1] = y;
+          positions[pointOffset + 2] = heights.flat + 0.18;
+        });
+
+        const geometry = new THREE.BufferGeometry();
+        const attribute = new THREE.BufferAttribute(positions, 3);
+        geometry.setAttribute('position', attribute);
+        geometry.setDrawRange(0, 0);
+
+        const glowMaterial = new THREE.LineBasicMaterial({
+          color: '#79CAFF',
+          transparent: true,
+          opacity: 0,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        });
+
+        const coreMaterial = new THREE.LineBasicMaterial({
+          color: shapeIndex === 1 ? '#F1E8FF' : '#DDF3FF',
+          transparent: true,
+          opacity: 0,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        });
+
+        const glowLine = new THREE.Line(geometry, glowMaterial);
+        const coreLine = new THREE.Line(geometry, coreMaterial);
+        fieldGroup.add(glowLine);
+        fieldGroup.add(coreLine);
+
+        return {
+          pointCount: sampledPoints.length,
+          positions,
+          baseXY,
+          flat,
+          elevated,
+          geometry,
+          attribute,
+          glowMaterial,
+          coreMaterial,
+          revealOffset: shapeIndex * 0.08 + subPathIndex * 0.04,
+        };
+      }),
+    );
+
     const ambientGlows = radialTexture
       ? [
           {
@@ -509,6 +617,7 @@ export function HomeHeroScene() {
       routes: prefersReducedMotion ? 1 : 0,
       nodes: prefersReducedMotion ? 1 : 0,
       traffic: prefersReducedMotion ? 1 : 0,
+      logo: prefersReducedMotion ? 1 : 0,
       sculpture: prefersReducedMotion ? 1 : 0,
       atmosphere: prefersReducedMotion ? 1 : 0,
     };
@@ -524,6 +633,7 @@ export function HomeHeroScene() {
           .to(intro, { routes: 1, duration: 1.15, ease: 'power2.inOut' }, 0.34)
           .to(intro, { nodes: 1, duration: 0.55 }, 0.98)
           .to(intro, { traffic: 1, duration: 0.9 }, 1.18)
+          .to(intro, { logo: 1, duration: 1.05, ease: 'power2.inOut' }, 0.84)
           .to(intro, { sculpture: 1, duration: 1.45, ease: 'power3.inOut' }, 0.9)
           .to(intro, { atmosphere: 1, duration: 0.9 }, 1.34);
     const signalTimeline = prefersReducedMotion
@@ -617,12 +727,9 @@ export function HomeHeroScene() {
         particle.haloMaterial.opacity = particleVisibility * 0.2;
       });
 
-      for (let point = 0; point < pointCount; point += 1) {
-        const offset = point * 3;
-        const baseX = basePositions[offset];
-        const baseY = basePositions[offset + 1];
-
+      const getSignalLiftAt = (baseX: number, baseY: number) => {
         let signalLift = 0;
+
         for (const particle of routeParticles) {
           if (particle.spriteMaterial.opacity <= 0.001) {
             continue;
@@ -631,6 +738,15 @@ export function HomeHeroScene() {
           const distance = Math.hypot(baseX - particle.currentPosition.x, baseY - particle.currentPosition.y);
           signalLift += Math.max(0, 1 - distance / 4.8) * particle.spriteMaterial.opacity * 0.48;
         }
+
+        return signalLift;
+      };
+
+      for (let point = 0; point < pointCount; point += 1) {
+        const offset = point * 3;
+        const baseX = basePositions[offset];
+        const baseY = basePositions[offset + 1];
+        const signalLift = getSignalLiftAt(baseX, baseY);
 
         const pointerDistance = Math.hypot(baseX - pointerX, baseY - pointerY);
         const pointerInfluence = Math.max(0, 1 - pointerDistance / 10.8);
@@ -673,6 +789,42 @@ export function HomeHeroScene() {
           reveal *
           intro.traffic *
           (0.12 + (Math.sin(t * 1.6 + index * 0.7) + 1) * 0.12);
+      });
+
+      logoLines.forEach((logoLine, index) => {
+        const reveal = clamp01((intro.logo - logoLine.revealOffset) / 0.42);
+        const visiblePoints = Math.max(2, Math.floor(logoLine.pointCount * reveal));
+        logoLine.geometry.setDrawRange(0, visiblePoints);
+
+        for (let point = 0; point < logoLine.pointCount; point += 1) {
+          const coordOffset = point * 2;
+          const offset = point * 3;
+          const baseX = logoLine.baseXY[coordOffset];
+          const baseY = logoLine.baseXY[coordOffset + 1];
+          const signalLift = getSignalLiftAt(baseX, baseY);
+          const pointerDistance = Math.hypot(baseX - pointerX, baseY - pointerY);
+          const pointerInfluence = Math.max(0, 1 - pointerDistance / 12.6);
+          const relief = THREE.MathUtils.lerp(logoLine.flat[point], logoLine.elevated[point], intro.sculpture);
+          const wave =
+            intro.atmosphere *
+            intro.sculpture *
+            (Math.sin(t + baseX * 0.22 + baseY * 0.14) * 0.16 +
+              Math.cos(t * 1.45 + baseX * 0.12 - baseY * 0.18) * 0.1);
+
+          logoLine.positions[offset] = baseX + pointerInfluence * pointer.x * 0.24;
+          logoLine.positions[offset + 1] = baseY + pointerInfluence * pointer.y * 0.18;
+          logoLine.positions[offset + 2] =
+            relief +
+            wave +
+            signalLift * 0.92 +
+            pointerInfluence * intro.sculpture * 0.28 +
+            0.22 -
+            scrollProgress * intro.atmosphere * 0.14;
+        }
+
+        logoLine.attribute.needsUpdate = true;
+        logoLine.glowMaterial.opacity = reveal * intro.logo * (0.08 + intro.atmosphere * 0.08);
+        logoLine.coreMaterial.opacity = reveal * intro.logo * (0.14 + intro.atmosphere * 0.2 + (Math.sin(t * 1.2 + index) + 1) * 0.03);
       });
 
       heroNodes.forEach((node) => {
@@ -766,6 +918,12 @@ export function HomeHeroScene() {
         route.coreGeometry.dispose();
         route.baseMaterial.dispose();
         route.coreMaterial.dispose();
+      });
+
+      logoLines.forEach((logoLine) => {
+        logoLine.geometry.dispose();
+        logoLine.glowMaterial.dispose();
+        logoLine.coreMaterial.dispose();
       });
 
       routeParticles.forEach((particle) => {

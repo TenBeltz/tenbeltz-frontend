@@ -81,6 +81,129 @@ export function LandingPageMotion() {
       const tiltTargets = Array.from(document.querySelectorAll<HTMLElement>('#que-hacemos [data-tilt-card]'));
       cleanupHandlers.push(...setupTiltCards(tiltTargets));
 
+      const hero = document.querySelector<HTMLElement>('[data-home-hero]');
+      const heroBadge = hero?.querySelector<HTMLElement>('[data-home-hero-badge]') ?? null;
+      const heroTitle = hero?.querySelector<HTMLElement>('[data-home-hero-title]') ?? null;
+      const heroSubtitle = hero?.querySelector<HTMLElement>('[data-home-hero-subtitle]') ?? null;
+      const heroProofs = Array.from(hero?.querySelectorAll<HTMLElement>('[data-home-hero-proof]') ?? []);
+      const heroCtas = Array.from(hero?.querySelectorAll<HTMLElement>('[data-home-hero-cta]') ?? []);
+      const heroMeta = hero?.querySelector<HTMLElement>('[data-home-hero-meta]') ?? null;
+      const heroSurface = hero?.querySelector<HTMLElement>('[data-home-hero-surface]') ?? null;
+      const heroVisual = hero?.querySelector<HTMLElement>('[data-home-hero-visual]') ?? null;
+      const heroScan = hero?.querySelector<HTMLElement>('[data-home-hero-scan]') ?? null;
+      const heroChromes = Array.from(hero?.querySelectorAll<HTMLElement>('[data-home-hero-chrome]') ?? []);
+
+      if (hero) {
+        if (heroBadge) {
+          gsap.set(heroBadge, { y: 18, opacity: 0 });
+        }
+
+        if (heroTitle) {
+          gsap.set(heroTitle, { y: 40, opacity: 0 });
+        }
+
+        if (heroSubtitle) {
+          gsap.set(heroSubtitle, { y: 28, opacity: 0 });
+        }
+
+        gsap.set(heroProofs, { y: 24, opacity: 0 });
+        gsap.set(heroCtas, { y: 24, opacity: 0 });
+
+        if (heroMeta) {
+          gsap.set(heroMeta, { y: 18, opacity: 0 });
+        }
+
+        if (heroSurface) {
+          gsap.set(heroSurface, {
+            x: isDesktop ? 46 : 0,
+            y: 40,
+            opacity: 0,
+            rotateY: isDesktop ? -10 : 0,
+            transformPerspective: 1200,
+            transformOrigin: 'center center',
+          });
+        }
+
+        if (heroVisual) {
+          gsap.set(heroVisual, { scale: 0.96, opacity: 0.72, transformOrigin: 'center center' });
+        }
+
+        if (heroScan) {
+          gsap.set(heroScan, { opacity: 0, yPercent: -16 });
+        }
+
+        gsap.set(heroChromes, { opacity: 0, scale: 0.96, transformOrigin: 'center center' });
+
+        const heroTimeline = gsap.timeline({
+          defaults: {
+            ease: 'power3.out',
+          },
+        });
+
+        if (heroBadge) {
+          heroTimeline.to(heroBadge, { y: 0, opacity: 1, duration: 0.45 });
+        }
+
+        if (heroTitle) {
+          heroTimeline.to(heroTitle, { y: 0, opacity: 1, duration: 0.62 }, 0.08);
+        }
+
+        if (heroSubtitle) {
+          heroTimeline.to(heroSubtitle, { y: 0, opacity: 1, duration: 0.46 }, 0.18);
+        }
+
+        if (heroProofs.length > 0) {
+          heroTimeline.to(heroProofs, { y: 0, opacity: 1, duration: 0.38, stagger: 0.06 }, 0.24);
+        }
+
+        if (heroCtas.length > 0) {
+          heroTimeline.to(heroCtas, { y: 0, opacity: 1, duration: 0.4, stagger: 0.08 }, 0.34);
+        }
+
+        if (heroMeta) {
+          heroTimeline.to(heroMeta, { y: 0, opacity: 1, duration: 0.34 }, 0.44);
+        }
+
+        if (heroSurface) {
+          heroTimeline.to(
+            heroSurface,
+            {
+              x: 0,
+              y: 0,
+              rotateY: 0,
+              opacity: 1,
+              duration: 0.78,
+            },
+            0.16,
+          );
+        }
+
+        if (heroVisual) {
+          heroTimeline.to(heroVisual, { scale: 1, opacity: 1, duration: 0.72 }, 0.3);
+        }
+
+        if (heroChromes.length > 0) {
+          heroTimeline.to(heroChromes, { opacity: 1, scale: 1, duration: 0.44, stagger: 0.04 }, 0.48);
+        }
+
+        if (heroScan) {
+          heroTimeline.to(heroScan, { opacity: 0.42, yPercent: 0, duration: 0.58 }, 0.54);
+        }
+
+        if (heroSurface) {
+          gsap.to(heroSurface, {
+            yPercent: isDesktop ? -5 : -2,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: hero,
+              start: 'top top',
+              end: 'bottom top',
+              scrub: 1,
+            },
+          });
+        }
+      }
+
       const methodSection = document.getElementById('metodo');
       const methodStage = document.querySelector<HTMLElement>('[data-method-stage]');
       const methodPath = document.querySelector<SVGPathElement>('[data-method-path]');

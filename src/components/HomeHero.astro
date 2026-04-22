@@ -1,0 +1,294 @@
+---
+import { HomeHeroScene } from '@/components/HomeHeroScene';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  highlight: string;
+  subtitle: string;
+  primaryHref: string;
+  primaryText: string;
+  secondaryHref: string;
+  secondaryText: string;
+  microcopy: string;
+  proofPoints: string[];
+}
+
+const {
+  eyebrow,
+  title,
+  highlight,
+  subtitle,
+  primaryHref,
+  primaryText,
+  secondaryHref,
+  secondaryText,
+  microcopy,
+  proofPoints,
+} = Astro.props as Props;
+---
+
+<section data-home-hero class="relative min-h-screen overflow-hidden text-white section-shell">
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 -z-50 bg-[radial-gradient(circle_at_10%_18%,rgba(121,202,255,0.2),transparent_20%),radial-gradient(circle_at_84%_20%,rgba(196,91,255,0.18),transparent_24%),radial-gradient(circle_at_56%_100%,rgba(109,46,211,0.12),transparent_34%),linear-gradient(180deg,#02010A_0%,#04010D_44%,#02010A_100%)]"
+  ></div>
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 -z-40 opacity-65 bg-grid [mask-image:radial-gradient(circle_at_center,black_12%,transparent_80%)]"
+  ></div>
+  <div aria-hidden="true" class="absolute left-[2%] top-20 -z-30 h-72 w-72 rounded-full bg-cold-heights/16 blur-3xl"></div>
+  <div aria-hidden="true" class="absolute right-[6%] top-16 -z-30 h-80 w-80 rounded-full bg-pheromone-purple/16 blur-3xl"></div>
+  <div aria-hidden="true" class="absolute bottom-[-6rem] left-1/2 -z-30 h-96 w-[56rem] -translate-x-1/2 rounded-full bg-berry-blackmail/70 blur-3xl"></div>
+
+  <div
+    data-home-hero-surface
+    class="absolute inset-0 z-0 overflow-hidden"
+  >
+    <div
+      aria-hidden="true"
+      class="absolute inset-y-0 left-0 z-10 w-full bg-[linear-gradient(90deg,#02010A_0%,rgba(2,1,10,0.96)_18%,rgba(2,1,10,0.82)_34%,rgba(2,1,10,0.42)_54%,rgba(2,1,10,0.08)_72%,rgba(2,1,10,0)_84%)]"
+    ></div>
+    <div
+      aria-hidden="true"
+      class="absolute inset-x-0 top-0 z-10 h-40 bg-[linear-gradient(180deg,rgba(2,1,10,0.7),rgba(2,1,10,0))]"
+    ></div>
+    <div
+      aria-hidden="true"
+      class="absolute inset-x-0 bottom-0 z-10 h-40 bg-[linear-gradient(0deg,rgba(2,1,10,0.78),rgba(2,1,10,0))]"
+    ></div>
+
+    <div
+      data-home-hero-visual
+      class="home-hero-visual absolute inset-y-[-4%] left-[12%] right-[-18%] sm:left-[8%] sm:right-[-10%] lg:left-[28%] lg:right-[-12%]"
+    >
+      <div
+        aria-hidden="true"
+        class="absolute inset-0 bg-[radial-gradient(circle_at_36%_54%,rgba(121,202,255,0.12),transparent_20%),radial-gradient(circle_at_72%_38%,rgba(196,91,255,0.16),transparent_26%),radial-gradient(circle_at_58%_70%,rgba(121,202,255,0.08),transparent_32%)]"
+      ></div>
+      <div
+        aria-hidden="true"
+        class="absolute inset-x-[8%] top-[4%] h-[48%] rounded-full bg-[radial-gradient(circle,rgba(121,202,255,0.15),rgba(121,202,255,0.03)_48%,transparent_72%)] blur-3xl"
+      ></div>
+      <div
+        aria-hidden="true"
+        class="absolute inset-x-[22%] bottom-[2%] h-[34%] rounded-full bg-[radial-gradient(circle,rgba(196,91,255,0.14),rgba(196,91,255,0.03)_48%,transparent_74%)] blur-3xl"
+      ></div>
+
+      <HomeHeroScene client:media="(min-width: 960px)" />
+
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 z-20">
+        <div class="home-hero-vignette absolute inset-0"></div>
+        <div
+          data-home-hero-scan
+          class="home-hero-scan-beam absolute inset-x-[14%] top-[-16%] h-[38%] rounded-full bg-[linear-gradient(180deg,rgba(121,202,255,0),rgba(121,202,255,0.18),rgba(196,91,255,0.08),rgba(121,202,255,0))] blur-3xl"
+        ></div>
+        <div
+          data-home-hero-chrome
+          class="home-hero-orbit absolute left-[58%] top-1/2 h-[90%] w-[58%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cold-heights/12"
+          style="--home-hero-orbit-rotation: -6deg;"
+        ></div>
+        <div
+          data-home-hero-chrome
+          class="home-hero-orbit home-hero-orbit--reverse absolute left-[56%] top-1/2 h-[76%] w-[76%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-pheromone-light/10"
+          style="--home-hero-orbit-rotation: 12deg;"
+        ></div>
+        <div
+          data-home-hero-chrome
+          class="home-hero-trail absolute left-[28%] top-[24%] h-px w-[38%] rotate-[-12deg] bg-gradient-to-r from-transparent via-cold-heights/55 to-transparent"
+        ></div>
+        <div
+          data-home-hero-chrome
+          class="home-hero-trail home-hero-trail--reverse absolute left-[44%] top-[64%] h-px w-[32%] rotate-[18deg] bg-gradient-to-r from-transparent via-pheromone-light/45 to-transparent"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative z-20 mx-auto flex min-h-screen max-w-screen-2xl items-center px-4 pb-16 pt-28 lg:px-12 lg:pb-20 lg:pt-32">
+    <div class="w-full max-w-3xl">
+      <div
+        data-home-hero-badge
+        class="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/6 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-cold-heights backdrop-blur-md"
+      >
+        <span aria-hidden="true" class="h-2 w-2 rounded-full bg-cold-heights shadow-[0_0_18px_rgba(121,202,255,0.9)]"></span>
+        {eyebrow}
+      </div>
+
+      <h1
+        data-home-hero-title
+        class="mt-6 max-w-4xl text-5xl font-black tracking-[-0.05em] text-white sm:text-6xl lg:text-[6rem] lg:leading-[0.92]"
+      >
+        <span class="block">{title}</span>
+        <span class="mt-2 block bg-gradient-to-r from-white via-[#DDD0F8] to-[#79CAFF] bg-clip-text text-transparent">
+          {highlight}
+        </span>
+      </h1>
+
+      <p data-home-hero-subtitle class="mt-6 max-w-xl text-lg leading-7 text-slate-300 lg:text-xl">
+        {subtitle}
+      </p>
+
+      <ul class="mt-7 flex max-w-2xl flex-wrap gap-3">
+        {proofPoints.map((point) => (
+          <li
+            data-home-hero-proof
+            class="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 text-sm font-medium text-white/90 backdrop-blur-md"
+          >
+            <span
+              aria-hidden="true"
+              class="h-2 w-2 rounded-full bg-gradient-to-r from-pheromone-light to-cold-heights shadow-[0_0_14px_rgba(196,91,255,0.55)]"
+            ></span>
+            {point}
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+        <a
+          data-home-hero-cta
+          href={primaryHref}
+          class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-pheromone-purple to-blueberry-glaze px-6 py-3 text-base font-semibold text-white shadow-[0_20px_42px_rgba(96,43,182,0.34)] transition-transform duration-300 hover:-translate-y-0.5"
+        >
+          {primaryText}
+        </a>
+        <a
+          data-home-hero-cta
+          href={secondaryHref}
+          class="inline-flex items-center justify-center rounded-xl border border-white/12 bg-white/[0.04] px-6 py-3 text-base font-semibold text-white/90 backdrop-blur-md transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.08]"
+        >
+          {secondaryText}
+        </a>
+      </div>
+
+      <p data-home-hero-meta class="mt-3 text-sm text-slate-400">{microcopy}</p>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  @keyframes home-hero-atmosphere-pulse {
+    0%,
+    100% {
+      opacity: 0.52;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.86;
+      transform: scale(1.04);
+    }
+  }
+
+  @keyframes home-hero-scan {
+    from {
+      transform: translateY(-140%);
+    }
+
+    to {
+      transform: translateY(220%);
+    }
+  }
+
+  @keyframes home-hero-orbit-drift {
+    0%,
+    100% {
+      transform: translate(-50%, -50%) rotate(var(--home-hero-orbit-rotation, 0deg)) scale(1);
+      opacity: 0.2;
+    }
+
+    50% {
+      transform: translate(-50%, -50%) rotate(calc(var(--home-hero-orbit-rotation, 0deg) + 8deg)) scale(1.04);
+      opacity: 0.4;
+    }
+  }
+
+  @keyframes home-hero-trail-fade {
+    0%,
+    100% {
+      opacity: 0.24;
+    }
+
+    50% {
+      opacity: 0.72;
+    }
+  }
+
+  .home-hero-visual {
+    isolation: isolate;
+    overflow: hidden;
+    -webkit-mask-image: radial-gradient(circle at 58% 50%, rgba(0, 0, 0, 1) 34%, rgba(0, 0, 0, 0.92) 56%, rgba(0, 0, 0, 0.46) 76%, transparent 100%);
+    mask-image: radial-gradient(circle at 58% 50%, rgba(0, 0, 0, 1) 34%, rgba(0, 0, 0, 0.92) 56%, rgba(0, 0, 0, 0.46) 76%, transparent 100%);
+  }
+
+  .home-hero-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 56% 48%, rgba(255, 255, 255, 0) 28%, rgba(2, 1, 10, 0.08) 60%, rgba(2, 1, 10, 0.26) 100%),
+      linear-gradient(180deg, rgba(2, 1, 10, 0), rgba(2, 1, 10, 0.12) 72%, rgba(2, 1, 10, 0.34));
+    pointer-events: none;
+  }
+
+  .home-hero-visual::after {
+    content: "";
+    position: absolute;
+    inset: 8% 6%;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(121, 202, 255, 0.16), rgba(121, 202, 255, 0.03) 48%, transparent 74%);
+    filter: blur(38px);
+    opacity: 0.74;
+    pointer-events: none;
+    animation: home-hero-atmosphere-pulse 11s ease-in-out infinite;
+  }
+
+  .home-hero-vignette {
+    background:
+      radial-gradient(circle at center, rgba(255, 255, 255, 0) 34%, rgba(2, 1, 10, 0.14) 62%, rgba(2, 1, 10, 0.44) 100%),
+      linear-gradient(180deg, rgba(2, 1, 10, 0.06), rgba(2, 1, 10, 0.14) 68%, rgba(2, 1, 10, 0.38));
+  }
+
+  .home-hero-scan-beam {
+    animation: home-hero-scan 10s linear infinite;
+    mix-blend-mode: screen;
+    opacity: 0.42;
+  }
+
+  .home-hero-orbit {
+    animation: home-hero-orbit-drift 18s ease-in-out infinite;
+  }
+
+  .home-hero-orbit--reverse {
+    animation-direction: reverse;
+    animation-duration: 22s;
+  }
+
+  .home-hero-trail {
+    animation: home-hero-trail-fade 8s ease-in-out infinite;
+  }
+
+  .home-hero-trail--reverse {
+    animation-delay: 1.3s;
+  }
+
+  @media (max-width: 959px) {
+    .home-hero-visual {
+      left: -8%;
+      right: -8%;
+      top: 24%;
+      bottom: -6%;
+      -webkit-mask-image: radial-gradient(circle at 50% 60%, rgba(0, 0, 0, 1) 28%, rgba(0, 0, 0, 0.88) 54%, transparent 100%);
+      mask-image: radial-gradient(circle at 50% 60%, rgba(0, 0, 0, 1) 28%, rgba(0, 0, 0, 0.88) 54%, transparent 100%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-hero-visual::after,
+    .home-hero-scan-beam,
+    .home-hero-orbit,
+    .home-hero-trail {
+      animation: none;
+    }
+  }
+</style>

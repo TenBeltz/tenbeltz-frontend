@@ -35,6 +35,9 @@ export default defineConfig({
   },
   site: 'https://tenbeltz.com/',
   vite: {
+    server: {
+      allowedHosts: ['fatima-unvoracious-wanda.ngrok-free.dev'],
+    },
     plugins: [
       tailwindcss(),
       svgr(),

@@ -1,7 +1,9 @@
 @import "tailwindcss";
 @import "tailwindcss-animated";
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 
 @theme {
+  --font-sans: "IBM Plex Sans", sans-serif;
   --color-petal-plush: oklch(0.87 0.0695 315.31);
   --color-blueberry-glaze: oklch(0.68 0.1745 314.62);
   --color-pheromone-purple: oklch(0.52 0.2214 312.91);
@@ -112,6 +114,11 @@
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  .hero-title {
+    font-weight: 700;
+    letter-spacing: -0.035em;
   }
 }
 

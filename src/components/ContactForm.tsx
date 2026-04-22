@@ -2,15 +2,71 @@ import React, { useState } from "react";
 import Alert, { type AlertProps } from "./Alert";
 import { sendContactForm } from "@/services/api";
 import { ScrollReveal } from "./ScrollReveal";
-import { useTranslations } from "@/i18n/utils";
-import type { ui } from "@/i18n/ui";
 
 interface ContactFormProps {
-  lang?: keyof typeof ui;
+  lang?: "es" | "en";
 }
 
 export default function ContactForm({ lang = 'es' }: ContactFormProps) {
-  const t = useTranslations(lang);
+  const copy = lang === "en"
+    ? {
+        fields: {
+          name: "Name",
+          email: "Email",
+          company: "Company",
+          role: "Role",
+          companyType: "Company type",
+          engagementType: "What do you need?",
+          projectStage: "Project stage",
+          message: "Message",
+        },
+        placeholders: {
+          companyType: "Select an option",
+          engagementType: "Select an option",
+          projectStage: "Select an option",
+          message: "Context, use case, constraints, current blockers...",
+        },
+        options: {
+          companyType: ["SaaS", "Software consultancy", "Other software company"],
+          engagementType: ["AI Gap Analysis", "AI Project Foundations", "Production Delivery", "AI Partner"],
+          projectStage: ["Exploring the opportunity", "Defining the project", "In development", "Already in production", "Project for a client"],
+        },
+        submit: "Request proposal",
+        submitting: "Sending...",
+        note: "We respond in less than 48h",
+        required: "Please complete the required fields.",
+        success: "Sent",
+        error: "Error",
+      }
+    : {
+        fields: {
+          name: "Nombre",
+          email: "Email",
+          company: "Empresa",
+          role: "Rol",
+          companyType: "Tipo de empresa",
+          engagementType: "Que necesitais",
+          projectStage: "Estado del proyecto",
+          message: "Mensaje",
+        },
+        placeholders: {
+          companyType: "Selecciona una opcion",
+          engagementType: "Selecciona una opcion",
+          projectStage: "Selecciona una opcion",
+          message: "Contexto, caso de uso, restricciones, bloqueos actuales...",
+        },
+        options: {
+          companyType: ["SaaS", "Consultora de software", "Otra empresa de software"],
+          engagementType: ["AI Gap Analysis", "AI Project Foundations", "Production Delivery", "AI Partner"],
+          projectStage: ["Explorando la oportunidad", "Definiendo el proyecto", "En desarrollo", "Ya en produccion", "Proyecto para un cliente"],
+        },
+        submit: "Solicitar propuesta",
+        submitting: "Enviando...",
+        note: "Respondemos en menos de 48h",
+        required: "Por favor completa los campos obligatorios.",
+        success: "Enviado",
+        error: "Error",
+      };
   const [alert, setAlert] = useState<AlertProps | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
@@ -21,10 +77,16 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
     const formData = new FormData(form);
     const company = (formData.get("company") as string) || "";
     const role = (formData.get("role") as string) || "";
+    const companyType = (formData.get("companyType") as string) || "";
+    const engagementType = (formData.get("engagementType") as string) || "";
+    const projectStage = (formData.get("projectStage") as string) || "";
     const rawMessage = (formData.get("message") as string) || "";
     const contextLines = [
-      company ? `${t('contact.form.company')}: ${company}` : "",
-      role ? `${t('contact.form.role')}: ${role}` : "",
+      company ? `${copy.fields.company}: ${company}` : "",
+      role ? `${copy.fields.role}: ${role}` : "",
+      companyType ? `${copy.fields.companyType}: ${companyType}` : "",
+      engagementType ? `${copy.fields.engagementType}: ${engagementType}` : "",
+      projectStage ? `${copy.fields.projectStage}: ${projectStage}` : "",
     ].filter(Boolean);
     const message = contextLines.length
       ? `${contextLines.join("\n")}\n\n${rawMessage}`
@@ -36,12 +98,12 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
       message,
     };
 
-    if (!data.name || !data.email || !rawMessage) {
+    if (!data.name || !data.email || !companyType || !engagementType || !projectStage || !rawMessage) {
       setAlert({
         id: Date.now(),
         type: "error",
-        title: t('contact.form.error'),
-        message: t('contact.form.error.required'),
+        title: copy.error,
+        message: copy.required,
       });
       return;
     }
@@ -52,7 +114,7 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
     setAlert({
       id: Date.now(),
       type: result.success ? "success" : "error",
-      title: result.success ? t('contact.form.success') : t('contact.form.error'),
+      title: result.success ? copy.success : copy.error,
       message: result.message,
     });
 
@@ -63,10 +125,10 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-col gap-y-6">
-        <div className="grid grid-cols-2 gap-x-14 gap-y-8">
-          <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2">
+          <ScrollReveal className="flex flex-col gap-y-3">
             <label htmlFor="name" className="font-semibold">
-              {t('contact.form.name')}
+              {copy.fields.name}
             </label>
             <input
               id="name"
@@ -76,9 +138,9 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
               className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
             />
           </ScrollReveal>
-          <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
+          <ScrollReveal className="flex flex-col gap-y-3">
             <label htmlFor="email" className="font-semibold">
-              {t('contact.form.email')}
+              {copy.fields.email}
             </label>
             <input
               id="email"
@@ -88,9 +150,9 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
               className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
             />
           </ScrollReveal>
-          <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
+          <ScrollReveal className="flex flex-col gap-y-3">
             <label htmlFor="company" className="font-semibold">
-              {t('contact.form.company')}
+              {copy.fields.company}
             </label>
             <input
               id="company"
@@ -99,9 +161,9 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
               className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
             />
           </ScrollReveal>
-          <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
+          <ScrollReveal className="flex flex-col gap-y-3">
             <label htmlFor="role" className="font-semibold">
-              {t('contact.form.role')}
+              {copy.fields.role}
             </label>
             <input
               id="role"
@@ -110,15 +172,79 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
               className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
             />
           </ScrollReveal>
-          <ScrollReveal className="flex flex-col col-span-2 gap-y-3">
+          <ScrollReveal className="flex flex-col gap-y-3">
+            <label htmlFor="companyType" className="font-semibold">
+              {copy.fields.companyType}
+            </label>
+            <select
+              id="companyType"
+              name="companyType"
+              required
+              defaultValue=""
+              className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+            >
+              <option value="" disabled className="text-slate-500">
+                {copy.placeholders.companyType}
+              </option>
+              {copy.options.companyType.map((option) => (
+                <option key={option} value={option} className="text-white bg-obsidian-shard">
+                  {option}
+                </option>
+              ))}
+            </select>
+          </ScrollReveal>
+          <ScrollReveal className="flex flex-col gap-y-3">
+            <label htmlFor="engagementType" className="font-semibold">
+              {copy.fields.engagementType}
+            </label>
+            <select
+              id="engagementType"
+              name="engagementType"
+              required
+              defaultValue=""
+              className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+            >
+              <option value="" disabled className="text-slate-500">
+                {copy.placeholders.engagementType}
+              </option>
+              {copy.options.engagementType.map((option) => (
+                <option key={option} value={option} className="text-white bg-obsidian-shard">
+                  {option}
+                </option>
+              ))}
+            </select>
+          </ScrollReveal>
+          <ScrollReveal className="flex flex-col gap-y-3 md:col-span-2">
+            <label htmlFor="projectStage" className="font-semibold">
+              {copy.fields.projectStage}
+            </label>
+            <select
+              id="projectStage"
+              name="projectStage"
+              required
+              defaultValue=""
+              className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+            >
+              <option value="" disabled className="text-slate-500">
+                {copy.placeholders.projectStage}
+              </option>
+              {copy.options.projectStage.map((option) => (
+                <option key={option} value={option} className="text-white bg-obsidian-shard">
+                  {option}
+                </option>
+              ))}
+            </select>
+          </ScrollReveal>
+          <ScrollReveal className="flex flex-col gap-y-3 md:col-span-2">
             <label htmlFor="message" className="font-semibold">
-              {t('contact.form.message')}
+              {copy.fields.message}
             </label>
             <textarea
               id="message"
               name="message"
-              rows={3}
+              rows={5}
               required
+              placeholder={copy.placeholders.message}
               className="px-3 py-2 text-white border rounded-md resize-none border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
             />
           </ScrollReveal>
@@ -131,9 +257,9 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
               disabled={submitting}
               className="btn font-semibold leading-none border border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20 hover:bg-pheromone-purple/25 hover:cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {submitting ? t('contact.form.submitting') : t('contact.form.submit')}
+              {submitting ? copy.submitting : copy.submit}
             </button>
-            <span className="text-xs text-slate-400">{t('contact.form.note')}</span>
+            <span className="text-xs text-slate-400">{copy.note}</span>
           </div>
         </ScrollReveal>
       </form>

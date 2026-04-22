@@ -512,6 +512,9 @@ export function HomeHeroScene() {
       sculpture: prefersReducedMotion ? 1 : 0,
       atmosphere: prefersReducedMotion ? 1 : 0,
     };
+    const signalLoop = {
+      phase: prefersReducedMotion ? 1 : 0,
+    };
 
     const introTimeline = prefersReducedMotion
       ? null
@@ -523,6 +526,14 @@ export function HomeHeroScene() {
           .to(intro, { traffic: 1, duration: 0.9 }, 1.18)
           .to(intro, { sculpture: 1, duration: 1.45, ease: 'power3.inOut' }, 0.9)
           .to(intro, { atmosphere: 1, duration: 0.9 }, 1.34);
+    const signalTimeline = prefersReducedMotion
+      ? null
+      : gsap.to(signalLoop, {
+          phase: 1,
+          duration: 3.8,
+          ease: 'none',
+          repeat: -1,
+        });
 
     const pointer = { x: 0, y: 0, targetX: 0, targetY: 0 };
 
@@ -564,7 +575,7 @@ export function HomeHeroScene() {
 
       if (!animationActive) {
         animationActive = true;
-        animationFrame = window.requestAnimationFrame(renderFrame);
+        animationFrame = window.requestAnimationFrame(animate);
       }
     };
 
@@ -650,11 +661,18 @@ export function HomeHeroScene() {
       routes.forEach((route, index) => {
         const reveal = clamp01((intro.routes - route.offset) / 0.48);
         const visiblePoints = Math.max(2, Math.floor(route.pointCount * reveal));
+        const tracePhase = (signalLoop.phase + route.offset * 0.85) % 1;
+        const headIndex = Math.max(2, Math.floor(visiblePoints * tracePhase));
+        const trailLength = Math.max(14, Math.floor(route.pointCount * 0.18));
+        const startIndex = Math.max(0, headIndex - trailLength);
+        const traceCount = Math.max(2, headIndex - startIndex);
         route.baseGeometry.setDrawRange(0, visiblePoints);
-        route.coreGeometry.setDrawRange(0, visiblePoints);
+        route.coreGeometry.setDrawRange(startIndex, traceCount);
         route.baseMaterial.opacity = 0.05 + reveal * 0.07 + intro.blueprint * 0.03;
         route.coreMaterial.opacity =
-          reveal * (0.08 + intro.traffic * 0.2) * (0.82 + (Math.sin(t * 1.6 + index * 0.7) + 1) * 0.09);
+          reveal *
+          intro.traffic *
+          (0.12 + (Math.sin(t * 1.6 + index * 0.7) + 1) * 0.12);
       });
 
       heroNodes.forEach((node) => {
@@ -700,6 +718,14 @@ export function HomeHeroScene() {
 
       renderer.render(scene, camera);
     };
+    const animate = (time: number) => {
+      if (disposed || !animationActive) {
+        return;
+      }
+
+      renderFrame(time);
+      animationFrame = window.requestAnimationFrame(animate);
+    };
 
     updateRendererSize();
     handleScroll();
@@ -714,15 +740,6 @@ export function HomeHeroScene() {
     if (prefersReducedMotion) {
       renderFrame(1800);
     } else {
-      const animate = (time: number) => {
-        if (disposed || !animationActive) {
-          return;
-        }
-
-        renderFrame(time);
-        animationFrame = window.requestAnimationFrame(animate);
-      };
-
       animationFrame = window.requestAnimationFrame(animate);
     }
 
@@ -731,6 +748,7 @@ export function HomeHeroScene() {
       animationActive = false;
       window.cancelAnimationFrame(animationFrame);
       introTimeline?.kill();
+      signalTimeline?.kill();
 
       container.removeEventListener('pointermove', handlePointerMove);
       container.removeEventListener('pointerleave', handlePointerLeave);

@@ -1,114 +1,191 @@
 ---
-import Banner from './Banner.astro';
-import ServiceCard from './ServiceCard.astro';
-import ContactCTA from './ContactCTA.astro';
-import ServiceFeature from './ServiceFeature.astro';
-
-import { Picture } from 'astro:assets';
-
-import { ReactComponent as ProcessOutline } from '@/assets/icons/process-outline.svg';
-import { ReactComponent as ChartOutline } from '@/assets/icons/chart-outline.svg';
-import { ReactComponent as SecureOutline } from '@/assets/icons/secure-outline.svg';
+import { ScrollReveal } from './ScrollReveal';
 import { ReactComponent as DocumentsOutline } from '@/assets/icons/documents-outline.svg';
-import { ReactComponent as TaskDoneOutline } from '@/assets/icons/task-done-outline.svg';
 import { ReactComponent as PackageSearchOutline } from '@/assets/icons/package-search-outline.svg';
-import { ReactComponent as ChartLineOutline } from '@/assets/icons/chart-line-outline.svg';
-import { ReactComponent as ChatBubbleLeftOutline } from '@/assets/icons/chat-bubble-left-outline.svg';
-import { ReactComponent as ExpandOutline } from '@/assets/icons/expand-outline.svg';
-import { ReactComponent as ThreeLightOutline } from '@/assets/icons/three-light-outline.svg';
-import { ReactComponent as NotificationOutline } from '@/assets/icons/notification-outline.svg';
-
-import TopLeftGradientBackgroundPC from '/public/images/img/top-left-gradient-background-pc.png';
-import TopLeftGradientBackgroundMobile from '/public/images/img/top-left-gradient-background-mobile.png';
-
-import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { ReactComponent as SecureOutline } from '@/assets/icons/secure-outline.svg';
+import { ReactComponent as PeopleOutline } from '@/assets/icons/people-outline.svg';
+import { ReactComponent as TaskDoneOutline } from '@/assets/icons/task-done-outline.svg';
+import { ReactComponent as ProcessOutline } from '@/assets/icons/process-outline.svg';
+import { getLangFromUrl } from '@/i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const iconProps = { width: 24, height: 24, fill: 'none', stroke: '#E5C6F3', strokeWidth: 1.5 };
 
-const services = [
-  {
-    title: t('services.audit.title'),
-    subtitle: t('services.audit.subtitle'),
-    gridCols: 'lg:grid-cols-5',
-    features: [
-      { direction: 'down', colSpan: 'lg:col-span-3', title: t('services.audit.features.1.title'), description: t('services.audit.features.1.desc'), icon: ProcessOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
-      { direction: 'left', colSpan: 'lg:col-span-2', title: t('services.audit.features.2.title'), description: t('services.audit.features.2.desc'), icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
-      { direction: 'right', colSpan: 'lg:col-span-2', title: t('services.audit.features.3.title'), description: t('services.audit.features.3.desc'), icon: SecureOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
-      { direction: 'up', colSpan: 'lg:col-span-3', title: t('services.audit.features.4.title'), description: t('services.audit.features.4.desc'), icon: DocumentsOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
-    ]
-  },
-  {
-    title: t('services.sprint.title'),
-    subtitle: t('services.sprint.subtitle'),
-    gridCols: 'lg:grid-cols-5',
-    features: [
-      { direction: 'down', colSpan: 'lg:col-span-3', title: t('services.sprint.features.1.title'), description: t('services.sprint.features.1.desc'), icon: TaskDoneOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
-      { direction: 'up', colSpan: 'lg:col-span-2', title: t('services.sprint.features.2.title'), description: t('services.sprint.features.2.desc'), icon: PackageSearchOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3', strokeLinecap: 'round', strokeLinejoin: 'round' } },
-      { direction: 'left', colSpan: 'lg:col-span-2', title: t('services.sprint.features.3.title'), description: t('services.sprint.features.3.desc'), icon: ChartLineOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3' } },
-      { direction: 'right', colSpan: 'lg:col-span-3', title: t('services.sprint.features.4.title'), description: t('services.sprint.features.4.desc'), icon: ChatBubbleLeftOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
-    ]
-  },
-  {
-    title: t('services.production.title'),
-    subtitle: t('services.production.subtitle'),
-    gridCols: 'lg:grid-cols-5',
-    features: [
-      { direction: 'down', colSpan: 'lg:col-span-2', title: t('services.production.features.1.title'), description: t('services.production.features.1.desc'), icon: SecureOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
-      { direction: 'up', colSpan: 'lg:col-span-3', title: t('services.production.features.2.title'), description: t('services.production.features.2.desc'), icon: ChartLineOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3' } },
-      { direction: 'left', colSpan: 'lg:col-span-3', title: t('services.production.features.3.title'), description: t('services.production.features.3.desc'), icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
-      { direction: 'right', colSpan: 'lg:col-span-2', title: t('services.production.features.4.title'), description: t('services.production.features.4.desc'), icon: ExpandOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } },
-    ]
-  },
-  {
-    title: t('services.optimization.title'),
-    subtitle: t('services.optimization.subtitle'),
-    gridCols: 'lg:grid-cols-5',
-    features: [
-      { direction: 'down', colSpan: 'lg:col-span-3', title: t('services.optimization.features.1.title'), description: t('services.optimization.features.1.desc'), icon: ProcessOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3' } },
-      { direction: 'up', colSpan: 'lg:col-span-2', title: t('services.optimization.features.2.title'), description: t('services.optimization.features.2.desc'), icon: ChartOutline, iconProps: { width: 32, height: 32, fill: 'none', strokeWidth: 2, stroke: '#E5C6F3' } },
-      { direction: 'left', colSpan: 'lg:col-span-2', title: t('services.optimization.features.3.title'), description: t('services.optimization.features.3.desc'), icon: ThreeLightOutline, iconProps: { width: 32, height: 32, fill: '#E5C6F3', strokeWidth: 1, stroke: '#E5C6F3' } },
-      { direction: 'right', colSpan: 'lg:col-span-3', title: t('services.optimization.features.4.title'), description: t('services.optimization.features.4.desc'), icon: NotificationOutline, iconProps: { width: 32, height: 32, fill: 'none', stroke: '#E5C6F3', strokeWidth: 2 } },
-    ]
-  },
-];
+const content = lang === 'en'
+  ? {
+      introTag: 'Service structure',
+      introTitle: 'Four ways to work with TenBeltz',
+      introText: 'The offer is organized around project maturity and delivery responsibility. The point is to enter with the right level of involvement, not to force every client through the same path.',
+      services: [
+        {
+          icon: DocumentsOutline,
+          tag: 'Entry',
+          title: 'AI Gap Analysis',
+          description: 'A compact engagement for SaaS teams that need to understand whether a use case is worth pursuing and what a serious project would actually require.',
+          fitTitle: 'Best for',
+          fit: 'SaaS teams with an AI initiative on the roadmap or an early implementation that lacks confidence.',
+          bullets: ['Viability assessment', 'Recommended stack and tooling', 'Data and dataset requirements', 'Risk map and next-step recommendation'],
+        },
+        {
+          icon: PackageSearchOutline,
+          tag: 'Foundation',
+          title: 'AI Project Foundations',
+          description: 'The base layer for consultancies or product teams that need a more defensible technical plan before delivery starts.',
+          fitTitle: 'Best for',
+          fit: 'Consultancies scoping AI work for clients and teams that need evals, observability, and a first system design.',
+          bullets: ['Golden set definition', 'Initial eval strategy', 'Observability approach', 'First system or agent design'],
+        },
+        {
+          icon: SecureOutline,
+          tag: 'Delivery',
+          title: 'Production Delivery',
+          description: 'A hands-on engagement for projects that need to reach production and integrate properly with the existing product and operating environment.',
+          fitTitle: 'Best for',
+          fit: 'Teams with a concrete project that want implementation, integration, and production criteria covered end to end.',
+          bullets: ['Implementation and integration', 'Guardrails and operational controls', 'Production-ready delivery', 'Technical handover'],
+        },
+        {
+          icon: PeopleOutline,
+          tag: 'Partner',
+          title: 'AI Partner',
+          description: 'An ongoing relationship for companies that want TenBeltz close on roadmap, maintenance, optimization, and technical conversations around AI.',
+          fitTitle: 'Best for',
+          fit: 'Teams with multiple AI initiatives or consultancies that want senior support in delivery and client-facing planning.',
+          bullets: ['Long-term technical support', 'Cost and reliability optimization', 'Support in client meetings', 'Roadmap and maintenance guidance'],
+        },
+      ],
+      pathTitle: 'How to choose the right engagement',
+      pathItems: [
+        'If you need clarity first, start with AI Gap Analysis.',
+        'If the project is real but the technical base is still weak, start with AI Project Foundations.',
+        'If the scope is clear and the goal is production, go straight to Production Delivery.',
+        'If AI is becoming a continuous capability, move to AI Partner.',
+      ],
+      ctaTitle: 'Need help choosing the right path?',
+      ctaText: 'Share the context and we will tell you what level of engagement makes sense.',
+      ctaButton: 'Request proposal',
+    }
+  : {
+      introTag: 'Estructura de servicios',
+      introTitle: 'Cuatro formas de trabajar con TenBeltz',
+      introText: 'La oferta se organiza segun la madurez del proyecto y el nivel de responsabilidad en el delivery. La idea es entrar con el nivel correcto de implicacion, no forzar a todos los clientes por el mismo camino.',
+      services: [
+        {
+          icon: DocumentsOutline,
+          tag: 'Entrada',
+          title: 'AI Gap Analysis',
+          description: 'Un servicio compacto para equipos SaaS que necesitan entender si un caso de uso merece la pena y que haria falta para convertirlo en un proyecto serio.',
+          fitTitle: 'Encaja para',
+          fit: 'Equipos SaaS con una iniciativa de IA en roadmap o una implementacion temprana que todavia no inspira confianza.',
+          bullets: ['Analisis de viabilidad', 'Stack y tooling recomendados', 'Necesidades de datos y datasets', 'Mapa de riesgos y recomendacion del siguiente paso'],
+        },
+        {
+          icon: PackageSearchOutline,
+          tag: 'Base',
+          title: 'AI Project Foundations',
+          description: 'La capa base para consultoras o equipos de producto que necesitan un plan tecnico mas serio antes de empezar el delivery.',
+          fitTitle: 'Encaja para',
+          fit: 'Consultoras que estan definiendo proyectos de IA para clientes y equipos que necesitan evals, observabilidad y un primer diseno de sistema.',
+          bullets: ['Definicion de golden set', 'Estrategia inicial de evals', 'Enfoque de observabilidad', 'Primer diseno de sistema o agente'],
+        },
+        {
+          icon: SecureOutline,
+          tag: 'Delivery',
+          title: 'Production Delivery',
+          description: 'Un servicio de ejecucion para proyectos que deben llegar a produccion e integrarse bien con el producto y su entorno operativo.',
+          fitTitle: 'Encaja para',
+          fit: 'Equipos con un proyecto concreto que quieren cubrir implementacion, integracion y criterios de produccion de punta a punta.',
+          bullets: ['Implementacion e integracion', 'Guardrails y controles operativos', 'Entrega lista para produccion', 'Handover tecnico'],
+        },
+        {
+          icon: PeopleOutline,
+          tag: 'Partner',
+          title: 'AI Partner',
+          description: 'Una relacion continua para empresas que quieren a TenBeltz cerca del roadmap, mantenimiento, optimizacion y conversaciones tecnicas alrededor de IA.',
+          fitTitle: 'Encaja para',
+          fit: 'Equipos con varias iniciativas de IA o consultoras que quieren soporte senior en delivery y planificacion con clientes.',
+          bullets: ['Acompanamiento tecnico continuo', 'Optimizacion de costes y fiabilidad', 'Soporte en reuniones con clientes', 'Ayuda con roadmap y mantenimiento'],
+        },
+      ],
+      pathTitle: 'Como elegir la modalidad adecuada',
+      pathItems: [
+        'Si primero necesitas claridad, empieza por AI Gap Analysis.',
+        'Si el proyecto ya es real pero la base tecnica es debil, empieza por AI Project Foundations.',
+        'Si el alcance esta claro y la meta es produccion, ve a Production Delivery.',
+        'Si IA pasa a ser una capacidad continua, evoluciona a AI Partner.',
+      ],
+      ctaTitle: 'Necesitas ayuda para elegir el camino correcto?',
+      ctaText: 'Comparte el contexto y te diremos que nivel de implicacion tiene sentido.',
+      ctaButton: 'Solicitar propuesta',
+    };
 ---
-<div class="text-white">
-  <div class="flex flex-col">
-    <div class="relative bg-grid">
-      <div class="flex flex-col">
-        {services.slice(0, 3).map(service => (
-          <ServiceCard title={service.title} subtitle={service.subtitle} gridCols={service.gridCols}>
-            {service.features.map(feature => (
-              <ServiceFeature direction={feature.direction} colSpan={feature.colSpan} title={feature.title} description={feature.description}>
-                <feature.icon {...(feature.iconProps as any)} />
-              </ServiceFeature>
-            ))}
-          </ServiceCard>
-        ))}
+
+<section id="service-structure" class="text-white bg-grid">
+  <div class="max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24">
+    <ScrollReveal client:visible>
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.28em] text-pheromone-light/80">{content.introTag}</p>
+        <h2 class="mt-3 text-4xl font-bold lg:text-5xl">{content.introTitle}</h2>
+        <p class="mt-5 text-lg text-slate-300">{content.introText}</p>
       </div>
-      <Picture src={TopLeftGradientBackgroundPC} alt="backgroundGradientPC" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 hidden object-cover w-full -z-50 lg:block" />
-      <Picture src={TopLeftGradientBackgroundMobile} alt="backgroundGradientMobile" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 object-cover w-full -z-50 lg:hidden" />
+    </ScrollReveal>
+
+    <div class="grid grid-cols-1 gap-6 mt-10 lg:grid-cols-2">
+      {content.services.map((service, index) => (
+        <ScrollReveal client:visible delay={index * 90}>
+          <article class="flex h-full flex-col gap-5 rounded-2xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-6 py-7 shadow-[0_0_25px_rgba(3,7,18,0.35)] backdrop-blur-sm">
+            <div class="flex items-center justify-between gap-4">
+              <span class="inline-flex rounded-full border border-pheromone-purple/40 bg-pheromone-purple/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-pheromone-light">
+                {service.tag}
+              </span>
+              <span class="flex h-11 w-11 items-center justify-center rounded-full bg-pheromone-purple/20">
+                <service.icon {...iconProps} />
+              </span>
+            </div>
+            <div class="flex flex-col gap-3">
+              <h3 class="text-2xl font-semibold">{service.title}</h3>
+              <p class="text-slate-300">{service.description}</p>
+            </div>
+            <div class="rounded-xl border border-white/8 bg-white/[0.03] px-4 py-4">
+              <p class="text-sm font-semibold text-white">{service.fitTitle}</p>
+              <p class="mt-2 text-sm text-slate-300">{service.fit}</p>
+            </div>
+            <ul class="flex flex-col gap-2 text-sm text-slate-300">
+              {service.bullets.map((bullet) => <li>• {bullet}</li>)}
+            </ul>
+          </article>
+        </ScrollReveal>
+      ))}
     </div>
-    <Banner 
-      title={t('services.banner.title')}
-      paragraph={t('services.banner.paragraph')}
-      buttonText={t('services.banner.button')}
-      buttonHref="/#contact-section"
-    />
-    <div class="bg-grid">
-      <div class="flex flex-col">
-        {services.slice(3).map(service => (
-          <ServiceCard title={service.title} subtitle={service.subtitle} gridCols={service.gridCols}>
-            {service.features.map(feature => (
-              <ServiceFeature direction={feature.direction} colSpan={feature.colSpan} title={feature.title} description={feature.description}>
-                <feature.icon {...(feature.iconProps as any)} />
-              </ServiceFeature>
-            ))}
-          </ServiceCard>
-        ))}
-      </div>
-      <ContactCTA />
+
+    <div class="grid grid-cols-1 gap-6 mt-16 lg:grid-cols-[1.1fr_0.9fr]">
+      <ScrollReveal client:visible>
+        <div class="rounded-2xl border border-pheromone-purple/20 bg-[#0B0122CC]/80 px-6 py-7 backdrop-blur-sm">
+          <div class="flex items-center gap-3">
+            <span class="flex h-11 w-11 items-center justify-center rounded-full bg-pheromone-purple/20">
+              <TaskDoneOutline {...iconProps} />
+            </span>
+            <h3 class="text-2xl font-semibold">{content.pathTitle}</h3>
+          </div>
+          <ul class="flex flex-col gap-3 mt-5 text-slate-300">
+            {content.pathItems.map((item) => <li>• {item}</li>)}
+          </ul>
+        </div>
+      </ScrollReveal>
+      <ScrollReveal client:visible delay={120}>
+        <div class="rounded-2xl border border-pheromone-purple/25 bg-gradient-to-br from-[#16002E] to-[#240044] px-6 py-7 backdrop-blur-sm">
+          <div class="flex items-center gap-3">
+            <span class="flex h-11 w-11 items-center justify-center rounded-full bg-pheromone-purple/20">
+              <ProcessOutline width="24" height="24" fill="#E5C6F3" />
+            </span>
+            <h3 class="text-2xl font-semibold">{content.ctaTitle}</h3>
+          </div>
+          <p class="mt-5 text-slate-300">{content.ctaText}</p>
+          <a href="#contact-section" class="inline-flex items-center justify-center mt-6 rounded-xl bg-gradient-to-r from-pheromone-purple to-blueberry-glaze px-6 py-3 text-base font-semibold text-white shadow-[0_20px_42px_rgba(96,43,182,0.34)] transition-transform duration-300 hover:-translate-y-0.5">
+            {content.ctaButton}
+          </a>
+        </div>
+      </ScrollReveal>
     </div>
   </div>
-</div>
+</section>

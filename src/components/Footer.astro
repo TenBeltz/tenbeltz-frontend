@@ -3,11 +3,31 @@ import { ReactComponent as LogoInstagram } from '@/assets/icons/logo-instagram-o
 import { ReactComponent as LogoLinkedin } from '@/assets/icons/logo-linkedin-outline.svg';
 import { contactInfo } from './Contact.astro';
 import { ScrollReveal } from './ScrollReveal';
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { getLangFromUrl } from "@/i18n/utils";
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const labels = lang === 'en'
+  ? {
+      sections: 'Sections',
+      contact: 'Contact',
+      copyright: '© 2024 TenBeltz. All rights reserved.',
+      home: 'Home',
+      services: 'Services',
+      howWeWork: 'How We Work',
+      fit: 'Who It Fits',
+      whoBehind: 'Who is behind',
+    }
+  : {
+      sections: 'Secciones',
+      contact: 'Contacto',
+      copyright: '© 2024 TenBeltz. Todos los derechos reservados.',
+      home: 'Inicio',
+      services: 'Servicios',
+      howWeWork: 'Como trabajamos',
+      fit: 'Para quien',
+      whoBehind: 'Quien esta detras',
+    };
 
 interface SocialMedia {
   name: string;
@@ -37,15 +57,16 @@ const socialMedias: SocialMedia[] = [
 ];
 
 const whoBehindSlug = lang === 'en' ? '/who-is-behind' : '/quien-esta-detras';
+const homeHref = getRelativeLocaleUrl(lang, '/');
+const servicesHref = getRelativeLocaleUrl(lang, '/services');
 
 const sections: FooterLink[] = [
-  { name: t('nav.home'), url: getRelativeLocaleUrl(lang, '/') },
-  { name: t('nav.problem'), url: getRelativeLocaleUrl(lang, '/') + '#realidad' },
-  { name: t('nav.proposal'), url: getRelativeLocaleUrl(lang, '/') + '#propuesta' },
-  { name: t('nav.whatWeDo'), url: getRelativeLocaleUrl(lang, '/') + '#que-hacemos' },
-  { name: t('nav.method'), url: getRelativeLocaleUrl(lang, '/') + '#metodo' },
-  { name: t('nav.whoBehind'), url: getRelativeLocaleUrl(lang, whoBehindSlug) },
-  { name: t('nav.contact'), url: getRelativeLocaleUrl(lang, '/') + '#contact-section' },
+  { name: labels.home, url: homeHref },
+  { name: labels.services, url: servicesHref },
+  { name: labels.howWeWork, url: `${homeHref}#como-trabajamos` },
+  { name: labels.fit, url: `${homeHref}#para-quien` },
+  { name: labels.whoBehind, url: getRelativeLocaleUrl(lang, whoBehindSlug) },
+  { name: labels.contact, url: `${homeHref}#contact-section` },
 ];
 ---
 
@@ -53,13 +74,13 @@ const sections: FooterLink[] = [
   <div class="flex flex-col p-4 py-8 mx-auto gap-y-14 lg:p-16 max-w-screen-2xl">
     <div class="flex flex-col flex-wrap xs:flex-row gap-x-20 gap-y-10">
       <ScrollReveal client:visible className="flex flex-col gap-y-5">
-        <h4 class="font-semibold">{t('footer.sections')}</h4>
+        <h4 class="font-semibold">{labels.sections}</h4>
         <ul class="flex flex-col gap-y-3">
           {sections.map(section => <li><a href={section.url} class="transition-colors text-slate-300 hover:text-slate-100">{section.name}</a></li>)}
         </ul>
       </ScrollReveal>
       <ScrollReveal client:visible delay={200} className="flex flex-col gap-y-5">
-        <h4 class="font-semibold">{t('footer.contact')}</h4>
+        <h4 class="font-semibold">{labels.contact}</h4>
         <ul class="flex flex-col gap-y-3">
           <li><a href={`mailto:${contactInfo.email}`} class="transition-colors text-slate-300 hover:text-slate-100">{contactInfo.email}</a></li>
           {contactInfo.phones.map(phone => <li><a href={`tel:${phone}`} class="transition-colors text-slate-300 hover:text-slate-100">{phone}</a></li>)}
@@ -69,7 +90,7 @@ const sections: FooterLink[] = [
     
     <ScrollReveal client:visible className="flex justify-between py-3 text-sm border-t border-slate-400 text-slate-400">
       <span>
-        {t('footer.copyright')}
+        {labels.copyright}
       </span>
       <span class="flex gap-x-4 [&>a]:hover:cursor-pointer">
         {socialMedias.map(socialMedia => (

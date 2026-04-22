@@ -4,12 +4,11 @@ import logo from "@/assets/icons/logo-tenbeltz-navbar-solid.svg"
 import { ReactComponent as OpenHamburgerMenu } from "@/assets/icons/bars-3-outline.svg";
 import { ReactComponent as CloseHamburgerMenu } from "@/assets/icons/x-mark-outline.svg";
 
-import { getLangFromUrl, useTranslations, languages } from "@/i18n/utils";
+import { getLangFromUrl, languages } from "@/i18n/utils";
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { ReactComponent as ChevronDownIcon } from "@/assets/icons/chevron-down-outline.svg";
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 
 interface NavElement {
   title: string;
@@ -17,15 +16,36 @@ interface NavElement {
 }
 
 const whoBehindSlug = lang === 'en' ? '/who-is-behind' : '/quien-esta-detras';
+const homeHref = getRelativeLocaleUrl(lang, '/');
+const servicesHref = getRelativeLocaleUrl(lang, '/services');
+
+const labels = lang === 'en'
+  ? {
+      home: 'Home',
+      services: 'Services',
+      howWeWork: 'How We Work',
+      fit: 'Who It Fits',
+      whoBehind: 'Who is behind',
+      contact: 'Contact',
+      clientArea: 'Client Area',
+    }
+  : {
+      home: 'Inicio',
+      services: 'Servicios',
+      howWeWork: 'Como trabajamos',
+      fit: 'Para quien',
+      whoBehind: 'Quien esta detras',
+      contact: 'Contacto',
+      clientArea: 'Area Cliente',
+    };
 
 const navElements: NavElement[] = [
-  { title: t('nav.home'), href: getRelativeLocaleUrl(lang, '/') },
-  { title: t('nav.problem'), href: getRelativeLocaleUrl(lang, '/') + '#realidad' },
-  { title: t('nav.proposal'), href: getRelativeLocaleUrl(lang, '/') + '#propuesta' },
-  { title: t('nav.whatWeDo'), href: getRelativeLocaleUrl(lang, '/') + '#que-hacemos' },
-  { title: t('nav.method'), href: getRelativeLocaleUrl(lang, '/') + '#metodo' },
-  { title: t('nav.whoBehind'), href: getRelativeLocaleUrl(lang, whoBehindSlug) },
-  { title: t('nav.contact'), href: getRelativeLocaleUrl(lang, '/') + '#contact-section' },
+  { title: labels.home, href: homeHref },
+  { title: labels.services, href: servicesHref },
+  { title: labels.howWeWork, href: `${homeHref}#como-trabajamos` },
+  { title: labels.fit, href: `${homeHref}#para-quien` },
+  { title: labels.whoBehind, href: getRelativeLocaleUrl(lang, whoBehindSlug) },
+  { title: labels.contact, href: `${homeHref}#contact-section` },
 ]
 
 function getPathWithoutLang(url: URL) {
@@ -105,7 +125,7 @@ function pathForLang(targetLang: string): string {
               href={getRelativeLocaleUrl(lang, 'clientes')}
               class="inline-flex items-center justify-center px-3 py-1.5 text-sm font-semibold border rounded-full border-pheromone-purple/60 text-pheromone-light bg-pheromone-purple/10 hover:bg-pheromone-purple/20 transition-all duration-300"
             >
-              {t('nav.clientArea')}
+              {labels.clientArea}
             </a>
           </li>
         </ul>

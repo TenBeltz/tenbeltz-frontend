@@ -6,10 +6,30 @@ import backgroundGradientPC from '/public/images/img/contact-gradient-background
 import backgroundGradientMobile from '/public/images/img/contact-gradient-background-mobile.png';
 import ContactForm from './ContactForm';
 import { ScrollReveal } from './ScrollReveal';
-import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { getLangFromUrl } from '@/i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const copy = lang === 'en'
+  ? {
+      title: 'Tell us',
+      titleHighlight: 'your project',
+      subtitle: 'Share the context and we will assess whether there is a strong fit for TenBeltz.',
+      bullets: [
+        'What kind of company and product you are building',
+        'What AI use case or client project you are evaluating',
+        'What stage you are in and what constraints matter',
+      ],
+    }
+  : {
+      title: 'Cuentanos',
+      titleHighlight: 'tu proyecto',
+      subtitle: 'Comparte el contexto y evaluaremos si hay un encaje claro para trabajar con TenBeltz.',
+      bullets: [
+        'Que tipo de empresa sois y que producto o clientes teneis',
+        'Que caso de uso de IA o proyecto estais evaluando',
+        'En que punto estais y que restricciones importan',
+      ],
+    };
 
 export const contactInfo = {
   phones: ['+34 640 520 819'],
@@ -24,17 +44,15 @@ export const contactInfo = {
         <div class="flex flex-col max-w-[21rem] gap-y-6">
           <ScrollReveal client:visible>
             <h3 class="text-4xl font-bold">
-              {t('contact.title')} 
-              <span class="bg-gradient-to-r from-[#9238D6] to-[#C45BFF] bg-clip-text text-transparent">{t('contact.titleHighlight')}</span>
+              {copy.title} 
+              <span class="bg-gradient-to-r from-[#9238D6] to-[#C45BFF] bg-clip-text text-transparent">{copy.titleHighlight}</span>
             </h3>
           </ScrollReveal>
           <ScrollReveal client:visible>
             <div class="flex flex-col gap-y-4 text-lg text-slate-300">
-              <p>{t('contact.subtitle')}</p>
+              <p>{copy.subtitle}</p>
               <ul class="flex flex-col gap-y-2">
-                <li>{t('contact.list.1')}</li>
-                <li>{t('contact.list.2')}</li>
-                <li>{t('contact.list.3')}</li>
+                {copy.bullets.map((bullet) => <li>{bullet}</li>)}
               </ul>
             </div>
           </ScrollReveal>

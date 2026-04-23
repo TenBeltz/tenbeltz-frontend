@@ -45,20 +45,20 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
           company: "Empresa",
           role: "Rol",
           companyType: "Tipo de empresa",
-          engagementType: "Que necesitais",
+          engagementType: "Qué necesitáis",
           projectStage: "Estado del proyecto",
           message: "Mensaje",
         },
         placeholders: {
-          companyType: "Selecciona una opcion",
-          engagementType: "Selecciona una opcion",
-          projectStage: "Selecciona una opcion",
+          companyType: "Selecciona una opción",
+          engagementType: "Selecciona una opción",
+          projectStage: "Selecciona una opción",
           message: "Contexto, caso de uso, restricciones, bloqueos actuales...",
         },
         options: {
           companyType: ["SaaS", "Consultora de software", "Otra empresa de software"],
           engagementType: ["AI Gap Analysis", "AI Project Foundations", "Production Delivery", "AI Partner"],
-          projectStage: ["Explorando la oportunidad", "Definiendo el proyecto", "En desarrollo", "Ya en produccion", "Proyecto para un cliente"],
+          projectStage: ["Explorando la oportunidad", "Definiendo el proyecto", "En desarrollo", "Ya en producción", "Proyecto para un cliente"],
         },
         submit: "Solicitar propuesta",
         submitting: "Enviando...",
@@ -69,6 +69,12 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
       };
   const [alert, setAlert] = useState<AlertProps | null>(null);
   const [submitting, setSubmitting] = useState(false);
+
+  const chevronDataUrl =
+    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'><path d='M3 4.5 L6 7.5 L9 4.5' stroke='%23E5C6F3' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>\")";
+
+  const selectClassName =
+    "appearance-none cursor-pointer bg-no-repeat pr-10 px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none [&:invalid]:text-slate-400";
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -181,7 +187,8 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
               name="companyType"
               required
               defaultValue=""
-              className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+              className={selectClassName}
+              style={{ backgroundImage: chevronDataUrl, backgroundPosition: "right 0.875rem center", backgroundSize: "12px 12px" }}
             >
               <option value="" disabled className="text-slate-500">
                 {copy.placeholders.companyType}
@@ -202,7 +209,8 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
               name="engagementType"
               required
               defaultValue=""
-              className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+              className={selectClassName}
+              style={{ backgroundImage: chevronDataUrl, backgroundPosition: "right 0.875rem center", backgroundSize: "12px 12px" }}
             >
               <option value="" disabled className="text-slate-500">
                 {copy.placeholders.engagementType}
@@ -223,7 +231,8 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
               name="projectStage"
               required
               defaultValue=""
-              className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+              className={selectClassName}
+              style={{ backgroundImage: chevronDataUrl, backgroundPosition: "right 0.875rem center", backgroundSize: "12px 12px" }}
             >
               <option value="" disabled className="text-slate-500">
                 {copy.placeholders.projectStage}

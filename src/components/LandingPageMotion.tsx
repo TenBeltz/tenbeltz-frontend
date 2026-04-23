@@ -204,7 +204,7 @@ export function LandingPageMotion() {
         }
       }
 
-      const methodSection = document.getElementById('metodo');
+      const methodSection = document.querySelector<HTMLElement>('[data-method-section]') ?? document.getElementById('metodo');
       const methodStage = document.querySelector<HTMLElement>('[data-method-stage]');
       const methodPath = document.querySelector<SVGPathElement>('[data-method-path]');
       const methodSteps = Array.from(document.querySelectorAll<HTMLElement>('[data-method-step]'));

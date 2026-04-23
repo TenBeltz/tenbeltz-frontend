@@ -163,6 +163,6 @@
 
   .method-graphic-shell {
     margin-top: 3rem;
-    width: min(100%, 12rem);
+    width: min(100%, 20rem);
   }
 }

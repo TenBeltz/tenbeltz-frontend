@@ -28,7 +28,7 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
         },
         options: {
           companyType: ["SaaS", "Software consultancy", "Other software company"],
-          engagementType: ["AI Gap Analysis", "AI Project Foundations", "Production Delivery", "AI Partner"],
+          engagementType: ["AI Gap Analysis", "AI Project Foundations", "Agent MVP", "Production Delivery", "AI Partner"],
           projectStage: ["Exploring the opportunity", "Defining the project", "In development", "Already in production", "Project for a client"],
         },
         submit: "Request proposal",
@@ -57,7 +57,7 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
         },
         options: {
           companyType: ["SaaS", "Consultora de software", "Otra empresa de software"],
-          engagementType: ["AI Gap Analysis", "AI Project Foundations", "Production Delivery", "AI Partner"],
+          engagementType: ["AI Gap Analysis", "AI Project Foundations", "Agent MVP", "Production Delivery", "AI Partner"],
           projectStage: ["Explorando la oportunidad", "Definiendo el proyecto", "En desarrollo", "Ya en producción", "Proyecto para un cliente"],
         },
         submit: "Solicitar propuesta",

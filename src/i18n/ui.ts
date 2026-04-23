@@ -12,3 +12,5 @@ export const ui = {
   es,
   en,
 } as const;
+
+export type Lang = keyof typeof ui;

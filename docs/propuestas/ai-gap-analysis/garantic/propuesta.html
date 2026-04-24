@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presupuesto 31-2026 · TenBeltz x Garantic</title>
+    <style>
+      :root {
+        --ink: #0f172a;
+        --muted: #526071;
+        --line: #dbe4ef;
+        --soft: #eef3f8;
+        --white: #ffffff;
+        --brand-950: #090115;
+        --brand-900: #120226;
+        --brand-800: #220548;
+        --brand-700: #340076;
+        --brand-600: #561b83;
+        --brand-500: #9238d6;
+        --brand-300: #d8b4fe;
+        --blue-300: #8bd1ff;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #f6f8fb;
+        color: var(--ink);
+        font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        font-size: 12.5px;
+        line-height: 1.7;
+      }
+
+      p,
+      li {
+        orphans: 3;
+        widows: 3;
+      }
+
+      .page {
+        position: relative;
+        width: 210mm;
+        min-height: 297mm;
+        page-break-after: always;
+        overflow: hidden;
+        background: var(--white);
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+
+      .cover {
+        background:
+          radial-gradient(circle at 78% 18%, rgba(139, 209, 255, 0.22), transparent 16%),
+          radial-gradient(circle at 72% 82%, rgba(146, 56, 214, 0.3), transparent 22%),
+          linear-gradient(145deg, var(--brand-950) 0%, var(--brand-900) 30%, var(--brand-800) 64%, var(--brand-600) 100%);
+        color: var(--white);
+      }
+
+      .cover::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px);
+        background-size: 32px 32px;
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,0.32), transparent 74%);
+      }
+
+      .cover-inner {
+        position: relative;
+        z-index: 1;
+        height: 297mm;
+        padding: 22mm 18mm 18mm;
+      }
+
+      .cover-top,
+      .cover-footer {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .mark {
+        width: 44px;
+        height: 48px;
+      }
+
+      .brand-name {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 800;
+        letter-spacing: 0.22em;
+      }
+
+      .brand-sub {
+        margin: 6px 0 0;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.72);
+      }
+
+      .chip {
+        padding: 8px 14px;
+        border: 1px solid rgba(255,255,255,0.16);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.07);
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .cover-main {
+        margin-top: 44mm;
+        max-width: 126mm;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 42px;
+        line-height: 1.03;
+        letter-spacing: -0.05em;
+      }
+
+      .cover-client {
+        margin: 0 0 14px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.72);
+      }
+
+      .cover-footer {
+        position: absolute;
+        left: 18mm;
+        right: 18mm;
+        bottom: 18mm;
+        align-items: end;
+        gap: 16px;
+      }
+
+      .cover-partner {
+        margin-top: 20mm;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(255,255,255,0.14);
+        max-width: 84mm;
+      }
+
+      .cover-partner-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 10px;
+        border: 1px solid rgba(255,255,255,0.32);
+        border-radius: 10px;
+        background: rgba(255,255,255,0.04);
+      }
+
+      .cover-partner img {
+        display: block;
+        max-width: 120px;
+        max-height: 32px;
+        object-fit: contain;
+      }
+
+      .cover-partner span {
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.68);
+      }
+
+      .footer-meta {
+        max-width: 92mm;
+        padding-top: 14px;
+        border-top: 1px solid rgba(255,255,255,0.16);
+      }
+
+      .footer-meta p {
+        margin: 0;
+        color: rgba(255,255,255,0.82);
+      }
+
+      .footer-meta p + p {
+        margin-top: 4px;
+      }
+
+      .cover-footer-note {
+        text-align: right;
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.7);
+      }
+
+      .cover-web {
+        margin-top: 6px;
+        font-size: 11.5px;
+        letter-spacing: 0.04em;
+        text-transform: none;
+        color: rgba(255,255,255,0.84);
+      }
+
+      .inner {
+        padding: 16mm 18mm 14mm;
+        background: linear-gradient(180deg, #fdfefe 0%, #f6f9fc 100%);
+      }
+
+      .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 7mm;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .head-brand {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .mini-mark {
+        width: 18px;
+        height: 20px;
+      }
+
+      .mini-name {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+      }
+
+      .head-label {
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #64748b;
+      }
+
+      .section {
+        margin-top: 11mm;
+      }
+
+      .title {
+        margin: 0 0 5mm;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--brand-700);
+      }
+
+      .split p,
+      .row p,
+      .row li,
+      .plain p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .keywords {
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+      }
+
+      .keywords span {
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        color: var(--brand-700);
+      }
+
+      .rule {
+        border-top: 1px solid var(--line);
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 26mm 1fr;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .row:last-child {
+        border-bottom: 0;
+      }
+
+      .index {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--brand-700);
+      }
+
+      .row h3 {
+        margin: 0 0 4px;
+        font-size: 14px;
+      }
+
+      .row ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+      }
+
+      .economic-line {
+        padding: 12px 0 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .economic-line .label {
+        margin: 0 0 8px;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #64748b;
+      }
+
+      .economic-line .value {
+        margin: 0;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .economic-line .note {
+        margin-top: 6px;
+        color: var(--muted);
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+
+      .plain {
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
+      }
+
+      .plain h3 {
+        margin: 0 0 8px;
+        font-size: 14px;
+      }
+
+      .client-logo {
+        max-width: 120px;
+        max-height: 36px;
+        object-fit: contain;
+        margin: 0 0 10px;
+        display: block;
+      }
+
+      .page-number {
+        position: absolute;
+        right: 18mm;
+        bottom: 10mm;
+        font-size: 10px;
+        color: #64748b;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page cover">
+      <div class="cover-inner">
+        <div class="cover-top">
+          <div class="brand">
+            <svg class="mark" viewBox="0 0 28 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12.4643 0.202185C12.4643 0.321143 12.3054 0.737495 12.1099 1.13006C11.4745 2.43859 10.1182 3.39026 7.17336 4.57984C3.78865 5.93596 2.50563 6.70918 1.45479 7.98203C0.538347 9.08834 0.367279 9.69503 0.367279 11.753C0.367279 12.6214 0.391717 13.3232 0.428375 13.3232C0.587224 13.3232 1.47922 12.8474 5.25495 10.7538C6.29358 10.1828 7.67435 9.43332 8.30974 9.10024C12.5009 6.88762 14.1139 5.91216 14.7004 5.19842C15.3358 4.43709 15.5802 3.53301 15.3724 2.72409C15.2136 2.1293 13.1608 -4.3869e-05 12.7331 -4.3869e-05C12.562 -4.3869e-05 12.4643 0.071331 12.4643 0.202185Z" fill="#ffffff"/>
+              <path d="M23.3988 2.86702C22.8611 3.18821 22.0913 3.65214 21.6881 3.90195C21.2971 4.13987 20.4295 4.85362 19.7941 5.4722C17.5458 7.63723 16.5805 9.50487 16.8004 11.313C16.9226 12.3004 17.2159 12.7643 18.7799 14.3584C19.5253 15.1316 20.2585 15.9048 20.4051 16.0951C21.0649 16.9159 22.1524 17.0111 23.2888 16.345C23.6798 16.107 24.303 15.7621 24.6696 15.5598C26.2214 14.7152 27.7488 13.6684 27.8588 13.371C27.9321 13.2045 27.981 12.8119 27.981 12.4907C27.981 12.003 27.9077 11.8364 27.5044 11.3368C27.2478 11.0275 26.6857 10.4446 26.2703 10.0521C25.8548 9.65952 25.2928 9.07662 25.0239 8.75544L24.5474 8.17254L24.5596 5.48409C24.584 2.20086 24.584 2.26033 24.4741 2.27223C24.413 2.27223 23.9364 2.54583 23.3988 2.86702Z" fill="#ffffff"/>
+              <path d="M11.8533 11.0156C9.95932 12.0029 9.21395 13.4304 9.89822 14.7508C10.1182 15.1791 11.7189 16.9278 14.4804 19.7471C15.0181 20.3062 15.5679 20.9604 15.6779 21.1984C15.8001 21.4482 15.9467 21.6504 16.0078 21.6504C16.2033 21.6504 17.2175 20.2586 17.5963 19.4854C18.0118 18.6527 18.0851 17.7486 17.7918 17.0943C17.6452 16.7493 14.3216 13.252 13.7717 12.8594C13.2585 12.5025 12.8308 11.7531 12.8308 11.2297C12.8308 10.9442 12.7819 10.6944 12.7331 10.6587C12.6842 10.6349 12.281 10.7895 11.8533 11.0156Z" fill="#ffffff"/>
+              <path d="M4.93655 14.9891C4.7166 15.0367 4.11786 15.2984 3.59244 15.5839C3.05479 15.8694 2.16279 16.3333 1.58849 16.6307C0.195507 17.3326 0 17.5586 0 18.4151C0 18.8552 0.073315 19.2002 0.219945 19.4024C0.329918 19.5809 1.19748 20.5087 2.13836 21.4604L3.84904 23.2091L3.92236 24.0656C3.97123 24.5414 4.00789 25.8024 4.02011 26.8611L4.03233 28.812L4.85101 28.3719C7.17266 27.1347 9.73868 24.5652 10.5329 22.6976C10.7284 22.2217 10.8018 21.8173 10.8018 20.9965C10.814 19.6404 10.704 19.45 8.59008 17.1898C6.73277 15.2151 5.97518 14.7512 4.93655 14.9891Z" fill="#ffffff"/>
+              <path d="M25.4749 18.9265C24.2041 19.6522 22.9822 20.3064 22.7745 20.3897C22.5667 20.4849 22.1635 20.699 21.858 20.8893C21.5648 21.0678 20.966 21.4008 20.5261 21.6269C19.0232 22.3882 15.5774 24.3034 14.7342 24.8506C13.7323 25.493 12.7914 26.3971 12.4493 27.0514C12.1193 27.658 12.0216 28.6216 12.2293 29.1093C12.4126 29.5138 14.722 32 14.9175 32C14.9786 32 15.0519 31.8573 15.0886 31.6788C15.5163 29.6565 16.5182 28.6692 19.3042 27.5272C21.3937 26.6707 22.9211 26.0164 23.0311 25.9331C23.1044 25.8856 23.5321 25.6476 23.9964 25.4097C25.2183 24.7674 26.5746 23.7562 27.0634 23.1138C27.7354 22.2098 27.9554 21.3652 27.992 19.3905C28.0165 18.3793 27.9798 17.6656 27.9187 17.6418C27.8454 17.6299 26.7579 18.2009 25.4749 18.9265Z" fill="#ffffff"/>
+            </svg>
+            <div>
+              <p class="brand-name">TENBELTZ</p>
+              <p class="brand-sub">Equipo externo de ingeniería IA</p>
+            </div>
+          </div>
+          <div class="chip">Presupuesto 31-2026</div>
+        </div>
+
+        <div class="cover-main">
+          <p class="cover-client">Propuesta comercial</p>
+          <h1>AI Gap Analysis</h1>
+          <div class="cover-partner">
+            <span>Cliente</span>
+            <div class="cover-partner-badge">
+              <img src="./assets/garantic-logo.png" alt="Garantic" />
+            </div>
+          </div>
+        </div>
+
+        <div class="cover-footer">
+          <div class="footer-meta">
+            <p>24 de abril de 2026</p>
+            <p class="cover-web">tenbeltz.com</p>
+          </div>
+          <div class="cover-footer-note">Servicio de entrada</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page inner">
+      <div class="head">
+        <div class="head-brand">
+          <svg class="mini-mark" viewBox="0 0 28 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12.4643 0.202185C12.4643 0.321143 12.3054 0.737495 12.1099 1.13006C11.4745 2.43859 10.1182 3.39026 7.17336 4.57984C3.78865 5.93596 2.50563 6.70918 1.45479 7.98203C0.538347 9.08834 0.367279 9.69503 0.367279 11.753C0.367279 12.6214 0.391717 13.3232 0.428375 13.3232C0.587224 13.3232 1.47922 12.8474 5.25495 10.7538C6.29358 10.1828 7.67435 9.43332 8.30974 9.10024C12.5009 6.88762 14.1139 5.91216 14.7004 5.19842C15.3358 4.43709 15.5802 3.53301 15.3724 2.72409C15.2136 2.1293 13.1608 -4.3869e-05 12.7331 -4.3869e-05C12.562 -4.3869e-05 12.4643 0.071331 12.4643 0.202185Z" fill="#220548"/>
+            <path d="M23.3988 2.86702C22.8611 3.18821 22.0913 3.65214 21.6881 3.90195C21.2971 4.13987 20.4295 4.85362 19.7941 5.4722C17.5458 7.63723 16.5805 9.50487 16.8004 11.313C16.9226 12.3004 17.2159 12.7643 18.7799 14.3584C19.5253 15.1316 20.2585 15.9048 20.4051 16.0951C21.0649 16.9159 22.1524 17.0111 23.2888 16.345C23.6798 16.107 24.303 15.7621 24.6696 15.5598C26.2214 14.7152 27.7488 13.6684 27.8588 13.371C27.9321 13.2045 27.981 12.8119 27.981 12.4907C27.981 12.003 27.9077 11.8364 27.5044 11.3368C27.2478 11.0275 26.6857 10.4446 26.2703 10.0521C25.8548 9.65952 25.2928 9.07662 25.0239 8.75544L24.5474 8.17254L24.5596 5.48409C24.584 2.20086 24.584 2.26033 24.4741 2.27223C24.413 2.27223 23.9364 2.54583 23.3988 2.86702Z" fill="#220548"/>
+            <path d="M11.8533 11.0156C9.95932 12.0029 9.21395 13.4304 9.89822 14.7508C10.1182 15.1791 11.7189 16.9278 14.4804 19.7471C15.0181 20.3062 15.5679 20.9604 15.6779 21.1984C15.8001 21.4482 15.9467 21.6504 16.0078 21.6504C16.2033 21.6504 17.2175 20.2586 17.5963 19.4854C18.0118 18.6527 18.0851 17.7486 17.7918 17.0943C17.6452 16.7493 14.3216 13.252 13.7717 12.8594C13.2585 12.5025 12.8308 11.7531 12.8308 11.2297C12.8308 10.9442 12.7819 10.6944 12.7331 10.6587C12.6842 10.6349 12.281 10.7895 11.8533 11.0156Z" fill="#220548"/>
+            <path d="M4.93655 14.9891C4.7166 15.0367 4.11786 15.2984 3.59244 15.5839C3.05479 15.8694 2.16279 16.3333 1.58849 16.6307C0.195507 17.3326 0 17.5586 0 18.4151C0 18.8552 0.073315 19.2002 0.219945 19.4024C0.329918 19.5809 1.19748 20.5087 2.13836 21.4604L3.84904 23.2091L3.92236 24.0656C3.97123 24.5414 4.00789 25.8024 4.02011 26.8611L4.03233 28.812L4.85101 28.3719C7.17266 27.1347 9.73868 24.5652 10.5329 22.6976C10.7284 22.2217 10.8018 21.8173 10.8018 20.9965C10.814 19.6404 10.704 19.45 8.59008 17.1898C6.73277 15.2151 5.97518 14.7512 4.93655 14.9891Z" fill="#220548"/>
+            <path d="M25.4749 18.9265C24.2041 19.6522 22.9822 20.3064 22.7745 20.3897C22.5667 20.4849 22.1635 20.699 21.858 20.8893C21.5648 21.0678 20.966 21.4008 20.5261 21.6269C19.0232 22.3882 15.5774 24.3034 14.7342 24.8506C13.7323 25.493 12.7914 26.3971 12.4493 27.0514C12.1193 27.658 12.0216 28.6216 12.2293 29.1093C12.4126 29.5138 14.722 32 14.9175 32C14.9786 32 15.0519 31.8573 15.0886 31.6788C15.5163 29.6565 16.5182 28.6692 19.3042 27.5272C21.3937 26.6707 22.9211 26.0164 23.0311 25.9331C23.1044 25.8856 23.5321 25.6476 23.9964 25.4097C25.2183 24.7674 26.5746 23.7562 27.0634 23.1138C27.7354 22.2098 27.9554 21.3652 27.992 19.3905C28.0165 18.3793 27.9798 17.6656 27.9187 17.6418C27.8454 17.6299 26.7579 18.2009 25.4749 18.9265Z" fill="#220548"/>
+          </svg>
+          <div class="mini-name">TENBELTZ</div>
+        </div>
+        <div class="head-label">Presupuesto 31-2026 · Garantic</div>
+      </div>
+
+      <section class="section">
+        <h2 class="title">Objeto de la propuesta</h2>
+        <p>
+          El servicio `AI Gap Analysis` está planteado para ayudar a Garantic a tomar una decisión técnica clara antes de invertir tiempo en construir una herramienta interna con IA local. El objetivo no es empezar a desarrollar todavía, sino definir si el caso tiene sentido, qué condiciones hacen falta y cuál sería la forma correcta de abordarlo.
+        </p>
+        <div class="keywords">
+          <span>Viabilidad técnica</span>
+          <span>IA local</span>
+          <span>Criterio de arquitectura</span>
+          <span>Siguientes pasos</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="title">Alcance del servicio</h2>
+        <div class="rule">
+          <div class="row">
+            <div class="index">01</div>
+            <div>
+              <h3>Reunión de contexto</h3>
+              <p>Sesión inicial para entender el proyecto, el contexto de negocio, el flujo de trabajo actual y el uso real que se quiere dar a la herramienta.</p>
+              <ul>
+                <li>Recogida de información relevante para el análisis</li>
+                <li>Entendimiento del caso de uso y de las tareas a agilizar</li>
+                <li>Identificación de objetivos, restricciones y métricas deseables</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="index">02</div>
+            <div>
+              <h3>Elaboración del informe</h3>
+              <p>Tras la sesión de contexto, TenBeltz prepara un informe técnico con una propuesta razonada de enfoque.</p>
+              <ul>
+                <li>Propuesta de plan y siguiente paso recomendado</li>
+                <li>Stack de herramientas sugerido</li>
+                <li>Análisis inicial de riesgos y previsión de complejidad</li>
+                <li>Metodologías recomendadas y no recomendadas para el caso</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="index">03</div>
+            <div>
+              <h3>Reunión de presentación</h3>
+              <p>Sesión final para presentar el informe, aclarar conclusiones y responder dudas antes de decidir el siguiente movimiento.</p>
+              <ul>
+                <li>Presentación del análisis y de las recomendaciones</li>
+                <li>Aclaraciones sobre decisiones técnicas propuestas</li>
+                <li>Resolución de dudas y alineación sobre el siguiente paso</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="page-number">01</div>
+    </section>
+
+    <section class="page inner">
+      <div class="head">
+        <div class="head-brand">
+          <svg class="mini-mark" viewBox="0 0 28 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12.4643 0.202185C12.4643 0.321143 12.3054 0.737495 12.1099 1.13006C11.4745 2.43859 10.1182 3.39026 7.17336 4.57984C3.78865 5.93596 2.50563 6.70918 1.45479 7.98203C0.538347 9.08834 0.367279 9.69503 0.367279 11.753C0.367279 12.6214 0.391717 13.3232 0.428375 13.3232C0.587224 13.3232 1.47922 12.8474 5.25495 10.7538C6.29358 10.1828 7.67435 9.43332 8.30974 9.10024C12.5009 6.88762 14.1139 5.91216 14.7004 5.19842C15.3358 4.43709 15.5802 3.53301 15.3724 2.72409C15.2136 2.1293 13.1608 -4.3869e-05 12.7331 -4.3869e-05C12.562 -4.3869e-05 12.4643 0.071331 12.4643 0.202185Z" fill="#220548"/>
+            <path d="M23.3988 2.86702C22.8611 3.18821 22.0913 3.65214 21.6881 3.90195C21.2971 4.13987 20.4295 4.85362 19.7941 5.4722C17.5458 7.63723 16.5805 9.50487 16.8004 11.313C16.9226 12.3004 17.2159 12.7643 18.7799 14.3584C19.5253 15.1316 20.2585 15.9048 20.4051 16.0951C21.0649 16.9159 22.1524 17.0111 23.2888 16.345C23.6798 16.107 24.303 15.7621 24.6696 15.5598C26.2214 14.7152 27.7488 13.6684 27.8588 13.371C27.9321 13.2045 27.981 12.8119 27.981 12.4907C27.981 12.003 27.9077 11.8364 27.5044 11.3368C27.2478 11.0275 26.6857 10.4446 26.2703 10.0521C25.8548 9.65952 25.2928 9.07662 25.0239 8.75544L24.5474 8.17254L24.5596 5.48409C24.584 2.20086 24.584 2.26033 24.4741 2.27223C24.413 2.27223 23.9364 2.54583 23.3988 2.86702Z" fill="#220548"/>
+            <path d="M11.8533 11.0156C9.95932 12.0029 9.21395 13.4304 9.89822 14.7508C10.1182 15.1791 11.7189 16.9278 14.4804 19.7471C15.0181 20.3062 15.5679 20.9604 15.6779 21.1984C15.8001 21.4482 15.9467 21.6504 16.0078 21.6504C16.2033 21.6504 17.2175 20.2586 17.5963 19.4854C18.0118 18.6527 18.0851 17.7486 17.7918 17.0943C17.6452 16.7493 14.3216 13.252 13.7717 12.8594C13.2585 12.5025 12.8308 11.7531 12.8308 11.2297C12.8308 10.9442 12.7819 10.6944 12.7331 10.6587C12.6842 10.6349 12.281 10.7895 11.8533 11.0156Z" fill="#220548"/>
+            <path d="M4.93655 14.9891C4.7166 15.0367 4.11786 15.2984 3.59244 15.5839C3.05479 15.8694 2.16279 16.3333 1.58849 16.6307C0.195507 17.3326 0 17.5586 0 18.4151C0 18.8552 0.073315 19.2002 0.219945 19.4024C0.329918 19.5809 1.19748 20.5087 2.13836 21.4604L3.84904 23.2091L3.92236 24.0656C3.97123 24.5414 4.00789 25.8024 4.02011 26.8611L4.03233 28.812L4.85101 28.3719C7.17266 27.1347 9.73868 24.5652 10.5329 22.6976C10.7284 22.2217 10.8018 21.8173 10.8018 20.9965C10.814 19.6404 10.704 19.45 8.59008 17.1898C6.73277 15.2151 5.97518 14.7512 4.93655 14.9891Z" fill="#220548"/>
+            <path d="M25.4749 18.9265C24.2041 19.6522 22.9822 20.3064 22.7745 20.3897C22.5667 20.4849 22.1635 20.699 21.858 20.8893C21.5648 21.0678 20.966 21.4008 20.5261 21.6269C19.0232 22.3882 15.5774 24.3034 14.7342 24.8506C13.7323 25.493 12.7914 26.3971 12.4493 27.0514C12.1193 27.658 12.0216 28.6216 12.2293 29.1093C12.4126 29.5138 14.722 32 14.9175 32C14.9786 32 15.0519 31.8573 15.0886 31.6788C15.5163 29.6565 16.5182 28.6692 19.3042 27.5272C21.3937 26.6707 22.9211 26.0164 23.0311 25.9331C23.1044 25.8856 23.5321 25.6476 23.9964 25.4097C25.2183 24.7674 26.5746 23.7562 27.0634 23.1138C27.7354 22.2098 27.9554 21.3652 27.992 19.3905C28.0165 18.3793 27.9798 17.6656 27.9187 17.6418C27.8454 17.6299 26.7579 18.2009 25.4749 18.9265Z" fill="#220548"/>
+          </svg>
+          <div class="mini-name">TENBELTZ</div>
+        </div>
+        <div class="head-label">Presupuesto 31-2026 · Garantic</div>
+      </div>
+
+      <section class="section">
+        <h2 class="title">Contexto del proyecto</h2>
+        <div class="plain">
+          <p>
+            La propuesta parte de una iniciativa interna orientada a agilizar consultorías y tareas operativas de Garantic. Actualmente existe interés en explorar un enfoque con IA local sobre un Mac mini M4 Pro de 48 GB, con previsión de trabajar en ello a partir de junio, por lo que esta fase encaja como paso previo para definir bien el problema antes de construir.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="title">Condiciones económicas</h2>
+        <div class="economic-line">
+          <p class="label">Total presupuesto</p>
+          <p class="value">500,00 € + IVA</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="title">Condiciones del servicio</h2>
+        <div class="two-col">
+          <div class="plain">
+            <h3>Calendario</h3>
+            <p>Ejecución estimada para mediados de mayo de 2026, en fecha concreta a acordar entre ambas partes.</p>
+          </div>
+          <div class="plain">
+            <h3>Entregable</h3>
+            <p>Informe técnico en PDF y reunión de presentación para revisar conclusiones y siguientes pasos.</p>
+          </div>
+          <div class="plain">
+            <h3>Alcance económico</h3>
+            <p>El importe cubre exclusivamente el servicio de entrada descrito en esta propuesta. Cualquier ampliación o siguiente fase se presupuestará aparte.</p>
+          </div>
+          <div class="plain">
+            <h3>Forma de trabajo</h3>
+            <p>Interlocución directa con Aritz Jaber Lopes, responsable de TenBeltz y persona que liderará la evaluación técnica y la elaboración del informe.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="title">Datos de emisión</h2>
+        <div class="two-col">
+          <div class="plain">
+            <h3>Proveedor</h3>
+            <img class="client-logo" src="./assets/tenbeltz-logo.png" alt="TenBeltz" />
+            <p>
+              Beltz Dev SL<br />
+              Avenida Elexalde n8<br />
+              48940 Leioa<br />
+              hello@tenbeltz.com<br />
+              +34 640 520 819
+            </p>
+          </div>
+          <div class="plain">
+            <h3>Cliente</h3>
+            <img class="client-logo" src="./assets/garantic-logo.png" alt="Garantic" />
+            <p>
+              Garantic, S.C.<br />
+              Calle San Ignacio de Loyola, 7<br />
+              50008 Zaragoza<br />
+              correo@garantic.es<br />
+              +34 976 900 505
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="page-number">02</div>
+    </section>
+  </body>
+</html>

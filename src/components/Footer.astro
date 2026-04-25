@@ -7,11 +7,12 @@ import { getLangFromUrl } from "@/i18n/utils";
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const lang = getLangFromUrl(Astro.url);
+const currentYear = new Date().getFullYear();
 const labels = lang === 'en'
   ? {
       sections: 'Sections',
       contact: 'Contact',
-      copyright: '© 2024 TenBeltz. All rights reserved.',
+      copyright: `© ${currentYear} TenBeltz. All rights reserved.`,
       home: 'Home',
       services: 'Services',
       howWeWork: 'How We Work',
@@ -21,7 +22,7 @@ const labels = lang === 'en'
   : {
       sections: 'Secciones',
       contact: 'Contacto',
-      copyright: '© 2024 TenBeltz. Todos los derechos reservados.',
+      copyright: `© ${currentYear} TenBeltz. Todos los derechos reservados.`,
       home: 'Inicio',
       services: 'Servicios',
       howWeWork: 'Cómo trabajamos',

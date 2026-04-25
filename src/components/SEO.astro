@@ -25,7 +25,7 @@ const determineCanonicalURL = () => {
 const canonicalURL = new URL(determineCanonicalURL(), Astro.site)
 
 // Build hreflang alternate URLs from the canonical
-const canonicalPath = canonicalURL.pathname // e.g. /precios or /en/precios
+const canonicalPath = canonicalURL.pathname
 const isEnglish = canonicalPath.startsWith('/en/') || canonicalPath === '/en'
 const basePath = isEnglish ? canonicalPath.replace(/^\/en/, '') || '/' : canonicalPath
 

@@ -118,7 +118,7 @@ const content = lang === 'en'
           { title: 'Context', detail: 'We understand business constraints, product reality, and the specific use case.' },
           { title: 'System design', detail: 'We define architecture, data needs, evals, guardrails, and delivery path.' },
           { title: 'Validation', detail: 'We ground decisions in measurable criteria instead of intuition or demo theater.' },
-          { title: 'Production or partner', detail: 'We either take it through delivery or stay close as an external AI engineering partner.' },
+          { title: 'Production or handover', detail: 'We either take it through delivery or hand over a clear path for your internal team to finish with confidence.' },
         ],
       },
       fit: {
@@ -128,7 +128,7 @@ const content = lang === 'en'
           'You are a SaaS or consultancy with real software delivery behind the AI ambition.',
           'You need technical judgment, not a flashy prototype.',
           'You care about reliability, observability, integration, and cost.',
-          'You want a partner that can challenge scope before implementation starts.',
+          'You want a technical team that can challenge scope before implementation starts.',
         ],
         noTitle: 'Not a fit',
         no: [
@@ -241,7 +241,7 @@ const content = lang === 'en'
           { title: 'Contexto', detail: 'Entendemos restricciones de negocio, realidad de producto y caso de uso concreto.' },
           { title: 'Diseño de sistema', detail: 'Definimos arquitectura, necesidades de datos, evals, guardrails y camino de entrega.' },
           { title: 'Validación', detail: 'Aterrizamos decisiones con criterios medibles en lugar de intuición o teatro de demo.' },
-          { title: 'Producción o partner', detail: 'O lo llevamos hasta delivery o nos quedamos cerca como equipo externo de ingeniería IA.' },
+          { title: 'Producción o transferencia', detail: 'O lo llevamos hasta delivery o dejamos un camino claro para que tu equipo complete el tramo final con criterio.' },
         ],
       },
       fit: {
@@ -251,7 +251,7 @@ const content = lang === 'en'
           'Eres un SaaS o una consultora con capacidad real de delivery de software.',
           'Necesitas criterio técnico, no un prototipo vistoso.',
           'Te importan fiabilidad, observabilidad, integración y costes.',
-          'Quieres un partner que cuestione el alcance antes de empezar a construir.',
+          'Quieres un equipo técnico que cuestione el alcance antes de empezar a construir.',
         ],
         noTitle: 'No encaja',
         no: [
@@ -431,32 +431,9 @@ const modalityCards = servicesCopy.home.cards.map((card, index) => ({
                     <h3 class="text-2xl font-semibold">{item.title}</h3>
                     <p class="text-slate-300">{item.description}</p>
                   </div>
-                  {item.variants ? (
-                    <div class="mt-auto flex flex-col gap-3">
-                      <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.3em] text-pheromone-light/70">
-                        {servicesCopy.home.variantsLabel}
-                      </p>
-                      {item.variants.map((variant) => (
-                        <a
-                          href={`${servicesHref}#service-${variant.serviceId}`}
-                          class="group flex flex-col gap-2 rounded-xl border border-pheromone-purple/20 bg-white/[0.02] px-4 py-3 transition-colors hover:border-pheromone-purple/45 hover:bg-white/[0.05]"
-                        >
-                          <div class="flex items-center gap-2">
-                            <span class="inline-flex rounded-full border border-pheromone-purple/40 bg-pheromone-purple/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-pheromone-light">
-                              {variant.tag}
-                            </span>
-                            <span class="text-sm font-semibold text-white">{variant.title}</span>
-                            <span aria-hidden="true" class="ml-auto text-pheromone-light/70 transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                          </div>
-                          <p class="text-xs leading-relaxed text-slate-300">{variant.description}</p>
-                        </a>
-                      ))}
-                    </div>
-                  ) : (
-                    <ul class="mt-auto flex flex-col gap-2 text-sm text-slate-300">
-                      {item.bullets?.map((bullet) => <li>• {bullet}</li>)}
-                    </ul>
-                  )}
+                  <ul class="mt-auto flex flex-col gap-2 text-sm text-slate-300">
+                    {item.bullets.map((bullet) => <li>• {bullet}</li>)}
+                  </ul>
                 </div>
               </div>
             </ScrollReveal>

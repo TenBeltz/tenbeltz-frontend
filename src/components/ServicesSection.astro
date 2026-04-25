@@ -3,7 +3,6 @@ import { ScrollReveal } from './ScrollReveal';
 import { ReactComponent as DocumentsOutline } from '@/assets/icons/documents-outline.svg';
 import { ReactComponent as PackageSearchOutline } from '@/assets/icons/package-search-outline.svg';
 import { ReactComponent as SecureOutline } from '@/assets/icons/secure-outline.svg';
-import { ReactComponent as PeopleOutline } from '@/assets/icons/people-outline.svg';
 import { ReactComponent as TaskDoneOutline } from '@/assets/icons/task-done-outline.svg';
 import { ReactComponent as ProcessOutline } from '@/assets/icons/process-outline.svg';
 import { getLangFromUrl } from '@/i18n/utils';
@@ -18,7 +17,6 @@ const serviceIcons: Record<ServiceId, typeof DocumentsOutline> = {
   'foundations': PackageSearchOutline,
   'agent-mvp': ProcessOutline,
   'production-delivery': SecureOutline,
-  'partner': PeopleOutline,
 };
 ---
 
@@ -35,7 +33,7 @@ const serviceIcons: Record<ServiceId, typeof DocumentsOutline> = {
     <div class="grid grid-cols-1 gap-6 mt-10 lg:grid-cols-2">
       {copy.services.map((service, index) => {
         const Icon = serviceIcons[service.id];
-        const spanFull = index === copy.services.length - 1;
+        const spanFull = copy.services.length % 2 === 1 && index === copy.services.length - 1;
         return (
           <ScrollReveal client:visible delay={index * 90} className={spanFull ? 'lg:col-span-2' : undefined}>
             <article id={`service-${service.id}`} class="flex h-full scroll-mt-24 flex-col gap-5 rounded-2xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-6 py-7 shadow-[0_0_25px_rgba(3,7,18,0.35)] backdrop-blur-sm">

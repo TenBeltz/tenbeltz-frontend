@@ -4,8 +4,7 @@ export type ServiceId =
   | 'gap-analysis'
   | 'foundations'
   | 'agent-mvp'
-  | 'production-delivery'
-  | 'partner';
+  | 'production-delivery';
 
 export interface Service {
   id: ServiceId;
@@ -17,20 +16,12 @@ export interface Service {
   bullets: string[];
 }
 
-export interface HomeCardVariant {
+export interface HomeCard {
   serviceId: ServiceId;
   tag: string;
   title: string;
   description: string;
-}
-
-export interface HomeCard {
-  tag: string;
-  title: string;
-  description: string;
-  bullets?: string[];
-  variants?: HomeCardVariant[];
-  serviceId?: ServiceId;
+  bullets: string[];
 }
 
 export interface ServicesCopy {
@@ -43,7 +34,6 @@ export interface ServicesCopy {
     title: string;
     intro: string;
     cards: HomeCard[];
-    variantsLabel: string;
   };
   services: Service[];
   path: {
@@ -60,13 +50,12 @@ export interface ServicesCopy {
 const es: ServicesCopy = {
   intro: {
     tag: 'Estructura de servicios',
-    title: 'Cinco formas de trabajar con TenBeltz',
-    text: 'La oferta se organiza según la madurez del proyecto: desde diagnosticar si merece la pena construirlo hasta acompañarte a largo plazo. La idea es entrar con el nivel correcto de implicación, no forzar a todos los clientes por el mismo camino.',
+    title: 'Cuatro formas de trabajar con TenBeltz',
+    text: 'La oferta se organiza según la madurez del proyecto: desde diagnosticar si merece la pena construirlo hasta entregarlo en producción. La idea es entrar con el nivel correcto de implicación, no forzar a todos los clientes por el mismo camino.',
   },
   home: {
-    title: 'Cinco formas de trabajar, cuatro puntos de entrada',
+    title: 'Cuatro formas de trabajar, cuatro puntos de entrada',
     intro: 'La oferta se organiza por madurez del proyecto. Elige dónde quieres entrar; en la página de servicios tienes el detalle completo.',
-    variantsLabel: 'Dos modos',
     cards: [
       {
         serviceId: 'gap-analysis',
@@ -91,33 +80,25 @@ const es: ServicesCopy = {
         ],
       },
       {
-        tag: 'Build',
-        title: 'Construir el sistema',
-        description: 'Para proyectos concretos. Dos modos según hasta dónde quieras que lleguemos.',
-        variants: [
-          {
-            serviceId: 'agent-mvp',
-            tag: 'MVP',
-            title: 'Agent MVP',
-            description: 'Montamos golden set, evals y primera versión del agente. Tu equipo termina el camino a producción.',
-          },
-          {
-            serviceId: 'production-delivery',
-            tag: 'Delivery',
-            title: 'Production Delivery',
-            description: 'Lo mismo, pero llevado end-to-end hasta producción e integrado en tu producto.',
-          },
+        serviceId: 'agent-mvp',
+        tag: 'MVP',
+        title: 'Agent MVP',
+        description: 'Montamos golden set, evals y primera versión del agente. Tu equipo termina el camino a producción.',
+        bullets: [
+          'Golden set, evals y observabilidad',
+          'Primera versión funcional',
+          'Guía clara del tramo final a producción',
         ],
       },
       {
-        serviceId: 'partner',
-        tag: 'Partner',
-        title: 'AI Partner',
-        description: 'Para relaciones más largas donde acompañamos roadmap, mantenimiento, optimización de costes y decisiones técnicas.',
+        serviceId: 'production-delivery',
+        tag: 'Delivery',
+        title: 'Production Delivery',
+        description: 'Mismas bases técnicas, llevado end-to-end hasta producción e integrado en tu producto.',
         bullets: [
-          'Acompañamiento continuo',
-          'Optimización y mantenimiento',
-          'Presente en tus reuniones',
+          'Implementación completa',
+          'Integración en producto',
+          'Entrega lista para producción',
         ],
       },
     ],
@@ -183,21 +164,6 @@ const es: ServicesCopy = {
         'Handover técnico al equipo',
       ],
     },
-    {
-      id: 'partner',
-      tag: 'Partner',
-      title: 'AI Partner',
-      description: 'Relación continua para empresas con varias iniciativas de IA o consultoras que quieren a TenBeltz cerca del roadmap, del mantenimiento y de las conversaciones técnicas con sus clientes.',
-      fitTitle: 'Encaja para',
-      fit: 'SaaS con varias features de IA en marcha o consultoras que necesitan soporte senior en preventa y delivery con sus propios clientes.',
-      bullets: [
-        'Acompañamiento técnico continuo',
-        'Optimización de costes y fiabilidad',
-        'Apoyo en reuniones con tus clientes',
-        'Mantenimiento y roadmap de IA',
-        'Disponibilidad para decisiones técnicas',
-      ],
-    },
   ],
   path: {
     title: 'Cómo elegir el punto de entrada',
@@ -206,7 +172,6 @@ const es: ServicesCopy = {
       'Si eres consultora y quieres una base técnica reutilizable, elige AI Project Foundations.',
       'Si el proyecto ya es real y quieres arrancar con criterio pero asumir tú la entrega, Agent MVP.',
       'Si el alcance está claro y quieres que lleguemos hasta producción, Production Delivery.',
-      'Si IA pasa a ser una capacidad continua, evoluciona a AI Partner.',
     ],
   },
   cta: {
@@ -219,13 +184,12 @@ const es: ServicesCopy = {
 const en: ServicesCopy = {
   intro: {
     tag: 'Service structure',
-    title: 'Five ways to work with TenBeltz',
-    text: 'The offer is organized around project maturity: from diagnosing whether a case is worth building to supporting you long-term. The point is to enter with the right level of involvement, not to force every client through the same path.',
+    title: 'Four ways to work with TenBeltz',
+    text: 'The offer is organized around project maturity: from diagnosing whether a case is worth building to shipping it in production. The point is to enter with the right level of involvement, not to force every client through the same path.',
   },
   home: {
-    title: 'Five ways to work, four entry points',
+    title: 'Four ways to work, four entry points',
     intro: 'The offer is organized around project maturity. Pick where you want to enter; the services page has the full detail.',
-    variantsLabel: 'Two modes',
     cards: [
       {
         serviceId: 'gap-analysis',
@@ -250,33 +214,25 @@ const en: ServicesCopy = {
         ],
       },
       {
-        tag: 'Build',
-        title: 'Build the system',
-        description: 'For concrete projects. Two modes depending on how far you want us to go.',
-        variants: [
-          {
-            serviceId: 'agent-mvp',
-            tag: 'MVP',
-            title: 'Agent MVP',
-            description: 'We set up the golden set, evals, and first agent version. Your team carries it to production.',
-          },
-          {
-            serviceId: 'production-delivery',
-            tag: 'Delivery',
-            title: 'Production Delivery',
-            description: 'Same engagement, taken end-to-end through production and integrated with your product.',
-          },
+        serviceId: 'agent-mvp',
+        tag: 'MVP',
+        title: 'Agent MVP',
+        description: 'We set up the golden set, evals, and first agent version. Your team carries it to production.',
+        bullets: [
+          'Golden set, evals, and observability',
+          'First working version',
+          'Clear guide for the final production stretch',
         ],
       },
       {
-        serviceId: 'partner',
-        tag: 'Partner',
-        title: 'AI Partner',
-        description: 'For longer relationships where we support roadmap, maintenance, cost optimization, and technical decision-making.',
+        serviceId: 'production-delivery',
+        tag: 'Delivery',
+        title: 'Production Delivery',
+        description: 'Same technical foundations, taken end-to-end through production and integrated with your product.',
         bullets: [
-          'Continuous support',
-          'Optimization and maintenance',
-          'Present in your meetings',
+          'Full implementation',
+          'Product integration',
+          'Production-ready delivery',
         ],
       },
     ],
@@ -342,21 +298,6 @@ const en: ServicesCopy = {
         'Technical handover to the team',
       ],
     },
-    {
-      id: 'partner',
-      tag: 'Partner',
-      title: 'AI Partner',
-      description: 'Ongoing relationship for companies with multiple AI initiatives or consultancies that want TenBeltz close to the roadmap, the maintenance, and the technical conversations with their clients.',
-      fitTitle: 'Best for',
-      fit: 'SaaS teams with multiple AI features in play or consultancies that need senior support in pre-sales and delivery with their own clients.',
-      bullets: [
-        'Continuous technical support',
-        'Cost and reliability optimization',
-        'Support in meetings with your clients',
-        'AI maintenance and roadmap',
-        'Availability for technical decisions',
-      ],
-    },
   ],
   path: {
     title: 'How to choose the right entry point',
@@ -365,7 +306,6 @@ const en: ServicesCopy = {
       'If you are a consultancy that wants a reusable technical base, choose AI Project Foundations.',
       'If the project is real and you want to kick off well but own delivery yourself, go with Agent MVP.',
       'If the scope is clear and you want us to take it to production, go with Production Delivery.',
-      'If AI becomes a continuous capability, move to AI Partner.',
     ],
   },
   cta: {
@@ -386,5 +326,4 @@ export const serviceIds: ServiceId[] = [
   'foundations',
   'agent-mvp',
   'production-delivery',
-  'partner',
 ];

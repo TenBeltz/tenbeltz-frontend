@@ -23,25 +23,26 @@ const labels = lang === 'en'
   ? {
       home: 'Home',
       services: 'Services',
+      cases: 'Case studies',
       howWeWork: 'How We Work',
       fit: 'Who It Fits',
       whoBehind: 'Who is behind',
       contact: 'Contact',
-      clientArea: 'Client Area',
     }
   : {
       home: 'Inicio',
       services: 'Servicios',
+      cases: 'Casos',
       howWeWork: 'Cómo trabajamos',
       fit: 'Para quién',
       whoBehind: 'Quién está detrás',
       contact: 'Contacto',
-      clientArea: 'Área Cliente',
     };
 
 const navElements: NavElement[] = [
   { title: labels.home, href: homeHref },
   { title: labels.services, href: servicesHref },
+  { title: labels.cases, href: getRelativeLocaleUrl(lang, lang === 'en' ? '/case-studies' : '/casos') },
   { title: labels.howWeWork, href: `${homeHref}#como-trabajamos` },
   { title: labels.fit, href: `${homeHref}#para-quien` },
   { title: labels.whoBehind, href: getRelativeLocaleUrl(lang, whoBehindSlug) },
@@ -61,6 +62,8 @@ const currentPath = getPathWithoutLang(Astro.url);
 const localizedSlugMap: Record<string, Record<string, string>> = {
   'quien-esta-detras': { es: 'quien-esta-detras', en: 'who-is-behind' },
   'who-is-behind': { es: 'quien-esta-detras', en: 'who-is-behind' },
+  'casos': { es: 'casos', en: 'case-studies' },
+  'case-studies': { es: 'casos', en: 'case-studies' },
 };
 
 function pathForLang(targetLang: string): string {
@@ -119,14 +122,6 @@ function pathForLang(targetLang: string): string {
                 ))}
               </ul>
             </div>
-          </li>
-          <li>
-            <a
-              href={getRelativeLocaleUrl(lang, 'clientes')}
-              class="inline-flex items-center justify-center px-3 py-1.5 text-sm font-semibold border rounded-full border-pheromone-purple/60 text-pheromone-light bg-pheromone-purple/10 hover:bg-pheromone-purple/20 transition-all duration-300"
-            >
-              {labels.clientArea}
-            </a>
           </li>
         </ul>
       </nav>

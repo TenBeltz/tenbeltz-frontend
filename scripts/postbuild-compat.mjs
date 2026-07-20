@@ -31,10 +31,6 @@ for (const file of scrollRevealFiles) {
 
 const aliasCopies = [
   {
-    legacy: 'clientes.2Eg4H2qD.css',
-    findCurrent: (files) => files.find((file) => file.startsWith('clientes.') && file.endsWith('.css')),
-  },
-  {
     legacy: 'ContactForm.DBQQQBYL.js',
     findCurrent: (files) => files.find((file) => file.startsWith('ContactForm.') && file.endsWith('.js')),
   },

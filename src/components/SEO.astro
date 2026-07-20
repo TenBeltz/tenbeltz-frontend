@@ -12,10 +12,15 @@ const {
 	title,
 	description,
 	canonical,
-	image = './favicon/favicon.svg',
+	image,
 	lang = 'es',
 	noindex = false,
 } = Astro.props as Props
+
+// Dedicated OG image per locale (1200x630). Social crawlers need an absolute URL.
+const defaultOgPath = lang === 'en' ? '/og/og-en.png' : '/og/og-es.png'
+const ogImage = new URL(image ?? defaultOgPath, Astro.site)
+const isDefaultOgImage = !image
 
 const determineCanonicalURL = () => {
 	if (Astro.url.host.includes("localhost")) return `http://localhost:4321${Astro.url.pathname}`
@@ -33,6 +38,8 @@ const basePath = isEnglish ? canonicalPath.replace(/^\/en/, '') || '/' : canonic
 const localizedSlugMap: Record<string, { es: string; en: string }> = {
 	'/quien-esta-detras': { es: '/quien-esta-detras', en: '/who-is-behind' },
 	'/who-is-behind': { es: '/quien-esta-detras', en: '/who-is-behind' },
+	'/casos': { es: '/casos', en: '/case-studies' },
+	'/case-studies': { es: '/casos', en: '/case-studies' },
 }
 const mapped = localizedSlugMap[basePath.replace(/\/$/, '')]
 const esPath = mapped ? mapped.es : basePath
@@ -42,6 +49,50 @@ const enURL = new URL(`/en${enPath === '/' ? '' : enPath}`, Astro.site)
 
 const ogLocale = lang === 'en' ? 'en_US' : 'es_ES'
 const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_US'
+
+// JSON-LD (schema.org): Organization + founder Person
+const organizationLogo = new URL('/favicon/web-app-manifest-512x512.png', Astro.site).href
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Organization',
+			'@id': 'https://tenbeltz.com/#organization',
+			name: 'TenBeltz',
+			legalName: 'Beltz Dev SL',
+			vatID: 'B21697719',
+			url: 'https://tenbeltz.com',
+			logo: organizationLogo,
+			email: 'hello@tenbeltz.com',
+			telephone: '+34640520819',
+			address: {
+				'@type': 'PostalAddress',
+				streetAddress: 'Avenida Elexalde 8',
+				postalCode: '48940',
+				addressLocality: 'Leioa',
+				addressRegion: 'Bizkaia',
+				addressCountry: 'ES',
+			},
+			sameAs: [
+				'https://www.linkedin.com/company/tenbeltz/',
+				'https://www.instagram.com/tenbeltz/',
+			],
+			founder: { '@id': 'https://tenbeltz.com/#aritz' },
+		},
+		{
+			'@type': 'Person',
+			'@id': 'https://tenbeltz.com/#aritz',
+			name: 'Aritz Jaber Lopes',
+			jobTitle: 'Cofundador y líder técnico',
+			worksFor: { '@id': 'https://tenbeltz.com/#organization' },
+			sameAs: [
+				'https://www.linkedin.com/in/aritzjl/',
+				'https://github.com/aritzjl',
+				'https://aritzjaber.com',
+			],
+		},
+	],
+}
 ---
 
 <title>{title}</title>
@@ -60,9 +111,12 @@ const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_US'
 <meta name="twitter:site" content="@TenBeltz" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={new URL(image, Astro.url)} />
+<meta name="twitter:image" content={ogImage} />
 
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={ogImage} />
+{isDefaultOgImage && <meta property="og:image:width" content="1200" />}
+{isDefaultOgImage && <meta property="og:image:height" content="630" />}
+{isDefaultOgImage && <meta property="og:image:type" content="image/png" />}
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={Astro.url} />
@@ -80,3 +134,5 @@ const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_US'
 <link rel="manifest" href="/favicon/site.webmanifest">
 <link rel="shortcut icon" href="/favicon/favicon.ico">
 <meta name="apple-mobile-web-app-title" content="TenBeltz">
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

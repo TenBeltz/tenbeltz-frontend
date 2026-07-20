@@ -5,6 +5,8 @@ import HomeHero from '@/components/HomeHero.astro';
 import Footer from '@/components/Footer.astro';
 import Layout from '@/layouts/Layout.astro';
 import Contact from '@/components/Contact.astro';
+import WorkHighlights from '@/components/WorkHighlights.astro';
+import FaqSection from '@/components/FaqSection.astro';
 import { LandingPageMotion } from '@/components/LandingPageMotion';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { ReactComponent as AiIntegrationsIcon } from '@/assets/icons/ai-integrations-outline.svg';
@@ -425,6 +427,8 @@ const modalityCards = servicesCopy.home.cards.map((card, index) => ({
       </div>
     </section>
 
+    <WorkHighlights />
+
     <section id="que-hacemos" class="relative text-white bg-grid">
       <div class="max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24">
         <ScrollReveal client:visible>
@@ -812,6 +816,8 @@ const modalityCards = servicesCopy.home.cards.map((card, index) => ({
         </div>
       </div>
     </section>
+
+    <FaqSection />
 
     <Banner
       title={content.banner.title}

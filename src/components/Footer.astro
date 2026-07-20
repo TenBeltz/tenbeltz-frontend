@@ -13,8 +13,10 @@ const labels = lang === 'en'
       sections: 'Sections',
       contact: 'Contact',
       copyright: `© ${currentYear} TenBeltz. All rights reserved.`,
+      legalEntity: 'TenBeltz is a brand of Beltz Dev SL · VAT B21697719',
       home: 'Home',
       services: 'Services',
+      cases: 'Case studies',
       howWeWork: 'How We Work',
       fit: 'Who It Fits',
       whoBehind: 'Who is behind',
@@ -23,8 +25,10 @@ const labels = lang === 'en'
       sections: 'Secciones',
       contact: 'Contacto',
       copyright: `© ${currentYear} TenBeltz. Todos los derechos reservados.`,
+      legalEntity: 'TenBeltz es una marca de Beltz Dev SL · CIF B21697719',
       home: 'Inicio',
       services: 'Servicios',
+      cases: 'Casos',
       howWeWork: 'Cómo trabajamos',
       fit: 'Para quién',
       whoBehind: 'Quién está detrás',
@@ -64,6 +68,7 @@ const servicesHref = getRelativeLocaleUrl(lang, '/services');
 const sections: FooterLink[] = [
   { name: labels.home, url: homeHref },
   { name: labels.services, url: servicesHref },
+  { name: labels.cases, url: getRelativeLocaleUrl(lang, lang === 'en' ? '/case-studies' : '/casos') },
   { name: labels.howWeWork, url: `${homeHref}#como-trabajamos` },
   { name: labels.fit, url: `${homeHref}#para-quien` },
   { name: labels.whoBehind, url: getRelativeLocaleUrl(lang, whoBehindSlug) },
@@ -89,9 +94,11 @@ const sections: FooterLink[] = [
       </ScrollReveal>
     </div>
     
-    <ScrollReveal client:visible className="flex justify-between py-3 text-sm border-t border-slate-400 text-slate-400">
-      <span>
-        {labels.copyright}
+    <ScrollReveal client:visible className="flex flex-col gap-y-2 justify-between py-3 text-sm border-t border-slate-400 text-slate-400 sm:flex-row sm:items-center">
+      <span class="flex flex-col gap-y-1 sm:flex-row sm:items-center sm:gap-x-2">
+        <span>{labels.copyright}</span>
+        <span aria-hidden="true" class="hidden sm:inline text-slate-500">·</span>
+        <span class="text-slate-500">{labels.legalEntity}</span>
       </span>
       <span class="flex gap-x-4 [&>a]:hover:cursor-pointer">
         {socialMedias.map(socialMedia => (

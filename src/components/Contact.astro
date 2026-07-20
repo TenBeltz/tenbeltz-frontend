@@ -2,8 +2,8 @@
 import { ReactComponent as PhoneIcon } from '@/assets/icons/phone-outline.svg';
 import { ReactComponent as MailIcon } from '@/assets/icons/envelope-outline.svg';
 import { Picture } from 'astro:assets';
-import backgroundGradientPC from '/public/images/img/contact-gradient-background-pc.png';
-import backgroundGradientMobile from '/public/images/img/contact-gradient-background-mobile.png';
+import backgroundGradientPC from '/public/images/img/contact-gradient-background-pc.webp';
+import backgroundGradientMobile from '/public/images/img/contact-gradient-background-mobile.webp';
 import ContactForm from './ContactForm';
 import { ScrollReveal } from './ScrollReveal';
 import { getLangFromUrl } from '@/i18n/utils';
@@ -14,12 +14,18 @@ const copy = lang === 'en'
       title: 'Tell us',
       titleHighlight: 'your project',
       subtitle: 'Share the context and we will assess whether there is a strong fit for TenBeltz.',
+      calendlyLead: 'Prefer to talk it through?',
+      calendlyButton: 'Book 30 min with Aritz',
     }
   : {
       title: 'Cuéntanos',
       titleHighlight: 'tu proyecto',
       subtitle: 'Comparte el contexto y evaluaremos si hay un encaje claro para trabajar con TenBeltz.',
+      calendlyLead: '¿Prefieres hablarlo directamente?',
+      calendlyButton: 'Agenda 30 min con Aritz',
     };
+
+const calendlyUrl = 'https://calendly.com/tenbeltz/consulta';
 
 export const contactInfo = {
   phones: ['+34 640 520 819'],
@@ -58,6 +64,17 @@ export const contactInfo = {
             </ScrollReveal>
           ))}
         </ul>
+        <ScrollReveal client:visible>
+          <div class="flex flex-col gap-y-3">
+            <p class="text-lg text-slate-300">{copy.calendlyLead}</p>
+            <a
+              href={calendlyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn bg-pheromone-purple hover:bg-sapphire-siren text-xl font-medium leading-6 block w-fit"
+            >{copy.calendlyButton}</a>
+          </div>
+        </ScrollReveal>
       </div>
     </div>
     <div class="px-4 py-20 lg:border-x lg:border-berry-blackmail md:flex-1 lg:px-16 bg-gradient-to-r backdrop-blur-[2px] from-[#561B834D] to-[#1A00764D]">

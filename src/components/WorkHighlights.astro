@@ -1,0 +1,106 @@
+---
+import { ScrollReveal } from '@/components/ScrollReveal';
+import { getLangFromUrl } from '@/i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const casesSlug = lang === 'en' ? '/case-studies' : '/casos';
+const casesHref = getRelativeLocaleUrl(lang, casesSlug);
+
+interface Highlight {
+  client: string;
+  title: string;
+  meta: string;
+}
+
+const content = lang === 'en'
+  ? {
+      eyebrow: 'Real work',
+      title: 'In production, with real clients',
+      cta: 'See case studies',
+      items: [
+        {
+          client: 'Irontec',
+          title: 'AI-powered call analysis',
+          meta: 'Enterprise platform on Kubernetes',
+        },
+        {
+          client: 'Qamarero',
+          title: 'Voice agents handling bookings',
+          meta: 'Running in production',
+        },
+        {
+          client: 'Legal sector',
+          title: '−42% cost per report',
+          meta: 'Thanks to automatic evaluation',
+        },
+      ] as Highlight[],
+    }
+  : {
+      eyebrow: 'Trabajo real',
+      title: 'En producción, con clientes reales',
+      cta: 'Ver casos',
+      items: [
+        {
+          client: 'Irontec',
+          title: 'Análisis de llamadas con IA',
+          meta: 'Plataforma enterprise en Kubernetes',
+        },
+        {
+          client: 'Qamarero',
+          title: 'Agentes de voz gestionando reservas',
+          meta: 'En producción',
+        },
+        {
+          client: 'Sector legal',
+          title: '−42% de coste por informe',
+          meta: 'Gracias a la evaluación automática',
+        },
+      ] as Highlight[],
+    };
+---
+
+<section id="trabajo-real" class="relative text-white section-shell">
+  <div class="pointer-events-none absolute top-10 right-[-5rem] h-72 w-72 rounded-full bg-pheromone-purple/15 blur-3xl"></div>
+  <div class="max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24">
+    <ScrollReveal client:visible>
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div class="max-w-2xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.28em] text-pheromone-light/80">{content.eyebrow}</p>
+          <h2 class="mt-3 text-4xl font-bold lg:text-5xl">{content.title}</h2>
+        </div>
+        <p class="font-mono text-xs uppercase tracking-[0.3em] text-slate-500">
+          03 / {lang === 'en' ? 'projects' : 'proyectos'}
+        </p>
+      </div>
+    </ScrollReveal>
+
+    <div class="grid grid-cols-1 gap-5 mt-10 md:grid-cols-3">
+      {content.items.map((item, index) => (
+        <ScrollReveal client:visible delay={index * 90}>
+          <a
+            href={casesHref}
+            class="group flex h-full flex-col gap-5 rounded-2xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-6 py-7 shadow-[0_0_25px_rgba(3,7,18,0.35)] backdrop-blur-sm transition-all hover:border-pheromone-purple/60 hover:bg-[#130130CC]/80"
+          >
+            <div class="flex items-center justify-between gap-4">
+              <span class="inline-flex rounded-full border border-pheromone-purple/40 bg-pheromone-purple/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-pheromone-light">
+                {item.client}
+              </span>
+              <span aria-hidden="true" class="font-mono text-sm font-semibold tracking-widest text-pheromone-light/50 tabular-nums">
+                0{index + 1}
+              </span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-2xl font-semibold leading-snug text-white">{item.title}</h3>
+              <p class="text-sm uppercase tracking-widest text-slate-400">{item.meta}</p>
+            </div>
+            <span class="mt-auto inline-flex items-center gap-x-2 text-sm font-semibold text-pheromone-light transition-colors group-hover:text-white">
+              {content.cta}
+              <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">&rarr;</span>
+            </span>
+          </a>
+        </ScrollReveal>
+      ))}
+    </div>
+  </div>
+</section>

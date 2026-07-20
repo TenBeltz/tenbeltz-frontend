@@ -1,0 +1,290 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Banner from '@/components/Banner.astro';
+import Contact from '@/components/Contact.astro';
+import { ScrollReveal } from '@/components/ScrollReveal';
+import { getLangFromUrl } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const casesSlug = lang === 'en' ? '/case-studies' : '/casos';
+const canonical = `https://tenbeltz.com${lang === 'en' ? '/en' : ''}${casesSlug}`;
+
+interface CaseStudy {
+  tag: string;
+  sector: string;
+  title: string;
+  context: string;
+  built: string;
+  result?: { figure: string; text: string };
+  close: string;
+  closeHighlight?: boolean;
+}
+
+const content = lang === 'en'
+  ? {
+      seo: {
+        title: 'TenBeltz | Case Studies — AI systems in production',
+        description: 'Real AI engineering projects built by TenBeltz: voice agents, multi-agent systems, RAG and document classification running in production.',
+      },
+      hero: {
+        eyebrow: 'Real work',
+        title: 'AI systems already running in production',
+        intro: 'We do not show demos. These are real projects built by TenBeltz, operating with real traffic, real users, and real costs.',
+      },
+      labels: {
+        built: 'What we built',
+        result: 'Result',
+      },
+      cases: [
+        {
+          tag: 'Client · Irontec',
+          sector: 'Telecommunications · Contact center',
+          title: 'AI-powered call analysis for contact centers',
+          context: 'Irontec, a leading technology consultancy in telecommunications and open source, hired TenBeltz to design and build an enterprise call-analysis platform.',
+          built: 'Transcription with multiple speech engines (Deepgram, Whisper), conversation analysis with LLMs — service quality, data extraction, metrics — RAG over the calls, asynchronous processing with workers, and deployment on Kubernetes. Model selection and on-premise deployment driven by privacy requirements.',
+          close: 'TenBeltz has operated as Irontec’s AI engineering partner since 2025.',
+        },
+        {
+          tag: 'Client · Qamarero',
+          sector: 'Hospitality · SaaS',
+          title: 'Voice agents handling real bookings',
+          context: 'Qamarero, a hospitality management SaaS, wanted to bring AI into its product without breaking the daily operation of its restaurants.',
+          built: 'A system of phone agents that answers calls and manages reservations end to end, integrated with the CRM and the SaaS’s own table and schedule management. Several months of joint work until it was running in production.',
+          close: 'Conversational voice AI wired into the real operation, not an isolated chatbot.',
+        },
+        {
+          tag: 'Legal sector',
+          sector: 'Legal · Expert reports',
+          title: 'Multi-agent system for expert legal reports',
+          context: 'An expert report is a legal document: a wrong date or a misassigned injury has real consequences. Here, precision rules.',
+          built: 'Specialized agents per report section, extraction into validated structured data, and a double anti-hallucination layer: deterministic rules (dates, inconsistencies against the medical assessment scale) and automatic evaluation against real reports, section by section. Multi-provider, routed per task.',
+          result: { figure: '−42%', text: 'cost per report with no loss of precision.' },
+          close: 'You do not cut costs by picking the cheap model. You cut them when your evaluation system proves the cheap one breaks nothing.',
+        },
+        {
+          tag: 'Document management',
+          sector: 'Document processing',
+          title: 'Automatic classification of thousands of documents',
+          context: 'Classifying documents into 15 categories and 77 subcategories. The question was not which LLM to use, but whether one was needed at all.',
+          built: 'A measured comparison of three approaches on real data: semantic with embeddings, 100% LLM, and hybrid. The hybrid reaches 95.5% top-5 accuracy with 17% fewer LLM calls.',
+          close: 'Measure before assuming you need an LLM.',
+          closeHighlight: true,
+        },
+      ] as CaseStudy[],
+      systems: {
+        eyebrow: 'Capabilities',
+        title: 'What kind of systems we build',
+        items: [
+          'Voice agents connected to the real operation',
+          'RAG and document classification at scale',
+          'Multi-agent systems with automatic quality evaluation',
+          'On-premise AI in regulated environments (ENS, EU AI Act)',
+        ],
+      },
+      banner: {
+        title: 'If the project matters, it is worth defining it properly from the start',
+        button: 'Request proposal',
+      },
+    }
+  : {
+      seo: {
+        title: 'TenBeltz | Casos — sistemas de IA en producción',
+        description: 'Proyectos reales de ingeniería de IA construidos por TenBeltz: agentes de voz, sistemas multiagente, RAG y clasificación documental en producción.',
+      },
+      hero: {
+        eyebrow: 'Trabajo real',
+        title: 'Sistemas de IA que ya están en producción',
+        intro: 'No enseñamos demos. Estos son proyectos reales construidos por TenBeltz, operando con tráfico, usuarios y costes reales.',
+      },
+      labels: {
+        built: 'Qué construimos',
+        result: 'Resultado',
+      },
+      cases: [
+        {
+          tag: 'Cliente · Irontec',
+          sector: 'Telecomunicaciones · Contact center',
+          title: 'Análisis de llamadas con IA para contact centers',
+          context: 'Irontec, consultora tecnológica de referencia en telecomunicaciones y open source, contrató a TenBeltz para diseñar y desarrollar una plataforma enterprise de análisis de llamadas.',
+          built: 'Transcripción con múltiples motores de voz (Deepgram, Whisper), análisis de conversaciones con LLMs —calidad de atención, extracción de datos, métricas—, RAG sobre las llamadas, procesamiento asíncrono con workers y despliegue en Kubernetes. Selección de modelos y despliegue on-premise según requisitos de privacidad.',
+          close: 'TenBeltz opera como partner de ingeniería de IA de Irontec desde 2025.',
+        },
+        {
+          tag: 'Cliente · Qamarero',
+          sector: 'Hostelería · SaaS',
+          title: 'Agentes de voz que gestionan reservas reales',
+          context: 'Qamarero, SaaS de gestión para hostelería, quería llevar IA a su producto sin romper la operación diaria de sus restaurantes.',
+          built: 'Un sistema de agentes telefónicos que atiende llamadas y gestiona reservas de principio a fin, integrado con el CRM y la gestión de mesas y horarios del propio SaaS. Varios meses de trabajo conjunto hasta dejarlo operando en producción.',
+          close: 'IA conversacional de voz conectada a la operación real, no un chatbot aislado.',
+        },
+        {
+          tag: 'Sector legal',
+          sector: 'Legal · Informes periciales',
+          title: 'Sistema multiagente para informes periciales',
+          context: 'Un informe pericial es un documento legal: un error de fecha o una secuela mal asignada tienen consecuencias reales. Aquí la precisión manda.',
+          built: 'Agentes especializados por sección del informe, extracción a datos estructurados validados y doble capa anti-alucinación: reglas deterministas (fechas, incongruencias frente al baremo médico) y evaluación automática contra informes reales, sección a sección. Multiproveedor, enrutado por tarea.',
+          result: { figure: '−42%', text: 'de coste por informe sin perder precisión.' },
+          close: 'No bajas el coste eligiendo el modelo barato. Lo bajas cuando tu sistema de evaluación demuestra que el barato no rompe nada.',
+        },
+        {
+          tag: 'Gestión documental',
+          sector: 'Procesamiento documental',
+          title: 'Clasificación automática de miles de documentos',
+          context: 'Clasificar documentos en 15 categorías y 77 subcategorías. La pregunta no era qué LLM usar, sino si hacía falta uno.',
+          built: 'Comparación medida de tres enfoques sobre datos reales: semántico con embeddings, 100% LLM e híbrido. El híbrido alcanza un 95,5% de acierto top-5 con un 17% menos de llamadas al LLM.',
+          close: 'Mide antes de asumir que necesitas un LLM.',
+          closeHighlight: true,
+        },
+      ] as CaseStudy[],
+      systems: {
+        eyebrow: 'Capacidades',
+        title: 'Qué tipo de sistemas construimos',
+        items: [
+          'Agentes de voz conectados a la operación real',
+          'RAG y clasificación documental a escala',
+          'Sistemas multiagente con evaluación automática de calidad',
+          'IA on-premise en entornos regulados (ENS, EU AI Act)',
+        ],
+      },
+      banner: {
+        title: 'Si el proyecto importa, conviene definirlo bien desde el principio',
+        button: 'Solicitar propuesta',
+      },
+    };
+---
+
+<Layout
+  title={content.seo.title}
+  description={content.seo.description}
+  canonical={canonical}
+>
+  <Header />
+  <main class="relative z-10 flex flex-col flex-1 overflow-x-hidden pt-24 lg:pt-28">
+    <!-- 1. Hero -->
+    <section class="relative overflow-hidden text-white section-shell">
+      <div class="pointer-events-none absolute -top-24 right-[-6rem] h-[28rem] w-[28rem] rounded-full bg-pheromone-purple/20 blur-3xl"></div>
+      <div class="pointer-events-none absolute -bottom-20 left-[-6rem] h-[24rem] w-[24rem] rounded-full bg-sapphire-siren/30 blur-3xl"></div>
+      <div class="relative max-w-screen-xl px-4 py-16 mx-auto lg:px-16 lg:py-20">
+        <ScrollReveal client:visible>
+          <div class="max-w-3xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-pheromone-light/80">
+              {content.hero.eyebrow}
+            </p>
+            <h1 class="mt-4 text-4xl font-extrabold leading-tight lg:text-6xl">{content.hero.title}</h1>
+            <p class="mt-6 max-w-2xl text-lg text-slate-300">{content.hero.intro}</p>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+
+    <!-- 2. Cases -->
+    <section class="relative text-white">
+      <div class="max-w-screen-xl px-4 py-16 mx-auto lg:px-16 lg:py-20">
+        <div class="flex flex-col gap-8 lg:gap-10">
+          {content.cases.map((caseStudy, index) => (
+            <ScrollReveal client:visible delay={index * 80}>
+              <article class="relative overflow-hidden rounded-3xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 p-7 shadow-[0_0_25px_rgba(3,7,18,0.35)] backdrop-blur-sm lg:p-10">
+                <div aria-hidden="true" class="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-pheromone-purple/10 blur-3xl"></div>
+
+                <div class="relative flex flex-wrap items-center justify-between gap-4">
+                  <div class="flex flex-wrap items-center gap-3">
+                    <span class="inline-flex rounded-full border border-pheromone-purple/40 bg-pheromone-purple/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-pheromone-light">
+                      {caseStudy.tag}
+                    </span>
+                    <span class="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                      {caseStudy.sector}
+                    </span>
+                  </div>
+                  <span aria-hidden="true" class="font-mono text-sm font-semibold tracking-widest text-pheromone-light/60 tabular-nums">
+                    0{index + 1}
+                  </span>
+                </div>
+
+                <h2 class="relative mt-6 text-3xl font-bold leading-tight lg:text-4xl">{caseStudy.title}</h2>
+                <p class="relative mt-4 max-w-3xl text-lg text-slate-300">{caseStudy.context}</p>
+
+                <div class={`relative mt-8 grid grid-cols-1 gap-6 ${caseStudy.result ? 'lg:grid-cols-[1.4fr_1fr]' : ''}`}>
+                  <div class="rounded-2xl border border-white/8 bg-white/[0.03] px-5 py-5 lg:px-6 lg:py-6">
+                    <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-pheromone-light/80">
+                      {content.labels.built}
+                    </p>
+                    <p class="mt-3 text-base leading-relaxed text-slate-300">{caseStudy.built}</p>
+                  </div>
+
+                  {caseStudy.result && (
+                    <div class="relative flex flex-col justify-between gap-4 overflow-hidden rounded-2xl border border-pheromone-purple/40 bg-gradient-to-br from-[#16002E] via-[#0D0124] to-[#240044] px-6 py-6 shadow-[0_0_40px_rgba(96,43,182,0.2)]">
+                      <div aria-hidden="true" class="pointer-events-none absolute -top-12 -right-12 h-40 w-40 rounded-full bg-pheromone-purple/25 blur-3xl"></div>
+                      <p class="relative font-mono text-xs font-semibold uppercase tracking-[0.28em] text-pheromone-light">
+                        {content.labels.result}
+                      </p>
+                      <div class="relative">
+                        <p class="text-[clamp(2.75rem,5vw,4rem)] font-bold leading-none text-white">
+                          {caseStudy.result.figure}
+                        </p>
+                        <p class="mt-3 text-base leading-relaxed text-slate-300">{caseStudy.result.text}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {caseStudy.closeHighlight ? (
+                  <div class="relative mt-6 overflow-hidden rounded-2xl border border-pheromone-purple/35 bg-gradient-to-r from-[#0B0122CC]/90 via-[#16002E]/80 to-[#0B0122CC]/90 px-6 py-5">
+                    <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-pheromone-light via-pheromone-purple to-sapphire-siren"></div>
+                    <p class="relative text-xl font-semibold text-white lg:text-2xl">{caseStudy.close}</p>
+                  </div>
+                ) : (
+                  <p class="relative mt-6 border-l border-pheromone-purple/40 pl-5 text-base font-medium leading-relaxed text-slate-200 lg:text-lg">
+                    {caseStudy.close}
+                  </p>
+                )}
+              </article>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. What kind of systems we build -->
+    <section class="relative text-white">
+      <div class="pointer-events-none absolute top-10 left-[-4rem] h-64 w-64 rounded-full bg-pheromone-purple/20 blur-3xl"></div>
+      <div class="max-w-screen-xl px-4 py-20 mx-auto lg:px-16 lg:py-24">
+        <ScrollReveal client:visible>
+          <div class="max-w-3xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-pheromone-light/80">
+              {content.systems.eyebrow}
+            </p>
+            <h2 class="mt-3 text-4xl font-bold lg:text-5xl">{content.systems.title}</h2>
+          </div>
+        </ScrollReveal>
+        <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {content.systems.items.map((item, index) => (
+            <ScrollReveal client:visible delay={index * 80}>
+              <div class="flex h-full items-start gap-4 rounded-2xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-5 py-5 backdrop-blur-sm">
+                <span class="shrink-0 pt-0.5 font-mono text-sm font-semibold tracking-widest text-pheromone-light tabular-nums">
+                  0{index + 1}
+                </span>
+                <p class="border-l border-pheromone-purple/25 pl-4 text-base font-medium leading-relaxed text-slate-200">
+                  {item}
+                </p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CTA -->
+    <Banner
+      title={content.banner.title}
+      buttonText={content.banner.button}
+      buttonHref="#contact-section"
+    />
+
+    <!-- 5. Contact form -->
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

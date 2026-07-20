@@ -38,6 +38,12 @@ const recognition = [
 ];
 
 const biiakUrl = t('whobehind.elsewhere.biiak.url');
+
+const profileLinks = [
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/aritzjl/' },
+  { name: 'GitHub', url: 'https://github.com/aritzjl' },
+  { name: 'Portfolio', url: 'https://aritzjaber.com' },
+];
 ---
 
 <Layout
@@ -103,6 +109,21 @@ const biiakUrl = t('whobehind.elsewhere.biiak.url');
                   {t('whobehind.hero.chip.2')}
                 </span>
               </li>
+            </ul>
+            <ul class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 lg:justify-start">
+              {profileLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-x-1.5 text-sm font-semibold text-slate-300 transition-colors hover:text-pheromone-light"
+                  >
+                    {link.name}
+                    <span aria-hidden="true" class="text-xs">&nearr;</span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </ScrollReveal>

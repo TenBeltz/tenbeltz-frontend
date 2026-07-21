@@ -5,6 +5,55 @@ Orden cronológico inverso (lo más reciente arriba). Cada entrada dice **qué**
 
 ---
 
+## 2026-07-21 (noche) — Hero, CSS y política de privacidad
+
+### Hero: 578.806 → 557.760 bytes (`08925ed`)
+
+Se vendorizó el parser de rutas de `SVGLoader` en `src/components/svgPathParser.js`, porque
+el componente solo lo usaba para convertir cinco cadenas `d` estáticas en formas. Salida
+verificada **bit a bit idéntica** contra el `SVGLoader` real en los 7.211 puntos muestreados.
+
+**Pendiente:** comprobación visual en escritorio (≥960 px). Los trazos del logo deben
+dibujarse en el mismo orden, el segundo en lila claro, curvas suaves, y las interacciones de
+puntero y scroll sin cambios.
+
+Dos cosas que **no** funcionaron, anotadas para que nadie las reintente:
+
+- Pasar `import * as THREE` a imports nombrados produce un bundle **byte a byte idéntico**.
+  Rollup ya hace tree-shaking del namespace porque todos los accesos son estáticos. El chunk
+  es grande por `WebGLRenderer`, no por el estilo de import.
+- Precalcular los puntos en build sería *peor*: `getPoints(120)` corre por segmento de curva,
+  no por ruta, dando 7.211 puntos ≈ 125 KB de JSON frente a los 49 KB que cuesta el loader.
+
+### `Footer.css`: investigado, no hay nada que arreglar
+
+No es un chunk del pie: es **la hoja de estilos de todo el sitio**, con un nombre engañoso.
+Rollup agrupó el armazón común (Layout, Header, Footer, SEO, Contact) en un chunk y lo
+bautizó `Footer`; Vite nombró el CSS a partir de ahí.
+
+- 96 KB de los 100 KB son utilidades de Tailwind generadas; solo 4,3 KB son CSS propio
+- Tailwind está purgando bien: 845 reglas para 1.004 clases reales, no un volcado sin podar
+- **Un único fichero CSS en todo el build**, compartido por las 13 rutas. No hay duplicación
+- Comprimido: 16.601 bytes con gzip, 13.152 con brotli
+
+Todas las alternativas empeoran el resultado. Dividir por página multiplicaría el solapamiento
+y perdería el cacheo entre navegaciones. **Se deja como está.**
+
+### Política de privacidad — en rama `legal/politicas-rgpd` (`f69cfde`)
+
+Reescrita tomando como modelo las páginas legales redactadas por abogados del repo
+`BiiakLanding`. De 8 a 15 secciones. Se copió **estructura y fraseo jurídico, nunca datos**:
+Biiak es otra entidad, con otros identificadores y otros encargados.
+
+**No se ha fusionado a propósito.** Los 4 marcadores `[PENDIENTE]` se renderizan visibles, y
+si llegan a producción salen publicados en la página legal.
+
+Además de los huecos ya identificados, apareció uno que nadie había visto: la política decía
+que se recogen "nombre, email y empresa" cuando `ContactForm.tsx` recoge **ocho campos**. Y
+dos secciones (`usage.*` y `cookies.outro`) estaban definidas en i18n pero no se renderizaban.
+
+---
+
 ## 2026-07-21 (tarde) — Bloque técnico del backlog
 
 Ejecutado con 8 subagentes en dos oleadas, repartidos **por fichero** para que no se pisaran.

@@ -8,6 +8,13 @@ partido por esfuerzo, no orden de aparición.
 Leyenda de responsable: 🤖 lo puede hacer el agente · 👤 requiere a Aritz · 🔧 requiere
 acceso al servidor
 
+Estado: ✅ hecho · ⚠️ hecho a medias o bloqueado por revisión · sin marca = pendiente
+
+> **Rama `legal/politicas-rgpd` — no fusionar todavía.** Contiene la política de privacidad
+> reescrita, con **4 marcadores `[PENDIENTE]` que se renderizan visibles** en la página. Si
+> llega a `main` y se despliega, salen publicados. Necesita que se resuelvan los cuatro y
+> que lo revise un abogado antes de fusionar.
+
 ---
 
 ## 🔴 Crítico — servidor
@@ -59,7 +66,7 @@ bloque `location /_astro/`.
 
 ## 🟠 Alto — rendimiento
 
-### 3. 578 KB de JavaScript para un fondo decorativo 🤖
+### ~~3~~ ⚠️ 578 KB de JavaScript para un fondo decorativo 🤖 — *parcial, pendiente QA visual*
 
 `src/components/HomeHeroScene.tsx:1-9` hace `import * as THREE from 'three'` más
 `SVGLoader`. Resultado: 578.806 bytes, más que todo el resto del sitio junto, para una
@@ -103,7 +110,7 @@ afecta poco en la práctica, pero se genera en cada build sin motivo.
 
 ## 🟠 Alto — contenido y confianza
 
-### 6. Falta el derecho a reclamar ante la AEPD en la política de privacidad 👤
+### ~~6~~ ⚠️ Falta el derecho a reclamar ante la AEPD 👤 — *redactado en rama, pendiente de abogado*
 
 `src/i18n/es.ts:54` y `en.ts:54` listan acceso, rectificación, supresión y retirada del
 consentimiento. **Faltan** portabilidad, limitación, oposición y —lo relevante— el derecho
@@ -114,7 +121,7 @@ Ese último es una mención obligatoria del art. 13.2.d del RGPD, no texto opcio
 > ⚠️ Esto excede el SEO. **Que lo revise quien lleve el tema legal antes de tocarlo** — aquí
 > solo se señala la ausencia, no se está dando asesoramiento jurídico.
 
-### 7. El discurso comercial promete más de lo que sostiene la política de privacidad 👤
+### ~~7~~ ⚠️ El discurso comercial promete más que la política 👤 — *abordado en rama*
 
 `/casos` anuncia *"IA on-premise en entornos regulados (ENS, EU AI Act)"*
 (`CasesPage.astro:156`), pero `/politicas` no menciona transferencias internacionales,
@@ -308,7 +315,7 @@ No hay clave ni script. Con 10 URLs es barato y avisa a Bing y Yandex al instant
 El resto de cabeceras de seguridad ya están. Empezar por `Permissions-Policy`, que es
 trivial, y un CSP en modo `report-only` antes de aplicarlo.
 
-### 28. `Footer.B0FIt5U3.css` pesa 97.818 bytes 🤖
+### ~~28~~ ✅ `Footer.css` pesa 97.818 bytes 🤖 — *investigado: no hay nada que arreglar*
 Mucho para un chunk de pie de página. Merece un pase con el visualizador de bundle para ver
 si Tailwind está metiendo utilidades globales ahí. Menos urgente una vez esté la compresión.
 

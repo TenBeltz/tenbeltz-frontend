@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import * as THREE from 'three';
-import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
+import { parsePath } from './svgPathParser.js';
 import { useMotionPreferences } from '@/hooks/useMotionPreferences';
 
 const GRID_COLUMNS = 30;
@@ -470,10 +470,8 @@ export function HomeHeroScene() {
       };
     });
 
-    const logoLoader = new SVGLoader();
-    const logoSvgMarkup = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">${LOGO_PATHS.map((d) => `<path d="${d}" />`).join('')}</svg>`;
-    const logoData = logoLoader.parse(logoSvgMarkup);
-    const logoLines = logoData.paths.flatMap((shapePath, shapeIndex) =>
+    const logoShapePaths = LOGO_PATHS.map((d) => parsePath(d));
+    const logoLines = logoShapePaths.flatMap((shapePath, shapeIndex) =>
       shapePath.subPaths.flatMap((subPath, subPathIndex) => {
         const sampledPoints = subPath.getPoints(120);
 

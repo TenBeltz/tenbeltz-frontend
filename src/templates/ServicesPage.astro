@@ -7,21 +7,23 @@ import Contact from '@/components/Contact.astro';
 import { getLangFromUrl } from '@/i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
+// Titles lead with the searchable term, not the brand: "TenBeltz" has no search volume yet,
+// so brand-first wastes the highest-weight characters in the SERP.
 const content = lang === 'en'
   ? {
-      seoTitle: 'TenBeltz | AI engagement models for software companies',
-      seoDescription: 'Explore the four ways TenBeltz works with SaaS teams and software consultancies on AI initiatives.',
+      seoTitle: 'AI engineering services for software companies | TenBeltz',
+      seoDescription: 'Four ways to bring AI into your product: gap analysis, project foundations, agent MVP and production delivery. For SaaS teams and software consultancies.',
     }
   : {
-      seoTitle: 'TenBeltz | Modalidades de trabajo para proyectos de IA',
-      seoDescription: 'Descubre las cuatro formas en las que TenBeltz trabaja con equipos SaaS y consultoras de software en proyectos de IA.',
+      seoTitle: 'Servicios de ingeniería de IA para software | TenBeltz',
+      seoDescription: 'Cuatro formas de llevar la IA a tu producto: diagnóstico, bases del proyecto, MVP de agente y entrega en producción. Para equipos SaaS y consultoras.',
     };
 ---
 
 <Layout	
 	title={content.seoTitle}
 	description={content.seoDescription}
-	canonical="https://tenbeltz.com/services"
+	canonical={`https://tenbeltz.com${lang === 'en' ? '/en' : ''}/services`}
 >
 	<Header />
 	<main class="z-10 flex flex-col flex-1 overflow-x-hidden pt-24 lg:pt-28">

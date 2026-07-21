@@ -6,12 +6,16 @@ import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// This template serves both locales, so the canonical must be locale-aware. A hardcoded
+// Spanish URL told Google the English page was a duplicate and kept it out of the index.
+const canonical = `https://tenbeltz.com${lang === 'en' ? '/en' : ''}/politicas`;
 ---
 
 <Layout
   title={t('policies.title')}
   description={t('policies.description')}
-  canonical="https://tenbeltz.com/politicas"
+  canonical={canonical}
 >
   <Header />
   <main class="relative z-10 flex flex-col flex-1 overflow-x-hidden">

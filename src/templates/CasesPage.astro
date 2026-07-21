@@ -14,6 +14,9 @@ const canonical = `https://tenbeltz.com${lang === 'en' ? '/en' : ''}${casesSlug}
 
 interface CaseStudy {
   tag: string;
+  // Real client domain. An unlinked client name is just a string to a crawler; an outbound
+  // link to a verifiable company is a corroboration signal.
+  clientUrl?: string;
   sector: string;
   title: string;
   context: string;
@@ -26,7 +29,7 @@ interface CaseStudy {
 const content = lang === 'en'
   ? {
       seo: {
-        title: 'TenBeltz | Case Studies — AI systems in production',
+        title: 'AI case studies: systems running in production | TenBeltz',
         description: 'Real AI engineering projects built by TenBeltz: voice agents, multi-agent systems, RAG and document classification running in production.',
       },
       hero: {
@@ -41,6 +44,7 @@ const content = lang === 'en'
       cases: [
         {
           tag: 'Client · Irontec',
+          clientUrl: 'https://www.irontec.com/',
           sector: 'Telecommunications · Contact center',
           title: 'AI-powered call analysis for contact centers',
           context: 'Irontec, a leading technology consultancy in telecommunications and open source, hired TenBeltz to design and build an enterprise call-analysis platform.',
@@ -49,6 +53,7 @@ const content = lang === 'en'
         },
         {
           tag: 'Client · Qamarero',
+          clientUrl: 'https://qamarero.com/',
           sector: 'Hospitality · SaaS',
           title: 'Voice agents handling real bookings',
           context: 'Qamarero, a hospitality management SaaS, wanted to bring AI into its product without breaking the daily operation of its restaurants.',
@@ -91,7 +96,7 @@ const content = lang === 'en'
     }
   : {
       seo: {
-        title: 'TenBeltz | Casos — sistemas de IA en producción',
+        title: 'Casos de IA: sistemas en producción reales | TenBeltz',
         description: 'Proyectos reales de ingeniería de IA construidos por TenBeltz: agentes de voz, sistemas multiagente, RAG y clasificación documental en producción.',
       },
       hero: {
@@ -106,6 +111,7 @@ const content = lang === 'en'
       cases: [
         {
           tag: 'Cliente · Irontec',
+          clientUrl: 'https://www.irontec.com/',
           sector: 'Telecomunicaciones · Contact center',
           title: 'Análisis de llamadas con IA para contact centers',
           context: 'Irontec, consultora tecnológica de referencia en telecomunicaciones y open source, contrató a TenBeltz para diseñar y desarrollar una plataforma enterprise de análisis de llamadas.',
@@ -114,6 +120,7 @@ const content = lang === 'en'
         },
         {
           tag: 'Cliente · Qamarero',
+          clientUrl: 'https://qamarero.com/',
           sector: 'Hostelería · SaaS',
           title: 'Agentes de voz que gestionan reservas reales',
           context: 'Qamarero, SaaS de gestión para hostelería, quería llevar IA a su producto sin romper la operación diaria de sus restaurantes.',
@@ -191,9 +198,20 @@ const content = lang === 'en'
 
                 <div class="relative flex flex-wrap items-center justify-between gap-4">
                   <div class="flex flex-wrap items-center gap-3">
-                    <span class="inline-flex rounded-full border border-pheromone-purple/40 bg-pheromone-purple/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-pheromone-light">
-                      {caseStudy.tag}
-                    </span>
+                    {caseStudy.clientUrl ? (
+                      <a
+                        href={caseStudy.clientUrl}
+                        target="_blank"
+                        rel="noopener"
+                        class="inline-flex rounded-full border border-pheromone-purple/40 bg-pheromone-purple/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-pheromone-light transition-colors hover:border-pheromone-purple/70 hover:bg-pheromone-purple/20"
+                      >
+                        {caseStudy.tag}
+                      </a>
+                    ) : (
+                      <span class="inline-flex rounded-full border border-pheromone-purple/40 bg-pheromone-purple/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-pheromone-light">
+                        {caseStudy.tag}
+                      </span>
+                    )}
                     <span class="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-400">
                       {caseStudy.sector}
                     </span>

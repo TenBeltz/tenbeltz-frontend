@@ -1,0 +1,41 @@
+# TenBeltz
+
+> Equipo externo de ingeniería de IA para empresas de software. Ayudamos a empresas SaaS
+> y consultoras de software a definir, validar y llevar a producción sistemas de IA con
+> criterio técnico explícito: fiabilidad medible, observabilidad y control de costes.
+
+TenBeltz es el nombre comercial de Beltz Dev SL (NIF B21697719), con sede en Leioa,
+Bizkaia, España. No es una agencia de IA ni una consultora generalista: define el caso,
+estructura el sistema y acompaña al equipo hasta producción con criterios de entrega
+explícitos.
+
+Áreas de trabajo: agentes LLM, RAG, sistemas multiagente, clasificación documental,
+agentes de voz, evaluación de modelos (evals), observabilidad y control de coste por
+feature.
+
+## Páginas
+
+- [Inicio](https://tenbeltz.com): posicionamiento, modalidades de trabajo y preguntas
+  frecuentes sobre cómo se estructura un proyecto de IA.
+- [Servicios](https://tenbeltz.com/services): las cuatro modalidades de colaboración —
+  AI Gap Analysis (diagnóstico y roadmap), AI Project Foundations (bases del proyecto),
+  Agent MVP (primer agente en funcionamiento) y Production Delivery (entrega en
+  producción). Cada una corresponde a un momento distinto de madurez del proyecto.
+- [Casos](https://tenbeltz.com/casos): proyectos reales en producción, con resultados
+  cuantificados — entre ellos un sistema multiagente de informes legales (−42% de coste
+  por informe) y un clasificador documental (95,5% de acierto top-5 con un 17% menos de
+  llamadas al LLM). Clientes incluidos: Irontec y Qamarero.
+- [Quién está detrás](https://tenbeltz.com/quien-esta-detras): Aritz Jaber Lopes,
+  ingeniero de IA para producción, y los principios técnicos que guían el trabajo.
+- [Políticas](https://tenbeltz.com/politicas): política de uso, privacidad y cookies.
+
+## Versión en inglés
+
+Todo el sitio existe en inglés bajo el prefijo `/en/`:
+<https://tenbeltz.com/en>, `/en/services`, `/en/case-studies`, `/en/who-is-behind`,
+`/en/politicas`.
+
+## Contacto
+
+- Email: hello@tenbeltz.com
+- LinkedIn: <https://www.linkedin.com/company/tenbeltz/>

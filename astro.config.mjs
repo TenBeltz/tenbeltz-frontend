@@ -24,6 +24,17 @@ export default defineConfig({
           en: 'en-US',
         },
       },
+      // Canonicals are emitted without a trailing slash (see SEO.astro). The sitemap must
+      // declare the exact same URLs or Google discards them as non-canonical. Root keeps its slash.
+      serialize(item) {
+        const stripSlash = (/** @type {string} */ url) =>
+          url.replace(/(https?:\/\/[^/]+\/.+)\/$/, '$1');
+        item.url = stripSlash(item.url);
+        if (item.links) {
+          item.links = item.links.map((link) => ({ ...link, url: stripSlash(link.url) }));
+        }
+        return item;
+      },
     }),
   ],
   i18n: {

@@ -64,7 +64,7 @@ export const en = {
   'policies.usage.text': 'The site information is for guidance purposes. It is not allowed to copy or redistribute it without authorization. We reserve the right to update these policies when necessary.',
 
   // Who is behind
-  'whobehind.seo.title': 'Who is behind | TenBeltz',
+  'whobehind.seo.title': 'Production AI engineer behind TenBeltz | TenBeltz',
   'whobehind.seo.description': 'The person behind TenBeltz: Aritz Jaber, production-AI engineer. Measurable reliability, observability, and cost control.',
 
   'whobehind.hero.eyebrow': 'Who is behind',
@@ -111,7 +111,7 @@ export const en = {
   'whobehind.recognition.eyebrow': 'Proof of work',
   'whobehind.recognition.title': 'Signals that reinforce the judgment',
   'whobehind.recognition.items.0.label': 'Recognition',
-  'whobehind.recognition.items.0.text': 'Providder · 1st prize in the 6th edition',
+  'whobehind.recognition.items.0.text': 'Provider · 1st prize in the 6th edition',
   'whobehind.recognition.items.1.label': 'Applied teaching',
   'whobehind.recognition.items.1.text': 'Trainer — 30h of training on local LLMs in production delivered to a multinational (vLLM, private architectures, evaluation, RAG and agents), through Imagina.',
   'whobehind.recognition.items.2.label': 'Working stack',

@@ -52,13 +52,54 @@ const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_US'
 
 // JSON-LD (schema.org): Organization + founder Person
 const organizationLogo = new URL('/favicon/web-app-manifest-512x512.png', Astro.site).href
+
+const orgDescription = lang === 'en'
+	? 'External AI engineering team for software companies. Helps SaaS products and software consultancies define, validate and ship AI systems to production with explicit delivery criteria.'
+	: 'Equipo externo de ingeniería de IA para empresas de software. Ayuda a productos SaaS y consultoras a definir, validar y llevar a producción sistemas de IA con criterios de entrega explícitos.'
+
+// Topics the org claims expertise in. Present in body copy but previously absent from the
+// entity graph, which is what answer engines read to decide "who is an authority on X".
+const knowsAbout = [
+	'Artificial intelligence engineering',
+	'Large language model applications',
+	'Retrieval-augmented generation',
+	'Multi-agent systems',
+	'LLM evaluation',
+	'AI observability',
+	'AI cost optimization',
+	'Machine learning in production',
+]
+
+const serviceCatalog = [
+	{ name: 'AI Gap Analysis', es: 'Diagnóstico para decidir si merece la pena construir el sistema, con roadmap técnico.', en: 'Diagnostic to decide whether the system is worth building, with a technical roadmap.' },
+	{ name: 'AI Project Foundations', es: 'Bases técnicas del proyecto: arquitectura, stack y criterios de entrega.', en: 'Technical foundations: architecture, stack and delivery criteria.' },
+	{ name: 'Agent MVP', es: 'Primer agente en funcionamiento sobre un caso acotado y medible.', en: 'First working agent on a scoped, measurable use case.' },
+	{ name: 'Production Delivery', es: 'Entrega en producción con fiabilidad medible, observabilidad y control de coste.', en: 'Production delivery with measurable reliability, observability and cost control.' },
+]
+
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@graph': [
 		{
-			'@type': 'Organization',
+			'@type': ['Organization', 'ProfessionalService'],
 			'@id': 'https://tenbeltz.com/#organization',
 			name: 'TenBeltz',
+			description: orgDescription,
+			knowsAbout,
+			areaServed: { '@type': 'Country', name: 'Spain' },
+			hasOfferCatalog: {
+				'@type': 'OfferCatalog',
+				name: lang === 'en' ? 'AI engineering services' : 'Servicios de ingeniería de IA',
+				itemListElement: serviceCatalog.map((service) => ({
+					'@type': 'Offer',
+					itemOffered: {
+						'@type': 'Service',
+						name: service.name,
+						description: lang === 'en' ? service.en : service.es,
+						provider: { '@id': 'https://tenbeltz.com/#organization' },
+					},
+				})),
+			},
 			legalName: 'Beltz Dev SL',
 			vatID: 'B21697719',
 			url: 'https://tenbeltz.com',
@@ -83,8 +124,9 @@ const jsonLd = {
 			'@type': 'Person',
 			'@id': 'https://tenbeltz.com/#aritz',
 			name: 'Aritz Jaber Lopes',
-			jobTitle: 'Cofundador y líder técnico',
+			jobTitle: lang === 'en' ? 'Co-founder and technical lead' : 'Cofundador y líder técnico',
 			worksFor: { '@id': 'https://tenbeltz.com/#organization' },
+			knowsAbout,
 			sameAs: [
 				'https://www.linkedin.com/in/aritzjl/',
 				'https://github.com/aritzjl',
@@ -135,4 +177,4 @@ const jsonLd = {
 <link rel="shortcut icon" href="/favicon/favicon.ico">
 <meta name="apple-mobile-web-app-title" content="TenBeltz">
 
-<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

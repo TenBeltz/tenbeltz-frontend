@@ -30,7 +30,7 @@ const strokeIconProps = { width: 22, height: 22, fill: 'none', stroke: '#E5C6F3'
 const content = lang === 'en'
   ? {
       seo: {
-        title: 'TenBeltz | External AI engineering team for software companies',
+        title: 'External AI engineering team for software companies | TenBeltz',
         description: 'We help SaaS teams and software consultancies define, validate, and ship reliable AI systems with clear delivery criteria.',
       },
       hero: {
@@ -163,7 +163,7 @@ const content = lang === 'en'
     }
   : {
       seo: {
-        title: 'TenBeltz | Equipo externo de ingeniería IA para empresas de software',
+        title: 'Equipo externo de ingeniería de IA para software | TenBeltz',
         description: 'Ayudamos a empresas SaaS y consultoras de software a definir, validar y llevar a producción sistemas de IA con criterio técnico claro.',
       },
       hero: {
@@ -311,7 +311,7 @@ const modalityCards = servicesCopy.home.cards.map((card, index) => ({
 <Layout
   title={content.seo.title}
   description={content.seo.description}
-  canonical="https://tenbeltz.com"
+  canonical={lang === 'en' ? 'https://tenbeltz.com/en' : 'https://tenbeltz.com'}
 >
   <Header />
   <main class="relative z-10 flex flex-col flex-1 overflow-x-hidden">

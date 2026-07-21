@@ -64,7 +64,7 @@ export const es = {
   'policies.usage.text': 'La información del sitio es orientativa. No está permitido copiarla o redistribuirla sin autorización. Nos reservamos el derecho de actualizar estas políticas cuando sea necesario.',
 
   // Who is behind
-  'whobehind.seo.title': 'Quién está detrás | TenBeltz',
+  'whobehind.seo.title': 'Ingeniero de IA para producción | TenBeltz',
   'whobehind.seo.description': 'La persona detrás de TenBeltz: Aritz Jaber, ingeniero de IA para producción. Fiabilidad medible, observabilidad y control de costes.',
 
   'whobehind.hero.eyebrow': 'Quién está detrás',
@@ -111,7 +111,7 @@ export const es = {
   'whobehind.recognition.eyebrow': 'Pruebas de trabajo',
   'whobehind.recognition.title': 'Señales que refuerzan el criterio',
   'whobehind.recognition.items.0.label': 'Reconocimiento',
-  'whobehind.recognition.items.0.text': 'Providder · 1er premio en la 6ª edición',
+  'whobehind.recognition.items.0.text': 'Provider · 1er premio en la 6ª edición',
   'whobehind.recognition.items.1.label': 'Formación aplicada',
   'whobehind.recognition.items.1.text': 'Formador — 30h de formación sobre LLMs locales en producción impartidas a una multinacional (vLLM, arquitecturas privadas, evaluación, RAG y agentes), a través de Imagina.',
   'whobehind.recognition.items.2.label': 'Stack de trabajo',

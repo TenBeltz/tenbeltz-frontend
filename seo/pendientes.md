@@ -128,7 +128,7 @@ de lo que promete la venta.
 **Hecho:** secciones de transferencias internacionales, medidas de seguridad y destinatarios/
 encargados del tratamiento, fusionadas a `main` tras validación del equipo de abogados.
 
-### 8. El premio sigue sin nombre 👤 — *bloqueado desde el 2026-07-21*
+### ~~8~~ ✅ El premio sigue sin nombre 👤 — *resuelto: Provider 2025, BIC Bizkaia, proyecto SustainaAI*
 
 `src/i18n/es.ts:114`: `'Provider · 1er premio en la 6ª edición'`. Sin nombre del certamen,
 sin organizador, sin año, sin enlace.
@@ -139,7 +139,7 @@ resolver, y a un lector le resta más de lo que suma.
 
 **Se necesita:** el nombre completo del premio y quién lo convoca. O se quita.
 
-### 9. Sin testimonios de cliente en todo el sitio 👤🤖
+### ~~9~~ ❎ Sin testimonios de cliente 👤🤖 — *descartado: Aritz no espera conseguirlas*
 
 `CasesPage.astro` no tiene campo de cita. Con dos clientes reales y enlazables (Irontec
 desde 2025, Qamarero), una cita atribuida de una o dos frases es la mayor ganancia de
@@ -156,7 +156,7 @@ Qamarero sí. Nada indica si es confidencialidad o invención.
 **Hecho:** añadido `· cliente bajo NDA` / `· client under NDA` al campo `sector` (no al
 `tag`, que se renderiza en una píldora de ancho fijo y se desbordaba).
 
-### 11. La página de "quién está detrás" no tiene ni una fecha 🤖👤
+### ~~11~~ ✅ La página de "quién está detrás" no tiene ni una fecha 🤖👤 — *TenBeltz 2024, Biiak y Irontec 2025*
 
 `src/i18n/es.ts:66-122`: no dice cuándo se fundó TenBeltz, ni desde cuándo Aritz es CTO en
 Biiak, ni cuántos años lleva. La experiencia verificable y fechada es justo lo que distingue
@@ -274,7 +274,7 @@ decide que le encaja tiene que pasar los otros tres para encontrar cómo actuar.
 
 **Arreglo:** una CTA por tarjeta, reutilizando el estilo que ya existe.
 
-### 21. `/services` es la página más floja en profundidad 🤖
+### ~~21~~ ✅ `/services` es la página más floja en profundidad 🤖 — *duraciones + enlace al caso que lo demuestra*
 
 570 palabras para cuatro servicios. Ninguno indica duración típica, formato del entregable
 (solo Gap Analysis lo dice) ni qué caso de éxito lo demuestra.

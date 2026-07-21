@@ -5,6 +5,21 @@ Orden cronológico inverso (lo más reciente arriba). Cada entrada dice **qué**
 
 ---
 
+## 2026-07-21 (madrugada) — Fusionada la política de privacidad, tareas 6 y 7 cerradas
+
+El equipo de abogados validó los 4 párrafos que estaban marcados `Borrador — pendiente de
+validación legal:` (retención, destinatarios/encargados, transferencias internacionales,
+medidas de seguridad). Se fusionó `legal/politicas-rgpd` a `main`, se quitó el prefijo de
+borrador de los 4 párrafos (es.ts y en.ts) y se retiró el estilo de aviso ámbar del
+`PoliciesPage.astro` — ya no son contenido pendiente, son la política vigente.
+
+Cierra las tareas **6** (derecho de reclamación ante la AEPD) y **7** (discurso comercial vs.
+política) del backlog.
+
+**Verificado:** `npm run build` sin errores; servido el build (`node ./dist/server/entry.mjs`)
+y comprobado con `curl` que `/politicas` no contiene la clase `amber` y que los 4 párrafos
+antes marcados como borrador se renderizan como texto normal, con el texto correcto.
+
 ## 2026-07-21 (noche) — Hero, CSS y política de privacidad
 
 ### Hero: 578.806 → 557.760 bytes (`08925ed`)

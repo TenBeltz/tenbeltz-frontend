@@ -10,11 +10,6 @@ acceso al servidor
 
 Estado: ✅ hecho · ⚠️ hecho a medias o bloqueado por revisión · sin marca = pendiente
 
-> **Rama `legal/politicas-rgpd` — no fusionar todavía.** Contiene la política de privacidad
-> reescrita, con **4 marcadores `[PENDIENTE]` que se renderizan visibles** en la página. Si
-> llega a `main` y se despliega, salen publicados. Necesita que se resuelvan los cuatro y
-> que lo revise un abogado antes de fusionar.
-
 ---
 
 ## 🔴 Crítico — servidor
@@ -110,25 +105,28 @@ afecta poco en la práctica, pero se genera en cada build sin motivo.
 
 ## 🟠 Alto — contenido y confianza
 
-### ~~6~~ ⚠️ Falta el derecho a reclamar ante la AEPD 👤 — *redactado en rama, pendiente de abogado*
+### ~~6~~ ✅ Falta el derecho a reclamar ante la AEPD 👤 — *validado por el equipo legal 2026-07-21*
 
-`src/i18n/es.ts:54` y `en.ts:54` listan acceso, rectificación, supresión y retirada del
-consentimiento. **Faltan** portabilidad, limitación, oposición y —lo relevante— el derecho
+`src/i18n/es.ts:54` y `en.ts:54` listaban acceso, rectificación, supresión y retirada del
+consentimiento. **Faltaban** portabilidad, limitación, oposición y —lo relevante— el derecho
 a presentar reclamación ante la Agencia Española de Protección de Datos.
 
 Ese último es una mención obligatoria del art. 13.2.d del RGPD, no texto opcional.
 
-> ⚠️ Esto excede el SEO. **Que lo revise quien lleve el tema legal antes de tocarlo** — aquí
-> solo se señala la ausencia, no se está dando asesoramiento jurídico.
+**Hecho:** los siete derechos, incluida la reclamación ante la AEPD (`policies.rights.aepd`),
+fusionados a `main` tras validación del equipo de abogados.
 
-### ~~7~~ ⚠️ El discurso comercial promete más que la política 👤 — *abordado en rama*
+### ~~7~~ ✅ El discurso comercial promete más que la política 👤 — *validado por el equipo legal 2026-07-21*
 
 `/casos` anuncia *"IA on-premise en entornos regulados (ENS, EU AI Act)"*
-(`CasesPage.astro:156`), pero `/politicas` no menciona transferencias internacionales,
+(`CasesPage.astro:156`), pero `/politicas` no mencionaba transferencias internacionales,
 medidas de seguridad, cifrado ni subencargados más allá de un proveedor de analítica.
 
-Un comprador SaaS con criterio de seguridad va a mirar exactamente eso y va a encontrar
-menos de lo que promete la venta.
+Un comprador SaaS con criterio de seguridad iba a mirar exactamente eso y a encontrar menos
+de lo que promete la venta.
+
+**Hecho:** secciones de transferencias internacionales, medidas de seguridad y destinatarios/
+encargados del tratamiento, fusionadas a `main` tras validación del equipo de abogados.
 
 ### 8. El premio sigue sin nombre 👤 — *bloqueado desde el 2026-07-21*
 

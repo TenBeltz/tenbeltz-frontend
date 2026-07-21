@@ -57,10 +57,15 @@ const serviceIcons: Record<ServiceId, typeof DocumentsOutline> = {
           <ScrollReveal client:visible delay={index * 90} className={spanFull ? 'lg:col-span-2' : undefined}>
             <article id={`service-${service.id}`} class="flex h-full scroll-mt-24 flex-col gap-5 rounded-2xl border border-pheromone-purple/25 bg-[#0B0122CC]/80 px-6 py-7 shadow-[0_0_25px_rgba(3,7,18,0.35)] backdrop-blur-sm">
               <div class="flex items-center justify-between gap-4">
-                <span class="inline-flex rounded-full border border-pheromone-purple/40 bg-pheromone-purple/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-pheromone-light">
-                  {service.tag}
-                </span>
-                <span class="flex h-11 w-11 items-center justify-center rounded-full bg-pheromone-purple/20">
+                <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                  <span class="inline-flex rounded-full border border-pheromone-purple/40 bg-pheromone-purple/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-pheromone-light">
+                    {service.tag}
+                  </span>
+                  <span class="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-400">
+                    {service.duration}
+                  </span>
+                </div>
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-pheromone-purple/20">
                   <Icon {...iconProps} />
                 </span>
               </div>
@@ -75,13 +80,24 @@ const serviceIcons: Record<ServiceId, typeof DocumentsOutline> = {
               <ul class="flex flex-col gap-2 text-sm text-slate-300">
                 {service.bullets.map((bullet) => <li>• {bullet}</li>)}
               </ul>
-              <a
-                href="#contact-section"
-                class="mt-auto inline-flex w-fit items-center gap-x-2 text-sm font-semibold text-pheromone-light transition-colors hover:text-white"
-              >
-                {links.serviceCta(service.title)}
-                <span aria-hidden="true">&rarr;</span>
-              </a>
+              <div class="flex flex-col gap-3 mt-auto">
+                {service.proof && (
+                  <a
+                    href={getRelativeLocaleUrl(lang, service.proof.href)}
+                    class="inline-flex w-fit items-start gap-x-2 text-sm text-slate-300 transition-colors hover:text-white"
+                  >
+                    <span class="border-b border-pheromone-purple/40">{service.proof.label}</span>
+                    <span aria-hidden="true" class="text-pheromone-light">&rarr;</span>
+                  </a>
+                )}
+                <a
+                  href="#contact-section"
+                  class="inline-flex w-fit items-center gap-x-2 text-sm font-semibold text-pheromone-light transition-colors hover:text-white"
+                >
+                  {links.serviceCta(service.title)}
+                  <span aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
             </article>
           </ScrollReveal>
         );

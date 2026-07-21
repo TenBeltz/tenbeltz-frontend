@@ -47,11 +47,24 @@ const canonical = `https://tenbeltz.com${lang === 'en' ? '/en' : ''}/politicas`;
 
 ### URLs sin barra final
 
-Convención: **sin barra final**, salvo la raíz. Los canonicals y el sitemap deben coincidir
-exactamente — si divergen, Google descarta las URLs del sitemap.
+Convención: **sin barra final**, salvo la raíz. `trailingSlash: 'never'` hace que
+`/services/` responda 301 hacia `/services`.
 
-El hook `serialize` de `astro.config.mjs` se encarga de quitarla del sitemap. Si añades una
-página, comprueba que ambos lados cuadran.
+Los canonicals y el sitemap deben coincidir exactamente — si divergen, Google descarta las
+URLs del sitemap. **Una única excepción sancionada:** el `<loc>` de la home sale como
+`https://tenbeltz.com` sin barra, mientras su canonical es `https://tenbeltz.com/`. Lo
+impone `write-sitemap.js` de `@astrojs/sitemap`, que hace un reemplazo sobre el XML ya
+generado cuando `trailingSlash` es `'never'`; no se puede desactivar desde la configuración.
+Es inocuo (RFC 3986 normaliza la ruta vacía a `/`), pero cualquier **otra** divergencia sí
+es un fallo.
+
+El hook `serialize` de `astro.config.mjs` quita la barra del resto y construye los hreflang.
+Ojo: el mapa de slugs traducidos está **duplicado** en `astro.config.mjs` y en
+`SEO.astro` — si añades un slug traducido, tócalo en los dos o el sitemap y las etiquetas
+`<link rel="alternate">` dejarán de coincidir en silencio.
+
+Y no quites el `filter` del sitemap: la opción `i18n` de la integración hacía dos cosas a la
+vez, y al retirarla se perdió el filtrado automático de `/404` y `/500` por locale.
 
 ### Verificar antes de afirmar
 

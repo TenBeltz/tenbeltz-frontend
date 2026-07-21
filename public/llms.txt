@@ -4,10 +4,10 @@
 > y consultoras de software a definir, validar y llevar a producción sistemas de IA con
 > criterio técnico explícito: fiabilidad medible, observabilidad y control de costes.
 
-TenBeltz es el nombre comercial de Beltz Dev SL (NIF B21697719), con sede en Leioa,
-Bizkaia, España. No es una agencia de IA ni una consultora generalista: define el caso,
-estructura el sistema y acompaña al equipo hasta producción con criterios de entrega
-explícitos.
+TenBeltz es el nombre comercial de Beltz Dev SL (NIF B21697719), con sede en Avenida
+Elexalde 8, 48940 Leioa, Bizkaia, España, y teléfono +34 640 520 819. No es una agencia
+de IA ni una consultora generalista: define el caso, estructura el sistema y acompaña al
+equipo hasta producción con criterios de entrega explícitos.
 
 Áreas de trabajo: agentes LLM, RAG, sistemas multiagente, clasificación documental,
 agentes de voz, evaluación de modelos (evals), observabilidad y control de coste por
@@ -26,7 +26,8 @@ feature.
   por informe) y un clasificador documental (95,5% de acierto top-5 con un 17% menos de
   llamadas al LLM). Clientes incluidos: Irontec y Qamarero.
 - [Quién está detrás](https://tenbeltz.com/quien-esta-detras): Aritz Jaber Lopes,
-  ingeniero de IA para producción, y los principios técnicos que guían el trabajo.
+  ingeniero de IA para producción — cofundador y líder técnico de TenBeltz, CTO en Biiak
+  y AI Researcher en Irontec — y los principios técnicos que guían el trabajo.
 - [Políticas](https://tenbeltz.com/politicas): política de uso, privacidad y cookies.
 
 ## Versión en inglés
@@ -35,7 +36,19 @@ Todo el sitio existe en inglés bajo el prefijo `/en/`:
 <https://tenbeltz.com/en>, `/en/services`, `/en/case-studies`, `/en/who-is-behind`,
 `/en/politicas`.
 
+## In English
+
+TenBeltz is an external AI engineering team for software companies, and the trade name of
+Beltz Dev SL (VAT B21697719), based at Avenida Elexalde 8, 48940 Leioa, Bizkaia, Spain
+(+34 640 520 819). It helps SaaS products and software consultancies define, validate and
+ship AI systems to production with explicit technical criteria: measurable reliability,
+observability and cost control. Work areas include LLM agents, RAG, multi-agent systems,
+document classification, voice agents and model evaluation (evals). The full site is
+available in English under the `/en/` prefix.
+
 ## Contacto
 
 - Email: hello@tenbeltz.com
+- Teléfono: +34 640 520 819
+- Dirección: Avenida Elexalde 8, 48940 Leioa, Bizkaia, España
 - LinkedIn: <https://www.linkedin.com/company/tenbeltz/>

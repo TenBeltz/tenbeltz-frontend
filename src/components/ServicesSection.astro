@@ -7,10 +7,29 @@ import { ReactComponent as TaskDoneOutline } from '@/assets/icons/task-done-outl
 import { ReactComponent as ProcessOutline } from '@/assets/icons/process-outline.svg';
 import { getLangFromUrl } from '@/i18n/utils';
 import { getServicesCopy, type ServiceId } from '@/i18n/services';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const lang = getLangFromUrl(Astro.url);
 const iconProps = { width: 24, height: 24, fill: 'none', stroke: '#E5C6F3', strokeWidth: 1.5 };
 const copy = getServicesCopy(lang);
+
+// ES and EN use different slugs for these two pages; `/services` is shared.
+const casesHref = getRelativeLocaleUrl(lang, lang === 'en' ? '/case-studies' : '/casos');
+const whoBehindHref = getRelativeLocaleUrl(lang, lang === 'en' ? '/who-is-behind' : '/quien-esta-detras');
+
+// Copy for this component lives in `src/i18n/services.ts`, but these cross-page strings are
+// declared inline to keep the shared services copy untouched.
+const links = lang === 'en'
+  ? {
+      serviceCta: (title: string) => `Talk about ${title}`,
+      cases: 'See these services running in production',
+      whoBehind: 'Who is behind the delivery',
+    }
+  : {
+      serviceCta: (title: string) => `Hablar sobre ${title}`,
+      cases: 'Mira estos servicios funcionando en producción',
+      whoBehind: 'Quién está detrás de las entregas',
+    };
 
 const serviceIcons: Record<ServiceId, typeof DocumentsOutline> = {
   'gap-analysis': DocumentsOutline,
@@ -56,6 +75,13 @@ const serviceIcons: Record<ServiceId, typeof DocumentsOutline> = {
               <ul class="flex flex-col gap-2 text-sm text-slate-300">
                 {service.bullets.map((bullet) => <li>• {bullet}</li>)}
               </ul>
+              <a
+                href="#contact-section"
+                class="mt-auto inline-flex w-fit items-center gap-x-2 text-sm font-semibold text-pheromone-light transition-colors hover:text-white"
+              >
+                {links.serviceCta(service.title)}
+                <span aria-hidden="true">&rarr;</span>
+              </a>
             </article>
           </ScrollReveal>
         );
@@ -88,6 +114,22 @@ const serviceIcons: Record<ServiceId, typeof DocumentsOutline> = {
           <a href="#contact-section" class="inline-flex items-center justify-center mt-6 rounded-xl bg-gradient-to-r from-pheromone-purple to-blueberry-glaze px-6 py-3 text-base font-semibold text-white shadow-[0_20px_42px_rgba(96,43,182,0.34)] transition-transform duration-300 hover:-translate-y-0.5">
             {copy.cta.button}
           </a>
+          <div class="flex flex-col gap-3 pt-5 mt-6 border-t border-white/10">
+            <a
+              href={casesHref}
+              class="inline-flex w-fit items-center gap-x-2 text-sm font-semibold text-pheromone-light transition-colors hover:text-white"
+            >
+              {links.cases}
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a
+              href={whoBehindHref}
+              class="inline-flex w-fit items-center gap-x-2 text-sm font-semibold text-pheromone-light transition-colors hover:text-white"
+            >
+              {links.whoBehind}
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
         </div>
       </ScrollReveal>
     </div>

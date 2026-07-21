@@ -1,7 +1,7 @@
 ---
 import { ReactComponent as PhoneIcon } from '@/assets/icons/phone-outline.svg';
 import { ReactComponent as MailIcon } from '@/assets/icons/envelope-outline.svg';
-import { Picture } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import backgroundGradientPC from '/public/images/img/contact-gradient-background-pc.webp';
 import backgroundGradientMobile from '/public/images/img/contact-gradient-background-mobile.webp';
 import ContactForm from './ContactForm';
@@ -26,6 +26,17 @@ const copy = lang === 'en'
     };
 
 const calendlyUrl = 'https://calendly.com/tenbeltz/consulta';
+
+// Decorative background gradient. Resolved via getImage() rather than <Picture> because
+// <Picture> cannot emit `media` on its <source> elements, so both the desktop and the mobile
+// gradient were downloaded on every device (CSS `display:none` does not cancel an <img> fetch).
+// A single <picture> with a media-scoped <source> lets the browser pick one resource up front.
+// getImage() also lets us force webp on the fallback <img>; <Picture> hardcodes a png fallback
+// (defaultFallbackFormat in astro/components/Picture.astro), which emitted a ~1.2 MB png.
+const [desktopGradient, mobileGradient] = await Promise.all([
+  getImage({ src: backgroundGradientPC, format: 'webp' }),
+  getImage({ src: backgroundGradientMobile, format: 'webp' }),
+]);
 
 export const contactInfo = {
   phones: ['+34 640 520 819'],
@@ -81,6 +92,24 @@ export const contactInfo = {
       <ContactForm client:load lang={lang} />
     </div>
   </div>
-  <Picture src={backgroundGradientPC} alt="backgroundGradientPC" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 hidden object-cover w-full h-full -z-50 lg:block" />
-  <Picture src={backgroundGradientMobile} alt="backgroundGradientMobile" aria-hidden="true" loading="eager" fetchpriority="high" class="absolute inset-0 object-cover w-full h-full -z-50 lg:hidden" />
+  <picture>
+    {/* lg breakpoint (1024px) — mirrors the previous `hidden lg:block` / `lg:hidden` pair. */}
+    <source
+      media="(min-width: 1024px)"
+      type="image/webp"
+      srcset={desktopGradient.src}
+      width={desktopGradient.attributes.width}
+      height={desktopGradient.attributes.height}
+    />
+    <img
+      src={mobileGradient.src}
+      width={mobileGradient.attributes.width}
+      height={mobileGradient.attributes.height}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+      class="absolute inset-0 object-cover w-full h-full -z-50"
+    />
+  </picture>
 </section>

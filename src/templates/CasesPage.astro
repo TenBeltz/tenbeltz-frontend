@@ -62,16 +62,16 @@ const content = lang === 'en'
         },
         {
           tag: 'Legal sector',
-          sector: 'Legal · Expert reports',
+          sector: 'Legal · Expert reports · client under NDA',
           title: 'Multi-agent system for expert legal reports',
           context: 'An expert report is a legal document: a wrong date or a misassigned injury has real consequences. Here, precision rules.',
           built: 'Specialized agents per report section, extraction into validated structured data, and a double anti-hallucination layer: deterministic rules (dates, inconsistencies against the medical assessment scale) and automatic evaluation against real reports, section by section. Multi-provider, routed per task.',
           result: { figure: '−42%', text: 'cost per report with no loss of precision.' },
-          close: 'You do not cut costs by picking the cheap model. You cut them when your evaluation system proves the cheap one breaks nothing.',
+          close: 'You do not cut costs by picking the cheap model. You cut them when your evaluation system proves the cheap one breaks nothing: on this system that meant −42% cost per report with no loss of precision.',
         },
         {
           tag: 'Document management',
-          sector: 'Document processing',
+          sector: 'Document processing · client under NDA',
           title: 'Automatic classification of thousands of documents',
           context: 'Classifying documents into 15 categories and 77 subcategories. The question was not which LLM to use, but whether one was needed at all.',
           built: 'A measured comparison of three approaches on real data: semantic with embeddings, 100% LLM, and hybrid. The hybrid reaches 95.5% top-5 accuracy with 17% fewer LLM calls.',
@@ -129,16 +129,16 @@ const content = lang === 'en'
         },
         {
           tag: 'Sector legal',
-          sector: 'Legal · Informes periciales',
+          sector: 'Legal · Informes periciales · cliente bajo NDA',
           title: 'Sistema multiagente para informes periciales',
           context: 'Un informe pericial es un documento legal: un error de fecha o una secuela mal asignada tienen consecuencias reales. Aquí la precisión manda.',
           built: 'Agentes especializados por sección del informe, extracción a datos estructurados validados y doble capa anti-alucinación: reglas deterministas (fechas, incongruencias frente al baremo médico) y evaluación automática contra informes reales, sección a sección. Multiproveedor, enrutado por tarea.',
           result: { figure: '−42%', text: 'de coste por informe sin perder precisión.' },
-          close: 'No bajas el coste eligiendo el modelo barato. Lo bajas cuando tu sistema de evaluación demuestra que el barato no rompe nada.',
+          close: 'No bajas el coste eligiendo el modelo barato. Lo bajas cuando tu sistema de evaluación demuestra que el barato no rompe nada: en este sistema eso supuso un −42% de coste por informe sin perder precisión.',
         },
         {
           tag: 'Gestión documental',
-          sector: 'Procesamiento documental',
+          sector: 'Procesamiento documental · cliente bajo NDA',
           title: 'Clasificación automática de miles de documentos',
           context: 'Clasificar documentos en 15 categorías y 77 subcategorías. La pregunta no era qué LLM usar, sino si hacía falta uno.',
           built: 'Comparación medida de tres enfoques sobre datos reales: semántico con embeddings, 100% LLM e híbrido. El híbrido alcanza un 95,5% de acierto top-5 con un 17% menos de llamadas al LLM.',
@@ -161,6 +161,53 @@ const content = lang === 'en'
         button: 'Solicitar propuesta',
       },
     };
+
+// The case data lives in this file, so the schema for it has to be emitted here:
+// SEO.astro has no visibility over `content.cases`.
+const casesJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${canonical}#cases`,
+  url: canonical,
+  name: content.hero.title,
+  description: content.seo.description,
+  inLanguage: lang === 'en' ? 'en' : 'es',
+  isPartOf: { '@id': 'https://tenbeltz.com/#organization' },
+  mainEntity: {
+    '@type': 'ItemList',
+    name: content.hero.title,
+    numberOfItems: content.cases.length,
+    itemListOrder: 'https://schema.org/ItemListOrderAscending',
+    itemListElement: content.cases.map((caseStudy, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'CreativeWork',
+        name: caseStudy.title,
+        description: [
+          caseStudy.context,
+          caseStudy.built,
+          caseStudy.result ? `${caseStudy.result.figure} ${caseStudy.result.text}` : null,
+          caseStudy.close,
+        ]
+          .filter(Boolean)
+          .join(' '),
+        about: caseStudy.sector,
+        provider: { '@id': 'https://tenbeltz.com/#organization' },
+        // Named clients only. The other two are under NDA, so no client entity is asserted.
+        ...(caseStudy.clientUrl
+          ? {
+              sourceOrganization: {
+                '@type': 'Organization',
+                name: caseStudy.tag.split('·').pop()?.trim(),
+                url: caseStudy.clientUrl,
+              },
+            }
+          : {}),
+      },
+    })),
+  },
+});
 ---
 
 <Layout
@@ -305,4 +352,5 @@ const content = lang === 'en'
     <Contact />
   </main>
   <Footer />
+  <script is:inline type="application/ld+json" set:html={casesJsonLd} />
 </Layout>

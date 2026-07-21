@@ -5,6 +5,54 @@ Orden cronológico inverso (lo más reciente arriba). Cada entrada dice **qué**
 
 ---
 
+## 2026-07-21 (tarde) — Bloque técnico del backlog
+
+Ejecutado con 8 subagentes en dos oleadas, repartidos **por fichero** para que no se pisaran.
+Ninguno compiló: el build se hizo centralizado después de cada oleada, porque varios
+`npm run build` simultáneos compiten por `dist/`.
+
+### Aplicado
+
+| Tarea | Fichero | Verificación |
+|---|---|---|
+| hreflang en las 4 URLs que faltaban | `astro.config.mjs` | Sitemap generado: las 10 URLs con 3 alternates (`es`, `en`, `x-default`) |
+| `trailingSlash: 'never'` | `astro.config.mjs` | `/services` → 200, `/services/` → 301. Las 10 rutas comprobadas |
+| Filtro de páginas de estado en el sitemap | `astro.config.mjs` | 10 URLs, sin `/en/404` |
+| Una sola imagen de fondo por dispositivo | `Contact.astro` | Solo se descarga la variante que corresponde; el PNG de 1,2 MB eliminado |
+| FAQ ampliado y errata "sprint" corregida | `FaqSection.astro` | Respuestas de 11-20 → 54-73 palabras. `sprint` con 0 apariciones |
+| Fuentes autoalojadas | `Layout.astro`, `global.css`, `public/fonts/` | Sin referencias a Google. 2 woff2 válidos (66 KB) |
+| `llms.txt` con NAP, credenciales y sección en inglés | `public/llms.txt` | — |
+| IndexNow | `public/<clave>.txt`, `scripts/indexnow.mjs` | Dry-run leyendo el sitemap real |
+| Schema: `Service.url`, `LocalBusiness`, `BreadcrumbList`, `ProfilePage`, viewport | `SEO.astro` | JSON-LD parseado y validado en 5 tipos de página |
+| Casos: NDA declarado, cifra integrada en la prosa, `CollectionPage`+`ItemList` | `CasesPage.astro` | JSON-LD válido |
+| Enlazado interno, `/politicas` en el pie, CTA por servicio | `ServicesSection`, `Footer`, `WhoBehindPage` | 4 CTAs, enlaces presentes en el HTML servido |
+
+### Revertido antes de commitear
+
+**Afirmación sobre la relación con Irontec.** Se encargó aclarar la ambigüedad entre el rol
+personal de Aritz y el contrato de TenBeltz, y el enunciado de la tarea daba por hecho que
+son "un contrato entre empresas, distinto del rol personal". **Eso no está verificado**: lo
+introdujo el coordinador al redactar la tarea, no salió de ninguna fuente del repo. El
+agente lo detectó y lo devolvió.
+
+Se restauró el texto original. Queda en `pendientes.md` a la espera de que Aritz confirme
+cuál es el acuerdo real.
+
+### Un error de verificación del coordinador, y cómo se detectó
+
+Se concluyó que `trailingSlash: 'never'` rompía el sitio: todas las rutas menos la home
+devolvían 404. Se revirtió por eso.
+
+**Era falso.** El puerto 4321 lo ocupaba el servidor de otro proyecto sin relación
+(ReformasMartiartu), así que las comprobaciones interrogaban al servidor equivocado.
+Repetida en un puerto libre, la configuración funciona exactamente como el agente había
+trazado leyendo el código de Astro. Se restauró.
+
+Ver `aprendizajes.md` — la lección es que verificar tampoco es infalible si no se comprueba
+que se está midiendo lo que se cree.
+
+---
+
 ## 2026-07-21 — Sesión completa de SEO
 
 Commit: `fd98cd5` — *Fix canonicals per locale and align sitemap to unblock indexing*

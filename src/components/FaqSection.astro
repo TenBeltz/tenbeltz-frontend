@@ -20,27 +20,27 @@ const content = lang === 'en'
       items: [
         {
           question: 'How do we know if an AI use case is viable in cost and scalability?',
-          answer: 'We define the expected volume, the target cost per request, and the reliability metric before building anything.',
+          answer: 'We set the expected volume, the target cost per request, and the reliability metric before any code is written. That turns viability into an engineering decision instead of a hunch: you get an explicit go / no-go, a recommended architecture, and the data you will actually need. If cost per request will not survive traffic growth, better to know before building.',
         },
         {
           question: 'How do you measure reliability in production?',
-          answer: 'We combine automatic evals, a golden set, human review, and guardrails with fallback when the model fails.',
+          answer: 'Automatic evals, a golden set, human review, and guardrails with fallback when the model fails. On the multi-agent system for expert legal reports we added a double anti-hallucination layer: deterministic rules for dates and inconsistencies against the medical assessment scale, plus automatic evaluation against real reports, section by section. Tracing, logs, and alerts run from day one.',
         },
         {
           question: 'How do you reduce costs without losing quality?',
-          answer: 'We use cheap routes, caching, batching, mixed models, and per-feature limits.',
+          answer: 'Cheap routes, caching, batching, mixed models routed per task, and per-feature limits. The order matters: you do not cut costs by picking the cheap model, you cut them once your evaluation system proves the cheap one breaks nothing. That is how the legal report system reached −42% cost per report with no loss of precision, and how document classification held 95.5% top-5 accuracy with 17% fewer LLM calls.',
         },
         {
           question: 'What about sensitive data and privacy?',
-          answer: 'We apply data classification, PII redaction, access policies, and full traceability.',
+          answer: 'Data classification, PII redaction, access policies, and full traceability. When requirements demand it, the deployment goes on-premise: that is how we built Irontec’s call-analysis platform, where speech engine and model choices were driven by privacy constraints, with asynchronous workers and Kubernetes. We also run on-premise AI in regulated environments such as ENS and the EU AI Act.',
         },
         {
-          question: 'What deliverables does a Gap Analysis or a sprint include?',
-          answer: 'A phased roadmap, reliability metrics, a cost baseline, and a scaling plan.',
+          question: 'What deliverables does a Gap Analysis or an Agent MVP include?',
+          answer: 'AI Gap Analysis is one context meeting, a written report, and a second meeting to walk through it: recommended stack, the data and datasets you will need, predictable risks, a phased roadmap, and a cost baseline. Agent MVP adds the first working version of the agent, a golden set, quality checks and monitoring, and an explicit guide to what is left for production.',
         },
         {
           question: 'Do you work with our current team and stack?',
-          answer: 'Yes. We integrate with your product and engineering teams, leaving documentation and a handoff so everything stays operational.',
+          answer: 'Yes. We work with your product and engineering teams on the stack you already run, not a new one, and close with a technical handover and documentation so the system stays operable without us. With Qamarero it took several months of joint work to get the voice agents wired into their CRM and table management, running in production.',
         },
       ] as FaqItem[],
     }
@@ -53,27 +53,27 @@ const content = lang === 'en'
       items: [
         {
           question: '¿Cómo saber si un caso de uso de IA es viable en costes y escalabilidad?',
-          answer: 'Definimos el volumen esperado, el coste objetivo por petición y la métrica de fiabilidad antes de construir.',
+          answer: 'Definimos el volumen esperado, el coste objetivo por petición y la métrica de fiabilidad antes de construir nada. Así la viabilidad se decide con ingeniería y no con intuición: sale un sí o un no explícito, la arquitectura recomendada y los datos que realmente harán falta. Si el coste por petición no aguanta al crecer el tráfico, mejor saberlo antes de escribir código.',
         },
         {
           question: '¿Cómo medís la fiabilidad en producción?',
-          answer: 'Combinamos evals automáticas, golden set, revisión humana y guardrails con fallback cuando el modelo falla.',
+          answer: 'Evals automáticas, golden set, revisión humana y guardrails con fallback cuando el modelo falla. En el sistema multiagente para informes periciales añadimos una doble capa anti-alucinación: reglas deterministas para fechas e incongruencias frente al baremo médico, más evaluación automática contra informes reales, sección a sección. Tracing, logs y alertas funcionan desde el día uno.',
         },
         {
           question: '¿Cómo reducís costes sin perder calidad?',
-          answer: 'Usamos rutas baratas, caching, batching, modelos mixtos y límites por feature.',
+          answer: 'Rutas baratas, caching, batching, modelos mixtos enrutados por tarea y límites por feature. El orden importa: no bajas el coste eligiendo el modelo barato, lo bajas cuando tu sistema de evaluación demuestra que el barato no rompe nada. Así el sistema de informes periciales llegó a un −42% de coste por informe sin perder precisión, y la clasificación documental mantuvo un 95,5% de acierto top-5 con un 17% menos de llamadas al LLM.',
         },
         {
           question: '¿Qué pasa con datos sensibles y privacidad?',
-          answer: 'Aplicamos clasificación de datos, redacción de PII, políticas de acceso y trazabilidad completa.',
+          answer: 'Clasificación de datos, redacción de PII, políticas de acceso y trazabilidad completa. Cuando los requisitos lo exigen, el despliegue va on-premise: así construimos la plataforma de análisis de llamadas de Irontec, donde la elección de motores de voz y modelos vino condicionada por privacidad, con procesamiento asíncrono y despliegue en Kubernetes. También trabajamos IA on-premise en entornos regulados (ENS, EU AI Act).',
         },
         {
-          question: '¿Qué entregables incluye un Gap Analysis o un sprint?',
-          answer: 'Hoja de ruta por fases, métricas de fiabilidad, baseline de costes y plan de escalado.',
+          question: '¿Qué entregables incluye un Gap Analysis o un Agent MVP?',
+          answer: 'El AI Gap Analysis es una reunión de contexto, un informe escrito y una segunda reunión para presentarlo: stack recomendado, datos y datasets que necesitarás, problemas previsibles, hoja de ruta por fases y baseline de costes. El Agent MVP añade la primera versión funcional del agente, golden set, pruebas de calidad y monitorización, y una guía explícita de lo que falta para producción.',
         },
         {
           question: '¿Trabajáis con nuestro equipo y stack actual?',
-          answer: 'Sí. Nos integramos con tu equipo de producto e ingeniería, dejando documentación y handoff para que todo quede operativo.',
+          answer: 'Sí. Nos integramos con tu equipo de producto e ingeniería y trabajamos sobre el stack que ya tenéis, no sobre uno nuevo. Cerramos con handover técnico y documentación para que el sistema quede operativo sin depender de nosotros. En Qamarero fueron varios meses de trabajo conjunto hasta dejar los agentes de voz integrados con su CRM y su gestión de mesas, operando en producción.',
         },
       ] as FaqItem[],
     };

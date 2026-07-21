@@ -78,6 +78,33 @@ correcto.
 **Regla:** para datos estructurados y verificables (sitemaps, cabeceras, JSON-LD), usar
 `curl` y parsear, no un resumen en lenguaje natural.
 
+## Verificar no basta: hay que verificar que mides lo que crees
+
+Se concluyó que `trailingSlash: 'never'` rompía todas las rutas menos la home, basándose en
+una prueba real contra un servidor real. La conclusión era falsa: **el puerto 4321 lo tenía
+ocupado el servidor de otro proyecto**, así que los `curl` iban a otra aplicación, que
+lógicamente daba 404 en rutas de tenbeltz.
+
+El agente que había trazado el código de Astro tenía razón; el coordinador que "lo comprobó
+empíricamente" no.
+
+**Regla:** al levantar un servidor local para verificar, comprueba que **tu** proceso es el
+que está escuchando (mira el log de arranque, o usa un puerto poco común). Un `curl` que
+responde no demuestra que responda quien tú crees.
+
+## No metas afirmaciones no verificadas en el enunciado de una tarea
+
+Se encargó aclarar la ambigüedad entre el rol personal de Aritz en Irontec y el contrato de
+TenBeltz. El enunciado daba por hecho que son "un contrato entre empresas, distinto del rol
+personal" — un dato que **el coordinador se inventó** y que no salía de ninguna fuente.
+
+El agente lo escribió correctamente y luego avisó de que era una afirmación factual que no
+podía verificar. Se revirtió antes de commitear.
+
+**Regla:** un subagente trata el enunciado como verdad. Cualquier hecho que le pases se
+convierte en texto publicado. Pasa solo hechos con fuente, y márcalos como suposición cuando
+no la tengan.
+
 ## La memoria del proyecto se queda obsoleta
 
 Al empezar, la memoria decía que no había JSON-LD (lo había, desde `SEO.astro:55`) y

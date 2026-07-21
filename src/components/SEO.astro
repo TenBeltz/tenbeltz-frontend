@@ -50,6 +50,41 @@ const enURL = new URL(`/en${enPath === '/' ? '' : enPath}`, Astro.site)
 const ogLocale = lang === 'en' ? 'en_US' : 'es_ES'
 const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_US'
 
+// Page identity is derived from the path only — no extra props for templates to pass.
+// `routeKey` normalises both locales onto the Spanish slug so one map serves es and en.
+const routeKey = (mapped ? mapped.es : basePath.replace(/\/$/, '')) || '/'
+const isHome = routeKey === '/'
+
+// Absolute URL for a route in the *current* locale. Mirrors the hreflang builder above:
+// the English home page is `/en`, not `/en/`.
+const localeHref = (path: string) => {
+	const prefix = lang === 'en' ? '/en' : ''
+	const suffix = path === '/' ? '' : path
+	return new URL(`${prefix}${suffix}` || '/', Astro.site).href
+}
+
+// Breadcrumb labels mirror the nav labels in Header.astro. They live there as a local
+// const that cannot be imported, so they are restated rather than wired through props.
+const routeNames: Record<string, { es: string; en: string }> = {
+	'/': { es: 'Inicio', en: 'Home' },
+	'/services': { es: 'Servicios', en: 'Services' },
+	'/casos': { es: 'Casos', en: 'Case studies' },
+	'/quien-esta-detras': { es: 'Quién está detrás', en: 'Who is behind' },
+	'/politicas': { es: 'Política de uso y privacidad', en: 'Terms of Use and Privacy' },
+}
+const routeName = (key: string, fallback: string) => {
+	const entry = routeNames[key]
+	if (!entry) return fallback
+	return lang === 'en' ? entry.en : entry.es
+}
+
+const homeName = routeName('/', 'TenBeltz')
+const currentPageName = routeName(routeKey, title)
+const currentPageUrl = canonicalURL.href
+const breadcrumbId = `${currentPageUrl}#breadcrumb`
+const servicesUrl = localeHref('/services')
+const isProfilePage = routeKey === '/quien-esta-detras'
+
 // JSON-LD (schema.org): Organization + founder Person
 const organizationLogo = new URL('/favicon/web-app-manifest-512x512.png', Astro.site).href
 
@@ -70,18 +105,48 @@ const knowsAbout = [
 	'Machine learning in production',
 ]
 
+// `id` matches the `id="service-${id}"` anchors rendered by ServicesSection.astro, so each
+// Service node is deep-linkable to its own card on the services page.
 const serviceCatalog = [
-	{ name: 'AI Gap Analysis', es: 'Diagnóstico para decidir si merece la pena construir el sistema, con roadmap técnico.', en: 'Diagnostic to decide whether the system is worth building, with a technical roadmap.' },
-	{ name: 'AI Project Foundations', es: 'Bases técnicas del proyecto: arquitectura, stack y criterios de entrega.', en: 'Technical foundations: architecture, stack and delivery criteria.' },
-	{ name: 'Agent MVP', es: 'Primer agente en funcionamiento sobre un caso acotado y medible.', en: 'First working agent on a scoped, measurable use case.' },
-	{ name: 'Production Delivery', es: 'Entrega en producción con fiabilidad medible, observabilidad y control de coste.', en: 'Production delivery with measurable reliability, observability and cost control.' },
+	{ id: 'gap-analysis', name: 'AI Gap Analysis', es: 'Diagnóstico para decidir si merece la pena construir el sistema, con roadmap técnico.', en: 'Diagnostic to decide whether the system is worth building, with a technical roadmap.' },
+	{ id: 'foundations', name: 'AI Project Foundations', es: 'Bases técnicas del proyecto: arquitectura, stack y criterios de entrega.', en: 'Technical foundations: architecture, stack and delivery criteria.' },
+	{ id: 'agent-mvp', name: 'Agent MVP', es: 'Primer agente en funcionamiento sobre un caso acotado y medible.', en: 'First working agent on a scoped, measurable use case.' },
+	{ id: 'production-delivery', name: 'Production Delivery', es: 'Entrega en producción con fiabilidad medible, observabilidad y control de coste.', en: 'Production delivery with measurable reliability, observability and cost control.' },
 ]
+
+// Breadcrumbs on every page except the two home pages, where a one-item trail adds nothing.
+const breadcrumbNode = isHome
+	? null
+	: {
+			'@type': 'BreadcrumbList',
+			'@id': breadcrumbId,
+			itemListElement: [
+				{ '@type': 'ListItem', position: 1, name: homeName, item: localeHref('/') },
+				{ '@type': 'ListItem', position: 2, name: currentPageName, item: currentPageUrl },
+			],
+		}
+
+// ProfilePage is the schema.org type for a page about a single person, which is exactly
+// what /quien-esta-detras is. mainEntity points at the Person already in this graph.
+const profilePageNode = isProfilePage
+	? {
+			'@type': 'ProfilePage',
+			'@id': `${currentPageUrl}#profilepage`,
+			url: currentPageUrl,
+			name: title,
+			description,
+			inLanguage: lang === 'en' ? 'en' : 'es',
+			mainEntity: { '@id': 'https://tenbeltz.com/#aritz' },
+			about: { '@id': 'https://tenbeltz.com/#aritz' },
+			...(breadcrumbNode ? { breadcrumb: { '@id': breadcrumbId } } : {}),
+		}
+	: null
 
 const jsonLd = {
 	'@context': 'https://schema.org',
 	'@graph': [
 		{
-			'@type': ['Organization', 'ProfessionalService'],
+			'@type': ['Organization', 'ProfessionalService', 'LocalBusiness'],
 			'@id': 'https://tenbeltz.com/#organization',
 			name: 'TenBeltz',
 			description: orgDescription,
@@ -96,6 +161,7 @@ const jsonLd = {
 						'@type': 'Service',
 						name: service.name,
 						description: lang === 'en' ? service.en : service.es,
+						url: `${servicesUrl}#service-${service.id}`,
 						provider: { '@id': 'https://tenbeltz.com/#organization' },
 					},
 				})),
@@ -104,6 +170,8 @@ const jsonLd = {
 			vatID: 'B21697719',
 			url: 'https://tenbeltz.com',
 			logo: organizationLogo,
+			// LocalBusiness expects an image; reuse the logo rather than invent an asset.
+			image: organizationLogo,
 			email: 'hello@tenbeltz.com',
 			telephone: '+34640520819',
 			address: {
@@ -133,6 +201,8 @@ const jsonLd = {
 				'https://aritzjaber.com',
 			],
 		},
+		...(breadcrumbNode ? [breadcrumbNode] : []),
+		...(profilePageNode ? [profilePageNode] : []),
 	],
 }
 ---
@@ -146,7 +216,7 @@ const jsonLd = {
 <link rel="alternate" hreflang="es" href={esURL} />
 <link rel="alternate" hreflang="en" href={enURL} />
 <link rel="alternate" hreflang="x-default" href={esURL} />
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#02010A" />
 
 <meta name="twitter:card" content="summary_large_image" />

@@ -72,7 +72,7 @@ afectado**. Solo penaliza escritorio.
 código, comprobar si `SVGLoader` hace falta de verdad, y valorar una librería más ligera
 (OGL pesa ~30 KB) para un efecto de puntos. Requiere QA visual.
 
-### 4. Dos imágenes de fondo a pantalla completa se descargan siempre, solo se ve una 🤖
+### ~~4~~ ✅ Dos imágenes de fondo a pantalla completa se descargan siempre, solo se ve una 🤖
 
 `src/components/Contact.astro:84-85`, presente en las 10 URLs porque `Contact` lo usan las
 cuatro plantillas.
@@ -91,7 +91,7 @@ compitiendo con el LCP real.
 **Arreglo:** un solo `<picture>` con `<source media="(min-width:1024px)">`, para que el
 navegador resuelva cuál descargar.
 
-### 5. El fallback de imagen es PNG y pesa 5,5 veces más 🤖
+### ~~5~~ ✅ El fallback de imagen es PNG y pesa 5,5 veces más 🤖
 
 El fallback de `contact-gradient-background-pc` sale en PNG (1.202.071 bytes) frente a los
 219.620 de la variante WebP. Casi todos los navegadores eligen el `<source>` WebP, así que
@@ -143,13 +143,13 @@ confianza disponible sin escribir páginas nuevas.
 **Arreglo:** añadir `quote?: { text, author, role }` al tipo `CaseStudy` y renderizarlo. El
 código lo hace el agente; **conseguir las citas es tarea de Aritz**.
 
-### 10. Dos de los cuatro casos son anónimos y no se explica por qué 🤖
+### ~~10~~ ✅ Dos de los cuatro casos son anónimos y no se explica por qué 🤖
 
 "Sector legal" y "Gestión documental" no llevan cliente ni enlace, mientras Irontec y
 Qamarero sí. Nada indica si es confidencialidad o invención.
 
-**Arreglo:** una coma en el campo `sector`: `'Sector legal · bajo acuerdo de
-confidencialidad'`.
+**Hecho:** añadido `· cliente bajo NDA` / `· client under NDA` al campo `sector` (no al
+`tag`, que se renderiza en una píldora de ancho fijo y se desbordaba).
 
 ### 11. La página de "quién está detrás" no tiene ni una fecha 🤖👤
 
@@ -160,7 +160,7 @@ una biografía real de texto genérico.
 **Arreglo:** año de fundación y años de inicio en los cargos. **Los datos los tiene que dar
 Aritz.**
 
-### 12. La relación con Irontec es ambigua 🤖
+### 12. La relación con Irontec es ambigua 👤 — *bloqueado, esperando a Aritz*
 
 `es.ts:79` presenta a Aritz como *"AI Researcher @ Irontec"* (rol personal) y
 `CasesPage.astro:119` dice que *"TenBeltz opera como partner de ingeniería de IA de Irontec
@@ -169,13 +169,20 @@ desde 2025"* (contrato de empresa). Son dos relaciones distintas sin nada que la
 Quien cruce ambas páginas puede leer el caso de éxito como un arreglo interno en vez de un
 cliente ganado, lo que le resta valor como prueba social.
 
-**Arreglo:** una cláusula aclaratoria en el `close` del caso de Irontec.
+> **Intentado y revertido el 2026-07-21.** Se redactó una cláusula diciendo que es "un
+> contrato entre empresas, distinto del rol personal". **Ese dato no estaba verificado** —
+> lo introdujo el coordinador al enunciar la tarea, no salía de ninguna fuente del repo. Se
+> restauró el texto original antes de commitear.
+
+**Se necesita de Aritz:** cuál es el acuerdo real. Si el encargo llegó a través del rol
+personal, la redacción anterior habría exagerado la separación y es justo el tipo de
+afirmación que un comprador puede pedir que se sustente.
 
 ---
 
 ## 🟡 Medio — IA y datos estructurados
 
-### 13. Las respuestas del FAQ son demasiado cortas para que las citen 🤖
+### ~~13~~ ✅ Las respuestas del FAQ son demasiado cortas para que las citen 🤖
 
 `src/components/FaqSection.astro`: entre 11 y 20 palabras cada una. Para que un motor de
 respuestas cite un pasaje necesita que se sostenga solo, en torno a 40–60 palabras (algunas
@@ -184,7 +191,7 @@ fuentes sitúan el óptimo bastante más arriba).
 Hay borradores redactados a partir de datos que **ya están en la web** (casos, servicios,
 principios), sin inventar nada.
 
-### 14. Errata en una pregunta del FAQ que la vuelve incitable 🤖
+### ~~14~~ ✅ Errata en una pregunta del FAQ que la vuelve incitable 🤖
 
 La pregunta del `FaqSection.astro` menciona *"un Gap Analysis o un sprint"*, pero "sprint"
 no aparece en ninguna otra parte del código ni es uno de los cuatro servicios. Un motor de
@@ -192,7 +199,7 @@ respuestas no puede resolver a qué se refiere.
 
 **Arreglo:** cambiar "sprint" por "Agent MVP", que sí existe.
 
-### 15. Falta hreflang en 4 URLs del sitemap 🤖
+### ~~15~~ ✅ Falta hreflang en 4 URLs del sitemap 🤖
 
 Verificado: `/casos`, `/en/case-studies`, `/quien-esta-detras` y `/en/who-is-behind` salen
 con **0 anotaciones** `xhtml:link`, mientras las otras 6 llevan 2 cada una.
@@ -208,7 +215,7 @@ aviso de "sin etiquetas de retorno".
 **Arreglo:** construir los `links` a mano en el hook `serialize` de `astro.config.mjs`
 usando el mismo mapa de slugs.
 
-### 16. Schema que merece la pena añadir 🤖
+### ~~16~~ ✅ Schema que merece la pena añadir 🤖
 
 - `url` en cada `Service` del `hasOfferCatalog` — las anclas ya existen
   (`ServicesSection.astro:39`), 5 minutos, mejor relación valor/esfuerzo del lote
@@ -225,7 +232,7 @@ usando el mismo mapa de slugs.
 **No añadir:** `Review`/`AggregateRating` sin reseñas reales (viola las directrices de
 Google y es señal de spam), ni `Article`/`BlogPosting` sin blog.
 
-### 17. Mejoras en `llms.txt` 🤖
+### ~~17~~ ✅ Mejoras en `llms.txt` 🤖
 
 - Añadir dirección completa y teléfono, que sí están en el JSON-LD, para que la entidad
   cuadre entre schema, llms.txt y la ficha de Google
@@ -237,7 +244,7 @@ Google y es señal de spam), ni `Article`/`BlogPosting` sin blog.
 
 ## 🟡 Medio — enlazado y conversión
 
-### 18. Las páginas interiores son callejones sin salida 🤖
+### ~~18~~ ✅ Las páginas interiores son callejones sin salida 🤖
 
 Mapeados todos los enlaces de contenido (excluyendo cabecera y pie): la home enlaza a las
 tres interiores, pero **`/services`, `/casos` y `/quien-esta-detras` no se enlazan entre
@@ -247,7 +254,7 @@ páginas y no aporta señal temática.
 **Arreglo:** enlaces contextuales entre las tres, reutilizando el bloque de presentación del
 fundador que ya existe en la home.
 
-### 19. `/politicas` no está en el pie ni en el menú 🤖
+### ~~19~~ ✅ `/politicas` no está en el pie ni en el menú 🤖
 
 Solo se llega desde el banner de cookies, que un visitante recurrente no vuelve a ver.
 Para una empresa que vende a compradores preocupados por la seguridad, tener la página
@@ -255,7 +262,7 @@ legal prácticamente inaccesible es en sí una señal.
 
 **Arreglo:** añadirla al array `sections` de `Footer.astro`.
 
-### 20. `/services` tiene una sola llamada a la acción, al final del todo 🤖
+### ~~20~~ ✅ `/services` tiene una sola llamada a la acción, al final del todo 🤖
 
 Cuatro servicios y un único botón, en `ServicesSection.astro:88`. Quien lee el primero y
 decide que le encaja tiene que pasar los otros tres para encontrar cómo actuar.
@@ -275,7 +282,7 @@ que dar Aritz.**
 
 ## 🔵 Bajo
 
-### 22. Falta `initial-scale=1` en el viewport 🤖
+### ~~22~~ ✅ Falta `initial-scale=1` en el viewport 🤖
 `SEO.astro:149`. Los navegadores modernos lo infieren, pero es una línea.
 
 ### 23. Sin HTTP/2 ni HTTP/3 🔧
@@ -283,18 +290,18 @@ Verificado: se negocia HTTP/1.1. Con 6+ chunks de `/_astro/`, dos orígenes de G
 imágenes compitiendo por el límite de ~6 conexiones por origen, los recursos hacen cola en
 vez de multiplexarse. `listen 443 ssl http2;` en nginx 1.24, sin módulos extra.
 
-### 24. Google Fonts bloquea el renderizado 🤖
+### ~~24~~ ✅ Google Fonts bloquea el renderizado 🤖
 `Layout.astro:23-26`. Son 9.964 bytes con **24 reglas `@font-face`** (4 pesos × 6 subconjuntos:
 cirílico, griego, vietnamita...) cuando el sitio solo usa español e inglés. Ya hay
 `preconnect`, que ayuda.
 **Arreglo:** alojar los 4 woff2 en local, solo latino.
 
-### 25. `/services` y `/services/` devuelven 200 ambas 🤖
+### ~~25~~ ✅ `/services` y `/services/` devuelven 200 ambas 🤖
 Duplicación evitable. El canonical ya lo resuelve, así que no está causando daño.
 **Arreglo:** `trailingSlash: 'never'` en `astro.config.mjs`, comprobando que no choca con el
 hook `serialize`.
 
-### 26. Sin IndexNow 🤖
+### ~~26~~ ✅ Sin IndexNow 🤖
 No hay clave ni script. Con 10 URLs es barato y avisa a Bing y Yandex al instante.
 
 ### 27. Sin CSP ni `Permissions-Policy` 🔧

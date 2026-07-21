@@ -18,11 +18,17 @@ const lang = getLangFromUrl(Astro.url);
 <!doctype html>
 <html lang={lang}>
 	<head>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		{/* IBM Plex Sans is self-hosted; @font-face lives in src/styles/global.css.
+		    Only the latin subset at weight 400 is preloaded: it is the default body
+		    weight and is needed on every page. The latin-ext file and the other
+		    weights are left to normal discovery so they do not compete for
+		    bandwidth with the critical render path. */}
 		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+			rel="preload"
+			as="font"
+			type="font/woff2"
+			href="/fonts/ibm-plex-sans-latin.woff2"
+			crossorigin
 		/>
 		<SEO
 			title={title}

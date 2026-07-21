@@ -20,6 +20,7 @@ const labels = lang === 'en'
       howWeWork: 'How We Work',
       fit: 'Who It Fits',
       whoBehind: 'Who is behind',
+      policies: 'Policies and legal notice',
     }
   : {
       sections: 'Secciones',
@@ -32,6 +33,7 @@ const labels = lang === 'en'
       howWeWork: 'Cómo trabajamos',
       fit: 'Para quién',
       whoBehind: 'Quién está detrás',
+      policies: 'Políticas y aviso legal',
     };
 
 interface SocialMedia {
@@ -73,6 +75,8 @@ const sections: FooterLink[] = [
   { name: labels.fit, url: `${homeHref}#para-quien` },
   { name: labels.whoBehind, url: getRelativeLocaleUrl(lang, whoBehindSlug) },
   { name: labels.contact, url: `${homeHref}#contact-section` },
+  // Same slug in both locales: src/pages/politicas.astro and src/pages/en/politicas.astro.
+  { name: labels.policies, url: getRelativeLocaleUrl(lang, '/politicas') },
 ];
 ---
 

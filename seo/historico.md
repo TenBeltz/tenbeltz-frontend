@@ -205,3 +205,45 @@ completo — no era lo que parecía.
 
 **Verificación:** `dig` devuelve NXDOMAIN. Comprobado también que el registro **SPF sigue
 intacto**, porque tocar la zona DNS y cargarse el SPF sin querer rompería el correo.
+
+---
+
+## 2026-07-21 (noche, tras el despliegue) — Verificación en producción
+
+Commit `c465980` desplegado. Verificado por el coordinador contra producción, no solo
+reportado:
+
+| Comprobación | Resultado |
+|---|---|
+| Las 10 URLs | 200 |
+| Barra final | 301 hacia la forma canónica en las 9 no raíz |
+| Canonicals | Cada página se auto-referencia, incluidas las `/en/` |
+| Sitemap | 10 URLs, sin `/404`, 3 alternates en cada una |
+| Schema | `FAQPage` en la home; `BreadcrumbList` en las interiores; `CollectionPage` en `/casos`; `ProfilePage` en `/quien-esta-detras` |
+| Fuentes | Autoalojadas, 0 referencias a Google |
+| FAQ | 54-73 palabras por respuesta |
+| Títulos | Keyword primero |
+| `llms.txt` y clave IndexNow | 200 |
+
+### Compresión: brotli activo
+
+El dev instaló brotli además de gzip. Medido sobre el chunk del hero:
+
+| | bytes |
+|---|---|
+| Sin comprimir | 578.806 |
+| gzip | 171.000 aprox. |
+| **brotli** | **129.875** |
+
+Sumado a la reducción de 21 KB del propio bundle, el hero pasó de 578 KB reales a **130 KB
+transferidos**: un 78% menos.
+
+### IndexNow lanzado
+
+`node scripts/indexnow.mjs` → **HTTP 202, 10 URLs aceptadas**. Solo funciona con el fichero
+de clave ya servido, de ahí que hubiera que esperar al despliegue.
+
+### HTTP/2: descartado con buen criterio
+
+Ver `pendientes.md`. El socket `:443` lo comparten ~15 dominios y el flag va por socket, no
+por `server_name`. El dev se negó a activarlo unilateralmente. Correcto.

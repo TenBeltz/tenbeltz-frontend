@@ -61,7 +61,7 @@ bloque `location /_astro/`.
 
 ## 🟠 Alto — rendimiento
 
-### ~~3~~ ⚠️ 578 KB de JavaScript para un fondo decorativo 🤖 — *parcial, pendiente QA visual*
+### ~~3~~ ✅ 578 KB de JavaScript para un fondo decorativo 🤖 — *desplegado; brotli lo deja en 130 KB*
 
 `src/components/HomeHeroScene.tsx:1-9` hace `import * as THREE from 'three'` más
 `SVGLoader`. Resultado: 578.806 bytes, más que todo el resto del sitio junto, para una
@@ -290,7 +290,7 @@ que dar Aritz.**
 ### ~~22~~ ✅ Falta `initial-scale=1` en el viewport 🤖
 `SEO.astro:149`. Los navegadores modernos lo infieren, pero es una línea.
 
-### 23. Sin HTTP/2 ni HTTP/3 🔧
+### 23. Sin HTTP/2 ni HTTP/3 🔧 — *descartado por ahora, ver abajo*
 Verificado: se negocia HTTP/1.1. Con 6+ chunks de `/_astro/`, dos orígenes de Google Fonts e
 imágenes compitiendo por el límite de ~6 conexiones por origen, los recursos hacen cola en
 vez de multiplexarse. `listen 443 ssl http2;` en nginx 1.24, sin módulos extra.
@@ -330,3 +330,21 @@ si Tailwind está metiendo utilidades globales ahí. Menos urgente una vez esté
   dato propio de demanda que existe
 - **Rotar la contraseña de root** 👤 — se compartió por chat, ver `decisiones.md`
 - **`lexfirma.tenbeltz.com`** 👤 — riesgo de secuestro de subdominio, aparcado a petición
+
+---
+
+## Descartado conscientemente
+
+### HTTP/2 — no se aplica, y con razón
+
+El socket `:443` lo comparten unos 15 dominios más en ese servidor. En nginx 1.24 el flag
+`http2` se define **por socket de escucha**, no por `server_name`, así que activarlo solo en
+el bloque de tenbeltz.com produce un warning de `protocol options redefined` y comportamiento
+no garantizado para los demás sitios.
+
+Hacerlo bien exigiría activarlo de forma coherente en todos los `server{}` de ese socket,
+lo que toca sitios de otros clientes. El dev lo detectó y decidió no hacerlo unilateralmente.
+Es la decisión correcta.
+
+Además, ahora que brotli está activo la ganancia sería bastante menor. Retomar solo si
+alguna vez se hace una revisión del servidor con ese alcance.

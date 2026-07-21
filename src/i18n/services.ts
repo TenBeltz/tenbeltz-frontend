@@ -6,14 +6,29 @@ export type ServiceId =
   | 'agent-mvp'
   | 'production-delivery';
 
+export interface ServiceProof {
+  /** Link text. Names the case study so the anchor is descriptive on its own. */
+  label: string;
+  /**
+   * Locale-root-relative path, already using this locale's slug (`/casos` vs
+   * `/case-studies`). `ServicesSection.astro` adds the `/en` prefix via
+   * `getRelativeLocaleUrl`, so no `/en` here.
+   */
+  href: string;
+}
+
 export interface Service {
   id: ServiceId;
   tag: string;
   title: string;
+  /** Indicative, not a commitment. Phrased as a typical duration on purpose. */
+  duration: string;
   description: string;
   fitTitle: string;
   fit: string;
   bullets: string[];
+  /** Optional: only set where a real case study demonstrates this service. */
+  proof?: ServiceProof;
 }
 
 export interface HomeCard {
@@ -104,6 +119,7 @@ const es: ServicesCopy = {
       id: 'gap-analysis',
       tag: 'Entrada',
       title: 'AI Gap Analysis',
+      duration: 'Normalmente 3 días',
       description: 'Servicio compacto para equipos SaaS que no saben por dónde empezar o ya intentaron algo que no acabó de cuajar. Una reunión para recoger contexto, un informe escrito y una segunda reunión para presentarlo.',
       fitTitle: 'Encaja para',
       fit: 'SaaS con una feature de IA en el roadmap o un intento previo que quieres entender antes de invertir más.',
@@ -114,11 +130,16 @@ const es: ServicesCopy = {
         'Problemas previsibles y cómo evitarlos',
         'Guía paso a paso para los siguientes pasos',
       ],
+      proof: {
+        label: 'Caso: clasificación documental, tres enfoques medidos antes de decidir',
+        href: '/casos',
+      },
     },
     {
       id: 'foundations',
       tag: 'Base',
       title: 'AI Project Foundations',
+      duration: 'Normalmente 3 días',
       description: 'Para consultoras de software que ejecutan proyectos a medida. Te dejamos una base reutilizable —stack, guías de planificación y herramientas— que sirve para cualquier proyecto de IA que te pidan tus clientes.',
       fitTitle: 'Encaja para',
       fit: 'Consultoras que quieren subir el nivel técnico de sus proyectos de IA sin depender del criterio puntual de cada persona del equipo.',
@@ -134,6 +155,7 @@ const es: ServicesCopy = {
       id: 'agent-mvp',
       tag: 'MVP',
       title: 'Agent MVP',
+      duration: 'Normalmente de 1 a 2 semanas',
       description: 'Para proyectos concretos donde queremos que arranques con criterio y tu equipo termine. Montamos la primera versión del agente, las pruebas de calidad y la guía explícita de lo que falta para producción.',
       fitTitle: 'Encaja para',
       fit: 'Equipos con un proyecto definido que quieren arrancar bien y asumir el tramo final ellos mismos.',
@@ -144,11 +166,16 @@ const es: ServicesCopy = {
         'Bases técnicas del proyecto',
         'Guía explícita de lo que falta para producción',
       ],
+      proof: {
+        label: 'Caso: sistema multiagente para informes periciales',
+        href: '/casos',
+      },
     },
     {
       id: 'production-delivery',
       tag: 'Delivery',
       title: 'Production Delivery',
+      duration: 'Normalmente alrededor de 1 mes',
       description: 'Lo mismo que Agent MVP, pero llevado hasta el final: sistema listo para producción e integrado en tu producto, sobre las mismas bases de pruebas, monitorización y criterios de entrega.',
       fitTitle: 'Encaja para',
       fit: 'Equipos que quieren que TenBeltz asuma implementación, integración y entrega a producción de punta a punta.',
@@ -159,6 +186,10 @@ const es: ServicesCopy = {
         'Entrega lista para producción',
         'Handover técnico al equipo',
       ],
+      proof: {
+        label: 'Caso: agentes de voz de Qamarero operando en producción',
+        href: '/casos',
+      },
     },
   ],
   path: {
@@ -234,6 +265,7 @@ const en: ServicesCopy = {
       id: 'gap-analysis',
       tag: 'Entry',
       title: 'AI Gap Analysis',
+      duration: 'Typically 3 days',
       description: 'A compact engagement for SaaS teams that do not know where to start or already tried something that did not land. One context meeting, a written report, and a second meeting to walk through it.',
       fitTitle: 'Best for',
       fit: 'SaaS teams with an AI feature on the roadmap or an earlier attempt they want to understand before investing more.',
@@ -244,11 +276,16 @@ const en: ServicesCopy = {
         'Predictable risks and how to avoid them',
         'Step-by-step guide for the next steps',
       ],
+      proof: {
+        label: 'Case study: document classification, three approaches measured before deciding',
+        href: '/case-studies',
+      },
     },
     {
       id: 'foundations',
       tag: 'Foundation',
       title: 'AI Project Foundations',
+      duration: 'Typically 3 days',
       description: 'For software consultancies that deliver custom projects. We leave a reusable technical base, planning guides, and delivery criteria for AI projects.',
       fitTitle: 'Best for',
       fit: 'Consultancies that want to raise the technical bar on AI work without relying on individual judgment call by call.',
@@ -264,6 +301,7 @@ const en: ServicesCopy = {
       id: 'agent-mvp',
       tag: 'MVP',
       title: 'Agent MVP',
+      duration: 'Typically 1 to 2 weeks',
       description: 'For concrete projects where we get you started with the right foundations and your team takes it over the finish line. We set up the first agent version, quality checks, monitoring, and an explicit guide to what is left for production.',
       fitTitle: 'Best for',
       fit: 'Teams with a defined project that want to start well and own the last mile themselves.',
@@ -274,11 +312,16 @@ const en: ServicesCopy = {
         'Technical foundations for the project',
         'Explicit guide on what is left for production',
       ],
+      proof: {
+        label: 'Case study: multi-agent system for expert legal reports',
+        href: '/case-studies',
+      },
     },
     {
       id: 'production-delivery',
       tag: 'Delivery',
       title: 'Production Delivery',
+      duration: 'Typically around 1 month',
       description: 'Same as Agent MVP, taken to the finish line: system ready for production and integrated with your product, on the same evaluation, observability, and delivery foundations.',
       fitTitle: 'Best for',
       fit: 'Teams that want TenBeltz to own implementation, integration, and production delivery end to end.',
@@ -289,6 +332,10 @@ const en: ServicesCopy = {
         'Production-ready delivery',
         'Technical handover to the team',
       ],
+      proof: {
+        label: 'Case study: Qamarero voice agents running in production',
+        href: '/case-studies',
+      },
     },
   ],
   path: {

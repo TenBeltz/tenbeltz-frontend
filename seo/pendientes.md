@@ -19,7 +19,7 @@ Estado: ✅ hecho · ⚠️ hecho a medias o bloqueado por revisión · sin marc
 
 ## 🔴 Crítico — servidor
 
-### 1. Los assets estáticos se sirven sin comprimir 🔧
+### ~~1~~ ✅ Los assets estáticos se sirven sin comprimir 🔧 — *resuelto en producción 2026-07-21*
 
 Verificado el 2026-07-21 pidiendo con `Accept-Encoding: gzip, br`:
 
@@ -39,7 +39,7 @@ Content-Type que emite el adaptador Node de Astro (muchas configs solo listan
 **Arreglo:** añadir `text/javascript` y `text/css` a `gzip_types`. Es la mejora de
 rendimiento más grande disponible ahora mismo y es una línea de config.
 
-### 2. Cabecera `Cache-Control` duplicada y contradictoria 🔧
+### ~~2~~ ✅ Cabecera `Cache-Control` duplicada 🔧 — *resuelto en producción 2026-07-21*
 
 Verificado: cada asset de `/_astro/` devuelve **dos** cabeceras:
 
@@ -311,7 +311,7 @@ hook `serialize`.
 ### ~~26~~ ✅ Sin IndexNow 🤖
 No hay clave ni script. Con 10 URLs es barato y avisa a Bing y Yandex al instante.
 
-### 27. Sin CSP ni `Permissions-Policy` 🔧
+### ~~27~~ ⚠️ Sin CSP 🔧 — *`Permissions-Policy` ya puesta; falta solo el CSP*
 El resto de cabeceras de seguridad ya están. Empezar por `Permissions-Policy`, que es
 trivial, y un CSP en modo `report-only` antes de aplicarlo.
 

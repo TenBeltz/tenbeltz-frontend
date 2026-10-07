@@ -38,13 +38,9 @@ const lang = getLangFromUrl(Astro.url);
 			noindex={noindex}
 		/>
 	</head>
-	<body class="flex flex-col min-h-screen overflow-x-hidden bg-obsidian-shard">
+	<body class="flex flex-col min-h-screen">
+		<a href="#main-content" class="skip-link">{lang === 'en' ? 'Skip to content' : 'Saltar al contenido'}</a>
 		<slot />
 		<CookieConsent />
 	</body>
 </html>
-<style is:global>
-	html {
-		scroll-behavior: smooth;
-	}
-</style>

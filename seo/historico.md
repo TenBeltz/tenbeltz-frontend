@@ -247,3 +247,17 @@ de clave ya servido, de ahí que hubiera que esperar al despliegue.
 
 Ver `pendientes.md`. El socket `:443` lo comparten ~15 dominios y el flag va por socket, no
 por `server_name`. El dev se negó a activarlo unilateralmente. Correcto.
+
+## 2026-10-07 — Rediseño editorial, verificado en dev
+
+Rediseño completo de templates ES/EN, con ocho proyectos documentados y nuevas imágenes OG. Rutas y slugs traducidos conservados. Los casos comparten datos desde `src/data/projects.ts`, con JSON-LD de ocho CreativeWork y métricas contextualizadas; no se publican nombres de despachos confidenciales.
+
+Se retiró la excepción de `SEO.astro` que reemplazaba el canonical explícito con `http://localhost:4321` cuando el servidor resolvía internamente ese host. Se utiliza el canonical de cada template sobre `Astro.site`.
+
+Verificación en el build standalone servido en loopback 10022: diez páginas comerciales con canonical `https://tenbeltz.com`, tres alternates, coincidencia con las diez entradas del sitemap (normalizando exclusivamente la barra de la raíz conforme a la decisión previa) y JSON-LD válido en ES/EN. Las dos páginas 404 siguen devolviendo 404. Build sin errores. Preview privada devuelve 401 sin autenticación. No se ha desplegado en producción ni solicitado indexación; ver `docs/redesign-2026-10-07.md`.
+
+### 2026-10-07 — Feedback del rediseño: formación como quinto servicio
+
+Añadida formación en IA aplicada en home, servicios, formulario y OfferCatalog, en español e inglés. Metadescripciones de servicios actualizadas. Experiencia de 30 horas para Opus Dei atribuida a Imagina por confirmación expresa de Aritz. Nuevos nombres de referencia autorizados en la petición y contexto local actualizado; no se atribuyen casos jurídicos anónimos a estos nombres.
+
+Verificado en dev: build sin errores; home y servicios ES/EN con cinco ofertas JSON-LD y enlace `#service-training` presente. Catorce navegaciones browser en las rutas modificadas, sin errores JS ni desbordamientos en escritorio/móvil. Rutas/canonicals conservados. No despliegue en producción ni nueva solicitud de indexación.

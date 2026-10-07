@@ -1,0 +1,22 @@
+---
+interface Props { lang: 'es' | 'en'; servicesHref: string; }
+const { lang, servicesHref } = Astro.props;
+const en = lang === 'en';
+const paths = en ? [
+  { title: 'Define the next step', text: 'Assess feasibility, choose the architecture and give your team a clear technical direction.', outcome: 'A plan to build on', links: [['Technical diagnosis', 'gap-analysis'], ['Project foundations', 'foundations']] },
+  { title: 'Build and integrate', text: 'From a first working version to a system integrated into your product, with evaluation and monitoring.', outcome: 'A system to use', links: [['First working version', 'agent-mvp'], ['Production delivery', 'production-delivery']] },
+  { title: 'Train your team', text: 'Practical training in local AI, RAG, agents and evaluation, adapted to your team’s level and projects.', outcome: 'Knowledge to apply', links: [['Applied AI training', 'training']] },
+] : [
+  { title: 'Definir el siguiente paso', text: 'Evaluar la viabilidad, elegir la arquitectura y dar a tu equipo una dirección técnica clara.', outcome: 'Un plan para construir', links: [['Diagnóstico técnico', 'gap-analysis'], ['Bases del proyecto', 'foundations']] },
+  { title: 'Construir e integrar', text: 'Desde una primera versión funcional hasta un sistema integrado en tu producto, con evaluación y monitorización.', outcome: 'Un sistema para utilizar', links: [['Primera versión funcional', 'agent-mvp'], ['Entrega en producción', 'production-delivery']] },
+  { title: 'Formar a tu equipo', text: 'Formación práctica en IA local, RAG, agentes y evaluación, adaptada al nivel y los proyectos de tu equipo.', outcome: 'Conocimiento para aplicar', links: [['Formación en IA aplicada', 'training']] },
+];
+---
+<div class="service-paths">
+  {paths.map((path, index) => <article class="service-path">
+    <div class="service-path-label"><span>0{index + 1}</span><span>{path.outcome}</span></div>
+    <h3>{path.title}</h3>
+    <p>{path.text}</p>
+    <div class="service-path-links">{path.links.map(([label, id]) => <a href={`${servicesHref}#service-${id}`}>{label}<span aria-hidden="true">↗</span></a>)}</div>
+  </article>)}
+</div>

@@ -1,115 +1,18 @@
 ---
-import { ReactComponent as PhoneIcon } from '@/assets/icons/phone-outline.svg';
-import { ReactComponent as MailIcon } from '@/assets/icons/envelope-outline.svg';
-import { getImage } from 'astro:assets';
-import backgroundGradientPC from '/public/images/img/contact-gradient-background-pc.webp';
-import backgroundGradientMobile from '/public/images/img/contact-gradient-background-mobile.webp';
 import ContactForm from './ContactForm';
-import { ScrollReveal } from './ScrollReveal';
 import { getLangFromUrl } from '@/i18n/utils';
-
 const lang = getLangFromUrl(Astro.url);
-const copy = lang === 'en'
-  ? {
-      title: 'Tell us',
-      titleHighlight: 'your project',
-      subtitle: 'Share the context and we will assess whether there is a strong fit for TenBeltz.',
-      calendlyLead: 'Prefer to talk it through?',
-      calendlyButton: 'Book 30 min with Aritz',
-    }
-  : {
-      title: 'Cuéntanos',
-      titleHighlight: 'tu proyecto',
-      subtitle: 'Comparte el contexto y evaluaremos si hay un encaje claro para trabajar con TenBeltz.',
-      calendlyLead: '¿Prefieres hablarlo directamente?',
-      calendlyButton: 'Agenda 30 min con Aritz',
-    };
-
-const calendlyUrl = 'https://calendly.com/tenbeltz/llamada-de-encaje-ai-gap-analysis';
-
-// Decorative background gradient. Resolved via getImage() rather than <Picture> because
-// <Picture> cannot emit `media` on its <source> elements, so both the desktop and the mobile
-// gradient were downloaded on every device (CSS `display:none` does not cancel an <img> fetch).
-// A single <picture> with a media-scoped <source> lets the browser pick one resource up front.
-// getImage() also lets us force webp on the fallback <img>; <Picture> hardcodes a png fallback
-// (defaultFallbackFormat in astro/components/Picture.astro), which emitted a ~1.2 MB png.
-const [desktopGradient, mobileGradient] = await Promise.all([
-  getImage({ src: backgroundGradientPC, format: 'webp' }),
-  getImage({ src: backgroundGradientMobile, format: 'webp' }),
-]);
-
-export const contactInfo = {
-  phones: ['+34 640 520 819'],
-  email: 'hello@tenbeltz.com',
-}
+const en = lang === 'en';
+export const contactInfo = { phones: ['+34 640 520 819'], email: 'hello@tenbeltz.com' };
 ---
-
-<section id="contact-section" class="relative text-white bg-grid">
-  <div class="flex flex-col max-w-screen-xl mx-auto lg:flex-row">
-    <div class="px-4 py-20 lg:flex-1 lg:px-16">
-      <div class="flex flex-col gap-y-8">
-        <div class="flex flex-col max-w-[21rem] gap-y-6">
-          <ScrollReveal client:visible>
-            <h3 class="text-4xl font-bold">
-              {copy.title} 
-              <span class="bg-gradient-to-r from-[#9238D6] to-[#C45BFF] bg-clip-text text-transparent">{copy.titleHighlight}</span>
-            </h3>
-          </ScrollReveal>
-          <ScrollReveal client:visible>
-            <p class="text-lg text-slate-300">{copy.subtitle}</p>
-          </ScrollReveal>
-        </div>
-        <ul class="flex flex-col gap-y-4 text-slate-300">
-          <ScrollReveal client:visible>
-            <li class="flex items-center gap-x-2">
-              <MailIcon strokeWidth="1.5" className="size-6" stroke="currentColor" />
-              <a href={`mailto:${contactInfo.email}`} class="text-xs">{contactInfo.email}</a>
-            </li>
-          </ScrollReveal>
-          {contactInfo.phones.map((phone, index) => (
-            <ScrollReveal client:visible delay={(index + 1) * 100}>
-              <li class="flex items-center gap-x-2">
-                <PhoneIcon strokeWidth="1.5" className="size-6" stroke="currentColor" />
-                <a href={`tel:${phone}`} class="text-xs">{phone}</a>
-              </li>
-            </ScrollReveal>
-          ))}
-        </ul>
-        <ScrollReveal client:visible>
-          <div class="flex flex-col gap-y-3">
-            <p class="text-lg text-slate-300">{copy.calendlyLead}</p>
-            <a
-              href={calendlyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn bg-pheromone-purple hover:bg-sapphire-siren text-xl font-medium leading-6 block w-fit"
-            >{copy.calendlyButton}</a>
-          </div>
-        </ScrollReveal>
-      </div>
+<section id="contact-section" class="section contact-section">
+  <div class="wrap contact-grid">
+    <div class="contact-copy">
+      <span class="eyebrow">{en ? 'Next step' : 'Siguiente paso'}</span>
+      <h2>{en ? 'Let’s talk about your project.' : 'Hablemos de tu proyecto.'}</h2>
+      <p>{en ? 'Tell us what you want to build and where you are today. Aritz will reply with a concrete next step.' : 'Cuéntanos qué quieres construir y en qué punto estás. Aritz te responderá con un siguiente paso concreto.'}</p>
+      <div class="contact-details"><a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a><a href={`tel:${contactInfo.phones[0]}`}>{contactInfo.phones[0]}</a></div><div class="contact-book"><p>{en ? 'Prefer a conversation?' : '¿Prefieres una conversación?'}</p><a class="text-link" href="https://calendly.com/tenbeltz/llamada-de-encaje-ai-gap-analysis" target="_blank" rel="noopener noreferrer">{en ? 'Book 30 minutes with Aritz' : 'Agenda 30 minutos con Aritz'} <span aria-hidden="true">↗</span></a></div>
     </div>
-    <div class="px-4 py-20 lg:border-x lg:border-berry-blackmail md:flex-1 lg:px-16 bg-gradient-to-r backdrop-blur-[2px] from-[#561B834D] to-[#1A00764D]">
-      <ContactForm client:load lang={lang} />
-    </div>
+    <ContactForm client:load lang={lang} />
   </div>
-  <picture>
-    {/* lg breakpoint (1024px) — mirrors the previous `hidden lg:block` / `lg:hidden` pair. */}
-    <source
-      media="(min-width: 1024px)"
-      type="image/webp"
-      srcset={desktopGradient.src}
-      width={desktopGradient.attributes.width}
-      height={desktopGradient.attributes.height}
-    />
-    <img
-      src={mobileGradient.src}
-      width={mobileGradient.attributes.width}
-      height={mobileGradient.attributes.height}
-      alt=""
-      aria-hidden="true"
-      loading="lazy"
-      decoding="async"
-      class="absolute inset-0 object-cover w-full h-full -z-50"
-    />
-  </picture>
 </section>

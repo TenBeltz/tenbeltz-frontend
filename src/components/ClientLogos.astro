@@ -1,0 +1,37 @@
+---
+interface Props { lang: 'es' | 'en'; }
+const { lang } = Astro.props;
+const en = lang === 'en';
+const clients = [
+  { id: 'irontec', name: 'Irontec', href: 'https://www.irontec.com/', src: 'irontec.svg', width: 132, height: 24 },
+  { id: 'qamarero', name: 'Qamarero', href: 'https://www.qamarero.com/', src: 'qamarero.svg', width: 138, height: 40 },
+  { id: 'tecnisoft', name: 'SistemaPol · TecniSoft', href: 'https://www.sistemapol.es/', src: 'sistemapol.png', width: 600, height: 472 },
+  { id: 'biiak', name: 'Biiak', href: 'https://biiak.com/', src: 'biiak.svg', width: 440, height: 150 },
+  { id: 'imagina', name: 'Imagina', href: 'https://imaginaformacion.com/', src: 'imagina-color.webp', width: 329, height: 60 },
+];
+---
+<client-logos class="client-strip wrap" role="region" aria-label={en ? 'Featured clients' : 'Clientes destacados'}>
+  <div class="client-strip-heading">
+    <p>{en ? 'Featured clients' : 'Clientes destacados'}</p>
+  </div>
+  <div class="client-logos-window">
+    <div class="client-logos-track">
+      {[false, true].map(duplicate => <ul class="client-logo-group" aria-hidden={duplicate ? 'true' : undefined}>
+        {clients.map(client => <li class:list={['client-logo-item', `client-logo-${client.id}`]}>
+          <a class="client-logo-link" href={client.href} target="_blank" rel="noopener noreferrer" tabindex={duplicate ? '-1' : undefined} aria-label={en ? `${client.name} website (opens in a new tab)` : `Web de ${client.name} (se abre en otra pestaña)`}>
+            <img src={`/images/clients/${client.src}`} alt={duplicate ? '' : client.name} width={client.width} height={client.height} decoding="async" />
+            {client.id === 'tecnisoft' && <small aria-hidden="true">TecniSoft</small>}
+          </a>
+        </li>)}
+      </ul>)}
+    </div>
+  </div>
+</client-logos>
+<script>
+  class ClientLogos extends HTMLElement {
+    connectedCallback() {
+      this.dataset.enhanced = 'true';
+    }
+  }
+  if (!customElements.get('client-logos')) customElements.define('client-logos', ClientLogos);
+</script>

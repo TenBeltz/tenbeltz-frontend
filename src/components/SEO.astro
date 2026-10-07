@@ -23,7 +23,6 @@ const ogImage = new URL(image ?? defaultOgPath, Astro.site)
 const isDefaultOgImage = !image
 
 const determineCanonicalURL = () => {
-	if (Astro.url.host.includes("localhost")) return `http://localhost:4321${Astro.url.pathname}`
 	return canonical || Astro.url.pathname;
 }
 
@@ -112,6 +111,7 @@ const serviceCatalog = [
 	{ id: 'foundations', name: 'AI Project Foundations', es: 'Bases técnicas del proyecto: arquitectura, stack y criterios de entrega.', en: 'Technical foundations: architecture, stack and delivery criteria.' },
 	{ id: 'agent-mvp', name: 'Agent MVP', es: 'Primer agente en funcionamiento sobre un caso acotado y medible.', en: 'First working agent on a scoped, measurable use case.' },
 	{ id: 'production-delivery', name: 'Production Delivery', es: 'Entrega en producción con fiabilidad medible, observabilidad y control de coste.', en: 'Production delivery with measurable reliability, observability and cost control.' },
+	{ id: 'training', name: lang === 'en' ? 'Applied AI Training' : 'Formación en IA aplicada', es: 'Formación práctica para equipos técnicos en IA local, modelos, RAG, agentes y evaluación.', en: 'Practical training for technical teams in local AI, models, RAG, agents and evaluation.' },
 ]
 
 // Breadcrumbs on every page except the two home pages, where a one-item trail adds nothing.

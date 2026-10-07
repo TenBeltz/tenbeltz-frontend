@@ -1,116 +1,24 @@
 ---
-import { ReactComponent as LogoInstagram } from '@/assets/icons/logo-instagram-outline.svg';
-import { ReactComponent as LogoLinkedin } from '@/assets/icons/logo-linkedin-outline.svg';
-import { contactInfo } from './Contact.astro';
-import { ScrollReveal } from './ScrollReveal';
-import { getLangFromUrl } from "@/i18n/utils";
+import { getLangFromUrl } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-
 const lang = getLangFromUrl(Astro.url);
-const currentYear = new Date().getFullYear();
-const labels = lang === 'en'
-  ? {
-      sections: 'Sections',
-      contact: 'Contact',
-      copyright: `© ${currentYear} TenBeltz. All rights reserved.`,
-      legalEntity: 'TenBeltz is a brand of Beltz Dev SL · VAT B21697719',
-      home: 'Home',
-      services: 'Services',
-      cases: 'Case studies',
-      howWeWork: 'How We Work',
-      fit: 'Who It Fits',
-      whoBehind: 'Who is behind',
-      policies: 'Policies and legal notice',
-    }
-  : {
-      sections: 'Secciones',
-      contact: 'Contacto',
-      copyright: `© ${currentYear} TenBeltz. Todos los derechos reservados.`,
-      legalEntity: 'TenBeltz es una marca de Beltz Dev SL · CIF B21697719',
-      home: 'Inicio',
-      services: 'Servicios',
-      cases: 'Casos',
-      howWeWork: 'Cómo trabajamos',
-      fit: 'Para quién',
-      whoBehind: 'Quién está detrás',
-      policies: 'Políticas y aviso legal',
-    };
-
-interface SocialMedia {
-  name: string;
-  logo: React.FC<React.SVGProps<SVGSVGElement>>;
-  logoProps?: React.SVGProps<SVGSVGElement>;
-  url: string;
-}
-
-interface FooterLink {
-  name: string;
-  url: string;
-}
-
-const socialMedias: SocialMedia[] = [
-  {
-    name: 'Instagram',
-    logo: LogoInstagram,
-    logoProps: { width: 20, height: 20, fill: '#94A3B8' },
-    url: 'https://www.instagram.com/tenbeltz/',
-  },
-  {
-    name: 'Linkedin',
-    logo: LogoLinkedin,
-    logoProps: { width: 20, height: 20, fill: '#94A3B8' },
-    url: 'https://www.linkedin.com/company/tenbeltz/',
-  }
-];
-
-const whoBehindSlug = lang === 'en' ? '/who-is-behind' : '/quien-esta-detras';
-const homeHref = getRelativeLocaleUrl(lang, '/');
-const servicesHref = getRelativeLocaleUrl(lang, '/services');
-
-const sections: FooterLink[] = [
-  { name: labels.home, url: homeHref },
-  { name: labels.services, url: servicesHref },
-  { name: labels.cases, url: getRelativeLocaleUrl(lang, lang === 'en' ? '/case-studies' : '/casos') },
-  { name: labels.howWeWork, url: `${homeHref}#como-trabajamos` },
-  { name: labels.fit, url: `${homeHref}#para-quien` },
-  { name: labels.whoBehind, url: getRelativeLocaleUrl(lang, whoBehindSlug) },
-  { name: labels.contact, url: `${homeHref}#contact-section` },
-  // Same slug in both locales: src/pages/politicas.astro and src/pages/en/politicas.astro.
-  { name: labels.policies, url: getRelativeLocaleUrl(lang, '/politicas') },
+const en = lang === 'en';
+const links = [
+  [en ? 'Services' : 'Servicios', '/services'],
+  [en ? 'Projects' : 'Proyectos', en ? '/case-studies' : '/casos'],
+  [en ? 'About' : 'Quién está detrás', en ? '/who-is-behind' : '/quien-esta-detras'],
 ];
 ---
-
-<footer class="text-white bg-obsidian-shard">
-  <div class="flex flex-col p-4 py-8 mx-auto gap-y-14 lg:p-16 max-w-screen-2xl">
-    <div class="flex flex-col flex-wrap xs:flex-row gap-x-20 gap-y-10">
-      <ScrollReveal client:visible className="flex flex-col gap-y-5">
-        <h4 class="font-semibold">{labels.sections}</h4>
-        <ul class="flex flex-col gap-y-3">
-          {sections.map(section => <li><a href={section.url} class="transition-colors text-slate-300 hover:text-slate-100">{section.name}</a></li>)}
-        </ul>
-      </ScrollReveal>
-      <ScrollReveal client:visible delay={200} className="flex flex-col gap-y-5">
-        <h4 class="font-semibold">{labels.contact}</h4>
-        <ul class="flex flex-col gap-y-3">
-          <li><a href={`mailto:${contactInfo.email}`} class="transition-colors text-slate-300 hover:text-slate-100">{contactInfo.email}</a></li>
-          {contactInfo.phones.map(phone => <li><a href={`tel:${phone}`} class="transition-colors text-slate-300 hover:text-slate-100">{phone}</a></li>)}
-        </ul>
-      </ScrollReveal>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div><a class="brand" href={getRelativeLocaleUrl(lang, '/')}>TenBeltz<span style="color:var(--accent)">.</span></a><p>{en ? 'AI engineering for software companies.' : 'Ingeniería de IA para empresas de software.'}</p></div>
+      <nav class="footer-links" aria-label={en ? 'Footer navigation' : 'Navegación del pie'}>
+        {links.map(([label, path]) => <a href={getRelativeLocaleUrl(lang, path)}>{label}</a>)}
+        <a href="mailto:hello@tenbeltz.com">hello@tenbeltz.com ↗</a>
+        <a href="https://www.linkedin.com/company/tenbeltz/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      </nav>
     </div>
-    
-    <ScrollReveal client:visible className="flex flex-col gap-y-2 justify-between py-3 text-sm border-t border-slate-400 text-slate-400 sm:flex-row sm:items-center">
-      <span class="flex flex-col gap-y-1 sm:flex-row sm:items-center sm:gap-x-2">
-        <span>{labels.copyright}</span>
-        <span aria-hidden="true" class="hidden sm:inline text-slate-500">·</span>
-        <span class="text-slate-500">{labels.legalEntity}</span>
-      </span>
-      <span class="flex gap-x-4 [&>a]:hover:cursor-pointer">
-        {socialMedias.map(socialMedia => (
-          <a href={socialMedia.url} target="_blank" aria-label={socialMedia.name} rel="noopener noreferrer">
-            <socialMedia.logo {...(socialMedia.logoProps || {})} aria-hidden="true" className='hover:fill-slate-300 transition-colors' />
-          </a>
-        ))}
-      </span>
-    </ScrollReveal>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} TenBeltz · Beltz Dev SL · {en ? 'VAT' : 'NIF'} B21697719</span><span>Leioa, Bizkaia &nbsp; / &nbsp; <a href={getRelativeLocaleUrl(lang, '/politicas')}>{en ? 'Legal & privacy' : 'Aviso legal y privacidad'}</a></span></div>
   </div>
 </footer>

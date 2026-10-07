@@ -4,7 +4,8 @@ export type ServiceId =
   | 'gap-analysis'
   | 'foundations'
   | 'agent-mvp'
-  | 'production-delivery';
+  | 'production-delivery'
+  | 'training';
 
 export interface ServiceProof {
   /** Link text. Names the case study so the anchor is descriptive on its own. */
@@ -65,11 +66,11 @@ export interface ServicesCopy {
 const es: ServicesCopy = {
   intro: {
     tag: 'Estructura de servicios',
-    title: 'Cuatro formas de trabajar con TenBeltz',
+    title: 'Cinco formas de trabajar con TenBeltz',
     text: 'La oferta se organiza según la madurez del proyecto: desde diagnosticar si merece la pena construirlo hasta entregarlo en producción. La idea es entrar con el nivel correcto de implicación, no forzar a todos los clientes por el mismo camino.',
   },
   home: {
-    title: 'Cuatro formas de trabajar',
+    title: 'Cinco formas de trabajar',
     intro: 'Cada modalidad corresponde a un momento distinto del proyecto. Aquí tienes la versión corta; en servicios está el detalle completo.',
     cards: [
       {
@@ -111,6 +112,13 @@ const es: ServicesCopy = {
           'Integración en producto',
           'Entrega operable',
         ],
+      },
+      {
+        serviceId: 'training',
+        tag: 'Formación',
+        title: 'Formación en IA aplicada',
+        description: 'Formación práctica en IA local, despliegue de modelos, evaluación y agentes, adaptada a tu equipo técnico.',
+        bullets: ['Talleres prácticos', 'Programa adaptado al equipo'],
       },
     ],
   },
@@ -191,6 +199,22 @@ const es: ServicesCopy = {
         href: '/casos',
       },
     },
+    {
+      id: 'training',
+      tag: 'Formación',
+      title: 'Formación en IA aplicada',
+      duration: 'Programa y duración acordados con el equipo',
+      description: 'Formación técnica según el nivel y el contexto de trabajo de tu equipo. Modelos locales, serving con vLLM, arquitecturas privadas, RAG, agentes y evaluación, con sesiones prácticas. Experiencia: 30 horas de formación en IA local impartidas a través de Imagina al equipo técnico internacional de Opus Dei.',
+      fitTitle: 'Encaja para',
+      fit: 'Equipos técnicos que necesitan entender, construir u operar sistemas de IA y aplicar ese conocimiento a sus propios proyectos.',
+      bullets: [
+        'Programa definido según nivel y objetivos del equipo',
+        'IA local y despliegue de modelos',
+        'RAG, agentes y evaluación de calidad',
+        'Sesiones prácticas sobre implementación y operación',
+      ],
+      proof: { label: 'Experiencia: 30 horas de formación técnica a través de Imagina', href: '/quien-esta-detras' },
+    },
   ],
   path: {
     title: 'Cómo elegir el punto de entrada',
@@ -211,11 +235,11 @@ const es: ServicesCopy = {
 const en: ServicesCopy = {
   intro: {
     tag: 'Service structure',
-    title: 'Four ways to work with TenBeltz',
+    title: 'Five ways to work with TenBeltz',
     text: 'The offer is organized around project maturity: from diagnosing whether a case is worth building to shipping it in production. The point is to enter with the right level of involvement, not to force every client through the same path.',
   },
   home: {
-    title: 'Four ways to work',
+    title: 'Five ways to work',
     intro: 'Each mode fits a different project stage. This is the short version; the services page has the full detail.',
     cards: [
       {
@@ -257,6 +281,13 @@ const en: ServicesCopy = {
           'Product integration',
           'Operable delivery',
         ],
+      },
+      {
+        serviceId: 'training',
+        tag: 'Training',
+        title: 'Applied AI Training',
+        description: 'Practical training in local AI, model serving, evaluation and agents, adapted to your technical team.',
+        bullets: ['Hands-on workshops', 'Programme adapted to the team'],
       },
     ],
   },
@@ -337,6 +368,22 @@ const en: ServicesCopy = {
         href: '/case-studies',
       },
     },
+    {
+      id: 'training',
+      tag: 'Training',
+      title: 'Applied AI Training',
+      duration: 'Programme and duration agreed with the team',
+      description: 'Technical training built around your team’s level and working context. Local models, serving with vLLM, private architectures, RAG, agents and evaluation, with practical sessions. Experience includes 30 hours of local AI training delivered through Imagina to Opus Dei’s international technical team.',
+      fitTitle: 'Best for',
+      fit: 'Technical teams that need to understand, build or operate AI systems and apply that knowledge to their own projects.',
+      bullets: [
+        'Programme scoped to the team’s level and objectives',
+        'Local AI and model serving',
+        'RAG, agents and quality evaluation',
+        'Practical sessions on implementation and operation',
+      ],
+      proof: { label: 'Experience: 30 hours of technical training through Imagina', href: '/who-is-behind' },
+    },
   ],
   path: {
     title: 'How to choose the right entry point',
@@ -365,4 +412,5 @@ export const serviceIds: ServiceId[] = [
   'foundations',
   'agent-mvp',
   'production-delivery',
+  'training',
 ];

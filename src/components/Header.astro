@@ -1,208 +1,42 @@
 ---
-import { Image } from "astro:assets";
-import logo from "@/assets/icons/logo-tenbeltz-navbar-solid.svg"
-import { ReactComponent as OpenHamburgerMenu } from "@/assets/icons/bars-3-outline.svg";
-import { ReactComponent as CloseHamburgerMenu } from "@/assets/icons/x-mark-outline.svg";
-
-import { getLangFromUrl, languages } from "@/i18n/utils";
+import { getLangFromUrl } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { ReactComponent as ChevronDownIcon } from "@/assets/icons/chevron-down-outline.svg";
-
 const lang = getLangFromUrl(Astro.url);
-
-interface NavElement {
-  title: string;
-  href: string;
-}
-
-const whoBehindSlug = lang === 'en' ? '/who-is-behind' : '/quien-esta-detras';
-const homeHref = getRelativeLocaleUrl(lang, '/');
-const servicesHref = getRelativeLocaleUrl(lang, '/services');
-
-const labels = lang === 'en'
-  ? {
-      home: 'Home',
-      services: 'Services',
-      cases: 'Case studies',
-      howWeWork: 'How We Work',
-      fit: 'Who It Fits',
-      whoBehind: 'Who is behind',
-      contact: 'Contact',
-    }
-  : {
-      home: 'Inicio',
-      services: 'Servicios',
-      cases: 'Casos',
-      howWeWork: 'Cómo trabajamos',
-      fit: 'Para quién',
-      whoBehind: 'Quién está detrás',
-      contact: 'Contacto',
-    };
-
-const navElements: NavElement[] = [
-  { title: labels.home, href: homeHref },
-  { title: labels.services, href: servicesHref },
-  { title: labels.cases, href: getRelativeLocaleUrl(lang, lang === 'en' ? '/case-studies' : '/casos') },
-  { title: labels.howWeWork, href: `${homeHref}#como-trabajamos` },
-  { title: labels.fit, href: `${homeHref}#para-quien` },
-  { title: labels.whoBehind, href: getRelativeLocaleUrl(lang, whoBehindSlug) },
-  { title: labels.contact, href: `${homeHref}#contact-section` },
-]
-
-function getPathWithoutLang(url: URL) {
-  const [, first, ...rest] = url.pathname.split('/');
-  if (first in languages) {
-    return rest.join('/');
-  }
-  return [first, ...rest].join('/');
-}
-
-const currentPath = getPathWithoutLang(Astro.url);
-
-const localizedSlugMap: Record<string, Record<string, string>> = {
-  'quien-esta-detras': { es: 'quien-esta-detras', en: 'who-is-behind' },
-  'who-is-behind': { es: 'quien-esta-detras', en: 'who-is-behind' },
-  'casos': { es: 'casos', en: 'case-studies' },
-  'case-studies': { es: 'casos', en: 'case-studies' },
+const en = lang === 'en';
+const home = getRelativeLocaleUrl(lang, '/');
+const paths: Record<string, [string, string]> = {
+  '/casos': ['/casos', '/case-studies'], '/case-studies': ['/casos', '/case-studies'],
+  '/quien-esta-detras': ['/quien-esta-detras', '/who-is-behind'], '/who-is-behind': ['/quien-esta-detras', '/who-is-behind'],
 };
-
-function pathForLang(targetLang: string): string {
-  const normalized = currentPath.replace(/\/$/, '');
-  const map = localizedSlugMap[normalized];
-  return getRelativeLocaleUrl(targetLang, map ? map[targetLang] : currentPath);
-}
+const base = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '').replace(/\/$/, '') || '/';
+const target = en ? 'es' : 'en';
+const alternate = getRelativeLocaleUrl(target, paths[base]?.[en ? 0 : 1] ?? base);
+const nav = [
+  { label: en ? 'Services' : 'Servicios', href: getRelativeLocaleUrl(lang, '/services') },
+  { label: en ? 'Projects' : 'Proyectos', href: getRelativeLocaleUrl(lang, en ? '/case-studies' : '/casos') },
+  { label: en ? 'About' : 'Quién está detrás', href: getRelativeLocaleUrl(lang, en ? '/who-is-behind' : '/quien-esta-detras') },
+];
 ---
-
-<header class="fixed z-20 w-full text-white">
-  <div class="transition-colors duration-500 backdrop-blur-lg bg-obsidian-shard/50">
-    <div class="flex items-center justify-between px-4 py-5 mx-auto max-w-screen-2xl lg:px-12 lg:py-3">
-      <div id="logo-container" class="flex items-center justify-center">
-        <a href="/">
-          <Image alt="logo" src={logo} />
-        </a>
-      </div>
-
-      <div id="menu-container" class="flex items-center justify-center lg:hidden">
-        <OpenHamburgerMenu id="open-hamburger-menu" width="36" height="36" fill="#ffffff" className="size-8" stroke="currentColor" strokeWidth="1.5" />
-      </div>
-    </div>
-  
-    <div id="navbar-container" class="fixed inset-0 items-center justify-center w-full h-screen px-4 overflow-y-scroll transition-transform duration-500 translate-x-full lg:static lg:inset-auto scrollbar-hidden backdrop-blur-lg lg:translate-x-0 lg:px-0 bg-obsidian-shard/50 lg:backdrop-blur-none lg:w-auto lg:h-auto lg:bg-transparent lg:flex lg:overflow-visible">
-      <div class="flex justify-between py-5 lg:hidden">
-        <a href={getRelativeLocaleUrl(lang, '/')}>
-          <Image alt="logo" src={logo} />
-        </a>
-        <CloseHamburgerMenu id="close-hamburger-menu" width="36" height="36" fill="#ffffff" strokeWidth="1.5" stroke="currentColor" className="hidden size-8" />
-      </div>
-      <nav class="py-12 lg:py-0">
-        <ul class="flex flex-col text-lg lg:items-center gap-y-2 gap-x-5 lg:flex-row lg:text-base">
-          {navElements.map(({ href, title }) => (
-            <li>
-              <a href={href} class="relative whitespace-nowrap block px-2 py-1.5 transition-all duration-300 hover:text-pheromone-purple after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-pheromone-purple hover:after:w-full after:transition-all after:duration-300">
-                {title}
-              </a>
-            </li>
-          ))}
-          <li class="relative group">
-            <button class="flex items-center gap-x-1 px-2 py-1.5 text-white hover:text-pheromone-purple transition-colors">
-              <span class="uppercase">{lang}</span>
-              <ChevronDownIcon className="w-4 h-4 transition-transform group-hover:rotate-180" strokeWidth={2} />
-            </button>
-            <div class="absolute left-0 lg:left-auto lg:right-0 hidden pt-2 group-hover:block min-w-[120px]">
-              <ul class="py-2 bg-obsidian-shard border border-white/10 rounded-lg shadow-xl backdrop-blur-lg">
-                {Object.entries(languages).map(([l, label]) => (
-                  <li>
-                    <a
-                      href={pathForLang(l)}
-                      class={`block px-4 py-2 hover:bg-white/5 transition-colors ${l === lang ? 'text-pheromone-purple font-medium' : 'text-slate-300 hover:text-white'}`}
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </nav>
-    </div>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href={home} aria-label={en ? 'TenBeltz home' : 'TenBeltz inicio'}><img src="/images/tenbeltz-mark.svg" width="30" height="33" alt="" />TenBeltz<span aria-hidden="true" style="color:var(--accent)">.</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>{en ? 'Menu' : 'Menú'} <span aria-hidden="true">＋</span></button>
+    <nav id="site-nav" class="site-nav" aria-label={en ? 'Main navigation' : 'Navegación principal'}>
+      {nav.map(item => <a href={item.href} aria-current={Astro.url.pathname === item.href ? 'page' : undefined}>{item.label}</a>)}
+      <a class="nav-contact" href={`${home}#contact-section`}>{en ? 'Let’s talk' : 'Hablemos'} <span aria-hidden="true">↗</span></a>
+      <a class="language-link" href={alternate} lang={target} aria-label={en ? 'Cambiar a español' : 'Switch to English'}>{target.toUpperCase()}</a>
+    </nav>
   </div>
 </header>
-
 <script>
-  const navbarContainer = document.getElementById('navbar-container') as HTMLDivElement;
-  const logoContainer = document.getElementById('logo-container') as HTMLDivElement;
-  const openMenuButton = document.getElementById('open-hamburger-menu') as unknown as SVGSVGElement | null;
-  const closeMenuButton = document.getElementById('close-hamburger-menu') as unknown as SVGSVGElement | null;
-  
-  function adjustNavbarLayout(): void {
-    const header = document.querySelector("header")?.firstElementChild;
-
-    if (window.innerWidth >= 1024) {
-      logoContainer?.parentElement?.insertBefore(navbarContainer, logoContainer.nextSibling);
-    } else {
-      document.querySelector('header')?.appendChild(navbarContainer);
-    }
-
-    if (navbarContainer?.parentElement === document.querySelector('header')) {
-      if (!navbarContainer.classList.contains('translate-x-full')) {
-        header?.classList.remove('bg-obsidian-shard/50');
-      }
-    } else {
-      header?.classList.add('bg-obsidian-shard/50');
-    }
-  }
-
-  function debounce(callback: Function, wait: number): (...args: any[]) => void {
-    let timeoutId: number | null = null;
-    return (...args: any[]) => {
-      if (timeoutId) clearTimeout(timeoutId);
-      timeoutId = window.setTimeout(() => callback(...args) , wait);
-    };
-  }
-
-  function toggleHamburgerMenu(): void {
-    navbarContainer?.classList.toggle('translate-x-full');
-    openMenuButton?.classList.toggle('hidden');
-    closeMenuButton?.classList.toggle('hidden');
-    document.querySelector('header')?.firstElementChild?.classList.toggle('bg-obsidian-shard/50');
-  }
-
-  if (openMenuButton && closeMenuButton) {
-    openMenuButton.addEventListener('click', () => toggleHamburgerMenu());
-    closeMenuButton.addEventListener('click', () => toggleHamburgerMenu());
-  } else {
-    console.error("Hamburger menu buttons are missing.");
-  }
-
-  // Language Selector
-  const langButton = document.getElementById('lang-selector-button');
-  const langDropdown = document.getElementById('lang-selector-dropdown');
-  const langChevron = document.getElementById('lang-selector-chevron');
-
-  if (langButton && langDropdown && langChevron) {
-    langButton.addEventListener('click', (e) => {
-      e.stopPropagation();
-      langDropdown.classList.toggle('hidden');
-      langChevron.classList.toggle('rotate-180');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!langButton.contains(e.target as Node) && !langDropdown.contains(e.target as Node)) {
-        langDropdown.classList.add('hidden');
-        langChevron.classList.remove('rotate-180');
-      }
-    });
-  }
-
-  const debouncedAdjustNavbarLayout = debounce(adjustNavbarLayout, 50);
-  adjustNavbarLayout();
-  
-  window.addEventListener('resize', debouncedAdjustNavbarLayout);
-
-  window.addEventListener('pagehide', () => {
-    if (openMenuButton) openMenuButton.removeEventListener("click", toggleHamburgerMenu);
-    if (closeMenuButton) closeMenuButton.removeEventListener("click", toggleHamburgerMenu);
-    window.removeEventListener("resize", debouncedAdjustNavbarLayout);
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const nav = document.getElementById('site-nav');
+  const close = () => { toggle?.setAttribute('aria-expanded', 'false'); nav?.setAttribute('data-open', 'false'); };
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(open)); nav?.setAttribute('data-open', String(open));
   });
+  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', close));
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') { close(); toggle.focus(); } });
+  window.matchMedia('(min-width: 741px)').addEventListener('change', close);
 </script>

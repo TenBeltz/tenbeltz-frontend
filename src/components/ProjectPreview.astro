@@ -1,0 +1,17 @@
+---
+import type { Project } from '@/data/projects';
+interface Props { project: Project; href: string; index: number; lang: 'es' | 'en'; }
+const { project, href, index, lang } = Astro.props;
+---
+<article class="project-slide" aria-label={`${index + 1}. ${project.client}`}>
+  <div class="project-visual">
+    <a class="project-cover" href={href} tabindex="-1" aria-hidden="true"><img src={`/images/projects/${project.id}.webp`} alt="" width="1200" height="800" loading="lazy" decoding="async" /></a>
+    <span class="project-image-note">{lang === 'en' ? 'Illustrative image' : 'Imagen ilustrativa'}</span>
+  </div>
+  <div class="project-slide-body">
+    <p class="project-client-line"><span>{project.client}</span><span class="project-kind">{project.kind}</span></p>
+    <h3><a href={href}>{project.title}</a></h3>
+    <p>{project.summary}</p>
+    <a class="project-read" href={href}>{lang === 'en' ? 'Read the project' : 'Leer el proyecto'}<span class="sr-only">: {project.client}</span></a>
+  </div>
+</article>

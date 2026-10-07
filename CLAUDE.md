@@ -112,10 +112,11 @@ npm run preview  # servir el build
 TenBeltz es el nombre comercial de Beltz Dev SL (NIF B21697719), Leioa, Bizkaia. Equipo
 externo de ingeniería de IA para empresas de software: productos SaaS y consultoras.
 
-Cuatro modalidades: AI Gap Analysis, AI Project Foundations, Agent MVP, Production Delivery.
+Cinco modalidades: AI Gap Analysis, AI Project Foundations, Agent MVP, Production Delivery y formación en IA aplicada.
 
-Clientes citables públicamente: Irontec (desde 2025) y Qamarero. Los otros dos casos son
-anónimos por confidencialidad.
+Aritz lidera las primeras reuniones, la consultoría y la definición técnica. El desarrollo y la integración se delegan al equipo bajo su dirección técnica. No prometer que Aritz implementa personalmente todo el proyecto. El formulario de contacto permanece abierto también en la home.
+
+Referencias públicas autorizadas: Irontec, Qamarero, Prados-Osuna Abogados, LexFirma y TecniSoft (SistemaPol). Biiak es producto cofundado. Imagina subcontrató la formación de 30 horas en IA local para el equipo técnico internacional de Opus Dei. Conservar esta atribución. Los casos jurídicos sin cliente identificado siguen anónimos; la autorización de una referencia no permite atribuirle casos anónimos por inferencia.
 
 Al escribir copy, ten presente que el posicionamiento es deliberadamente específico: **no
 son una agencia de IA ni una consultora generalista**. Evita el lenguaje corporativo

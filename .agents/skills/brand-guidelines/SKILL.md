@@ -1,258 +1,63 @@
 ---
 name: tenbeltz:brand-guidelines
-description: Applies the current TenBeltz brand system to pages, banners, social assets, decks, and branded artifacts. Use it when TenBeltz visual identity, voice, colors, typography, or production-focused messaging should shape the output.
+description: Applies the TenBeltz editorial brand system to pages, banners, social assets and decks. Use for visual identity, typography and engineering-focused messaging.
 license: MIT
 ---
 
 # TenBeltz Brand Guidelines
 
-## Overview
+Updated: 2026-10-08, following Aritz's request for a complete, sober and professional website redesign.
 
-Use this skill when an artifact should feel unmistakably like current TenBeltz.
+## Positioning
 
-TenBeltz is not styled like a generic AI startup. The brand should communicate technical judgment, operational clarity, and production-readiness. The visual system is dark, precise, and atmospheric. The verbal system is direct, skeptical of hype, and centered on reliability, observability, and cost control.
+TenBeltz is an external AI engineering team for software companies and software consultancies. Communicate technical judgment through concrete projects, defined responsibilities, evaluation and delivery criteria.
 
-**Keywords**: TenBeltz, brand, visual identity, AI engineering, AI in production, observability, reliability, cost control, dark UI, gradients, IBM Plex Sans
+## Visual direction
 
-## Brand Positioning
+Use an editorial composition with a warm light background, charcoal text and a restrained aubergine accent. Build hierarchy with typography, spacing and fine rules.
 
-TenBeltz presents itself as:
+- Paper: `#f7f6f2`.
+- Ink: `#252826`.
+- Secondary text: `#676b65`.
+- Rules: `#d9dcd4`.
+- Accent: `#583346`.
+- Secondary surface: `#eeeee7`.
+- Primary typography: self-hosted IBM Plex Sans, mainly weights 400 and 500.
+- Small corner radii; flat, solid buttons.
+- Selected work uses one heading and a manual carousel: landscape image, client/relationship, title, short summary and case link. A single navigation row contains “Más proyectos” and previous/next controls with a counter. No thumbnails, extra introductions, system subsection or visible scrollbars. Native touch scrolling and keyboard navigation remain. Label illustrative images discreetly inside the image. No autoplay.
+- The home follows proposal → client logos → selected work → service entry points → technical responsibility and method → contact. Define the audience in the hero. Use shared alignments and unnumbered headings; give secondary explanations less visual weight.
+- Home services use three compact paths: define (diagnosis and foundations), build (MVP and production), and train. Keep all five service links. Use neutral surfaces and fine rules; the services detail page retains its two-column cards and native disclosures. Avoid nested boxes and excessive decoration.
+- Present Aritz between services and contact, with a modest portrait and the four method steps integrated below. Aritz leads initial meetings, consulting and technical definition; development and integration are delegated to the team under his technical direction. Do not promise he personally implements everything. Keep the method steps in two columns on mobile. The full contact form is always open, including on the home, at Aritz's explicit request.
+- Hide the visible “Clientes destacados” / “Featured clients” heading on desktop; retain the accessible region label and the mobile heading. Use official logos for Irontec, Qamarero, Biiak and Imagina, and the official SistemaPol logo with a TecniSoft caption. The slow horizontal loop fades at its edges and keeps moving on mouse hover and mobile touch. Each logo opens the official client landing in a new tab; duplicate links are excluded from keyboard navigation. Only visible keyboard focus on desktop stops the animation to make the links reachable. Aritz explicitly removed the visible pause button; reduced motion uses a static grid. Logos and Aritz's portrait reveal their original colours on hover. Preserve the co-founded-product attribution for Biiak in the case content.
+- Dark sections are occasional, using charcoal and readable neutral text.
+- Use authentic photography where available and explanatory diagrams. Generated project covers must be labelled illustrative; they are not client photographs or product screenshots. Label simplified diagrams as project flows.
 
-- an external AI engineering team
-- a production-first partner, not a demo shop
-- a technical counterpart for SaaS companies and software consultancies
-- a specialist in reliability, observability, guardrails, and cost control
+The former dark operational direction with purple/cyan glows, atmospheric grids, glass panels and 3D scenes is superseded for the website. Avoid neon, decorative particles, scanning effects, gradient text and stacked interface badges.
 
-TenBeltz should not sound like:
+## Writing
 
-- a hype-driven AI agency
-- a generic innovation consultancy
-- a playful consumer AI brand
-- a vague "we do everything" studio
+Use direct, calm language. Describe the context, technical contribution, deliverables and evidence. Prefer positive descriptions of the work over repeated slogans about demos or hours.
 
-## Verbal Direction
+Maintain the distinction between client projects, technical collaborations and products Aritz co-founded. Do not imply that all experience belongs to TenBeltz client delivery. Explain English service names in the visitor's language.
 
-### Core message
+## Evidence and confidentiality
 
-TenBeltz helps software companies define, validate, ship, and operate AI systems that can survive real product constraints.
+- Irontec and Qamarero are publicly named client/collaboration references.
+- Biiak is a co-founded product, not a third-party client claim.
+- Aritz explicitly authorised the reference names Prados-Osuna Abogados, LexFirma, TecniSoft (SistemaPol), Imagina and Opus Dei on 2026-10-07. Opus Dei received the 30-hour training through Imagina; preserve that relationship. Other legal clients and case details remain anonymous unless separately authorised.
+- Public copy must not include CRM, prospect, financial or personal case data.
+- Use the local CVMaker master profile as a source for documented projects; commercial example lists are not proof of completed work.
+- Explain metric scope, evaluation sample and the difference between top-1 and top-5. Do not combine results from distinct evaluations.
+- AnonLM is explicitly excluded as a featured project in the source profile.
 
-### Repeated concepts that fit the brand
+## Motion and access
 
-- AI in production
-- external AI engineering team
-- technical criteria
-- measurable reliability
-- observability
-- guardrails
-- delivery criteria
-- cost control
-- viable systems
-- no demos, no vague experimentation
+Content should be visible without scroll reveals or hydration. Use modest hover/focus transitions and respect reduced motion. Navigation, forms and language switching must work on mobile and keyboard.
 
-### Voice
+## Sources
 
-- direct
-- technical
-- sober
-- precise
-- skeptical of fluff
-- commercially sharp, but not salesy
-
-### Writing rules
-
-- Prefer concrete language over inspirational language.
-- Speak in terms of systems, constraints, risks, and outcomes.
-- Treat "production" as the center of gravity.
-- Emphasize clarity and operational readiness.
-- Keep copy compact and high-signal.
-- Avoid empty claims like "cutting-edge", "revolutionary", or "transformative".
-
-### Messaging formulas that fit
-
-- "IA en produccion"
-- "fiabilidad medible"
-- "observabilidad desde el dia uno"
-- "control de costes"
-- "criterio tecnico claro"
-- "no demos"
-- "no horas sin contexto"
-
-## Visual Direction
-
-### Brand character
-
-The current redesign is best described as:
-
-- dark operational interface
-- high-contrast technical confidence
-- purple-led gradients with cyan support accents
-- layered depth, glows, and atmospheric lighting
-- structured cards, panels, rails, and signal-like details
-- productized engineering, not futuristic sci-fi spectacle
-
-The overall feel should suggest "command surface for AI systems in production", not "AI art", "neon cyberpunk", or "playful SaaS dashboard".
-
-### Composition principles
-
-- Default to dark-first compositions.
-- Use gradients and glow sparingly to emphasize hierarchy.
-- Prefer modular blocks, cards, and panels over loose decorative layouts.
-- Use strong spacing and clean structure before adding effects.
-- Favor subtle interface-like details: borders, signal rails, metric chips, indexed items, traces, and status surfaces.
-- Build atmosphere with layered backgrounds, radial light, and masked grids rather than flat fills.
-
-## Typography
-
-### Primary typeface
-
-- **Primary**: `IBM Plex Sans`
-- **Fallback**: `sans-serif`
-
-### Source of truth
-
-- `src/layouts/Layout.astro`
-- `src/styles/global.css`
-
-### Typographic behavior
-
-- Headlines should feel compact, technical, and confident.
-- Use bold to semibold weights, especially in hero and section headings.
-- Tight letter-spacing is acceptable for larger headlines.
-- Body copy should stay clean and readable, not ornamental.
-- Monospace styling can be used sparingly for labels, counters, status markers, and indexed metadata.
-
-### Do not use
-
-- Helvetica as the primary reference
-- decorative display fonts
-- overly rounded startup typography
-- soft, friendly wellness-style typography
-
-## Color System
-
-### Source of truth
-
-Use the tokens in `src/styles/global.css` before inventing new colors.
-
-### Core tokens
-
-- `--color-obsidian-shard`: dark base background
-- `--color-pheromone-purple`: primary brand purple
-- `--color-pheromone-light`: bright highlight purple
-- `--color-blueberry-glaze`: vivid secondary accent for CTA gradients
-- `--color-cold-heights`: cool cyan accent for signal contrast
-- `--color-sapphire-siren`: deeper purple support tone
-- `--color-berry-blackmail`: dark secondary surface/accent
-- `--color-white-smoke`: high-contrast light neutral
-
-### Supporting tokens used in the system
-
-- `--color-petal-plush`
-- `--color-spiro-disco-ball`
-- `--color-vivid-blue`
-- `--color-child-of-the-night`
-- `--color-blacklist`
-
-### Practical roles
-
-- Backgrounds: `obsidian-shard`, dark gradients, dark layered surfaces
-- Cards and panels: dark surfaces with subtle alpha and purple borders
-- CTA emphasis: `pheromone-purple` -> `blueberry-glaze`
-- Highlight text and glow points: `pheromone-light`
-- Signal accents and data emphasis: `cold-heights`
-- Atmospheric depth: `sapphire-siren`, `berry-blackmail`
-
-### Preferred color relationships
-
-- Primary emphasis: `#9238D6` -> `#C45BFF`
-- CTA emphasis: `pheromone-purple` -> `blueberry-glaze`
-- Signal highlights: `pheromone-light` + `cold-heights`
-- Dark surface layering: `obsidian-shard` + deep purple overlays
-
-### Color usage rules
-
-- Keep the base dark.
-- Use bright accents in small, intentional areas.
-- Avoid large flat blocks of saturated purple.
-- Cyan is a support accent, not the brand lead.
-- Preserve strong contrast for all text.
-
-## UI Patterns That Match The Current Web
-
-These patterns are already present in the redesign and should be reused when possible:
-
-- large hero headings with compact line-height
-- gradient-highlighted words or spans
-- frosted or translucent dark cards with purple borders
-- pill chips and status markers
-- metric-like labels with compact uppercase tracking
-- numbered lists or indexed capability markers
-- blurred radial light behind key surfaces
-- subtle grid backgrounds and masked overlays
-- panels that feel like technical modules, not generic marketing cards
-
-## Motion And Effects
-
-- Motion should reinforce clarity and atmosphere, not novelty.
-- Prefer slow drifts, scan effects, proof-point rotation, and subtle hover elevation.
-- Glows should feel directional and controlled.
-- Avoid noisy particle fields, gimmicky holograms, or excessive looping effects.
-
-## Asset Guidance
-
-### When creating branded artifacts
-
-- Reuse the dark base, purple gradient, and cyan signal language.
-- Keep layouts structured and deliberate.
-- Make the artifact feel engineered, not illustrated.
-- If you need a focal area, use one strong glow or gradient region, not many competing accents.
-
-### Good artifact types for this brand
-
-- website hero sections
-- LinkedIn banners
-- case-study covers
-- proposal/deck title slides
-- technical diagrams with brand styling
-- social cards for insights or offers
-
-## Do / Don't
-
-### Do
-
-- use `IBM Plex Sans`
-- rely on tokens from `src/styles/global.css`
-- keep the tone production-first and technically credible
-- prioritize readability and structure
-- use purple-led emphasis with cyan as support
-- make visuals feel like an operational system
-
-### Don't
-
-- write hype-heavy copy
-- use soft pastel brand treatments
-- make the brand playful or whimsical
-- default to generic SaaS white cards on white backgrounds
-- overuse neon effects
-- describe TenBeltz like a broad AI agency
-
-## Brand Sources
-
-- `src/styles/global.css`
-- `src/layouts/Layout.astro`
-- `src/components/HomeHero.astro`
-- `src/templates/LandingPage.astro`
-- `src/templates/WhoBehindPage.astro`
-- `assets/banners/tenbeltz-linkedin-company/tenbeltz-linkedin-company-4200x700.svg`
-
-## Application Rule
-
-If you are generating or editing a TenBeltz-branded artifact, default to:
-
-1. dark operational composition
-2. IBM Plex Sans typography
-3. token-based purple/cyan accents
-4. direct production-first messaging
-5. structured panels, chips, metrics, or technical UI cues
-
-If an output follows the old brand assumptions but ignores the redesign language above, it is not aligned with the current TenBeltz identity.
+- `src/styles/global.css`: design tokens and responsive layout.
+- `src/data/projects.ts`: shared ES/EN project descriptions.
+- `src/templates/LandingPage.astro`: home composition.
+- `src/templates/CasesPage.astro`: project evidence and JSON-LD.
+- `docs/redesign-2026-10-07.md`: rationale, sources and verification.

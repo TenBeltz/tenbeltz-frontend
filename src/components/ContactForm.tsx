@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Alert, { type AlertProps } from "./Alert";
 import { sendContactForm } from "@/services/api";
-import { ScrollReveal } from "./ScrollReveal";
 
 interface ContactFormProps {
   lang?: "es" | "en";
@@ -28,10 +27,10 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
         },
         options: {
           companyType: ["SaaS", "Software consultancy", "Other software company"],
-          engagementType: ["AI Gap Analysis", "AI Project Foundations", "Agent MVP", "Production Delivery"],
+          engagementType: ["AI Gap Analysis", "AI Project Foundations", "Agent MVP", "Production Delivery", "Applied AI Training"],
           projectStage: ["Exploring the opportunity", "Defining the project", "In development", "Already in production", "Project for a client"],
         },
-        submit: "Request proposal",
+        submit: "Send message",
         submitting: "Sending...",
         note: "We respond in less than 48h",
         required: "Please complete the required fields.",
@@ -57,10 +56,10 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
         },
         options: {
           companyType: ["SaaS", "Consultora de software", "Otra empresa de software"],
-          engagementType: ["AI Gap Analysis", "AI Project Foundations", "Agent MVP", "Production Delivery"],
+          engagementType: ["AI Gap Analysis", "AI Project Foundations", "Agent MVP", "Production Delivery", "Formación en IA aplicada"],
           projectStage: ["Explorando la oportunidad", "Definiendo el proyecto", "En desarrollo", "Ya en producción", "Proyecto para un cliente"],
         },
-        submit: "Solicitar propuesta",
+        submit: "Enviar mensaje",
         submitting: "Enviando...",
         note: "Respondemos en menos de 48h",
         required: "Por favor completa los campos obligatorios.",
@@ -71,10 +70,9 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
   const [submitting, setSubmitting] = useState(false);
 
   const chevronDataUrl =
-    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'><path d='M3 4.5 L6 7.5 L9 4.5' stroke='%23E5C6F3' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>\")";
+    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'><path d='M3 4.5 L6 7.5 L9 4.5' stroke='%23583346' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>\")";
 
-  const selectClassName =
-    "appearance-none cursor-pointer bg-no-repeat pr-10 px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none [&:invalid]:text-slate-400";
+  const selectClassName = "form-select";
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -130,9 +128,9 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-y-6">
-        <div className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2">
-          <ScrollReveal className="flex flex-col gap-y-3">
+      <form onSubmit={handleSubmit} className="contact-form">
+        <div className="form-grid">
+          <div className="field">
             <label htmlFor="name" className="font-semibold">
               {copy.fields.name}
             </label>
@@ -141,10 +139,10 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
               name="name"
               type="text"
               required
-              className="px-3 py-2 text-white transition-colors border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+              className="form-input"
             />
-          </ScrollReveal>
-          <ScrollReveal className="flex flex-col gap-y-3">
+          </div>
+          <div className="field">
             <label htmlFor="email" className="font-semibold">
               {copy.fields.email}
             </label>
@@ -153,10 +151,10 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
               name="email"
               type="email"
               required
-              className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+              className="form-input"
             />
-          </ScrollReveal>
-          <ScrollReveal className="flex flex-col gap-y-3">
+          </div>
+          <div className="field">
             <label htmlFor="company" className="font-semibold">
               {copy.fields.company}
             </label>
@@ -164,10 +162,10 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
               id="company"
               name="company"
               type="text"
-              className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+              className="form-input"
             />
-          </ScrollReveal>
-          <ScrollReveal className="flex flex-col gap-y-3">
+          </div>
+          <div className="field">
             <label htmlFor="role" className="font-semibold">
               {copy.fields.role}
             </label>
@@ -175,10 +173,10 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
               id="role"
               name="role"
               type="text"
-              className="px-3 py-2 text-white border rounded-md border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+              className="form-input"
             />
-          </ScrollReveal>
-          <ScrollReveal className="flex flex-col gap-y-3">
+          </div>
+          <div className="field">
             <label htmlFor="companyType" className="font-semibold">
               {copy.fields.companyType}
             </label>
@@ -194,13 +192,13 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
                 {copy.placeholders.companyType}
               </option>
               {copy.options.companyType.map((option) => (
-                <option key={option} value={option} className="text-white bg-obsidian-shard">
+                <option key={option} value={option} >
                   {option}
                 </option>
               ))}
             </select>
-          </ScrollReveal>
-          <ScrollReveal className="flex flex-col gap-y-3">
+          </div>
+          <div className="field">
             <label htmlFor="engagementType" className="font-semibold">
               {copy.fields.engagementType}
             </label>
@@ -216,13 +214,13 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
                 {copy.placeholders.engagementType}
               </option>
               {copy.options.engagementType.map((option) => (
-                <option key={option} value={option} className="text-white bg-obsidian-shard">
+                <option key={option} value={option} >
                   {option}
                 </option>
               ))}
             </select>
-          </ScrollReveal>
-          <ScrollReveal className="flex flex-col gap-y-3 md:col-span-2">
+          </div>
+          <div className="full-field field">
             <label htmlFor="projectStage" className="font-semibold">
               {copy.fields.projectStage}
             </label>
@@ -238,13 +236,13 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
                 {copy.placeholders.projectStage}
               </option>
               {copy.options.projectStage.map((option) => (
-                <option key={option} value={option} className="text-white bg-obsidian-shard">
+                <option key={option} value={option} >
                   {option}
                 </option>
               ))}
             </select>
-          </ScrollReveal>
-          <ScrollReveal className="flex flex-col gap-y-3 md:col-span-2">
+          </div>
+          <div className="full-field field">
             <label htmlFor="message" className="font-semibold">
               {copy.fields.message}
             </label>
@@ -254,23 +252,23 @@ export default function ContactForm({ lang = 'es' }: ContactFormProps) {
               rows={5}
               required
               placeholder={copy.placeholders.message}
-              className="px-3 py-2 text-white border rounded-md resize-none border-berry-blackmail bg-berry-blackmail focus:border-petal-plush focus-visible:outline-none"
+              className="form-input"
             />
-          </ScrollReveal>
+          </div>
         </div>
-        <ScrollReveal className="self-end">
-          <div className="flex flex-col items-end gap-y-2">
+        <div className="field">
+          <div className="form-end">
             <button
               type="submit"
               id="submit-form-button"
               disabled={submitting}
-              className="btn font-semibold leading-none border border-pheromone-purple text-pheromone-purple w-fit bg-pheromone-purple/20 hover:bg-pheromone-purple/25 hover:cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+              className="button"
             >
               {submitting ? copy.submitting : copy.submit}
             </button>
-            <span className="text-xs text-slate-400">{copy.note}</span>
+            <span className="form-note">{copy.note}</span>
           </div>
-        </ScrollReveal>
+        </div>
       </form>
       {alert && <Alert {...alert} />}
     </>

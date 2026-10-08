@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from '@/components/ArrowIcon.astro';
 interface Props { lang: 'es' | 'en'; servicesHref: string; }
 const { lang, servicesHref } = Astro.props;
 const en = lang === 'en';
@@ -18,6 +19,6 @@ const paths = en ? [
     <div class="service-path-label"><img class="service-path-icon" src={`/images/brand/tenbeltz-icon-${icons[index]}-accent.svg`} width="26" height="26" alt="" aria-hidden="true" loading="lazy" /><span>{path.outcome}</span></div>
     <h3>{path.title}</h3>
     <p>{path.text}</p>
-    <div class="service-path-links">{path.links.map(([label, id]) => <a href={`${servicesHref}#service-${id}`}>{label}<span aria-hidden="true">↗</span></a>)}</div>
+    <div class="service-path-links">{path.links.map(([label, id]) => <a href={`${servicesHref}#service-${id}`}>{label}<ArrowIcon direction="up-right" /></a>)}</div>
   </article>)}
 </div>

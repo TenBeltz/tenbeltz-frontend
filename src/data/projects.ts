@@ -27,7 +27,7 @@ const es: Project[] = [
       "Análisis"
     ],
     "cover": "/images/projects/irontec.svg",
-    "coverNote": "Ilustración del sistema",
+    "coverNote": "Ilustración conceptual",
     "details": [
       {
         "title": "Adaptación a IA local para RETA",
@@ -52,7 +52,7 @@ const es: Project[] = [
       "Reserva"
     ],
     "cover": "/images/projects/qamarero.svg",
-    "coverNote": "Ilustración del sistema"
+    "coverNote": "Ilustración conceptual"
   },
   {
     "id": "clasificacion-documental",
@@ -60,7 +60,7 @@ const es: Project[] = [
     "sector": "Gestión documental",
     "kind": "Proyecto aplicado",
     "cover": "/images/projects/clasificacion-documental.svg",
-    "coverNote": "Ilustración del sistema",
+    "coverNote": "Ilustración conceptual",
     "evidence": "Informe de iteraciones, resultados guardados e implementación de LAE_CATEGORIZACION (lae-parser). Son resultados de evaluación del desarrollo; el volumen operativo mensual es distinto de la muestra de test.",
     "comparison": [
       {
@@ -113,7 +113,7 @@ const es: Project[] = [
       "Revisión profesional"
     ],
     "cover": "/images/projects/biiak.svg",
-    "coverNote": "Ilustración del sistema"
+    "coverNote": "Ilustración conceptual"
   },
   {
     "id": "informes-periciales",
@@ -223,7 +223,7 @@ const en: Project[] = [
       "Analysis"
     ],
     "cover": "/images/projects/irontec-en.svg",
-    "coverNote": "System illustration",
+    "coverNote": "Concept illustration",
     "details": [
       {
         "title": "Local AI adaptation for RETA",
@@ -248,7 +248,7 @@ const en: Project[] = [
       "Booking"
     ],
     "cover": "/images/projects/qamarero-en.svg",
-    "coverNote": "System illustration"
+    "coverNote": "Concept illustration"
   },
   {
     "id": "clasificacion-documental",
@@ -256,7 +256,7 @@ const en: Project[] = [
     "sector": "Document management",
     "kind": "Applied project",
     "cover": "/images/projects/clasificacion-documental-en.svg",
-    "coverNote": "System illustration",
+    "coverNote": "Concept illustration",
     "evidence": "Final experiment report, stored results and implementation in LAE_CATEGORIZACION (lae-parser). These are development evaluation results; the monthly operational volume is separate from the test sample.",
     "comparison": [
       {
@@ -309,7 +309,7 @@ const en: Project[] = [
       "Professional review"
     ],
     "cover": "/images/projects/biiak-en.svg",
-    "coverNote": "System illustration"
+    "coverNote": "Concept illustration"
   },
   {
     "id": "informes-periciales",

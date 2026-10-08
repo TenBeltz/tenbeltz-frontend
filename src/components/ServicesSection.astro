@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from '@/components/ArrowIcon.astro';
 import { getLangFromUrl } from '@/i18n/utils';
 import { getServicesCopy } from '@/i18n/services';
 import { getRelativeLocaleUrl } from 'astro:i18n';
@@ -21,10 +22,10 @@ const names = en ? ['Technical diagnosis', 'Architecture and project foundations
         <ul class="deliverables">{service.bullets.map(bullet => <li>{bullet}</li>)}</ul>
       </details>
       <div class="service-card-links">
-        {service.proof && <a class="text-link" href={getRelativeLocaleUrl(lang, service.proof.href)}>{service.proof.label} <span aria-hidden="true">↗</span></a>}
-        <a class="text-link" href="#contact-section">{en ? 'Talk about this engagement' : 'Hablar sobre esta colaboración'} <span aria-hidden="true">→</span></a>
+        {service.proof && <a class="text-link" href={getRelativeLocaleUrl(lang, service.proof.href)}>{service.proof.label} <ArrowIcon direction="up-right" /></a>}
+        <a class="text-link" href="#contact-section">{en ? 'Talk about this engagement' : 'Hablar sobre esta colaboración'} <ArrowIcon direction="right" /></a>
       </div>
     </article>)}
   </div>
-  <div class="section rule"><div class="section-heading"><span class="eyebrow">{en ? 'Where to start' : 'Por dónde empezar'}</span><div><h2>{en ? 'A scope that fits your project.' : 'Un alcance adecuado a tu proyecto.'}</h2><p class="lead">{en ? 'Tell us about the product, the current state and the decision you need to make. We will recommend an engagement based on that context.' : 'Cuéntanos qué producto tienes, cuál es el estado actual y qué decisión necesitas tomar. Recomendaremos una colaboración a partir de ese contexto.'}</p><a class="button" href="#contact-section">{en ? 'Let’s talk' : 'Hablemos'} <span aria-hidden="true">↗</span></a></div></div></div>
+  <div class="section rule"><div class="section-heading"><span class="eyebrow">{en ? 'Where to start' : 'Por dónde empezar'}</span><div><h2>{en ? 'A scope that fits your project.' : 'Un alcance adecuado a tu proyecto.'}</h2><p class="lead">{en ? 'Tell us about the product, the current state and the decision you need to make. We will recommend an engagement based on that context.' : 'Cuéntanos qué producto tienes, cuál es el estado actual y qué decisión necesitas tomar. Recomendaremos una colaboración a partir de ese contexto.'}</p><a class="button" href="#contact-section">{en ? 'Let’s talk' : 'Hablemos'} <ArrowIcon direction="up-right" /></a></div></div></div>
 </section>

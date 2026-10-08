@@ -36,3 +36,17 @@ JSON-LD parseado: AboutPage.mainEntity=Organization en ES/EN; CollectionPage die
 Servicio preview existente tenbeltz-landing reiniciado tras build y activo. HTTP loopback10022=200; HTTPS anónimo=401. Sin cambios de DNS/puertos/auth ni producción, commit/push. Cambios previos de flor preservados.
 
 Pendientes: aceptación visual del usuario, teléfono físico y acceso positivo Nginx (credenciales generales no disponibles). Manual remoto actualizado; Mac pendiente de sincronizar, sólo acceso VPS. Contexto global común sin cambios por ser evolución de producto sobre la misma infraestructura.
+
+## Prueba de portadas conceptuales — 2026-10-08
+
+Por petición del usuario, las cuatro portadas de home pasan de diagramas técnicos a escenas editoriales sin texto: voz convertida en señal clara (Konect), conversación y mesa reservada (Qamarero), documentos agrupados (clasificación) y expediente protegido (Biiak). Paleta de marca, pocos elementos y geometría compartida ES/EN. Generador: `tools/project-covers/build.py`; etiqueta «Ilustración conceptual». Sin cambios en los textos de los casos ni en el carrusel.
+
+Verificación: npm run build correcto, Astro 0 errores/0 warnings y 2 hints heredados; aviso de chunk grande heredado. SVGs parseados y sin nodos de texto. Preview existente reiniciada; aceptación visual del usuario pendiente.
+
+### Ajuste tras revisión del usuario
+
+Clasificación y Biiak aprobados visualmente y conservados. Konect ahora representa llamada → gráficos de información (barras, anillo y tendencia); Qamarero bot con auricular/micrófono → mesa reservada. Una flecha discreta por escena, sin texto. SVGs ES/EN regenerados; ambas composiciones revisadas mediante capturas Chromium.
+
+### Flechas coherentes en móvil — 2026-10-08
+
+Sustituidos caracteres Unicode de flechas en enlaces, botones y flujos por el componente compartido `src/components/ArrowIcon.astro`. SVG decorativo con currentColor, tamaño relativo al texto y sin foco; elimina la dependencia de la presentación emoji del dispositivo. Carrusel conserva sus SVG existentes y las etiquetas accesibles de enlaces/botones. Aplicado a templates compartidos ES/EN. Verificación: build y diff check; ausencia de flechas Unicode en archivos Astro. Comprobación humana en iPhone pendiente.

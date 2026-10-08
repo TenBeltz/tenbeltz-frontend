@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from '@/components/ArrowIcon.astro';
 import ProjectPreview from './ProjectPreview.astro';
 import type { Project } from '@/data/projects';
 interface Props { projects: Project[]; casesHref: string; lang: 'es' | 'en'; }
@@ -10,7 +11,7 @@ const en = lang === 'en';
     {projects.map((project, index) => <ProjectPreview project={project} index={index} lang={lang} href={`${casesHref}#${project.id}`} />)}
   </div>
   <div class="carousel-navigation">
-    <a class="text-link" href={casesHref}>{en ? 'More projects' : 'Más proyectos'} <span aria-hidden="true">→</span></a>
+    <a class="text-link" href={casesHref}>{en ? 'More projects' : 'Más proyectos'} <ArrowIcon direction="right" /></a>
     <div class="carousel-controls">
       <span class="carousel-count" data-carousel-count aria-live="polite" aria-atomic="true">01 / 0{projects.length}</span>
       <button type="button" data-carousel-prev aria-controls="project-track" aria-label={en ? 'Previous project' : 'Proyecto anterior'} disabled><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7" /></svg></button>

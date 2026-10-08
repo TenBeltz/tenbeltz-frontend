@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from '@/components/ArrowIcon.astro';
 import { getLangFromUrl } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 const lang = getLangFromUrl(Astro.url);
@@ -16,8 +17,8 @@ const links = [
       <div><a class="brand" href={getRelativeLocaleUrl(lang, '/')}>TenBeltz<span style="color:var(--accent)">.</span></a><p>{en ? 'AI engineering for software companies.' : 'Ingeniería de IA para empresas de software.'}</p></div>
       <nav class="footer-links" aria-label={en ? 'Footer navigation' : 'Navegación del pie'}>
         {links.map(([label, path]) => <a href={getRelativeLocaleUrl(lang, path)}>{label}</a>)}
-        <a href="mailto:hello@tenbeltz.com">hello@tenbeltz.com ↗</a>
-        <a href="https://www.linkedin.com/company/tenbeltz/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="mailto:hello@tenbeltz.com">hello@tenbeltz.com <ArrowIcon direction="up-right" /></a>
+        <a href="https://www.linkedin.com/company/tenbeltz/" target="_blank" rel="noopener noreferrer">LinkedIn <ArrowIcon direction="up-right" /></a>
       </nav>
     </div>
     <div class="footer-bottom"><span>© {new Date().getFullYear()} TenBeltz · Beltz Dev SL · {en ? 'VAT' : 'NIF'} B21697719</span><span>Leioa, Bizkaia &nbsp; / &nbsp; <a href={getRelativeLocaleUrl(lang, '/politicas')}>{en ? 'Legal & privacy' : 'Aviso legal y privacidad'}</a></span></div>

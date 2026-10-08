@@ -70,7 +70,7 @@ Content should be visible without scroll reveals or hydration. Use modest hover/
 
 ## Team and portfolio update — 2026-10-08
 
-- Home selected work: Konect, Qamarero phone reservations, document classification, Biiak. Four manually navigable slides with consistent bilingual system illustrations; generate SVGs with tools/project-covers/build.py. Label them as illustrations, without fictional product screenshots.
+- Home selected work: Konect, Qamarero phone reservations, document classification, Biiak. Four manually navigable slides with text-free conceptual scenes (phone call to analytical charts, telephone bot to reserved table, sorted documents, protected case file); generate SVGs with tools/project-covers/build.py. Label them as conceptual illustrations, without fictional product screenshots. Keep technical explanations in the case text, not inside the cover.
 - Zetesis is an authorised reference with its official orange logo linking to https://zetesis.xyz/.
 - Team CTA: “Conoce al equipo” / “Meet the team”. Team order: Aritz, Ángel Jiménez (AI & Full Stack Developer), Rubén García Hernando (senior software architect, Zetesis), Artem Pysmak (AI Engineer). Use authorised real portraits; describe contributions without employment-status claims or diminishing Ángel through attribution to Aritz.
 - Aritz has his own /aritz and /en/aritz profile/CV with technical direction, original experience, education, teaching, recognition and print styling. Remove links to aritzjaber.com.

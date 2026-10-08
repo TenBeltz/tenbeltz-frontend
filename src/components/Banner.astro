@@ -1,5 +1,6 @@
 ---
+import ArrowIcon from '@/components/ArrowIcon.astro';
 interface Props { title: string; buttonText: string; buttonHref: string; }
 const { title, buttonText, buttonHref } = Astro.props;
 ---
-<section class="banner-section"><div class="wrap banner-inner"><h2>{title}</h2><a class="button" href={buttonHref}>{buttonText} <span aria-hidden="true">↗</span></a></div></section>
+<section class="banner-section"><div class="wrap banner-inner"><h2>{title}</h2><a class="button" href={buttonHref}>{buttonText} <ArrowIcon direction="up-right" /></a></div></section>

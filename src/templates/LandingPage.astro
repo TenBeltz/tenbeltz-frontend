@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from '@/components/ArrowIcon.astro';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
@@ -35,7 +36,7 @@ const steps = en ? [
       <HeroFlower />
       <div class="hero-kicker"><span class="eyebrow">{en ? 'TenBeltz / AI projects that bloom' : 'TenBeltz / Proyectos de IA que florecen'}</span></div>
       <h1>{en ? 'AI engineering' : 'Ingeniería de IA'}<br />{en ? 'for ' : 'para '}<em>{en ? 'software companies.' : 'empresas de software.'}</em></h1>
-      <div class="hero-bottom"><div><p class="lead">{en ? 'We design, build and integrate AI systems into your product, with clear reliability, performance and cost criteria.' : 'Diseñamos, construimos e integramos sistemas de IA en tu producto, con criterios claros de fiabilidad, rendimiento y coste.'}</p><p class="hero-audience" id="para-quien">{en ? 'For SaaS teams and software consultancies.' : 'Para equipos SaaS y consultoras de software.'}</p></div><div class="actions"><a class="button" href="#contact-section">{en ? 'Talk about a project' : 'Hablar sobre un proyecto'} <span aria-hidden="true">↗</span></a><a class="text-link" href="#proyectos">{en ? 'View projects' : 'Ver proyectos'} <span aria-hidden="true">↓</span></a></div></div>
+      <div class="hero-bottom"><div><p class="lead">{en ? 'We design, build and integrate AI systems into your product, with clear reliability, performance and cost criteria.' : 'Diseñamos, construimos e integramos sistemas de IA en tu producto, con criterios claros de fiabilidad, rendimiento y coste.'}</p><p class="hero-audience" id="para-quien">{en ? 'For SaaS teams and software consultancies.' : 'Para equipos SaaS y consultoras de software.'}</p></div><div class="actions"><a class="button" href="#contact-section">{en ? 'Talk about a project' : 'Hablar sobre un proyecto'} <ArrowIcon direction="up-right" /></a><a class="text-link" href="#proyectos">{en ? 'View projects' : 'Ver proyectos'} <ArrowIcon direction="down" /></a></div></div>
     </section>
     <ClientLogos lang={lang} />
     <section id="proyectos" class="home-section wrap home-work">
@@ -43,7 +44,7 @@ const steps = en ? [
       <ProjectCarousel projects={projects} casesHref={casesHref} lang={lang} />
     </section>
     <section class="home-section wrap home-services">
-      <div class="home-heading"><div><span class="eyebrow">{en ? 'Services' : 'Servicios'}</span><h2>{en ? 'Start where your project is.' : 'Empezamos donde está tu proyecto.'}</h2></div><div class="home-heading-aside"><a class="text-link" href={servicesHref}>{en ? 'All services' : 'Todos los servicios'} <span aria-hidden="true">→</span></a></div></div>
+      <div class="home-heading"><div><span class="eyebrow">{en ? 'Services' : 'Servicios'}</span><h2>{en ? 'Start where your project is.' : 'Empezamos donde está tu proyecto.'}</h2></div><div class="home-heading-aside"><a class="text-link" href={servicesHref}>{en ? 'All services' : 'Todos los servicios'} <ArrowIcon direction="right" /></a></div></div>
       <HomeServices lang={lang} servicesHref={servicesHref} />
     </section>
     <section class="home-team">
@@ -54,7 +55,7 @@ const steps = en ? [
             <span class="eyebrow">{en ? 'Behind the project' : 'Detrás del proyecto'}</span>
             <h2>{en ? 'Consulting and technical leadership.' : 'Consultoría y dirección técnica.'}</h2>
             <p>{en ? 'I’m Aritz Jaber Lopes, co-founder and technical lead of TenBeltz. I lead the initial conversations, consulting and technical definition. Our team handles development and integration under my technical direction.' : 'Soy Aritz Jaber Lopes, cofundador y líder técnico de TenBeltz. Lidero las primeras reuniones, la consultoría y la definición técnica. El equipo se encarga del desarrollo y la integración bajo mi dirección técnica.'}</p>
-            <div class="profile-links"><a class="text-link" href={aboutHref}>{en ? 'Meet the team' : 'Conoce al equipo'} <span aria-hidden="true">→</span></a><a class="text-link" href={getRelativeLocaleUrl(lang, '/aritz')}>{en ? 'My experience' : 'Mi experiencia'} <span aria-hidden="true">→</span></a></div>
+            <div class="profile-links"><a class="text-link" href={aboutHref}>{en ? 'Meet the team' : 'Conoce al equipo'} <ArrowIcon direction="right" /></a><a class="text-link" href={getRelativeLocaleUrl(lang, '/aritz')}>{en ? 'My experience' : 'Mi experiencia'} <ArrowIcon direction="right" /></a></div>
           </div>
         </div>
         <div id="como-trabajamos" class="home-method">

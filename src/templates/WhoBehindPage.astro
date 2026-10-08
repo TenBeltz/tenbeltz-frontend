@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from '@/components/ArrowIcon.astro';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
@@ -34,7 +35,7 @@ const principles = en ? [
     <section class="wrap team-roster" aria-label={en ? 'Our team' : 'Nuestro equipo'}>
       {team.map((person, index) => <article class="team-member">
         <div class="portrait"><img src={`/images/team/${person.image}`} alt={person.name} width={index === 0 ? 600 : 800} height={index === 0 ? 750 : 800} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" /></div>
-        <div class="team-member-copy"><h2>{person.name}</h2><p class="team-role">{person.role}</p><p class="team-bio">{person.description}</p><div class="profile-links"><a href={person.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn · ${person.name}`}>LinkedIn ↗</a>{person.profileHref && <a href={person.profileHref}>{en ? 'Experience & profile' : 'Experiencia y perfil'} →</a>}{person.website && <a href={person.website} target="_blank" rel="noopener noreferrer">{person.websiteLabel} ↗</a>}</div></div>
+        <div class="team-member-copy"><h2>{person.name}</h2><p class="team-role">{person.role}</p><p class="team-bio">{person.description}</p><div class="profile-links"><a href={person.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn · ${person.name}`}>LinkedIn <ArrowIcon direction="up-right" /></a>{person.profileHref && <a href={person.profileHref}>{en ? 'Experience & profile' : 'Experiencia y perfil'} <ArrowIcon direction="right" /></a>}{person.website && <a href={person.website} target="_blank" rel="noopener noreferrer">{person.websiteLabel} <ArrowIcon direction="up-right" /></a>}</div></div>
       </article>)}
     </section>
     <section class="section wrap rule"><div class="section-heading"><span class="eyebrow">{en ? 'Working together' : 'Cómo trabajamos'}</span><h2>{en ? 'From the first decision to delivery.' : 'De la primera decisión a la entrega.'}</h2></div><div class="principles">{principles.map(([title,text]) => <article><h3>{title}</h3><p>{text}</p></article>)}</div></section>

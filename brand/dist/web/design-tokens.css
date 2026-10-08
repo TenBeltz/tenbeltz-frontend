@@ -1,0 +1,18 @@
+:root {
+  --color-paper: #f7f6f2;
+  --color-ink: #252826;
+  --color-muted: #676b65;
+  --color-line: #d9dcd4;
+  --color-accent: #583346;
+  --color-surface: #eeeee7;
+  --color-petal: #d9c4ce;
+  --color-accentHover: #422534;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --font-brand: "IBM Plex Sans", Arial, sans-serif;
+  --slide-bg: var(--color-paper);
+  --slide-text: var(--color-ink);
+  --button-bg: var(--color-accent);
+  --button-text: var(--color-white);
+  --radius-small: 3px;
+}

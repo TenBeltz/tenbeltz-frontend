@@ -1,0 +1,7 @@
+# Keep delivered exports even though the root ignores build dist directories.
+!dist/
+!dist/**
+
+# Rebuild the downloadable bundle from the tracked assets and code.
+/tenbeltz-brand-kit.zip
+/tenbeltz-brand-kit.zip.tmp

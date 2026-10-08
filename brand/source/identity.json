@@ -1,0 +1,23 @@
+{
+  "brand": "TenBeltz",
+  "edition": "2026.10",
+  "date": "2026-10-08",
+  "website": "tenbeltz.com",
+  "email": "hello@tenbeltz.com",
+  "phone": "+34 640 520 819",
+  "font": "IBM Plex Sans",
+  "colors": {
+    "paper": "#f7f6f2", "ink": "#252826", "muted": "#676b65",
+    "line": "#d9dcd4", "accent": "#583346", "surface": "#eeeee7",
+    "petal": "#d9c4ce", "accentHover": "#422534", "white": "#ffffff", "black": "#000000"
+  },
+  "positioning": {
+    "es": "Equipo externo de ingeniería de IA para empresas de software.",
+    "en": "An external AI engineering team for software companies."
+  },
+  "tagline": { "es": "Proyectos de IA que florecen", "en": "AI projects that bloom" },
+  "description": {
+    "es": "Diseñamos, construimos e integramos sistemas de IA en tu producto, con criterios claros de fiabilidad, rendimiento y coste. Para equipos SaaS y consultoras de software.",
+    "en": "We design, build and integrate AI systems into your product, with clear reliability, performance and cost criteria. For SaaS teams and software consultancies."
+  }
+}

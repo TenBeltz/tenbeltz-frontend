@@ -1,0 +1,22 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "brokenImages": []
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "brokenImages": []
+    }
+  ],
+  "errors": [],
+  "presentations": 3,
+  "checkedLocalLinks": true
+}

@@ -1,0 +1,480 @@
+{
+  "es": [
+    {
+      "kind": "cover",
+      "title": "Proyectos de IA\nque florecen.",
+      "subtitle": "Equipo externo de ingeniería de IA para empresas de software."
+    },
+    {
+      "kind": "statement",
+      "title": "IA integrada en tu producto.",
+      "subtitle": "Para equipos SaaS y consultoras de software.",
+      "blocks": [
+        [
+          "Contexto",
+          "Un producto existente, un equipo técnico y una oportunidad que necesita un alcance claro."
+        ],
+        [
+          "Contribución",
+          "Diseño, construcción e integración con criterios de fiabilidad, rendimiento y coste."
+        ]
+      ]
+    },
+    {
+      "kind": "pathways",
+      "title": "Tres formas de trabajar juntos.",
+      "blocks": [
+        [
+          "Definir",
+          "Diagnóstico, datos, arquitectura y criterios de evaluación."
+        ],
+        [
+          "Construir",
+          "Una primera versión evaluable y su integración en producción."
+        ],
+        [
+          "Formar",
+          "IA aplicada al contexto y a las responsabilidades del equipo."
+        ]
+      ]
+    },
+    {
+      "kind": "blueprint",
+      "title": "Definir una base técnica.",
+      "blocks": [
+        [
+          "AI Gap Analysis",
+          "Identificar oportunidades de IA, restricciones y prioridades para tu producto."
+        ],
+        [
+          "AI Project Foundations",
+          "Concretar arquitectura, datos, alcance y evaluación antes de construir."
+        ]
+      ],
+      "diagramLabels": [
+        "Datos",
+        "Recuperación",
+        "Sistema IA",
+        "Evaluación"
+      ],
+      "caption": "Flujo simplificado / arquitectura conceptual"
+    },
+    {
+      "kind": "delivery",
+      "title": "Construir y llevar a producción.",
+      "blocks": [
+        [
+          "Agent MVP",
+          "Construir una primera versión que permita evaluar el comportamiento del sistema."
+        ],
+        [
+          "Production Delivery",
+          "Integrar, preparar la operación y acordar criterios de entrega."
+        ]
+      ]
+    },
+    {
+      "kind": "workshop",
+      "title": "Formación en IA aplicada.",
+      "subtitle": "Trabajar con el contexto, las herramientas y las decisiones técnicas de tu equipo.",
+      "caption": "Aprender / Probar / Aplicar"
+    },
+    {
+      "kind": "timeline",
+      "title": "Un método con entregables.",
+      "blocks": [
+        [
+          "01 / Contexto",
+          "Problema, usuarios y restricciones."
+        ],
+        [
+          "02 / Definición",
+          "Alcance y criterios de aceptación."
+        ],
+        [
+          "03 / Construcción",
+          "Implementación y evaluación."
+        ],
+        [
+          "04 / Entrega",
+          "Integración y documentación."
+        ]
+      ]
+    },
+    {
+      "kind": "evaluation",
+      "title": "Acordar cómo evaluar.",
+      "blocks": [
+        [
+          "Calidad",
+          "Muestra y criterios que representen el uso real."
+        ],
+        [
+          "Rendimiento",
+          "Latencia y comportamiento bajo la carga acordada."
+        ],
+        [
+          "Coste",
+          "Coste por uso y límites operativos explícitos."
+        ]
+      ]
+    },
+    {
+      "kind": "responsibility",
+      "title": "Responsabilidad técnica clara.",
+      "blocks": [
+        [
+          "Dirección",
+          "Aritz lidera las primeras reuniones, la consultoría y la definición técnica."
+        ],
+        [
+          "Equipo",
+          "El desarrollo y la integración se delegan al equipo bajo su dirección técnica."
+        ]
+      ],
+      "caption": "Una dirección técnica / un equipo de implementación"
+    },
+    {
+      "kind": "evidence",
+      "title": "Evidencia con contexto.",
+      "blocks": [
+        [
+          "Proyectos",
+          "Distinguir trabajos para clientes, colaboraciones y productos cofundados."
+        ],
+        [
+          "Resultados",
+          "Explicar muestra, método y alcance de cada evaluación. Usar capturas y referencias autorizadas."
+        ]
+      ],
+      "labels": [
+        "Contexto",
+        "Contribución",
+        "Evidencia"
+      ]
+    },
+    {
+      "kind": "conversation",
+      "title": "Una primera conversación útil.",
+      "blocks": [
+        [
+          "Producto",
+          "Qué estás construyendo y para quién."
+        ],
+        [
+          "Oportunidad",
+          "Qué comportamiento esperas del sistema de IA."
+        ],
+        [
+          "Restricciones",
+          "Datos, integración, calendario y criterios de calidad."
+        ]
+      ]
+    },
+    {
+      "kind": "close",
+      "title": "Hablemos de tu proyecto.",
+      "subtitle": "hello@tenbeltz.com\ntenbeltz.com"
+    }
+  ],
+  "en": [
+    {
+      "kind": "cover",
+      "title": "AI projects\nthat bloom.",
+      "subtitle": "An external AI engineering team for software companies."
+    },
+    {
+      "kind": "statement",
+      "title": "AI integrated into your product.",
+      "subtitle": "For SaaS teams and software consultancies.",
+      "blocks": [
+        [
+          "Context",
+          "An existing product, a technical team and an opportunity that needs a clear scope."
+        ],
+        [
+          "Contribution",
+          "Design, development and integration with reliability, performance and cost criteria."
+        ]
+      ]
+    },
+    {
+      "kind": "pathways",
+      "title": "Three ways to work together.",
+      "blocks": [
+        [
+          "Define",
+          "Diagnosis, data, architecture and evaluation criteria."
+        ],
+        [
+          "Build",
+          "An evaluable first version and its production integration."
+        ],
+        [
+          "Train",
+          "Applied AI tailored to the team's context and responsibilities."
+        ]
+      ]
+    },
+    {
+      "kind": "blueprint",
+      "title": "Define a technical foundation.",
+      "blocks": [
+        [
+          "AI Gap Analysis",
+          "Identify AI opportunities, constraints and priorities for your product."
+        ],
+        [
+          "AI Project Foundations",
+          "Define architecture, data, scope and evaluation before building."
+        ]
+      ],
+      "diagramLabels": [
+        "Data",
+        "Retrieval",
+        "AI system",
+        "Evaluation"
+      ],
+      "caption": "Simplified flow / conceptual architecture"
+    },
+    {
+      "kind": "delivery",
+      "title": "Build and deliver to production.",
+      "blocks": [
+        [
+          "Agent MVP",
+          "Build a first version to evaluate the system's behaviour."
+        ],
+        [
+          "Production Delivery",
+          "Integrate, prepare operations and agree on delivery criteria."
+        ]
+      ]
+    },
+    {
+      "kind": "workshop",
+      "title": "Applied AI training.",
+      "subtitle": "Work with your team's context, tools and technical decisions.",
+      "caption": "Learn / Test / Apply"
+    },
+    {
+      "kind": "timeline",
+      "title": "A method with deliverables.",
+      "blocks": [
+        [
+          "01 / Context",
+          "Problem, users and constraints."
+        ],
+        [
+          "02 / Definition",
+          "Scope and acceptance criteria."
+        ],
+        [
+          "03 / Build",
+          "Implementation and evaluation."
+        ],
+        [
+          "04 / Delivery",
+          "Integration and documentation."
+        ]
+      ]
+    },
+    {
+      "kind": "evaluation",
+      "title": "Agree on how to evaluate.",
+      "blocks": [
+        [
+          "Quality",
+          "Samples and criteria that represent actual use."
+        ],
+        [
+          "Performance",
+          "Latency and behaviour under agreed load."
+        ],
+        [
+          "Cost",
+          "Cost per use and explicit operational limits."
+        ]
+      ]
+    },
+    {
+      "kind": "responsibility",
+      "title": "Clear technical responsibility.",
+      "blocks": [
+        [
+          "Direction",
+          "Aritz leads initial meetings, consulting and technical definition."
+        ],
+        [
+          "Team",
+          "Development and integration are delegated to the team under his technical direction."
+        ]
+      ],
+      "caption": "One technical direction / one implementation team"
+    },
+    {
+      "kind": "evidence",
+      "title": "Evidence with context.",
+      "blocks": [
+        [
+          "Projects",
+          "Distinguish client work, collaborations and co-founded products."
+        ],
+        [
+          "Results",
+          "Explain the sample, method and scope of each evaluation. Use authorised screenshots and references."
+        ]
+      ],
+      "labels": [
+        "Context",
+        "Contribution",
+        "Evidence"
+      ]
+    },
+    {
+      "kind": "conversation",
+      "title": "A useful first conversation.",
+      "blocks": [
+        [
+          "Product",
+          "What you are building and for whom."
+        ],
+        [
+          "Opportunity",
+          "What behaviour you expect from the AI system."
+        ],
+        [
+          "Constraints",
+          "Data, integration, timing and quality criteria."
+        ]
+      ]
+    },
+    {
+      "kind": "close",
+      "title": "Talk about your project.",
+      "subtitle": "hello@tenbeltz.com\ntenbeltz.com"
+    }
+  ],
+  "template": [
+    {
+      "kind": "cover",
+      "title": "[Título del proyecto]",
+      "subtitle": "[Cliente / autor / fecha]"
+    },
+    {
+      "kind": "section",
+      "title": "[Nombre de la sección]",
+      "subtitle": "[Una idea para abrir este capítulo.]"
+    },
+    {
+      "kind": "statement",
+      "title": "[Una decisión, dos perspectivas]",
+      "blocks": [
+        [
+          "[Contexto]",
+          "[Describe la situación actual.]"
+        ],
+        [
+          "[Propuesta]",
+          "[Explica la contribución técnica.]"
+        ]
+      ]
+    },
+    {
+      "kind": "pathways",
+      "title": "[Tres puntos que recordar]",
+      "blocks": [
+        [
+          "[Punto 1]",
+          "[Descripción breve.]"
+        ],
+        [
+          "[Punto 2]",
+          "[Descripción breve.]"
+        ],
+        [
+          "[Punto 3]",
+          "[Descripción breve.]"
+        ]
+      ]
+    },
+    {
+      "kind": "timeline",
+      "title": "[Proceso y entregables]",
+      "blocks": [
+        [
+          "01 / [Paso]",
+          "[Entrada]"
+        ],
+        [
+          "02 / [Paso]",
+          "[Decisión]"
+        ],
+        [
+          "03 / [Paso]",
+          "[Entregable]"
+        ],
+        [
+          "04 / [Paso]",
+          "[Validación]"
+        ]
+      ]
+    },
+    {
+      "kind": "evidence",
+      "title": "[Caso de proyecto]",
+      "blocks": [
+        [
+          "[Contexto y relación]",
+          "[Cliente / colaboración / producto cofundado. Añadir permiso y fuente.]"
+        ],
+        [
+          "[Contribución y evidencia]",
+          "[Entregables, límites y resultados documentados.]"
+        ]
+      ]
+    },
+    {
+      "kind": "table",
+      "title": "[Comparación de alternativas]",
+      "rows": [
+        [
+          "Criterio",
+          "Alternativa A",
+          "Alternativa B"
+        ],
+        [
+          "[Calidad]",
+          "[Dato]",
+          "[Dato]"
+        ],
+        [
+          "[Latencia]",
+          "[Dato]",
+          "[Dato]"
+        ],
+        [
+          "[Coste]",
+          "[Dato]",
+          "[Dato]"
+        ]
+      ]
+    },
+    {
+      "kind": "metric",
+      "title": "[Resultado de evaluación]",
+      "value": "[Valor]",
+      "subtitle": "[Métrica / muestra / método / fecha / alcance]"
+    },
+    {
+      "kind": "image",
+      "title": "[Captura o diagrama autorizado]",
+      "subtitle": "[Reemplazar el recurso decorativo por la imagen del proyecto y describir su procedencia.]"
+    },
+    {
+      "kind": "close",
+      "title": "[Siguiente paso]",
+      "subtitle": "[Acción / responsable / contacto]"
+    }
+  ]
+}

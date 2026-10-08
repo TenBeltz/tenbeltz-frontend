@@ -1,0 +1,15 @@
+{
+  "posts": [
+    {"name":"idea-tecnica","label":"CRITERIO TÉCNICO","title":["Evaluar antes","de integrar."],"body":["Calidad, latencia y coste.","Tres criterios para acordar","antes de construir."],"dark":false},
+    {"name":"servicios","label":"INGENIERÍA DE IA","title":["Definir.","Construir.","Formar."],"body":["Para equipos SaaS y","consultoras de software."],"dark":true},
+    {"name":"formacion","label":"FORMACIÓN APLICADA","title":["IA con el contexto","de tu equipo."],"body":["Herramientas, decisiones","y práctica técnica."],"dark":false},
+    {"name":"caso-plantilla","label":"PLANTILLA / CASO","title":["[Título breve","del proyecto]"],"body":["[Contexto y relación]","[Contribución técnica]","[Evidencia y alcance]"],"dark":false}
+  ],
+  "carousel": [
+    {"label":"01 / PREGUNTA","title":["¿Cómo evaluar","la IA de tu","producto?"],"body":["Acordar los criterios es parte","del trabajo de ingeniería."]},
+    {"label":"02 / CONTEXTO","title":["Empieza por","el uso real."],"body":["Define quién usa el sistema,","qué necesita conseguir y","qué errores importan."]},
+    {"label":"03 / DECISIONES","title":["Elige una muestra","que represente","ese contexto."],"body":["Incluye casos frecuentes,","casos difíciles y límites","que quieras comprobar."]},
+    {"label":"04 / CRITERIOS","title":["Calidad.","Latencia.","Coste."],"body":["Define cómo medir cada criterio","y cuál es su umbral de aceptación."]},
+    {"label":"05 / SIGUIENTE PASO","title":["De los criterios","a la entrega."],"body":["Documenta resultados y límites.","Hablar sobre un proyecto:","hello@tenbeltz.com"]}
+  ]
+}

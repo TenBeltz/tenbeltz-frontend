@@ -1,0 +1,32 @@
+[
+  {
+    "foreground": "ink",
+    "background": "paper",
+    "ratio": 13.771,
+    "normalTextPass": true
+  },
+  {
+    "foreground": "accent",
+    "background": "paper",
+    "ratio": 9.823,
+    "normalTextPass": true
+  },
+  {
+    "foreground": "muted",
+    "background": "paper",
+    "ratio": 5.021,
+    "normalTextPass": true
+  },
+  {
+    "foreground": "white",
+    "background": "accent",
+    "ratio": 10.623,
+    "normalTextPass": true
+  },
+  {
+    "foreground": "white",
+    "background": "ink",
+    "ratio": 14.892,
+    "normalTextPass": true
+  }
+]

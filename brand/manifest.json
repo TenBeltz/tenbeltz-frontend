@@ -1,0 +1,2895 @@
+{
+  "edition": "2026.10",
+  "files": [
+    {
+      "path": "dist/documents/examples/tenbeltz-proposal-example-01.png",
+      "bytes": 127571,
+      "sha256": "ba77a23810779cc7d5169ec93353010c71d73f44e1ef232dad2717e2e0e4ba4e",
+      "format": "png",
+      "width": 596,
+      "height": 842,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-proposal-example-01.svg",
+      "bytes": 1611241,
+      "sha256": "3bc5281a3088b8ae3f0344568b2d9503f4c8c9d79d415ca2389bae77b3d3bbf1",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-proposal-example-02.png",
+      "bytes": 62199,
+      "sha256": "ead48e56ddc15e8131c8a959c241384a67f29cab808c1509add114f9b23f09bb",
+      "format": "png",
+      "width": 596,
+      "height": 842,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-proposal-example-02.svg",
+      "bytes": 336681,
+      "sha256": "7a7f4a723a0136349295c0fd3061e8f3c8f16330add2ffdd7e17049869df7d3c",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-proposal-example-03.png",
+      "bytes": 55906,
+      "sha256": "804c54bfe6cbc7b534d858131044e497d8eefd91afbe8cef22ea9e3f8125f2fb",
+      "format": "png",
+      "width": 596,
+      "height": 842,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-proposal-example-03.svg",
+      "bytes": 279283,
+      "sha256": "eae36e0fdafd979c3e37030523099e774146f80c82cad3ab728b6159f4db28f2",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-proposal-example-04.png",
+      "bytes": 47152,
+      "sha256": "71381d08efd6d997f392d3372a4d0ebd4bdbd0ea0fc46310409bdf5dca347fda",
+      "format": "png",
+      "width": 596,
+      "height": 842,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-proposal-example-04.svg",
+      "bytes": 235662,
+      "sha256": "4b8b48cd15e029d358e636247d54f544a801e4c42206a59d2bf1bf4cdc368d26",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-proposal-example-05.png",
+      "bytes": 47575,
+      "sha256": "011d2b85596964a7ee06ac07d0dc9aef2ccc23a617f34df3c868f5b03c2a8101",
+      "format": "png",
+      "width": 596,
+      "height": 842,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-proposal-example-05.svg",
+      "bytes": 214352,
+      "sha256": "3700d80e6ad9f3b717e32e0665bd34fb761b8550b47af32012586fd1b772757e",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-proposal-example-06.png",
+      "bytes": 46688,
+      "sha256": "8ed86219b1f4441609bc01081dfcb85598e42544e3e527ee893277454fd2a093",
+      "format": "png",
+      "width": 596,
+      "height": 842,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-proposal-example-06.svg",
+      "bytes": 237343,
+      "sha256": "5d0fc018e2e331effceb2778f367ddbc8fa5e02fc74a0c6b1a19ad13db1908ff",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-01.png",
+      "bytes": 71337,
+      "sha256": "61fb8a31a181db3ccd9d8c4835cd7f2bbe6538f806de8e154d20287419dd27d0",
+      "format": "png",
+      "width": 596,
+      "height": 842,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-01.svg",
+      "bytes": 503221,
+      "sha256": "e931605cdd7dbd1dc68ffbd348dc9c0b123ac4ca7ea3d2c8f1a1cc54e90d6448",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-02.png",
+      "bytes": 45879,
+      "sha256": "c4d79c4f5c676a230d77b0cb4469ad49e420e8900c600fea563a7b9e799d0bf0",
+      "format": "png",
+      "width": 596,
+      "height": 842,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-02.svg",
+      "bytes": 190280,
+      "sha256": "fd8ef7b2c5d6bdb72d2a29e154fa129d771c7c58056b15b01dc42f224799fcf8",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-03.png",
+      "bytes": 53204,
+      "sha256": "9ae239aa19f7ef7a617857be3ac66e4e3c06379f114bfdce67b66a11d5d0bc94",
+      "format": "png",
+      "width": 596,
+      "height": 842,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-03.svg",
+      "bytes": 284266,
+      "sha256": "4ba4bad53758aad29296392d1ba215bd32ea780200ee5259f53c49d2eba46ef7",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-04.png",
+      "bytes": 40712,
+      "sha256": "630d2914486eac39ff9924aa0cc57ad7afe8adc84fd81c577a673c0ea9892eeb",
+      "format": "png",
+      "width": 596,
+      "height": 842,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-04.svg",
+      "bytes": 191583,
+      "sha256": "e29f1ed8eee08487b367af71bb86ba4a74a8f488485677ec06881ae62d39f392",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-05.png",
+      "bytes": 40009,
+      "sha256": "37be25059e2e0633c83c3e0f8535e5b0b9902bf09721933b56e60d8dea0898e5",
+      "format": "png",
+      "width": 596,
+      "height": 842,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-05.svg",
+      "bytes": 165053,
+      "sha256": "8c5b353944467fbd11f8657d912236faece92185ee8079e62a526c87e2a21e8f",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-06.png",
+      "bytes": 41308,
+      "sha256": "a6b0a564b0035eb895578cd8445cd8439166dc81cde2248da5814eada4017256",
+      "format": "png",
+      "width": 596,
+      "height": 842,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-06.svg",
+      "bytes": 191645,
+      "sha256": "fcfdf37ebb9a563ec64fac6092c45fffeae0fb63cc37e2bd631223c57c0374d0",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-07.png",
+      "bytes": 53391,
+      "sha256": "dbaa1c729d352e2c5fe039d4989afaab39b966c1d9c4be3e5856598dc879977f",
+      "format": "png",
+      "width": 596,
+      "height": 842,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/examples/tenbeltz-report-example-07.svg",
+      "bytes": 271453,
+      "sha256": "7a6e00a5e974a07d95a0261cf545282bb7b217929ec4134772cfd5e11db6196d",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-01.png",
+      "bytes": 216660,
+      "sha256": "6379ca5c721dd1e0b3b68ad598ef5faae3315632f46f456d1e8f0774b1bf212c",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-02.png",
+      "bytes": 58991,
+      "sha256": "c1d1165a8b9c2d93feb09b1c34f142f49ffd9f2e6c40da3fbb41fcea8b9daa1f",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-03.png",
+      "bytes": 49418,
+      "sha256": "d90d20f0cf342c29eacfd8847412ed0cfb57f5b4bc6216f28594effd5b0ac57e",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-04.png",
+      "bytes": 46741,
+      "sha256": "6ef23ebaf6d751e9807c40ea0500b8c874c2d0de2431e6062066b37c2309c268",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-05.png",
+      "bytes": 46309,
+      "sha256": "d7fec3d8713e276fe0402ea88d2f264ca5755a4a66cae120e992a50255f0f854",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-06.png",
+      "bytes": 51320,
+      "sha256": "f6914eba2ab6c66fe124e21d2361040910dc307635264461bde39b8bee066a0b",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-07.png",
+      "bytes": 53189,
+      "sha256": "d5cdee01cfea70461ce3ada56b78c54863ead67892a1eac081824e39e87187e2",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-08.png",
+      "bytes": 54687,
+      "sha256": "b35ae04ca0b452bfef88520bd9c57fe356423e14d7a1b8f68696931c39ee27e0",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-09.png",
+      "bytes": 50896,
+      "sha256": "abdee6f101ad7520f68d5cc4ed2ec85e0a2ee85bda67451b76c2793b18d50ce7",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-10.png",
+      "bytes": 50133,
+      "sha256": "7c4449ba543067430654267786ca976a579eb5669fe18f5f4f8fae0dfadde102",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-11.png",
+      "bytes": 62128,
+      "sha256": "bd38e7016b9ef9ff29f3410d387e1bbffeb5cd01dad85f9b49c88ece7f41f94c",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-12.png",
+      "bytes": 43025,
+      "sha256": "dc42774e6134d5f60a532236948d650e6f3e05020ec84f3bca13cdb1857dd838",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-13.png",
+      "bytes": 162319,
+      "sha256": "9a1216697323a44b06d1697dcc4b268f37f9a8d2fdc77e71a4ae66bc424fccd6",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-14.png",
+      "bytes": 57302,
+      "sha256": "acf0d80cb6788915305c3db6823b20aa494e5499ae746962809349acc627f222",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-15.png",
+      "bytes": 58505,
+      "sha256": "5a452714649c48c3620181c06145576cb56065e6761c37cd272f6d3b3efd1487",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-16.png",
+      "bytes": 49870,
+      "sha256": "365769e09565b4c55de0653f967c35653ef15a634c21a52153b07256e854a40b",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-17.png",
+      "bytes": 48554,
+      "sha256": "ec75904ee22fa54b035a2eb4e35acdf3718c459583a1e774968260d4161b1de7",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-18.png",
+      "bytes": 93467,
+      "sha256": "5dffe8cd1fa0aa4f5c3399a246f9a7d51a61c776e14b76888cf7d8b2f45ccc07",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-19.png",
+      "bytes": 63817,
+      "sha256": "f6e403c74f1a9aae83c29d6e5d8603a42a765f402f5ba793400ae692556d8ef8",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-20.png",
+      "bytes": 120530,
+      "sha256": "04af2dbfa4be6c4b5294d5e4089e24385f6b63ba571d2d602deeea876cdfd3b9",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-21.png",
+      "bytes": 88402,
+      "sha256": "f5f5b5a056c7334f1617bf7f9f0dc99049f5def6d03a691b1841828f3eb6339b",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-22.png",
+      "bytes": 55298,
+      "sha256": "bca1c5f6a0284d4df5f5b676b4736583851a42332906a2d57842aebcdd2b08e0",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-23.png",
+      "bytes": 49416,
+      "sha256": "c36e946cd76fc928f8515cbe4d656863bae00f15565440f9d615def39a58c125",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-24.png",
+      "bytes": 53696,
+      "sha256": "24b077b260b9d6813bc18cbe98abaccb076bcac7bd6d1afb8e5b17dbb70ec476",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-25.png",
+      "bytes": 53976,
+      "sha256": "9e6885ef2e8feebfb5ed08130e69b7479320524a9a7553eca92b7f5f42e2782c",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-26.png",
+      "bytes": 54314,
+      "sha256": "105a8be04f5ba74341c5f9e06659b728a32d2963bced7b9a949d72ae88989bb3",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-27.png",
+      "bytes": 52268,
+      "sha256": "c531f93310014a3905fc9884b1ed02d3e5aa13fbac665b04c5fc3a5e240aa705",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-28.png",
+      "bytes": 66159,
+      "sha256": "094e7c63795c02f2b62b8e2443b7e35a937f6aa4f17e7813ee2d6d9bf0eea71b",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-29.png",
+      "bytes": 91706,
+      "sha256": "0dfe536de5c3ae75314692293af0ac789b0533013a7232d76b8ec90dd8d67c08",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/previews/brandbook-30.png",
+      "bytes": 343339,
+      "sha256": "f4b160899b96485d364c38219fcb408fd2e5989f856cde43be6065c2591ba986",
+      "format": "png",
+      "width": 842,
+      "height": 595,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/documents/tenbeltz-brandbook.pdf",
+      "bytes": 8160265,
+      "sha256": "d09e0c98e91c2243a9b3845cbe6ac5a55d28ae1ceab9716b37b006cae960b000",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/documents/tenbeltz-business-card-back.png",
+      "bytes": 24060,
+      "sha256": "13bb5b996e5fcbde5bbcbff5e18db9099376e79d2ffdfe4ea366f4eaae7aef90",
+      "format": "png",
+      "width": 1004,
+      "height": 650,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/tenbeltz-business-card-back.svg",
+      "bytes": 14813,
+      "sha256": "e743a898f09d5fbdcd46cc7f62d05f5ac3b04010878a47aeb6da557da7d3c173",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/tenbeltz-business-card-front.png",
+      "bytes": 31667,
+      "sha256": "2fcba38856b9c135616c41c9a1a98124d10643c9c1506005757f931c0b8c74da",
+      "format": "png",
+      "width": 1004,
+      "height": 650,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/documents/tenbeltz-business-card-front.svg",
+      "bytes": 28619,
+      "sha256": "3f46dae65e94f25125436256ba7b8cd47d56c239dbaa91e35dece74583827e62",
+      "format": "svg"
+    },
+    {
+      "path": "dist/documents/tenbeltz-business-card-print.pdf",
+      "bytes": 95604,
+      "sha256": "d3e579167dfeb4df0aa46ea83757b9d03fde2e113f77ffb49c6213fab541cbd5",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/documents/tenbeltz-email-signature-aritz.html",
+      "bytes": 673,
+      "sha256": "80a516df5bab95ec9fd9b9633970e1cbca64aa6ee807f806d8e937743ac11347",
+      "format": "html"
+    },
+    {
+      "path": "dist/documents/tenbeltz-email-signature-tenbeltz.html",
+      "bytes": 646,
+      "sha256": "faeac2c788a39851064f46ef4859c5de5a65f89b2a58354f6f8cddc23c671219",
+      "format": "html"
+    },
+    {
+      "path": "dist/documents/tenbeltz-proposal-example.docx",
+      "bytes": 243756,
+      "sha256": "cc9749bc6cf75ff87d8625936c01550e366e28e18665750d3eb8471ceee3d21c",
+      "format": "docx"
+    },
+    {
+      "path": "dist/documents/tenbeltz-proposal-example.html",
+      "bytes": 1345,
+      "sha256": "3f7acbf26db821e7c835fe57eaf20677cb4a3a1999ec35a87e55ea0d3a2af9f7",
+      "format": "html"
+    },
+    {
+      "path": "dist/documents/tenbeltz-proposal-example.pdf",
+      "bytes": 1503504,
+      "sha256": "268f76bea2a18975f59f1cebbec4bd63a81c110765d8d8f6135ca21f916f566e",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/documents/tenbeltz-proposal-template.docx",
+      "bytes": 70864,
+      "sha256": "58766bba85d0f0dab7910693dba82cbc98fc6366332b31e563037ff175e80219",
+      "format": "docx"
+    },
+    {
+      "path": "dist/documents/tenbeltz-proposal-template.html",
+      "bytes": 1780,
+      "sha256": "1d9525dc618a3c7f550d328b559d2b228337134ae67ea096b5da26ad18fe9a83",
+      "format": "html"
+    },
+    {
+      "path": "dist/documents/tenbeltz-proposal-template.pdf",
+      "bytes": 76610,
+      "sha256": "1da1adf02860b54f3a20dae93f9fb87343c5062ab7b02e61e53ad3ad9e64862d",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/documents/tenbeltz-report-example.docx",
+      "bytes": 260673,
+      "sha256": "97bc62acfd00b63ee5e1c6ea2883c08c047ba451b7b17d7e03a488a0b61bc047",
+      "format": "docx"
+    },
+    {
+      "path": "dist/documents/tenbeltz-report-example.html",
+      "bytes": 1429,
+      "sha256": "69485ac15448bbbf3bab40ffd5cc6ca18621ed318895d9b1927ac3f5bdf04ea0",
+      "format": "html"
+    },
+    {
+      "path": "dist/documents/tenbeltz-report-example.pdf",
+      "bytes": 417951,
+      "sha256": "00005544c61e5fdac4e198a8749a1b265f3c425ff68357bb50b40a9cc038b243",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/documents/tenbeltz-report-template.docx",
+      "bytes": 70863,
+      "sha256": "46b0547aae73560dc38a5071f9b49372f1f5b469a94727870c6d1c815b427789",
+      "format": "docx"
+    },
+    {
+      "path": "dist/documents/tenbeltz-report-template.html",
+      "bytes": 1754,
+      "sha256": "e99c18394cbef8b833b4e2081f87135e12b0e88db5e37e311ac6415a11e5bf45",
+      "format": "html"
+    },
+    {
+      "path": "dist/documents/tenbeltz-report-template.pdf",
+      "bytes": 76632,
+      "sha256": "2781bc0e604006fad83d589cb59d7fc608fc916264b9f1f761d52a525e1f4c4f",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-cross-grid-ink.png",
+      "bytes": 15942,
+      "sha256": "9f0783fe967576e4306f366e50dee720aff6537145947c9b59b1b4eaa2817779",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-cross-grid-ink.svg",
+      "bytes": 6197,
+      "sha256": "95eebffcae030e67a510849b5d2b178237076674cd6d225cd8845dae82aad470",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-cross-grid-paper.png",
+      "bytes": 15958,
+      "sha256": "ba4bdd35d6211a1b1d9baead96a574d4565c9a48b9a7fcaa72170c6fa130d2f4",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-cross-grid-paper.svg",
+      "bytes": 6199,
+      "sha256": "d8dad279ec5ae1c1924ebfa1c57af013a516279593eefacedbda30f7b8b3e794",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-editorial.png",
+      "bytes": 7898,
+      "sha256": "911c184b57efeffb8d1462f0328768856d2e8f611b3d76bf76252ad4d531c7c3",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-editorial.svg",
+      "bytes": 689,
+      "sha256": "cfa75809df2a035f29aa749e4b30db08f8afe20c54960f7522102b751f7db3fe",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-flower.png",
+      "bytes": 830818,
+      "sha256": "0f716c817da000d7ae0b8579e9635dcc274c44aa1dcf60edd17400997ac6ae0e",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-flower.svg",
+      "bytes": 1447631,
+      "sha256": "fe9e75b055ef9113995f682347b3222a4699bcc8c93cad2ec8cdf34dd7e255e6",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-folds.png",
+      "bytes": 67585,
+      "sha256": "040e471ec8a800cc3080ef8315b57627ae256108934147b6d54648bd3498218f",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-folds.svg",
+      "bytes": 2046,
+      "sha256": "9a9ec594d27bc0a5adec609bb474fb4b42fbc7dac26355e865aababf30db7fd2",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-petal-contours-ink.png",
+      "bytes": 255211,
+      "sha256": "dcf102ac6763f8c898a6c12a628b02988ee764186d55cc7fa946ef3a095a9ea1",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-petal-contours-ink.svg",
+      "bytes": 8411,
+      "sha256": "b5c255915566c560376d5a3053c5145f731ca01d27e1757bfa50892f31788b5d",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-petal-contours-paper.png",
+      "bytes": 267700,
+      "sha256": "9c281ae30ec7f08745d7ee7cdb706f4d38842359817dce1a88c8b26ba55f92d4",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-petal-contours-paper.svg",
+      "bytes": 8413,
+      "sha256": "388bdc9539486c02ebe032846f6923b452203b4ef2a5663576861ff23cab53fe",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-radial-bloom-ink.png",
+      "bytes": 158367,
+      "sha256": "5bcf85b1231c586c02e48c81571af4f17eca4c8e22ab089307e9c9e4d90b3da4",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-radial-bloom-ink.svg",
+      "bytes": 10219,
+      "sha256": "b2e44ff33c2401123dffea5f45c4faedfb165bf84c36007921937460c1c02678",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-radial-bloom-paper.png",
+      "bytes": 165597,
+      "sha256": "39bd8d30f462ed2a59295891d94f2b72518593c02605de55beb3873ba87e1700",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-radial-bloom-paper.svg",
+      "bytes": 10221,
+      "sha256": "c53279099ebe4c87dd160fb84ba4a26e67593c64f54bd4f76e19bb79d3616c7e",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-routed-lines-ink.png",
+      "bytes": 19660,
+      "sha256": "35b17bc0733d88d4bb030bfe4d3869f5883acbce26a6b491f2bd7e4c0bf3a433",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-routed-lines-ink.svg",
+      "bytes": 1608,
+      "sha256": "2c3e2892f241e502265efa188475b92123c903c8f47eea52ca8a29ca85e0648f",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-routed-lines-paper.png",
+      "bytes": 19928,
+      "sha256": "40b72d8b37eec69feccd8c8bb5e2d2d1f548a53366791f9d6f8169f735f1fc79",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-routed-lines-paper.svg",
+      "bytes": 1610,
+      "sha256": "8fd024baf7d8edbc925792dbd5d0fad00adf9860c15b6d2660435d68a40f2c23",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-silk-wave-ink.png",
+      "bytes": 22227,
+      "sha256": "cb58fee06ec632d548e5e576cbad72f4041d9f771fe114fc5b7dd28a27e9db3e",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-silk-wave-ink.svg",
+      "bytes": 1865,
+      "sha256": "c4fe4b4733630b3a9b603b15bccdd5f737c51af42e7123a725f016c45052cecb",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-silk-wave-paper.png",
+      "bytes": 22568,
+      "sha256": "85d745c1b474062102f5091f52175ddbb2dba4e9da5cdc7d6c743dd3dd786bd8",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-background-silk-wave-paper.svg",
+      "bytes": 1867,
+      "sha256": "44dee375f9cde1b5b9ce4aa9c9377c583e266f6fd386e5f408f65e9c2bf966d3",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-diagram-ai-flow.png",
+      "bytes": 27286,
+      "sha256": "442285488b4741cd2b54adeb6d23c5d25775071e9e005ed0d5f33b825dbf99c3",
+      "format": "png",
+      "width": 1600,
+      "height": 420,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-diagram-ai-flow.svg",
+      "bytes": 40597,
+      "sha256": "f51c3483518763b924699a9c36757a35e6169cba76a190ae7c59962d0c09e0a3",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-example-architecture.png",
+      "bytes": 107690,
+      "sha256": "771f51dfc0bf68c35079234df4b3768127213ee4f93877fc0ca4f8ab6daada23",
+      "format": "png",
+      "width": 2044,
+      "height": 1436,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-example-architecture.svg",
+      "bytes": 279344,
+      "sha256": "af32fdf528682a33c32ac85703f7720815e81b205e83c366779885530c1452f2",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-example-errors.png",
+      "bytes": 56643,
+      "sha256": "55587299eba1cec330cd41859e72fdb82390c56b151d3d60ae3a8bb84f3c6391",
+      "format": "png",
+      "width": 2044,
+      "height": 1416,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-example-errors.svg",
+      "bytes": 191702,
+      "sha256": "e20ca8a299a15d7273acf507def8e2d3d859d31c0391594b588d462d58984185",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-example-latency.png",
+      "bytes": 94593,
+      "sha256": "d87687bd56c0324c2a69408868c87ae3bbd794adbbf08818220c9db108dec1f8",
+      "format": "png",
+      "width": 2044,
+      "height": 1796,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-example-latency.svg",
+      "bytes": 165111,
+      "sha256": "938c905cb7afc09ad72319844df0254cc71ac6a45e02014d2ce28be7f41fa111",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-example-quality.png",
+      "bytes": 87878,
+      "sha256": "fdc6b1795c4c9c04b4f395424ed7dbe8f787dc252bc36e494caffda803cee04a",
+      "format": "png",
+      "width": 2044,
+      "height": 1716,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-example-quality.svg",
+      "bytes": 191641,
+      "sha256": "239fc28df3998d7ba231d41480c1dbb086676931ae25aacc7620de89784ad8d8",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-example-timeline.png",
+      "bytes": 111963,
+      "sha256": "aef550c778c2917043c949d85d9101c2cab0b71e64250bd19c6faf661f91cf6c",
+      "format": "png",
+      "width": 2044,
+      "height": 1720,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-example-timeline.svg",
+      "bytes": 235719,
+      "sha256": "86d223d83d2921ff43cb8c2cc49f628f46aaed187dc55dad5aa5e991635f2c78",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-flower-original.webp",
+      "bytes": 196640,
+      "sha256": "834f237fbddbad7c70b2ace61b3d80d3f855103eaeee8cc18eee46688ac23778",
+      "format": "webp"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-flower-transparent.png",
+      "bytes": 1085476,
+      "sha256": "266f6e8c5dd9037e0dcd0a1a4675e2cafe0ab9f097d9dc840268f85dde47cee6",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-motif-line-petals-accent.png",
+      "bytes": 30703,
+      "sha256": "122d590f13c909f7b98da71fba75fe3be3122f338a93b664650915a875e246f0",
+      "format": "png",
+      "width": 600,
+      "height": 600,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-motif-line-petals-accent.svg",
+      "bytes": 924,
+      "sha256": "544b3b4087809dfa82c6b7c5c02c80944d7b7629da9f2302664b270ff82ed546",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-motif-line-petals-petal.png",
+      "bytes": 30539,
+      "sha256": "02fb3b9059d6b09de9df74c5c4461dca01dbc27fbe7f28ee8193111687a7d35d",
+      "format": "png",
+      "width": 600,
+      "height": 600,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-motif-line-petals-petal.svg",
+      "bytes": 923,
+      "sha256": "60897928ca60414d4ae4fed883ab63011b0f67f7e08422ec98eddd691699da68",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-motif-line-petals-white.png",
+      "bytes": 27472,
+      "sha256": "cac02c7fbe25a2f746339ee4933b5bf7f6fd69516bf166f268ffabe0b2084122",
+      "format": "png",
+      "width": 600,
+      "height": 600,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-motif-line-petals-white.svg",
+      "bytes": 923,
+      "sha256": "5357ac09903affe21a88062baf10c753a64e46a1b229c240c79d4c31edf10396",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-motif-symbol-accent.png",
+      "bytes": 32071,
+      "sha256": "12f0de087f543d25e14458698fd4570845557cda637c3e3c0f25113c36d88974",
+      "format": "png",
+      "width": 700,
+      "height": 800,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-motif-symbol-accent.svg",
+      "bytes": 3336,
+      "sha256": "cb8ca8f02ced551ad20921c4a73de0328c07722499babef616d0ea492596b1c7",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-motif-symbol-petal.png",
+      "bytes": 32066,
+      "sha256": "e55b010efb191940970c357207a8c79d08b8ca59c727a3955e2b3dbd9a5c5fbe",
+      "format": "png",
+      "width": 700,
+      "height": 800,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-motif-symbol-petal.svg",
+      "bytes": 3336,
+      "sha256": "bea1e6636f1ac427196e4a27cbbaa82671af9d3b7b5a5708f792e7a9335cd3c3",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-motif-symbol-white.png",
+      "bytes": 26984,
+      "sha256": "43f9181c04632c5e1db4ba27c4df054855a73b61230c04bd136064b5a82deb20",
+      "format": "png",
+      "width": 700,
+      "height": 800,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-motif-symbol-white.svg",
+      "bytes": 3336,
+      "sha256": "f7884503ec1dc98fd0a928e842c5363fd49fe02b4fb8dd2eb80a05fa45c7c691",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-pattern-symbol-ink.png",
+      "bytes": 26294,
+      "sha256": "1db1a698549d8b6e3fe0269acf45f1c8189dfdf7bbc4eabe8efa0e70eea5713b",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-pattern-symbol-ink.svg",
+      "bytes": 189222,
+      "sha256": "4bef927b17b3e995f42bfa77f84a734e7cb3394033c2619c3578878b0b8da564",
+      "format": "svg"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-pattern-symbol-paper.png",
+      "bytes": 26834,
+      "sha256": "73c5c46a4a981bec7826c84e1b03c22a98454da23218bcafcfb7060591b376bf",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/graphics/tenbeltz-pattern-symbol-paper.svg",
+      "bytes": 189222,
+      "sha256": "2808036c061c3aba74627096251bf0859946f5cde69ac5901eb4770a8eeccb71",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-agente-accent.svg",
+      "bytes": 330,
+      "sha256": "979b57b04ff7c5b6b5fdea4847e2ead3ccdf915b07d5a7f0a0c55193c1412383",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-agente-ink.svg",
+      "bytes": 330,
+      "sha256": "3e2e45d40487b92955d98877a57799143355e349d36a45eff3a50a69c4edbf44",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-agente-white.svg",
+      "bytes": 330,
+      "sha256": "662124ad6b5ce6a16230ec3621e3710cbde42aa3388546b250edd1de20a16312",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-api-accent.svg",
+      "bytes": 300,
+      "sha256": "24715d8f48b617c5de6c4754a1c1ce666ff2dd7ad8331339e2fb7e84a04036d8",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-api-ink.svg",
+      "bytes": 300,
+      "sha256": "a9e3ed24ad76a32128481660567b1a4ab94229e2e9800fe411a8edf94e1a2272",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-api-white.svg",
+      "bytes": 300,
+      "sha256": "92771ad65ce09330b0062455b7f52bf3ec344e072507a4d58249312d1fba5b3d",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-arquitectura-accent.svg",
+      "bytes": 332,
+      "sha256": "b89b59bcb617ba474e0ceffde06a2c3c44c92432083e23ab204fd8f52d8ac13e",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-arquitectura-ink.svg",
+      "bytes": 332,
+      "sha256": "fbeb8798b596b2820c8716f83a336a165750d97eec8b496f4b26ec25684ad0ed",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-arquitectura-white.svg",
+      "bytes": 332,
+      "sha256": "06ff6133ede1f7876f427485cd73c685a526849816c64c2b0451058270dfc296",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-busqueda-accent.svg",
+      "bytes": 311,
+      "sha256": "df863803ebc01585c35383fecb9f36254efa1cb55dd276fd41bd00817e26990c",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-busqueda-ink.svg",
+      "bytes": 311,
+      "sha256": "80ef8062af24623f07f54389732a2f33dee9a98774fd54e0016f09ad950784ce",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-busqueda-white.svg",
+      "bytes": 311,
+      "sha256": "0c14d1863d30a2433ffd02406903c0b26d289c7fa66845bf793658537999a731",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-coste-accent.svg",
+      "bytes": 310,
+      "sha256": "a6fac18f04bf17cf8269982de6e36aca03d8ce306147f0f244006b1b24f9921f",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-coste-ink.svg",
+      "bytes": 310,
+      "sha256": "aa8476084ba97c4a9f54fdaf6a4f3b09c18e884053dddb43fa20db56b448a0f1",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-coste-white.svg",
+      "bytes": 310,
+      "sha256": "7a1934c62c702ab3d9bfd6bfff0152d3082d5cdb74d04066ffce73b7f62758d9",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-datos-accent.svg",
+      "bytes": 337,
+      "sha256": "7b7bff68776e9591044614797ce12ce61fe689d1c285ca41d1aea8933f52b5d0",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-datos-ink.svg",
+      "bytes": 337,
+      "sha256": "a1a2aaa3220899a4ee8789fdc9c44d08b70fa3570fe4febe4d21d8465e863e1f",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-datos-white.svg",
+      "bytes": 337,
+      "sha256": "ca81dba9143792234edcd41ef016ab5923a9801c37a9c546f19498136cb621d5",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-diagnostico-accent.svg",
+      "bytes": 349,
+      "sha256": "a1c8e6da512187f2b8ea258488b1ad9934fcf2208904886a583613e54fb5950a",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-diagnostico-ink.svg",
+      "bytes": 349,
+      "sha256": "0a2986e51edaa95fce25b31412d2c0170be89b598637dfb18ea4def26ffcabec",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-diagnostico-white.svg",
+      "bytes": 349,
+      "sha256": "543270ffdec8435b9996fd8f98cd065e39d484f492f862d32a7f78ad2fb8621b",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-documentacion-accent.svg",
+      "bytes": 312,
+      "sha256": "638c4f5b4c5d68d6e70833a81924a990604a785060fb7711dfcd998b4ac21996",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-documentacion-ink.svg",
+      "bytes": 312,
+      "sha256": "6a5774db62db2fbab5ac29de048d29d6fb163969959b8b58bbfabab247ad9e68",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-documentacion-white.svg",
+      "bytes": 312,
+      "sha256": "71a80f49aa0d5535037f26b87bd09333a488feb5543ef640974c216d56df5e92",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-entrega-accent.svg",
+      "bytes": 323,
+      "sha256": "f30b3d8f2c1665bdc2ddbc9efaab0a0a86662d052b94a72be9e8f119ac9e6b0a",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-entrega-ink.svg",
+      "bytes": 323,
+      "sha256": "b82987a71ffcbec0e97729ac9b4fb17efb09fba5abdfe05b00a22e4bd494060e",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-entrega-white.svg",
+      "bytes": 323,
+      "sha256": "3abe6a9f2a6eefc4f6f99d4c54ac4a96b51e34a341369118e6d248c0536795b9",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-equipo-accent.svg",
+      "bytes": 359,
+      "sha256": "a79c02b9634c985878df29ea00e060335dbe05d4891539f36492832622914d37",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-equipo-ink.svg",
+      "bytes": 359,
+      "sha256": "a3437f5f55dee7eda0e138435e9d99d52d4bdbe1064b586ae3a2395ee0892002",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-equipo-white.svg",
+      "bytes": 359,
+      "sha256": "f4773d6d20646e4694f8dc463bc04d5a0020319c0571854d9a86d3c70f775a8b",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-evaluacion-accent.svg",
+      "bytes": 324,
+      "sha256": "844df4698cdadf81d691ba090fb6f00b9888bbff04e4da643ceb636115cda088",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-evaluacion-ink.svg",
+      "bytes": 324,
+      "sha256": "0241913587e2a5138e16948ba553691e9a4ffb955fbe7ee2db03e701e7ac5b34",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-evaluacion-white.svg",
+      "bytes": 324,
+      "sha256": "567fe74e26120fd4c9a792ddfc6c1304de0a333651362269ea83e728d32112ac",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-formacion-accent.svg",
+      "bytes": 325,
+      "sha256": "2211519aceb1cb5920d740d024f651f5c99794a92538424501a2fc805557f76e",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-formacion-ink.svg",
+      "bytes": 325,
+      "sha256": "d6de43b7e0972d6015c6bc863acc8c4639b4f96e63be0dcee374852f31f5cb7d",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-formacion-white.svg",
+      "bytes": 325,
+      "sha256": "a93711b7dbf8757ddc0467871debe5d635831ca7894bb603db8a96922fd2f72c",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-integracion-accent.svg",
+      "bytes": 316,
+      "sha256": "feb06b17da71be8b3ea0bd7b5eeb14896c3339596468e066c9de86d0ac16da7d",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-integracion-ink.svg",
+      "bytes": 316,
+      "sha256": "6490580604e79886eae44b12bbaaf0082ca047d8644f760cbec95fe68a38097c",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-integracion-white.svg",
+      "bytes": 316,
+      "sha256": "6a78f0b36d2eec1a7f5d56e7730fd95c646676c257f943dde0b757b3d5a54d2c",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-latencia-accent.svg",
+      "bytes": 312,
+      "sha256": "99b3f7524b65619cfaf3f4a0bdac1385d3aa12c7098ea4a3c90f820cd2598647",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-latencia-ink.svg",
+      "bytes": 312,
+      "sha256": "e30e7e479bce821c0e5994980764527988d02a06eea4f40d9ac9130daa7d888a",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-latencia-white.svg",
+      "bytes": 312,
+      "sha256": "f700ddd5f9bc914f220d354d6d8c10d06bc3cdcee81c56045d48e08c0cfa38d2",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-observabilidad-accent.svg",
+      "bytes": 349,
+      "sha256": "2bc49319c338590896be0bf26537c9522e51fb06c4c7e7210fac9d36f36f267f",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-observabilidad-ink.svg",
+      "bytes": 349,
+      "sha256": "84ae482f75666117a007a3ba0f35bcdf54b57b79a3b89b4de6f6570eaa278419",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-observabilidad-white.svg",
+      "bytes": 349,
+      "sha256": "9142967de4a1e176b99a7118291b4393279df1fe50a29bd3b4e3019637a63afe",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-seguridad-accent.svg",
+      "bytes": 315,
+      "sha256": "3a8f9159164f9d51f9bb418c1786ea0ec05ef0ef3e9ac5ed604ab67a919315ca",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-seguridad-ink.svg",
+      "bytes": 315,
+      "sha256": "fa1026cc1bd6d5e4f012c23e76467958c1a4b8c75233fd582d84974272b04783",
+      "format": "svg"
+    },
+    {
+      "path": "dist/icons/tenbeltz-icon-seguridad-white.svg",
+      "bytes": 315,
+      "sha256": "2c2c3eab405cfd1265a8fa35b532a454c9da97f08e518e039c5b7ff00bc865d8",
+      "format": "svg"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-avatar-accent.png",
+      "bytes": 7078,
+      "sha256": "b9e07b61e67c0b981ac56e5b18f803e41c0e80933d4729a110c261aacf21096b",
+      "format": "png",
+      "width": 400,
+      "height": 400,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-avatar-accent.svg",
+      "bytes": 3384,
+      "sha256": "af7f3a00acf0c8127c30bb52bd4030aab63f3a239a26cfc05a70e9663d04d187",
+      "format": "svg"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-avatar-ink.png",
+      "bytes": 7122,
+      "sha256": "1a58fe018095729f5198041146249ce36b53214fcfc66a1a2f827562bebd9db6",
+      "format": "png",
+      "width": 400,
+      "height": 400,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-avatar-ink.svg",
+      "bytes": 3384,
+      "sha256": "8a61c04190c891228d1997448caf590a2c7e42c18d63b676d81ac0cbd031f5b7",
+      "format": "svg"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-avatar-paper.png",
+      "bytes": 7065,
+      "sha256": "701c0d495165c2a7767a095e72735ffded5f08bf95c35deec5bff22cdcead3e2",
+      "format": "png",
+      "width": 400,
+      "height": 400,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-avatar-paper.svg",
+      "bytes": 3384,
+      "sha256": "8dc7c5d14c18cb300c0df7edc8468021deb5798969eb780cfdd962cfeda6c30e",
+      "format": "svg"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-empresa-editorial-en.png",
+      "bytes": 16367,
+      "sha256": "fd0a8a93433068fb7caedbb5177cc6583b8768d1e7b811e1d8359e1c80c4734a",
+      "format": "png",
+      "width": 1512,
+      "height": 256,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-empresa-editorial-en.svg",
+      "bytes": 28908,
+      "sha256": "6270ee68d74be1b6cdf5c2458cd1b61229d9be57f0a3b858ea44d08421f5a3db",
+      "format": "svg"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-empresa-editorial-es.png",
+      "bytes": 18545,
+      "sha256": "0f90d6244c2c82d6e1ade96a44c6a9c633a2d3c4dc320a94bc0110a4dc9154dc",
+      "format": "png",
+      "width": 1512,
+      "height": 256,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-empresa-editorial-es.svg",
+      "bytes": 33391,
+      "sha256": "6c3d57c1e74d8821e68b7670dc5ef38fa60f0104df00ffc157164c479eafaabf",
+      "format": "svg"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-empresa-en-guia.svg",
+      "bytes": 1472940,
+      "sha256": "093bf8ea0e9d9f8d12a6759c68a619e1ebe0903d42d297d41b3f00dfa9fa26c7",
+      "format": "svg"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-empresa-en.png",
+      "bytes": 150110,
+      "sha256": "bafca927feee5fe232e03475cbd6a1e6fbb852463cdc547f43ad1bc35aac9d41",
+      "format": "png",
+      "width": 1512,
+      "height": 256,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-empresa-en.svg",
+      "bytes": 1472831,
+      "sha256": "2fa671e32caac417779c8d12b44f615c386be24ee9de606e2719545bcbfad5bc",
+      "format": "svg"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-empresa-es-guia.svg",
+      "bytes": 1476611,
+      "sha256": "1f39d001f8304f92e7636c49a351b08154a5eaab3ca461df38bab593e81e6319",
+      "format": "svg"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-empresa-es.png",
+      "bytes": 152055,
+      "sha256": "a9b2e1234a6d05a3a3f1b4d71d1a37d488ff154d14fdb573ec0b6131b0a64cbe",
+      "format": "png",
+      "width": 1512,
+      "height": 256,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-empresa-es.svg",
+      "bytes": 1476502,
+      "sha256": "184fe1c26a78ccb3f64c6d69e1d38453be4f54627986d2c83c6c154675b44057",
+      "format": "svg"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-personal-en-guia.svg",
+      "bytes": 1473015,
+      "sha256": "d5ffea9b2356ed29150ab3dc48a11ac3031085fb732455cc474838755c49a910",
+      "format": "svg"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-personal-en.png",
+      "bytes": 317071,
+      "sha256": "5105605d53f8ed0c32f2ee084197914266832ff3f15030094d18ebc758dfaf37",
+      "format": "png",
+      "width": 1584,
+      "height": 396,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-personal-en.svg",
+      "bytes": 1472831,
+      "sha256": "c17e94f962c30e9ad9f96bf77204db510144c407e5944ea827343184d0fc8458",
+      "format": "svg"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-personal-es-guia.svg",
+      "bytes": 1476686,
+      "sha256": "47f095efa5445ffef28d4dd68ec0e074b7bfa85e5ff0647a50990183cbb2f376",
+      "format": "svg"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-personal-es.png",
+      "bytes": 320070,
+      "sha256": "8417355ba127aa653ea349226ef98b2bc5ec90a1306011b113bc462161327e2d",
+      "format": "png",
+      "width": 1584,
+      "height": 396,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/linkedin/tenbeltz-linkedin-personal-es.svg",
+      "bytes": 1476502,
+      "sha256": "cbae49405681a8d1dcce1a2ddffcecad63075f36476cfddd1e35f8d4a7431720",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-horizontal-black.pdf",
+      "bytes": 3297,
+      "sha256": "8c2f624d96d2aedd5f9101621c59b1ee8bf9b2ac3cb05ad635020a9a441fe6bf",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-horizontal-black.png",
+      "bytes": 27344,
+      "sha256": "8a930904d6d92365b1cc6064b74c33cab1361dc3c0c13dd979da6389127c7f24",
+      "format": "png",
+      "width": 1600,
+      "height": 351,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-horizontal-black.svg",
+      "bytes": 5975,
+      "sha256": "dac190a506a6abaa40a7d89b6f93c86dedc0cf808a65408993ced5250acc53f9",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-horizontal-color.pdf",
+      "bytes": 3327,
+      "sha256": "695e0d9a1bdb86555bdc750a59571c0a379db494f2bedceade15ab4affdc7baf",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-horizontal-color.png",
+      "bytes": 35091,
+      "sha256": "81b0821804862829fda6a2b605cbd6ff6b4e128537750bf5a20acb749ed5920d",
+      "format": "png",
+      "width": 1600,
+      "height": 351,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-horizontal-color.svg",
+      "bytes": 5975,
+      "sha256": "9ccf0a619db53f25d214ca1d6dfba2b4fb7b8c7d26e2ff206d8bb086a32e035f",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-horizontal-ink.pdf",
+      "bytes": 3311,
+      "sha256": "ecf922981d2b43b67d34a4c547b677ad7532ef8cb54536c38e2e04ea2efb351c",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-horizontal-ink.png",
+      "bytes": 33087,
+      "sha256": "02e3e022be46f4ebbc987f448d5ff29a24267bc89387892b7278409beaa7a89a",
+      "format": "png",
+      "width": 1600,
+      "height": 351,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-horizontal-ink.svg",
+      "bytes": 5973,
+      "sha256": "bd976fa14644c149d2cb93520f8f4b64129bb5ba83f699956cccede7c0e7ee68",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-horizontal-white.pdf",
+      "bytes": 3297,
+      "sha256": "3d1ace0933c33704fac0845ee8f11a687276251f74fbe9e642b7280145df1d55",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-horizontal-white.png",
+      "bytes": 29213,
+      "sha256": "eae8fa7d72e96c58cf6cf75e8e7a86ebd3a9bf0c7e049e500e35b127292a769b",
+      "format": "png",
+      "width": 1600,
+      "height": 351,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-horizontal-white.svg",
+      "bytes": 5975,
+      "sha256": "a11511a9f9649d6f47e4c737d917a11c19aed663d881047948720e532431a069",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-symbol-black.pdf",
+      "bytes": 1924,
+      "sha256": "948ba1f6ab3c90bb2b3be3f5d8da65af6ae02e9ad6bd3ddea0b4a750f25af71d",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-symbol-black.png",
+      "bytes": 36288,
+      "sha256": "7c45ebb9af0313323ae4443b9199f548e91388a8ea69a0bb74c956a3a31371d9",
+      "format": "png",
+      "width": 1024,
+      "height": 1170,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-symbol-black.svg",
+      "bytes": 3373,
+      "sha256": "57fe0d39dca0633a68ce4e767ebfa709d77efcfefd233032652117447b0f5723",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-symbol-color.pdf",
+      "bytes": 1933,
+      "sha256": "e2f993a410fbdb58b375293aaccea73700befff3b182c152c326124dc4380dc3",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-symbol-color.png",
+      "bytes": 50728,
+      "sha256": "7a11cf3c14658a27990a31ac234f5b698cffa105da131e967f2335acc9bcdbfd",
+      "format": "png",
+      "width": 1024,
+      "height": 1170,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-symbol-color.svg",
+      "bytes": 3373,
+      "sha256": "cc4c1510a2d16408ee6ee164e3b63d9113531937010c78a0402fc237941002ad",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-symbol-ink.pdf",
+      "bytes": 1938,
+      "sha256": "075572121af126d0353786e216031e1e64f6d061b1ebce8a8066ae9eeb988577",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-symbol-ink.png",
+      "bytes": 49028,
+      "sha256": "a63a57459d8d8e24f3b6d0768920f84399601850ab2c3cdf6aee614cfc0766e1",
+      "format": "png",
+      "width": 1024,
+      "height": 1170,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-symbol-ink.svg",
+      "bytes": 3371,
+      "sha256": "f94e23b8293020a33fb5a3ba1e921a83d7a721f5223a7437ccfb079e9c6c6b3d",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-symbol-white.pdf",
+      "bytes": 1924,
+      "sha256": "30687e0c2d14a36ffc0c3416d5ca91d7e991ea5cf34681e266699cc34346ddc5",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-symbol-white.png",
+      "bytes": 42058,
+      "sha256": "c70146613d56ef4e8bd1af8232c527d449eb6854c7c6169d4cbe7131874549bc",
+      "format": "png",
+      "width": 1024,
+      "height": 1170,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-symbol-white.svg",
+      "bytes": 3373,
+      "sha256": "a6d0cf7f18238c16faa45d9415b30f274ffbbf9d9452b5b59acc25cf98610700",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-vertical-black.pdf",
+      "bytes": 3298,
+      "sha256": "d50c1d4bb77c6b9b3abc323222699e4ac3f41725ed6717fc02774029bd0bb969",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-vertical-black.png",
+      "bytes": 45610,
+      "sha256": "71541524ac901a177b1f61585e37e493b18a29f01c85b7b8793f99a9caeaebcb",
+      "format": "png",
+      "width": 1600,
+      "height": 1196,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-vertical-black.svg",
+      "bytes": 5979,
+      "sha256": "a9e381c37bc78718a8cc1d616d72f36a3c39989b84edf767ddaee426a5e916bf",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-vertical-color.pdf",
+      "bytes": 3328,
+      "sha256": "09cd2ef6f8ec34ec98ac192bb440e0762132968390801685370d17388c57dac1",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-vertical-color.png",
+      "bytes": 58483,
+      "sha256": "8a9065f32f23033c6b36d2118b1ce2ceb244c6462680011aca13113d795e1064",
+      "format": "png",
+      "width": 1600,
+      "height": 1196,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-vertical-color.svg",
+      "bytes": 5979,
+      "sha256": "28b40fd1b486e04a7f2c241b354f7eab79e6deb83c24030c73736761b46829d0",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-vertical-ink.pdf",
+      "bytes": 3310,
+      "sha256": "12c087bde5aa8813e0eb09e3f87a901b9f0dfe942fb10394aa121e7842ebd64d",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-vertical-ink.png",
+      "bytes": 57075,
+      "sha256": "216108ba9cfc2b4c77751a55c2f9130d6fdb00bbcc9696ae4f23e1410986f7c9",
+      "format": "png",
+      "width": 1600,
+      "height": 1196,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-vertical-ink.svg",
+      "bytes": 5977,
+      "sha256": "3a0f2a67951f099f3a7250ac725ec2b12bd97e8b2221f2b049d0b4ebc3985067",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-vertical-white.pdf",
+      "bytes": 3298,
+      "sha256": "2736f50d47a4e78d63747762a22ab35983698f7701b80256713980bf604db8be",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-vertical-white.png",
+      "bytes": 50071,
+      "sha256": "ddb7cf5594693c007cbf99300671bfc16b054c1e988e52df2c025bec44f48197",
+      "format": "png",
+      "width": 1600,
+      "height": 1196,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-vertical-white.svg",
+      "bytes": 5979,
+      "sha256": "8dd3aa37641a948cbab25678555f14c14125440b6b6598646f8afb5b271e788f",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-wordmark-black.pdf",
+      "bytes": 1818,
+      "sha256": "67c9284e8a70a03f1b7b3015911d342d308516488cec9c177072eb2097ec6289",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-wordmark-black.png",
+      "bytes": 23928,
+      "sha256": "12ec4457bac06f8f7e2cd2a9c638979b6e191cb0a441820a31d706f8039854cd",
+      "format": "png",
+      "width": 1600,
+      "height": 450,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-wordmark-black.svg",
+      "bytes": 2794,
+      "sha256": "70f0501fdfe3369614de08ca296dc403031bd0e0b52095185f6e74ad0c7c6171",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-wordmark-color.pdf",
+      "bytes": 1847,
+      "sha256": "33a665a5f92a7ce031449769367eefb84944dfb52190003a5dd505791b24d41d",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-wordmark-color.png",
+      "bytes": 28861,
+      "sha256": "707a294283c601f06df2928f90ae68cf138333b57b56f36502700d33d40876a6",
+      "format": "png",
+      "width": 1600,
+      "height": 450,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-wordmark-color.svg",
+      "bytes": 2794,
+      "sha256": "99ba4922f38a69f9b442e29835962d794ce3816f9a27d9a51f900841818e1ab6",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-wordmark-ink.pdf",
+      "bytes": 1834,
+      "sha256": "78569dae7221370774e24c0117646ed6b5b4255cbc4280654eed2d297be36def",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-wordmark-ink.png",
+      "bytes": 28506,
+      "sha256": "2813e2f9e186e0ec58338d22c13c514d3928c49ba7c9de7f75620caf12f61a4f",
+      "format": "png",
+      "width": 1600,
+      "height": 450,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-wordmark-ink.svg",
+      "bytes": 2792,
+      "sha256": "d4a8b7443208eea866d95dea3ae7fcfbdbff562bc632f40d8e653815f969f067",
+      "format": "svg"
+    },
+    {
+      "path": "dist/logos/tenbeltz-wordmark-white.pdf",
+      "bytes": 1818,
+      "sha256": "cf1e38456c100f5d6b31030844d6d956e47819bde6fa099bee413dca6ec2b97d",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/logos/tenbeltz-wordmark-white.png",
+      "bytes": 25692,
+      "sha256": "36e13bffc4c85edc94db496a0d2bb4534be38b7eb02be4932b79a6419f628c2c",
+      "format": "png",
+      "width": 1600,
+      "height": 450,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/logos/tenbeltz-wordmark-white.svg",
+      "bytes": 2794,
+      "sha256": "8eca1cc40b94803b23ff3b8f1e537f9842a8ec24004b899eb904ff5ab8a03e61",
+      "format": "svg"
+    },
+    {
+      "path": "dist/mockups/tenbeltz-mockup-bottle.png",
+      "bytes": 2276348,
+      "sha256": "7d6b10730c533dbe61bf01feaa47055ce22ec13457e1fc352d2cd0e0c842cae2",
+      "format": "png",
+      "width": 1370,
+      "height": 1148,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/mockups/tenbeltz-mockup-collection.png",
+      "bytes": 2784842,
+      "sha256": "afd1783df323bae305e4178d3ad2957005cd4fd8289803acbb2893ce30b42841",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/mockups/tenbeltz-mockup-mug.png",
+      "bytes": 2201128,
+      "sha256": "0c3668eda46583dfc12a8f8a136a3052f5551885bc077e0aaa6684612519c0e9",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/mockups/tenbeltz-mockup-notebook.png",
+      "bytes": 3238995,
+      "sha256": "9c0d01331faf9a4717f2d96d432207e6e56e7c51fa78ff30f56d8abd10ec0628",
+      "format": "png",
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/mockups/tenbeltz-mockup-tote.png",
+      "bytes": 2885616,
+      "sha256": "70d41c0d1f6e76d158a32705d762f4f58f55530aef9bc3387f19ae761eb5f06c",
+      "format": "png",
+      "width": 1145,
+      "height": 1374,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/mockups/tenbeltz-mockup-tshirts.png",
+      "bytes": 2958856,
+      "sha256": "84452578ef7a612b61f580b17a51ad307eae1fa98935d902287a77888cbcb00b",
+      "format": "png",
+      "width": 1312,
+      "height": 1199,
+      "mode": "RGB"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-01.png",
+      "bytes": 427199,
+      "sha256": "9faf3594a67e4cf442bbe10f13c6c5bcb25270d49fc95a26c922a1d0b4ed820a",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-01.svg",
+      "bytes": 1535941,
+      "sha256": "933b85737391376c1aa2bbabb8423c24d0756fe3a9df03e26e8d176490a41fc8",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-02.png",
+      "bytes": 83669,
+      "sha256": "7e5b332ac6b03112ec2c0119ce9946cd43d1a9814d45c8bf4110f93aeb3f8548",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-02.svg",
+      "bytes": 141781,
+      "sha256": "11cb179b5968dc851299fe5e0f0289bb397a0ce8bbda85b7deead342e760b99f",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-03.png",
+      "bytes": 68827,
+      "sha256": "83a6f26a3cd1b2f36e0fd6cc99f8da5b73a3c728a4f5d53ad49ed37d5da81acf",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-03.svg",
+      "bytes": 130826,
+      "sha256": "3fead90f1d573ee561405d9ba72ce99c3149997c3aa4e79d8fff81d6c0d1959f",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-04.png",
+      "bytes": 70190,
+      "sha256": "f8cdf491140410bcc2be2cea9ef6794622c0e0c6cfc080da4df6f89bb2b0a6f5",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-04.svg",
+      "bytes": 142901,
+      "sha256": "243f310ff184476fdea330dd6dd396509010594f512c28a0565dc1bffe0246e5",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-05.png",
+      "bytes": 67744,
+      "sha256": "335ddba2a81231e50a508c8f6d860783a927ae187d58b454d9ef34a773bf288f",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-05.svg",
+      "bytes": 142695,
+      "sha256": "b39e4f5e02da0e2f16424e83b339944aa88caf57a98c4a76b68f9d47017afeec",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-06.png",
+      "bytes": 82657,
+      "sha256": "b29321b8d26e4848f92914a3529eeef33e164884bd249aebe4a1b19d02916d0f",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-06.svg",
+      "bytes": 116651,
+      "sha256": "dd5e5efceabdf92f76a5ce3e10f32aa1a5d4816ebc420a566a96d46ace476b5f",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-07.png",
+      "bytes": 60499,
+      "sha256": "973474d9218990afea9dc3aea1f9d5ddf7d947a2689671ff4ff2c2b7bd2ede15",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-07.svg",
+      "bytes": 121821,
+      "sha256": "b34cc33e0532e7e8d2c6a51f756666f39a9368142233170a5abc9ee065d460dc",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-08.png",
+      "bytes": 67739,
+      "sha256": "5e6813d47dd899db9c7ee55020cb047253cae42a8470db1cb0bd6fd6fdf8a149",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-08.svg",
+      "bytes": 118733,
+      "sha256": "d33ea29a3f614a65318c1b0805efabf32d1337c7cbc1ef0e62685e7d96f4db3f",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-09.png",
+      "bytes": 74219,
+      "sha256": "a54c3cea4ffe138567d9107d87e944e15a733eb7f0cf83d68f7c4db6467ba359",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-09.svg",
+      "bytes": 134463,
+      "sha256": "df170f62510725e4d599e89c37434af4ce3ed3119580a1c7ec0ca1701ea64f45",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-10.png",
+      "bytes": 75186,
+      "sha256": "933d4fb6922f27f30080cbbda81cbba7609eeca864c892136885721c528f62f1",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-10.svg",
+      "bytes": 136749,
+      "sha256": "6d6fdeb59ed19d0768d490862ea493fc8be9e76b92617b9d0f04bb6867362ccf",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-11.png",
+      "bytes": 61891,
+      "sha256": "2c467e41f45604bc0b7f2ce8c8449a69849457b673edaaab69381d795851b8df",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-11.svg",
+      "bytes": 113861,
+      "sha256": "c259a40f90a92af847cc6778a6aaf539c819f4d7d5740691fbc722fe7608b3b9",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-12.png",
+      "bytes": 69105,
+      "sha256": "f67c841c0733fa21f8ea2e61e01a401664e7c9e5f9af95e5d32a6fd351985802",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-en-12.svg",
+      "bytes": 105916,
+      "sha256": "b8063146c6bd6bcf1e79e62b140d6e9a63bbc495199271a9b073cf1876ca25ad",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-01.png",
+      "bytes": 432302,
+      "sha256": "361d0c13037d3aef2d09ce30527a93efa79717f39beff9073361c77b7266729e",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-01.svg",
+      "bytes": 1540744,
+      "sha256": "d232410e7b2a29f2019de89d4a5f1ab60f2bd1f6fc300c478c25ba47e32022aa",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-02.png",
+      "bytes": 83268,
+      "sha256": "17e221028f338570a41cb21222b6696bc926686086a51ba28267ecca54071e9f",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-02.svg",
+      "bytes": 145851,
+      "sha256": "c01ead7a3eb9792c4c83f2f7a81afaf4e3b92aee07ccf62f0f618023372805ac",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-03.png",
+      "bytes": 70769,
+      "sha256": "9e11ecabda128ffda0a4bbc79d6efc8d69bc4bcc062cea47d52ac7b61be61e30",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-03.svg",
+      "bytes": 139190,
+      "sha256": "7b8617d9fd45425fb51169db10b7d9e12e1481c657cdca583f094e2dd9a707ff",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-04.png",
+      "bytes": 73470,
+      "sha256": "ed31dae2eda2d262221e7db0aa133369bf881f92d3ce08be54797e2563dcffe4",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-04.svg",
+      "bytes": 152450,
+      "sha256": "9d0e1623b906d4c765300190ccb60ca96b0c5dca44e3d65f4297089e49949614",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-05.png",
+      "bytes": 72586,
+      "sha256": "fc07f5d90b35363a0d1a413a8f6b612d4f23acaecf76a8facb69b90be30695bf",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-05.svg",
+      "bytes": 151933,
+      "sha256": "1d5e1a39906deada2901b5c2836f5ed2e2e426fa5e0c95d3a7c793a4b4668cf4",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-06.png",
+      "bytes": 90007,
+      "sha256": "e031066e23022957dee465efa785a14fb58a3144e4c2b0c4a221e1e00fdedd49",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-06.svg",
+      "bytes": 129521,
+      "sha256": "65c7af4ca7028e41e5712305bdfb7868fb2370b146f60e0de08df670aa392f70",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-07.png",
+      "bytes": 64214,
+      "sha256": "53cde7915d4979916f4610749b57c4abb9a8a08e5a3f1159ee6374859826ae3c",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-07.svg",
+      "bytes": 127933,
+      "sha256": "7c74a5ddc119c82e7c448caf9f0a4248dc059f7fb543ea8311690083ac8fd86d",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-08.png",
+      "bytes": 68596,
+      "sha256": "d449b655293486f5dce2e2329093e8630f5e7f5b905be5c669d4ee64d49a64e1",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-08.svg",
+      "bytes": 122486,
+      "sha256": "6a88959553d214fc21084a8c44460b54058148f3026d70060ef56af43c46b589",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-09.png",
+      "bytes": 75688,
+      "sha256": "12d5ac6905109d7c887e60d5e25085ee4f53ac199f0ae2c9f1dece7453691a33",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-09.svg",
+      "bytes": 137154,
+      "sha256": "4b391fa3bf6afd0620652e13021fe924448dd7edbfc12bc40326fbfb6b18a32a",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-10.png",
+      "bytes": 80033,
+      "sha256": "357f7964485064054eaad30ac2a8f5fb3bc58fc1f2e9fce47f0590b3137937a2",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-10.svg",
+      "bytes": 143365,
+      "sha256": "ac0ab9bbe4c5f8bf1fb3446d4bbfb6d24ce1f7c1ce8acf820f5a6f6c1a27a522",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-11.png",
+      "bytes": 67359,
+      "sha256": "ad819f1ea0db05ea8892bc2cadb9036be89ac11b153edaa20becc692d4228115",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-11.svg",
+      "bytes": 126566,
+      "sha256": "d84aa4960cf01831cd446c4ebca99429590aea3152b2028cc2134d91fb2160d3",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-12.png",
+      "bytes": 70328,
+      "sha256": "fd19000d86d12a06fbff0853fceb72b036d3a1a8b2104a9704f463bac07965d9",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-es-12.svg",
+      "bytes": 107138,
+      "sha256": "cb0122bd12dd486b43ac28ec61080a630d2368930655f6230966b66db8069921",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-01.png",
+      "bytes": 419457,
+      "sha256": "7ab6199d92cec25ee93128108dfa43914c039d92d4c310dbf3eb60702acf86e4",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-01.svg",
+      "bytes": 1523312,
+      "sha256": "0467570585bcc0bf6427f508e46843bb30ae702ba969bd4f8c0a40a280b8cacc",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-02.png",
+      "bytes": 69014,
+      "sha256": "bac6fcd83e7799eb1225fb526b9f365aed649e26b548b451ee5dfaa6c61669da",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-02.svg",
+      "bytes": 106964,
+      "sha256": "31c00ee9aa76ed6114c6bb4d86e9d14bb5b69480469c93adf7cfd4952e05a5d9",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-03.png",
+      "bytes": 59164,
+      "sha256": "30b1bd43fbf6ef7a6d38ef4ac9ae90fae4d9b9fbbeff3c53cb76818b3ff7b89e",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-03.svg",
+      "bytes": 96934,
+      "sha256": "6ac05e89df78245aa1c16683b2b9a405a82a95e73d52f221a335f3e4a51cafa5",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-04.png",
+      "bytes": 44107,
+      "sha256": "af58abadee7791d086d0e731bc3a643f5f2a5d337034e1f1de176df1e1ac0960",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-04.svg",
+      "bytes": 97163,
+      "sha256": "b60eadf6fb2982503748306ecfafffbfb0b0bc00b6fd32082472e688864a1848",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-05.png",
+      "bytes": 44963,
+      "sha256": "aead8b10b28ca2c222800547f525e3912910f33a7e48a7d8abf7a07351380787",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-05.svg",
+      "bytes": 94095,
+      "sha256": "14086919cf71a01c4aad5a7d99aed5419ea54765e621ad566cb41592679340d1",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-06.png",
+      "bytes": 73627,
+      "sha256": "c5af0af0ee860215358c021c56e0836a58e56d318655913b646210bf86d3cde3",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-06.svg",
+      "bytes": 130630,
+      "sha256": "6e8b31a120cc3318a202fdd92d16c9a94e959e59ed7c6a74a3724c2c2dbc2651",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-07.png",
+      "bytes": 51644,
+      "sha256": "8aa9b81db3fcb5796ca2ad9066aa89235c117f45bd56d60d41530307521e67f6",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-07.svg",
+      "bytes": 97811,
+      "sha256": "171f0f68a1d6f888a2ed34e127f521f655749c047490adb8dcebd782df638a96",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-08.png",
+      "bytes": 48110,
+      "sha256": "1afc9b1fd5b9bb71e6456125f6339fcc0a566b3e031fd097e4eb890e4b215367",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-08.svg",
+      "bytes": 82791,
+      "sha256": "784d731dbead5fb45d31792cbb8c3fd1796a53b60711c30018dd739dc11bbdfb",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-09.png",
+      "bytes": 54283,
+      "sha256": "9a0cef27f175e077b7d9a06c4fb5af2d6c6df506754f4c05584e79e526ea757c",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-09.svg",
+      "bytes": 99501,
+      "sha256": "d8b626e029736f2f3436841c0b3af24c486509c5789ef4da0b8940ad2290b870",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-10.png",
+      "bytes": 67062,
+      "sha256": "511e536eb168c56f17364041df5a7bdcfdc4254bce56e144d1929480036312f3",
+      "format": "png",
+      "width": 1600,
+      "height": 900,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/presentations/previews/tenbeltz-template-10.svg",
+      "bytes": 104775,
+      "sha256": "e51da56537fa1cbd6f99e9a517f122e56601ebd2dc76f3ac60ad9e060b2bd759",
+      "format": "svg"
+    },
+    {
+      "path": "dist/presentations/tenbeltz-en.html",
+      "bytes": 3380,
+      "sha256": "03021d9e0ab01a944b55241679501b2e539a54d66abfd6d29041b14033a9af1f",
+      "format": "html"
+    },
+    {
+      "path": "dist/presentations/tenbeltz-en.pdf",
+      "bytes": 1572236,
+      "sha256": "af4a8ae06ef255710ebfc30e0cb635982fb580c9107ee5a9e845782308ee03da",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/presentations/tenbeltz-en.pptx",
+      "bytes": 1244183,
+      "sha256": "0084f2dc6f3f49ff97a6fd33ffd7fc55c496d7e75d66c68377f0bede10da8c21",
+      "format": "pptx"
+    },
+    {
+      "path": "dist/presentations/tenbeltz-es.html",
+      "bytes": 3400,
+      "sha256": "9d97cf5752f6cfaaeb2c41c95562f6ab11f1c67ed3473047846bcd0056d2518c",
+      "format": "html"
+    },
+    {
+      "path": "dist/presentations/tenbeltz-es.pdf",
+      "bytes": 1572840,
+      "sha256": "50fef97e885a797af8db9730de810a58a510c3e28a5a49245cbfc0bdafbe8c04",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/presentations/tenbeltz-es.pptx",
+      "bytes": 1244395,
+      "sha256": "a7d9964543055086cf2390fd934295ef77fc297434ceee8d7d728164925e6267",
+      "format": "pptx"
+    },
+    {
+      "path": "dist/presentations/tenbeltz-template.html",
+      "bytes": 3104,
+      "sha256": "6e5a188c5e2ccf266b498b9c78a88d91db6092d5539ccdb30c2637f959c1218b",
+      "format": "html"
+    },
+    {
+      "path": "dist/presentations/tenbeltz-template.pdf",
+      "bytes": 1551219,
+      "sha256": "ea84ccdaeea68a2b7589fb4b5bbc55b3156675afe774945db06332d2fffedcab",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/presentations/tenbeltz-template.pptx",
+      "bytes": 1226320,
+      "sha256": "6d9431d3d11548cf1de477676fed0f70ce380bee4b6a8367945991d8149afe32",
+      "format": "pptx"
+    },
+    {
+      "path": "dist/social/tenbeltz-carousel-evaluacion-01.png",
+      "bytes": 50852,
+      "sha256": "d1f467bddf5a5a47966af85535be8cc78ace1216f12747c8bf89406b75ecf959",
+      "format": "png",
+      "width": 1080,
+      "height": 1350,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-carousel-evaluacion-01.svg",
+      "bytes": 43441,
+      "sha256": "97a65a584ac2f70b5cbaf0b20bafd36ea43457e9a65f5f006927fb52a9f69817",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-carousel-evaluacion-02.png",
+      "bytes": 46977,
+      "sha256": "d251b89df203c3d04d29263e4d029bf8c8a524b7b3d521f17121c641c471d9c1",
+      "format": "png",
+      "width": 1080,
+      "height": 1350,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-carousel-evaluacion-02.svg",
+      "bytes": 48138,
+      "sha256": "6da042b7a76992ff3dc8cf3b2a41e1afd61117221a6ded5d65c36a39f5bfae7e",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-carousel-evaluacion-03.png",
+      "bytes": 59157,
+      "sha256": "977c9a838940622e673135ba352d78ef44116f32cd464bceb4a3b0b2e4e69b27",
+      "format": "png",
+      "width": 1080,
+      "height": 1350,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-carousel-evaluacion-03.svg",
+      "bytes": 57205,
+      "sha256": "fc4c2d559c0313b0993e37dd9ede6487314438a10e70e3b745ddfcba43b13225",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-carousel-evaluacion-04.png",
+      "bytes": 47288,
+      "sha256": "476c167dbb51d5fafe257bcc5bb056a714f731c63b31d428d4f23d5fc14a0397",
+      "format": "png",
+      "width": 1080,
+      "height": 1350,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-carousel-evaluacion-04.svg",
+      "bytes": 45056,
+      "sha256": "74f17595d1743d94aa4ceb57bb9583363d1bbd89737c55e00ec251fdc49ecd45",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-carousel-evaluacion-05.png",
+      "bytes": 51518,
+      "sha256": "939c380ba896ec2defc2734381b10fdc4f55a505693f9ecacffb76a4ce9b59ba",
+      "format": "png",
+      "width": 1080,
+      "height": 1350,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-carousel-evaluacion-05.svg",
+      "bytes": 51778,
+      "sha256": "bf86e27f1764c3ee9457f96dbfd2f3238ed1bc043fc8afbfab187207146afbf0",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-carousel-evaluacion.pdf",
+      "bytes": 266586,
+      "sha256": "52f9fdd55610e1e1db3dd633ea8068868c76c8f8f549223cf5bc73c92da881d4",
+      "format": "pdf"
+    },
+    {
+      "path": "dist/social/tenbeltz-link-post-en.png",
+      "bytes": 445958,
+      "sha256": "05ab9a9d6cbf738e758ea798ad7abd73003098eeedfa7b3eede132af35df17d0",
+      "format": "png",
+      "width": 1200,
+      "height": 627,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-link-post-en.svg",
+      "bytes": 1478621,
+      "sha256": "27a09a500ec2f124311e297c13ef6c54698535c6a33e86f024f84263f4b19a63",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-link-post-es.png",
+      "bytes": 449244,
+      "sha256": "fc2ce92aaf6afb731c69835185b1a9cdba0c3b2659e2379a493db2969928de09",
+      "format": "png",
+      "width": 1200,
+      "height": 627,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-link-post-es.svg",
+      "bytes": 1481307,
+      "sha256": "0ab8566f26d6f53ee3b3fb5becf917c54424357c23281296fa5ebc45daef90b6",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-caso-plantilla-portrait.png",
+      "bytes": 46335,
+      "sha256": "883625b2a27673ba0256e89372ca1b206433f2ec65b6fedca5312e0a892c58a7",
+      "format": "png",
+      "width": 1080,
+      "height": 1350,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-caso-plantilla-portrait.svg",
+      "bytes": 39138,
+      "sha256": "5413717983aa63785906bc095b84550057ced3a6e02d784474fb494026f3aa1c",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-caso-plantilla-square.png",
+      "bytes": 43392,
+      "sha256": "d0510f9d2e87dc5d29c2502da425c2b0489ac752335ce4f838f9b31d8f8cf8fc",
+      "format": "png",
+      "width": 1080,
+      "height": 1080,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-caso-plantilla-square.svg",
+      "bytes": 39098,
+      "sha256": "5031f5ee583ffa2e984c34573a72575c1d9ccf55b6e407ed4816c27dacd4581d",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-formacion-portrait.png",
+      "bytes": 45049,
+      "sha256": "95c51b4a46d01545db775dcffc59fd8aa5cd718e7fae3d2b79a98abf59b94cc2",
+      "format": "png",
+      "width": 1080,
+      "height": 1350,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-formacion-portrait.svg",
+      "bytes": 38114,
+      "sha256": "5c4000f0f5aea8d7bd75e563c390955ddc12576c4a0b3a20c62fcaa1bf62b370",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-formacion-square.png",
+      "bytes": 41557,
+      "sha256": "73cc0c3ccae74383c230c12a64fdd62b686b580bf1dceb6d6d68f2a4fc7d6f5f",
+      "format": "png",
+      "width": 1080,
+      "height": 1080,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-formacion-square.svg",
+      "bytes": 38074,
+      "sha256": "be2ae2cbb230255f0358ccd91e485858e45314e20e95042b4a57e4ab0a744003",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-idea-tecnica-portrait.png",
+      "bytes": 45889,
+      "sha256": "1dc14a77809d14638f17ec6974575c918070814506dcb84c8055da0d56c681ea",
+      "format": "png",
+      "width": 1080,
+      "height": 1350,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-idea-tecnica-portrait.svg",
+      "bytes": 45396,
+      "sha256": "4ad38605d3939d1d8f1d8f11f67d2b42f1fa235697a6ec28f18109dbdbe05fc2",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-idea-tecnica-square.png",
+      "bytes": 43388,
+      "sha256": "9563951ad715ecea376fe3462b4a7f3ca98abe804733f111449883fabab81769",
+      "format": "png",
+      "width": 1080,
+      "height": 1080,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-idea-tecnica-square.svg",
+      "bytes": 45356,
+      "sha256": "b09d01e57d6e1874596096b52b06703d4691bb5a9c4d5faeb4396026af7dbff9",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-servicios-portrait.png",
+      "bytes": 41173,
+      "sha256": "b0a6042c1e6969359ca5eb0f8c543073aaca881bed4e34abd3451a0604a634f3",
+      "format": "png",
+      "width": 1080,
+      "height": 1350,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-servicios-portrait.svg",
+      "bytes": 34955,
+      "sha256": "54d1108d41533fb9c9c3ad745093169d273e47130c28760b99585d56d1b10dec",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-servicios-square.png",
+      "bytes": 38010,
+      "sha256": "fad6f7b75c8703d4114785f4c8a8cbe7b9027252990f9d266e4240a38de98533",
+      "format": "png",
+      "width": 1080,
+      "height": 1080,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-post-servicios-square.svg",
+      "bytes": 34891,
+      "sha256": "91831950e407526b569618eb7b91a3c7d24d13977565323824ecfcb26554ced8",
+      "format": "svg"
+    },
+    {
+      "path": "dist/social/tenbeltz-story-formacion.png",
+      "bytes": 790127,
+      "sha256": "56101c2e350f97a86a22cae2d4d96caedd79fe3b45e1946176cea83c0c3c0c64",
+      "format": "png",
+      "width": 1080,
+      "height": 1920,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/social/tenbeltz-story-formacion.svg",
+      "bytes": 1485531,
+      "sha256": "40282553f2757fc910e104a32495db6f29e02f3f6a7f353f239b5fdc00579d8d",
+      "format": "svg"
+    },
+    {
+      "path": "dist/web/contrast.json",
+      "bytes": 553,
+      "sha256": "959d68939be62afda6be74c18a43ebfad6f8160969524e44a74f1e9b7a62dc27",
+      "format": "json"
+    },
+    {
+      "path": "dist/web/design-tokens.css",
+      "bytes": 492,
+      "sha256": "165c9afed05d1996401a0b0cbdd7221d190e664c3b0daa1af1d6fda2096a6d3d",
+      "format": "css"
+    },
+    {
+      "path": "dist/web/design-tokens.json",
+      "bytes": 950,
+      "sha256": "546d7fa4d6afbdd1766d47fadf014c81a4552b8b138a7c40f973a4b7b7ec0a4b",
+      "format": "json"
+    },
+    {
+      "path": "dist/web/palette.csv",
+      "bytes": 395,
+      "sha256": "7727cb5e278879f8772ef1ded38b344ed684dbcd22943cad87639de023471f02",
+      "format": "csv"
+    },
+    {
+      "path": "dist/web/site.webmanifest",
+      "bytes": 383,
+      "sha256": "6254309af6adb41528383919794427443636ee7815033751f1c62e8d4a51bb05",
+      "format": "webmanifest"
+    },
+    {
+      "path": "dist/web/tenbeltz-favicon.ico",
+      "bytes": 3475,
+      "sha256": "58abb2d63724fe819d360a8b61518c88fa9c68d14fadf046bbf08052620519cc",
+      "format": "ico"
+    },
+    {
+      "path": "dist/web/tenbeltz-favicon.svg",
+      "bytes": 3386,
+      "sha256": "cb7902ad2b380aacc4053e8e826056aa70c770fb96e6979d8b0d9ac5b75f9f10",
+      "format": "svg"
+    },
+    {
+      "path": "dist/web/tenbeltz-icon-16.png",
+      "bytes": 324,
+      "sha256": "fada46ee85efd84641f4aae1eb40182a90beda5f2df3721f345ce9f6970c65cf",
+      "format": "png",
+      "width": 16,
+      "height": 16,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/web/tenbeltz-icon-180.png",
+      "bytes": 3216,
+      "sha256": "d96eec38ca6653e1ec6d314eb89a567ebce70b1dd5af585340a7ae13e193e729",
+      "format": "png",
+      "width": 180,
+      "height": 180,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/web/tenbeltz-icon-192.png",
+      "bytes": 3505,
+      "sha256": "cd6d9d6fe7c0723fa8f3fd22c8e35171a6eb01832227af1bd6dc83e9be7ef13c",
+      "format": "png",
+      "width": 192,
+      "height": 192,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/web/tenbeltz-icon-32.png",
+      "bytes": 591,
+      "sha256": "7854fcbd50f04e9f33cc0634a94ee6b0a606c69c97ca0553335d7a43fcf63276",
+      "format": "png",
+      "width": 32,
+      "height": 32,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/web/tenbeltz-icon-48.png",
+      "bytes": 875,
+      "sha256": "b28ac8e2ddd4a3d920333b614ad44cde73c3980dbfe0b0f401de4905d8389b47",
+      "format": "png",
+      "width": 48,
+      "height": 48,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/web/tenbeltz-icon-512.png",
+      "bytes": 11215,
+      "sha256": "1252643ff556dcb70bdffd9209dc96cad92c28a276af8ede39fb400f65fa15cf",
+      "format": "png",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/web/tenbeltz-icon-96.png",
+      "bytes": 1641,
+      "sha256": "699c9feef8049c37def5495d96cc4f5c76823acaa2c9c7e8d14cf00e4f77db4c",
+      "format": "png",
+      "width": 96,
+      "height": 96,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/web/tenbeltz-og-en.png",
+      "bytes": 445993,
+      "sha256": "b87f60f9731cefbede5e019db802cba52b2173b240323ce3ee92e3e22fd06ad5",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/web/tenbeltz-og-en.svg",
+      "bytes": 1478628,
+      "sha256": "c934efffaab3d7ceed134dca1a95aede9ba73f57144bb9a6e91e2f3c2c69735f",
+      "format": "svg"
+    },
+    {
+      "path": "dist/web/tenbeltz-og-es.png",
+      "bytes": 449280,
+      "sha256": "a2cfb4f3c1e57916c3ce5e16a85f17a674aaf2f136c1e6db8cb75a0202b3bcb8",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/web/tenbeltz-og-es.svg",
+      "bytes": 1481314,
+      "sha256": "80e08aa04a3d979ba288f228e00072717422200d48a5c5b7fbaee8327be8d242",
+      "format": "svg"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "source/artwork/abstract-flower.webp",
+      "bytes": 196640,
+      "sha256": "834f237fbddbad7c70b2ace61b3d80d3f855103eaeee8cc18eee46688ac23778"
+    },
+    {
+      "path": "source/book.json",
+      "bytes": 23072,
+      "sha256": "6d3ddcc65cfa7f8ec86fd25d03fc2eadafa3b44be88875676a4473a883d5d06e"
+    },
+    {
+      "path": "source/example-project.json",
+      "bytes": 1641,
+      "sha256": "b43a83f9c58f2f9c2fc5d082cc08a52750c00d66ed76f580e85cbb6315fb2c81"
+    },
+    {
+      "path": "source/fonts/IBMPlexSans-Medium.ttf",
+      "bytes": 202460,
+      "sha256": "331c8639d7598b2cde62a911a71db195e30cb655cd6bdf2e324a7e984955f907"
+    },
+    {
+      "path": "source/fonts/IBMPlexSans-Regular.ttf",
+      "bytes": 200500,
+      "sha256": "975dcda37d80f038dcd143c22e33ca2d97a0cc5a929aace1c749153b0fe1afa5"
+    },
+    {
+      "path": "source/fonts/IBMPlexSans-SemiBold.ttf",
+      "bytes": 202632,
+      "sha256": "a20caf8286023a6a7a85e40b1d2a4ae9fc3e3b1f9eda8f4c542dd4986af67bb1"
+    },
+    {
+      "path": "source/fonts/OFL.txt",
+      "bytes": 4456,
+      "sha256": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da"
+    },
+    {
+      "path": "source/fonts/ibm-plex-sans-latin.woff2",
+      "bytes": 40240,
+      "sha256": "056e4e2459f57a0033c8c9c844ff19d6e42ac8602027803d4345823bcc939818"
+    },
+    {
+      "path": "source/identity.json",
+      "bytes": 1062,
+      "sha256": "a1a375efce4e00a47748c350963f712bcf21b6fd1106d14d3c28f2e25dc97821"
+    },
+    {
+      "path": "source/logos/tenbeltz-mark-original.svg",
+      "bytes": 3374,
+      "sha256": "0465838901398ce2b913bf6a33fea97d62ae100c3b5982ff55eef0cc28192c52"
+    },
+    {
+      "path": "source/mockups/bottle.png",
+      "bytes": 2276348,
+      "sha256": "7d6b10730c533dbe61bf01feaa47055ce22ec13457e1fc352d2cd0e0c842cae2"
+    },
+    {
+      "path": "source/mockups/collection.png",
+      "bytes": 2784842,
+      "sha256": "afd1783df323bae305e4178d3ad2957005cd4fd8289803acbb2893ce30b42841"
+    },
+    {
+      "path": "source/mockups/mug.png",
+      "bytes": 2201128,
+      "sha256": "0c3668eda46583dfc12a8f8a136a3052f5551885bc077e0aaa6684612519c0e9"
+    },
+    {
+      "path": "source/mockups/notebook.png",
+      "bytes": 3238995,
+      "sha256": "9c0d01331faf9a4717f2d96d432207e6e56e7c51fa78ff30f56d8abd10ec0628"
+    },
+    {
+      "path": "source/mockups/prompts.json",
+      "bytes": 9685,
+      "sha256": "8fdcc9f35a4210827d2c4a0186074deed68230d8b14a5056618ea13b5e6f2672"
+    },
+    {
+      "path": "source/mockups/tote.png",
+      "bytes": 2885616,
+      "sha256": "70d41c0d1f6e76d158a32705d762f4f58f55530aef9bc3387f19ae761eb5f06c"
+    },
+    {
+      "path": "source/mockups/tshirts.png",
+      "bytes": 2958856,
+      "sha256": "84452578ef7a612b61f580b17a51ad307eae1fa98935d902287a77888cbcb00b"
+    },
+    {
+      "path": "source/slides.json",
+      "bytes": 11918,
+      "sha256": "f6c1f081e8cdde0fb6799e152b2d0422a5e11edb8b1810d021165c5c9171c97b"
+    },
+    {
+      "path": "source/social.json",
+      "bytes": 1625,
+      "sha256": "d2bd6322b1ad5b6745a97ebe57e15b88802e66889a4875a499c0f45f91b1a78d"
+    }
+  ]
+}

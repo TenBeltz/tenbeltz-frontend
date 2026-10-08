@@ -1,0 +1,32 @@
+{
+  "fictional": true,
+  "client": "Ladera Cloud (empresa ficticia)",
+  "product": "SaaS de gestión de operaciones para equipos de servicios",
+  "project": "Asistente de soporte con respuestas verificables",
+  "date": "08 octubre 2026",
+  "proposal": {
+    "durationWeeks": 6,
+    "budgetEUR": 12000,
+    "phases": [
+      {"name":"Definición y datos","weeks":"1–2","amount":2400,"deliverable":"Muestra de evaluación, inventario documental y arquitectura acordada."},
+      {"name":"Construcción del piloto","weeks":"3–4","amount":6000,"deliverable":"Asistente integrado en un entorno de prueba, recuperación documental y citas."},
+      {"name":"Evaluación y entrega","weeks":"5–6","amount":3600,"deliverable":"Informe de calidad, observabilidad, guía de operación y decisión de lanzamiento."}
+    ]
+  },
+  "evaluation": {
+    "sampleSize":120,
+    "categories":[
+      {"name":"Consultas frecuentes","total":60,"baselinePass":46,"pilotPass":56},
+      {"name":"Casos complejos","total":40,"baselinePass":26,"pilotPass":34},
+      {"name":"Fuera de alcance","total":20,"baselinePass":12,"pilotPass":16}
+    ],
+    "baselinePass":84,
+    "pilotPass":106,
+    "latencySeconds":{"baselineP50":1.8,"pilotP50":2.4,"baselineP95":3.2,"pilotP95":4.6},
+    "targetPassPercent":90,
+    "targetP95Seconds":5,
+    "pilotErrorCounts":{"documentMissing":6,"incompleteAnswer":4,"incorrectCitation":2,"unnecessaryAnswer":2},
+    "dailyQualityPercent":[78,81,84,83,86,88,88.3]
+  },
+  "notice":"Ejemplo ficticio de diseño. Cliente, presupuesto y métricas son ilustrativos; no representan un proyecto, resultado u oferta real de TenBeltz."
+}

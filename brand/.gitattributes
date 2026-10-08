@@ -1,0 +1,12 @@
+*.pdf binary
+*.pptx binary
+*.docx binary
+*.png binary
+*.jpg binary
+*.webp binary
+*.ico binary
+*.ttf binary
+*.woff2 binary
+
+# Preserve the upstream font license byte-for-byte, including its CRLF endings.
+source/fonts/OFL.txt whitespace=cr-at-eol

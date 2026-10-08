@@ -56,6 +56,9 @@ Content should be visible without scroll reveals or hydration. Use modest hover/
 
 ## Sources
 
+- `brand/README.md`, `brand/BRANDBOOK.md` and `brand/source/identity.json`: brandbook and reusable resource kit (2026.10). New applications extend the website identity; Aritz approved the complete expanded kit on 2026-10-08. Office and print checks remain pending. Preserve the original symbol and flower. Regenerate logos, social assets, documents and presentations with `tools/brand-kit/build.py`; content is in `brand/source/*.json`. Do not manually change generated files without updating their generator/source. Editable corporate decks ES/EN and a ten-layout slide template are in `brand/dist/presentations/`; install bundled IBM Plex Sans fonts to edit. See `brand/SOURCES.md` for provenance and licenses.
+- Expanded at Aritz's request after positive review of the original kit: 30-page manual, six-page fictional proposal, seven-page fictional evaluation report, twelve distinct corporate slide compositions per language, more vectors/icons and six AI-generated merchandise mockups. Example client/budget/metrics are illustrative, not evidence of real work. Preserve that label. Documents and slides share the reusable geometry in `tools/brand-kit/scenes.py`; the other expansion modules and mockup prompts/originals are included in the ZIP.
+
 - `src/styles/global.css`: design tokens and responsive layout.
 - `src/data/projects.ts`: shared ES/EN project descriptions.
 - `src/templates/LandingPage.astro`: home composition.

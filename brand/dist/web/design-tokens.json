@@ -1,0 +1,47 @@
+{
+  "primitive": {
+    "color": {
+      "paper": "#f7f6f2",
+      "ink": "#252826",
+      "muted": "#676b65",
+      "line": "#d9dcd4",
+      "accent": "#583346",
+      "surface": "#eeeee7",
+      "petal": "#d9c4ce",
+      "accentHover": "#422534",
+      "white": "#ffffff",
+      "black": "#000000"
+    },
+    "font": "IBM Plex Sans",
+    "space": [
+      4,
+      8,
+      16,
+      24,
+      32,
+      48,
+      64,
+      96
+    ]
+  },
+  "semantic": {
+    "background": "{primitive.color.paper}",
+    "text": "{primitive.color.ink}",
+    "textSecondary": "{primitive.color.muted}",
+    "action": "{primitive.color.accent}",
+    "border": "{primitive.color.line}"
+  },
+  "component": {
+    "button": {
+      "background": "{semantic.action}",
+      "text": "{primitive.color.white}",
+      "radius": "3px",
+      "padding": "15px 22px"
+    },
+    "focus": {
+      "color": "{semantic.action}",
+      "width": "2px",
+      "offset": "5px"
+    }
+  }
+}

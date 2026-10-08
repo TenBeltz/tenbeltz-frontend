@@ -21,23 +21,61 @@ const nav = [
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href={home} aria-label={en ? 'TenBeltz home' : 'TenBeltz inicio'}><img src="/images/tenbeltz-mark.svg" width="30" height="33" alt="" />TenBeltz<span aria-hidden="true" style="color:var(--accent)">.</span></a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>{en ? 'Menu' : 'Menú'} <span aria-hidden="true">＋</span></button>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+      <span class="menu-label-open">{en ? 'Menu' : 'Menú'}</span><span class="menu-label-close">{en ? 'Close' : 'Cerrar'}</span>
+      <svg class="menu-symbol" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path class="menu-line-top" d="M4 8h16"/><path class="menu-line-bottom" d="M4 16h16"/></svg>
+    </button>
     <nav id="site-nav" class="site-nav" aria-label={en ? 'Main navigation' : 'Navegación principal'}>
-      {nav.map(item => <a href={item.href} aria-current={Astro.url.pathname === item.href ? 'page' : undefined}>{item.label}</a>)}
+      <a class="mobile-home-link" href={home} aria-current={base === '/' ? 'page' : undefined}>{en ? 'Home' : 'Inicio'} <span class="mobile-nav-arrow"><ArrowIcon /></span></a>
+      {nav.map(item => <a class="nav-page-link" href={item.href} aria-current={Astro.url.pathname === item.href ? 'page' : undefined}>{item.label}<span class="mobile-nav-arrow"><ArrowIcon /></span></a>)}
       <a class="nav-contact" href={`${home}#contact-section`}>{en ? 'Let’s talk' : 'Hablemos'} <ArrowIcon direction="up-right" /></a>
-      <a class="language-link" href={alternate} lang={target} aria-label={en ? 'Cambiar a español' : 'Switch to English'}>{target.toUpperCase()}</a>
+      <a class="language-link" href={alternate} lang={target} aria-label={en ? 'Cambiar a español' : 'Switch to English'}><span class="language-short">{target.toUpperCase()}</span><span class="language-full">{en ? 'Español' : 'English'} <ArrowIcon direction="up-right" /></span></a>
     </nav>
   </div>
 </header>
 <script>
-  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const toggle = header?.querySelector<HTMLButtonElement>('[data-menu-toggle]');
   const nav = document.getElementById('site-nav');
-  const close = () => { toggle?.setAttribute('aria-expanded', 'false'); nav?.setAttribute('data-open', 'false'); };
-  toggle?.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') !== 'true';
-    toggle.setAttribute('aria-expanded', String(open)); nav?.setAttribute('data-open', String(open));
+  const mobile = window.matchMedia('(max-width: 740px)');
+  let scrollPosition = 0;
+  const inertBefore = new Map<HTMLElement, boolean>();
+  header?.setAttribute('data-menu-enhanced', 'true');
+  const isOpen = () => toggle?.getAttribute('aria-expanded') === 'true';
+  const setOpen = (open: boolean, restoreFocus = false) => {
+    if (!header || !toggle || !nav || open === isOpen()) return;
+    toggle.setAttribute('aria-expanded', String(open));
+    header.setAttribute('data-menu-open', String(open));
+    nav.setAttribute('data-open', String(open));
+    if (open) {
+      scrollPosition = window.scrollY;
+      document.body.style.setProperty('--menu-scroll-offset', `-${scrollPosition}px`);
+      document.body.classList.add('mobile-menu-open');
+      document.querySelectorAll<HTMLElement>('main, footer, #cookie-consent').forEach(element => {
+        inertBefore.set(element, element.inert);
+        element.inert = true;
+      });
+    } else {
+      document.body.classList.remove('mobile-menu-open');
+      document.body.style.removeProperty('--menu-scroll-offset');
+      inertBefore.forEach((value, element) => { element.inert = value; });
+      inertBefore.clear();
+      window.scrollTo({ top: scrollPosition, behavior: 'instant' });
+      if (restoreFocus) toggle.focus({ preventScroll: true });
+    }
+  };
+  toggle?.addEventListener('click', () => setOpen(!isOpen()));
+  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', event => {
+    if (!isOpen() || !header) return;
+    if (event.key === 'Escape') { setOpen(false, true); return; }
+    if (event.key !== 'Tab') return;
+    const focusable = [...header.querySelectorAll<HTMLElement>('a, button')].filter(element => element.getClientRects().length > 0);
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
   });
-  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', close));
-  document.addEventListener('keydown', event => { if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') { close(); toggle.focus(); } });
-  window.matchMedia('(min-width: 741px)').addEventListener('change', close);
+  mobile.addEventListener('change', () => setOpen(false));
+  window.addEventListener('pagehide', () => setOpen(false));
 </script>

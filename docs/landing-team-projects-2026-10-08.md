@@ -50,3 +50,13 @@ Clasificación y Biiak aprobados visualmente y conservados. Konect ahora represe
 ### Flechas coherentes en móvil — 2026-10-08
 
 Sustituidos caracteres Unicode de flechas en enlaces, botones y flujos por el componente compartido `src/components/ArrowIcon.astro`. SVG decorativo con currentColor, tamaño relativo al texto y sin foco; elimina la dependencia de la presentación emoji del dispositivo. Carrusel conserva sus SVG existentes y las etiquetas accesibles de enlaces/botones. Aplicado a templates compartidos ES/EN. Verificación: build y diff check; ausencia de flechas Unicode en archivos Astro. Comprobación humana en iPhone pendiente.
+
+## Menú móvil — 2026-10-08
+
+Panel de pantalla completa bajo la cabecera con Inicio, Servicios, Proyectos y Equipo en filas grandes; enlace activo en berenjena, CTA Hablemos destacado y cambio de idioma con nombre completo. Botón Menú/Cerrar con icono SVG animado, sin animación con movimiento reducido. Scroll del fondo bloqueado y posición recuperada al cerrar; contenido fuera del menú inert, foco contenido en cabecera/panel, Escape devuelve foco sin scroll, cierre al navegar y al pasar a desktop. Aviso de cookies oculto temporalmente durante apertura. Sin JavaScript se muestra navegación móvil utilizable. Desktop conserva su distribución.
+
+Verificación: npm run build correcto; git diff --check. Playwright Chromium a390×844 y320×568 ES y390×844 EN: apertura, foco cíclico, Escape, restauración de scroll, CTA contacto y resize a1280 pasan. Fallback sin JS pasa. Capturas390/320 revisadas; sin overflow horizontal. API de contacto bloqueada en QA, sin envíos. Preview existente reiniciada. Prueba en iPhone físico y aceptación humana pendientes.
+
+### Cabecera móvil siempre visible
+
+A petición del usuario, cabecera sticky a top:0 hasta740px, conservando su espacio en el documento para evitar saltos. Offset de anclas existente100px protege los destinos bajo la barra76px. Desktop conserva posición normal. Verificación: build correcto y QA móvil320/390 ES/EN incluye cabecera a y=0 tras scroll, apertura real del menú desde página desplazada y restauración de posición; desktop conserva position:relative. Sin cambios de infraestructura.

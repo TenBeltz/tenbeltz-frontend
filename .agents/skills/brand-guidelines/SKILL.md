@@ -55,7 +55,7 @@ Maintain the distinction between client projects, technical collaborations and p
 
 ## Motion and access
 
-Content should be visible without scroll reveals or hydration. Use modest hover/focus transitions and respect reduced motion. Navigation, forms and language switching must work on mobile and keyboard.
+Content should be visible without scroll reveals or hydration. Use modest hover/focus transitions and respect reduced motion. Navigation, forms and language switching must work on mobile and keyboard. The mobile header stays visible while scrolling (sticky, top:0). Mobile navigation uses a full-screen paper panel beneath the header, large ruled link rows, a highlighted contact CTA and full language name. Keep scroll position on close, contain keyboard focus, support Escape and hide the cookie notice only while open. Without JavaScript keep navigation available.
 
 ## Sources
 

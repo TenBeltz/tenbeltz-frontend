@@ -2,7 +2,16 @@
 
 **Última actualización:** 2026-07-21
 
-## El sitio
+## Revisión del rebranding — 2026-10-08
+
+La fotografía de julio que sigue es histórica. La rama `rebranding` incorpora
+12 URLs (añade `/aritz` y `/en/aritz`), equipo de cuatro personas, cinco servicios
+y nueve proyectos. Auditoría y cierre de ajustes en
+[`auditoria-rebranding-2026-10-08.md`](auditoria-rebranding-2026-10-08.md).
+No hay una lectura nueva de Search Console en esta sesión; no extrapolar los
+datos de indexación/tráfico de julio al lanzamiento.
+
+## El sitio (julio, histórico)
 
 Astro 5 en modo SSR (`output: 'server'`, adaptador Node), detrás de nginx en un VPS
 (62.171.173.193), gestionado con pm2. Español por defecto, inglés bajo `/en/`.

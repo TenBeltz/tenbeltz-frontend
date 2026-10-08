@@ -12,6 +12,20 @@ Estado: ✅ hecho · ⚠️ hecho a medias o bloqueado por revisión · sin marc
 
 ---
 
+## Rebranding — revisión 2026-10-08
+
+- Corregidos en la rama: llms.txt vigente, og:url desde canonical, H1 de
+  servicios/casos, descripciones de servicios, política de caché de middleware,
+  salto del menú móvil y tamaño de flor/carga de logos.
+- Preparada política nginx para estáticos públicos, que evitan middleware.
+  Aplicación y comprobación en el servidor de producción siguen pendientes del
+  despliegue; push no equivale a publicación.
+- Mantener como tareas de lanzamiento Search Console actual, comprobaciones de
+  dominio público y Rich Results Test. La auditoría del rebranding registra el
+  alcance de la comprobación local y sus limitaciones.
+
+El backlog siguiente es histórico; sus cierres se refieren a julio.
+
 ## 🔴 Crítico — servidor
 
 ### ~~1~~ ✅ Los assets estáticos se sirven sin comprimir 🔧 — *resuelto en producción 2026-07-21*

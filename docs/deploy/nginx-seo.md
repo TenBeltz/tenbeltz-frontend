@@ -1,5 +1,38 @@
 # nginx: redirección www y cabeceras de seguridad
 
+## Política de caché para el rebranding (2026-10-08)
+
+El adaptador Node sirve los ficheros de `public/` antes del middleware Astro.
+No depender de `src/middleware.ts` para cambiar sus cabeceras. Al preparar el
+proxy de producción, usar la siguiente política dentro del servidor existente,
+sustituyendo el upstream por el que ya utilice ese despliegue. Validar la
+configuración y las cabeceras antes de darla por aplicada.
+
+```nginx
+# Los assets del build llevan hash de contenido.
+location ^~ /_astro/ {
+    proxy_pass http://127.0.0.1:4321;
+    proxy_hide_header Cache-Control;
+    add_header Cache-Control "public, max-age=31536000, immutable";
+}
+
+# Estas URLs mantienen el nombre aunque cambie su contenido.
+location ~ ^/(robots\.txt|llms\.txt|sitemap[^/]*\.xml|favicon/.*)$ {
+    proxy_pass http://127.0.0.1:4321;
+    proxy_hide_header Cache-Control;
+    add_header Cache-Control "public, max-age=0, must-revalidate";
+}
+```
+
+Integrar con las cabeceras de seguridad y autenticación del servidor existente:
+`add_header` en un bloque location puede alterar la herencia. Conservar los
+controles privados de las previews. No añadir `immutable` a sitemap/robots ni
+favicons sin hash. La configuración anterior no se aplica automáticamente al
+hacer build o push.
+
+El contenido siguiente es documentación histórica de julio; no asumir que sus
+pendientes describen el estado actual del servidor.
+
 Pendiente de aplicar en producción (62.171.173.193). Son los dos puntos de SEO que no se
 pueden arreglar desde el código del sitio.
 

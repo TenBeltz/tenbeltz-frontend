@@ -19,6 +19,9 @@ const nav = [
 ];
 ---
 <header class="site-header">
+  {/* Set the mobile layout while parsing, before deferred modules can cause a
+      visible expanded-to-collapsed jump. Without JS the navigation stays open. */}
+  <script is:inline>document.currentScript?.parentElement?.setAttribute('data-menu-enhanced', 'true');</script>
   <div class="wrap header-inner">
     <a class="brand" href={home} aria-label={en ? 'TenBeltz home' : 'TenBeltz inicio'}><img src="/images/tenbeltz-mark.svg" width="30" height="33" alt="" />TenBeltz<span aria-hidden="true" style="color:var(--accent)">.</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>

@@ -5,6 +5,24 @@ Orden cronológico inverso (lo más reciente arriba). Cada entrada dice **qué**
 
 ---
 
+## 2026-10-08 — Correcciones SEO del rebranding
+
+Actualizados llms.txt, og:url, H1 de servicios/casos y descripciones ES/EN.
+Corregida política de caché de middleware y documentada configuración nginx de
+estáticos. Inicialización móvil del header adelantada al parseo para evitar el
+salto de navegación desplegada a recogida cuando el módulo diferido tarda.
+Flor móvil WebP derivada de 37.536 bytes (original 196.640); logos lazy.
+Build final: 0 errores/0 warnings de tipos, dos hints heredados. Las 12 rutas
+coinciden con sitemap/canonical/hreflang; enlaces, anclas y 404 correctos.
+Navegador real Playwright: 24 páginas en 390/1440 px, sin overflow ni errores JS,
+JSON-LD parseable y og:url igual a canonical. Medición y comprobación final del
+menú documentadas en el cierre de la auditoría. No se publica en producción.
+
+
+## 2026-10-08 — Auditoría del rebranding previa a publicación
+
+Informe en `auditoria-rebranding-2026-10-08.md`. Revisadas fuentes y respuestas del servicio local activo (12 páginas), sitemap, canonical/hreflang, enlaces internos, anclas, JSON-LD y comparación con las diez rutas actuales públicas. Sin bloqueos de indexación detectados en esas comprobaciones. Ajustes de llms.txt, og:url y contenido recomendados; rendimiento móvil, validación semántica de schema y comprobaciones del despliegue público pendientes. No se modificó código ni se publicó. Datos de Search Console de julio conservados como históricos, sin afirmar estado actual.
+
 ## 2026-07-21 (madrugada) — Fusionada la política de privacidad, tareas 6 y 7 cerradas
 
 El equipo de abogados validó los 4 párrafos que estaban marcados `Borrador — pendiente de

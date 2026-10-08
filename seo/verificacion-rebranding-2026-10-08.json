@@ -1,0 +1,520 @@
+{
+  "scope": "24 rendered page checks, before mobile header CLS fix; measurements tracked separately",
+  "pages": [
+    {
+      "width": 390,
+      "route": "/",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "Ingeniería de IApara empresas de software.",
+      "og": "https://tenbeltz.com/",
+      "canonical": "https://tenbeltz.com/",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 390,
+      "route": "/en",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "AI engineeringfor software companies.",
+      "og": "https://tenbeltz.com/en",
+      "canonical": "https://tenbeltz.com/en",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 390,
+      "route": "/services",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "Servicios de ingeniería de IA, de la primera decisión a producción.",
+      "og": "https://tenbeltz.com/services",
+      "canonical": "https://tenbeltz.com/services",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 390,
+      "route": "/en/services",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "AI engineering services, from the first decision to production.",
+      "og": "https://tenbeltz.com/en/services",
+      "canonical": "https://tenbeltz.com/en/services",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 390,
+      "route": "/casos",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "Proyectos de ingeniería de IA: decisiones, sistemas y trabajo concreto.",
+      "og": "https://tenbeltz.com/casos",
+      "canonical": "https://tenbeltz.com/casos",
+      "jsonldBlocks": 2
+    },
+    {
+      "width": 390,
+      "route": "/en/case-studies",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "AI engineering projects: decisions, systems and concrete work.",
+      "og": "https://tenbeltz.com/en/case-studies",
+      "canonical": "https://tenbeltz.com/en/case-studies",
+      "jsonldBlocks": 2
+    },
+    {
+      "width": 390,
+      "route": "/quien-esta-detras",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "Un equipo para haceravanzar tu producto.",
+      "og": "https://tenbeltz.com/quien-esta-detras",
+      "canonical": "https://tenbeltz.com/quien-esta-detras",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 390,
+      "route": "/en/who-is-behind",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "A team to moveyour product forward.",
+      "og": "https://tenbeltz.com/en/who-is-behind",
+      "canonical": "https://tenbeltz.com/en/who-is-behind",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 390,
+      "route": "/aritz",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "AritzJaber Lopes.",
+      "og": "https://tenbeltz.com/aritz",
+      "canonical": "https://tenbeltz.com/aritz",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 390,
+      "route": "/en/aritz",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "AritzJaber Lopes.",
+      "og": "https://tenbeltz.com/en/aritz",
+      "canonical": "https://tenbeltz.com/en/aritz",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 390,
+      "route": "/politicas",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "Política de uso y privacidad",
+      "og": "https://tenbeltz.com/politicas",
+      "canonical": "https://tenbeltz.com/politicas",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 390,
+      "route": "/en/politicas",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "Terms of Use and Privacy",
+      "og": "https://tenbeltz.com/en/politicas",
+      "canonical": "https://tenbeltz.com/en/politicas",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 1440,
+      "route": "/",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "Ingeniería de IApara empresas de software.",
+      "og": "https://tenbeltz.com/",
+      "canonical": "https://tenbeltz.com/",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 1440,
+      "route": "/en",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "AI engineeringfor software companies.",
+      "og": "https://tenbeltz.com/en",
+      "canonical": "https://tenbeltz.com/en",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 1440,
+      "route": "/services",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "Servicios de ingeniería de IA, de la primera decisión a producción.",
+      "og": "https://tenbeltz.com/services",
+      "canonical": "https://tenbeltz.com/services",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 1440,
+      "route": "/en/services",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "AI engineering services, from the first decision to production.",
+      "og": "https://tenbeltz.com/en/services",
+      "canonical": "https://tenbeltz.com/en/services",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 1440,
+      "route": "/casos",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "Proyectos de ingeniería de IA: decisiones, sistemas y trabajo concreto.",
+      "og": "https://tenbeltz.com/casos",
+      "canonical": "https://tenbeltz.com/casos",
+      "jsonldBlocks": 2
+    },
+    {
+      "width": 1440,
+      "route": "/en/case-studies",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "AI engineering projects: decisions, systems and concrete work.",
+      "og": "https://tenbeltz.com/en/case-studies",
+      "canonical": "https://tenbeltz.com/en/case-studies",
+      "jsonldBlocks": 2
+    },
+    {
+      "width": 1440,
+      "route": "/quien-esta-detras",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "Un equipo para haceravanzar tu producto.",
+      "og": "https://tenbeltz.com/quien-esta-detras",
+      "canonical": "https://tenbeltz.com/quien-esta-detras",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 1440,
+      "route": "/en/who-is-behind",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "A team to moveyour product forward.",
+      "og": "https://tenbeltz.com/en/who-is-behind",
+      "canonical": "https://tenbeltz.com/en/who-is-behind",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 1440,
+      "route": "/aritz",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "AritzJaber Lopes.",
+      "og": "https://tenbeltz.com/aritz",
+      "canonical": "https://tenbeltz.com/aritz",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 1440,
+      "route": "/en/aritz",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "AritzJaber Lopes.",
+      "og": "https://tenbeltz.com/en/aritz",
+      "canonical": "https://tenbeltz.com/en/aritz",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 1440,
+      "route": "/politicas",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "Política de uso y privacidad",
+      "og": "https://tenbeltz.com/politicas",
+      "canonical": "https://tenbeltz.com/politicas",
+      "jsonldBlocks": 1
+    },
+    {
+      "width": 1440,
+      "route": "/en/politicas",
+      "status": 200,
+      "errors": [],
+      "overflow": false,
+      "h1": "Terms of Use and Privacy",
+      "og": "https://tenbeltz.com/en/politicas",
+      "canonical": "https://tenbeltz.com/en/politicas",
+      "jsonldBlocks": 1
+    }
+  ],
+  "mobileHeaderVerification": {
+    "scenarios": [
+      {
+        "width": 390,
+        "path": "/",
+        "js": true,
+        "throttle": true,
+        "errors": [],
+        "overflow": false,
+        "lcp": 6472,
+        "cls": 0.023696663501107943,
+        "shifts": [
+          {
+            "value": 0.023696663501107943,
+            "sources": [
+              "project-assistant-launcher"
+            ]
+          }
+        ],
+        "menuVisible": false,
+        "jsEnhanced": "true",
+        "jsonld": 1
+      },
+      {
+        "width": 390,
+        "path": "/services",
+        "js": true,
+        "throttle": true,
+        "errors": [],
+        "overflow": false,
+        "lcp": 3804,
+        "cls": 0.04246028173472618,
+        "shifts": [
+          {
+            "value": 0.009269705603038936,
+            "sources": [
+              "project-assistant-launcher"
+            ]
+          },
+          {
+            "value": 0.033190576131687244,
+            "sources": [
+              "project-assistant-launcher"
+            ]
+          }
+        ],
+        "menuVisible": false,
+        "jsEnhanced": "true",
+        "jsonld": 1
+      },
+      {
+        "width": 390,
+        "path": "/casos",
+        "js": true,
+        "throttle": true,
+        "errors": [],
+        "overflow": false,
+        "lcp": 2336,
+        "cls": 0.033190576131687244,
+        "shifts": [
+          {
+            "value": 0.033190576131687244,
+            "sources": [
+              "project-assistant-launcher"
+            ]
+          }
+        ],
+        "menuVisible": false,
+        "jsEnhanced": "true",
+        "jsonld": 2
+      },
+      {
+        "width": 390,
+        "path": "/en/services",
+        "js": true,
+        "throttle": true,
+        "errors": [],
+        "overflow": false,
+        "lcp": 1860,
+        "cls": 0.03348300411522634,
+        "shifts": [
+          {
+            "value": 0.03348300411522634,
+            "sources": [
+              "project-assistant-launcher"
+            ]
+          }
+        ],
+        "menuVisible": false,
+        "jsEnhanced": "true",
+        "jsonld": 1
+      },
+      {
+        "width": 1440,
+        "path": "/",
+        "js": true,
+        "throttle": false,
+        "errors": [],
+        "overflow": false,
+        "lcp": 656,
+        "cls": 0.008231380208333333,
+        "shifts": [
+          {
+            "value": 0.0019140625,
+            "sources": [
+              "project-assistant-launcher"
+            ]
+          },
+          {
+            "value": 0.006317317708333333,
+            "sources": [
+              "project-assistant-launcher"
+            ]
+          }
+        ],
+        "menuVisible": true,
+        "jsEnhanced": "true",
+        "jsonld": 1
+      },
+      {
+        "width": 320,
+        "path": "/services",
+        "js": true,
+        "throttle": false,
+        "errors": [],
+        "overflow": false,
+        "lcp": 432,
+        "cls": 0.04896701774691358,
+        "shifts": [
+          {
+            "value": 0.04896701774691358,
+            "sources": [
+              "project-assistant-launcher"
+            ]
+          }
+        ],
+        "menuVisible": false,
+        "jsEnhanced": "true",
+        "jsonld": 1
+      },
+      {
+        "width": 320,
+        "path": "/casos",
+        "js": true,
+        "throttle": false,
+        "errors": [],
+        "overflow": false,
+        "lcp": 1012,
+        "cls": 0,
+        "shifts": [],
+        "menuVisible": false,
+        "jsEnhanced": "true",
+        "jsonld": 2
+      },
+      {
+        "width": 390,
+        "path": "/",
+        "js": false,
+        "throttle": false,
+        "errors": [],
+        "overflow": false,
+        "menuVisible": true,
+        "jsonld": 1
+      }
+    ],
+    "environment": "Chromium Docker rootless; loopback SSR without compression; mobile network 1.6Mbps/150ms, CPU 4x; laboratory samples, not field CWV"
+  },
+  "optimizedHeroVerification": {
+    "scenarios": [
+      {
+        "width": 390,
+        "path": "/",
+        "js": true,
+        "throttle": true,
+        "errors": [],
+        "overflow": false,
+        "lcp": null,
+        "cls": 0,
+        "shifts": [],
+        "heroSource": "/images/hero/abstract-flower-mobile.webp",
+        "menuVisible": false,
+        "jsEnhanced": "true",
+        "jsonld": 1,
+        "measurementNote": "LCP observer did not produce a usable sample; zero is not a pass."
+      },
+      {
+        "width": 390,
+        "path": "/en",
+        "js": true,
+        "throttle": true,
+        "errors": [],
+        "overflow": false,
+        "lcp": 4032,
+        "cls": 0.03348300411522634,
+        "shifts": [
+          {
+            "value": 0.03348300411522634,
+            "sources": [
+              "project-assistant-launcher"
+            ]
+          }
+        ],
+        "heroSource": "/images/hero/abstract-flower-mobile.webp",
+        "menuVisible": false,
+        "jsEnhanced": "true",
+        "jsonld": 1
+      },
+      {
+        "width": 1440,
+        "path": "/",
+        "js": true,
+        "throttle": false,
+        "errors": [],
+        "overflow": false,
+        "lcp": 1364,
+        "cls": 0.008231380208333333,
+        "shifts": [
+          {
+            "value": 0.0019140625,
+            "sources": [
+              "project-assistant-launcher"
+            ]
+          },
+          {
+            "value": 0.006317317708333333,
+            "sources": [
+              "project-assistant-launcher"
+            ]
+          }
+        ],
+        "heroSource": "/images/hero/abstract-flower.webp",
+        "menuVisible": true,
+        "jsEnhanced": "true",
+        "jsonld": 1
+      },
+      {
+        "width": 390,
+        "path": "/",
+        "js": false,
+        "throttle": false,
+        "errors": [],
+        "overflow": false,
+        "heroSource": "/images/hero/abstract-flower-mobile.webp",
+        "menuVisible": true,
+        "jsonld": 1
+      }
+    ],
+    "mobileImageBytes": 37536,
+    "originalImageBytes": 196640,
+    "productionCWVCertified": false
+  }
+}

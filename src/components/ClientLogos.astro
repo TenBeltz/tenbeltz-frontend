@@ -20,7 +20,7 @@ const clients = [
       {[false, true].map(duplicate => <ul class="client-logo-group" aria-hidden={duplicate ? 'true' : undefined}>
         {clients.map(client => <li class:list={['client-logo-item', `client-logo-${client.id}`]}>
           <a class="client-logo-link" href={client.href} target="_blank" rel="noopener noreferrer" tabindex={duplicate ? '-1' : undefined} aria-label={en ? `${client.name} website (opens in a new tab)` : `Web de ${client.name} (se abre en otra pestaña)`}>
-            <img src={`/images/clients/${client.src}`} alt={duplicate ? '' : client.name} width={client.width} height={client.height} decoding="async" />
+            <img src={`/images/clients/${client.src}`} alt={duplicate ? '' : client.name} width={client.width} height={client.height} loading="lazy" decoding="async" />
             {client.id === 'tecnisoft' && <small aria-hidden="true">TecniSoft</small>}
           </a>
         </li>)}

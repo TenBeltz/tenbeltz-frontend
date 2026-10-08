@@ -24,7 +24,7 @@ seo/                documentación y trazabilidad de SEO
 docs/deploy/        configuración de servidor
 ```
 
-No hay rutas dinámicas. El sitio son **10 URLs**: 5 páginas × 2 idiomas.
+No hay rutas dinámicas. El sitio son **12 URLs**: 6 páginas × 2 idiomas.
 
 ## Reglas que importan
 
@@ -122,3 +122,7 @@ Al escribir copy, ten presente que el posicionamiento es deliberadamente especí
 son una agencia de IA ni una consultora generalista**. Evita el lenguaje corporativo
 genérico — ya hubo que reescribir una descripción que decía "líderes en la industria" y
 contradecía frontalmente el mensaje del sitio.
+
+## Equipo y portfolio (2026-10-08)
+
+Las rutas `/quien-esta-detras` y `/en/who-is-behind` presentan Aritz, Ángel Jiménez (AI & Full Stack Developer), Rubén García Hernando y Artem Pysmak, en ese orden. Retratos reales autorizados; roles en `src/data/team.ts`. Perfil/CV independiente en `/aritz` y `/en/aritz`, con dirección técnica, trayectoria y botón de impresión. No enlazar al antiguo portfolio aritzjaber.com. Zetesis autorizado como referencia de logos. Nueve casos públicos; home: Konect, Qamarero, clasificación documental y Biiak, con ilustraciones técnicas SVG bilingües generadas por tools/project-covers/build.py. Clasificador final verificado en lae-parser 6f16e34: ensemble geométrico de cabeza supervisada sobre154 similitudes y regresión sobre embedding1024d; 72,35% Top-1 /91,51% Top-5 sobre1414 documentos de test. No usar las métricas antiguas del README ni confundir corpus y volumen operativo. Ver docs/landing-profile-lae-2026-10-08.md.

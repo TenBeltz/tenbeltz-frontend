@@ -3,28 +3,41 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import Contact from '@/components/Contact.astro';
-import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { getLangFromUrl } from '@/i18n/utils';
+import { getTeam } from '@/data/team';
 const lang = getLangFromUrl(Astro.url);
 const en = lang === 'en';
-const t = useTranslations(lang);
+const team = getTeam(lang);
 const principles = en ? [
- ['Systems ready to operate', 'I account for integration, errors and maintenance from the design stage. Delivery includes the information your team needs to operate the system.'],
- ['Measurable quality', 'I define representative cases and acceptance criteria to assess results and detect regressions.'],
- ['Traceability', 'Logs, traces and monitoring help explain what happened and support diagnosis when something fails.'],
- ['Cost in context', 'I evaluate model choices, architecture and cost per task alongside quality and performance.'],
+ ['One technical direction', 'Aritz leads the initial conversations, consulting and architecture. We define scope and acceptance criteria before development.'],
+ ['Complementary experience', 'We bring software architecture, product development and AI engineering together according to each project’s needs.'],
+ ['Quality we can assess', 'Representative cases, regression checks and traces help us evaluate results and diagnose failures.'],
+ ['A clear handover', 'We plan for integration, monitoring and maintenance, and provide the information your team needs to operate the system.'],
 ] : [
- ['Sistemas preparados para operar', 'Integro las necesidades de producto, errores y mantenimiento desde el diseño. La entrega incluye lo que tu equipo necesita para operar el sistema.'],
- ['Calidad medible', 'Defino casos representativos y criterios de aceptación para evaluar los resultados y detectar regresiones.'],
- ['Trazabilidad', 'Los registros, las trazas y la monitorización permiten entender qué ha ocurrido y diagnosticar los fallos.'],
- ['Coste en contexto', 'Evalúo selección de modelos, arquitectura y coste por tarea junto a la calidad y el rendimiento.'],
+ ['Una dirección técnica común', 'Aritz lidera las primeras conversaciones, la consultoría y la arquitectura. Definimos el alcance y los criterios de aceptación antes del desarrollo.'],
+ ['Experiencia complementaria', 'Combinamos arquitectura de software, desarrollo de producto e ingeniería de IA según las necesidades de cada proyecto.'],
+ ['Calidad que se puede evaluar', 'Los casos representativos, las comprobaciones de regresión y las trazas nos ayudan a evaluar resultados y diagnosticar fallos.'],
+ ['Una entrega clara', 'Preparamos la integración, la monitorización y el mantenimiento, con la información que tu equipo necesita para operar el sistema.'],
 ];
 ---
-<Layout title={t('whobehind.seo.title')} description={t('whobehind.seo.description')} canonical={`https://tenbeltz.com${en ? '/en/who-is-behind' : '/quien-esta-detras'}`}>
-  <Header /><main id="main-content">
-    <section class="wrap profile-intro"><div class="founder-grid"><div><span class="eyebrow">{en ? 'Behind TenBeltz' : 'Detrás de TenBeltz'}</span><h1>Aritz<br />Jaber Lopes<span style="color:var(--accent)">.</span></h1><p class="role">{t('whobehind.hero.role')}</p><p class="lead">{en ? 'I work with software teams to define, build and integrate AI systems. I take responsibility for the architecture and the technical criteria that guide each delivery.' : 'Trabajo con equipos de software para definir, construir e integrar sistemas de IA. Asumo la arquitectura y los criterios técnicos que guían cada entrega.'}</p><div class="profile-links"><a href="https://www.linkedin.com/in/aritzjl/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://github.com/aritzjl" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://aritzjaber.com" target="_blank" rel="noopener noreferrer">Portfolio ↗</a></div></div><div class="portrait"><img src="/images/team/aritz-9819.webp" alt={t('whobehind.hero.photoAlt')} width="600" height="750" fetchpriority="high" /></div></div></section>
-    <section class="section wrap rule"><div class="section-heading"><span class="eyebrow">01 / {en ? 'Experience' : 'Experiencia'}</span><div><h2>{en ? 'Product development and applied AI.' : 'Desarrollo de producto e IA aplicada.'}</h2><p class="lead">{en ? 'My work combines software engineering with designing and evaluating AI systems, including environments with sensitive information.' : 'Mi trabajo combina ingeniería de software con el diseño y la evaluación de sistemas de IA, también en entornos con información sensible.'}</p></div></div><div class="principles"><article><span class="eyebrow">TenBeltz · {en ? 'Since 2024' : 'Desde 2024'}</span><h3>{en ? 'Co-founder and technical lead' : 'Cofundador y líder técnico'}</h3><p>{en ? 'Technical definition, AI implementation and product integration for SaaS teams and software consultancies. Projects in voice, document processing and professional workflows.' : 'Definición técnica, implementación de IA e integración en producto para equipos SaaS y consultoras de software. Proyectos de voz, procesamiento documental y flujos profesionales.'}</p></article><article><span class="eyebrow">Biiak · {en ? 'Since 2025' : 'Desde 2025'}</span><h3>{en ? 'Co-founder and CTO' : 'Cofundador y CTO'}</h3><p>{en ? 'Architecture and development of a platform for child protection teams. Private AI, local models and access controls for sensitive information.' : 'Arquitectura y desarrollo de una plataforma para equipos de protección a la infancia. IA privada, modelos locales y control de acceso sobre información sensible.'}</p><a class="text-link" href="https://biiak.com" target="_blank" rel="noopener noreferrer">Biiak <span aria-hidden="true">↗</span></a></article><article><span class="eyebrow">Irontec · {en ? 'Collaboration since 2025' : 'Colaboración desde 2025'}</span><h3>{en ? 'Software and AI engineering' : 'Ingeniería de software e IA'}</h3><p>{en ? 'Software development and applied AI projects, including call transcription and analysis for contact centres. Architecture and integration within enterprise products.' : 'Desarrollo de software y proyectos de IA aplicada, entre ellos transcripción y análisis de llamadas para contact centers. Arquitectura e integración en productos empresariales.'}</p></article><article><span class="eyebrow">{en ? 'Teaching · 2026' : 'Formación · 2026'}</span><h3>{en ? 'Local LLMs in production' : 'LLMs locales en producción'}</h3><p>{en ? '30 hours of local AI training delivered through Imagina to Opus Dei’s international technical team. Model serving with vLLM, private architectures, evaluation, RAG and agents.' : '30 horas de formación en IA local impartidas a través de Imagina al equipo técnico internacional de Opus Dei. Serving de modelos con vLLM, arquitecturas privadas, evaluación, RAG y agentes.'}</p></article></div></section>
-    <section class="section wrap rule"><div class="section-heading"><span class="eyebrow">02 / {en ? 'Technical judgment' : 'Criterio técnico'}</span><h2>{en ? 'How I approach each project.' : 'Cómo abordo cada proyecto.'}</h2></div><div class="principles">{principles.map(([title,text])=><article><h3>{title}</h3><p>{text}</p></article>)}</div></section>
-    <section class="section wrap rule"><div class="section-heading"><span class="eyebrow">03 / {en ? 'Recognition' : 'Reconocimiento'}</span><div><h2>Provider 2025</h2><p class="lead">{en ? 'First prize in BIC Bizkaia’s business ideas competition with SustainaAI, a project combining sustainability and artificial intelligence.' : 'Primer premio en el concurso de ideas de negocio de BIC Bizkaia con SustainaAI, un proyecto que combina sostenibilidad e inteligencia artificial.'}</p></div></div></section>
+<Layout title={en ? 'The AI and software engineering team | TenBeltz' : 'Equipo de ingeniería de IA y software | TenBeltz'} description={en ? 'Meet Aritz, Ángel, Rubén and Artem: technical leadership, software architecture and AI engineering for your product.' : 'Conoce a Aritz, Ángel, Rubén y Artem: dirección técnica, arquitectura de software e ingeniería de IA para tu producto.'} canonical={`https://tenbeltz.com${en ? '/en/who-is-behind' : '/quien-esta-detras'}`}>
+  <Header />
+  <main id="main-content">
+    <section class="page-intro wrap team-intro">
+      <div class="team-intro-copy">
+      <span class="eyebrow">{en ? 'Behind TenBeltz' : 'Detrás de TenBeltz'}</span>
+      <h1>{en ? 'A team to move' : 'Un equipo para hacer'}<br />{en ? 'your product ' : 'avanzar tu '}<em>{en ? 'forward.' : 'producto.'}</em></h1>
+      <p class="lead">{en ? 'Technical judgment, software development and applied AI. We bring complementary experience together to define the right system and build it with your team.' : 'Criterio técnico, desarrollo de software e IA aplicada. Reunimos experiencia complementaria para definir el sistema adecuado y construirlo junto a tu equipo.'}</p>
+      </div>
+      <img class="team-intro-art" src="/images/brand/tenbeltz-background-petal-contours-paper.png" width="1600" height="900" alt="" aria-hidden="true" />
+    </section>
+    <section class="wrap team-roster" aria-label={en ? 'Our team' : 'Nuestro equipo'}>
+      {team.map((person, index) => <article class="team-member">
+        <div class="portrait"><img src={`/images/team/${person.image}`} alt={person.name} width={index === 0 ? 600 : 800} height={index === 0 ? 750 : 800} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" /></div>
+        <div class="team-member-copy"><h2>{person.name}</h2><p class="team-role">{person.role}</p><p class="team-bio">{person.description}</p><div class="profile-links"><a href={person.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn · ${person.name}`}>LinkedIn ↗</a>{person.profileHref && <a href={person.profileHref}>{en ? 'Experience & profile' : 'Experiencia y perfil'} →</a>}{person.website && <a href={person.website} target="_blank" rel="noopener noreferrer">{person.websiteLabel} ↗</a>}</div></div>
+      </article>)}
+    </section>
+    <section class="section wrap rule"><div class="section-heading"><span class="eyebrow">{en ? 'Working together' : 'Cómo trabajamos'}</span><h2>{en ? 'From the first decision to delivery.' : 'De la primera decisión a la entrega.'}</h2></div><div class="principles">{principles.map(([title,text]) => <article><h3>{title}</h3><p>{text}</p></article>)}</div></section>
     <Contact />
   </main><Footer />
 </Layout>

@@ -1,0 +1,9 @@
+<div class="hero-flower" data-hero-flower aria-hidden="true">
+  <img src="/images/hero/abstract-flower.webp" width="1254" height="1254" alt="" fetchpriority="high" decoding="async" />
+  <canvas></canvas>
+</div>
+
+<script>
+  import { animateHeroFlower } from '@/scripts/hero-flower';
+  document.querySelectorAll<HTMLElement>('[data-hero-flower]').forEach(animateHeroFlower);
+</script>

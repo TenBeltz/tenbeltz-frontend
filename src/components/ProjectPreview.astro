@@ -5,8 +5,8 @@ const { project, href, index, lang } = Astro.props;
 ---
 <article class="project-slide" aria-label={`${index + 1}. ${project.client}`}>
   <div class="project-visual">
-    <a class="project-cover" href={href} tabindex="-1" aria-hidden="true"><img src={`/images/projects/${project.id}.webp`} alt="" width="1200" height="800" loading="lazy" decoding="async" /></a>
-    <span class="project-image-note">{lang === 'en' ? 'Illustrative image' : 'Imagen ilustrativa'}</span>
+    <a class="project-cover" href={href} tabindex="-1" aria-hidden="true"><img src={project.cover ?? `/images/projects/${project.id}.webp`} alt="" width="1200" height="800" loading="lazy" decoding="async" /></a>
+    <span class="project-image-note">{project.coverNote ?? (lang === 'en' ? 'Illustrative image' : 'Imagen ilustrativa')}</span>
   </div>
   <div class="project-slide-body">
     <p class="project-client-line"><span>{project.client}</span><span class="project-kind">{project.kind}</span></p>

@@ -261,3 +261,11 @@ Verificación en el build standalone servido en loopback 10022: diez páginas co
 Añadida formación en IA aplicada en home, servicios, formulario y OfferCatalog, en español e inglés. Metadescripciones de servicios actualizadas. Experiencia de 30 horas para Opus Dei atribuida a Imagina por confirmación expresa de Aritz. Nuevos nombres de referencia autorizados en la petición y contexto local actualizado; no se atribuyen casos jurídicos anónimos a estos nombres.
 
 Verificado en dev: build sin errores; home y servicios ES/EN con cinco ofertas JSON-LD y enlace `#service-training` presente. Catorce navegaciones browser en las rutas modificadas, sin errores JS ni desbordamientos en escritorio/móvil. Rutas/canonicals conservados. No despliegue en producción ni nueva solicitud de indexación.
+
+## 2026-10-08 — Portfolio y página de equipo (preview)
+
+La página existente de perfil pasa a equipo: meta/breadcrumb bilingües y AboutPage.mainEntity=Organization en vez de ProfilePage sobre Aritz. Portfolio de diez casos con número ItemList dinámico, métricas lae-parser corregidas en ES/EN y alcance de producto Biiak ampliado. Mismas diez URLs/slugs/hreflang. Build0 errores/0 warnings/2 hints heredados; JSON-LD parseado en ambos idiomas, cuatro perfiles visibles y diez casos; canonicals contrastados con sitemap local de diez URLs. Preview HTTP200 y HTTPS anónimo401; producción no desplegada. No se cierran pendientes de verificación en producción por estas pruebas locales. Detalle docs/landing-team-projects-2026-10-08.md.
+
+## 2026-10-08 — Perfil personal y revisión final de LAE (preview)
+
+Añadidas /aritz y /en/aritz: doce URLs en sitemap, ProfilePage.mainEntity=Person con URL propia; equipo mantiene AboutPage sobre Organization. Eliminados enlaces al portfolio antiguo. Nueve casos y cuatro proyectos seleccionados, métricas finales LAE con test1414. Build y18 navegaciones desktop/móvil sin errores ni overflow; doce canonicals y JSON-LD verificados. Preview reiniciada, HTTP200/HTTPS anónimo401. Sin despliegue o indexación en producción. Detalle docs/landing-profile-lae-2026-10-08.md.

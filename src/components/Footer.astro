@@ -4,9 +4,10 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 const lang = getLangFromUrl(Astro.url);
 const en = lang === 'en';
 const links = [
+  [en ? 'Aritz’s profile' : 'Perfil de Aritz', '/aritz'],
   [en ? 'Services' : 'Servicios', '/services'],
   [en ? 'Projects' : 'Proyectos', en ? '/case-studies' : '/casos'],
-  [en ? 'About' : 'Quién está detrás', en ? '/who-is-behind' : '/quien-esta-detras'],
+  [en ? 'Team' : 'Equipo', en ? '/who-is-behind' : '/quien-esta-detras'],
 ];
 ---
 <footer class="site-footer">

@@ -3,6 +3,7 @@ interface Props { lang: 'es' | 'en'; }
 const { lang } = Astro.props;
 const en = lang === 'en';
 const clients = [
+  { id: 'zetesis', name: 'Zetesis', href: 'https://zetesis.xyz/', src: 'zetesis.svg', width: 8394, height: 1809 },
   { id: 'irontec', name: 'Irontec', href: 'https://www.irontec.com/', src: 'irontec.svg', width: 132, height: 24 },
   { id: 'qamarero', name: 'Qamarero', href: 'https://www.qamarero.com/', src: 'qamarero.svg', width: 138, height: 40 },
   { id: 'tecnisoft', name: 'SistemaPol · TecniSoft', href: 'https://www.sistemapol.es/', src: 'sistemapol.png', width: 600, height: 472 },

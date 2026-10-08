@@ -2,6 +2,7 @@
 interface Props { lang: 'es' | 'en'; servicesHref: string; }
 const { lang, servicesHref } = Astro.props;
 const en = lang === 'en';
+const icons = ['diagnostico', 'arquitectura', 'formacion'];
 const paths = en ? [
   { title: 'Define the next step', text: 'Assess feasibility, choose the architecture and give your team a clear technical direction.', outcome: 'A plan to build on', links: [['Technical diagnosis', 'gap-analysis'], ['Project foundations', 'foundations']] },
   { title: 'Build and integrate', text: 'From a first working version to a system integrated into your product, with evaluation and monitoring.', outcome: 'A system to use', links: [['First working version', 'agent-mvp'], ['Production delivery', 'production-delivery']] },
@@ -14,7 +15,7 @@ const paths = en ? [
 ---
 <div class="service-paths">
   {paths.map((path, index) => <article class="service-path">
-    <div class="service-path-label"><span>0{index + 1}</span><span>{path.outcome}</span></div>
+    <div class="service-path-label"><img class="service-path-icon" src={`/images/brand/tenbeltz-icon-${icons[index]}-accent.svg`} width="26" height="26" alt="" aria-hidden="true" loading="lazy" /><span>{path.outcome}</span></div>
     <h3>{path.title}</h3>
     <p>{path.text}</p>
     <div class="service-path-links">{path.links.map(([label, id]) => <a href={`${servicesHref}#service-${id}`}>{label}<span aria-hidden="true">↗</span></a>)}</div>

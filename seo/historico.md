@@ -292,3 +292,7 @@ Añadidas /aritz y /en/aritz: doce URLs en sitemap, ProfilePage.mainEntity=Perso
 ## 2026-10-09 — Diagnóstico de IA en página propia (preview)
 
 Añadidas `/diagnostico-ia` y `/en/ai-diagnosis` mediante template compartido. Mapas de slugs traducidos actualizados en astro.config, SEO y selector de idioma Header. Accesos internos desde home/contacto y launcher flotante, sin launcher en la propia página. Build correcto; HTML servido con curl/urllib y parseado, canonicals exactos sin barra final, alternates ES/EN/x-default iguales a sitemap,14 URLs. No hay publicación en producción ni cambios/comprobaciones de Search Console.
+
+## Producción — 2026-10-09
+
+Rebranding y diagnóstico publicados en tenbeltz.com. Verificadas las14URLs públicas:200, canonicals concordantes con sitemap y redirección www301. No se ha consultado Search Console ni demostrado nueva indexación. Detalle operativo en docs/deploy/production-2026-10-09.md.

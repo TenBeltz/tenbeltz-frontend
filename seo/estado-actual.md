@@ -101,3 +101,7 @@ entrantes son perfiles sociales propios). Ninguna optimización técnica cambia 
 contenido que responda a búsquedas informacionales, el número de consultas por las que se
 puede competir está acotado. Decisión consciente del propietario aplazar el blog — ver
 `decisiones.md`.
+
+## Producción — 2026-10-09
+
+Rebranding y diagnóstico publicados en tenbeltz.com. Verificadas las14URLs públicas:200, canonicals concordantes con sitemap y redirección www301. No se ha consultado Search Console ni demostrado nueva indexación. Detalle operativo en docs/deploy/production-2026-10-09.md.

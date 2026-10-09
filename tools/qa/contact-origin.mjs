@@ -25,7 +25,10 @@ const cases = [
   ['Missing origin', preview, null, {}, 403],
   ['Local origin', '127.0.0.1:10022', 'http://127.0.0.1:10022', {}, 422],
   ['Foreign origin on local host', '127.0.0.1:10022', `https://${preview}`, {}, 403],
-  ['Production stays disabled', 'tenbeltz.com', 'https://tenbeltz.com', {}, 404],
+  ['Production HTTPS', 'tenbeltz.com', 'https://tenbeltz.com', {}, 422],
+  ['Production HTTP rejected', 'tenbeltz.com', 'http://tenbeltz.com', {}, 403],
+  ['Production foreign origin rejected', 'tenbeltz.com', 'https://attacker.example', {}, 403],
+  ['Unknown hostname rejected', 'unknown.example', 'https://unknown.example', {}, 404],
 ];
 for (const [name, host, origin, forwarded, status] of cases) {
   const headers = { Host: host, 'Content-Type': 'application/json', ...forwarded };
@@ -36,4 +39,4 @@ for (const [name, host, origin, forwarded, status] of cases) {
 }
 const oversized = await post(`${base}/api/contact`, { Host: preview, Origin: `https://${preview}`, 'Content-Type': 'application/json' }, 'x'.repeat(32769));
 assert.equal(oversized.status, 413);
-console.log('Oversized body: 413. Ten cases passed; no emails sent.');
+console.log('Oversized body: 413. Thirteen cases passed; no emails sent.');

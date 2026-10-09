@@ -2,11 +2,11 @@ import type { APIRoute } from 'astro';
 
 // Fixed, private upstream. Browser never receives SMTP credentials or bridge token.
 export const POST: APIRoute = async ({ request, url }) => {
-  if (!['tenbeltz-landing.dev.tenbeltz.com', '127.0.0.1', 'localhost'].includes(url.hostname)) return new Response('Not found', { status: 404 });
+  if (!['tenbeltz.com', 'tenbeltz-landing.dev.tenbeltz.com', '127.0.0.1', 'localhost'].includes(url.hostname)) return new Response('Not found', { status: 404 });
   // TLS terminates at Nginx; Astro sees HTTP internally. Pin the external
-  // preview origin instead of trusting arbitrary forwarded headers.
-  const expectedOrigin = url.hostname === 'tenbeltz-landing.dev.tenbeltz.com'
-    ? 'https://tenbeltz-landing.dev.tenbeltz.com' : url.origin;
+  // public origin instead of trusting arbitrary forwarded headers.
+  const expectedOrigin = ['tenbeltz.com', 'tenbeltz-landing.dev.tenbeltz.com'].includes(url.hostname)
+    ? `https://${url.hostname}` : url.origin;
   if (request.headers.get('origin') !== expectedOrigin) return new Response('Forbidden', { status: 403 });
   if (!request.headers.get('content-type')?.startsWith('application/json')) return new Response('JSON required', { status: 415 });
   const token = import.meta.env.CONTACT_BRIDGE_TOKEN;

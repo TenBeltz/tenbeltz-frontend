@@ -1,0 +1,19 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import AIDiagnosis from '@/components/AIDiagnosis';
+import { getLangFromUrl } from '@/i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const en = lang === 'en';
+---
+<Layout title={en ? 'AI maturity diagnosis | TenBeltz' : 'Diagnóstico de madurez de IA | TenBeltz'} description={en ? 'Evaluate your AI project in ten questions. Discover your score, improvement priorities and download a personalised PDF report.' : 'Evalúa tu proyecto de IA en diez preguntas. Descubre tu nota, prioridades de mejora y descarga un informe PDF personalizado.'} canonical={`https://tenbeltz.com${en ? '/en/ai-diagnosis' : '/diagnostico-ia'}`}>
+  <Header />
+  <main id="main-content" class="diagnosis-page">
+    <div class="wrap diagnosis-page-heading"><a href={en ? '/en' : '/'} class="text-link">← {en ? 'Back to home' : 'Volver al inicio'}</a><h1>{en ? 'AI maturity diagnosis' : 'Diagnóstico de madurez de IA'}</h1></div>
+    <AIDiagnosis lang={lang} client:load />
+    <noscript><p class="wrap">{en ? 'Enable JavaScript to complete the diagnosis and download your report.' : 'Activa JavaScript para completar el diagnóstico y descargar tu informe.'}</p></noscript>
+  </main>
+  <Footer />
+</Layout>
+<style>.diagnosis-page{padding-bottom:80px}.diagnosis-page-heading{padding-top:48px}.diagnosis-page-heading h1{font-size:clamp(34px,4.8vw,64px);max-width:850px;margin:28px 0 0}.diagnosis-page :global(.diagnosis){padding-top:48px}</style>

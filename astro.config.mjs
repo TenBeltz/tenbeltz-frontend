@@ -15,6 +15,8 @@ const SITE_ORIGIN = 'https://tenbeltz.com';
 const LOCALIZED_SLUGS = {
   '/quien-esta-detras': { es: '/quien-esta-detras', en: '/who-is-behind' },
   '/who-is-behind': { es: '/quien-esta-detras', en: '/who-is-behind' },
+  '/diagnostico-ia': { es: '/diagnostico-ia', en: '/ai-diagnosis' },
+  '/ai-diagnosis': { es: '/diagnostico-ia', en: '/ai-diagnosis' },
   '/casos': { es: '/casos', en: '/case-studies' },
   '/case-studies': { es: '/casos', en: '/case-studies' },
 };

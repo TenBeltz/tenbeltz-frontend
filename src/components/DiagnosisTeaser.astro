@@ -1,0 +1,10 @@
+---
+const { lang = 'es' } = Astro.props;
+const en = lang === 'en';
+const href = en ? '/en/ai-diagnosis' : '/diagnostico-ia';
+---
+<section class="wrap home-section diagnosis-teaser" aria-labelledby="diagnosis-teaser-title">
+  <div><span class="eyebrow">{en ? 'A first benchmark · 2 minutes' : 'Un primer punto de partida · 2 minutos'}</span><h2 id="diagnosis-teaser-title">{en ? 'How mature is your AI project?' : '¿Cómo de maduro es vuestro proyecto de IA?'}</h2><p>{en ? 'Ten questions to identify gaps in evaluation, observability and control. See your score instantly; share your contact details to download a report with your improvement priorities.' : 'Diez preguntas para detectar carencias de evaluación, observabilidad y control. Consulta tu nota al instante; deja tus datos de contacto para descargar un informe con tus prioridades de mejora.'}</p></div>
+  <a href={href} class="button">{en ? 'Take the AI diagnosis' : 'Hacer el diagnóstico de IA'} ↗</a>
+</section>
+<style>.diagnosis-teaser{display:flex;gap:36px;align-items:center;justify-content:space-between;border-top:1px solid var(--rule)}.diagnosis-teaser h2{font-size:clamp(28px,3vw,40px);max-width:600px;margin:16px 0}.diagnosis-teaser p{color:var(--muted);max-width:640px;line-height:1.65}.diagnosis-teaser .button{flex-shrink:0}@media(max-width:760px){.diagnosis-teaser{align-items:flex-start;flex-direction:column;gap:16px}}</style>

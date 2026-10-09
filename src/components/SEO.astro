@@ -37,7 +37,9 @@ const basePath = isEnglish ? canonicalPath.replace(/^\/en/, '') || '/' : canonic
 const localizedSlugMap: Record<string, { es: string; en: string }> = {
 	'/quien-esta-detras': { es: '/quien-esta-detras', en: '/who-is-behind' },
 	'/who-is-behind': { es: '/quien-esta-detras', en: '/who-is-behind' },
-	'/casos': { es: '/casos', en: '/case-studies' },
+	'/diagnostico-ia': { es: '/diagnostico-ia', en: '/ai-diagnosis' },
+  '/ai-diagnosis': { es: '/diagnostico-ia', en: '/ai-diagnosis' },
+  '/casos': { es: '/casos', en: '/case-studies' },
 	'/case-studies': { es: '/casos', en: '/case-studies' },
 }
 const mapped = localizedSlugMap[basePath.replace(/\/$/, '')]
@@ -65,6 +67,7 @@ const localeHref = (path: string) => {
 // Breadcrumb labels mirror the nav labels in Header.astro. They live there as a local
 // const that cannot be imported, so they are restated rather than wired through props.
 const routeNames: Record<string, { es: string; en: string }> = {
+  '/diagnostico-ia': { es: 'Diagnóstico de IA', en: 'AI diagnosis' },
 	'/': { es: 'Inicio', en: 'Home' },
 	'/services': { es: 'Servicios', en: 'Services' },
 	'/casos': { es: 'Casos', en: 'Case studies' },

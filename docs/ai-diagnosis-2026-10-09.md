@@ -1,0 +1,54 @@
+# Diagnóstico de madurez de IA — 2026-10-09
+
+## Estado actual: página propia y descarga con datos
+
+Segunda petición del usuario: diagnóstico en `/diagnostico-ia` y `/en/ai-diagnosis`, template compartido, accesos desde home y contacto más un enlace flotante. El enlace flotante se sitúa sobre cookies, se oculta mientras se ve contacto y durante menú móvil, no aparece en la página del diagnóstico ni en impresión. El bloque largo de preguntas sale de la home; se sustituye por una invitación breve.
+
+**Sólo nota y nivel sin datos.** Corrección expresa posterior: las prioridades/sugerencias se muestran exclusivamente en el PDF. Nombre, empresa y email profesional obligatorios para descargar, más confirmación explícita de compartir datos/diagnóstico con TenBeltz para seguimiento sobre el resultado. Enlace de privacidad en pestaña nueva para conservar respuestas; ninguna suscripción a newsletter. El PDF se descarga en navegador, no se promete envío por email. Incluye empresa, nombre y email.
+
+La solicitud envía nombre/email y contexto de empresa, diez respuestas, nota y prioridades al mismo endpoint de contacto existente (`api.tenbeltz.com/communications/contact-form/`). No utiliza el backend del chat ni LLM. Se bloquea la descarga si falla el registro y se conserva todo para reintentar. Tras registro correcto, una nueva descarga del mismo diagnóstico/datos en esa sesión no vuelve a enviar; tampoco se duplica si falla la generación PDF. Se invalida esa deduplicación cuando cambian las respuestas/datos. No se guardan respuestas/datos en almacenamiento persistente del navegador.
+
+Contacto simplificado: nombre, email, empresa opcional y mensaje. Eliminados rol, tipo de empresa, qué necesitáis y estado del proyecto tanto de UI como de validación/payload. Calendly conserva el enlace y su texto ahora dice llamada telefónica de15min, conforme al usuario; no se modifica la cuenta/evento remoto.
+
+Verificación final: build correcto; browser Docker Chromium ES1440/390 y EN320, nota1/5,5/10, sin prioridades en pantalla, gate por campos/confirmación, payload completo, fallo/reintento, deduplicación y tres PDFs descargados. Contacto simplificado probado sin empresa. Siete peticiones interceptadas/simuladas, **cero contactos reales enviados**; la entrega real del proveedor de contacto no se ha probado en esta tarea. Cero errores JS/overflow. PDFs de tres páginas extraídos con MuPDF: identidad, diez respuestas, prioridades y límites correctos. Canonicals/hreflang ES/EN/x-default contrastados con HTML servido y sitemap de14URLs; selector de idioma enlaza slugs correctos. Artefactos `/tmp/tenbeltz-diagnosis-qa/*v2*` y `gated-*.pdf`.
+
+Preview existente reconstruida/reiniciada, HTTP200 y HTTPS anónimo401. Sin despliegue de producción, cambios de puertos/auth, commit/push ni contacto real. Manual remoto docs13/14/06 y fuente común actualizados; sincronización Mac pendiente. Pendientes: acceso positivo Nginx, validación humana y envío real voluntario si se desea comprobar recepción.
+
+## Primera implementación (histórico, sustituida en los aspectos anteriores)
+
+Por petición del usuario se retira el chat de IA de Layout y se deshabilita el puente `/api/agent/*`: devuelve 404 (POST sin Origin puede ser rechazado antes por CSRF de Astro con 403). El componente anterior se conserva sin importar; el backend independiente no se ha detenido ni modificado.
+
+La home ES/EN incorpora `AIDiagnosis.tsx`, cuestionario cerrado de diez preguntas, una por paso, con radios nativos, progreso, navegación anterior y revisión de respuestas. No permite avanzar sin respuesta. La primera pregunta contextualiza la fase sin puntuar. Nueve preguntas valen 0/1/2; nota = 1 + suma/2, rango1–10 en pasos0,5. Tres prioridades como máximo: menor puntuación primero, desempate por permisos, seguridad, evaluación y resto de controles. Con todas las prácticas declaradas se aconseja mantenimiento. Es una autoevaluación orientativa, no auditoría ni certificado técnico; ni siquiera10 demuestra aptitud para producción.
+
+PDF descargable de tres páginas generado localmente con jsPDF, cargado únicamente al solicitarlo: resultado/fecha/fase/prioridades, respuestas completas, metodología y contacto. Sin email, API, modelo, almacenamiento persistente o envío de respuestas. No se ha enviado el formulario de contacto existente. Un aviso sin JavaScript explica el requisito del cuestionario.
+
+Verificación: `npm run build` pasa, cero errores de Astro (dos hints previos de svgPathParser y warnings de Vite/chunks). Evaluadas las19.683 combinaciones puntuables: rango, prioridades y fase neutral. Browser Chromium en Docker rootless limitado a1GB/2CPU, ES1440/390 y EN320: resultados1/5,5/10, avance bloqueado sin responder, navegación atrás/revisión conserva respuestas, tres descargas PDF, sin overflow ni errores JS/llamadas al chat. PDF extraído/renderizado con MuPDF: texto, diez respuestas y límites de página correctos. Capturas y artefactos locales `/tmp/tenbeltz-diagnosis-qa`.
+
+Preview existente reconstruida y servicio tenbeltz-landing reiniciado. Sin publicación en producción, cambios de auth/puertos, commit/push ni datos personales usados en QA. HTTPS anónimo401; acceso positivo Nginx y revisión humana pendientes. Dependencia jsPDF añadida a package/lock; avisos de auditoría npm registrados en QA, sin actualización masiva de dependencias ajenas. Manual Mac pendiente de sincronización; sólo VPS accesible.
+
+
+## Tercera revisión: valor del informe y SMTP real — 2026-10-09
+
+El resultado adapta el titular a la nota (ejemplo6/10: «Tenéis una base. Ahora toca hacerla más fiable»), explica qué aporta la descarga sin revelar prioridades, y propone «De la nota a un plan de acción». Beneficios concretos: hasta3prioridades, acciones/evidencias verificables y hoja para responsables/revisión. CTA «Descargar mi plan de mejora». Metodología en disclosure secundario. PDF ampliado con orden de trabajo, evidencia específica para cada control y campos de responsables/revisión; notas perfectas reciben pauta de mantenimiento. PDFs ficticios4–5páginas, texto/límites comprobados por MuPDF. Sin resultados garantizados ni urgencia ficticia.
+
+El usuario encuentra fallo real al descargar: API antigua no autoriza CORS de preview (OPTIONS sin Access-Control-Allow-Origin). Con autorización expresa se reutiliza SMTP hello desde configuración privada de Biiak en backend nuevo. Ambos formularios cambian a sameorigin POST /api/contact, proxy servidor fijo10024 con token privado y límites. /api/agent permanece deshabilitado; SMTP ajeno a tools IA. Nombre/email/empresa/mensaje o diagnóstico completo llegan a hello@tenbeltz.com, Reply-To del visitante. PDF se descarga localmente, sin envío al visitante/newsletter.
+
+Backend11tests/build pasados; frontend build/check pasados y browser ES1440/390 EN320,7peticiones simuladas, fallo/reintento/deduplicación/PDF. Prueba real TLS/login más2correos ficticios marcados PRUEBA TÉCNICA, contacto y diagnóstico, aceptados por SMTP a través del puente real; repetir no envía otra vez. Recepción en bandeja pendiente: no hay acceso al buzón. Token no aparece en assets cliente. Frontend requiere .env privado CONTACT_BRIDGE_TOKEN, maestro .config/tenbeltz-env/tenbeltz-frontend/.env600; reconstruir al rotar. SMTP sólo backend .env/maestro600. Servicios10022/10024 reiniciados, HTTPS anónimo401; sin producción/commit/push. Manual docs13/14/06 y fuente común actualizados; Mac pendiente.
+
+
+## 2026-10-09 — Corrección de origen HTTPS en descarga/contacto
+
+Usuario reporta nuevo fallo de descarga. Reproducido403: Nginx termina TLS y reenvía HTTP con Host preservado y X-Forwarded-Proto https; Astro sin allowedDomains no aplica ese protocolo. El guard propio comparaba Origin HTTPS con url.origin HTTP. Corregido sólo en /api/contact: dominio preview usa origen HTTPS fijo, local sigue exigiendo origen exacto de URL. No se confía en forwarded headers arbitrarios ni se desactiva CSRF/validación; producción sigue404. SMTP no se modificó.
+
+Build/check correctos y preview10022 reconstruida/reiniciada. Regresión permanente `node tools/qa/contact-origin.mjs`:10casos, HTTPS válido alcanza validación422 con payload vacío, origen ajeno/ausente/HTTP y forwarding suplantado403, producción404, cuerpo excesivo413, sin enviar correo. Browser Chromium390 usa URL HTTPS preview y relé de QA al loopback con Host/Origin/cabeceras Nginx: diez respuestas, formulario real, SMTP200 y PDF descargado sin error JS, un correo técnico adicional a hello. No es login positivo Nginx: ese acceso sigue pendiente; configuración real de proxy leída confirma Host y X-Forwarded-Proto. Ningún bypass de auth ni cambios de Nginx/puertos/secretos. Fuente común conserva validez: corrección de producto, no cambio general. Sin producción/commit/push; manual Mac pendiente de sincronizar.
+
+
+## 2026-10-09 — PDF de diagnóstico reconstruido con el kit real
+
+Tras rechazo expreso del diseño anterior, se sustituye el texto Helvetica/jsPDF sin marca por un renderer con bases reales de `tools/brand-kit/documents.py:base` y nodos Scene. Exportador reproducible `tools/brand-kit/diagnosis.py`:4bases (portada/cuerpo/perfil/cierre) y7recursos copiados idénticos (logos color/blanco, flor, contornos, IBM Plex Regular/Medium y OFL) bajo public/brand/diagnosis. Paleta fuente identity.json. No se regeneran/modifican las piezas originales de brand/dist.
+
+Renderer local src/lib/diagnosis-report.ts, cargado sólo al descargar, con fuentes incrustadas y texto seleccionable.6páginas: portada personalizada con flor/nota, gráfico de9controles declarados, plan accionable con evidencias y responsables/revisión, respuestas en2páginas, metodología/contacto en cierre oscuro. Sin métricas ficticias de rendimiento ni certificado técnico. Gate/contacto SMTP y origenHTTPS corregido conservados.
+
+Build/check correctos y preview10022 reconstruida/reiniciada.5variantes (nota baja/6/10/una carencia/nombres máximos) generadas, renderizadas y verificadas con MuPDF, sin texto fuera de página. Revisión visual de las6páginas y variantes. Browser real ES1440/390 y EN320 con7peticiones simuladas: PDF6páginas, logo oficial en cada página y texto Plex, sin erroresJS/overflow; cero emails reales en esta revisión. Regresión10casos de origen/cuerpo sigue pasando. Recursos byte a byte iguales y paleta contrastada.
+
+Ejemplo6/10 explícitamente ficticio: /brand/diagnosis/tenbeltz-diagnostico-ejemplo.pdf (~1,5MB), fuente tools/brand-kit/diagnosis-sample.json y regeneración node tools/qa/diagnosis-pdf.mjs. HTTP200/application/pdf y HTTPS anónimo401. Instrucciones en brand/README.md. Las descargas reales usan datos del visitante, no la muestra. Sin cambio de auth/puertos/backend/producción ni commit/push. Corrección de producto: contexto global sin nuevas instrucciones. Sólo VPS; manual Mac pendiente de sincronizar. Aceptación estética humana de esta nueva versión pendiente.

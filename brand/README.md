@@ -80,3 +80,32 @@ El primer kit fue valorado positivamente por el usuario. Esta revisión responde
 - Mockups creados con la herramienta integrada image_gen, usando los logos y la flor originales. La regeneración determinista del kit conserva sus píxeles; una nueva inferencia con esos prompts puede producir otro resultado. No se usó un CLI externo ni se pidió una clave.
 - Mockups conceptuales: no prueban fabricación ni sirven como artes finales. Para imprimir, usar logo/SVG original y especificaciones del proveedor.
 - Referencia ZIP previa conservada sólo en caché del VPS: `/home/dev/.cache/tenbeltz-brand-kit-before-expansion-20261008.zip`. No es un backup offsite.
+
+## Informe de diagnóstico de la landing / 2026-10-09
+
+La descarga del diagnóstico cerrado reutiliza la base real de informes de
+`tools/brand-kit/documents.py:base` y sus nodos `Scene`: cabecera, logo,
+márgenes, reglas, paleta y cierre oscuro. `tools/brand-kit/diagnosis.py`
+exporta cuatro bases a `public/brand/diagnosis/templates.json` y copia sin
+alterar los logos color/blanco, flor, contornos, IBM Plex Sans Regular/Medium
+y licencia OFL. No modifica `brand/dist` ni las muestras originales del kit.
+
+Regenerar desde la raíz, usando el entorno Python del kit y npm instalado:
+
+```sh
+.venv-brand/bin/python tools/brand-kit/diagnosis.py
+node tools/qa/diagnosis-pdf.mjs
+npm run build
+```
+
+En este VPS el entorno Python del kit existente es
+`/home/dev/.cache/tenbeltz-brand-venv`. La segunda orden utiliza esbuild del
+entorno npm del proyecto. El ejemplo declarado ficticio tiene su fuente en
+`tools/brand-kit/diagnosis-sample.json`; no usar datos de visitantes para él.
+
+Renderer dinámico: `src/lib/diagnosis-report.ts`. Seis páginas: portada,
+perfil de nueve controles con puntos declarados, plan/hoja de trabajo,
+dos páginas de respuestas, metodología y contacto. Texto seleccionable y
+fuentes incrustadas; recursos cargados sólo al descargar. La generación
+permanece en el navegador después del registro SMTP, sin envío del PDF al
+visitante ni nuevas llamadas al modelo.

@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import SEO from "@/components/SEO.astro"
+import DiagnosisLauncher from "@/components/DiagnosisLauncher.astro";
 import CookieConsent from "@/components/CookieConsent.astro";
 import { getLangFromUrl } from "@/i18n/utils";
 
@@ -42,5 +43,6 @@ const lang = getLangFromUrl(Astro.url);
 		<a href="#main-content" class="skip-link">{lang === 'en' ? 'Skip to content' : 'Saltar al contenido'}</a>
 		<slot />
 		<CookieConsent />
+		<DiagnosisLauncher lang={lang} />
 	</body>
 </html>

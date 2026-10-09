@@ -287,3 +287,8 @@ La página existente de perfil pasa a equipo: meta/breadcrumb bilingües y About
 ## 2026-10-08 — Perfil personal y revisión final de LAE (preview)
 
 Añadidas /aritz y /en/aritz: doce URLs en sitemap, ProfilePage.mainEntity=Person con URL propia; equipo mantiene AboutPage sobre Organization. Eliminados enlaces al portfolio antiguo. Nueve casos y cuatro proyectos seleccionados, métricas finales LAE con test1414. Build y18 navegaciones desktop/móvil sin errores ni overflow; doce canonicals y JSON-LD verificados. Preview reiniciada, HTTP200/HTTPS anónimo401. Sin despliegue o indexación en producción. Detalle docs/landing-profile-lae-2026-10-08.md.
+
+
+## 2026-10-09 — Diagnóstico de IA en página propia (preview)
+
+Añadidas `/diagnostico-ia` y `/en/ai-diagnosis` mediante template compartido. Mapas de slugs traducidos actualizados en astro.config, SEO y selector de idioma Header. Accesos internos desde home/contacto y launcher flotante, sin launcher en la propia página. Build correcto; HTML servido con curl/urllib y parseado, canonicals exactos sin barra final, alternates ES/EN/x-default iguales a sitemap,14 URLs. No hay publicación en producción ni cambios/comprobaciones de Search Console.

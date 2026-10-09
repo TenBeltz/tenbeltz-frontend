@@ -8,6 +8,7 @@ import ProjectCarousel from '@/components/ProjectCarousel.astro';
 import HomeServices from '@/components/HomeServices.astro';
 import ClientLogos from '@/components/ClientLogos.astro';
 import HeroFlower from '@/components/HeroFlower.astro';
+import DiagnosisTeaser from '@/components/DiagnosisTeaser.astro';
 import { getLangFromUrl } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { getProjects } from '@/data/projects';
@@ -47,6 +48,7 @@ const steps = en ? [
       <div class="home-heading"><div><span class="eyebrow">{en ? 'Services' : 'Servicios'}</span><h2>{en ? 'Start where your project is.' : 'Empezamos donde está tu proyecto.'}</h2></div><div class="home-heading-aside"><a class="text-link" href={servicesHref}>{en ? 'All services' : 'Todos los servicios'} <ArrowIcon direction="right" /></a></div></div>
       <HomeServices lang={lang} servicesHref={servicesHref} />
     </section>
+    <DiagnosisTeaser lang={lang} />
     <section class="home-team">
       <div class="wrap home-section">
         <div class="home-team-intro">

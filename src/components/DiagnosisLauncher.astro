@@ -1,0 +1,27 @@
+---
+const { lang = 'es' } = Astro.props;
+const en = lang === 'en';
+const isDiagnosis = ['/diagnostico-ia', '/en/ai-diagnosis'].includes(Astro.url.pathname.replace(/\/$/, ''));
+---
+{!isDiagnosis && <a class="diagnosis-launcher" href={en ? '/en/ai-diagnosis' : '/diagnostico-ia'}><img src="/images/brand/tenbeltz-icon-diagnostico-white.svg" alt="" width="20" height="20" />{en ? 'AI diagnosis · 2 min' : 'Diagnóstico IA · 2 min'}</a>}
+<script>
+  const launcher = document.querySelector<HTMLElement>('.diagnosis-launcher');
+  const cookie = document.querySelector<HTMLElement>('#cookie-consent');
+  const contact = document.querySelector<HTMLElement>('#contact-section');
+  function place() {
+    if (!launcher) return;
+    const rect = cookie?.getBoundingClientRect();
+    launcher.style.bottom = rect && rect.height && getComputedStyle(cookie!).display !== 'none' ? `${window.innerHeight - rect.top + 12}px` : '';
+  }
+  if (cookie && launcher) {
+    new ResizeObserver(place).observe(cookie);
+    new MutationObserver(place).observe(cookie, { attributes: true, attributeFilter: ['class', 'style'] });
+    window.addEventListener('resize', place);
+    place();
+  }
+  if (contact && launcher) new IntersectionObserver(entries => { launcher.classList.toggle('is-hidden', entries[0].isIntersecting); }).observe(contact);
+</script>
+<style>
+.diagnosis-launcher{position:fixed;right:24px;bottom:24px;z-index:40;display:flex;align-items:center;gap:10px;background:#583346;color:#fff;padding:13px 18px;border-radius:3px;font-size:14px;line-height:1.4;box-shadow:0 4px 18px #25282618}.diagnosis-launcher:hover{background:#452737;color:#fff}.diagnosis-launcher.is-hidden{visibility:hidden;pointer-events:none}body:has(.site-header[data-menu-open="true"]) .diagnosis-launcher{visibility:hidden}@media(max-width:600px){.diagnosis-launcher{right:16px;bottom:16px;padding:12px 14px;font-size:13px}}
+@media print{.diagnosis-launcher{display:none!important}}
+</style>

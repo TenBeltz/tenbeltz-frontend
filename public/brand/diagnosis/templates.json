@@ -1,0 +1,160 @@
+{
+  "edition": "2026.10",
+  "width": 595.276,
+  "height": 841.89,
+  "colors": {
+    "paper": "#f7f6f2",
+    "ink": "#252826",
+    "muted": "#676b65",
+    "line": "#d9dcd4",
+    "accent": "#583346",
+    "surface": "#eeeee7",
+    "petal": "#d9c4ce",
+    "accentHover": "#422534",
+    "white": "#ffffff",
+    "black": "#000000"
+  },
+  "scenes": {
+    "cover": {
+      "background": "paper",
+      "nodes": [
+        {
+          "type": "image",
+          "path": "logo-color.png",
+          "x": 42,
+          "y": 35,
+          "w": 140,
+          "h": 30.684931506849313
+        },
+        {
+          "type": "line",
+          "x": 42,
+          "y": 81,
+          "x2": 553,
+          "y2": 81,
+          "fill": "line",
+          "stroke": 1
+        },
+        {
+          "type": "line",
+          "x": 42,
+          "y": 779,
+          "x2": 553,
+          "y2": 779,
+          "fill": "line",
+          "stroke": 1
+        },
+        {
+          "type": "image",
+          "path": "flower.png",
+          "x": 279,
+          "y": 358,
+          "w": 275,
+          "h": 275
+        }
+      ]
+    },
+    "body": {
+      "background": "paper",
+      "nodes": [
+        {
+          "type": "image",
+          "path": "logo-color.png",
+          "x": 42,
+          "y": 35,
+          "w": 140,
+          "h": 30.684931506849313
+        },
+        {
+          "type": "line",
+          "x": 42,
+          "y": 81,
+          "x2": 553,
+          "y2": 81,
+          "fill": "line",
+          "stroke": 1
+        },
+        {
+          "type": "line",
+          "x": 42,
+          "y": 779,
+          "x2": 553,
+          "y2": 779,
+          "fill": "line",
+          "stroke": 1
+        }
+      ]
+    },
+    "profile": {
+      "background": "paper",
+      "nodes": [
+        {
+          "type": "image",
+          "path": "logo-color.png",
+          "x": 42,
+          "y": 35,
+          "w": 140,
+          "h": 30.684931506849313
+        },
+        {
+          "type": "line",
+          "x": 42,
+          "y": 81,
+          "x2": 553,
+          "y2": 81,
+          "fill": "line",
+          "stroke": 1
+        },
+        {
+          "type": "line",
+          "x": 42,
+          "y": 779,
+          "x2": 553,
+          "y2": 779,
+          "fill": "line",
+          "stroke": 1
+        },
+        {
+          "type": "image",
+          "path": "contours.png",
+          "x": 350,
+          "y": 105,
+          "w": 220,
+          "h": 124
+        }
+      ]
+    },
+    "closing": {
+      "background": "ink",
+      "nodes": [
+        {
+          "type": "image",
+          "path": "logo-white.png",
+          "x": 42,
+          "y": 35,
+          "w": 140,
+          "h": 30.684931506849313
+        },
+        {
+          "type": "line",
+          "x": 42,
+          "y": 81,
+          "x2": 553,
+          "y2": 81,
+          "fill": "muted",
+          "stroke": 1
+        },
+        {
+          "type": "line",
+          "x": 42,
+          "y": 779,
+          "x2": 553,
+          "y2": 779,
+          "fill": "muted",
+          "stroke": 1
+        }
+      ]
+    }
+  },
+  "source": "tools/brand-kit/documents.py:base; scenes.py:Scene"
+}

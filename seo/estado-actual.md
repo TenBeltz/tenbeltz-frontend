@@ -11,6 +11,12 @@ y nueve proyectos. Auditoría y cierre de ajustes en
 No hay una lectura nueva de Search Console en esta sesión; no extrapolar los
 datos de indexación/tráfico de julio al lanzamiento.
 
+## Diagnóstico de IA — 2026-10-09 (preview)
+
+La rama local incorpora `/diagnostico-ia` y `/en/ai-diagnosis`, con14 URLs totales.
+Canonicals, hreflang ES/EN/x-default y sitemap contrastados contra HTML servido en
+loopback después del build. Sin despliegue de producción ni comprobación de indexación.
+
 ## El sitio (julio, histórico)
 
 Astro 5 en modo SSR (`output: 'server'`, adaptador Node), detrás de nginx en un VPS

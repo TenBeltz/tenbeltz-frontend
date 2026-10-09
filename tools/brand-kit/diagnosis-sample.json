@@ -1,0 +1,10 @@
+{
+  "note": "Ejemplo ficticio de diseño. No es una evaluación real ni una referencia comercial.",
+  "lang": "es",
+  "lead": {
+    "name": "Ane García",
+    "company": "Ladera Software · ejemplo ficticio",
+    "email": "qa@example.invalid"
+  },
+  "answers": [1, 1, 1, 1, 1, 1, 1, 1, 1, 2]
+}

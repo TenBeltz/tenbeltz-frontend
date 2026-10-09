@@ -6,6 +6,7 @@ const lang = getLangFromUrl(Astro.url);
 const en = lang === 'en';
 const home = getRelativeLocaleUrl(lang, '/');
 const paths: Record<string, [string, string]> = {
+  '/diagnostico-ia': ['/diagnostico-ia', '/ai-diagnosis'], '/ai-diagnosis': ['/diagnostico-ia', '/ai-diagnosis'],
   '/casos': ['/casos', '/case-studies'], '/case-studies': ['/casos', '/case-studies'],
   '/quien-esta-detras': ['/quien-esta-detras', '/who-is-behind'], '/who-is-behind': ['/quien-esta-detras', '/who-is-behind'],
 };

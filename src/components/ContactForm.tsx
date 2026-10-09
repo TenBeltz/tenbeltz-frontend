@@ -1,276 +1,47 @@
-import React, { useState } from "react";
-import Alert, { type AlertProps } from "./Alert";
-import { sendContactForm } from "@/services/api";
+import { useRef, useState, type FormEvent } from 'react';
+import Alert, { type AlertProps } from './Alert';
+import { sendContactForm } from '@/services/api';
 
-interface ContactFormProps {
-  lang?: "es" | "en";
-}
-
-export default function ContactForm({ lang = 'es' }: ContactFormProps) {
-  const copy = lang === "en"
-    ? {
-        fields: {
-          name: "Name",
-          email: "Email",
-          company: "Company",
-          role: "Role",
-          companyType: "Company type",
-          engagementType: "What do you need?",
-          projectStage: "Project stage",
-          message: "Message",
-        },
-        placeholders: {
-          companyType: "Select an option",
-          engagementType: "Select an option",
-          projectStage: "Select an option",
-          message: "Context, use case, constraints, current blockers...",
-        },
-        options: {
-          companyType: ["SaaS", "Software consultancy", "Other software company"],
-          engagementType: ["AI Gap Analysis", "AI Project Foundations", "Agent MVP", "Production Delivery", "Applied AI Training"],
-          projectStage: ["Exploring the opportunity", "Defining the project", "In development", "Already in production", "Project for a client"],
-        },
-        submit: "Send message",
-        submitting: "Sending...",
-        note: "We respond in less than 48h",
-        required: "Please complete the required fields.",
-        success: "Sent",
-        error: "Error",
-      }
-    : {
-        fields: {
-          name: "Nombre",
-          email: "Email",
-          company: "Empresa",
-          role: "Rol",
-          companyType: "Tipo de empresa",
-          engagementType: "Qué necesitáis",
-          projectStage: "Estado del proyecto",
-          message: "Mensaje",
-        },
-        placeholders: {
-          companyType: "Selecciona una opción",
-          engagementType: "Selecciona una opción",
-          projectStage: "Selecciona una opción",
-          message: "Contexto, caso de uso, restricciones, bloqueos actuales...",
-        },
-        options: {
-          companyType: ["SaaS", "Consultora de software", "Otra empresa de software"],
-          engagementType: ["AI Gap Analysis", "AI Project Foundations", "Agent MVP", "Production Delivery", "Formación en IA aplicada"],
-          projectStage: ["Explorando la oportunidad", "Definiendo el proyecto", "En desarrollo", "Ya en producción", "Proyecto para un cliente"],
-        },
-        submit: "Enviar mensaje",
-        submitting: "Enviando...",
-        note: "Respondemos en menos de 48h",
-        required: "Por favor completa los campos obligatorios.",
-        success: "Enviado",
-        error: "Error",
-      };
+export default function ContactForm({ lang = 'es' }: { lang?: 'es' | 'en' }) {
+  const en = lang === 'en';
+  const t = (es: string, english: string) => en ? english : es;
   const [alert, setAlert] = useState<AlertProps | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const pending = useRef(false);
 
-  const chevronDataUrl =
-    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'><path d='M3 4.5 L6 7.5 L9 4.5' stroke='%23583346' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>\")";
-
-  const selectClassName = "form-select";
-
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (submitting) return;
+    if (pending.current) return;
     const form = event.currentTarget;
-    const formData = new FormData(form);
-    const company = (formData.get("company") as string) || "";
-    const role = (formData.get("role") as string) || "";
-    const companyType = (formData.get("companyType") as string) || "";
-    const engagementType = (formData.get("engagementType") as string) || "";
-    const projectStage = (formData.get("projectStage") as string) || "";
-    const rawMessage = (formData.get("message") as string) || "";
-    const contextLines = [
-      company ? `${copy.fields.company}: ${company}` : "",
-      role ? `${copy.fields.role}: ${role}` : "",
-      companyType ? `${copy.fields.companyType}: ${companyType}` : "",
-      engagementType ? `${copy.fields.engagementType}: ${engagementType}` : "",
-      projectStage ? `${copy.fields.projectStage}: ${projectStage}` : "",
-    ].filter(Boolean);
-    const message = contextLines.length
-      ? `${contextLines.join("\n")}\n\n${rawMessage}`
-      : rawMessage;
-    const data = {
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
-      phone: "",
-      message,
-    };
-
-    if (!data.name || !data.email || !companyType || !engagementType || !projectStage || !rawMessage) {
-      setAlert({
-        id: Date.now(),
-        type: "error",
-        title: copy.error,
-        message: copy.required,
-      });
+    const values = new FormData(form);
+    const name = String(values.get('name') || '').trim();
+    const email = String(values.get('email') || '').trim();
+    const company = String(values.get('company') || '').trim();
+    const message = String(values.get('message') || '').trim();
+    if (!name || !email || !message) {
+      setAlert({ id: Date.now(), type: 'error', title: t('Revisa el formulario', 'Check the form'), message: t('Completa nombre, email y mensaje.', 'Complete your name, email and message.') });
       return;
     }
-
+    pending.current = true;
     setSubmitting(true);
-    const result = await sendContactForm(data);
+    try {
+      const result = await sendContactForm({ name, email, phone: '', message: `${company ? `${t('Empresa', 'Company')}: ${company}\n\n` : ''}${message}` });
+      setAlert({ id: Date.now(), type: result.success ? 'success' : 'error', title: result.success ? t('Enviado', 'Sent') : t('No se ha enviado', 'Not sent'), message: result.success ? t('Tu mensaje se ha enviado correctamente.', 'Your message has been sent.') : t('No hemos podido enviar tu mensaje. Inténtalo de nuevo o escríbenos a hello@tenbeltz.com.', 'We could not send your message. Please retry or email hello@tenbeltz.com.') });
+      if (result.success) form.reset();
+    } finally { pending.current = false; setSubmitting(false); }
+  }
 
-    setAlert({
-      id: Date.now(),
-      type: result.success ? "success" : "error",
-      title: result.success ? copy.success : copy.error,
-      message: result.message,
-    });
-
-    if (result.success) form.reset();
-    setSubmitting(false);
-  };
-
-  return (
-    <>
-      <form onSubmit={handleSubmit} className="contact-form">
-        <div className="form-grid">
-          <div className="field">
-            <label htmlFor="name" className="font-semibold">
-              {copy.fields.name}
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              className="form-input"
-            />
-          </div>
-          <div className="field">
-            <label htmlFor="email" className="font-semibold">
-              {copy.fields.email}
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              className="form-input"
-            />
-          </div>
-          <div className="field">
-            <label htmlFor="company" className="font-semibold">
-              {copy.fields.company}
-            </label>
-            <input
-              id="company"
-              name="company"
-              type="text"
-              className="form-input"
-            />
-          </div>
-          <div className="field">
-            <label htmlFor="role" className="font-semibold">
-              {copy.fields.role}
-            </label>
-            <input
-              id="role"
-              name="role"
-              type="text"
-              className="form-input"
-            />
-          </div>
-          <div className="field">
-            <label htmlFor="companyType" className="font-semibold">
-              {copy.fields.companyType}
-            </label>
-            <select
-              id="companyType"
-              name="companyType"
-              required
-              defaultValue=""
-              className={selectClassName}
-              style={{ backgroundImage: chevronDataUrl, backgroundPosition: "right 0.875rem center", backgroundSize: "12px 12px" }}
-            >
-              <option value="" disabled className="text-slate-500">
-                {copy.placeholders.companyType}
-              </option>
-              {copy.options.companyType.map((option) => (
-                <option key={option} value={option} >
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="field">
-            <label htmlFor="engagementType" className="font-semibold">
-              {copy.fields.engagementType}
-            </label>
-            <select
-              id="engagementType"
-              name="engagementType"
-              required
-              defaultValue=""
-              className={selectClassName}
-              style={{ backgroundImage: chevronDataUrl, backgroundPosition: "right 0.875rem center", backgroundSize: "12px 12px" }}
-            >
-              <option value="" disabled className="text-slate-500">
-                {copy.placeholders.engagementType}
-              </option>
-              {copy.options.engagementType.map((option) => (
-                <option key={option} value={option} >
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="full-field field">
-            <label htmlFor="projectStage" className="font-semibold">
-              {copy.fields.projectStage}
-            </label>
-            <select
-              id="projectStage"
-              name="projectStage"
-              required
-              defaultValue=""
-              className={selectClassName}
-              style={{ backgroundImage: chevronDataUrl, backgroundPosition: "right 0.875rem center", backgroundSize: "12px 12px" }}
-            >
-              <option value="" disabled className="text-slate-500">
-                {copy.placeholders.projectStage}
-              </option>
-              {copy.options.projectStage.map((option) => (
-                <option key={option} value={option} >
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="full-field field">
-            <label htmlFor="message" className="font-semibold">
-              {copy.fields.message}
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={5}
-              required
-              placeholder={copy.placeholders.message}
-              className="form-input"
-            />
-          </div>
-        </div>
-        <div className="field">
-          <div className="form-end">
-            <button
-              type="submit"
-              id="submit-form-button"
-              disabled={submitting}
-              className="button"
-            >
-              {submitting ? copy.submitting : copy.submit}
-            </button>
-            <span className="form-note">{copy.note}</span>
-          </div>
-        </div>
-      </form>
-      {alert && <Alert {...alert} />}
-    </>
-  );
+  return <>
+    <form onSubmit={handleSubmit} className="contact-form">
+      <div className="form-grid">
+        <div className="field"><label htmlFor="name">{t('Nombre', 'Name')}</label><input id="name" name="name" autoComplete="name" required maxLength={120} className="form-input" /></div>
+        <div className="field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" autoComplete="email" required maxLength={254} className="form-input" /></div>
+        <div className="full-field field"><label htmlFor="company">{t('Empresa (opcional)', 'Company (optional)')}</label><input id="company" name="company" autoComplete="organization" maxLength={160} className="form-input" /></div>
+        <div className="full-field field"><label htmlFor="message">{t('Mensaje', 'Message')}</label><textarea id="message" name="message" rows={5} required maxLength={6000} placeholder={t('Cuéntanos en qué podemos ayudarte.', 'Tell us how we can help.')} className="form-input" /></div>
+      </div>
+      <p className="form-note">{t('Usaremos tus datos para responder a tu consulta.', 'We will use your details to respond to your enquiry.')} <a href={en ? '/en/politicas' : '/politicas'} className="text-link">{t('Privacidad', 'Privacy')}</a></p>
+      <div className="form-end"><button type="submit" id="submit-form-button" disabled={submitting} className="button">{submitting ? t('Enviando…', 'Sending…') : t('Enviar mensaje', 'Send message')}</button><span className="form-note">{t('Respondemos en menos de 48h', 'We respond in less than 48h')}</span></div>
+    </form>
+    {alert && <Alert {...alert} />}
+  </>;
 }

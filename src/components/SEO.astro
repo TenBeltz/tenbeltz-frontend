@@ -20,7 +20,9 @@ const {
 } = Astro.props as Props
 
 // Dedicated OG image per locale (1200x630). Social crawlers need an absolute URL.
-const defaultOgPath = lang === 'en' ? '/og/og-en.png' : '/og/og-es.png'
+const ogRoute = localizedPath(Astro.url.pathname, 'es')
+const ogAudience = ogRoute === '/ia-para-empresas' ? 'business' : ogRoute === '/ia-para-software' ? 'software' : 'home'
+const defaultOgPath = `/og/tenbeltz-${ogAudience}-${lang === 'en' ? 'en' : 'es'}.png`
 const ogImage = new URL(image ?? defaultOgPath, Astro.site)
 const isDefaultOgImage = !image
 
@@ -225,6 +227,8 @@ const jsonLd = {
 <meta name="twitter:image" content={ogImage} />
 
 <meta property="og:image" content={ogImage} />
+<meta property="og:image:alt" content={title} />
+<meta name="twitter:image:alt" content={title} />
 {isDefaultOgImage && <meta property="og:image:width" content="1200" />}
 {isDefaultOgImage && <meta property="og:image:height" content="630" />}
 {isDefaultOgImage && <meta property="og:image:type" content="image/png" />}

@@ -1,10 +1,10 @@
 # CLAUDE.md
 
-Web corporativa de TenBeltz (Beltz Dev SL). Astro 5 en modo SSR, bilingüe español/inglés.
+Web corporativa de TenBeltz (Beltz Dev SL). Astro 7 en modo SSR, bilingüe español/inglés.
 
 ## Stack
 
-- **Framework:** Astro 5, `output: 'server'` con adaptador `@astrojs/node` (standalone)
+- **Framework:** Astro 7, `output: 'server'` con adaptador `@astrojs/node` (standalone)
 - **Estilos:** Tailwind CSS v4 vía `@tailwindcss/vite`
 - **Islas interactivas:** React 18
 - **i18n:** i18n nativo de Astro. `es` por defecto sin prefijo, `en` bajo `/en/`
@@ -24,7 +24,7 @@ seo/                documentación y trazabilidad de SEO
 docs/deploy/        configuración de servidor
 ```
 
-No hay rutas dinámicas. El sitio son **20 URLs**: 10 páginas × 2 idiomas, incluidas tres páginas de solución ES/EN añadidas en la revisión de octubre de 2026.
+No hay rutas dinámicas. El sitio son **24 URLs**: 12 páginas × 2 idiomas, incluidas dos landings por audiencia y tres páginas de solución ES/EN. Las rutas anteriores se conservan.
 
 ## Reglas que importan
 
@@ -59,9 +59,7 @@ Es inocuo (RFC 3986 normaliza la ruta vacía a `/`), pero cualquier **otra** div
 es un fallo.
 
 El hook `serialize` de `astro.config.mjs` quita la barra del resto y construye los hreflang.
-Ojo: el mapa de slugs traducidos está **duplicado** en `astro.config.mjs` y en
-`SEO.astro` — si añades un slug traducido, tócalo en los dos o el sitemap y las etiquetas
-`<link rel="alternate">` dejarán de coincidir en silencio.
+Los slugs traducidos tienen una fuente común en `src/i18n/routes.js`, consumida por `astro.config.mjs`, `SEO.astro` y `Header.astro`. Al añadir un slug, actualiza sus pares allí y comprueba sitemap, hreflang y selector de idioma. Usa `localizedPath(pathname, lang)` para resolver las rutas completas.
 
 Y no quites el `filter` del sitemap: la opción `i18n` de la integración hacía dos cosas a la
 vez, y al retirarla se perdió el filtrado automático de `/404` y `/500` por locale.
@@ -110,18 +108,15 @@ npm run preview  # servir el build
 ## Contexto de negocio
 
 TenBeltz es el nombre comercial de Beltz Dev SL (NIF B21697719), Leioa, Bizkaia. Equipo
-externo de ingeniería de IA para empresas de software: productos SaaS y consultoras.
+de ingeniería de IA con dos líneas comerciales autorizadas por Aritz el 2026-10-13: automatización de procesos para empresas/pymes y desarrollo e integración de IA para equipos SaaS y consultoras de software. Home común, landings `/ia-para-empresas` y `/ia-para-software` con equivalentes EN. Contexto actual en `.agents/product-marketing.md`.
 
-Cinco modalidades: AI Gap Analysis, AI Project Foundations, Agent MVP, Production Delivery y formación en IA aplicada.
+Software: cinco modalidades (AI Gap Analysis, AI Project Foundations, Agent MVP, Production Delivery y formación en IA aplicada). Empresas: elegir el proceso, construir/comprobar e integrar/acompañar, con alcance y presupuesto acordados; sin tarifas ni plazos nuevos publicados.
 
 Aritz lidera las primeras reuniones, la consultoría y la definición técnica. El desarrollo y la integración se delegan al equipo bajo su dirección técnica. No prometer que Aritz implementa personalmente todo el proyecto. El formulario de contacto permanece abierto también en la home.
 
 Referencias públicas autorizadas: Irontec, Qamarero, Prados-Osuna Abogados, LexFirma y TecniSoft (SistemaPol). Biiak es producto cofundado. Imagina subcontrató la formación de 30 horas en IA local para el equipo técnico internacional de Opus Dei. Conservar esta atribución. Los casos jurídicos sin cliente identificado siguen anónimos; la autorización de una referencia no permite atribuirle casos anónimos por inferencia.
 
-Al escribir copy, ten presente que el posicionamiento es deliberadamente específico: **no
-son una agencia de IA ni una consultora generalista**. Evita el lenguaje corporativo
-genérico — ya hubo que reescribir una descripción que decía "líderes en la industria" y
-contradecía frontalmente el mensaje del sitio.
+Al escribir copy, distingue las dos audiencias: procesos, herramientas y revisión para empresas; arquitectura, evaluación e integración para software. Evita lenguaje corporativo genérico y promesas sin evidencia. La ampliación de audiencia pedida por el usuario sustituye el posicionamiento exclusivamente software anterior. Mantén la especialización en ingeniería y resultados comprobables.
 
 ## Equipo y portfolio (2026-10-08)
 

@@ -1,0 +1,82 @@
+---
+interface Props { lang?: 'es' | 'en' }
+const { lang = 'es' } = Astro.props;
+const en = lang === 'en';
+const tasks = en ? [
+ ['documents','Read and organise documents','Gather a few representative documents and define the fields or categories your team needs. Identify which cases require a person to check the result.'],
+ ['reports','Prepare reports and drafts','Identify the source documents, the report structure and who approves the final version. Start with a report you prepare regularly.'],
+ ['tools','Move data between tools','List the source and destination tools, the data you copy and the available access or APIs. Include exceptions and approval steps.'],
+ ['voice','Handle calls and requests','Describe the questions or actions you want to handle, which systems hold the answers and when a person should take over.'],
+] : [
+ ['documents','Leer y ordenar documentos','Reúne algunos documentos representativos y define los campos o categorías que necesita tu equipo. Identifica qué casos requieren revisión humana.'],
+ ['reports','Preparar informes y borradores','Identifica las fuentes, la estructura del informe y quién aprueba la versión final. Empieza por un informe que preparéis habitualmente.'],
+ ['tools','Pasar datos entre herramientas','Anota las herramientas de origen y destino, los datos que copiáis y los accesos o APIs disponibles. Incluye las excepciones y aprobaciones.'],
+ ['voice','Atender llamadas y solicitudes','Describe las preguntas o gestiones que queréis atender, qué sistemas contienen las respuestas y cuándo debe intervenir una persona.'],
+];
+---
+<section class="process-explorer" id="explorar-proceso" data-process-explorer data-lang={lang}>
+ <div class="wrap process-inner">
+  <div class="process-intro"><span class="eyebrow">{en ? 'Find your starting point' : 'Encuentra tu punto de partida'}</span><h2>{en ? 'Which task would you start with?' : '¿Por qué tarea empezarías?'}</h2><p>{en ? 'Choose a task and estimate the time it takes today. You will get a short guide to prepare the first conversation.' : 'Elige una tarea y estima el tiempo que ocupa hoy. Obtendrás una guía breve para preparar la primera conversación.'}</p><p class="form-note">{en ? 'This runs in your browser. Your answers are only shared if you choose to include them in a contact message and send it.' : 'Funciona en tu navegador. Las respuestas sólo se comparten si decides incluirlas en un mensaje de contacto y enviarlo.'}</p></div>
+  <div class="process-workspace">
+   <form data-process-form>
+    <fieldset disabled data-process-fields class="process-fields"><legend class="sr-only">{en ? 'Explore a business process' : 'Explora un proceso de negocio'}</legend>
+    <div class="field"><label for="process-task">{en ? '1. What does your team repeat?' : '1. ¿Qué repite vuestro equipo?'}</label><select id="process-task" name="task" class="form-input">{tasks.map(([id,label]) => <option value={id}>{label}</option>)}</select></div>
+    <div class="process-inputs"><div class="field"><label for="process-frequency">{en ? '2. How many times a week?' : '2. ¿Cuántas veces por semana?'}</label><input class="form-input" id="process-frequency" name="frequency" type="number" min="1" max="100000" step="1" inputmode="numeric" placeholder={en ? 'e.g. 20' : 'Ej. 20'} required /></div><div class="field"><label for="process-minutes">{en ? '3. Minutes for each task?' : '3. ¿Minutos por tarea?'}</label><input class="form-input" id="process-minutes" name="minutes" type="number" min="0.1" max="10080" step="0.1" inputmode="decimal" placeholder={en ? 'e.g. 15' : 'Ej. 15'} required /></div></div>
+    <button type="submit" class="button" disabled>{en ? 'See my starting point' : 'Ver mi punto de partida'} <span aria-hidden="true">↗</span></button>
+    </fieldset>
+   </form>
+   <div data-process-result class="process-result" hidden tabindex="-1" aria-live="polite" aria-atomic="true">
+    <span class="eyebrow">{en ? 'Your declared manual workload' : 'Trabajo manual que has indicado'}</span><p class="process-hours"><strong data-process-hours></strong> <span>{en ? 'hours / week' : 'horas / semana'}</span></p>
+    <p class="form-note">{en ? 'Frequency × minutes ÷ 60. This estimates current work, not potential savings. Feasibility depends on your data, exceptions and integrations.' : 'Frecuencia × minutos ÷ 60. Estima el trabajo actual, no el ahorro potencial. La viabilidad depende de los datos, las excepciones y las integraciones.'}</p>
+    <h3>{en ? 'What to prepare' : 'Qué preparar'}</h3>{tasks.map(([id,_,text]) => <p data-process-guidance={id} hidden>{text}</p>)}
+    <a class="text-link" href="#contact-section" data-process-contact>{en ? 'Include this context in my enquiry' : 'Incluir este contexto en mi consulta'} <span aria-hidden="true">↓</span></a><p class="form-note" role="status" data-process-prefill-status></p>
+   </div>
+   <noscript><p>{en ? 'You can estimate the workload by multiplying tasks per week by minutes per task and dividing by 60. Tell us about your task using the contact form below.' : 'Puedes estimar las horas multiplicando tareas por semana por minutos por tarea y dividiendo entre 60. Cuéntanos tu proceso en el formulario de contacto.'}</p></noscript>
+  </div>
+ </div>
+</section>
+<script>
+ document.querySelectorAll<HTMLElement>('[data-process-explorer]').forEach(root => {
+  const form = root.querySelector<HTMLFormElement>('[data-process-form]')!;
+  const result = root.querySelector<HTMLElement>('[data-process-result]')!;
+  const en = root.dataset.lang === 'en';
+  let context = '';
+  form.querySelector<HTMLFieldSetElement>('[data-process-fields]')!.disabled = false;
+  form.querySelector<HTMLButtonElement>('button[type="submit"]')!.disabled = false;
+  form.addEventListener('submit', event => {
+   event.preventDefault();
+   if (!form.reportValidity()) return;
+   const data = new FormData(form);
+   const frequency = Number(data.get('frequency')); const minutes = Number(data.get('minutes'));
+   if (!Number.isFinite(frequency) || !Number.isFinite(minutes) || frequency <= 0 || minutes <= 0) return;
+   const task = String(data.get('task'));
+   const hours = new Intl.NumberFormat(en ? 'en-GB' : 'es-ES', { maximumFractionDigits: 3 }).format(frequency * minutes / 60);
+   root.querySelector<HTMLElement>('[data-process-hours]')!.textContent = hours;
+   root.querySelectorAll<HTMLElement>('[data-process-guidance]').forEach(item => { item.hidden = item.dataset.processGuidance !== task; });
+   result.hidden = false;
+   result.focus({ preventScroll: true });
+   const label = form.querySelector<HTMLSelectElement>('[name="task"]')!.selectedOptions[0].textContent;
+   context = en ? `Workflow: ${label}. Frequency: ${frequency} tasks/week. Manual time: ${minutes} minutes/task (${hours} hours/week).\nWe would like to review the feasibility, integrations and required human checks.` : `Proceso: ${label}. Frecuencia: ${frequency} tareas/semana. Tiempo manual: ${minutes} minutos/tarea (${hours} horas/semana).\nNos gustaría revisar la viabilidad, las integraciones y los puntos de revisión humana.`;
+  });
+  form.addEventListener('input', () => { result.hidden = true; context = ''; });
+  root.querySelector('[data-process-contact]')?.addEventListener('click', () => {
+   if (!context) return;
+   const message = document.querySelector<HTMLTextAreaElement>('#contact-section textarea[name="message"]');
+   const interest = document.querySelector<HTMLSelectElement>('#contact-section select[name="interest"]');
+   if (message && !message.value.includes(context)) {
+    const combined = `${message.value ? message.value + '\n\n' : ''}${context}`;
+    if (combined.length > 6000) {
+     root.querySelector<HTMLElement>('[data-process-prefill-status]')!.textContent = en ? 'Your message is already long. Shorten it before adding this context.' : 'Tu mensaje ya es largo. Acórtalo antes de añadir este contexto.';
+     return;
+    }
+    message.value = combined; message.dispatchEvent(new Event('input', { bubbles: true }));
+   }
+   root.querySelector<HTMLElement>('[data-process-prefill-status]')!.textContent = en ? 'Context added. Review it in the contact form before sending.' : 'Contexto añadido. Revísalo en el formulario antes de enviarlo.';
+   if (interest) { interest.value = 'business'; interest.dispatchEvent(new Event('change', { bubbles: true })); }
+  });
+ });
+</script>
+<style>
+ .process-fields{border:0;margin:0;padding:0;min-width:0}
+ .process-explorer{border-block:1px solid var(--line);background:#eeeee7;padding-block:76px}.process-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:76px}.process-intro h2{font-size:clamp(32px,3.5vw,46px);max-width:440px}.process-intro>p{color:var(--muted)}.process-intro .form-note{max-width:430px}.process-workspace{min-width:0}.process-workspace .field{margin-bottom:22px}.process-inputs{display:grid;grid-template-columns:1fr 1fr;gap:22px}.process-workspace label{display:block;font-size:14px;margin-bottom:10px;color:var(--ink)}.process-workspace .form-input{background:var(--paper);width:100%;min-width:0;border:1px solid #c8ccc3;border-radius:2px;min-height:46px;padding:12px;font-size:16px;color:var(--ink)}.process-result{margin-top:30px;border-top:1px solid var(--line);padding-top:26px}.process-result[hidden]{display:none}.process-hours{margin-bottom:12px;line-height:1.2}.process-hours strong{font-size:48px;font-weight:500;letter-spacing:-.05em;color:var(--accent)}.process-hours span{font-size:17px;color:var(--muted)}.process-result h3{font-size:21px;margin:25px 0 10px}.process-result>p[data-process-guidance]{color:var(--muted);font-size:15px}.process-result .text-link{font-size:14px}@media(max-width:850px){.process-inner{grid-template-columns:1fr;gap:26px}.process-explorer{padding-block:48px}.process-intro h2{max-width:none}}@media(max-width:420px){.process-inputs{grid-template-columns:1fr;gap:0}}
+</style>

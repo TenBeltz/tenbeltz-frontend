@@ -27,8 +27,11 @@ const content = lang === 'en'
 >
 	<Header />
 	<main id="main-content">
-		<ServicesSection />
-		<Contact />
+		<div class="wrap services-audience-note"><p>{lang === 'en' ? 'Services for SaaS teams and software consultancies.' : 'Servicios para equipos SaaS y consultoras de software.'} <a class="text-link" href={lang === 'en' ? '/en/ai-for-business' : '/ia-para-empresas'}>{lang === 'en' ? 'Looking to automate a business workflow?' : '¿Buscas automatizar un proceso de tu empresa?'} ↗</a></p></div>
+        <ServicesSection />
+		<Contact audience="software" />
 	</main>
 	<Footer />
 </Layout>
+
+<style>.services-audience-note{padding-top:28px}.services-audience-note p{font-size:14px;color:var(--muted);margin:0}.services-audience-note a{font-size:14px;margin-left:12px}@media(max-width:600px){.services-audience-note a{margin:10px 0 0}}</style>

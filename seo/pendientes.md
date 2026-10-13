@@ -372,7 +372,8 @@ alguna vez se hace una revisión del servidor con ese alcance.
 
 ## Rediseño dos públicos — 2026-10-13
 
-- Verificar integración de24 URLs, canonical/sitemap/hreflang y cambio de idioma.
-- Revisar móvil/escritorio y contexto del CTA: empresa→proceso, software→proyecto.
-- Mantener diagnóstico técnico correctamente descrito; no prometer cálculo de ahorro.
-- Registrar comprobaciones efectivas tras QA; publicación y nueva indexación pendientes.
+- [x] Integración de24 URLs, canonical/sitemap/hreflang,732 enlaces y cambio de idioma comprobados en preview.
+- [x] Revisados móvil/escritorio (42 navegaciones320–1440px) y CTA por público.
+- [x] Diagnóstico técnico descrito como autoevaluación; explorador sólo calcula trabajo manual declarado.
+- [x] QA documentada en docs/dual-audience/verification.md.
+- [ ] Aceptación humana, publicación de producción y comprobación posterior de indexación.

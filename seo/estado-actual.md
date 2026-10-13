@@ -4,15 +4,20 @@
 
 ## Dos públicos — trabajo de rediseño 2026-10-13
 
-Propuesta en implementación: home compartida, IA para empresas y IA para software.
+Preview completada: home compartida, IA para empresas y IA para software.
 Nuevos pares: `/ia-para-empresas` / `/en/ai-for-business` y
-`/ia-para-software` / `/en/ai-for-software`. Total esperado:24 URLs, conservando las20
-existentes. Slugs compartidos en `src/i18n/routes.js`; canonicals mantienen origen
-https://tenbeltz.com y las páginas inglesas su canonical propio.
+`/ia-para-software` / `/en/ai-for-software`. Total24 URLs, conservando las20 existentes.
+Slugs compartidos en `src/i18n/routes.js`; canonicals mantienen origen https://tenbeltz.com.
 
-Pendiente QA integrada antes de afirmar disponibilidad de preview. Sin despliegue ni
-consulta nueva de Search Console. El diagnóstico existente sigue siendo de madurez de un
-proyecto de IA; no es una estimación validada de ahorro operativo.
+QA efectiva: build correcto,24 rutas200,732 enlaces internos y concordancia
+HTML/sitemap/hreflang/selector de idioma sin errores. Chromium aislado:42 navegaciones
+320–1440px, más interacciones, contacto simulado y PDF6p. HTTPS anónimo401.
+Seis imágenes sociales específicas por público/idioma. Ver docs/dual-audience/verification.md.
+
+Pendientes: aceptación del usuario, producción y lectura nueva de Search Console/indexación.
+Diagnóstico técnico y explorador de trabajo manual tienen propósitos distintos; ninguno
+certifica viabilidad o ahorro. Las secciones de julio y las anteriores a esta entrada son
+fotografías históricas, no el estado de esta preview.
 
 ## Páginas de solución por problema — 2026-10-13 (preview)
 

@@ -60,7 +60,7 @@ const related = Object.entries(solutions).filter(([key]) => key !== id).map(([, 
     <nav class="solution-related" aria-label={en ? 'Related capabilities' : 'Temas relacionados'}>
       {related.map(item => <a class="text-link" href={item.href}>{item.title} <ArrowIcon direction="right" /></a>)}
     </nav>
-    <Contact />
+    <Contact audience="software" />
   </main>
   <Footer />
 </Layout>

@@ -35,4 +35,4 @@ La oferta de software mantiene las cinco modalidades existentes. El recorrido de
 
 Lenguaje concreto, sin presentar la IA como solución universal. No copiar precios ni testimonios de Nalto. No publicar métricas de retorno sin medición. Home breve compatible con la flor original. Nombres de servicio explicados en español. Referencias de proyectos autorizadas y relaciones identificadas. Aritz dirige reuniones, consultoría y definición; el equipo desarrolla e integra.
 
-Pendiente: integración, revisión visual, comprobación de ambas versiones y validación del usuario antes de publicar en producción.
+Integración realizada y revisión cruzada de copy, diseño y SEO completada. Resultados técnicos y visuales en `docs/dual-audience/verification.md`. Pendiente: aceptación del usuario y publicación en producción.

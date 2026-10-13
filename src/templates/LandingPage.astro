@@ -5,59 +5,66 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import Contact from '@/components/Contact.astro';
 import ProjectCarousel from '@/components/ProjectCarousel.astro';
-import HomeServices from '@/components/HomeServices.astro';
+import { getHomeAudienceCopy } from '@/data/audiences';
 import ClientLogos from '@/components/ClientLogos.astro';
 import HeroFlower from '@/components/HeroFlower.astro';
-import DiagnosisTeaser from '@/components/DiagnosisTeaser.astro';
-import SolutionLinks from '@/components/SolutionLinks.astro';
+
 import { getLangFromUrl } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { getProjects } from '@/data/projects';
 const lang = getLangFromUrl(Astro.url);
 const en = lang === 'en';
+const copy = getHomeAudienceCopy(lang);
 const projects = ['irontec', 'qamarero', 'clasificacion-documental', 'biiak'].map(id => getProjects(lang).find(project => project.id === id)!).filter(Boolean);
 const casesHref = getRelativeLocaleUrl(lang, en ? '/case-studies' : '/casos');
 const servicesHref = getRelativeLocaleUrl(lang, '/services');
 const aboutHref = getRelativeLocaleUrl(lang, en ? '/who-is-behind' : '/quien-esta-detras');
 const steps = en ? [
-  ['Scope', 'Product, available data and a shared objective.'],
+  ['Scope', 'A workflow or product, available data and a shared objective.'],
   ['Architecture', 'Models, integrations and acceptance criteria.'],
   ['Evaluation', 'Quality, performance and cost on real cases.'],
   ['Delivery', 'Integration, monitoring and technical handover.'],
 ] : [
-  ['Alcance', 'Producto, datos disponibles y un objetivo compartido.'],
+  ['Alcance', 'Un proceso o producto, datos disponibles y un objetivo compartido.'],
   ['Arquitectura', 'Modelos, integraciones y criterios de aceptación.'],
   ['Evaluación', 'Calidad, rendimiento y coste con casos reales.'],
   ['Entrega', 'Integración, monitorización y transferencia técnica.'],
 ];
 ---
-<Layout title={en ? 'External AI engineering team for software companies | TenBeltz' : 'Equipo externo de ingeniería de IA para software | TenBeltz'} description={en ? 'We design, build and integrate AI systems into your product, with clear reliability, performance and cost criteria.' : 'Diseñamos, construimos e integramos sistemas de IA en tu producto, con criterios claros de fiabilidad, rendimiento y coste.'} canonical={`https://tenbeltz.com${en ? '/en' : '/'}`}>
+<Layout title={en ? 'AI for businesses and software teams | TenBeltz' : 'IA para empresas y equipos de software | TenBeltz'} description={en ? 'We automate business workflows and help software teams develop and integrate AI. Real projects, technical leadership and clear delivery criteria.' : 'Automatizamos procesos de negocio y ayudamos a equipos de software a desarrollar e integrar IA. Proyectos reales, dirección técnica y criterios de entrega claros.'} canonical={`https://tenbeltz.com${en ? '/en' : '/'}`}>
   <Header />
   <main id="main-content" class="home-page">
     <section class="home-intro home-intro--flower wrap">
       <HeroFlower />
       <div class="hero-kicker"><span class="eyebrow">{en ? 'TenBeltz / AI projects that bloom' : 'TenBeltz / Proyectos de IA que florecen'}</span></div>
-      <h1>{en ? 'AI for your product.' : 'IA para tu producto.'}<br /><em>{en ? 'Ready for production.' : 'Lista para producción.'}</em></h1>
-      <div class="hero-bottom"><div><p class="lead">{en ? 'AI engineering for SaaS teams and software consultancies: design, evaluation and integration.' : 'Ingeniería de IA para equipos SaaS y consultoras: diseño, evaluación e integración.'}</p></div><div class="actions"><a class="button" href="#contact-section">{en ? 'Review a project' : 'Revisar un proyecto'} <ArrowIcon direction="up-right" /></a><a class="text-link" href="#proyectos">{en ? 'See project work' : 'Ver proyectos'} <ArrowIcon direction="down" /></a></div></div>
+      <h1>{en ? 'AI for your business.' : 'IA aplicada a tu negocio.'}<br /><em>{en ? 'And your product.' : 'Y a tu producto.'}</em></h1>
+      <div class="hero-bottom"><p class="lead">{copy.intro}</p><div class="actions hero-audience-actions">{copy.paths.map(path => <a class="text-link" href={path.path}>{path.title} <ArrowIcon direction="up-right" /></a>)}</div></div>
     </section>
     <ClientLogos lang={lang} />
-    <section class="home-proof wrap" aria-label={en ? 'Measured project evidence' : 'Resultados medidos en proyectos'}>
-      <p class="eyebrow">{en ? 'Evidence from real projects' : 'Resultados de proyectos reales'}</p>
+    <section id="elige-tu-camino" class="home-audiences wrap" aria-labelledby="audience-paths-title">
+      <div class="home-heading"><div><span class="eyebrow">{en ? 'Two ways to work together' : 'Dos formas de trabajar contigo'}</span><h2 id="audience-paths-title">{en ? 'What would you like to solve?' : '¿Qué quieres resolver?'}</h2></div></div>
+      <div class="home-audience-grid">{copy.paths.map(path => <article><span class="eyebrow">{path.title}</span><h3>{path.id === 'business' ? (en ? 'Make daily work easier.' : 'Mejorar el trabajo diario.') : (en ? 'Build AI into your software.' : 'Incorporar IA a tu software.')}</h3><p>{path.text}</p><a class="text-link" href={path.path}>{path.cta} <ArrowIcon direction="up-right" /></a></article>)}</div>
+    </section>
+    <section class="home-proof wrap" aria-label={en ? 'Project context and results' : 'Contexto y resultados de proyectos'}>
+      <p class="eyebrow">{en ? 'Context and results from real projects' : 'Contexto y resultados de proyectos reales'}</p>
       <dl>
-        <div><dt>500 {en ? 'calls/day' : 'llamadas/día'}</dt><dd>{en ? 'Workload defined for a local AI adaptation.' : 'Carga prevista para una adaptación a IA local.'}</dd></div>
-        <div><dt>−42 %</dt><dd>{en ? 'Approximate cost in evaluated report extraction and drafting stages.' : 'Coste aproximado en las fases evaluadas de extracción y redacción de informes.'}</dd></div>
+        <div><dt><a href={`${casesHref}#irontec`}>500 {en ? 'calls/day' : 'llamadas/día'}</a></dt><dd>{en ? 'Workload defined for a local AI adaptation.' : 'Carga prevista para una adaptación a IA local.'}</dd></div>
+        <div><dt><a href={`${casesHref}#informes-periciales`}>−42 %</a></dt><dd>{en ? 'Approximate cost reduction in evaluated expert-report extraction and drafting stages.' : 'Reducción aproximada de coste en las fases evaluadas de extracción y redacción de informes periciales.'}</dd></div>
       </dl>
     </section>
     <section id="proyectos" class="home-section wrap home-work">
       <div class="home-heading"><h2>{en ? 'Selected work' : 'Trabajo seleccionado'}</h2></div>
       <ProjectCarousel projects={projects} casesHref={casesHref} lang={lang} />
     </section>
-    <SolutionLinks />
     <section class="home-section wrap home-services">
-      <div class="home-heading"><div><span class="eyebrow">{en ? 'Services' : 'Servicios'}</span><h2>{en ? 'Start where your project is.' : 'Empezamos donde está tu proyecto.'}</h2></div><div class="home-heading-aside"><a class="text-link" href={servicesHref}>{en ? 'All services' : 'Todos los servicios'} <ArrowIcon direction="right" /></a></div></div>
-      <HomeServices lang={lang} servicesHref={servicesHref} />
+      <div class="home-heading"><div><span class="eyebrow">{en ? 'From the first decision to daily use' : 'De la primera decisión al uso diario'}</span><h2>{en ? 'Start with a defined scope.' : 'Empezamos con un alcance concreto.'}</h2></div></div>
+      <div class="service-paths">
+        <article class="service-path"><div class="service-path-label"><img src="/images/brand/tenbeltz-icon-diagnostico-accent.svg" width="26" height="26" alt="" loading="lazy"/><span>{en ? 'A clear starting point' : 'Un punto de partida claro'}</span></div><h3>{en ? 'Understand and prioritise' : 'Entender y priorizar'}</h3><p>{en ? 'Review the task, data and tools. Agree what is worth building and how to assess the result.' : 'Revisamos la tarea, los datos y las herramientas. Acordamos qué merece la pena construir y cómo comprobar el resultado.'}</p></article>
+        <article class="service-path"><div class="service-path-label"><img src="/images/brand/tenbeltz-icon-arquitectura-accent.svg" width="26" height="26" alt="" loading="lazy"/><span>{en ? 'A system connected to your work' : 'Un sistema conectado a tu trabajo'}</span></div><h3>{en ? 'Build and integrate' : 'Construir e integrar'}</h3><p>{en ? 'Develop and test against real examples. Connect to your systems with agreed checks and responsibilities.' : 'Desarrollamos y probamos con ejemplos reales. Conectamos con tus sistemas, con controles y responsabilidades acordados.'}</p></article>
+        <article class="service-path"><div class="service-path-label"><img src="/images/brand/tenbeltz-icon-formacion-accent.svg" width="26" height="26" alt="" loading="lazy"/><span>{en ? 'A team ready to continue' : 'Un equipo preparado para continuar'}</span></div><h3>{en ? 'Transfer and train' : 'Transferir y formar'}</h3><p>{en ? 'Document the system and train the team that will use or develop it. Agree the support needed after delivery.' : 'Documentamos el sistema y formamos al equipo que lo utilizará o desarrollará. Acordamos el acompañamiento tras la entrega.'}</p><div class="service-path-links"><a href={`${servicesHref}#service-training`}>{en ? 'Technical training' : 'Formación técnica'} <ArrowIcon direction="up-right" /></a></div></article>
+      </div>
     </section>
-    <DiagnosisTeaser lang={lang} />
+    <section class="home-start wrap" aria-labelledby="home-start-title"><div><span class="eyebrow">{en ? 'Explore before we talk' : 'Explora antes de hablar'}</span><h2 id="home-start-title">{en ? 'Find your first step.' : 'Encuentra tu primer paso.'}</h2></div><div class="home-start-options"><a href={`${copy.paths[0].path}#explorar-proceso`}><strong>{en ? 'I repeat a business task' : 'Repito una tarea de negocio'}</strong><span>{en ? 'Estimate the current workload and prepare the context.' : 'Estima el trabajo actual y prepara el contexto.'}</span><ArrowIcon direction="up-right" /></a><a href={en ? '/en/ai-diagnosis' : '/diagnostico-ia'}><strong>{en ? 'I already have an AI project' : 'Ya tengo un proyecto de IA'}</strong><span>{en ? 'Assess technical readiness and get a priority report.' : 'Revisa su preparación técnica y obtén un informe de prioridades.'}</span><ArrowIcon direction="up-right" /></a></div></section>
     <section class="home-team">
       <div class="wrap home-section">
         <div class="home-team-intro">
@@ -79,3 +86,7 @@ const steps = en ? [
   </main>
   <Footer />
 </Layout>
+
+<style>
+.home-proof dt a{color:inherit;text-decoration:none}.home-proof dt a:hover{text-decoration:underline;text-underline-offset:8px}.home-audiences{padding-block:52px 70px;border-top:1px solid var(--line)}.home-audiences .home-heading{margin-bottom:30px}.home-audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}.home-audience-grid article{padding:32px;background:var(--surface);border-top:2px solid var(--accent);display:flex;flex-direction:column;align-items:flex-start}.home-audience-grid .eyebrow{margin-bottom:18px;color:var(--accent)}.home-audience-grid h3{font-size:clamp(28px,3vw,38px);max-width:400px;margin-bottom:20px}.home-audience-grid p{max-width:430px;color:var(--muted);margin-bottom:26px}.home-audience-grid .text-link{margin-top:auto}.hero-audience-actions .text-link{gap:12px}.home-start{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;border-top:1px solid var(--line);padding-block:64px}.home-start h2{font-size:clamp(30px,3.5vw,46px)}.home-start-options a{display:grid;grid-template-columns:1fr 20px;gap:8px 24px;border-bottom:1px solid var(--line);padding:22px 0;text-decoration:none;color:var(--ink)}.home-start-options a:first-child{padding-top:0}.home-start-options strong{font-size:19px;font-weight:500}.home-start-options span{grid-column:1;font-size:14px;color:var(--muted)}.home-start-options svg{grid-column:2;grid-row:1/3;align-self:center}.home-start-options a:hover strong{color:var(--accent)}@media(max-width:740px){.home-audiences{padding-block:38px 48px}.home-audience-grid{grid-template-columns:1fr;gap:22px}.home-audience-grid article{padding:26px 24px}.home-audience-grid h3{font-size:32px}.home-audience-grid .text-link{font-size:13px;gap:10px}.home-start{grid-template-columns:1fr;gap:16px;padding-block:42px}.home-start h2{margin-bottom:12px}}
+</style>

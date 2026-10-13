@@ -331,3 +331,16 @@ No se añaden precios, reseñas ni resultados comerciales no documentados.
 **Verificación pendiente:** build integrado, HTTP de24 URLs, concordancia canonical/sitemap,
 hreflang recíprocos ES/EN/x-default, selector de idioma, H1, JSON-LD y enlaces. Esta entrada
 registra implementación; no afirma publicación, indexación ni comprobaciones de producción.
+
+
+### Cierre QA de dos públicos — 2026-10-13 (preview)
+
+Build/check integrado correcto:0 errores/0 warnings,3 hints (2 heredados y1 de QA temporal).
+Mapa de idiomas consumido también por Header; se conservan las24 URLs y anclas previas.
+`python3 tools/qa/dual-seo.py http://127.0.0.1:10022`:24 rutas y732 enlaces internos
+correctos, con canonical/hreflang/JSON-LD/sitemap concordantes y cambio de idioma funcional.
+Seis recursos OG1200×630 responden200 image/png, con mensaje por público/idioma.
+Browser42 navegaciones320–1440px sin overflow/erroresJS; menú/FAQ/explorador/contacto
+interceptado/PDF6p/sinJS correctos. Guardia real de contacto13casos con cuerpos inválidos.
+Preview activa y HTTPS anónimo401. No correos reales, producción, indexación ni lectura GSC.
+Detalle y pendientes: docs/dual-audience/verification.md. Aceptación humana pendiente.

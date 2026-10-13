@@ -1,20 +1,17 @@
 ---
+import { localizedPath } from '@/i18n/routes.js';
 import ArrowIcon from '@/components/ArrowIcon.astro';
 import { getLangFromUrl } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 const lang = getLangFromUrl(Astro.url);
 const en = lang === 'en';
-const home = getRelativeLocaleUrl(lang, '/');
-const paths: Record<string, [string, string]> = {
-  '/diagnostico-ia': ['/diagnostico-ia', '/ai-diagnosis'], '/ai-diagnosis': ['/diagnostico-ia', '/ai-diagnosis'],
-  '/casos': ['/casos', '/case-studies'], '/case-studies': ['/casos', '/case-studies'],
-  '/quien-esta-detras': ['/quien-esta-detras', '/who-is-behind'], '/who-is-behind': ['/quien-esta-detras', '/who-is-behind'],
-};
+const home = localizedPath('/', lang);
 const base = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '').replace(/\/$/, '') || '/';
 const target = en ? 'es' : 'en';
-const alternate = getRelativeLocaleUrl(target, paths[base]?.[en ? 0 : 1] ?? base);
+const alternate = localizedPath(Astro.url.pathname, target);
 const nav = [
-  { label: en ? 'Services' : 'Servicios', href: getRelativeLocaleUrl(lang, '/services') },
+  { label: en ? 'For business' : 'Para empresas', href: localizedPath('/ia-para-empresas', lang) },
+  { label: en ? 'For software' : 'Para software', href: localizedPath('/ia-para-software', lang) },
   { label: en ? 'Projects' : 'Proyectos', href: getRelativeLocaleUrl(lang, en ? '/case-studies' : '/casos') },
   { label: en ? 'Team' : 'Equipo', href: getRelativeLocaleUrl(lang, en ? '/who-is-behind' : '/quien-esta-detras') },
 ];
@@ -32,7 +29,7 @@ const nav = [
     <nav id="site-nav" class="site-nav" aria-label={en ? 'Main navigation' : 'Navegación principal'}>
       <a class="mobile-home-link" href={home} aria-current={base === '/' ? 'page' : undefined}>{en ? 'Home' : 'Inicio'} <span class="mobile-nav-arrow"><ArrowIcon /></span></a>
       {nav.map(item => <a class="nav-page-link" href={item.href} aria-current={Astro.url.pathname === item.href ? 'page' : undefined}>{item.label}<span class="mobile-nav-arrow"><ArrowIcon /></span></a>)}
-      <a class="nav-contact" href={`${home}#contact-section`}>{en ? 'Let’s talk' : 'Hablemos'} <ArrowIcon direction="up-right" /></a>
+      <a class="nav-contact" href={Astro.url.pathname.includes("ia-para-") || Astro.url.pathname.includes("ai-for-") ? "#contact-section" : `${home}#contact-section`}>{en ? 'Let’s talk' : 'Hablemos'} <ArrowIcon direction="up-right" /></a>
       <a class="language-link" href={alternate} lang={target} aria-label={en ? 'Cambiar a español' : 'Switch to English'}><span class="language-short">{target.toUpperCase()}</span><span class="language-full">{en ? 'Español' : 'English'} <ArrowIcon direction="up-right" /></span></a>
     </nav>
   </div>

@@ -593,3 +593,13 @@ h1,h2,h3 { font-weight:500; letter-spacing:-.045em; line-height:1.1; }
 @media (prefers-reduced-motion: reduce) { .menu-symbol path { transition:none; } }
 
 body.mobile-menu-open #cookie-consent { visibility:hidden; }
+
+/* Contact feedback stays beside the visitor's message and is announced politely. */
+.contact-feedback-message { margin-top:20px; padding:18px 20px; border-left:3px solid var(--accent); background:var(--paper); }
+.contact-feedback-message strong { font-size:16px; font-weight:500; }
+.contact-feedback-message p { margin:6px 0 0; font-size:14px; color:var(--muted); }
+.contact-form .button:disabled,.process-explorer .button:disabled { opacity:.6; cursor:not-allowed; }
+
+.contact-fields { border:0; padding:0; margin:0; min-width:0; }
+
+.contact-form-shell { min-width:0; }

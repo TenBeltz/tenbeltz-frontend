@@ -5,13 +5,13 @@ const { lang, servicesHref } = Astro.props;
 const en = lang === 'en';
 const icons = ['diagnostico', 'arquitectura', 'formacion'];
 const paths = en ? [
-  { title: 'Define the next step', text: 'Assess feasibility, choose the architecture and give your team a clear technical direction.', outcome: 'A plan to build on', links: [['Technical diagnosis', 'gap-analysis'], ['Project foundations', 'foundations']] },
-  { title: 'Build and integrate', text: 'From a first working version to a system integrated into your product, with evaluation and monitoring.', outcome: 'A system to use', links: [['First working version', 'agent-mvp'], ['Production delivery', 'production-delivery']] },
-  { title: 'Train your team', text: 'Practical training in local AI, RAG, agents and evaluation, adapted to your team’s level and projects.', outcome: 'Knowledge to apply', links: [['Applied AI training', 'training']] },
+  { title: 'Decide what to build', text: 'Check feasibility, data needs and architecture before committing to implementation.', outcome: 'A clear technical decision', links: [['Technical diagnosis', 'gap-analysis'], ['Project foundations', 'foundations']] },
+  { title: 'Validate and deliver', text: 'Test a first version, then integrate it into your product with quality checks and monitoring.', outcome: 'A system ready to use', links: [['First working version', 'agent-mvp'], ['Production delivery', 'production-delivery']] },
+  { title: 'Equip your team', text: 'Build practical skills in local AI, RAG, agents and evaluation around your product and constraints.', outcome: 'Skills for real projects', links: [['Applied AI training', 'training']] },
 ] : [
-  { title: 'Definir el siguiente paso', text: 'Evaluar la viabilidad, elegir la arquitectura y dar a tu equipo una dirección técnica clara.', outcome: 'Un plan para construir', links: [['Diagnóstico técnico', 'gap-analysis'], ['Bases del proyecto', 'foundations']] },
-  { title: 'Construir e integrar', text: 'Desde una primera versión funcional hasta un sistema integrado en tu producto, con evaluación y monitorización.', outcome: 'Un sistema para utilizar', links: [['Primera versión funcional', 'agent-mvp'], ['Entrega en producción', 'production-delivery']] },
-  { title: 'Formar a tu equipo', text: 'Formación práctica en IA local, RAG, agentes y evaluación, adaptada al nivel y los proyectos de tu equipo.', outcome: 'Conocimiento para aplicar', links: [['Formación en IA aplicada', 'training']] },
+  { title: 'Decidir qué construir', text: 'Comprueba la viabilidad, los datos necesarios y la arquitectura antes de comprometerte con el desarrollo.', outcome: 'Una decisión técnica clara', links: [['Diagnóstico técnico', 'gap-analysis'], ['Bases del proyecto', 'foundations']] },
+  { title: 'Validar y entregar', text: 'Prueba una primera versión e intégrala en tu producto con controles de calidad y monitorización.', outcome: 'Un sistema listo para usar', links: [['Primera versión funcional', 'agent-mvp'], ['Entrega en producción', 'production-delivery']] },
+  { title: 'Preparar a tu equipo', text: 'Desarrolla habilidades prácticas en IA local, RAG, agentes y evaluación, aplicadas a vuestro producto y restricciones.', outcome: 'Capacidad para proyectos reales', links: [['Formación en IA aplicada', 'training']] },
 ];
 ---
 <div class="service-paths">

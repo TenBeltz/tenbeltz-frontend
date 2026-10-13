@@ -1,0 +1,93 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Contact from '@/components/Contact.astro';
+import ArrowIcon from '@/components/ArrowIcon.astro';
+import { getLangFromUrl } from '@/i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { solutions, type SolutionId } from '@/data/solutions';
+
+interface Props { id: SolutionId }
+const { id } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const en = lang === 'en';
+const content = solutions[id][lang];
+const casesPath = en ? '/case-studies' : '/casos';
+const caseId = content.caseHref.split('#')[1];
+const caseHref = `${getRelativeLocaleUrl(lang, casesPath)}#${caseId}`;
+const serviceHref = `${getRelativeLocaleUrl(lang, '/services')}#${content.serviceHref.split('#')[1]}`;
+const canonical = `https://tenbeltz.com${en ? '/en' : ''}${content.path}`;
+const related = Object.entries(solutions).filter(([key]) => key !== id).map(([, value]) => ({
+  href: getRelativeLocaleUrl(lang, value[lang].path),
+  title: value[lang].title,
+}));
+
+---
+<Layout title={content.metaTitle} description={content.description} canonical={canonical}>
+  <Header />
+  <main id="main-content" class="solution-page wrap">
+    <section class="page-intro solution-intro">
+      <span class="eyebrow">{content.eyebrow}</span>
+      <h1>{content.title}</h1>
+      <p class="lead">{content.lead}</p>
+      <div class="actions">
+        <a class="button" href="#contact-section">{en ? 'Discuss a project' : 'Hablar de un proyecto'} <ArrowIcon direction="up-right" /></a>
+        <a class="text-link" href={caseHref}>{en ? 'Read the project evidence' : 'Ver el caso documentado'} <ArrowIcon direction="right" /></a>
+      </div>
+    </section>
+
+    <section class="solution-section rule">
+      <div><span class="eyebrow">{en ? 'The problem' : 'El problema'}</span><h2>{content.problemTitle}</h2></div>
+      <div class="solution-grid">{content.problems.map((item, index) => <article><span class="eyebrow">0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+    </section>
+
+    <section class="solution-section rule">
+      <div><span class="eyebrow">{en ? 'How we work' : 'Cómo trabajamos'}</span><h2>{content.methodTitle}</h2></div>
+      <ol class="solution-steps">{content.method.map((step, index) => <li><span class="eyebrow">0{index + 1}</span><h3>{step.title}</h3><p>{step.text}</p></li>)}</ol>
+    </section>
+
+    <section class="solution-proof rule">
+      <div><span class="eyebrow">{en ? 'Project evidence' : 'Evidencia del proyecto'}</span><h2>{content.proofTitle}</h2></div>
+      <div><p class="lead">{content.proofText}</p><p class="solution-scope">{content.proofScope}</p><a class="text-link" href={caseHref}>{en ? 'Read the full case' : 'Leer el caso completo'} <ArrowIcon direction="right" /></a></div>
+    </section>
+
+    <section class="solution-next rule">
+      <div><span class="eyebrow">{en ? 'A fitting way to start' : 'Un punto de entrada posible'}</span><h2>{content.serviceTitle}</h2><p>{en ? 'We will confirm the scope and recommend the right level of support after reviewing your product and current stage.' : 'Revisaremos el producto y el estado del proyecto para acordar el alcance y el nivel de apoyo adecuado.'}</p></div>
+      <a class="button" href={serviceHref}>{en ? 'See the service options' : 'Ver las modalidades'} <ArrowIcon direction="right" /></a>
+    </section>
+
+    <nav class="solution-related" aria-label={en ? 'Related capabilities' : 'Temas relacionados'}>
+      {related.map(item => <a class="text-link" href={item.href}>{item.title} <ArrowIcon direction="right" /></a>)}
+    </nav>
+    <Contact />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .solution-page { padding-bottom:80px; }
+  .solution-intro { padding-bottom:52px; }
+  .solution-intro h1 { max-width:900px; }
+  .solution-intro .actions { margin-top:30px; }
+  .solution-section,.solution-proof,.solution-next { display:grid; grid-template-columns:1fr 2fr; gap:48px; padding-block:58px; }
+  .solution-section h2,.solution-proof h2,.solution-next h2 { font-size:clamp(29px,3.4vw,42px); max-width:470px; }
+  .solution-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .solution-grid article,.solution-steps li { border-top:1px solid var(--line); padding-top:15px; }
+  .solution-grid h3,.solution-steps h3 { font-size:20px; margin:14px 0 12px; }
+  .solution-grid p,.solution-steps p,.solution-next p { color:var(--muted); font-size:15px; }
+  .solution-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; list-style:none; padding:0; margin:0; }
+  .solution-steps .eyebrow { margin-bottom:6px; }
+  .solution-proof .lead { max-width:760px; }
+  .solution-scope { color:var(--muted); font-size:13px; line-height:1.6; }
+  .solution-proof .text-link { margin-top:8px; }
+  .solution-next { align-items:center; }
+  .solution-related { display:flex; gap:24px; flex-wrap:wrap; padding:28px 0 60px; }
+  @media(max-width:760px) {
+    .solution-section,.solution-proof,.solution-next { grid-template-columns:1fr; gap:20px; padding-block:40px; }
+    .solution-grid,.solution-steps { grid-template-columns:1fr; gap:18px; }
+    .solution-intro { padding-top:55px; }
+    .solution-intro .actions { align-items:flex-start; flex-direction:column; gap:18px; }
+    .solution-related { flex-direction:column; gap:16px; padding-bottom:40px; }
+  }
+</style>

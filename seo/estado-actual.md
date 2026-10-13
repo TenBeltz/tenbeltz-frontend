@@ -1,6 +1,20 @@
 # Estado actual del SEO
 
-**Última actualización:** 2026-07-21
+**Última actualización:** 2026-10-13
+
+## Páginas de solución por problema — 2026-10-13 (preview)
+
+La rama local incorpora tres páginas comerciales bilingües, seis URLs en total:
+evaluación de IA para SaaS, agentes de voz e IA privada/local. Cada página enlaza a un
+caso documentado y a la modalidad de servicio relacionada; las métricas incluyen su alcance
+y límites. Se enlazan desde la home y entre sí. No se ha iniciado un blog ni una frecuencia
+editorial.
+
+El sitemap de desarrollo contiene 20 URLs y los canonicals/hreflang de las seis páginas
+coinciden con sus slugs traducidos. Preview HTTP local comprobada; HTTPS anónimo devuelve
+401. Sin cambios en producción, sin solicitud de indexación y sin lectura nueva de Search
+Console. Revisión visual en navegador queda pendiente porque Chromium no está disponible en
+este VPS.
 
 ## Revisión del rebranding — 2026-10-08
 

@@ -1,0 +1,30 @@
+---
+import { getLangFromUrl } from '@/i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import ArrowIcon from '@/components/ArrowIcon.astro';
+import { solutions } from '@/data/solutions';
+
+const lang = getLangFromUrl(Astro.url);
+const en = lang === 'en';
+const items = Object.values(solutions).map(solution => ({
+  title: solution[lang].title,
+  description: solution[lang].lead,
+  href: getRelativeLocaleUrl(lang, solution[lang].path),
+}));
+---
+<section class="solution-links wrap home-section" aria-labelledby="solution-links-title">
+  <div class="home-heading"><div><span class="eyebrow">{en ? 'AI in your product' : 'IA en tu producto'}</span><h2 id="solution-links-title">{en ? 'Explore a few concrete challenges.' : 'Explora retos concretos.'}</h2></div></div>
+  <div class="solution-link-grid">
+    {items.map(item => <a href={item.href} class="solution-link-card"><h3>{item.title}</h3><p>{item.description}</p><span class="text-link">{en ? 'Explore the approach' : 'Ver el enfoque'} <ArrowIcon direction="right" /></span></a>)}
+  </div>
+</section>
+
+<style>
+  .solution-link-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .solution-link-card { display:flex; min-height:210px; flex-direction:column; align-items:flex-start; border-top:1px solid var(--line); padding:17px 4px 8px 0; color:inherit; text-decoration:none; }
+  .solution-link-card h3 { font-size:20px; line-height:1.25; margin:0 0 12px; }
+  .solution-link-card p { color:var(--muted); font-size:14px; line-height:1.6; margin:0 0 20px; }
+  .solution-link-card .text-link { margin-top:auto; }
+  .solution-link-card:hover h3 { color:var(--accent); }
+  @media(max-width:740px) { .solution-link-grid { grid-template-columns:1fr; gap:12px; } .solution-link-card { min-height:0; } }
+</style>

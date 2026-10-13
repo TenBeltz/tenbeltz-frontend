@@ -7,6 +7,17 @@ const lang = getLangFromUrl(Astro.url);
 const en = lang === 'en';
 const copy = getServicesCopy(lang);
 const names = en ? ['Technical diagnosis', 'Architecture and project foundations', 'First working version', 'Production implementation', 'Training for technical teams'] : ['Diagnóstico técnico', 'Arquitectura y bases del proyecto', 'Primera versión funcional', 'Implementación en producción', 'Formación para equipos técnicos'];
+const startingPoints = en ? [
+  { title: 'We need to decide what to build', service: 'gap-analysis', label: 'AI Gap Analysis' },
+  { title: 'We need a reusable foundation for client projects', service: 'foundations', label: 'AI Project Foundations' },
+  { title: 'The scope is clear; we need a working first version', service: 'agent-mvp', label: 'Agent MVP' },
+  { title: 'The solution is defined; we need to take it to production', service: 'production-delivery', label: 'Production Delivery' },
+] : [
+  { title: 'Necesitamos decidir qué construir', service: 'gap-analysis', label: 'AI Gap Analysis' },
+  { title: 'Queremos una base reutilizable para proyectos de clientes', service: 'foundations', label: 'AI Project Foundations' },
+  { title: 'El alcance está claro; necesitamos una primera versión funcional', service: 'agent-mvp', label: 'Agent MVP' },
+  { title: 'La solución está definida; queremos llevarla a producción', service: 'production-delivery', label: 'Production Delivery' },
+];
 ---
 <section id="service-structure" class="wrap">
   <div class="page-intro"><span class="eyebrow">{en ? 'Services / Engineering engagements' : 'Servicios / Colaboración técnica'}</span><h1>{en ? 'AI engineering services, from the first decision to production.' : 'Servicios de ingeniería de IA, de la primera decisión a producción.'}</h1><p class="lead">{en ? 'Five ways to work together, depending on your project’s stage and the support your team needs. We agree on the scope, deliverables and acceptance criteria.' : 'Cinco formas de trabajar, según el momento del proyecto y el apoyo que necesita tu equipo. Acordamos el alcance, los entregables y los criterios de aceptación.'}</p></div>
@@ -27,5 +38,19 @@ const names = en ? ['Technical diagnosis', 'Architecture and project foundations
       </div>
     </article>)}
   </div>
-  <div class="section rule"><div class="section-heading"><span class="eyebrow">{en ? 'Where to start' : 'Por dónde empezar'}</span><div><h2>{en ? 'A scope that fits your project.' : 'Un alcance adecuado a tu proyecto.'}</h2><p class="lead">{en ? 'Tell us about the product, the current state and the decision you need to make. We will recommend an engagement based on that context.' : 'Cuéntanos qué producto tienes, cuál es el estado actual y qué decisión necesitas tomar. Recomendaremos una colaboración a partir de ese contexto.'}</p><a class="button" href="#contact-section">{en ? 'Let’s talk' : 'Hablemos'} <ArrowIcon direction="up-right" /></a></div></div></div>
+  <div class="section rule service-router">
+    <div class="section-heading"><span class="eyebrow">{en ? 'Where to start' : 'Por dónde empezar'}</span><div><h2>{en ? 'Choose by the decision in front of you.' : 'Elige según la decisión que tienes delante.'}</h2><p class="lead">{en ? 'Each starting point opens a different engagement. We will confirm the fit with your product and team.' : 'Cada punto de partida lleva a una colaboración distinta. Confirmaremos el encaje con tu producto y tu equipo.'}</p></div></div>
+    <div class="service-route-list">{startingPoints.map((item, index) => <a class="service-route" href={`${getRelativeLocaleUrl(lang, '/services')}#service-${item.service}`}><span class="eyebrow">0{index + 1}</span><span><strong>{item.title}</strong><small>{item.label}</small></span><ArrowIcon direction="right" /></a>)}</div>
+  </div>
 </section>
+
+<style>
+  .service-router { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+  .service-route-list { border-top:1px solid var(--line); }
+  .service-route { display:grid; grid-template-columns:40px 1fr 20px; gap:14px; align-items:center; border-bottom:1px solid var(--line); padding:17px 0; color:inherit; text-decoration:none; }
+  .service-route strong,.service-route small { display:block; }
+  .service-route strong { font-weight:500; }
+  .service-route small { color:var(--muted); margin-top:4px; }
+  .service-route:hover strong { color:var(--accent); }
+  @media(max-width:740px) { .service-router { grid-template-columns:1fr; gap:20px; } }
+</style>

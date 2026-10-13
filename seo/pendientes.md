@@ -10,6 +10,13 @@ acceso al servidor
 
 Estado: ✅ hecho · ⚠️ hecho a medias o bloqueado por revisión · sin marca = pendiente
 
+## Páginas de solución — 2026-10-13 (preview)
+
+Implementadas páginas ES/EN para evaluación de IA en SaaS, agentes de voz e IA privada,
+con evidencia de proyecto acotada, enlaces al caso y servicio, y descubrimiento desde la
+home. Falta revisión visual humana en viewport laptop/móvil y, cuando corresponda, una
+decisión explícita de publicación en producción. No se ha comprobado indexación ni GSC.
+
 ---
 
 ## Rebranding — revisión 2026-10-08

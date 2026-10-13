@@ -12,6 +12,13 @@ const { project, href, index, lang } = Astro.props;
     <p class="project-client-line"><span>{project.client}</span><span class="project-kind">{project.kind}</span></p>
     <h3><a href={href}>{project.title}</a></h3>
     <p>{project.summary}</p>
+    {project.highlight && <aside class="project-highlight"><strong>{project.highlight.figure}</strong><span>{project.highlight.text}</span></aside>}
     <a class="project-read" href={href}>{lang === 'en' ? 'Read the project' : 'Leer el proyecto'}<span class="sr-only">: {project.client}</span></a>
   </div>
 </article>
+
+<style>
+  .project-highlight { display:flex; flex-direction:column; gap:3px; border-left:2px solid var(--accent); padding:7px 0 7px 12px; margin:18px 0; }
+  .project-highlight strong { font-size:15px; font-weight:500; }
+  .project-highlight span { color:var(--muted); font-size:12px; line-height:1.4; }
+</style>

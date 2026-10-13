@@ -47,14 +47,16 @@ encaja bien. Puede traer consultas de soporte IT genérico; si pasa, revisar.
 
 ---
 
-## Sin blog, de momento
+## Sin blog, de momento; páginas comerciales específicas sí
 
-**Decisión:** no crear contenido editorial por ahora. Aplazado conscientemente por el
-propietario.
+**Decisión:** no mantener un blog ni una frecuencia editorial por ahora, a petición del
+propietario. Sí se pueden crear páginas comerciales permanentes para problemas concretos
+cuando estén respaldadas por servicios y proyectos verificables. El 2026-10-13 se añadieron
+en preview páginas bilingües de evaluación de IA, agentes de voz e IA privada/local.
 
-**Consecuencia asumida:** es el techo real de todo el trabajo de SEO. Con 5 páginas
-comerciales hay un límite duro de cuántas búsquedas se pueden capturar, por bien optimizadas
-que estén. Las mejoras técnicas quitan frenos, no añaden acelerador.
+**Consecuencia asumida:** las páginas comerciales específicas amplían las búsquedas de
+servicio que se pueden cubrir, pero no sustituyen contenido editorial para consultas
+informacionales ni garantizan tráfico o posicionamiento.
 
 **Material ya disponible si se retoma:** `docs/propuestas/blog-horeca-simple/` y el post a
 medias sobre coste de evals (`assets/banners/evals-coste-post/`,

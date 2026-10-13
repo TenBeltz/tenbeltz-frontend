@@ -1,7 +1,7 @@
 import type { Lang } from '@/i18n/ui';
 export interface Project {
   id: string; client: string; clientUrl?: string; sector: string; title: string;
-  summary: string; context: string; built: string; close: string;
+  summary: string; context: string; built: string; close: string; highlight?: { figure: string; text: string };
   publicReference?: { label: string; url: string }; cover?: string; coverNote?: string; evidence?: string; comparison?: { method: string; top1: string; top5: string }[]; comparisonCaption?: string; details?: { title: string; text: string }[];
   flow: string[]; result?: { figure: string; text: string }; kind: string;
 }
@@ -87,6 +87,7 @@ const es: Project[] = [
       "figure": "72,35 %",
       "text": "de acierto Top-1 de subcategoría con el ensemble final en el test de 1.414 documentos. Top-5: 91,51 %; F1 macro: 69,15 %. Frente al CSLS histórico sobre ese test, el Top-1 mejora 15,91 puntos porcentuales y el Top-5, 7,85 puntos, con el mismo coste estimado de inferencia por documento."
     },
+    "highlight": { "figure": "72,35 % Top-1", "text": "Top-5 91,51 % · test de 1.414 documentos" },
     "close": "La evolución redujo costes y mejoró la clasificación respecto al planteamiento inicial 100% LLM. El asesoramiento matemático ayudó a orientar el análisis geométrico. El ensemble elegido también superó a los rerankers generativos probados, manteniendo una clasificación local y reproducible tras la extracción documental y el embedding.",
     "flow": [
       "Embedding documental",
@@ -283,6 +284,7 @@ const en: Project[] = [
       "figure": "72.35%",
       "text": "Top-1 subcategory accuracy for the final ensemble on the 1,414-document test set. Top-5: 91.51%; macro F1: 69.15%. Compared with historical CSLS on that test set, Top-1 increased by 15.91 percentage points and Top-5 by 7.85 points, with the same estimated per-document inference cost."
     },
+    "highlight": { "figure": "72.35% Top-1", "text": "Top-5 91.51% · test of 1,414 documents" },
     "close": "The evolution reduced cost and improved classification compared with the initial all-LLM approach. Mathematical advice helped guide the geometric analysis. The selected ensemble also exceeded the tested generative rerankers, retaining local, reproducible classification after document extraction and embedding.",
     "flow": [
       "Document embedding",

@@ -19,6 +19,12 @@ const LOCALIZED_SLUGS = {
   '/ai-diagnosis': { es: '/diagnostico-ia', en: '/ai-diagnosis' },
   '/casos': { es: '/casos', en: '/case-studies' },
   '/case-studies': { es: '/casos', en: '/case-studies' },
+  '/evaluacion-ia-saas': { es: '/evaluacion-ia-saas', en: '/ai-evaluation-for-saas' },
+  '/ai-evaluation-for-saas': { es: '/evaluacion-ia-saas', en: '/ai-evaluation-for-saas' },
+  '/agentes-voz-saas': { es: '/agentes-voz-saas', en: '/voice-agents-for-saas' },
+  '/voice-agents-for-saas': { es: '/agentes-voz-saas', en: '/voice-agents-for-saas' },
+  '/ia-privada-productos': { es: '/ia-privada-productos', en: '/private-ai-products' },
+  '/private-ai-products': { es: '/ia-privada-productos', en: '/private-ai-products' },
 };
 
 // Pages that render `<meta name="robots" content="noindex">` must never be listed in the sitemap:

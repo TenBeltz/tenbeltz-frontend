@@ -296,3 +296,20 @@ Añadidas `/diagnostico-ia` y `/en/ai-diagnosis` mediante template compartido. M
 ## Producción — 2026-10-09
 
 Rebranding y diagnóstico publicados en tenbeltz.com. Verificadas las14URLs públicas:200, canonicals concordantes con sitemap y redirección www301. No se ha consultado Search Console ni demostrado nueva indexación. Detalle operativo en docs/deploy/production-2026-10-09.md.
+
+## 2026-10-13 — Páginas de solución y revisión de conversión (preview)
+
+Añadidas seis URLs ES/EN: `/evaluacion-ia-saas`, `/agentes-voz-saas`,
+`/ia-privada-productos` y sus equivalentes en inglés. Contenido enlazado a los casos
+documentados, con alcance explícito de métricas y sin atribuir Biiak como cliente. La home
+enlaza estas páginas y destaca Top-1/Top-5 del caso de clasificación; servicios orientan
+por cuatro decisiones; el resultado del diagnóstico sugiere una modalidad según la fase,
+manteniendo las prioridades detalladas detrás del consentimiento y descarga PDF. Contacto
+explica la agenda de la llamada telefónica de 15 minutos.
+
+Hero ES/EN reducida a un titular de una línea, una frase y dos acciones; métricas pasan a
+una franja compacta bajo los logos. Build Astro check: 0 errores/0 warnings y 2 hints
+heredados; build correcto con advertencias existentes de opciones esbuild obsoletas y
+chunk >500 kB. Doce rutas consultadas en loopback con 200; canonicals y alternates de las
+seis URLs nuevas comprobados, sitemap con 20 URLs; HTTPS anónimo 401. Sin browser Chromium
+para revisión visual; formularios sin enviar; sin despliegue de producción ni indexación.

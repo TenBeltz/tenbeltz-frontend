@@ -24,7 +24,7 @@ seo/                documentación y trazabilidad de SEO
 docs/deploy/        configuración de servidor
 ```
 
-No hay rutas dinámicas. El sitio son **14 URLs**: 7 páginas × 2 idiomas.
+No hay rutas dinámicas. El sitio son **20 URLs**: 10 páginas × 2 idiomas, incluidas tres páginas de solución ES/EN añadidas en la revisión de octubre de 2026.
 
 ## Reglas que importan
 

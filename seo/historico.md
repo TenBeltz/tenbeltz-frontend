@@ -307,8 +307,10 @@ por cuatro decisiones; el resultado del diagnóstico sugiere una modalidad segú
 manteniendo las prioridades detalladas detrás del consentimiento y descarga PDF. Contacto
 explica la agenda de la llamada telefónica de 15 minutos.
 
-Hero ES/EN reducida a un titular de una línea, una frase y dos acciones; métricas pasan a
-una franja compacta bajo los logos. Build Astro check: 0 errores/0 warnings y 2 hints
+Hero ES/EN con mensaje completo de producto a producción, frase de apoyo y dos acciones;
+métricas en una franja compacta bajo los logos. Tras feedback del usuario, se recuperó la
+versión anterior del copy manteniendo la franja bajo logos y la altura de la flor. Build Astro
+check: 0 errores/0 warnings y 2 hints
 heredados; build correcto con advertencias existentes de opciones esbuild obsoletas y
 chunk >500 kB. Doce rutas consultadas en loopback con 200; canonicals y alternates de las
 seis URLs nuevas comprobados, sitemap con 20 URLs; HTTPS anónimo 401. Sin browser Chromium

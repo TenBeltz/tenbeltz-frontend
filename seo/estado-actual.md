@@ -2,6 +2,18 @@
 
 **Última actualización:** 2026-10-13
 
+## Dos públicos — trabajo de rediseño 2026-10-13
+
+Propuesta en implementación: home compartida, IA para empresas y IA para software.
+Nuevos pares: `/ia-para-empresas` / `/en/ai-for-business` y
+`/ia-para-software` / `/en/ai-for-software`. Total esperado:24 URLs, conservando las20
+existentes. Slugs compartidos en `src/i18n/routes.js`; canonicals mantienen origen
+https://tenbeltz.com y las páginas inglesas su canonical propio.
+
+Pendiente QA integrada antes de afirmar disponibilidad de preview. Sin despliegue ni
+consulta nueva de Search Console. El diagnóstico existente sigue siendo de madurez de un
+proyecto de IA; no es una estimación validada de ahorro operativo.
+
 ## Páginas de solución por problema — 2026-10-13 (preview)
 
 La rama local incorpora tres páginas comerciales bilingües, seis URLs en total:

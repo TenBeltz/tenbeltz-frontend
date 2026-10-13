@@ -9,23 +9,7 @@ import react from '@astrojs/react';
 
 const SITE_ORIGIN = 'https://tenbeltz.com';
 
-// Slugs that differ between locales. Mirrors `localizedSlugMap` in src/components/SEO.astro —
-// keep both in sync or the sitemap and the <link rel="alternate"> tags will disagree.
-/** @type {Record<string, { es: string; en: string }>} */
-const LOCALIZED_SLUGS = {
-  '/quien-esta-detras': { es: '/quien-esta-detras', en: '/who-is-behind' },
-  '/who-is-behind': { es: '/quien-esta-detras', en: '/who-is-behind' },
-  '/diagnostico-ia': { es: '/diagnostico-ia', en: '/ai-diagnosis' },
-  '/ai-diagnosis': { es: '/diagnostico-ia', en: '/ai-diagnosis' },
-  '/casos': { es: '/casos', en: '/case-studies' },
-  '/case-studies': { es: '/casos', en: '/case-studies' },
-  '/evaluacion-ia-saas': { es: '/evaluacion-ia-saas', en: '/ai-evaluation-for-saas' },
-  '/ai-evaluation-for-saas': { es: '/evaluacion-ia-saas', en: '/ai-evaluation-for-saas' },
-  '/agentes-voz-saas': { es: '/agentes-voz-saas', en: '/voice-agents-for-saas' },
-  '/voice-agents-for-saas': { es: '/agentes-voz-saas', en: '/voice-agents-for-saas' },
-  '/ia-privada-productos': { es: '/ia-privada-productos', en: '/private-ai-products' },
-  '/private-ai-products': { es: '/ia-privada-productos', en: '/private-ai-products' },
-};
+import { localizedPath } from './src/i18n/routes.js';
 
 // Pages that render `<meta name="robots" content="noindex">` must never be listed in the sitemap:
 // doing so tells Google to index and not index the same URL. Entries are locale-stripped, so one
@@ -46,10 +30,9 @@ const localePath = (/** @type {string} */ url) => {
 // `en`, `x-default`) so the sitemap and the HTML annotations agree.
 /** @returns {{ lang: string, url: string }[]} */
 const alternatesFor = (/** @type {string} */ url) => {
-  const basePath = localePath(url);
-  const mapped = LOCALIZED_SLUGS[basePath];
-  const esUrl = `${SITE_ORIGIN}${(mapped ? mapped.es : basePath) || '/'}`;
-  const enUrl = `${SITE_ORIGIN}/en${mapped ? mapped.en : basePath}`;
+  const pathname = new URL(url).pathname;
+  const esUrl = `${SITE_ORIGIN}${localizedPath(pathname, 'es')}`;
+  const enUrl = `${SITE_ORIGIN}${localizedPath(pathname, 'en')}`;
   return [
     { lang: 'es', url: esUrl },
     { lang: 'en', url: enUrl },

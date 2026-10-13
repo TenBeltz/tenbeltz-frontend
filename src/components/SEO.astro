@@ -1,4 +1,6 @@
 ---
+import { localizedSlugMap, localizedPath } from '@/i18n/routes.js'
+
 interface Props {
 	title: string
 	description: string
@@ -33,26 +35,9 @@ const canonicalPath = canonicalURL.pathname
 const isEnglish = canonicalPath.startsWith('/en/') || canonicalPath === '/en'
 const basePath = isEnglish ? canonicalPath.replace(/^\/en/, '') || '/' : canonicalPath
 
-// Slugs that differ between locales. Key is the stripped path (from either locale); value is the per-locale slug.
-const localizedSlugMap: Record<string, { es: string; en: string }> = {
-	'/quien-esta-detras': { es: '/quien-esta-detras', en: '/who-is-behind' },
-	'/who-is-behind': { es: '/quien-esta-detras', en: '/who-is-behind' },
-	'/diagnostico-ia': { es: '/diagnostico-ia', en: '/ai-diagnosis' },
-  '/ai-diagnosis': { es: '/diagnostico-ia', en: '/ai-diagnosis' },
-  '/casos': { es: '/casos', en: '/case-studies' },
-	'/case-studies': { es: '/casos', en: '/case-studies' },
-	'/evaluacion-ia-saas': { es: '/evaluacion-ia-saas', en: '/ai-evaluation-for-saas' },
-	'/ai-evaluation-for-saas': { es: '/evaluacion-ia-saas', en: '/ai-evaluation-for-saas' },
-	'/agentes-voz-saas': { es: '/agentes-voz-saas', en: '/voice-agents-for-saas' },
-	'/voice-agents-for-saas': { es: '/agentes-voz-saas', en: '/voice-agents-for-saas' },
-	'/ia-privada-productos': { es: '/ia-privada-productos', en: '/private-ai-products' },
-	'/private-ai-products': { es: '/ia-privada-productos', en: '/private-ai-products' },
-}
 const mapped = localizedSlugMap[basePath.replace(/\/$/, '')]
-const esPath = mapped ? mapped.es : basePath
-const enPath = mapped ? mapped.en : basePath
-const esURL = new URL(esPath, Astro.site)
-const enURL = new URL(`/en${enPath === '/' ? '' : enPath}`, Astro.site)
+const esURL = new URL(localizedPath(canonicalPath, 'es'), Astro.site)
+const enURL = new URL(localizedPath(canonicalPath, 'en'), Astro.site)
 
 const ogLocale = lang === 'en' ? 'en_US' : 'es_ES'
 const ogLocaleAlternate = lang === 'en' ? 'es_ES' : 'en_US'
@@ -73,6 +58,8 @@ const localeHref = (path: string) => {
 // Breadcrumb labels mirror the nav labels in Header.astro. They live there as a local
 // const that cannot be imported, so they are restated rather than wired through props.
 const routeNames: Record<string, { es: string; en: string }> = {
+  '/ia-para-empresas': { es: 'IA para empresas', en: 'AI for business' },
+  '/ia-para-software': { es: 'IA para software', en: 'AI for software' },
   '/diagnostico-ia': { es: 'Diagnóstico de IA', en: 'AI diagnosis' },
 	'/': { es: 'Inicio', en: 'Home' },
 	'/services': { es: 'Servicios', en: 'Services' },
@@ -99,13 +86,14 @@ const isProfilePage = routeKey === '/aritz'
 const organizationLogo = new URL('/favicon/web-app-manifest-512x512.png', Astro.site).href
 
 const orgDescription = lang === 'en'
-	? 'External AI engineering team for software companies. Helps SaaS products and software consultancies define, validate and ship AI systems to production with explicit delivery criteria.'
-	: 'Equipo externo de ingeniería de IA para empresas de software. Ayuda a productos SaaS y consultoras a definir, validar y llevar a producción sistemas de IA con criterios de entrega explícitos.'
+	? 'AI engineering team helping businesses automate processes and software companies develop and integrate AI systems, with explicit scope and delivery criteria.'
+	: 'Equipo de ingeniería de IA que ayuda a empresas a automatizar procesos y a empresas de software a desarrollar e integrar sistemas de IA, con alcance y criterios de entrega explícitos.'
 
 // Topics the org claims expertise in. Present in body copy but previously absent from the
 // entity graph, which is what answer engines read to decide "who is an authority on X".
 const knowsAbout = [
 	'Artificial intelligence engineering',
+	'Business process automation',
 	'Large language model applications',
 	'Retrieval-augmented generation',
 	'Multi-agent systems',

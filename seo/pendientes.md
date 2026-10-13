@@ -369,3 +369,10 @@ Es la decisión correcta.
 
 Además, ahora que brotli está activo la ganancia sería bastante menor. Retomar solo si
 alguna vez se hace una revisión del servidor con ese alcance.
+
+## Rediseño dos públicos — 2026-10-13
+
+- Verificar integración de24 URLs, canonical/sitemap/hreflang y cambio de idioma.
+- Revisar móvil/escritorio y contexto del CTA: empresa→proceso, software→proyecto.
+- Mantener diagnóstico técnico correctamente descrito; no prometer cálculo de ahorro.
+- Registrar comprobaciones efectivas tras QA; publicación y nueva indexación pendientes.

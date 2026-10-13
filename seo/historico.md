@@ -315,3 +315,19 @@ heredados; build correcto con advertencias existentes de opciones esbuild obsole
 chunk >500 kB. Doce rutas consultadas en loopback con 200; canonicals y alternates de las
 seis URLs nuevas comprobados, sitemap con 20 URLs; HTTPS anónimo 401. Sin browser Chromium
 para revisión visual; formularios sin enviar; sin despliegue de producción ni indexación.
+
+## 2026-10-13 — Dos públicos comerciales (implementación, pendiente de QA integrada)
+
+Se añaden los pares `/ia-para-empresas` ↔ `/en/ai-for-business` y
+`/ia-para-software` ↔ `/en/ai-for-software`, conservando las veinte URLs existentes.
+El total esperado es de24 URLs públicas. La home presenta la marca y los dos recorridos;
+las páginas existentes de soluciones mantienen su intención específica.
+
+Los slugs traducidos pasan a `src/i18n/routes.js`, compartido por sitemap y SEO.
+El selector de idioma debe consumir el mismo helper. Se amplía la descripción de la
+organización en JSON-LD y llms.txt para reflejar automatización de procesos e IA en software.
+No se añaden precios, reseñas ni resultados comerciales no documentados.
+
+**Verificación pendiente:** build integrado, HTTP de24 URLs, concordancia canonical/sitemap,
+hreflang recíprocos ES/EN/x-default, selector de idioma, H1, JSON-LD y enlaces. Esta entrada
+registra implementación; no afirma publicación, indexación ni comprobaciones de producción.

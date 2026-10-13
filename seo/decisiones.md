@@ -85,3 +85,19 @@ clave SSH con `PermitRootLogin prohibit-password`.
 allí, un subdominio apuntando a un Vercel vacío puede ser reclamado por un tercero, que
 serviría contenido bajo el dominio. Es el mismo vector que se temía con umami, pero aquí sí
 es aprovechable.
+
+---
+
+## Dos públicos, una marca — 2026-10-13
+
+Home como entrada de marca y dos landings con intención comercial diferente. IA para
+empresas se centra en procesos; IA para software en desarrollo e integración en producto.
+No se eliminan ni redirigen URLs existentes. Las nuevas páginas son autocanónicas.
+Los slugs traducidos se centralizan en `src/i18n/routes.js` para evitar divergencias entre
+HTML, sitemap y navegación. No se deducen volúmenes de búsqueda ni resultados de SEO.
+
+Las notas antiguas de este documento sobre acceso root y publicación manual están
+supersedidas por el contexto operativo vigente y `docs/deploy/production-2026-10-09.md`.
+Este rediseño se prepara para revisión en preview; publicar requiere la autorización final.
+La política vigente de barras es `trailingSlash: 'never'` en astro.config.mjs; la nota histórica
+anterior sobre variantes200 no describe la configuración actual.

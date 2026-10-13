@@ -1,8 +1,8 @@
 # TenBeltz
 
-> Equipo externo de ingeniería de IA para empresas de software. Diseñamos,
-> construimos e integramos sistemas de IA para equipos SaaS y consultoras de
-> software, con criterios claros de fiabilidad, rendimiento y coste.
+> Ingeniería de IA para empresas y equipos de software. Ayudamos a automatizar
+> procesos de negocio y a desarrollar e integrar IA en productos, con alcance
+> definido y criterios claros de fiabilidad, rendimiento y coste.
 
 TenBeltz es el nombre comercial de Beltz Dev SL (NIF B21697719), con sede en
 Avenida Elexalde 8, 48940 Leioa, Bizkaia, España.
@@ -14,6 +14,13 @@ aporta arquitectura de software y Artem Pysmak, ingeniería de IA y backend.
 
 Áreas de trabajo: agentes LLM, RAG, procesamiento de voz, clasificación
 documental, evaluación de modelos, observabilidad e integración de software.
+
+## Dos recorridos comerciales
+
+- [IA para empresas](https://tenbeltz.com/ia-para-empresas): identificar un proceso,
+  estudiar su viabilidad y construir una solución con revisión humana cuando corresponda.
+- [IA para software](https://tenbeltz.com/ia-para-software): definir, validar e integrar
+  sistemas de IA en productos SaaS y proyectos de consultoras tecnológicas.
 
 ## Páginas en español
 
@@ -44,14 +51,16 @@ documental, evaluación de modelos, observabilidad e integración de software.
 
 ## English pages
 
-TenBeltz is an external AI engineering team for SaaS teams and software
-consultancies. Aritz leads consulting and technical definition; the team handles
+TenBeltz helps businesses automate processes and software teams develop and
+integrate AI systems. Aritz leads consulting and technical definition; the team handles
 implementation and integration under his technical direction.
 
 Five engagements: AI Gap Analysis, AI Project Foundations, Agent MVP,
 Production Delivery and Applied AI Training.
 
 - [Home](https://tenbeltz.com/en)
+- [AI for business](https://tenbeltz.com/en/ai-for-business)
+- [AI for software](https://tenbeltz.com/en/ai-for-software)
 - [Services](https://tenbeltz.com/en/services)
 - [Case studies](https://tenbeltz.com/en/case-studies)
 - [Team](https://tenbeltz.com/en/who-is-behind)

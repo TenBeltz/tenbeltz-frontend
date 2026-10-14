@@ -28,7 +28,7 @@ let browser;
    await page.evaluate(()=>document.fonts.ready);
    const data=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,h1:document.querySelectorAll('h1').length,brokenImages:[...document.images].filter(i=>i.complete&&!i.naturalWidth).map(i=>i.getAttribute('src')),main:!!document.querySelector('#main-content'),heading:document.querySelector('h1')?.textContent,form:!!document.querySelector('.contact-form'),navOverflow:document.querySelector('.header-inner').scrollWidth>document.querySelector('.header-inner').clientWidth,clientLogos:document.querySelectorAll('.client-logo-item').length}));
    results.push({width,path,status:response.status(),...data});
-   if(path==='/'||path==='/en')assert.equal(data.clientLogos,22,`expected 11 references and accessible duplicates on ${path}`);
+   if(path==='/'||path==='/en')assert.equal(data.clientLogos,26,`expected 13 references and accessible duplicates on ${path}`);
    assert.equal(response.status(),200);assert.equal(data.h1,1);assert.equal(data.overflow,false,`overflow ${width} ${path}`);assert.equal(data.navOverflow,false,`nav overflow ${width} ${path}`);assert.deepEqual(data.brokenImages,[]);
    if([1440,390].includes(width)){
     const name=`${width}-${path.replaceAll('/','-')||'home'}.png`;await page.screenshot({path:'/qa/'+name,fullPage:true});screens.push(name);
@@ -45,7 +45,7 @@ let browser;
  context=await browser.newContext({reducedMotion:'reduce'});
  await context.route('**/*',route=>{const req=route.request(),u=new URL(req.url());if(u.pathname==='/api/contact'){requests.push(JSON.parse(req.postData()||'{}'));return route.fulfill({status:200,contentType:'application/json',body:'{"success":true}'});}return u.origin===base||u.protocol==='data:'||u.protocol==='blob:'?route.continue():route.abort();});
  page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
- await page.goto(base+'/');assert.equal(await page.locator('.client-logo-item').count(),22);assert.equal(await page.locator('.client-logo-caption').count(),0);for(const id of ['lae-homes','retabet'])assert((await page.locator(`.client-logo-${id} .client-logo-link`).first().getAttribute('aria-label')).includes('Irontec'));assert.equal(await page.locator('.client-logo-eroski').count(),0);assert.equal(await page.locator('.client-logo-wordmark strong').first().textContent(),'LexFirma');
+ await page.goto(base+'/');assert.equal(await page.locator('.client-logo-item').count(),26);assert.equal(await page.locator('.client-logo-caption').count(),0);for(const id of ['lae-homes','retabet'])assert((await page.locator(`.client-logo-${id} .client-logo-link`).first().getAttribute('aria-label')).includes('Irontec'));assert((await page.locator('.client-logo-upv-ehu .client-logo-link').first().getAttribute('aria-label')).includes('Biiak UNI'));assert((await page.locator('.client-logo-nuevo-futuro .client-logo-link').first().getAttribute('aria-label')).includes('Biiak'));assert.equal(await page.locator('.client-logo-eroski').count(),0);assert.equal(await page.locator('.client-logo-wordmark strong').first().textContent(),'LexFirma');
  // Mobile menu, keyboard focus cycle, Escape, and local contact routing.
  await page.setViewportSize({width:390,height:844});await page.goto(base+'/ia-para-empresas');await page.locator('#cookie-decline').click();
  const toggle=page.locator('[data-menu-toggle]');await toggle.click();assert.equal(await toggle.getAttribute('aria-expanded'),'true');assert(await page.locator('main').evaluate(e=>e.inert));

@@ -10,6 +10,8 @@ Los recursos se sirven desde `public/images/clients/`, sin cargar assets de terc
 | Qamarero | `qamarero.svg` | [Web](https://www.qamarero.com/) · [SVG del encabezado](https://www.qamarero.com/qamarero-logo-negro.svg) |
 | TecniSoft / SistemaPol | `sistemapol.png` | [SistemaPol](https://www.sistemapol.es/) · [PNG del encabezado](https://132078ec30.clvaw-cdnwnd.com/68baeee07653aa85f7d5eb88d40da8e4/200001005-8bf578bf59/logo%20sistemapol%20600.png?ph=132078ec30) |
 | Biiak | `biiak.svg` | [Web](https://biiak.com/) · [SVG del encabezado](https://biiak.com/logo-color.svg) |
+| UPV/EHU | `upv-ehu.svg` | [Portal de marca oficial](https://www.ehu.eus/es/web/marka/logotipos) · imagotipo positivo. Utiliza Biiak UNI. |
+| Fundación Nuevo Futuro | `nuevo-futuro.svg` | [Web oficial](https://nuevofuturo.org/) · logotipo publicado en su cabecera. Utiliza Biiak. |
 | Imagina | `imagina-color.webp` | [Web](https://imaginaformacion.com/) · [Logo a color publicado en los metadatos oficiales](https://imaginaformacion.com/LogoColor.webp) |
 
 Biiak sigue descrito como producto cofundado en su caso. La formación de Opus Dei conserva la atribución a Imagina. El nuevo título de la franja responde a la preferencia explícita del usuario y no modifica el contenido de los casos.
@@ -20,7 +22,7 @@ Feedback posterior2026-10-08: el título visible de la franja se oculta en escri
 
 ## Ampliación solicitada — 2026-10-14
 
-La franja incluye once referencias: Zetesis, Irontec, LAE Homes, RETAbet, Qamarero, SistemaPol/TecniSoft, Prados-Osuna Abogados, LexFirma, OrderInn, Biiak e Imagina. Se quitaron los subtítulos visibles a petición de Aritz; los nombres y la atribución de proyectos a través de Irontec permanecen en los nombres accesibles de LAE Homes y RETAbet. Biiak se identifica como producto cofundado y la formación del equipo técnico de Opus Dei se atribuye a Imagina.
+La franja incluye trece referencias: Zetesis, Irontec, LAE Homes, RETAbet, Qamarero, SistemaPol/TecniSoft, Prados-Osuna Abogados, LexFirma, OrderInn, Biiak, UPV/EHU, Fundación Nuevo Futuro e Imagina. Se quitaron los subtítulos visibles a petición de Aritz; los nombres y la atribución de proyectos a través de Irontec permanecen en los nombres accesibles de LAE Homes y RETAbet. Biiak se identifica como producto cofundado y la formación del equipo técnico de Opus Dei se atribuye a Imagina.
 
 | Referencia | Archivo | Fuente/relación publicada |
 |---|---|---|
@@ -29,6 +31,11 @@ La franja incluye once referencias: Zetesis, Irontec, LAE Homes, RETAbet, Qamare
 | Prados-Osuna Abogados | `prados-osuna.png` | [Web oficial](https://www.pradososuna.com/) · [logotipo publicado en su web](https://www.pradososuna.com/sites/default/files/logotipo-pradososunaabogados-geydes.png). El nombre se muestra en la franja, sin atribuirle los casos jurídicos que siguen anónimos. |
 | OrderInn | `orderinn.png` | [Web oficial](https://orderinn.com/) · imagen servida por el sitio oficial. Pie limitado al proyecto de predicción de precios. |
 | LexFirma | Wordmark tipográfico en texto | El nombre está autorizado por Aritz, pero no se encontró una identidad gráfica o destino oficial inequívoco que corresponda al proyecto. No se reutiliza el logo de otra entidad homónima ni se enlaza a una web de identidad incierta. |
+| UPV/EHU | `upv-ehu.svg` | [Portal de marca oficial](https://www.ehu.eus/es/web/marka/logotipos) · imagotipo positivo. Utiliza Biiak UNI. |
+| Fundación Nuevo Futuro | `nuevo-futuro.svg` | [Web oficial](https://nuevofuturo.org/) · logotipo publicado en su cabecera. Utiliza Biiak. |
 | Imagina | `imagina-color.webp` | Marca publicada en su web. El pie atribuye la formación para el equipo técnico de Opus Dei a Imagina. |
 
-La animación completa tarda 96 segundos para mantener una velocidad parecida con once referencias. Los subtítulos no se muestran bajo las marcas; las atribuciones relevantes permanecen en sus nombres accesibles. El grupo duplicado sigue oculto a lectores de pantalla.
+La animación completa tarda 112 segundos para mantener una velocidad parecida con trece referencias. Los subtítulos no se muestran bajo las marcas; las atribuciones relevantes permanecen en sus nombres accesibles. El grupo duplicado sigue oculto a lectores de pantalla.
+
+
+Ampliación 2026-10-14: se añadieron UPV/EHU (uso de Biiak UNI) y Fundación Nuevo Futuro (uso de Biiak), con logotipos descargados de sus webs/portal de marca oficiales.

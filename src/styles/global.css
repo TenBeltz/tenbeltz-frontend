@@ -160,17 +160,15 @@ h1,h2,h3 { font-weight:500; letter-spacing:-.045em; line-height:1.1; }
 .client-logo-item img { width:160px; height:44px; object-fit:contain; filter:grayscale(1); opacity:.75; transition:filter .3s ease,opacity .3s ease; }
 .client-logo-biiak img { width:125px; }
 .client-logo-tecnisoft img { width:110px; height:78px; filter:grayscale(1); opacity:.85; }
-.client-logo-caption { margin-top:7px; max-width:205px; font-size:10px; line-height:1.3; text-align:center; color:var(--muted); }
 .client-logo-wordmark strong { font-family:var(--font-display); font-size:26px; font-weight:500; letter-spacing:-.04em; color:var(--ink); }
 .client-logo-retabet img { width:150px; }
-.client-logo-eroski img { width:120px; height:54px; }
 .client-logo-lae-homes img { width:140px; height:60px; }
 .client-logo-prados-osuna img { width:110px; height:57px; }
 .client-logo-orderinn img { width:125px; height:58px; }
 .client-logo-imagina img { width:170px; }
 .client-strip[data-enhanced="true"] .client-logos-window { overflow:hidden; }
 .client-strip[data-enhanced="true"] .client-logo-group[aria-hidden="true"] { display:flex; }
-.client-strip[data-enhanced="true"] .client-logos-track { animation:client-drift 104s linear infinite; }
+.client-strip[data-enhanced="true"] .client-logos-track { animation:client-drift 96s linear infinite; }
 @keyframes client-drift { to { transform:translateX(-50%); } }
 @media(hover:hover) {
 .client-logo-item:hover img { filter:none; opacity:1; }

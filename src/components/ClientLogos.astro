@@ -5,7 +5,6 @@ const en = lang === 'en';
 const clients = [
   { id: 'zetesis', name: 'Zetesis', caption: en ? 'Selected collaboration' : 'Colaboración', href: 'https://zetesis.xyz/', src: 'zetesis.svg', width: 8394, height: 1809 },
   { id: 'irontec', name: 'Irontec', caption: en ? 'Software and AI collaboration' : 'Colaboración en software e IA', href: 'https://www.irontec.com/', src: 'irontec.svg', width: 132, height: 24 },
-  { id: 'eroski', name: 'EROSKI', caption: en ? 'Project through Irontec' : 'Proyecto a través de Irontec', href: 'https://www.eroski.es/', src: 'eroski.png', width: 187, height: 82 },
   { id: 'lae-homes', name: 'LAE Homes', caption: en ? 'Project through Irontec' : 'Proyecto a través de Irontec', href: 'https://laehomes.com/', src: 'lae-homes.png', width: 554, height: 238 },
   { id: 'retabet', name: 'RETAbet', caption: en ? 'Project through Irontec' : 'Proyecto a través de Irontec', href: 'https://www.retabetz.es/', src: 'retabet.webp', width: 424, height: 116 },
   { id: 'qamarero', name: 'Qamarero', caption: en ? 'Voice booking integration' : 'Integración de reservas por voz', href: 'https://www.qamarero.com/', src: 'qamarero.svg', width: 138, height: 40 },
@@ -27,9 +26,7 @@ const clients = [
         {clients.map(client => <li class:list={['client-logo-item', `client-logo-${client.id}`]}>
           {client.href ? <a class="client-logo-link" href={client.href} target="_blank" rel="noopener noreferrer" tabindex={duplicate ? '-1' : undefined} aria-label={en ? `${client.name}: ${client.caption} (opens in a new tab)` : `${client.name}: ${client.caption} (se abre en otra pestaña)`}>
             <img src={`/images/clients/${client.src}`} alt={duplicate ? '' : client.name} width={client.width} height={client.height} loading="lazy" decoding="async" />
-            {client.id === 'tecnisoft' && <small class="client-logo-caption">{client.caption}</small>}
-            {client.id !== 'tecnisoft' && <small class="client-logo-caption">{client.caption}</small>}
-          </a> : <div class="client-logo-link client-logo-wordmark" role="img" aria-label={`${client.name}: ${client.caption}`}><strong>{client.name}</strong><small class="client-logo-caption">{client.caption}</small></div>}
+          </a> : <div class="client-logo-link client-logo-wordmark" role="img" aria-label={`${client.name}: ${client.caption}`}><strong>{client.name}</strong></div>}
         </li>)}
       </ul>)}
     </div>

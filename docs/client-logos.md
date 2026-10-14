@@ -17,3 +17,19 @@ Biiak sigue descrito como producto cofundado en su caso. La formación de Opus D
 El bucle usa dos grupos visuales idénticos y animación CSS de 52 segundos; el segundo grupo se oculta a tecnologías de asistencia. Por petición posterior de Aritz, se retira el botón visible. Desde 2026-10-08, la fila sigue avanzando al pasar el cursor y después de tocarla en móvil. Sólo el foco visible de teclado en escritorio detiene la animación para permitir recorrer los enlaces. Cada logo enlaza a la landing oficial de su marca en una pestaña nueva; los enlaces duplicados quedan fuera del tabulador. Con movimiento reducido se muestra una cuadrícula estática de las cinco marcas. Sin JavaScript, sólo el grupo original y desplazamiento horizontal manual, sin controles inactivos.
 
 Feedback posterior2026-10-08: el título visible de la franja se oculta en escritorio (ancho desde741 px); el título móvil y el nombre accesible de la región permanecen. Sin cambios en logos, destinos ni movimiento.
+
+## Ampliación solicitada — 2026-10-14
+
+La franja incluye ahora doce referencias: Zetesis, Irontec, EROSKI, LAE Homes, RETAbet, Qamarero, SistemaPol/TecniSoft, Prados-Osuna Abogados, LexFirma, OrderInn, Biiak e Imagina. Los pies aclaran la relación para no presentar producto propio, colaboración indirecta o formación como cliente directo: EROSKI, LAE Homes y RETAbet se identifican como proyectos a través de Irontec; Biiak como producto cofundado; la formación del equipo técnico de Opus Dei se atribuye a Imagina.
+
+| Referencia | Archivo | Fuente/relación publicada |
+|---|---|---|
+| RETAbet | `retabet.webp` | [Web oficial](https://www.retabetz.es/) · [marca gráfica oficial](https://www.retabetz.es/retabet/logo.webp). Pie: proyecto realizado a través de Irontec. |
+| EROSKI | `eroski.png` | [Web oficial](https://www.eroski.es/) · [logotipo publicado en la web oficial](https://www.eroski.es/wp-content/themes/eroski/img/header/eroski-logo.png). Pie: proyecto realizado a través de Irontec. |
+| LAE Homes | `lae-homes.png` | [Web oficial](https://laehomes.com/) · [logotipo publicado en su web](https://laehomes.com/imgs/logo_laehomes_color_new.png). Pie: proyecto realizado a través de Irontec. |
+| Prados-Osuna Abogados | `prados-osuna.png` | [Web oficial](https://www.pradososuna.com/) · [logotipo publicado en su web](https://www.pradososuna.com/sites/default/files/logotipo-pradososunaabogados-geydes.png). El nombre se muestra en la franja, sin atribuirle los casos jurídicos que siguen anónimos. |
+| OrderInn | `orderinn.png` | [Web oficial](https://orderinn.com/) · imagen servida por el sitio oficial. Pie limitado al proyecto de predicción de precios. |
+| LexFirma | Wordmark tipográfico en texto | El nombre está autorizado por Aritz, pero no se encontró una identidad gráfica o destino oficial inequívoco que corresponda al proyecto. No se reutiliza el logo de otra entidad homónima ni se enlaza a una web de identidad incierta. |
+| Imagina | `imagina-color.webp` | Marca publicada en su web. El pie atribuye la formación para el equipo técnico de Opus Dei a Imagina. |
+
+La animación completa tarda 104 segundos para mantener una velocidad parecida con doce referencias. Las descripciones permanecen bajo cada marca; el grupo duplicado sigue oculto a lectores de pantalla.

@@ -8,6 +8,7 @@ import ProcessExplorer from '@/components/ProcessExplorer.astro';
 import SolutionLinks from '@/components/SolutionLinks.astro';
 import DiagnosisTeaser from '@/components/DiagnosisTeaser.astro';
 import { getAudienceCopy, type AudienceId } from '@/data/audiences';
+import { getBusinessProjects } from '@/data/business-projects';
 import { getProjects } from '@/data/projects';
 import { getLangFromUrl } from '@/i18n/utils';
 interface Props { audience: AudienceId }
@@ -19,6 +20,11 @@ const other = getAudienceCopy(lang, audience === 'business' ? 'software' : 'busi
 const casesPath = en ? '/en/case-studies' : '/casos';
 const projects = getProjects(lang);
 const proof = copy.proofIds.map(id => projects.find(project => project.id === id)).filter((project): project is NonNullable<typeof project> => !!project);
+const businessProjects = getBusinessProjects(lang);
+const proofPresentation = proof.map(project => {
+ const plain = audience === 'business' ? businessProjects.find(item => item.id === project.id) : undefined;
+ return plain ? {...project, title: plain.title, summary: `${plain.problem} ${plain.whatChanged}`} : project;
+});
 const useProofImages = proof.every(project => !!project.cover);
 const method = en ? [
  ['Understand', 'We review a real example, the people involved and the systems you already use.'],
@@ -63,7 +69,7 @@ const flow = audience === 'business'
   </section>
   <section class="audience-section wrap audience-proof">
    <div class="audience-section-heading"><p class="eyebrow">{en ? 'Documented experience' : 'Experiencia documentada'}</p><h2>{copy.proofTitle}</h2><p>{copy.proofIntro}</p></div>
-   <div class:list={["audience-proof-grid", { "audience-proof-grid--text": !useProofImages }]}>{proof.map(project => <article>
+   <div class:list={["audience-proof-grid", { "audience-proof-grid--text": !useProofImages }]}>{proofPresentation.map(project => <article>
     {useProofImages && project.cover && <a class="audience-proof-image" href={`${casesPath}#${project.id}`} aria-hidden="true" tabindex="-1"><img src={project.cover} width="1200" height="800" loading="lazy" decoding="async" alt="" /><span>{project.coverNote}</span></a>}
     <p class="eyebrow">{project.client} · {project.kind}</p><h3><a href={`${casesPath}#${project.id}`}>{project.title}</a></h3><p>{project.summary}</p><a class="text-link" href={`${casesPath}#${project.id}`}>{en ? 'Read the project' : 'Leer el proyecto'}<span class="sr-only">: {project.client}</span> <ArrowIcon direction="right" /></a>
    </article>)}</div>

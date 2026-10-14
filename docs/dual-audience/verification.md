@@ -44,3 +44,11 @@ Capturas de las seis páginas en1440/390px, resultado del explorador y feedback 
 - https://tenbeltz-landing.dev.tenbeltz.com/ia-para-software
 
 Las versiones inglesas se abren con el selector de idioma. Mantienen rutas y canonical propios. La fuente de contexto global no se modifica: el cambio es de producto, sin nuevos hosts, puertos, credenciales o servicios.
+
+## Ajustes tras revisión del usuario — 2026-10-14
+
+Se reemplazó el selector simple del explorador empresarial por cuatro opciones visuales, dos controles de cantidad con steppers y un resultado editorial que distingue tiempo declarado de ahorro. La estimación sigue local y solo se añade al mensaje a petición de la persona. Se añadieron ejemplos en lenguaje de negocio a la home, las pruebas de empresas y los nueve casos; los detalles y métricas técnicas se mantienen dentro de elementos desplegables nativos cerrados por defecto en `/casos` y `/en/case-studies`. Ningún caso jurídico anónimo se asignó a Prados-Osuna o LexFirma.
+
+La franja incluye doce referencias: Zetesis, Irontec, EROSKI, LAE Homes, RETAbet, Qamarero, SistemaPol/TecniSoft, Prados-Osuna Abogados, LexFirma, OrderInn, Biiak e Imagina. Explicita relaciones: EROSKI, LAE Homes y RETAbet vía Irontec; Biiak como producto cofundado; Imagina como responsable de la formación del equipo técnico de Opus Dei. LexFirma aparece como wordmark tipográfico sin destino, porque la búsqueda encontró varias entidades homónimas y no una marca oficial inequívoca para ese proyecto.
+
+QA de este ajuste: reconstrucción Astro con 0 errores/0 warnings y 3 hints existentes; la revisión SEO volvió a cubrir24rutas y732enlaces. Chromium cubrió8rutas×7anchos=56 navegaciones, sin overflow, imágenes rotas ni errores JS. Se verificaron opciones/steppers/resultados, copia empresarial, detalles técnicos abiertos/cerrados, menú/FAQ, contacto simulado exitoso y fallido, diagnóstico PDF y versión sin JS. Dos solicitudes simuladas de éxito, una de error; cero correos reales. Capturas actualizadas en `tmp/dual-audience-qa/`. Preview10022 privada, sin cambios en producción.

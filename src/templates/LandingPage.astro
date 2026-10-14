@@ -11,11 +11,16 @@ import HeroFlower from '@/components/HeroFlower.astro';
 
 import { getLangFromUrl } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getBusinessProjects } from '@/data/business-projects';
 import { getProjects } from '@/data/projects';
 const lang = getLangFromUrl(Astro.url);
 const en = lang === 'en';
 const copy = getHomeAudienceCopy(lang);
-const projects = ['irontec', 'qamarero', 'clasificacion-documental', 'biiak'].map(id => getProjects(lang).find(project => project.id === id)!).filter(Boolean);
+const businessProjects = getBusinessProjects(lang);
+const projects = ['irontec', 'qamarero', 'clasificacion-documental', 'biiak'].map(id => getProjects(lang).find(project => project.id === id)!).filter(Boolean).map(project => {
+  const plain = businessProjects.find(item => item.id === project.id);
+  return plain ? { ...project, title: plain.title, summary: `${plain.whatChanged} ${plain.value}`, highlight: undefined } : project;
+});
 const casesHref = getRelativeLocaleUrl(lang, en ? '/case-studies' : '/casos');
 const servicesHref = getRelativeLocaleUrl(lang, '/services');
 const aboutHref = getRelativeLocaleUrl(lang, en ? '/who-is-behind' : '/quien-esta-detras');

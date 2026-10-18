@@ -9,7 +9,7 @@ Avenida Elexalde 8, 48940 Leioa, Bizkaia, España.
 
 Aritz Jaber Lopes lidera las primeras conversaciones, la consultoría y la
 definición técnica. El equipo desarrolla e integra bajo su dirección técnica.
-Ángel Jiménez es cofundador y desarrollador full stack; Rubén García Hernando
+Angel Jimenez es cofundador y desarrollador full stack; Rubén García Hernando
 aporta arquitectura de software y Artem Pysmak, ingeniería de IA y backend.
 
 Áreas de trabajo: agentes LLM, RAG, procesamiento de voz, clasificación

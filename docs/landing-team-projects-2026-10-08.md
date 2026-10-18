@@ -9,7 +9,7 @@
 - Informes periciales: LangGraph de12 nodos, JSON validado, checks deterministas, juez LLM y Langfuse. Conservada comparativa interna de costes y revisión profesional.
 - `lae-parser`: métricas híbrido corregidas en ambos idiomas:77,1% Top-1 y95,5% Top-5,158 documentos. Tabla compara embeddings65,8/93,0; LLM69,6/94,3; híbrido77,1/95,5, sin extrapolar. Los tres repos indicados por el usuario se consultaron por GitHub autenticado y resultan privados: no se publican enlaces que prometan acceso al código.
 - Irontec: aportación técnica de Aritz explícita, sin identificar al cliente final; enlace a página pública Konect de Faktoria. Qamarero trata el agente de voz, separado del servidor MCP.
-- CTA «Conoce al equipo» y navegación «Equipo». Rutas existentes `/quien-esta-detras` / `/en/who-is-behind` ahora presentan a Aritz, Rubén García Hernando, Ángel Jiménez y Artem Pysmak con fotos reales autorizadas y roles. No se afirma relación laboral. Dirección técnica de Aritz conservada.
+- CTA «Conoce al equipo» y navegación «Equipo». Rutas existentes `/quien-esta-detras` / `/en/who-is-behind` ahora presentan a Aritz, Rubén García Hernando, Angel Jimenez y Artem Pysmak con fotos reales autorizadas y roles. No se afirma relación laboral. Dirección técnica de Aritz conservada.
 - SEO: página de equipo `AboutPage` sobre Organization sustituye `ProfilePage` sobre una sola persona; meta y breadcrumb acordes. URLs/hreflang/sitemap conservados; diez URLs, sin migración de slugs.
 
 ## Fuentes y recursos

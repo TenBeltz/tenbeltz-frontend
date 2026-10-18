@@ -6,7 +6,13 @@ interface Props { audience?: 'general' | 'business' | 'software' }
 const { audience = 'general' } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const en = lang === 'en';
-export const contactInfo = { phones: ['+34 640 520 819'], email: 'hello@tenbeltz.com' };
+export const contactInfo = {
+  phones: [
+    { region: { es: 'Europa', en: 'Europe' }, number: '+34 640 520 819', href: 'tel:+34640520819' },
+    { region: { es: 'Estados Unidos', en: 'United States' }, number: '+1 678 667 6764', href: 'tel:+16786676764' },
+  ],
+  email: 'hello@tenbeltz.com',
+};
 const title = audience === 'business'
   ? (en ? 'Start with one specific task.' : 'Empecemos por una tarea concreta.')
   : audience === 'software'
@@ -23,7 +29,12 @@ const intro = audience === 'business'
     <div class="contact-copy">
       <span class="eyebrow">{en ? 'Next step' : 'Siguiente paso'}</span>
       <h2>{title}</h2><p>{intro}</p>
-      <div class="contact-details"><a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a><a href={`tel:${contactInfo.phones[0]}`}>{contactInfo.phones[0]}</a></div>
+      <div class="contact-details">
+        <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+        {contactInfo.phones.map((phone) => (
+          <a href={phone.href}>{en ? phone.region.en : phone.region.es} · <span class="contact-phone-number">{phone.number}</span></a>
+        ))}
+      </div>
       <div class="contact-book"><p>{en ? 'Prefer a conversation?' : '¿Prefieres una conversación?'}</p><a class="text-link" href="https://calendly.com/tenbeltz/llamada-de-encaje-ai-gap-analysis" target="_blank" rel="noopener noreferrer">{en ? 'Book a 15-minute phone call' : 'Agenda una llamada telefónica de 15 min'} <ArrowIcon direction="up-right" /></a><p class="form-note">{en ? 'We will discuss your goal, available tools and data, and whether we can help.' : 'Hablaremos del objetivo, las herramientas y los datos disponibles, y de cómo podemos ayudarte.'}</p></div>
       {audience === 'software' && <div class="contact-book contact-diagnosis"><p>{en ? 'Want to assess your AI project first?' : '¿Prefieres evaluar primero tu proyecto de IA?'}</p><a class="text-link" href={en ? '/en/ai-diagnosis' : '/diagnostico-ia'}>{en ? 'Technical AI diagnosis · 2 min' : 'Diagnóstico técnico de IA · 2 min'} <ArrowIcon direction="up-right" /></a><p class="form-note">{en ? 'Assess evaluation, observability and control. Get your priorities in a downloadable report.' : 'Revisa evaluación, observabilidad y control. Recibe tus prioridades en un informe descargable.'}</p></div>}
     </div>

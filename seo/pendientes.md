@@ -12,9 +12,9 @@ Estado: ✅ hecho · ⚠️ hecho a medias o bloqueado por revisión · sin marc
 
 ## Reorientación a empresas de cualquier sector — 2026-11-02
 
-Preparado [mapa comercial](../docs/reposicionamiento-empresas/arquitectura.md). Pendientes de implementación: mensajes ES/EN, navegación, soluciones por tarea, diagnóstico, metadatos, JSON-LD, llms.txt y recursos sociales. Se conservan inicialmente las rutas actuales; las rutas nuevas del mapa son propuestas y no existen aún. Si se cambian slugs, decidir destinos y verificar las redirecciones 301 antes de publicar.
+✅ Implementación y publicación completadas: mensajes ES/EN, navegación, cuatro soluciones por tarea, cuestionario, JSON-LD, metadatos, OG y llms.txt. Conservadas rutas anteriores, añadidos dos pares ES/EN sin redirecciones nuevas. [Mapa y verificación](../docs/reposicionamiento-empresas/verificacion.md).
 
-Tras implementar: build, rutas, anclas, enlaces, sitemap/canonicals, hreflang y selector de idioma. No hay cambios de código SEO, redirecciones, indexación ni nueva consulta de Search Console en esta preparación.
+Build,28rutas/838enlaces, sitemap/canonicals/hreflang y selector verificados en desarrollo y producción. Pendientes: nueva lectura de Search Console/indexación y medición de consultas/conversión; no se deducen de las pruebas técnicas.
 
 ## Páginas de solución — 2026-10-13 (preview)
 

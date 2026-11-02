@@ -39,8 +39,14 @@ Reproducción: `python3 tools/qa/dual-seo.py URL`, `node tools/qa/contact-origin
 
 ## Producción
 
-Publicación autorizada, pendiente de ejecución tras el cierre de estas pruebas. Se usará release nuevo, entorno privado de producción conservado y Node 24.21.0 aislado, ya probado con checksum coincidente con desarrollo. El servicio activo y el release anterior se conservan hasta pasar la comprobación del candidato. El resultado real se añadirá después del despliegue.
+Publicada en **https://tenbeltz.com**, commit de código `8899da561954012a500015a5e265cc132df7974b`, release `/home/tenbeltz/releases/frontend-8899da5`. Push normal de cuatro commits a `main`, remoto verificado. Los cambios locales ajenos siguen fuera de esos commits.
+
+Build en el servidor con Node 24.21.0 aislado en `/opt/tenbeltz-tools/node-v24.21.0/bin/node`; mismo SHA-256 que desarrollo. Copia de `.env` de producción conservada en modo600. Nuevo drop-in `30-business-node24.conf` cambia únicamente ExecStart de `tenbeltz-frontend`; WorkingDirectory sigue el enlace estable. Backend y Nginx no se cambian.
+
+Candidato temporal en loopback10025: 28 rutas/838 enlaces y 17 guardas pasan antes de activar. Enlace sustituido atómicamente y frontend reiniciado; candidato detenido y puerto temporal retirado. Frontend y API activos. Release anterior `frontend-acb2cb6` conservado; configuración previa y logs privados en `/root/backups/tenbeltz-20261102-business`. Rollback preparado, no ejecutado ni probado integralmente en esta operación.
+
+Después de activar: 28 rutas/838 enlaces por HTTPS pasan con canonical/hreflang/sitemap; www301. Navegador sobre el dominio público pasa diez grupos de interacciones, contacto simulado, cuestionario y PDFs ES/EN, sin erroresJS ni correos reales. API pública con cuerpo inválido/origen propio devuelve422; origen ajeno403. Desarrollo continúa activo, HTTP200/HTTPS anónimo401. Procedimiento en [registro de despliegue](../deploy/business-2026-11-02.md).
 
 ## Límites
 
-Cero correos reales enviados durante esta revisión. No se verifica recepción en buzón, móvil físico, rendimiento de campo, indexación ni mejora de conversión. No se cambia backend, Nginx, DNS, autenticaciones ni proveedores. Las copias locales de rollback no acreditan recuperación integral ni backup externo. Manual Mac pendiente de sincronizar desde el VPS.
+Cero correos reales enviados durante esta revisión. No se verifica recepción en buzón, móvil físico, rendimiento de campo, indexación ni mejora de conversión. No se cambia backend, Nginx, DNS, autenticaciones ni proveedores. GitHub informó de 257 avisos de vulnerabilidades en la rama por defecto al hacer push (13 critical, 114 high, 121 moderate, 9 low); no se han analizado individualmente ni se ha ejecutado audit fix. El build y las pruebas funcionales no son una auditoría de dependencias. Las copias locales de rollback no acreditan recuperación integral ni backup externo. Manual Mac pendiente de sincronizar desde el VPS.

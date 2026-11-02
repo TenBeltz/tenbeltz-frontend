@@ -139,7 +139,7 @@ El despliegue requiere autorización del usuario; el 2026-11-02 autorizó expres
 **Hay dos referencias distintas en el repositorio:**
 
 - [`deploy.sh`](deploy.sh) hace `git pull`, `npm install`, build y arranque/reinicio mediante **PM2 en el puerto 3001**. Conserva assets anteriores de `/_astro/` para reducir errores de caché. No garantiza despliegue sin interrupciones.
-- El [registro de producción del 2026-10-09](docs/deploy/production-2026-10-09.md) describe **systemd**, frontend en loopback `10022` y backend en `10024`. Es una fotografía fechada, no una comprobación del servidor actual.
+- El [registro de producción del 2026-11-02](docs/deploy/business-2026-11-02.md) documenta el despliegue comprobado mediante **systemd**, frontend en loopback `10022`, backend en `10024` y Node24 aislado. Sustituye el runtime del [registro anterior](docs/deploy/production-2026-10-09.md).
 
 **No ejecutes `deploy.sh` suponiendo que corresponde al entorno activo.** Nginx debe aplicar también la política de caché de archivos estáticos: el adaptador Node puede servirlos antes del middleware Astro. Consulta la [documentación de Nginx](docs/deploy/nginx-seo.md), teniendo en cuenta sus apartados históricos.
 

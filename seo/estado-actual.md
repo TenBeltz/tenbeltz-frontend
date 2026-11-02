@@ -1,6 +1,14 @@
 # Estado actual del SEO
 
-**Última actualización:** 2026-10-13
+**Última actualización:** 2026-11-02
+
+## Web para empresas de cualquier sector publicada el 2026-11-02
+
+Home, navegación, oferta, equipo y soluciones ES/EN reorientados a procesos de negocio. Añadidos `/documentos-e-informes`↔`/en/documents-and-reports` y `/automatizacion-administrativa`↔`/en/administrative-automation`; conservadas todas las URLs anteriores. Total28páginas públicas.
+
+Código publicado8899da5, release frontend-8899da5 en producción; desarrollo actualizado. Auditoría real sobre https://tenbeltz.com:28rutas y838enlaces, títulos/descripción/H1, canonicals, hreflang, sitemap y selector correctos. www301. JSON-LD y seis OG actualizados; llms.txt refleja la oferta. Cuestionario de procesos sustituye nota técnica por resumen sin puntuación y PDF.
+
+No nueva lectura de Search Console ni indexación demostrada. [Verificación completa](../docs/reposicionamiento-empresas/verificacion.md). Las fotografías que siguen son históricas.
 
 ## Dos públicos — trabajo de rediseño 2026-10-13
 

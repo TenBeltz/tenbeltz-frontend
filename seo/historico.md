@@ -350,3 +350,10 @@ Detalle y pendientes: docs/dual-audience/verification.md. Aceptación humana pen
 Preparados posicionamiento, mapa de páginas y texto de home en `docs/reposicionamiento-empresas/`. La decisión de Aritz sustituye la doble audiencia como prioridad comercial. El mapa conserva rutas actuales durante la transición y señala expresamente cuáles son nuevas propuestas.
 
 Verificación documental: destinos actuales contrastados con `src/pages` y `src/i18n/routes.js`; referencias y anclas de casos contrastadas con `src/data/projects.ts` y su plantilla. No se ha cambiado el código, sitemap, metadatos ni redirecciones. No hay build de una implementación nueva, despliegue, consulta de Search Console o comprobación nueva de indexación. El trabajo pendiente está en `pendientes.md`.
+
+
+### Cierre de implementación y producción del 2026-11-02
+
+Tras autorización expresa de Aritz, nueva web ES/EN implementada con tres subagentes, integrada y publicada en desarrollo y producción (código8899da5). Dos pares de soluciones nuevos,28URLs; originales conservadas. Navegación/oferta/OG/llms/JSON-LD actualizados; cuestionario de negocio sin puntuación, PDF7páginas.
+
+Verificación real de https://tenbeltz.com:28rutas/838enlaces, H1/títulos/descripciones, canonicals, hreflang, sitemap y selector correctos; www301. Navegador público pasa10grupos de interacción, formularios simulados yPDF ES/EN sin erroresJS. Desarrollo:84navegaciones1440/390/320, header741/768/1024 y revisión independiente;17guardas de contacto sin email. Fuente y límites en docs/reposicionamiento-empresas/verificacion.md. Sin lectura nueva de GSC ni prueba de indexación/conversión.

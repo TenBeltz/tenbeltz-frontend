@@ -101,3 +101,10 @@ supersedidas por el contexto operativo vigente y `docs/deploy/production-2026-10
 Este rediseño se prepara para revisión en preview; publicar requiere la autorización final.
 La política vigente de barras es `trailingSlash: 'never'` en astro.config.mjs; la nota histórica
 anterior sobre variantes200 no describe la configuración actual.
+
+
+## Empresas de cualquier sector y soluciones por tarea — 2026-11-02
+
+Aritz sustituye la captación específica de empresas de software y la doble audiencia por un recorrido común dirigido a empresas que quieran implementar IA. Soluciones por documentos, administración, atención y conocimiento; diagnóstico, implementación, adopción y formación. Conservar URLs existentes y añadir sólo páginas con oferta y evidencia documentadas. La decisión de no mantener un blog sigue vigente.
+
+El usuario autoriza explícitamente implementar con subagentes y desplegar desarrollo y producción. Publicado código8899da5 tras QA; detalles en docs/reposicionamiento-empresas/verificacion.md. Esta entrada sustituye las condiciones históricas de revisión previa para esta operación concreta, sin otorgar permiso de publicación para tareas futuras distintas.

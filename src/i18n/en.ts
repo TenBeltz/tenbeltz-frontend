@@ -119,13 +119,13 @@ export const en = {
   'policies.changes.text': 'Beltz Dev SL may update this policy to reflect regulatory, technical or functional changes to the site. The version in force will always be the one published on this page, together with its last updated date.',
 
   // Who is behind
-  'whobehind.seo.title': 'Production AI engineer behind TenBeltz | TenBeltz',
-  'whobehind.seo.description': 'The person behind TenBeltz: Aritz Jaber, production-AI engineer. Measurable reliability, observability, and cost control.',
+  'whobehind.seo.title': 'Your AI implementation team | TenBeltz',
+  'whobehind.seo.description': 'Consulting, technical leadership and development to bring AI into your business workflows. Meet the TenBeltz team.',
 
   'whobehind.hero.eyebrow': 'Who is behind',
   'whobehind.hero.title': 'Behind TenBeltz',
-  'whobehind.hero.highlight': 'there is a person',
-  'whobehind.hero.subtitle': 'TenBeltz, founded in 2024, does not operate like a faceless consultancy. If we work together, you work with the person who frames the case, challenges the scope, and stands behind the technical criteria of the project.',
+  'whobehind.hero.highlight': 'there is a team',
+  'whobehind.hero.subtitle': 'TenBeltz, founded in 2024, brings consulting, development and AI engineering together. Aritz leads project definition and the team implements and integrates the solution under his technical direction.',
   'whobehind.hero.name': 'Aritz Jaber Lopes',
   'whobehind.hero.role': 'Co-founder and technical lead at TenBeltz',
   'whobehind.hero.location': 'Bilbao, Spain',
@@ -136,8 +136,8 @@ export const en = {
 
   'whobehind.story.eyebrow': 'Judgment',
   'whobehind.story.title': 'What I bring to projects',
-  'whobehind.story.p1': 'I am not here to sell AI as a magic layer. My work is to turn systems into something operable under real constraints: product, data, reliability, cost, and day-to-day operation.',
-  'whobehind.story.p2': 'That judgment has been shaped by building and evaluating solutions across different contexts, and it is what I bring into TenBeltz when we help SaaS teams and consultancies decide what is worth building and how to carry it into production.',
+  'whobehind.story.p1': 'My work is to understand the company’s workflow, data and tools so we can define a solution the team can use and review.',
+  'whobehind.story.p2': 'That judgment has been shaped by building and evaluating solutions in different contexts. At TenBeltz we apply it to help businesses across sectors choose where to start and bring AI into their everyday work.',
   'whobehind.story.quote': 'My job is not to add AI by inertia. It is to help decide what is worth building and how to do it without damaging product, margin, or trust.',
   'whobehind.story.quoteAuthor': 'Aritz Jaber, co-founder of TenBeltz',
 

@@ -1,37 +1,62 @@
 # TenBeltz
 
-> Ingeniería de IA para empresas y equipos de software. Ayudamos a automatizar
-> procesos de negocio y a desarrollar e integrar IA en productos, con alcance
-> definido y criterios claros de fiabilidad, rendimiento y coste.
+> Implementamos IA en el trabajo diario de empresas de distintos sectores.
+> Identificamos oportunidades, desarrollamos e integramos soluciones y
+> acompañamos al equipo para incorporarlas a sus procesos.
 
 TenBeltz es el nombre comercial de Beltz Dev SL (NIF B21697719), con sede en
 Avenida Elexalde 8, 48940 Leioa, Bizkaia, España.
 
 Aritz Jaber Lopes lidera las primeras conversaciones, la consultoría y la
 definición técnica. El equipo desarrolla e integra bajo su dirección técnica.
-Angel Jimenez es cofundador y desarrollador full stack; Rubén García Hernando
+Angel Jimenez es cofundador e ingeniero de producto; Rubén García Hernando
 aporta arquitectura de software y Artem Pysmak, ingeniería de IA y backend.
 
-Áreas de trabajo: agentes LLM, RAG, procesamiento de voz, clasificación
-documental, evaluación de modelos, observabilidad e integración de software.
+## Soluciones por tarea
 
-## Dos recorridos comerciales
+- Documentos e informes: extraer datos, clasificar archivos y preparar
+  borradores revisables a partir de documentación.
+- Procesos administrativos: conectar correo, documentos y herramientas
+  de gestión, con revisión de propuestas antes de ejecutar acciones.
+- Atención y consultas: asistentes conectados a los sistemas del negocio,
+  con criterios de derivación a una persona.
+- Conocimiento interno: buscar y consultar información con fuentes
+  comprobables y permisos de acceso.
 
-- [IA para empresas](https://tenbeltz.com/ia-para-empresas): identificar un proceso,
-  estudiar su viabilidad y construir una solución con revisión humana cuando corresponda.
-- [IA para software](https://tenbeltz.com/ia-para-software): definir, validar e integrar
-  sistemas de IA en productos SaaS y proyectos de consultoras tecnológicas.
+El alcance, los accesos, los costes de uso y las responsabilidades se acuerdan
+por proyecto. Las posibilidades de integración dependen de las herramientas
+existentes. La revisión inicial puede recomendar automatización convencional
+o una mejora del proceso cuando resulte más adecuada.
+
+## Cómo trabajamos
+
+- Diagnóstico de oportunidades: revisar tareas, datos y herramientas para
+  priorizar oportunidades y definir un primer proceso y sus requisitos.
+- Implementación: desarrollar o configurar la solución, conectarla con
+  los sistemas acordados y probarla con ejemplos representativos.
+- Adopción y continuidad: documentar el uso, formar al equipo y acordar
+  acompañamiento o mantenimiento según el alcance.
+- Formación aplicada: también contratable por separado, adaptada a los
+  perfiles, herramientas y tareas del equipo.
+
+La llamada inicial de 15 minutos sirve para conocer la necesidad y acordar un
+siguiente paso. El diagnóstico es un trabajo de consultoría con alcance y
+presupuesto propios. No hay tarifas, plazos ni ahorros universales publicados.
 
 ## Páginas en español
 
-- [Inicio](https://tenbeltz.com/): posicionamiento, trabajo seleccionado, servicios,
-  equipo, metodología y contacto.
-- [Servicios](https://tenbeltz.com/services): cinco modalidades de colaboración:
-  AI Gap Analysis, AI Project Foundations, Agent MVP, Production Delivery y
-  formación en IA aplicada para equipos técnicos.
-- [Casos](https://tenbeltz.com/casos): nueve proyectos de cliente, colaboraciones
-  técnicas y experiencia de producto propia. Cada caso distingue el contexto,
-  la aportación técnica y el alcance del trabajo.
+- [Inicio](https://tenbeltz.com/): propuesta, procesos, proyectos, equipo y contacto.
+- [Soluciones](https://tenbeltz.com/ia-para-empresas): aplicaciones de IA por tarea.
+- [Documentos e informes](https://tenbeltz.com/documentos-e-informes).
+- [Procesos administrativos](https://tenbeltz.com/automatizacion-administrativa).
+- [Atención y consultas](https://tenbeltz.com/agentes-voz-saas).
+- [Conocimiento interno](https://tenbeltz.com/ia-privada-productos).
+- [Cómo trabajamos](https://tenbeltz.com/services): diagnóstico, implementación,
+  adopción y formación con alcance acordado.
+- [Encuentra tu primer proceso](https://tenbeltz.com/diagnostico-ia): orientación
+  a partir de las respuestas del visitante para preparar la conversación.
+- [Proyectos](https://tenbeltz.com/casos): proyectos de cliente, colaboraciones
+  técnicas, proyectos aplicados y experiencia de producto cofundado.
 - [Equipo](https://tenbeltz.com/quien-esta-detras): Aritz, Ángel, Rubén y Artem.
 - [Aritz Jaber Lopes](https://tenbeltz.com/aritz): experiencia y trayectoria del
   cofundador y líder técnico de TenBeltz, CTO de Biiak y colaborador de Irontec.
@@ -41,28 +66,39 @@ documental, evaluación de modelos, observabilidad e integración de software.
 
 - Konect, en colaboración con Irontec: transcripción y análisis de llamadas con
   modelos de lenguaje, incluida una adaptación a IA local para RETA.
-- Qamarero: agentes telefónicos conectados a disponibilidad, reservas y CRM.
-- Clasificación documental: ensemble supervisado sobre similitudes semánticas y
-  embeddings. En el test de 1.414 documentos y 77 subcategorías, el resultado fue
-  72,35 % Top-1 y 91,51 % Top-5. Son métricas de evaluación del desarrollo; el
-  volumen operativo mensual es distinto de la muestra de test.
-- Biiak: experiencia de producto cofundado. Las referencias identificadas no
-  permiten atribuirles proyectos anónimos.
+- Qamarero, cliente SaaS de hostelería: agentes telefónicos conectados a
+  disponibilidad, reservas y CRM. No es contratación directa de cada restaurante.
+- Clasificación documental, proyecto aplicado: ensemble supervisado sobre
+  similitudes semánticas y embeddings. En un test de 1.414 documentos y 77
+  subcategorías obtuvo 72,35 % Top-1 y 91,51 % Top-5. La muestra de evaluación
+  es distinta del volumen operativo mensual.
+- Informes periciales, cliente confidencial: extracción y borradores por
+  secciones con revisión profesional. La reducción aproximada del 42 % se refiere
+  al coste de las fases evaluadas de extracción y redacción, no al tiempo ni al
+  coste total del servicio.
+- Biiak: plataforma para protección a la infancia con IA local, fuentes
+  consultables y permisos. Producto cofundado por Aritz.
+- Formación de 30 horas sobre IA local para Opus Dei a través de Imagina.
+
+Las referencias identificadas no permiten atribuirles proyectos anónimos.
+Los resultados de un proyecto no garantizan el mismo resultado en otros procesos.
 
 ## English pages
 
-TenBeltz helps businesses automate processes and software teams develop and
-integrate AI systems. Aritz leads consulting and technical definition; the team handles
+TenBeltz helps businesses across sectors implement AI in their everyday work:
+opportunity diagnosis, solution development and integration, adoption and team
+training. Aritz leads consulting and technical definition; the team handles
 implementation and integration under his technical direction.
 
-Five engagements: AI Gap Analysis, AI Project Foundations, Agent MVP,
-Production Delivery and Applied AI Training.
-
 - [Home](https://tenbeltz.com/en)
-- [AI for business](https://tenbeltz.com/en/ai-for-business)
-- [AI for software](https://tenbeltz.com/en/ai-for-software)
-- [Services](https://tenbeltz.com/en/services)
-- [Case studies](https://tenbeltz.com/en/case-studies)
+- [AI solutions](https://tenbeltz.com/en/ai-for-business)
+- [Documents and reports](https://tenbeltz.com/en/documents-and-reports)
+- [Administrative workflows](https://tenbeltz.com/en/administrative-automation)
+- [Customer service and enquiries](https://tenbeltz.com/en/voice-agents-for-saas)
+- [Internal knowledge](https://tenbeltz.com/en/private-ai-products)
+- [How we work](https://tenbeltz.com/en/services)
+- [Find your first workflow](https://tenbeltz.com/en/ai-diagnosis)
+- [Projects](https://tenbeltz.com/en/case-studies)
 - [Team](https://tenbeltz.com/en/who-is-behind)
 - [Aritz Jaber Lopes](https://tenbeltz.com/en/aritz)
 - [Terms and privacy](https://tenbeltz.com/en/politicas)
@@ -70,5 +106,6 @@ Production Delivery and Applied AI Training.
 ## Contacto
 
 - Email: hello@tenbeltz.com
-- Teléfono: +34 640 520 819
+- Europa: +34 640 520 819
+- Estados Unidos: +1 678 667 6764
 - LinkedIn: <https://www.linkedin.com/company/tenbeltz/>

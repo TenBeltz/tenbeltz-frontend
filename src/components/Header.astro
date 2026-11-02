@@ -6,12 +6,14 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 const lang = getLangFromUrl(Astro.url);
 const en = lang === 'en';
 const home = localizedPath('/', lang);
-const base = Astro.url.pathname.replace(/^\/en(?=\/|$)/, '').replace(/\/$/, '') || '/';
+const base = localizedPath(Astro.url.pathname, 'es');
 const target = en ? 'es' : 'en';
 const alternate = localizedPath(Astro.url.pathname, target);
+const contactPages = new Set(['/', '/services', '/casos', '/quien-esta-detras', '/ia-para-empresas', '/ia-para-software', '/evaluacion-ia-saas', '/agentes-voz-saas', '/ia-privada-productos', '/documentos-e-informes', '/automatizacion-administrativa']);
+const contactHref = contactPages.has(base) ? '#contact-section' : `${home}#contact-section`;
 const nav = [
-  { label: en ? 'For business' : 'Para empresas', href: localizedPath('/ia-para-empresas', lang) },
-  { label: en ? 'For software' : 'Para software', href: localizedPath('/ia-para-software', lang) },
+  { label: en ? 'Solutions' : 'Soluciones', href: localizedPath('/ia-para-empresas', lang) },
+  { label: en ? 'How we work' : 'Cómo trabajamos', href: localizedPath('/services', lang) },
   { label: en ? 'Projects' : 'Proyectos', href: getRelativeLocaleUrl(lang, en ? '/case-studies' : '/casos') },
   { label: en ? 'Team' : 'Equipo', href: getRelativeLocaleUrl(lang, en ? '/who-is-behind' : '/quien-esta-detras') },
 ];
@@ -29,7 +31,7 @@ const nav = [
     <nav id="site-nav" class="site-nav" aria-label={en ? 'Main navigation' : 'Navegación principal'}>
       <a class="mobile-home-link" href={home} aria-current={base === '/' ? 'page' : undefined}>{en ? 'Home' : 'Inicio'} <span class="mobile-nav-arrow"><ArrowIcon /></span></a>
       {nav.map(item => <a class="nav-page-link" href={item.href} aria-current={Astro.url.pathname === item.href ? 'page' : undefined}>{item.label}<span class="mobile-nav-arrow"><ArrowIcon /></span></a>)}
-      <a class="nav-contact" href={Astro.url.pathname.includes("ia-para-") || Astro.url.pathname.includes("ai-for-") ? "#contact-section" : `${home}#contact-section`}>{en ? 'Let’s talk' : 'Hablemos'} <ArrowIcon direction="up-right" /></a>
+      <a class="nav-contact" href={contactHref}>{en ? 'Let’s talk' : 'Hablemos'} <ArrowIcon direction="up-right" /></a>
       <a class="language-link" href={alternate} lang={target} aria-label={en ? 'Cambiar a español' : 'Switch to English'}><span class="language-short">{target.toUpperCase()}</span><span class="language-full">{en ? 'Español' : 'English'} <ArrowIcon direction="up-right" /></span></a>
     </nav>
   </div>
@@ -80,3 +82,15 @@ const nav = [
   mobile.addEventListener('change', () => setOpen(false));
   window.addEventListener('pagehide', () => setOpen(false));
 </script>
+<style>
+  /* Keep the longer service label on one line at tablet widths. */
+  @media (min-width:741px) {
+    .site-nav a { white-space:nowrap; }
+    .site-nav .nav-page-link,.site-nav .language-link { display:inline-flex; min-height:44px; align-items:center; }
+  }
+  @media (min-width:741px) and (max-width:1000px) {
+    .header-inner { gap:20px; }
+    .site-nav { gap:14px; }
+    .language-link { padding-left:14px; }
+  }
+</style>

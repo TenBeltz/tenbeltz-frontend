@@ -21,7 +21,7 @@ const {
 
 // Dedicated OG image per locale (1200x630). Social crawlers need an absolute URL.
 const ogRoute = localizedPath(Astro.url.pathname, 'es')
-const ogAudience = ogRoute === '/ia-para-empresas' ? 'business' : ogRoute === '/ia-para-software' ? 'software' : 'home'
+const ogAudience = ogRoute === '/ia-para-empresas' ? 'business' : 'home'
 const defaultOgPath = `/og/tenbeltz-${ogAudience}-${lang === 'en' ? 'en' : 'es'}.png`
 const ogImage = new URL(image ?? defaultOgPath, Astro.site)
 const isDefaultOgImage = !image
@@ -51,20 +51,21 @@ const isHome = routeKey === '/'
 
 // Absolute URL for a route in the *current* locale. Mirrors the hreflang builder above:
 // the English home page is `/en`, not `/en/`.
-const localeHref = (path: string) => {
-	const prefix = lang === 'en' ? '/en' : ''
-	const suffix = path === '/' ? '' : path
-	return new URL(`${prefix}${suffix}` || '/', Astro.site).href
-}
+const localeHref = (path: string) => new URL(localizedPath(path, lang), Astro.site).href
 
 // Breadcrumb labels mirror the nav labels in Header.astro. They live there as a local
 // const that cannot be imported, so they are restated rather than wired through props.
 const routeNames: Record<string, { es: string; en: string }> = {
-  '/ia-para-empresas': { es: 'IA para empresas', en: 'AI for business' },
-  '/ia-para-software': { es: 'IA para software', en: 'AI for software' },
-  '/diagnostico-ia': { es: 'Diagnóstico de IA', en: 'AI diagnosis' },
+  '/ia-para-empresas': { es: 'Soluciones de IA', en: 'AI solutions' },
+  '/ia-para-software': { es: 'Integración técnica de IA', en: 'Technical AI integration' },
+  '/diagnostico-ia': { es: 'Encuentra tu primer proceso', en: 'Find your first workflow' },
+  '/documentos-e-informes': { es: 'Documentos e informes', en: 'Documents and reports' },
+  '/automatizacion-administrativa': { es: 'Procesos administrativos', en: 'Administrative workflows' },
+  '/agentes-voz-saas': { es: 'Atención y consultas', en: 'Customer service and enquiries' },
+  '/ia-privada-productos': { es: 'Conocimiento interno', en: 'Internal knowledge' },
+  '/evaluacion-ia-saas': { es: 'Evaluación de soluciones de IA', en: 'AI solution evaluation' },
 	'/': { es: 'Inicio', en: 'Home' },
-	'/services': { es: 'Servicios', en: 'Services' },
+	'/services': { es: 'Cómo trabajamos', en: 'How we work' },
 	'/casos': { es: 'Casos', en: 'Case studies' },
 	'/quien-esta-detras': { es: 'Equipo', en: 'Team' },
 	'/aritz': { es: 'Aritz Jaber Lopes', en: 'Aritz Jaber Lopes' },
@@ -88,14 +89,16 @@ const isProfilePage = routeKey === '/aritz'
 const organizationLogo = new URL('/favicon/web-app-manifest-512x512.png', Astro.site).href
 
 const orgDescription = lang === 'en'
-	? 'AI engineering team helping businesses automate processes and software companies develop and integrate AI systems, with explicit scope and delivery criteria.'
-	: 'Equipo de ingeniería de IA que ayuda a empresas a automatizar procesos y a empresas de software a desarrollar e integrar sistemas de IA, con alcance y criterios de entrega explícitos.'
+	? 'AI engineering team helping businesses across sectors identify opportunities, implement solutions and train their teams. Documents, administrative workflows, customer service and internal knowledge, with agreed scope and acceptance criteria.'
+	: 'Equipo de ingeniería de IA que ayuda a empresas de distintos sectores a identificar oportunidades, implementar soluciones y formar al equipo. Documentos, procesos administrativos, atención y conocimiento interno, con alcance y criterios de aceptación acordados.'
 
 // Topics the org claims expertise in. Present in body copy but previously absent from the
 // entity graph, which is what answer engines read to decide "who is an authority on X".
 const knowsAbout = [
 	'Artificial intelligence engineering',
 	'Business process automation',
+	'Document processing and report preparation',
+	'AI implementation and team training',
 	'Large language model applications',
 	'Retrieval-augmented generation',
 	'Multi-agent systems',
@@ -108,11 +111,10 @@ const knowsAbout = [
 // `id` matches the `id="service-${id}"` anchors rendered by ServicesSection.astro, so each
 // Service node is deep-linkable to its own card on the services page.
 const serviceCatalog = [
-	{ id: 'gap-analysis', name: 'AI Gap Analysis', es: 'Diagnóstico para decidir si merece la pena construir el sistema, con roadmap técnico.', en: 'Diagnostic to decide whether the system is worth building, with a technical roadmap.' },
-	{ id: 'foundations', name: 'AI Project Foundations', es: 'Bases técnicas del proyecto: arquitectura, stack y criterios de entrega.', en: 'Technical foundations: architecture, stack and delivery criteria.' },
-	{ id: 'agent-mvp', name: 'Agent MVP', es: 'Primer agente en funcionamiento sobre un caso acotado y medible.', en: 'First working agent on a scoped, measurable use case.' },
-	{ id: 'production-delivery', name: 'Production Delivery', es: 'Entrega en producción con fiabilidad medible, observabilidad y control de coste.', en: 'Production delivery with measurable reliability, observability and cost control.' },
-	{ id: 'training', name: lang === 'en' ? 'Applied AI Training' : 'Formación en IA aplicada', es: 'Formación práctica para equipos técnicos en IA local, modelos, RAG, agentes y evaluación.', en: 'Practical training for technical teams in local AI, models, RAG, agents and evaluation.' },
+	{ id: 'gap-analysis', name: lang === 'en' ? 'AI opportunity diagnosis' : 'Diagnóstico de oportunidades de IA', es: 'Revisión de tareas, datos y herramientas para priorizar oportunidades y definir el alcance de una primera implementación.', en: 'Review of tasks, data and tools to prioritise opportunities and define the scope of an initial implementation.' },
+	{ id: 'implementation', name: lang === 'en' ? 'AI implementation' : 'Implementación de IA', es: 'Desarrollo o configuración de la solución, integración acordada y pruebas con ejemplos representativos del proceso.', en: 'Solution development or configuration, agreed integrations and testing with representative workflow examples.' },
+	{ id: 'adoption', name: lang === 'en' ? 'Adoption and continuity' : 'Adopción y continuidad', es: 'Documentación de uso, formación del equipo y acompañamiento o mantenimiento según el alcance acordado.', en: 'Usage documentation, team training and support or maintenance under an agreed scope.' },
+	{ id: 'training', name: lang === 'en' ? 'Applied AI training' : 'Formación en IA aplicada', es: 'Formación adaptada a los perfiles, herramientas y tareas del equipo, con ejercicios y pautas de revisión.', en: 'Training tailored to the team’s roles, tools and tasks, with exercises and review guidelines.' },
 ]
 
 // Breadcrumbs on every page except the two home pages, where a one-item trail adds nothing.
@@ -154,7 +156,7 @@ const jsonLd = {
 			areaServed: { '@type': 'Country', name: 'Spain' },
 			hasOfferCatalog: {
 				'@type': 'OfferCatalog',
-				name: lang === 'en' ? 'AI engineering services' : 'Servicios de ingeniería de IA',
+				name: lang === 'en' ? 'AI implementation services for businesses' : 'Servicios de implementación de IA para empresas',
 				itemListElement: serviceCatalog.map((service) => ({
 					'@type': 'Offer',
 					itemOffered: {
@@ -218,7 +220,7 @@ const jsonLd = {
 <link rel="alternate" hreflang="en" href={enURL} />
 <link rel="alternate" hreflang="x-default" href={esURL} />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#02010A" />
+<meta name="theme-color" content="#f7f6f2" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@TenBeltz" />

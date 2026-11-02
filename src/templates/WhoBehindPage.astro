@@ -10,25 +10,25 @@ const lang = getLangFromUrl(Astro.url);
 const en = lang === 'en';
 const team = getTeam(lang);
 const principles = en ? [
- ['One technical direction', 'Aritz leads the initial conversations, consulting and architecture. We define scope and acceptance criteria before development.'],
- ['Complementary experience', 'We bring software architecture, product development and AI engineering together according to each project’s needs.'],
- ['Quality we can assess', 'Representative cases, regression checks and traces help us evaluate results and diagnose failures.'],
- ['A clear handover', 'We plan for integration, monitoring and maintenance, and provide the information your team needs to operate the system.'],
+ ['Understand the work', 'Aritz leads the initial conversations, consulting and technical definition. We review the workflow, tools and people involved before agreeing on scope.'],
+ ['Build and connect', 'We bring software architecture, development and AI engineering together to implement the solution and connect it to the agreed systems.'],
+ ['Check the result', 'We test representative examples of your work and review errors, exceptions and operating costs with your team.'],
+ ['Prepare the team', 'We document how to use the solution, train the people who will work with it and agree who will be responsible for support and maintenance.'],
 ] : [
- ['Una dirección técnica común', 'Aritz lidera las primeras conversaciones, la consultoría y la arquitectura. Definimos el alcance y los criterios de aceptación antes del desarrollo.'],
- ['Experiencia complementaria', 'Combinamos arquitectura de software, desarrollo de producto e ingeniería de IA según las necesidades de cada proyecto.'],
- ['Calidad que se puede evaluar', 'Los casos representativos, las comprobaciones de regresión y las trazas nos ayudan a evaluar resultados y diagnosticar fallos.'],
- ['Una entrega clara', 'Preparamos la integración, la monitorización y el mantenimiento, con la información que tu equipo necesita para operar el sistema.'],
+ ['Entender el trabajo', 'Aritz lidera las primeras conversaciones, la consultoría y la definición técnica. Revisamos el proceso, las herramientas y las personas implicadas antes de acordar el alcance.'],
+ ['Construir y conectar', 'Combinamos arquitectura de software, desarrollo e ingeniería de IA para implementar la solución y conectarla con los sistemas acordados.'],
+ ['Comprobar el resultado', 'Probamos ejemplos representativos de vuestro trabajo y revisamos errores, excepciones y costes de uso junto al equipo.'],
+ ['Preparar al equipo', 'Documentamos el uso de la solución, formamos a quienes van a utilizarla y acordamos quién se ocupará del soporte y mantenimiento.'],
 ];
 ---
-<Layout title={en ? 'The AI and software engineering team | TenBeltz' : 'Equipo de ingeniería de IA y software | TenBeltz'} description={en ? 'Meet Aritz, Ángel, Rubén and Artem: technical leadership, software architecture and AI engineering for your processes and product.' : 'Conoce a Aritz, Ángel, Rubén y Artem: dirección técnica, arquitectura de software e ingeniería de IA para tus procesos y tu producto.'} canonical={`https://tenbeltz.com${en ? '/en/who-is-behind' : '/quien-esta-detras'}`}>
+<Layout title={en ? 'Your AI implementation team | TenBeltz' : 'Tu equipo para implementar IA | TenBeltz'} description={en ? 'Meet Aritz, Ángel, Rubén and Artem: consulting, technical leadership and development to bring AI into your business workflows.' : 'Conoce a Aritz, Ángel, Rubén y Artem: consultoría, dirección técnica y desarrollo para incorporar IA a los procesos de tu empresa.'} canonical={`https://tenbeltz.com${en ? '/en/who-is-behind' : '/quien-esta-detras'}`}>
   <Header />
   <main id="main-content">
     <section class="page-intro wrap team-intro">
       <div class="team-intro-copy">
       <span class="eyebrow">{en ? 'Behind TenBeltz' : 'Detrás de TenBeltz'}</span>
-      <h1>{en ? 'A team to move' : 'Un equipo para avanzar'}<br /><em>{en ? 'forward with AI.' : 'con IA.'}</em></h1>
-      <p class="lead">{en ? 'Technical judgment, software development and applied AI. We bring complementary experience together to define the right system and build it with your team.' : 'Criterio técnico, desarrollo de software e IA aplicada. Reunimos experiencia complementaria para definir el sistema adecuado y construirlo junto a tu equipo.'}</p>
+      <h1>{en ? 'We understand the work.' : 'Entendemos el trabajo.'}<br /><em>{en ? 'We build the solution.' : 'Construimos la solución.'}</em></h1>
+      <p class="lead">{en ? 'Consulting, software development and applied AI. We work with your team to choose where to start, implement the solution and prepare the people who will use it.' : 'Consultoría, desarrollo de software e IA aplicada. Trabajamos con tu equipo para elegir por dónde empezar, implementar la solución y preparar a quienes van a utilizarla.'}</p>
       </div>
       <img class="team-intro-art" src="/images/brand/tenbeltz-background-petal-contours-paper.png" width="1600" height="900" alt="" aria-hidden="true" />
     </section>
@@ -38,7 +38,7 @@ const principles = en ? [
         <div class="team-member-copy"><h2>{person.name}</h2><p class="team-role">{person.role}</p><p class="team-bio">{person.description}</p><div class="profile-links"><a href={person.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn · ${person.name}`}>LinkedIn <ArrowIcon direction="up-right" /></a>{person.profileHref && <a href={person.profileHref}>{en ? 'Experience & profile' : 'Experiencia y perfil'} <ArrowIcon direction="right" /></a>}{person.website && <a href={person.website} target="_blank" rel="noopener noreferrer">{person.websiteLabel} <ArrowIcon direction="up-right" /></a>}</div></div>
       </article>)}
     </section>
-    <section class="section wrap rule"><div class="section-heading"><span class="eyebrow">{en ? 'Working together' : 'Cómo trabajamos'}</span><h2>{en ? 'From the first decision to delivery.' : 'De la primera decisión a la entrega.'}</h2></div><div class="principles">{principles.map(([title,text]) => <article><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+    <section class="section wrap rule"><div class="section-heading"><span class="eyebrow">{en ? 'Working together' : 'Cómo trabajamos'}</span><h2>{en ? 'From the first conversation to everyday use.' : 'De la primera conversación al uso diario.'}</h2></div><div class="principles">{principles.map(([title,text]) => <article><h3>{title}</h3><p>{text}</p></article>)}</div></section>
     <Contact />
   </main><Footer />
 </Layout>

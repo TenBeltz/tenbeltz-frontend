@@ -1,4 +1,4 @@
-"""Render six social previews from existing TenBeltz brand assets.
+"""Render social previews from existing TenBeltz brand assets.
 Run with the brand-kit Python environment; no API or external assets.
 """
 from pathlib import Path
@@ -15,12 +15,12 @@ colors=identity['colors']
 for name,weight in [('Plex','Regular'),('PlexMedium','Medium')]:
  pdfmetrics.registerFont(TTFont(name,str(ROOT/f'brand/source/fonts/IBMPlexSans-{weight}.ttf')))
 copy={
- ('home','es'):('IA APLICADA', ['IA para tu negocio.', 'Y para tu producto.'], 'Procesos de negocio · Ingeniería para software'),
- ('home','en'):('APPLIED AI', ['AI for your business.', 'And your product.'], 'Business workflows · Software engineering'),
- ('business','es'):('PARA EMPRESAS Y PYMES', ['Menos trabajo repetitivo.', 'Más tiempo para tu negocio.'], 'Documentos · Informes · Herramientas conectadas'),
- ('business','en'):('FOR BUSINESSES AND SMEs', ['Less repetitive work.', 'More time for your business.'], 'Documents · Reports · Connected tools'),
- ('software','es'):('PARA EQUIPOS DE SOFTWARE', ['IA para tu producto.', 'Ingeniería a tu lado.'], 'Arquitectura · Evaluación · Integración'),
- ('software','en'):('FOR SOFTWARE TEAMS', ['AI for your product.', 'Engineering alongside you.'], 'Architecture · Evaluation · Integration'),
+ ('home','es'):('IA PARA EMPRESAS', ['Implementamos IA', 'en el trabajo diario', 'de tu empresa.'], 'Diagnóstico · Implementación · Formación'),
+ ('home','en'):('AI FOR BUSINESS', ['We implement AI', 'in your company’s', 'everyday work.'], 'Diagnosis · Implementation · Team training'),
+ ('business','es'):('SOLUCIONES DE IA', ['La IA aplicada', 'a tus procesos.'], 'Documentos · Administración · Atención · Conocimiento'),
+ ('business','en'):('AI SOLUTIONS', ['AI built around', 'your workflows.'], 'Documents · Administration · Service · Knowledge'),
+ ('software','es'):('INGENIERÍA DE IA', ['Experiencia técnica.', 'Aplicada a tu negocio.'], 'Integración · Evaluación · Adopción'),
+ ('software','en'):('AI ENGINEERING', ['Technical expertise.', 'Applied to your business.'], 'Integration · Evaluation · Adoption'),
 }
 for (audience,lang),(kicker,lines,footer) in copy.items():
  buf=BytesIO();c=canvas.Canvas(buf,pagesize=(1200,630))

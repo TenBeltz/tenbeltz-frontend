@@ -119,13 +119,13 @@ export const es = {
   'policies.changes.text': 'Beltz Dev SL puede actualizar esta política para adaptarla a cambios normativos, técnicos o funcionales del sitio. La versión vigente será siempre la publicada en esta página, junto con su fecha de última actualización.',
 
   // Who is behind
-  'whobehind.seo.title': 'Ingeniero de IA para producción | TenBeltz',
-  'whobehind.seo.description': 'La persona detrás de TenBeltz: Aritz Jaber, ingeniero de IA para producción. Fiabilidad medible, observabilidad y control de costes.',
+  'whobehind.seo.title': 'Tu equipo para implementar IA | TenBeltz',
+  'whobehind.seo.description': 'Consultoría, dirección técnica y desarrollo para incorporar IA a los procesos de tu empresa. Conoce al equipo de TenBeltz.',
 
   'whobehind.hero.eyebrow': 'Quién está detrás',
   'whobehind.hero.title': 'Detrás de TenBeltz',
-  'whobehind.hero.highlight': 'hay una persona',
-  'whobehind.hero.subtitle': 'TenBeltz, fundada en 2024, no funciona como una consultora impersonal. Si trabajamos juntos, trabajas con la persona que define el caso, cuestiona el alcance y responde por los criterios técnicos del proyecto.',
+  'whobehind.hero.highlight': 'hay un equipo',
+  'whobehind.hero.subtitle': 'TenBeltz, fundada en 2024, combina consultoría, desarrollo e ingeniería de IA. Aritz lidera la definición del proyecto y el equipo implementa e integra la solución bajo su dirección técnica.',
   'whobehind.hero.name': 'Aritz Jaber Lopes',
   'whobehind.hero.role': 'Cofundador y líder técnico de TenBeltz',
   'whobehind.hero.location': 'Bilbao, España',
@@ -136,8 +136,8 @@ export const es = {
 
   'whobehind.story.eyebrow': 'Criterio',
   'whobehind.story.title': 'Qué aporto a los proyectos',
-  'whobehind.story.p1': 'No vengo a vender IA como una capa mágica. Mi trabajo consiste en aterrizar sistemas con restricciones reales: producto, datos, fiabilidad, coste y operación.',
-  'whobehind.story.p2': 'Ese criterio se ha formado construyendo y evaluando soluciones en distintos contextos, y hoy es lo que llevo a TenBeltz cuando ayudamos a equipos SaaS y consultoras a decidir qué merece la pena construir y cómo llevarlo a producción.',
+  'whobehind.story.p1': 'Mi trabajo consiste en entender el proceso, los datos y las herramientas de la empresa para definir una solución que el equipo pueda utilizar y revisar.',
+  'whobehind.story.p2': 'Ese criterio se ha formado construyendo y evaluando soluciones en distintos contextos. En TenBeltz lo aplicamos para ayudar a empresas de distintos sectores a elegir por dónde empezar e incorporar IA a su trabajo diario.',
   'whobehind.story.quote': 'Mi trabajo no es añadir IA por inercia. Es ayudar a decidir qué merece la pena construir y cómo hacerlo sin romper producto, margen ni confianza.',
   'whobehind.story.quoteAuthor': 'Aritz Jaber, cofundador de TenBeltz',
 

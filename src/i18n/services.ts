@@ -1,416 +1,343 @@
 import type { Lang } from './ui';
 
-export type ServiceId =
-  | 'gap-analysis'
-  | 'foundations'
-  | 'agent-mvp'
-  | 'production-delivery'
-  | 'training';
-
-export interface ServiceProof {
-  /** Link text. Names the case study so the anchor is descriptive on its own. */
-  label: string;
-  /**
-   * Locale-root-relative path, already using this locale's slug (`/casos` vs
-   * `/case-studies`). `ServicesSection.astro` adds the `/en` prefix via
-   * `getRelativeLocaleUrl`, so no `/en` here.
-   */
-  href: string;
-}
-
+export type ServiceId = 'gap-analysis' | 'implementation' | 'adoption' | 'training' | 'foundations' | 'agent-mvp' | 'production-delivery';
+export interface ServiceProof { label: string; href: string; }
 export interface Service {
-  id: ServiceId;
-  tag: string;
-  title: string;
-  /** Indicative, not a commitment. Phrased as a typical duration on purpose. */
-  duration: string;
-  description: string;
-  fitTitle: string;
-  fit: string;
-  bullets: string[];
-  /** Optional: only set where a real case study demonstrates this service. */
-  proof?: ServiceProof;
+  id: ServiceId; tag: string; title: string; duration: string; description: string;
+  fitTitle: string; fit: string; bullets: string[]; proof?: ServiceProof;
+  needs: string[];
 }
-
-export interface HomeCard {
-  serviceId: ServiceId;
-  tag: string;
-  title: string;
-  description: string;
-  bullets: string[];
-}
-
+export interface HomeCard { serviceId: ServiceId; tag: string; title: string; description: string; bullets: string[]; }
 export interface ServicesCopy {
-  intro: {
-    tag: string;
-    title: string;
-    text: string;
-  };
-  home: {
-    title: string;
-    intro: string;
-    cards: HomeCard[];
-  };
-  services: Service[];
-  path: {
-    title: string;
-    items: string[];
-  };
-  cta: {
-    title: string;
-    text: string;
-    button: string;
-  };
+  intro: { tag: string; title: string; text: string };
+  home: { title: string; intro: string; cards: HomeCard[] };
+  services: Service[]; path: { title: string; items: string[] };
+  cta: { title: string; text: string; button: string };
 }
 
-const es: ServicesCopy = {
-  intro: {
-    tag: 'Estructura de servicios',
-    title: 'Cinco formas de trabajar con TenBeltz',
-    text: 'La oferta se organiza según la madurez del proyecto: desde diagnosticar si merece la pena construirlo hasta entregarlo en producción. La idea es entrar con el nivel correcto de implicación, no forzar a todos los clientes por el mismo camino.',
-  },
-  home: {
-    title: 'Cinco formas de trabajar',
-    intro: 'Cada modalidad corresponde a un momento distinto del proyecto. Aquí tienes la versión corta; en servicios está el detalle completo.',
-    cards: [
+const copies: Record<Lang, ServicesCopy> = {
+  "es": {
+    "intro": {
+      "tag": "Cómo trabajamos",
+      "title": "De la primera decisión al uso diario.",
+      "text": "Empezamos con un alcance acordado. Elegimos el proceso, implementamos la solución y preparamos al equipo para utilizarla."
+    },
+    "home": {
+      "title": "Una forma de avanzar con tu equipo",
+      "intro": "Diagnóstico, implementación y adopción, con formación también independiente.",
+      "cards": [
+        {
+          "serviceId": "gap-analysis",
+          "tag": "Elegir",
+          "title": "Diagnóstico de oportunidades",
+          "description": "Revisamos cómo trabaja tu equipo para elegir dónde puede aportar valor la IA y qué hace falta para empezar.",
+          "bullets": [
+            "Mapa de oportunidades y prioridades.",
+            "Proceso recomendado, requisitos y riesgos."
+          ]
+        },
+        {
+          "serviceId": "implementation",
+          "tag": "Construir",
+          "title": "Implementación e integración",
+          "description": "Desarrollamos o configuramos una solución para un proceso definido y la conectamos con los sistemas acordados.",
+          "bullets": [
+            "Solución conectada con las herramientas del alcance.",
+            "Pruebas con ejemplos representativos y tratamiento de excepciones."
+          ]
+        },
+        {
+          "serviceId": "adoption",
+          "tag": "Poner en uso",
+          "title": "Adopción y continuidad",
+          "description": "Preparamos al equipo para trabajar con la solución y acordamos cómo mantenerla, revisarla y hacerla evolucionar.",
+          "bullets": [
+            "Guía de uso y responsabilidades.",
+            "Formación sobre el proceso implementado."
+          ]
+        },
+        {
+          "serviceId": "training",
+          "tag": "Aprender",
+          "title": "Formación aplicada al equipo",
+          "description": "Sesiones y ejercicios adaptados a los perfiles, las herramientas y las tareas que necesita resolver tu equipo.",
+          "bullets": [
+            "Programa según necesidades y nivel.",
+            "Ejercicios sobre tareas del equipo."
+          ]
+        }
+      ]
+    },
+    "services": [
       {
-        serviceId: 'gap-analysis',
-        tag: 'Entrada',
-        title: 'AI Gap Analysis',
-        description: 'Diagnóstico para decidir si merece la pena construirlo y salir con un roadmap claro para llevarlo a cabo.',
-        bullets: [
-          'Claridad técnica',
-          'Roadmap del proyecto',
+        "id": "gap-analysis",
+        "tag": "Elegir",
+        "title": "Diagnóstico de oportunidades",
+        "duration": "Alcance acordado",
+        "description": "Revisamos cómo trabaja tu equipo para elegir dónde puede aportar valor la IA y qué hace falta para empezar.",
+        "fitTitle": "Un punto de entrada si",
+        "fit": "quieres incorporar IA y necesitas priorizar, o tienes una idea que todavía debe concretarse.",
+        "bullets": [
+          "Mapa de oportunidades y prioridades.",
+          "Proceso recomendado, requisitos y riesgos.",
+          "Alcance de la primera implementación y forma de evaluar el resultado."
         ],
-      },
-      {
-        serviceId: 'foundations',
-        tag: 'Base',
-        title: 'AI Project Foundations',
-        description: 'Base técnica para que una consultora pueda definir, vender y arrancar proyectos de IA con más criterio.',
-        bullets: [
-          'Criterios reutilizables',
-          'Soporte en preventa',
+        "needs": [
+          "Contexto de las tareas y herramientas.",
+          "Una persona que conozca el trabajo diario.",
+          "Ejemplos iniciales sin datos innecesarios."
         ],
+        "proof": {
+          "label": "Ver clasificación documental",
+          "href": "/casos#clasificacion-documental"
+        }
       },
       {
-        serviceId: 'agent-mvp',
-        tag: 'MVP',
-        title: 'Agent MVP',
-        description: 'Primera versión funcional de un agente o sistema de IA, con una forma clara de medir si responde bien.',
-        bullets: [
-          'MVP funcional',
-          'Criterios de validación',
+        "id": "implementation",
+        "tag": "Construir",
+        "title": "Implementación e integración",
+        "duration": "Alcance acordado",
+        "description": "Desarrollamos o configuramos una solución para un proceso definido y la conectamos con los sistemas acordados.",
+        "fitTitle": "Un punto de entrada si",
+        "fit": "ya sabemos qué proceso abordar y necesitamos construir, comprobar y poner la solución en uso.",
+        "bullets": [
+          "Solución conectada con las herramientas del alcance.",
+          "Pruebas con ejemplos representativos y tratamiento de excepciones.",
+          "Documentación y entrega con criterios de aceptación."
         ],
-      },
-      {
-        serviceId: 'production-delivery',
-        tag: 'Delivery',
-        title: 'Production Delivery',
-        description: 'Implementación completa hasta producción, integrada en tu producto y preparada para operar.',
-        bullets: [
-          'Integración en producto',
-          'Entrega operable',
+        "needs": [
+          "Alcance y resultado esperado.",
+          "Accesos autorizados e integración disponible.",
+          "Responsables de pruebas y revisión."
         ],
+        "proof": {
+          "label": "Ver reservas de Qamarero",
+          "href": "/casos#qamarero"
+        }
       },
       {
-        serviceId: 'training',
-        tag: 'Formación',
-        title: 'Formación en IA aplicada',
-        description: 'Formación práctica en IA local, despliegue de modelos, evaluación y agentes, adaptada a tu equipo técnico.',
-        bullets: ['Talleres prácticos', 'Programa adaptado al equipo'],
+        "id": "adoption",
+        "tag": "Poner en uso",
+        "title": "Adopción y continuidad",
+        "duration": "Alcance acordado",
+        "description": "Preparamos al equipo para trabajar con la solución y acordamos cómo mantenerla, revisarla y hacerla evolucionar.",
+        "fitTitle": "Un punto de entrada si",
+        "fit": "la solución debe formar parte de la rutina del equipo o una implementación existente necesita seguimiento.",
+        "bullets": [
+          "Guía de uso y responsabilidades.",
+          "Formación sobre el proceso implementado.",
+          "Plan acordado de revisión, soporte y mantenimiento."
+        ],
+        "needs": [
+          "Personas que van a utilizar la solución.",
+          "Responsable de operación y de las excepciones.",
+          "Necesidades de seguimiento después de la entrega."
+        ],
+        "proof": {
+          "label": "Ver gestión de despachos",
+          "href": "/casos#gestion-despachos"
+        }
       },
+      {
+        "id": "training",
+        "tag": "Aprender",
+        "title": "Formación aplicada al equipo",
+        "duration": "Alcance acordado",
+        "description": "Sesiones y ejercicios adaptados a los perfiles, las herramientas y las tareas que necesita resolver tu equipo.",
+        "fitTitle": "Un punto de entrada si",
+        "fit": "quieres preparar al equipo para utilizar IA, con ejemplos y criterios de revisión. También se contrata por separado.",
+        "bullets": [
+          "Programa según necesidades y nivel.",
+          "Ejercicios sobre tareas del equipo.",
+          "Material de apoyo y pautas para revisar resultados."
+        ],
+        "needs": [
+          "Objetivos de aprendizaje.",
+          "Perfiles y conocimientos del equipo.",
+          "Herramientas y ejemplos que se pueden utilizar."
+        ],
+        "proof": {
+          "label": "Conocer la experiencia de Aritz",
+          "href": "/aritz"
+        }
+      }
     ],
+    "path": {
+      "title": "Qué acordamos antes de empezar",
+      "items": [
+        "Alcance y entregables",
+        "Accesos y responsabilidades",
+        "Criterios de aceptación",
+        "Presupuesto y costes de uso"
+      ]
+    },
+    "cta": {
+      "title": "Cuéntanos qué te gustaría mejorar.",
+      "text": "Un proceso concreto o una necesidad de orientación. Acordaremos juntos el siguiente paso.",
+      "button": "Hablemos de tu empresa"
+    }
   },
-  services: [
-    {
-      id: 'gap-analysis',
-      tag: 'Entrada',
-      title: 'AI Gap Analysis',
-      duration: 'Normalmente 3 días',
-      description: 'Servicio compacto para equipos SaaS que no saben por dónde empezar o ya intentaron algo que no acabó de cuajar. Una reunión para recoger contexto, un informe escrito y una segunda reunión para presentarlo.',
-      fitTitle: 'Encaja para',
-      fit: 'SaaS con una feature de IA en el roadmap o un intento previo que quieres entender antes de invertir más.',
-      bullets: [
-        'Reunión de contexto sobre la feature objetivo',
-        'Stack y herramientas recomendadas',
-        'Datasets y datos que necesitarás',
-        'Problemas previsibles y cómo evitarlos',
-        'Guía paso a paso para los siguientes pasos',
-      ],
-      proof: {
-        label: 'Caso: clasificación documental, tres enfoques medidos antes de decidir',
-        href: '/casos',
+  "en": {
+    "intro": {
+      "tag": "How we work",
+      "title": "From the first decision to daily use.",
+      "text": "Start with an agreed scope. We choose the process, implement the solution and prepare the team to use it."
+    },
+    "home": {
+      "title": "A way forward for your team",
+      "intro": "Diagnosis, implementation and adoption, with training also available separately.",
+      "cards": [
+        {
+          "serviceId": "gap-analysis",
+          "tag": "Choose",
+          "title": "Opportunity diagnosis",
+          "description": "Review how your team works to choose where AI could help and what is needed to get started.",
+          "bullets": [
+            "Prioritised opportunities.",
+            "Recommended process, requirements and risks."
+          ]
+        },
+        {
+          "serviceId": "implementation",
+          "tag": "Build",
+          "title": "Implementation and integration",
+          "description": "Develop or configure a solution for a defined process and connect it to the agreed systems.",
+          "bullets": [
+            "A solution connected to the tools in scope.",
+            "Representative tests and exception handling."
+          ]
+        },
+        {
+          "serviceId": "adoption",
+          "tag": "Put to use",
+          "title": "Adoption and continuity",
+          "description": "Prepare the team to work with the solution and agree how to maintain, review and develop it.",
+          "bullets": [
+            "Usage guidance and responsibilities.",
+            "Training on the implemented process."
+          ]
+        },
+        {
+          "serviceId": "training",
+          "tag": "Learn",
+          "title": "Applied team training",
+          "description": "Sessions and exercises adapted to the roles, tools and tasks your team needs to work on.",
+          "bullets": [
+            "A programme based on needs and experience.",
+            "Exercises using the team’s tasks."
+          ]
+        }
+      ]
+    },
+    "services": [
+      {
+        "id": "gap-analysis",
+        "tag": "Choose",
+        "title": "Opportunity diagnosis",
+        "duration": "Scope agreed together",
+        "description": "Review how your team works to choose where AI could help and what is needed to get started.",
+        "fitTitle": "A useful starting point when",
+        "fit": "you want to introduce AI and need priorities, or have an idea that still needs a defined scope.",
+        "bullets": [
+          "Prioritised opportunities.",
+          "Recommended process, requirements and risks.",
+          "First implementation scope and a way to evaluate the result."
+        ],
+        "needs": [
+          "Context about tasks and tools.",
+          "Someone who knows daily operations.",
+          "Initial examples without unnecessary data."
+        ],
+        "proof": {
+          "label": "See document classification",
+          "href": "/case-studies#clasificacion-documental"
+        }
       },
-    },
-    {
-      id: 'foundations',
-      tag: 'Base',
-      title: 'AI Project Foundations',
-      duration: 'Normalmente 3 días',
-      description: 'Para consultoras de software que ejecutan proyectos a medida. Te dejamos una base reutilizable —stack, guías de planificación y herramientas— que sirve para cualquier proyecto de IA que te pidan tus clientes.',
-      fitTitle: 'Encaja para',
-      fit: 'Consultoras que quieren subir el nivel técnico de sus proyectos de IA sin depender del criterio puntual de cada persona del equipo.',
-      bullets: [
-        'Stack de herramientas estándar',
-        'Guía de planificación de proyecto de IA',
-        'Criterios técnicos para preventa',
-        'Plantillas y entregables reutilizables',
-        'Onboarding del equipo',
-      ],
-    },
-    {
-      id: 'agent-mvp',
-      tag: 'MVP',
-      title: 'Agent MVP',
-      duration: 'Normalmente de 1 a 2 semanas',
-      description: 'Para proyectos concretos donde queremos que arranques con criterio y tu equipo termine. Montamos la primera versión del agente, las pruebas de calidad y la guía explícita de lo que falta para producción.',
-      fitTitle: 'Encaja para',
-      fit: 'Equipos con un proyecto definido que quieren arrancar bien y asumir el tramo final ellos mismos.',
-      bullets: [
-        'Golden set y dataset de referencia',
-        'Pruebas de calidad y monitorización',
-        'Primera versión del agente o sistema',
-        'Bases técnicas del proyecto',
-        'Guía explícita de lo que falta para producción',
-      ],
-      proof: {
-        label: 'Caso: sistema multiagente para informes periciales',
-        href: '/casos',
+      {
+        "id": "implementation",
+        "tag": "Build",
+        "title": "Implementation and integration",
+        "duration": "Scope agreed together",
+        "description": "Develop or configure a solution for a defined process and connect it to the agreed systems.",
+        "fitTitle": "A useful starting point when",
+        "fit": "the process is selected and you need to build, assess and put the solution into daily use.",
+        "bullets": [
+          "A solution connected to the tools in scope.",
+          "Representative tests and exception handling.",
+          "Documentation and handover against acceptance criteria."
+        ],
+        "needs": [
+          "Scope and expected outcome.",
+          "Authorised access and available integration.",
+          "People responsible for testing and review."
+        ],
+        "proof": {
+          "label": "See Qamarero bookings",
+          "href": "/case-studies#qamarero"
+        }
       },
-    },
-    {
-      id: 'production-delivery',
-      tag: 'Delivery',
-      title: 'Production Delivery',
-      duration: 'Normalmente alrededor de 1 mes',
-      description: 'Lo mismo que Agent MVP, pero llevado hasta el final: sistema listo para producción e integrado en tu producto, sobre las mismas bases de pruebas, monitorización y criterios de entrega.',
-      fitTitle: 'Encaja para',
-      fit: 'Equipos que quieren que TenBeltz asuma implementación, integración y entrega a producción de punta a punta.',
-      bullets: [
-        'Implementación completa del sistema',
-        'Integración con tu producto existente',
-        'Guardrails y controles operativos',
-        'Entrega lista para producción',
-        'Handover técnico al equipo',
-      ],
-      proof: {
-        label: 'Caso: agentes de voz de Qamarero operando en producción',
-        href: '/casos',
+      {
+        "id": "adoption",
+        "tag": "Put to use",
+        "title": "Adoption and continuity",
+        "duration": "Scope agreed together",
+        "description": "Prepare the team to work with the solution and agree how to maintain, review and develop it.",
+        "fitTitle": "A useful starting point when",
+        "fit": "the solution needs to become part of the team’s routine, or an existing implementation needs ongoing attention.",
+        "bullets": [
+          "Usage guidance and responsibilities.",
+          "Training on the implemented process.",
+          "An agreed review, support and maintenance plan."
+        ],
+        "needs": [
+          "The people who will use the solution.",
+          "Owners for operation and exceptions.",
+          "Support needs after handover."
+        ],
+        "proof": {
+          "label": "See law firm workflows",
+          "href": "/case-studies#gestion-despachos"
+        }
       },
-    },
-    {
-      id: 'training',
-      tag: 'Formación',
-      title: 'Formación en IA aplicada',
-      duration: 'Programa y duración acordados con el equipo',
-      description: 'Formación técnica según el nivel y el contexto de trabajo de tu equipo. Modelos locales, serving con vLLM, arquitecturas privadas, RAG, agentes y evaluación, con sesiones prácticas. Experiencia: 30 horas de formación en IA local impartidas a través de Imagina al equipo técnico internacional de Opus Dei.',
-      fitTitle: 'Encaja para',
-      fit: 'Equipos técnicos que necesitan entender, construir u operar sistemas de IA y aplicar ese conocimiento a sus propios proyectos.',
-      bullets: [
-        'Programa definido según nivel y objetivos del equipo',
-        'IA local y despliegue de modelos',
-        'RAG, agentes y evaluación de calidad',
-        'Sesiones prácticas sobre implementación y operación',
-      ],
-      proof: { label: 'Experiencia: 30 horas de formación técnica a través de Imagina', href: '/quien-esta-detras' },
-    },
-  ],
-  path: {
-    title: 'Cómo elegir el punto de entrada',
-    items: [
-      'Si primero necesitas claridad, empieza por AI Gap Analysis.',
-      'Si eres consultora y quieres una base técnica reutilizable, elige AI Project Foundations.',
-      'Si el proyecto ya es real y quieres arrancar con criterio pero asumir tú la entrega, Agent MVP.',
-      'Si el alcance está claro y quieres que lleguemos hasta producción, Production Delivery.',
+      {
+        "id": "training",
+        "tag": "Learn",
+        "title": "Applied team training",
+        "duration": "Scope agreed together",
+        "description": "Sessions and exercises adapted to the roles, tools and tasks your team needs to work on.",
+        "fitTitle": "A useful starting point when",
+        "fit": "you want to prepare your team to use AI with relevant examples and review criteria. Available as a separate engagement.",
+        "bullets": [
+          "A programme based on needs and experience.",
+          "Exercises using the team’s tasks.",
+          "Reference material and guidance for reviewing results."
+        ],
+        "needs": [
+          "Learning objectives.",
+          "Team roles and current knowledge.",
+          "Tools and examples available for practice."
+        ],
+        "proof": {
+          "label": "Explore Aritz’s experience",
+          "href": "/aritz"
+        }
+      }
     ],
-  },
-  cta: {
-    title: '¿Necesitas ayuda para elegir el camino?',
-    text: 'Comparte el contexto y te diremos qué nivel de implicación tiene sentido.',
-    button: 'Solicitar propuesta',
-  },
+    "path": {
+      "title": "What we agree before starting",
+      "items": [
+        "Scope and deliverables",
+        "Access and responsibilities",
+        "Acceptance criteria",
+        "Budget and operating costs"
+      ]
+    },
+    "cta": {
+      "title": "Tell us what you would like to improve.",
+      "text": "A specific process or a need for guidance. We will agree the next step together.",
+      "button": "Discuss your business"
+    }
+  }
 };
 
-const en: ServicesCopy = {
-  intro: {
-    tag: 'Service structure',
-    title: 'Five ways to work with TenBeltz',
-    text: 'The offer is organized around project maturity: from diagnosing whether a case is worth building to shipping it in production. The point is to enter with the right level of involvement, not to force every client through the same path.',
-  },
-  home: {
-    title: 'Five ways to work',
-    intro: 'Each mode fits a different project stage. This is the short version; the services page has the full detail.',
-    cards: [
-      {
-        serviceId: 'gap-analysis',
-        tag: 'Entry',
-        title: 'AI Gap Analysis',
-        description: 'Diagnosis to decide whether it is worth building and leave with a clear roadmap to deliver it.',
-        bullets: [
-          'Technical clarity',
-          'Project roadmap',
-        ],
-      },
-      {
-        serviceId: 'foundations',
-        tag: 'Foundation',
-        title: 'AI Project Foundations',
-        description: 'Technical foundation for consultancies to scope, sell, and start AI projects with better criteria.',
-        bullets: [
-          'Reusable criteria',
-          'Pre-sales support',
-        ],
-      },
-      {
-        serviceId: 'agent-mvp',
-        tag: 'MVP',
-        title: 'Agent MVP',
-        description: 'First working version of an agent or AI system, with a clear way to validate quality.',
-        bullets: [
-          'Functional MVP',
-          'Validation criteria',
-        ],
-      },
-      {
-        serviceId: 'production-delivery',
-        tag: 'Delivery',
-        title: 'Production Delivery',
-        description: 'Full implementation through production, integrated with your product and ready to operate.',
-        bullets: [
-          'Product integration',
-          'Operable delivery',
-        ],
-      },
-      {
-        serviceId: 'training',
-        tag: 'Training',
-        title: 'Applied AI Training',
-        description: 'Practical training in local AI, model serving, evaluation and agents, adapted to your technical team.',
-        bullets: ['Hands-on workshops', 'Programme adapted to the team'],
-      },
-    ],
-  },
-  services: [
-    {
-      id: 'gap-analysis',
-      tag: 'Entry',
-      title: 'AI Gap Analysis',
-      duration: 'Typically 3 days',
-      description: 'A compact engagement for SaaS teams that do not know where to start or already tried something that did not land. One context meeting, a written report, and a second meeting to walk through it.',
-      fitTitle: 'Best for',
-      fit: 'SaaS teams with an AI feature on the roadmap or an earlier attempt they want to understand before investing more.',
-      bullets: [
-        'Context meeting on the target feature',
-        'Recommended technology choices',
-        'Data and datasets you will need',
-        'Predictable risks and how to avoid them',
-        'Step-by-step guide for the next steps',
-      ],
-      proof: {
-        label: 'Case study: document classification, three approaches measured before deciding',
-        href: '/case-studies',
-      },
-    },
-    {
-      id: 'foundations',
-      tag: 'Foundation',
-      title: 'AI Project Foundations',
-      duration: 'Typically 3 days',
-      description: 'For software consultancies that deliver custom projects. We leave a reusable technical base, planning guides, and delivery criteria for AI projects.',
-      fitTitle: 'Best for',
-      fit: 'Consultancies that want to raise the technical bar on AI work without relying on individual judgment call by call.',
-      bullets: [
-        'Standard technical base',
-        'AI project planning playbook',
-        'Technical criteria for pre-sales',
-        'Reusable templates and deliverables',
-        'Team onboarding',
-      ],
-    },
-    {
-      id: 'agent-mvp',
-      tag: 'MVP',
-      title: 'Agent MVP',
-      duration: 'Typically 1 to 2 weeks',
-      description: 'For concrete projects where we get you started with the right foundations and your team takes it over the finish line. We set up the first agent version, quality checks, monitoring, and an explicit guide to what is left for production.',
-      fitTitle: 'Best for',
-      fit: 'Teams with a defined project that want to start well and own the last mile themselves.',
-      bullets: [
-        'Golden set and reference dataset',
-        'Evaluation and observability system',
-        'First version of the agent or system',
-        'Technical foundations for the project',
-        'Explicit guide on what is left for production',
-      ],
-      proof: {
-        label: 'Case study: multi-agent system for expert legal reports',
-        href: '/case-studies',
-      },
-    },
-    {
-      id: 'production-delivery',
-      tag: 'Delivery',
-      title: 'Production Delivery',
-      duration: 'Typically around 1 month',
-      description: 'Same as Agent MVP, taken to the finish line: system ready for production and integrated with your product, on the same evaluation, observability, and delivery foundations.',
-      fitTitle: 'Best for',
-      fit: 'Teams that want TenBeltz to own implementation, integration, and production delivery end to end.',
-      bullets: [
-        'Full system implementation',
-        'Integration with your existing product',
-        'Guardrails and operational controls',
-        'Production-ready delivery',
-        'Technical handover to the team',
-      ],
-      proof: {
-        label: 'Case study: Qamarero voice agents running in production',
-        href: '/case-studies',
-      },
-    },
-    {
-      id: 'training',
-      tag: 'Training',
-      title: 'Applied AI Training',
-      duration: 'Programme and duration agreed with the team',
-      description: 'Technical training built around your team’s level and working context. Local models, serving with vLLM, private architectures, RAG, agents and evaluation, with practical sessions. Experience includes 30 hours of local AI training delivered through Imagina to Opus Dei’s international technical team.',
-      fitTitle: 'Best for',
-      fit: 'Technical teams that need to understand, build or operate AI systems and apply that knowledge to their own projects.',
-      bullets: [
-        'Programme scoped to the team’s level and objectives',
-        'Local AI and model serving',
-        'RAG, agents and quality evaluation',
-        'Practical sessions on implementation and operation',
-      ],
-      proof: { label: 'Experience: 30 hours of technical training through Imagina', href: '/who-is-behind' },
-    },
-  ],
-  path: {
-    title: 'How to choose the right entry point',
-    items: [
-      'If you need clarity first, start with AI Gap Analysis.',
-      'If you are a consultancy that wants a reusable technical base, choose AI Project Foundations.',
-      'If the project is real and you want to kick off well but own delivery yourself, go with Agent MVP.',
-      'If the scope is clear and you want us to take it to production, go with Production Delivery.',
-    ],
-  },
-  cta: {
-    title: 'Need help choosing the right path?',
-    text: 'Share the context and we will tell you what level of engagement makes sense.',
-    button: 'Request proposal',
-  },
-};
-
-const copies: Record<Lang, ServicesCopy> = { es, en };
-
-export function getServicesCopy(lang: Lang): ServicesCopy {
-  return copies[lang] ?? copies.es;
-}
-
-export const serviceIds: ServiceId[] = [
-  'gap-analysis',
-  'foundations',
-  'agent-mvp',
-  'production-delivery',
-  'training',
-];
+export const getServicesCopy = (lang: Lang): ServicesCopy => copies[lang];

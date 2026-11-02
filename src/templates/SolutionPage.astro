@@ -6,88 +6,33 @@ import Contact from '@/components/Contact.astro';
 import ArrowIcon from '@/components/ArrowIcon.astro';
 import { getLangFromUrl } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { solutions, type SolutionId } from '@/data/solutions';
-
+import { solutions, businessSolutionIds, type SolutionId } from '@/data/solutions';
 interface Props { id: SolutionId }
 const { id } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const en = lang === 'en';
 const content = solutions[id][lang];
-const casesPath = en ? '/case-studies' : '/casos';
-const caseId = content.caseHref.split('#')[1];
-const caseHref = `${getRelativeLocaleUrl(lang, casesPath)}#${caseId}`;
-const serviceHref = `${getRelativeLocaleUrl(lang, '/services')}#${content.serviceHref.split('#')[1]}`;
-const canonical = `https://tenbeltz.com${en ? '/en' : ''}${content.path}`;
-const related = Object.entries(solutions).filter(([key]) => key !== id).map(([, value]) => ({
-  href: getRelativeLocaleUrl(lang, value[lang].path),
-  title: value[lang].title,
-}));
-
+const caseHref = getRelativeLocaleUrl(lang, content.caseHref);
+const serviceHref = getRelativeLocaleUrl(lang, content.serviceHref);
+const related = businessSolutionIds.filter(key => key !== id).map(key => solutions[key][lang]);
 ---
-<Layout title={content.metaTitle} description={content.description} canonical={canonical}>
+<Layout title={content.metaTitle} description={content.description} canonical={`https://tenbeltz.com${en ? '/en' : ''}${content.path}`}>
   <Header />
-  <main id="main-content" class="solution-page wrap">
-    <section class="page-intro solution-intro">
-      <span class="eyebrow">{content.eyebrow}</span>
-      <h1>{content.title}</h1>
-      <p class="lead">{content.lead}</p>
-      <div class="actions">
-        <a class="button" href="#contact-section">{en ? 'Discuss a project' : 'Hablar de un proyecto'} <ArrowIcon direction="up-right" /></a>
-        <a class="text-link" href={caseHref}>{en ? 'Read the project evidence' : 'Ver el caso documentado'} <ArrowIcon direction="right" /></a>
-      </div>
+  <main id="main-content" class="solution-page">
+    <section class="wrap solution-hero">
+      <div><p class="eyebrow">{content.eyebrow}</p><h1>{content.title}</h1><p class="lead">{content.lead}</p><div class="actions"><a class="button" href="#contact-section">{en ? 'Discuss your process' : 'Hablemos de tu proceso'}<ArrowIcon direction="up-right" /></a><a class="text-link" href="#ejemplo-proceso">{en ? 'See an example' : 'Ver un ejemplo'}<ArrowIcon direction="down" /></a></div></div>
+      <aside class="solution-flow" aria-label={en ? 'Illustrative process' : 'Esquema orientativo del proceso'}><span class="eyebrow">{en ? 'A process connected end to end' : 'Un proceso conectado de principio a fin'}</span><ol>{content.flow.map((item,index) => <li><span aria-hidden="true">0{index+1}</span><strong>{item}</strong></li>)}</ol><p>{en ? 'The final workflow is defined with your team.' : 'El flujo definitivo se acuerda con tu equipo.'}</p></aside>
     </section>
-
-    <section class="solution-section rule">
-      <div><span class="eyebrow">{en ? 'The problem' : 'El problema'}</span><h2>{content.problemTitle}</h2></div>
-      <div class="solution-grid">{content.problems.map((item, index) => <article><span class="eyebrow">0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
-    </section>
-
-    <section class="solution-section rule">
-      <div><span class="eyebrow">{en ? 'How we work' : 'Cómo trabajamos'}</span><h2>{content.methodTitle}</h2></div>
-      <ol class="solution-steps">{content.method.map((step, index) => <li><span class="eyebrow">0{index + 1}</span><h3>{step.title}</h3><p>{step.text}</p></li>)}</ol>
-    </section>
-
-    <section class="solution-proof rule">
-      <div><span class="eyebrow">{en ? 'Project evidence' : 'Evidencia del proyecto'}</span><h2>{content.proofTitle}</h2></div>
-      <div><p class="lead">{content.proofText}</p><p class="solution-scope">{content.proofScope}</p><a class="text-link" href={caseHref}>{en ? 'Read the full case' : 'Leer el caso completo'} <ArrowIcon direction="right" /></a></div>
-    </section>
-
-    <section class="solution-next rule">
-      <div><span class="eyebrow">{en ? 'A fitting way to start' : 'Un punto de entrada posible'}</span><h2>{content.serviceTitle}</h2><p>{en ? 'We will confirm the scope and recommend the right level of support after reviewing your product and current stage.' : 'Revisaremos el producto y el estado del proyecto para acordar el alcance y el nivel de apoyo adecuado.'}</p></div>
-      <a class="button" href={serviceHref}>{en ? 'See the service options' : 'Ver las modalidades'} <ArrowIcon direction="right" /></a>
-    </section>
-
-    <nav class="solution-related" aria-label={en ? 'Related capabilities' : 'Temas relacionados'}>
-      {related.map(item => <a class="text-link" href={item.href}>{item.title} <ArrowIcon direction="right" /></a>)}
-    </nav>
-    <Contact audience="software" />
+    <section class="wrap solution-context"><div class="solution-section-title"><p class="eyebrow">{en ? 'The starting point' : 'El punto de partida'}</p><h2>{content.problemTitle}</h2></div><div class="solution-problem-grid">{content.problems.map(item => <article><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></section>
+    <section class="solution-possibilities"><div class="wrap solution-possibilities-inner"><div><p class="eyebrow">{en ? 'Examples of tasks' : 'Ejemplos de tareas'}</p><h2>{en ? 'Start with a defined part of the work.' : 'Empezar por una parte del trabajo.'}</h2><p>{en ? 'These examples help frame the conversation. The scope depends on your process, tools and available information.' : 'Estos ejemplos ayudan a preparar la conversación. El alcance depende del proceso, las herramientas y la información disponible.'}</p></div><ul>{content.examples.map(item => <li>{item}<ArrowIcon direction="right" /></li>)}</ul></div></section>
+    <section id="ejemplo-proceso" class="wrap solution-evidence"><div><p class="eyebrow">{en ? 'Documented experience' : 'Experiencia documentada'}</p><h2>{content.proofTitle}</h2></div><div><p class="lead">{content.proofText}</p><p class="solution-scope">{content.proofScope}</p><a class="text-link" href={caseHref}>{en ? 'Read the project and its context' : 'Ver el proyecto y su contexto'}<ArrowIcon direction="up-right" /></a></div></section>
+    <section class="wrap solution-method"><div class="solution-section-title"><p class="eyebrow">{en ? 'Implementation' : 'Implementación'}</p><h2>{content.methodTitle}</h2></div><ol>{content.method.map((item,index) => <li><span class="eyebrow">0{index+1}</span><h3>{item.title}</h3><p>{item.text}</p></li>)}</ol></section>
+    <section class="wrap solution-requirements"><div><p class="eyebrow">{en ? 'Requirements and review' : 'Requisitos y revisión'}</p><h2>{en ? 'What we need to define together.' : 'Qué necesitamos concretar juntos.'}</h2></div><div><ul>{content.requirements.map(item => <li>{item}</li>)}</ul><p class="solution-review">{content.review}</p><a class="text-link" href={serviceHref}>{en ? 'See scope and deliverables' : 'Ver alcance y entregables'}<ArrowIcon direction="right" /></a></div></section>
+    <nav class="wrap solution-related" aria-label={en ? 'Other business processes' : 'Otros procesos de negocio'}><p class="eyebrow">{en ? 'Other processes' : 'Otros procesos'}</p><div>{related.map(item => <a href={getRelativeLocaleUrl(lang, item.path)}>{item.title}<ArrowIcon direction="up-right" /></a>)}</div></nav>
+    <Contact audience="business" />
   </main>
   <Footer />
 </Layout>
-
 <style>
-  .solution-page { padding-bottom:80px; }
-  .solution-intro { padding-bottom:52px; }
-  .solution-intro h1 { max-width:900px; }
-  .solution-intro .actions { margin-top:30px; }
-  .solution-section,.solution-proof,.solution-next { display:grid; grid-template-columns:1fr 2fr; gap:48px; padding-block:58px; }
-  .solution-section h2,.solution-proof h2,.solution-next h2 { font-size:clamp(29px,3.4vw,42px); max-width:470px; }
-  .solution-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-  .solution-grid article,.solution-steps li { border-top:1px solid var(--line); padding-top:15px; }
-  .solution-grid h3,.solution-steps h3 { font-size:20px; margin:14px 0 12px; }
-  .solution-grid p,.solution-steps p,.solution-next p { color:var(--muted); font-size:15px; }
-  .solution-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; list-style:none; padding:0; margin:0; }
-  .solution-steps .eyebrow { margin-bottom:6px; }
-  .solution-proof .lead { max-width:760px; }
-  .solution-scope { color:var(--muted); font-size:13px; line-height:1.6; }
-  .solution-proof .text-link { margin-top:8px; }
-  .solution-next { align-items:center; }
-  .solution-related { display:flex; gap:24px; flex-wrap:wrap; padding:28px 0 60px; }
-  @media(max-width:760px) {
-    .solution-section,.solution-proof,.solution-next { grid-template-columns:1fr; gap:20px; padding-block:40px; }
-    .solution-grid,.solution-steps { grid-template-columns:1fr; gap:18px; }
-    .solution-intro { padding-top:55px; }
-    .solution-intro .actions { align-items:flex-start; flex-direction:column; gap:18px; }
-    .solution-related { flex-direction:column; gap:16px; padding-bottom:40px; }
-  }
+.solution-hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(270px,.65fr);gap:70px;align-items:center;padding-block:76px 70px}.solution-hero h1{font-size:clamp(42px,4.7vw,68px);letter-spacing:-.055em;line-height:1.04;margin:22px 0 28px;max-width:900px}.solution-hero .lead{max-width:760px;font-size:19px}.solution-hero .actions{margin-top:30px;flex-wrap:wrap;gap:24px}.solution-flow{padding:30px;background:var(--surface);border-top:2px solid var(--accent)}.solution-flow>.eyebrow{font-size:11px;line-height:1.6;display:block;max-width:240px}.solution-flow ol{list-style:none;margin:24px 0;padding:0}.solution-flow li{position:relative;display:grid;grid-template-columns:32px 1fr;gap:16px;align-items:start;padding-block:20px;border-bottom:1px solid var(--line)}.solution-flow li:first-child{padding-top:0}.solution-flow li>span{font-size:12px;color:var(--accent);line-height:1.8}.solution-flow strong{font-size:19px;line-height:1.35;font-weight:500}.solution-flow>p{font-size:13px;color:var(--muted);margin:0}.solution-context,.solution-method{padding-block:60px;border-top:1px solid var(--line)}.solution-section-title{max-width:760px;margin-bottom:36px}.solution-page h2{font-size:clamp(29px,3.3vw,43px);line-height:1.12;letter-spacing:-.035em;margin:18px 0 0}.solution-problem-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px}.solution-page h3{font-size:23px;line-height:1.25;margin:0 0 16px;font-weight:500}.solution-problem-grid p,.solution-method li p{font-size:16px;color:var(--muted);line-height:1.75;margin:0}.solution-possibilities{background:var(--surface);border-block:1px solid var(--line);padding-block:56px}.solution-possibilities-inner{display:grid;grid-template-columns:1fr 1.15fr;gap:70px}.solution-possibilities-inner>div>p:last-child{font-size:16px;color:var(--muted);margin:22px 0 0;max-width:500px}.solution-possibilities ul{list-style:none;margin:0;padding:0}.solution-possibilities li{display:grid;grid-template-columns:1fr 20px;gap:24px;border-top:1px solid var(--line);padding-block:22px;font-size:19px;line-height:1.4;align-items:center}.solution-possibilities li:last-child{border-bottom:1px solid var(--line)}.solution-evidence,.solution-requirements{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr);gap:70px;padding-block:64px;border-bottom:1px solid var(--line)}.solution-evidence h2,.solution-requirements h2{max-width:470px}.solution-evidence .lead{font-size:21px;margin-top:0;max-width:760px}.solution-scope{color:var(--muted);font-size:14px;line-height:1.75}.solution-evidence .text-link{margin-top:12px;min-height:44px;align-items:center}.solution-method{border-top:0}.solution-method ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px}.solution-method li{border-top:1px solid var(--line);padding-top:24px}.solution-method li>.eyebrow{display:block;margin-bottom:24px;color:var(--accent)}.solution-requirements{border-top:1px solid var(--line)}.solution-requirements ul{padding-left:20px;margin:0 0 26px;font-size:17px;line-height:1.7}.solution-requirements li{padding-left:6px;margin-bottom:12px}.solution-review{font-size:16px;color:var(--muted);border-left:2px solid var(--accent);padding-left:20px;margin-bottom:24px}.solution-requirements .text-link{min-height:44px;align-items:center}.solution-related{padding-block:36px 64px}.solution-related>div{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:18px}.solution-related a{display:inline-flex;gap:14px;align-items:center;min-height:44px;color:var(--ink);text-decoration:none;font-size:16px}.solution-related a:hover{color:var(--accent)}@media(max-width:1000px){.solution-hero{gap:36px;grid-template-columns:minmax(0,1.3fr) minmax(240px,.7fr)}.solution-evidence,.solution-requirements,.solution-possibilities-inner{gap:40px}.solution-flow{padding:24px}}@media(max-width:740px){.solution-hero{grid-template-columns:1fr;gap:32px;padding-block:46px}.solution-hero h1{font-size:clamp(40px,9.4vw,58px)}.solution-hero .lead{font-size:18px}.solution-hero .actions{align-items:flex-start;gap:18px;flex-direction:column}.solution-flow ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:20px}.solution-flow li{display:block;border:0;padding-block:0}.solution-flow li>span{display:block;margin-bottom:12px}.solution-flow strong{font-size:15px}.solution-flow>.eyebrow{max-width:none}.solution-context,.solution-method{padding-block:42px}.solution-problem-grid,.solution-method ol{grid-template-columns:1fr;gap:28px}.solution-page h3{font-size:23px}.solution-possibilities{padding-block:40px}.solution-possibilities-inner,.solution-evidence,.solution-requirements{grid-template-columns:1fr;gap:28px}.solution-evidence,.solution-requirements{padding-block:42px}.solution-evidence .lead{font-size:19px}.solution-possibilities li{font-size:17px}.solution-related{padding-block:30px 44px}.solution-related>div{flex-direction:column;align-items:flex-start}}
 </style>

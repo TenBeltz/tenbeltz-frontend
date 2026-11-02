@@ -1,99 +1,122 @@
-import { useState, useRef, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { sendContactForm } from '@/services/api';
-
-type Lead = { name: string; company: string; email: string };
-import { questions, evaluate } from '../lib/diagnosis';
+import { answerLabel, diagnosisMessage, evaluate, isValidAnswer, questions, type DiagnosisLead, type DiagnosisLocale } from '../lib/diagnosis';
 import './ai-diagnosis.css';
 
-
 export default function AIDiagnosis({ lang = 'es' }: { lang?: string }) {
-  const en = lang === 'en';
+  const locale: DiagnosisLocale = lang === 'en' ? 'en' : 'es';
+  const en = locale === 'en';
   const t = (es: string, english: string) => en ? english : es;
-  const [answers, setAnswers] = useState<number[]>(Array(10).fill(-1));
+  const [answers, setAnswers] = useState<string[]>(questions.map(() => ''));
   const [step, setStep] = useState(0);
   const [finished, setFinished] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [downloaded, setDownloaded] = useState(false);
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
   const pending = useRef(false);
   const submitted = useRef('');
   const heading = useRef<HTMLHeadingElement>(null);
-  const q = questions[step];
+  const question = questions[step];
   const result = finished ? evaluate(answers) : null;
-  const levels = en ? ['Foundations to define', 'Controls in progress', 'A structured foundation', 'Advanced practices'] : ['Bases por definir', 'Controles en desarrollo', 'Una base estructurada', 'Prácticas avanzadas'];
-  const resultHeadlines = en ? [
-    'Give your next AI decisions a stronger foundation.',
-    'You have a starting point. Make it more reliable.',
-    'A solid foundation. Decide what to strengthen next.',
-    'Keep your practices strong as your project evolves.',
-  ] : [
-    'Dadle una base más sólida a vuestro proyecto de IA.',
-    'Tenéis una base. Ahora toca hacerla más fiable.',
-    'Una base sólida. Decidid qué reforzar a continuación.',
-    'Mantened el nivel mientras evoluciona vuestro proyecto.',
-  ];
-  function move(next: number) { setStep(next); requestAnimationFrame(() => heading.current?.focus()); }
+  const contactHref = en ? '/en#contact-section' : '/#contact-section';
+  const serviceHref = `${en ? '/en' : ''}/services#service-${result?.nextStep === 'training' ? 'training' : result?.nextStep === 'implementation' ? 'implementation' : 'diagnosis'}`;
+
+  function update(value: string) {
+    setAnswers(current => current.map((answer, index) => index === step ? value : answer));
+    setDownloaded(false);
+  }
+  function move(next: number) {
+    setError('');
+    setStep(next);
+    requestAnimationFrame(() => heading.current?.focus());
+  }
+  function advance(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!isValidAnswer(question, answers[step])) return;
+    if (step === questions.length - 1) {
+      setFinished(true);
+      requestAnimationFrame(() => heading.current?.focus());
+    } else move(step + 1);
+  }
   async function handleReport(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (pending.current || !result) return;
     const form = event.currentTarget;
     if (!form.reportValidity()) return;
     const data = new FormData(form);
-    const lead: Lead = { name: String(data.get('name') || '').trim(), company: String(data.get('company') || '').trim(), email: String(data.get('email') || '').trim() };
-    if (!lead.name || !lead.company || !lead.email || data.get('permission') !== 'on') { setError(t('Completa los datos y confirma que quieres compartir el diagnóstico.', 'Complete your details and confirm you want to share your diagnosis.')); return; }
-    pending.current = true; setBusy(true); setError('');
+    const lead: DiagnosisLead = { name: String(data.get('name') || '').trim(), company: String(data.get('company') || '').trim(), email: String(data.get('email') || '').trim() };
+    if (!lead.name || !lead.company || !lead.email || data.get('permission') !== 'on') {
+      setError(t('Completa los datos y confirma que quieres compartir tus respuestas.', 'Complete your details and confirm you want to share your answers.'));
+      return;
+    }
+    pending.current = true;
+    setBusy(true);
+    setError('');
+    setDownloaded(false);
     try {
-      const key = JSON.stringify({ lead, answers });
+      // Prepare the local PDF first. A failed asset download must not send a lead.
+      const { buildDiagnosisReport } = await import('../lib/diagnosis-report');
+      const doc = await buildDiagnosisReport(lead, answers, locale);
+      const key = JSON.stringify({ lead, answers, locale });
       if (submitted.current !== key) {
-        const message = [
-          t('Solicitud de informe de diagnóstico de IA', 'AI diagnosis report request'),
-          `${t('Empresa', 'Company')}: ${lead.company}`,
-          `${t('Nota', 'Score')}: ${result.score}/10`,
-          ...questions.map((q, i) => `${i + 1}. ${q[en ? 1 : 0]}: ${q[en ? 3 : 2][answers[i]]}`),
-          t('Prioridades:', 'Priorities:'),
-          ...result.priorities.map(i => questions[i][en ? 5 : 4]),
-          t('El usuario ha solicitado compartir sus datos y diagnóstico para recibir contacto sobre el resultado. Sin suscripción a newsletter.', 'The user requested sharing their details and diagnosis for follow-up about the result. No newsletter subscription.'),
-        ].join('\n');
-        const response = await sendContactForm({ name: lead.name, email: lead.email, phone: '', kind: 'diagnosis', message });
-        if (!response.success) { setError(t('No hemos podido registrar la solicitud. Tus respuestas siguen aquí: inténtalo de nuevo o escríbenos a hello@tenbeltz.com.', 'We could not register your request. Your answers are still here: retry or email hello@tenbeltz.com.')); return; }
+        const response = await sendContactForm({ name: lead.name, email: lead.email, kind: 'diagnosis', message: `${t('Empresa', 'Company')}: ${lead.company}\n\n${diagnosisMessage(answers, locale)}` });
+        if (!response.success) {
+          setError(t('No hemos podido registrar la solicitud. Tus respuestas siguen aquí: inténtalo de nuevo o escríbenos a hello@tenbeltz.com.', 'We could not register the request. Your answers are still here: retry or email hello@tenbeltz.com.'));
+          return;
+        }
         submitted.current = key;
       }
-      await download(lead);
-    } catch { setError(t('No hemos podido generar el informe. Inténtalo de nuevo.', 'We could not generate the report. Please retry.')); }
-    finally { pending.current = false; setBusy(false); }
+      doc.save(en ? 'TenBeltz-business-AI-starting-point.pdf' : 'TenBeltz-primer-proceso-IA.pdf');
+      setDownloaded(true);
+    } catch {
+      setError(t('No hemos podido preparar el PDF. Tus respuestas siguen aquí. Inténtalo de nuevo.', 'We could not prepare the PDF. Your answers are still here. Please retry.'));
+    } finally {
+      pending.current = false;
+      setBusy(false);
+    }
   }
-  async function download(lead: Lead) {
-    if (!result) return;
-    setBusy(true); setError('');
-    try {
-      const { buildDiagnosisReport } = await import('../lib/diagnosis-report');
-      const doc = await buildDiagnosisReport(lead, answers, lang);
-      doc.save(en ? 'TenBeltz-AI-diagnosis.pdf' : 'TenBeltz-diagnostico-IA.pdf');
-    } catch { setError(t('No hemos podido generar el PDF. Inténtalo de nuevo.', 'Could not generate the PDF. Please try again.')); }
-    finally { setBusy(false); }
-  }
+
   return <section id="diagnostico-ia" className="diagnosis wrap home-section" aria-labelledby="diagnosis-title">
-    <div className="diagnosis-intro"><span className="eyebrow">{t('Autoevaluación · 2 minutos', 'Self-assessment · 2 minutes')}</span><h2 id="diagnosis-title">{t('¿Qué le falta a vuestro proyecto de IA?', 'What is your AI project missing?')}</h2><p>{t('Diez preguntas rápidas. Tu nota del 1 al 10 al terminar. Tus prioridades de mejora, en el informe PDF.', 'Ten quick questions. See your score from 1 to 10. Get your improvement priorities in the PDF report.')}</p><p className="diagnosis-note">{t('Consulta tu nota sin dejar datos. Para descargar el PDF, te pediremos nombre, empresa y email, y compartiremos el diagnóstico con TenBeltz para comentarlo contigo.', 'See your score without sharing details. To download the PDF, we will ask for your name, company and email, and share your diagnosis with TenBeltz to discuss it with you.')}</p></div>
-    <div className="diagnosis-panel">
-      {!result ? <><div className="diagnosis-progress"><span>{t('Pregunta', 'Question')} {step + 1} / 10</span><span>{t('Diagnóstico de IA', 'AI diagnosis')}</span></div><progress max="10" value={step + 1} aria-label={t('Progreso del cuestionario', 'Questionnaire progress')} /><h3 tabIndex={-1} ref={heading}>{q[en ? 1 : 0]}</h3><fieldset><legend className="sr-only">{q[en ? 1 : 0]}</legend>{q[en ? 3 : 2].map((option, value) => <label key={`${step}-${value}`} className={answers[step] === value ? 'selected' : ''}><input type="radio" name={`diagnosis-${step}`} checked={answers[step] === value} onChange={() => setAnswers(current => current.map((a, i) => i === step ? value : a))} /><span>{option}</span></label>)}</fieldset><div className="diagnosis-actions"><button type="button" className="diagnosis-back" disabled={step === 0} onClick={() => move(step - 1)}>{t('Anterior', 'Back')}</button><button type="button" className="button" disabled={answers[step] < 0} onClick={() => { if (step === 9) { setFinished(true); requestAnimationFrame(() => heading.current?.focus()); } else move(step + 1); }}>{step === 9 ? t('Ver mi diagnóstico', 'See my diagnosis') : t('Siguiente', 'Next')} →</button></div></> : <><span className="eyebrow">{t('Tu diagnóstico', 'Your diagnosis')}</span><h3 ref={heading} tabIndex={-1}>{resultHeadlines[result.level]}</h3><p className="diagnosis-level">{levels[result.level]}</p><p className="diagnosis-score">{result.score.toLocaleString(en ? 'en-GB' : 'es-ES')}<span> / 10</span></p><p>{t('Fase: ', 'Stage: ')}{questions[0][en ? 3 : 2][answers[0]]}</p><p className="diagnosis-result-context">{result.score === 10 ? t('Vuestras respuestas reflejan prácticas avanzadas. El informe os ayuda a preparar la siguiente revisión y mantenerlas cuando cambie el sistema.', 'Your answers reflect advanced practices. The report helps you prepare your next review and maintain them as the system changes.') : t('La nota sitúa vuestro punto de partida. El informe convierte vuestras respuestas en prioridades: qué abordar primero y cómo comprobar que habéis avanzado.', 'Your score marks your starting point. The report turns your answers into priorities: what to tackle first and how to check progress.')}</p><div className="diagnosis-stage-route"><span className="eyebrow">{t('Punto de entrada sugerido según la fase', 'Suggested starting point for this stage')}</span><p>{answers[0] === 0 ? t('Antes del piloto, concretad el caso de uso, su valor y los criterios de éxito.', 'Before a pilot, define the use case, its value and success criteria.') : answers[0] === 1 ? t('Con el piloto en marcha, convertidlo en una versión evaluable e integrada.', 'With a pilot underway, turn it into an evaluable, integrated first version.') : t('Con el sistema en producción, revisad calidad, coste y operación antes de ampliarlo.', 'With a system in production, review quality, cost and operations before expanding it.')}</p><a className="text-link" href={en ? ['/en/services#service-gap-analysis', '/en/services#service-agent-mvp', '/en/services#service-production-delivery'][answers[0]] : ['/services#service-gap-analysis', '/services#service-agent-mvp', '/services#service-production-delivery'][answers[0]]}>{answers[0] === 0 ? 'AI Gap Analysis' : answers[0] === 1 ? 'Agent MVP' : 'Production Delivery'} →</a></div><form className="diagnosis-lead" onSubmit={handleReport} aria-label={t('Descargar informe personalizado', 'Download personalised report')}>
-      <span className="eyebrow">{t('Vuestro siguiente paso', 'Your next step')}</span><h4>{t('De la nota a un plan de acción.', 'From your score to an action plan.')}</h4>
-      <p>{t('Descarga un informe basado en vuestras respuestas, listo para llevar a la próxima reunión de equipo.', 'Download a report based on your answers, ready for your next team meeting.')}</p>
-      <ul className="diagnosis-report-value">
-        <li>{result.priorities.length ? t('Hasta 3 prioridades ordenadas para saber por dónde empezar.', 'Up to 3 ranked priorities so you know where to start.') : t('Una pauta de revisión para mantener vuestras prácticas.', 'A review guide to maintain your practices.')}</li>
-        <li>{t('Acciones concretas y la evidencia que os permitirá comprobar el avance.', 'Concrete actions and the evidence you can use to check progress.')}</li>
-        <li>{t('Una hoja de trabajo para asignar responsables y acordar la siguiente revisión.', 'A worksheet to assign owners and agree on the next review.')}</li>
-      </ul>
-      <p className="diagnosis-note">{t('Completa tus datos para descargar vuestro plan en PDF.', 'Complete your details to download your PDF action plan.')}</p>
-      <div className="diagnosis-lead-fields">
-        <div><label htmlFor="diagnosis-name">{t('Nombre', 'Name')}</label><input id="diagnosis-name" name="name" autoComplete="name" required maxLength={120} /></div>
-        <div><label htmlFor="diagnosis-company">{t('Empresa', 'Company')}</label><input id="diagnosis-company" name="company" autoComplete="organization" required maxLength={160} /></div>
-        <div><label htmlFor="diagnosis-email">{t('Email profesional', 'Work email')}</label><input id="diagnosis-email" name="email" type="email" autoComplete="email" required maxLength={254} /></div>
-      </div>
-      <label className="diagnosis-permission"><input type="checkbox" name="permission" required /><span>{t('Quiero compartir mis datos y este diagnóstico con TenBeltz para que me contacte sobre el resultado.', 'I want to share my details and this diagnosis with TenBeltz for follow-up about the result.')} <a href={en ? '/en/politicas' : '/politicas'} target="_blank" rel="noopener noreferrer">{t('Privacidad (nueva pestaña)', 'Privacy (new tab)')}</a></span></label>
-      <p className="diagnosis-note">{t('Sin suscripción a newsletter. El PDF se descarga aquí; no se envía por email.', 'No newsletter subscription. Your PDF downloads here; it is not emailed.')}</p>
-      <div className="diagnosis-actions"><button type="submit" className="button" disabled={busy}>{busy ? t('Preparando informe…', 'Preparing report…') : t('Descargar mi plan de mejora', 'Download my improvement plan')} ↓</button></div>
-    </form>
-    <details className="diagnosis-method"><summary>{t('Cómo se calcula la nota', 'How the score is calculated')}</summary><p>{t('Autoevaluación orientativa basada en tus respuestas, no una auditoría ni certificación. La fase no puntúa. Las otras nueve preguntas valen 0, 1 o 2 puntos: nota = 1 + puntos / 2. La nota no demuestra aptitud para producción.', 'An indicative self-assessment based on your answers, not an audit or certification. Stage is not scored. The other nine questions earn 0, 1 or 2 points: score = 1 + points / 2. The score does not establish production readiness.')}</p></details>
-    <div className="diagnosis-actions"><a href={en ? '/en#contact-section' : '/#contact-section'} className="text-link">{t('Hablar sobre el resultado', 'Discuss the result')} ↗</a></div>{error && <p role="alert">{error}</p>}<button type="button" className="diagnosis-back" disabled={busy} onClick={() => { setFinished(false); move(0); }}>{t('Revisar mis respuestas', 'Review my answers')}</button></>}
+    <div className="diagnosis-intro">
+      <span className="eyebrow">{t('Orientación de procesos', 'Workflow orientation')}</span>
+      <h2 id="diagnosis-title">{t('Empieza por el trabajo de tu equipo.', 'Start with your team’s work.')}</h2>
+      <p>{t('Diez preguntas para ordenar lo que os gustaría mejorar y preparar un siguiente paso. Puedes empezar aunque todavía no tengas un proyecto de IA.', 'Ten questions to organise what you would like to improve and prepare a next step. You can start even if you do not have an AI project yet.')}</p>
+      <ul className="diagnosis-intro-list"><li>{t('Describe una necesidad y sus herramientas.', 'Describe a need and its tools.')}</li><li>{t('Revisa un resumen y las cuestiones por concretar.', 'Review a summary and the questions to clarify.')}</li><li>{t('Elige si quieres compartirlo y descargarlo en PDF.', 'Choose whether to share it and download a PDF.')}</li></ul>
+      <p className="diagnosis-note">{t('Tus respuestas permanecen en esta página hasta que decidas compartirlas. No hace falta dejar datos para ver el resumen.', 'Your answers stay on this page until you choose to share them. You do not need to leave your details to see the summary.')}</p>
+      <a className="text-link" href={contactHref}>{t('Prefiero hablar con el equipo', 'I would rather talk to the team')} ↗</a>
+    </div>
+    <div className="diagnosis-panel" aria-busy={busy}>
+      {!result ? <form onSubmit={advance} className="diagnosis-question" data-diagnosis-step={question.id}>
+        <div className="diagnosis-progress"><span>{t('Pregunta', 'Question')} {step + 1} / {questions.length}</span><span>{question.type === 'text' ? t('Opcional', 'Optional') : t('Una opción', 'One option')}</span></div>
+        <progress max={questions.length} value={step + 1} aria-label={t('Progreso del cuestionario', 'Questionnaire progress')} />
+        <h3 tabIndex={-1} ref={heading} id="diagnosis-question-title">{question.label[locale]}</h3>
+        <p className="diagnosis-question-help" id="diagnosis-question-help">{question.help[locale]}</p>
+        {question.type === 'choice' ? <fieldset disabled={!ready} aria-describedby="diagnosis-question-help"><legend className="sr-only">{question.label[locale]}</legend>{question.options.map(option => <label key={`${question.id}-${option.id}`} className={`diagnosis-option${answers[step] === option.id ? ' selected' : ''}`}><input type="radio" name={`diagnosis-${question.id}`} value={option.id} checked={answers[step] === option.id} onChange={() => update(option.id)} required /><span>{option.label[locale]}</span></label>)}</fieldset> : <div className="diagnosis-text-field"><label className="sr-only" htmlFor={`diagnosis-${question.id}`}>{question.label[locale]}</label><textarea id={`diagnosis-${question.id}`} name={question.id} value={answers[step]} onChange={event => update(event.target.value)} maxLength={question.maxLength} rows={4} disabled={!ready} aria-describedby="diagnosis-question-help diagnosis-character-count" /><span className="diagnosis-character-count" id="diagnosis-character-count">{answers[step].length} / {question.maxLength}</span></div>}
+        <div className="diagnosis-actions"><button type="button" className="diagnosis-back" disabled={!ready || step === 0} onClick={() => move(step - 1)}>{t('Anterior', 'Back')}</button><button type="submit" className="button" disabled={!ready || !isValidAnswer(question, answers[step])}>{step === questions.length - 1 ? t('Ver mi resumen', 'See my summary') : question.type === 'text' && !answers[step].trim() ? t('Continuar sin completar', 'Continue without an answer') : t('Siguiente', 'Next')} →</button></div>
+      </form> : <div className="diagnosis-result" data-diagnosis-result={result.nextStep}>
+        <span className="eyebrow">{t('Tu punto de partida', 'Your starting point')}</span>
+        <h3 ref={heading} tabIndex={-1}>{result.title[locale]}</h3>
+        <p className="diagnosis-result-context">{result.description[locale]}</p>
+        <dl className="diagnosis-summary">{[0, 2, 3, 8].map(index => <div key={questions[index].id}><dt>{questions[index].label[locale]}</dt><dd>{answerLabel(questions[index], answers[index], locale)}</dd></div>)}</dl>
+        <div className="diagnosis-stage-route"><span className="eyebrow">{t('Siguiente conversación sugerida', 'Suggested next conversation')}</span><p className="diagnosis-route-title">{result.recommendation[locale]}</p><a className="text-link" href={serviceHref}>{t('Conocer esta forma de trabajar', 'Explore this way of working')} →</a></div>
+        <h4>{t('Qué podéis preparar', 'What you can prepare')}</h4><ol className="diagnosis-priorities">{result.actions.map(action => <li key={action[locale]}>{action[locale]}</li>)}</ol>
+        {result.clarify.length > 0 && <details className="diagnosis-clarify"><summary>{t('Cuestiones por concretar', 'Questions to clarify')} ({result.clarify.length})</summary><ul>{result.clarify.map(item => <li key={item[locale]}>{item[locale]}</li>)}</ul></details>}
+        <details className="diagnosis-answers"><summary>{t('Revisar el resumen completo de respuestas', 'Review all your answers')}</summary><dl>{questions.map((item, index) => <div key={item.id}><dt>{item.label[locale]}</dt><dd>{answerLabel(item, answers[index], locale)}</dd></div>)}</dl></details>
+        <p className="diagnosis-note">{t('Esta orientación organiza lo que has indicado. La viabilidad, el alcance y el presupuesto se estudian contigo; el tiempo declarado describe trabajo actual y no ahorro previsto.', 'This orientation organises what you have shared. Viability, scope and budget are reviewed with you; declared time describes current work, not expected savings.')}</p>
+        <form className="diagnosis-lead" onSubmit={handleReport} aria-label={t('Compartir resumen y descargar PDF', 'Share your summary and download a PDF')}>
+          <span className="eyebrow">{t('Llévalo a la próxima conversación', 'Bring it to the next conversation')}</span><h4>{t('Tu resumen de trabajo, en PDF.', 'Your workflow summary, as a PDF.')}</h4>
+          <p>{t('Incluye tus respuestas, el siguiente paso sugerido y una hoja para preparar la revisión con tu equipo. Para descargarlo, comparte tus datos y respuestas con TenBeltz para que podamos comentarlo contigo.', 'Includes your answers, a suggested next step and a worksheet for a team review. To download it, share your details and answers with TenBeltz so we can discuss it with you.')}</p>
+          <fieldset disabled={busy}><legend className="sr-only">{t('Datos de contacto y consentimiento', 'Contact details and consent')}</legend><div className="diagnosis-lead-fields">
+            <div><label htmlFor="diagnosis-name">{t('Nombre', 'Name')}</label><input id="diagnosis-name" name="name" autoComplete="name" required maxLength={120} /></div>
+            <div><label htmlFor="diagnosis-company">{t('Empresa', 'Company')}</label><input id="diagnosis-company" name="company" autoComplete="organization" required maxLength={160} /></div>
+            <div><label htmlFor="diagnosis-email">{t('Email profesional', 'Work email')}</label><input id="diagnosis-email" name="email" type="email" autoComplete="email" required maxLength={254} /></div>
+          </div><label className="diagnosis-permission"><input type="checkbox" name="permission" required /><span>{t('Quiero compartir mis datos y estas respuestas con TenBeltz para que me contacte sobre el resultado.', 'I want to share my details and these answers with TenBeltz for follow-up about the result.')} <a href={en ? '/en/politicas' : '/politicas'} target="_blank" rel="noopener noreferrer">{t('Privacidad (nueva pestaña)', 'Privacy (new tab)')}</a></span></label><p className="diagnosis-note">{t('Sin suscripción a newsletter. El PDF se descarga aquí; no se envía por email.', 'No newsletter subscription. Your PDF downloads here; it is not emailed.')}</p><div className="diagnosis-actions"><button type="submit" className="button">{busy ? t('Preparando resumen…', 'Preparing summary…') : downloaded ? t('Descargar de nuevo', 'Download again') : t('Compartir y descargar PDF', 'Share and download PDF')} ↓</button></div></fieldset>
+          <div aria-live="polite" aria-atomic="true">{downloaded && <p className="diagnosis-success">{t('Solicitud registrada. Tu PDF está preparado para descargar.', 'Request recorded. Your PDF is ready to download.')}</p>}</div>{error && <p role="alert" className="diagnosis-error">{error}</p>}
+        </form>
+        <div className="diagnosis-actions"><button type="button" className="diagnosis-back" disabled={busy} onClick={() => { setFinished(false); move(0); }}>{t('Editar mis respuestas', 'Edit my answers')}</button><a href={contactHref} className="text-link">{t('Hablemos de tu empresa', 'Let’s talk about your business')} ↗</a></div>
+      </div>}
     </div>
   </section>;
 }

@@ -1,9 +1,8 @@
 import { jsPDF } from 'jspdf';
-import { evaluate, questions, priorityEvidence } from './diagnosis';
+import { answerLabel, evaluate, questions, type DiagnosisLead, type DiagnosisLocale } from './diagnosis';
 
-type Lead = { name: string; company: string; email: string };
-type Node = { type: string; x: number; y: number; w?: number; h?: number; x2?: number; y2?: number; fill?: string; stroke?: number; path?: string };
-type Kit = { width: number; height: number; colors: Record<string, string>; scenes: Record<string, { background: string; nodes: Node[] }> };
+type SceneNode = { type: string; x: number; y: number; w?: number; h?: number; x2?: number; y2?: number; fill?: string; path?: string };
+type Kit = { width: number; height: number; colors: Record<string, string>; scenes: Record<string, { background: string; nodes: SceneNode[] }> };
 const base = '/brand/diagnosis/';
 async function load(path: string) {
   const response = await fetch(base + path);
@@ -19,7 +18,7 @@ let assets: Promise<{ kit: Kit; fonts: string[]; images: Record<string, string> 
 function loadAssets() {
   if (!assets) assets = (async () => {
     const [kit, fonts, images] = await Promise.all([
-      load('templates.json').then(r => r.json() as Promise<Kit>),
+      load('templates.json').then(response => response.json() as Promise<Kit>),
       Promise.all(['Regular', 'Medium'].map(async weight => base64(new Uint8Array(await (await load(`IBMPlexSans-${weight}.ttf`)).arrayBuffer())))),
       Promise.all(['logo-color.png', 'logo-white.png', 'flower.png', 'contours.png'].map(async name => [name, 'data:image/png;base64,' + base64(new Uint8Array(await (await load(name)).arrayBuffer()))] as const)),
     ]);
@@ -28,129 +27,152 @@ function loadAssets() {
   return assets;
 }
 
-export async function buildDiagnosisReport(lead: Lead, answers: number[], lang: string) {
-  const en = lang === 'en';
+export async function buildDiagnosisReport(lead: DiagnosisLead, answers: string[], lang: string) {
+  const locale: DiagnosisLocale = lang === 'en' ? 'en' : 'es';
+  const en = locale === 'en';
   const t = (es: string, english: string) => en ? english : es;
   const result = evaluate(answers);
+  if (!lead.name.trim() || !lead.company.trim() || !lead.email.trim() || lead.name.length > 120 || lead.company.length > 160 || lead.email.length > 254) throw new Error('Invalid report recipient');
   const { kit, fonts, images } = await loadAssets();
   const doc = new jsPDF({ unit: 'pt', format: [kit.width, kit.height], compress: true });
-  for (const [i, weight] of ['Regular', 'Medium'].entries()) {
-    doc.addFileToVFS(`Plex-${weight}.ttf`, fonts[i]);
+  for (const [index, weight] of ['Regular', 'Medium'].entries()) {
+    doc.addFileToVFS(`Plex-${weight}.ttf`, fonts[index]);
     doc.addFont(`Plex-${weight}.ttf`, 'Plex', weight === 'Regular' ? 'normal' : 'bold');
   }
-  doc.setProperties({ title: t('Diagnóstico de madurez de IA', 'AI maturity diagnosis') + ' / ' + lead.company, author: 'TenBeltz', creator: 'TenBeltz / Brand kit 2026.10' });
-  const C = kit.colors;
-  const levels = en ? ['Foundations to define', 'Controls in progress', 'A structured foundation', 'Advanced practices'] : ['Bases por definir', 'Controles en desarrollo', 'Una base estructurada', 'Prácticas avanzadas'];
-  const categories = en ? ['Stage', 'Success criteria', 'Test cases', 'Change evaluation', 'Observability', 'Cost and latency', 'Permissions', 'Adversarial testing', 'Failure recovery', 'Continuous improvement'] : ['Fase', 'Criterios de éxito', 'Casos de prueba', 'Evaluación de cambios', 'Observabilidad', 'Coste y latencia', 'Permisos', 'Pruebas adversas', 'Recuperación ante fallos', 'Mejora continua'];
-  const text = (value: string, x: number, y: number, width: number, size = 11, color = 'ink', medium = false, limit = 770) => {
-    doc.setFont('Plex', medium ? 'bold' : 'normal'); doc.setFontSize(size); doc.setTextColor(C[color]);
-    const lines = doc.splitTextToSize(value, width) as string[];
-    const leading = size * 1.4;
-    if (y + lines.length * leading > limit) throw new Error('Report text exceeds its layout');
-    doc.text(lines, x, y + size, { lineHeightFactor: 1.4 });
-    return y + lines.length * leading;
-  };
+  doc.setProperties({ title: t('Tu primer proceso con IA', 'Your first AI workflow') + ' / ' + lead.company, author: 'TenBeltz', creator: 'TenBeltz / Brand kit 2026.10', subject: t('Orientación de procesos basada en las respuestas compartidas', 'Workflow orientation based on shared answers') });
+  const colors = kit.colors;
+  function lines(value: string, width: number, size: number, medium = false) {
+    doc.setFont('Plex', medium ? 'bold' : 'normal');
+    doc.setFontSize(size);
+    return doc.splitTextToSize(value, width) as string[];
+  }
+  function text(value: string, x: number, y: number, width: number, size = 11, color = 'ink', medium = false, bottom = 765) {
+    const wrapped = lines(value, width, size, medium);
+    const end = y + wrapped.length * size * 1.45;
+    if (end > bottom) throw new Error('Report text exceeds its layout');
+    doc.setTextColor(colors[color]);
+    doc.text(wrapped, x, y + size, { lineHeightFactor: 1.45 });
+    return end;
+  }
   function fitted(value: string, x: number, y: number, width: number, height: number, initial: number, color: string, medium = false) {
     let size = initial;
-    doc.setFont('Plex', medium ? 'bold' : 'normal');
-    while (size > 7) {
-      doc.setFontSize(size);
-      if ((doc.splitTextToSize(value, width) as string[]).length * size * 1.4 <= height) break;
-      size -= .5;
-    }
+    while (size > 7 && lines(value, width, size, medium).length * size * 1.45 > height) size -= .5;
     return text(value, x, y, width, size, color, medium, y + height + .1);
   }
-  const box = (x: number, y: number, w: number, h: number, fill = 'surface') => { doc.setFillColor(C[fill]); doc.rect(x, y, w, h, 'F'); };
-  const line = (x: number, y: number, x2: number, y2: number, color = 'line') => { doc.setDrawColor(C[color]); doc.setLineWidth(.7); doc.line(x, y, x2, y2); };
-  const date = new Date().toLocaleDateString(en ? 'en-GB' : 'es-ES');
+  const box = (x: number, y: number, w: number, h: number, fill = 'surface') => { doc.setFillColor(colors[fill]); doc.rect(x, y, w, h, 'F'); };
+  const line = (x: number, y: number, x2: number, y2: number, color = 'line') => { doc.setDrawColor(colors[color]); doc.setLineWidth(.7); doc.line(x, y, x2, y2); };
   let pageCount = 0;
   function page(kind: string, label: string) {
     if (pageCount++) doc.addPage();
     const scene = kit.scenes[kind];
     box(0, 0, kit.width, kit.height, scene.background);
-    for (const n of scene.nodes) {
-      if (n.type === 'line') line(n.x, n.y, n.x2!, n.y2!, n.fill);
-      if (n.type === 'image') doc.addImage(images[n.path!], 'PNG', n.x, n.y, n.w!, n.h!);
-      if (n.type === 'rect') box(n.x, n.y, n.w!, n.h!, n.fill);
+    for (const node of scene.nodes) {
+      if (node.type === 'line') line(node.x, node.y, node.x2!, node.y2!, node.fill);
+      if (node.type === 'image') doc.addImage(images[node.path!], 'PNG', node.x, node.y, node.w!, node.h!);
+      if (node.type === 'rect') box(node.x, node.y, node.w!, node.h!, node.fill);
     }
     const dark = kind === 'closing';
-    text(t('DIAGNÓSTICO / IA', 'DIAGNOSIS / AI'), 374, 43, 179, 8, dark ? 'petal' : 'muted', true, 80);
+    text(t('PROCESOS / IA', 'WORKFLOWS / AI'), 374, 43, 179, 8, dark ? 'petal' : 'muted', true, 80);
     text('TENBELTZ / ' + label, 42, 794, 455, 7.5, dark ? 'petal' : 'muted', false, 820);
     text(String(pageCount).padStart(2, '0'), 527, 794, 26, 8, dark ? 'petal' : 'muted', false, 820);
   }
-  function title(value: string, subtitle: string, width = 511) {
-    const end = text(value, 42, 116, width, 30, 'ink', true, 220);
-    text(subtitle, 42, Math.max(end + 16, 209), 511, 10.5, 'muted', false, 258);
+  function title(value: string, subtitle: string) {
+    const end = text(value, 42, 116, 511, 29, 'ink', true, 215);
+    text(subtitle, 42, Math.max(end + 15, 202), 511, 10, 'muted', false, 255);
   }
 
-  // Cover composition follows the brand-kit report/proposal cover geometry.
-  page('cover', t('INFORME PERSONALIZADO', 'PERSONALISED REPORT'));
-  text(t('INGENIERÍA DE IA / AUTOEVALUACIÓN', 'AI ENGINEERING / SELF-ASSESSMENT'), 42, 137, 511, 9, 'accent', true);
-  text(t('De la nota\na un plan\nde acción.', 'From your score\nto an action\nplan.'), 42, 193, 500, 43, 'ink', true, 390);
-  text(result.score.toLocaleString(en ? 'en-GB' : 'es-ES'), 42, 413, 220, 82, 'accent', true, 540);
-  text('/ 10', 44, 524, 150, 18, 'muted');
-  text(levels[result.level], 42, 567, 270, 13, 'accent', true, 625);
+  page('cover', t('RESUMEN PERSONALIZADO', 'PERSONALISED SUMMARY'));
+  text(t('IA APLICADA AL TRABAJO DIARIO', 'AI FOR EVERYDAY WORK'), 42, 137, 511, 9, 'accent', true);
+  text(t('Tu primer\nproceso\ncon IA.', 'Your first\nworkflow\nwith AI.'), 42, 192, 500, 43, 'ink', true, 390);
+  text(t('UN PUNTO DE PARTIDA PARA CONVERSAR', 'A STARTING POINT FOR A CONVERSATION'), 42, 424, 235, 8, 'muted', true, 480);
+  fitted(result.recommendation[locale], 42, 482, 228, 115, 22, 'accent', true);
   fitted(lead.company, 42, 638, 511, 55, 19, 'ink', true);
   fitted(lead.name, 42, 704, 511, 22, 9, 'muted');
   fitted(lead.email, 42, 728, 511, 22, 8.5, 'muted');
-  text(date, 42, 756, 511, 9, 'muted', false, 778);
+  text(new Date().toLocaleDateString(en ? 'en-GB' : 'es-ES'), 42, 756, 511, 9, 'muted', false, 778);
 
-  page('profile', t('VUESTRAS PRÁCTICAS', 'YOUR PRACTICES'));
-  title(t('La foto de\nvuestro proyecto.', 'Your project\nat a glance.'), t('Nueve controles, según vuestras respuestas. Cada barra representa 0, 1 o 2 puntos.', 'Nine controls, based on your answers. Each bar represents 0, 1 or 2 points.'), 305);
-  for (let i = 1; i < 10; i++) {
-    const yy = 278 + (i - 1) * 43;
-    text(categories[i], 42, yy, 223, 11, 'ink', true);
-    box(282, yy + 5, 212, 9);
-    if (answers[i]) box(282, yy + 5, 212 * answers[i] / 2, 9, 'accent');
-    text(`${answers[i]} / 2`, 513, yy, 42, 10, 'muted');
-  }
-  box(42, 686, 511, 70);
-  text(t('Fase del proyecto', 'Project stage'), 55, 697, 480, 9, 'muted', true);
-  text(questions[0][en ? 3 : 2][answers[0]], 55, 717, 480, 14, 'accent', true);
-  text(t('La fase da contexto y no modifica la nota.', 'Stage provides context and does not affect the score.'), 55, 739, 480, 8, 'muted');
-
-  page('body', t('PLAN DE MEJORA', 'IMPROVEMENT PLAN'));
-  title(result.priorities.length ? t('Primero, lo que\nmás conviene reforzar.', 'Start with what\nneeds strengthening.') : t('Mantened el nivel.\nPreparad la próxima revisión.', 'Maintain your practices.\nPrepare your next review.'), t('Acción, evidencia y responsable: una hoja de trabajo para vuestro equipo.', 'Action, evidence and owner: a worksheet for your team.'));
-  const selected = result.priorities.length ? result.priorities : [2, 6, 8];
-  const maintenance = en ? ['Expand the test set with recent incidents and rerun evaluations.', 'Review permissions after changes to users, tools or data sources.', 'Rehearse a failure scenario and check the handover and recovery process.'] : ['Ampliad el conjunto de pruebas con incidencias recientes y repetid las evaluaciones.', 'Revisad permisos tras cambios de usuarios, herramientas o fuentes de datos.', 'Ensayad un fallo y comprobad la derivación y la recuperación del servicio.'];
-  selected.forEach((i, n) => {
-    const top = 271 + n * 162;
-    box(42, top, 511, 151);
-    text(`0${n + 1}`, 55, top + 12, 42, 24, 'accent', true);
-    let yy = text(categories[i], 108, top + 12, 431, 12, 'accent', true, top + 40);
-    yy = text(result.priorities.length ? questions[i][en ? 5 : 4] : maintenance[n], 108, yy + 7, 431, 10, 'ink', false, top + 96);
-    yy = text(t('Evidencia: ', 'Evidence: ') + priorityEvidence[i][en ? 1 : 0], 108, yy + 6, 431, 9, 'muted', false, top + 130);
-    text(t('Responsable: __________________  Revisión: ______________', 'Owner: __________________  Review: ______________'), 108, top + 132, 431, 8, 'muted', false, top + 150);
+  page('body', t('EL PUNTO DE PARTIDA', 'YOUR STARTING POINT'));
+  title(t('Lo que queréis\nmejorar.', 'What you want\nto improve.'), t('Un resumen de lo que habéis indicado, para revisar con el equipo.', 'A summary of what you shared, ready for a team review.'));
+  let cursor = 273;
+  const summaryLabels = en ? ['Work area', 'Priority', 'Current stage', 'Frequency', 'Current team effort', 'Information sources', 'Information sensitivity', 'Result review'] : ['Área de trabajo', 'Prioridad', 'Momento actual', 'Frecuencia', 'Dedicación actual del equipo', 'Fuentes de información', 'Sensibilidad de la información', 'Revisión de resultados'];
+  [0, 8, 9, 2, 3, 5, 6, 7].forEach((index, row) => {
+    line(42, cursor - 5, 553, cursor - 5);
+    text(summaryLabels[row], 42, cursor + 6, 170, 9, 'muted', true);
+    text(answerLabel(questions[index], answers[index], locale), 230, cursor + 5, 323, 11, 'ink', false, cursor + 50);
+    cursor += 55;
   });
-  if (selected.length < 3) {
-    const yy = 271 + selected.length * 162 + 22;
-    text(t('Acordad el siguiente paso en equipo.', 'Agree on the next step together.'), 42, yy, 511, 18, 'accent', true);
-    text(t('Priorizad el alcance, asignad un responsable y elegid una evidencia de avance antes de la próxima revisión. Las demás prácticas también necesitan mantenimiento.', 'Agree scope, assign an owner and choose evidence of progress before your next review. The remaining practices also need maintenance.'), 42, yy + 39, 511, 11, 'muted');
-  }
+  text(t('El tiempo indicado describe la carga de trabajo actual; no estima el ahorro de una solución.', 'The time you shared describes current workload; it does not estimate savings from a solution.'), 42, 735, 511, 9, 'muted', false, 770);
 
-  for (let group = 0; group < 2; group++) {
-    page('body', t('REGISTRO DE RESPUESTAS', 'ANSWER RECORD'));
-    title(t('El punto de partida,\npregunta a pregunta.', 'Your starting point,\nquestion by question.'), `${t('Respuestas declaradas', 'Declared answers')} / ${group ? '06—10' : '01—05'}`);
-    for (let n = 0; n < 5; n++) {
-      const i = group * 5 + n, top = 278 + n * 92;
-      line(42, top - 10, 553, top - 10);
-      text(String(i + 1).padStart(2, '0'), 42, top, 40, 13, 'accent', true);
-      const end = text(questions[i][en ? 1 : 0], 94, top, 459, 11, 'ink', true, top + 45);
-      text(questions[i][en ? 3 : 2][answers[i]], 94, end + 8, 459, 10, 'muted', false, top + 80);
+  page('body', t('SIGUIENTE PASO', 'NEXT STEP'));
+  title(t('Preparar la\nsiguiente conversación.', 'Prepare the\nnext conversation.'), result.recommendation[locale]);
+  cursor = 272;
+  cursor = text(result.description[locale], 42, cursor, 511, 11) + 24;
+  result.actions.forEach((action, index) => {
+    const height = lines(action[locale], 461, 11).length * 11 * 1.45 + 24;
+    if (cursor + height > 755) {
+      page('body', t('SIGUIENTE PASO', 'NEXT STEP'));
+      title(t('Preparar la conversación.', 'Prepare the conversation.'), t('Continuación de los pasos propuestos.', 'Suggested steps, continued.'));
+      cursor = 272;
+    }
+    line(42, cursor, 553, cursor);
+    text(`0${index + 1}`, 42, cursor + 13, 36, 12, 'accent', true);
+    cursor = text(action[locale], 92, cursor + 12, 461, 11) + 20;
+  });
+  if (result.clarify.length) {
+    if (cursor > 620) {
+      page('body', t('CUESTIONES POR CONCRETAR', 'QUESTIONS TO CLARIFY'));
+      title(t('Qué falta\npor concretar.', 'What remains\nto be clarified.'), t('Información útil para definir el alcance.', 'Useful information for defining scope.'));
+      cursor = 272;
+    } else cursor = text(t('Cuestiones por concretar', 'Questions to clarify'), 42, cursor + 10, 511, 15, 'accent', true) + 16;
+    for (const item of result.clarify) {
+      const height = lines(item[locale], 491, 10).length * 14.5 + 13;
+      if (cursor + height > 755) {
+        page('body', t('CUESTIONES POR CONCRETAR', 'QUESTIONS TO CLARIFY'));
+        title(t('Qué falta por concretar.', 'What remains to be clarified.'), t('Continuación.', 'Continued.'));
+        cursor = 272;
+      }
+      text('—', 42, cursor, 18, 10, 'accent');
+      cursor = text(item[locale], 62, cursor, 491, 10, 'muted') + 13;
     }
   }
 
-  page('closing', t('CRITERIO Y SIGUIENTE PASO', 'METHOD AND NEXT STEP'));
-  text(t('Una dirección clara.\nUn siguiente paso\nque se puede comprobar.', 'A clear direction.\nA next step\nyou can verify.'), 42, 137, 511, 32, 'white', true, 300);
-  text(t('Cómo leer este diagnóstico', 'How to read this diagnosis'), 42, 323, 511, 16, 'petal', true);
-  text(t('La fase no puntúa. Las otras nueve preguntas suman 0, 1 o 2 puntos: nota = 1 + puntos / 2. Las prioridades corresponden a las respuestas con menos puntos; en empate, primero permisos, seguridad y evaluación.', 'Stage is not scored. The other nine questions earn 0, 1 or 2 points: score = 1 + points / 2. Priorities follow the lowest scores; ties favour permissions, security and evaluation.'), 42, 365, 511, 11, 'white');
-  text(t('Autoevaluación, no certificación', 'Self-assessment, not certification'), 42, 467, 511, 16, 'petal', true);
-  text(t('El informe se basa en lo declarado. No hemos inspeccionado el sistema ni verificado sus controles. La nota no demuestra que sea seguro ni apto para producción. El plan propone un orden de trabajo, no una estimación de esfuerzo ni una garantía de resultados.', 'This report is based on declared answers. We have not inspected your system or verified its controls. The score does not establish safety or production readiness. The plan suggests a work order, not an effort estimate or a guarantee of results.'), 42, 509, 511, 11, 'white');
-  line(42, 619, 553, 619, 'muted');
-  text(t('¿Lo revisamos con vuestro equipo?', 'Shall we review it with your team?'), 42, 647, 511, 21, 'white', true);
-  text(t('Una llamada telefónica de 15 minutos para comentar el contexto y el siguiente paso.', 'A 15-minute phone call to discuss context and your next step.'), 42, 690, 511, 11, 'petal');
-  text('hello@tenbeltz.com   /   tenbeltz.com', 42, 738, 511, 12, 'white', true);
-  doc.link(42, 736, 165, 21, { url: 'mailto:hello@tenbeltz.com' });
-  doc.link(227, 736, 180, 21, { url: en ? 'https://tenbeltz.com/en#contact-section' : 'https://tenbeltz.com/#contact-section' });
+  page('body', t('HOJA DE TRABAJO', 'TEAM WORKSHEET'));
+  title(t('Acordad el primer\npaso en equipo.', 'Agree the first\nstep as a team.'), t('Completad esta hoja al revisar el proceso.', 'Complete this worksheet when reviewing the workflow.'));
+  const worksheet = en ? ['Task and expected result', 'Person responsible for the workflow', 'Representative examples available', 'Tools, access and information to review', 'How we will assess the result', 'Next meeting and participants'] : ['Tarea y resultado esperado', 'Persona responsable del proceso', 'Ejemplos representativos disponibles', 'Herramientas, accesos e información por revisar', 'Cómo comprobaremos el resultado', 'Próxima revisión y participantes'];
+  worksheet.forEach((label, index) => {
+    const top = 272 + index * 76;
+    text(label, 42, top, 511, 10, 'accent', true);
+    line(42, top + 51, 553, top + 51);
+  });
+
+  function answerPage() {
+    page('body', t('REGISTRO DE RESPUESTAS', 'ANSWER RECORD'));
+    title(t('Vuestras respuestas,\na la vista.', 'Your answers,\nin one place.'), t('Información declarada al completar la orientación de procesos.', 'Information provided when completing the workflow orientation.'));
+    cursor = 272;
+  }
+  answerPage();
+  questions.forEach((question, index) => {
+    const label = question.label[locale];
+    const answer = answerLabel(question, answers[index], locale).replace(/\s+/g, ' ');
+    const height = lines(label, 461, 10.5, true).length * 10.5 * 1.45 + lines(answer, 461, 10).length * 14.5 + 33;
+    if (cursor + height > 755) answerPage();
+    line(42, cursor, 553, cursor);
+    text(String(index + 1).padStart(2, '0'), 42, cursor + 14, 36, 11, 'accent', true);
+    const labelEnd = text(label, 92, cursor + 13, 461, 10.5, 'ink', true);
+    cursor = text(answer, 92, labelEnd + 9, 461, 10, 'muted') + 20;
+  });
+
+  page('closing', t('ALCANCE Y CONTACTO', 'SCOPE AND CONTACT'));
+  text(t('Una necesidad clara.\nUn siguiente paso\nacordado contigo.', 'A clear need.\nA next step\nagreed with you.'), 42, 137, 511, 32, 'white', true, 300);
+  text(t('Cómo utilizar este resumen', 'How to use this summary'), 42, 323, 511, 16, 'petal', true);
+  text(t('Revisad las respuestas con quien conoce el proceso. Reunid ejemplos y utilizad la hoja de trabajo para concretar la tarea, las herramientas y las personas implicadas.', 'Review the answers with the people who know the workflow. Gather examples and use the worksheet to clarify the task, tools and people involved.'), 42, 365, 511, 11, 'white');
+  text(t('Orientación para preparar una conversación', 'Guidance for preparing a conversation'), 42, 467, 511, 16, 'petal', true);
+  text(t('Este documento organiza lo que habéis indicado. No hemos inspeccionado los sistemas ni verificado el proceso. El diagnóstico de consultoría estudia las oportunidades y sus requisitos con un alcance acordado. La viabilidad, el presupuesto y los resultados se valoran en ese contexto.', 'This document organises what you shared. We have not inspected your systems or verified the workflow. A consulting diagnosis reviews opportunities and requirements within an agreed scope. Viability, budget and outcomes are assessed in that context.'), 42, 509, 511, 11, 'white');
+  line(42, 632, 553, 632, 'muted');
+  text(t('Hablemos de tu empresa.', 'Let’s talk about your business.'), 42, 654, 511, 21, 'white', true);
+  text(t('Una llamada telefónica de 15 minutos para conocer la necesidad y acordar el siguiente paso.', 'A 15-minute phone call to understand the need and agree on a next step.'), 42, 695, 511, 11, 'petal');
+  text('hello@tenbeltz.com   /   tenbeltz.com', 42, 744, 511, 12, 'white', true);
+  doc.link(42, 742, 165, 21, { url: 'mailto:hello@tenbeltz.com' });
+  doc.link(227, 742, 180, 21, { url: en ? 'https://tenbeltz.com/en#contact-section' : 'https://tenbeltz.com/#contact-section' });
   return doc;
 }

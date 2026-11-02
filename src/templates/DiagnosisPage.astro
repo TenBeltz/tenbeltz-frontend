@@ -7,13 +7,13 @@ import { getLangFromUrl } from '@/i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const en = lang === 'en';
 ---
-<Layout title={en ? 'AI maturity diagnosis | TenBeltz' : 'Diagnóstico de madurez de IA | TenBeltz'} description={en ? 'Evaluate your AI project in ten questions. Discover your score, improvement priorities and download a personalised PDF report.' : 'Evalúa tu proyecto de IA en diez preguntas. Descubre tu nota, prioridades de mejora y descarga un informe PDF personalizado.'} canonical={`https://tenbeltz.com${en ? '/en/ai-diagnosis' : '/diagnostico-ia'}`}>
+<Layout title={en ? 'Find a first workflow for AI | TenBeltz' : 'Encuentra un primer proceso para aplicar IA | TenBeltz'} description={en ? 'Ten questions about your team’s work. Review your needs, tools and a suggested next step, with an optional personalised PDF summary.' : 'Diez preguntas sobre el trabajo de tu equipo. Revisa necesidades, herramientas y un siguiente paso, con un resumen PDF personalizado opcional.'} canonical={`https://tenbeltz.com${en ? '/en/ai-diagnosis' : '/diagnostico-ia'}`}>
   <Header />
   <main id="main-content" class="diagnosis-page">
-    <div class="wrap diagnosis-page-heading"><a href={en ? '/en' : '/'} class="text-link">← {en ? 'Back to home' : 'Volver al inicio'}</a><h1>{en ? 'AI maturity diagnosis' : 'Diagnóstico de madurez de IA'}</h1></div>
+    <div class="wrap diagnosis-page-heading"><a href={en ? '/en' : '/'} class="text-link">← {en ? 'Back to home' : 'Volver al inicio'}</a><h1>{en ? 'Find a first workflow for AI.' : 'Encuentra un primer proceso para aplicar IA.'}</h1><p>{en ? 'A starting point for your business, whatever your sector.' : 'Un punto de partida para tu empresa, sea cual sea su sector.'}</p></div>
     <AIDiagnosis lang={lang} client:load />
-    <noscript><p class="wrap">{en ? 'Enable JavaScript to complete the diagnosis and download your report.' : 'Activa JavaScript para completar el diagnóstico y descargar tu informe.'}</p></noscript>
+    <noscript><p class="wrap">{en ? 'Enable JavaScript to complete the questions and download your summary, or ' : 'Activa JavaScript para completar las preguntas y descargar tu resumen, o '}<a href="mailto:hello@tenbeltz.com">{en ? 'email us at hello@tenbeltz.com' : 'escríbenos a hello@tenbeltz.com'}</a>.</p></noscript>
   </main>
   <Footer />
 </Layout>
-<style>.diagnosis-page{padding-bottom:80px}.diagnosis-page-heading{padding-top:48px}.diagnosis-page-heading h1{font-size:clamp(34px,4.8vw,64px);max-width:850px;margin:28px 0 0}.diagnosis-page :global(.diagnosis){padding-top:48px}</style>
+<style>.diagnosis-page{padding-bottom:80px}.diagnosis-page-heading{padding-top:48px}.diagnosis-page-heading h1{font-size:clamp(34px,4.8vw,64px);max-width:950px;margin:28px 0 22px;line-height:1.08;letter-spacing:-.045em}.diagnosis-page-heading p{font-size:18px;line-height:1.6;color:var(--muted);max-width:650px}.diagnosis-page :global(.diagnosis){padding-top:48px}@media(max-width:600px){.diagnosis-page-heading{padding-top:32px}.diagnosis-page-heading h1{font-size:clamp(34px,9vw,46px)}.diagnosis-page :global(.diagnosis){padding-top:32px}}</style>

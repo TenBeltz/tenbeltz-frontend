@@ -3,8 +3,8 @@
   "lang": "es",
   "lead": {
     "name": "Ane García",
-    "company": "Ladera Software · ejemplo ficticio",
+    "company": "Ladera Servicios · ejemplo ficticio",
     "email": "qa@example.invalid"
   },
-  "answers": [1, 1, 1, 1, 1, 1, 1, 1, 1, 2]
+  "answers": ["documents", "Recibimos documentos por correo, recogemos datos en una hoja y preparamos informes para revisar.", "daily", "two-ten", "Correo, hojas de cálculo y carpetas compartidas", "scattered", "yes", "lead", "errors", "defining"]
 }

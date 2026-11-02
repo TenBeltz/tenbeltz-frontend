@@ -1,14 +1,9 @@
 ---
 const { lang = 'es' } = Astro.props;
 const en = lang === 'en';
-const isBusiness = ['/ia-para-empresas', '/en/ai-for-business'].includes(Astro.url.pathname.replace(/\/$/, ''));
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
-const isSoftware = ['/ia-para-software','/en/ai-for-software','/services','/en/services','/evaluacion-ia-saas','/en/ai-evaluation-for-saas','/agentes-voz-saas','/en/voice-agents-for-saas','/ia-privada-productos','/en/private-ai-products'].includes(path);
-const isGeneral = !isBusiness && !isSoftware;
-const generalHref = ['/', '/en'].includes(path) ? '#elige-tu-camino' : `${en ? '/en' : '/'}#elige-tu-camino`;
 const isDiagnosis = ['/diagnostico-ia', '/en/ai-diagnosis'].includes(Astro.url.pathname.replace(/\/$/, ''));
 ---
-{!isDiagnosis && <a class="diagnosis-launcher" href={isBusiness ? '#explorar-proceso' : isGeneral ? generalHref : en ? '/en/ai-diagnosis' : '/diagnostico-ia'}><img src="/images/brand/tenbeltz-icon-diagnostico-white.svg" alt="" width="20" height="20" />{isBusiness ? (en ? 'Explore a workflow' : 'Explora un proceso') : isGeneral ? (en ? 'Find your starting point' : 'Encuentra tu punto de partida') : (en ? 'Technical AI diagnosis' : 'Diagnóstico técnico de IA')}</a>}
+{!isDiagnosis && <a class="diagnosis-launcher" href={en ? '/en/ai-diagnosis' : '/diagnostico-ia'}><img src="/images/brand/tenbeltz-icon-diagnostico-white.svg" alt="" width="20" height="20" />{en ? 'Find a first workflow' : 'Encuentra un primer proceso'}</a>}
 <script>
   const launcher = document.querySelector<HTMLElement>('.diagnosis-launcher');
   const cookie = document.querySelector<HTMLElement>('#cookie-consent');
@@ -30,7 +25,7 @@ const isDiagnosis = ['/diagnostico-ia', '/en/ai-diagnosis'].includes(Astro.url.p
       entries.forEach(entry => { if (entry.isIntersecting) visible.add(entry.target); else visible.delete(entry.target); });
       launcher.classList.toggle('is-hidden', visible.size > 0);
     });
-    [contact, document.querySelector('#explorar-proceso'), document.querySelector('#elige-tu-camino')].filter((element): element is Element => !!element).forEach(element => observer.observe(element));
+    [contact, document.querySelector('#explorar-proceso')].filter((element): element is Element => !!element).forEach(element => observer.observe(element));
   }
 </script>
 <style>

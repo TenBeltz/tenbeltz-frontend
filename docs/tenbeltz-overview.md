@@ -1,6 +1,6 @@
 # TenBeltz
 
-Documento base redactado a partir del copy actual de la web.
+Documento histórico redactado a partir del posicionamiento software anterior. **Sustituido el 2026-11-02** por [el nuevo posicionamiento para empresas](reposicionamiento-empresas/posicionamiento.md) y [el contexto comercial vigente](../.agents/product-marketing.md). No reutilizar el texto siguiente como propuesta comercial actual.
 
 ## Resumen
 

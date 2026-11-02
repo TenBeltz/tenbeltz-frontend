@@ -344,3 +344,9 @@ Browser42 navegaciones320–1440px sin overflow/erroresJS; menú/FAQ/explorador/
 interceptado/PDF6p/sinJS correctos. Guardia real de contacto13casos con cuerpos inválidos.
 Preview activa y HTTPS anónimo401. No correos reales, producción, indexación ni lectura GSC.
 Detalle y pendientes: docs/dual-audience/verification.md. Aceptación humana pendiente.
+
+## 2026-11-02 — Preparación comercial para empresas de cualquier sector
+
+Preparados posicionamiento, mapa de páginas y texto de home en `docs/reposicionamiento-empresas/`. La decisión de Aritz sustituye la doble audiencia como prioridad comercial. El mapa conserva rutas actuales durante la transición y señala expresamente cuáles son nuevas propuestas.
+
+Verificación documental: destinos actuales contrastados con `src/pages` y `src/i18n/routes.js`; referencias y anclas de casos contrastadas con `src/data/projects.ts` y su plantilla. No se ha cambiado el código, sitemap, metadatos ni redirecciones. No hay build de una implementación nueva, despliegue, consulta de Search Console o comprobación nueva de indexación. El trabajo pendiente está en `pendientes.md`.

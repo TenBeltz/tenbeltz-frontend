@@ -18,7 +18,9 @@ PAIRS = [('/', '/en'), ('/services', '/en/services'),
  ('/agentes-voz-saas', '/en/voice-agents-for-saas'),
  ('/ia-privada-productos', '/en/private-ai-products'),
  ('/ia-para-empresas', '/en/ai-for-business'),
- ('/ia-para-software', '/en/ai-for-software')]
+ ('/ia-para-software', '/en/ai-for-software'),
+ ('/documentos-e-informes', '/en/documents-and-reports'),
+ ('/automatizacion-administrativa', '/en/administrative-automation')]
 
 class Page(HTMLParser):
  def __init__(self):
@@ -93,7 +95,7 @@ try:
    if sitemap_urls.get(key)!=expected: fail(path,'sitemap hreflang differs')
 except Exception as exc: fail('sitemap',str(exc))
 
-# Follow only links to this site; assets can exist outside the24 page routes.
+# Follow only links to this site; assets can exist outside the page routes.
 extra={}
 for source,page in list(pages.items()):
  for href in page.links:
@@ -114,5 +116,5 @@ for source,page in list(pages.items()):
    destination=extra[path]
   if target.fragment and isinstance(destination,Page) and unquote(target.fragment) not in destination.ids:
    fail(source,f'missing fragment {href}')
-print(json.dumps({'base':base,'expected_routes':24,'pages_checked':len(pages),'internal_links_checked':checked_links,'errors':errors,'passed':not errors},ensure_ascii=False,indent=2))
+print(json.dumps({'base':base,'expected_routes':len(PAIRS)*2,'pages_checked':len(pages),'internal_links_checked':checked_links,'errors':errors,'passed':not errors},ensure_ascii=False,indent=2))
 sys.exit(bool(errors))

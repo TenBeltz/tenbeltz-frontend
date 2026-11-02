@@ -46,6 +46,17 @@ export default defineConfig({
     enabled: false
   },
   output: 'server',
+  security: {
+    // Astro 7 validates Host as well as forwarded headers. Keep SSR URLs
+    // restricted to the public site, private preview and local development.
+    // The contact endpoint separately pins its origin to the actual Host.
+    allowedDomains: [
+      { hostname: 'tenbeltz.com' },
+      { hostname: 'tenbeltz-landing.dev.tenbeltz.com' },
+      { hostname: '127.0.0.1' },
+      { hostname: 'localhost' },
+    ],
+  },
   adapter: node({ mode: 'standalone' }),
   integrations: [
     react(),

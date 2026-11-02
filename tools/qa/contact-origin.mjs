@@ -29,6 +29,10 @@ const cases = [
   ['Production HTTP rejected', 'tenbeltz.com', 'http://tenbeltz.com', {}, 403],
   ['Production foreign origin rejected', 'tenbeltz.com', 'https://attacker.example', {}, 403],
   ['Unknown hostname rejected', 'unknown.example', 'https://unknown.example', {}, 404],
+  ['Host with injected path rejected', 'tenbeltz.com/invalid', 'https://tenbeltz.com', {}, 404],
+  ['Unknown host with trusted forwarded host', 'unknown.example', 'https://tenbeltz.com', { 'X-Forwarded-Host': 'tenbeltz.com', 'X-Forwarded-Proto': 'https' }, 404],
+  ['Local host cannot adopt forwarded public origin', '127.0.0.1:10022', 'https://tenbeltz.com', { 'X-Forwarded-Host': 'tenbeltz.com', 'X-Forwarded-Proto': 'https' }, 403],
+  ['Valid preview origin with a different forwarded host', preview, `https://${preview}`, { 'X-Forwarded-Host': 'tenbeltz.com', 'X-Forwarded-Proto': 'https' }, 422],
 ];
 for (const [name, host, origin, forwarded, status] of cases) {
   const headers = { Host: host, 'Content-Type': 'application/json', ...forwarded };
@@ -39,4 +43,4 @@ for (const [name, host, origin, forwarded, status] of cases) {
 }
 const oversized = await post(`${base}/api/contact`, { Host: preview, Origin: `https://${preview}`, 'Content-Type': 'application/json' }, 'x'.repeat(32769));
 assert.equal(oversized.status, 413);
-console.log('Oversized body: 413. Thirteen cases passed; no emails sent.');
+console.log(`Oversized body: 413. ${cases.length + 1} cases passed; no emails sent.`);

@@ -1,6 +1,6 @@
 # TenBeltz · Frontend
 
-Web corporativa de **TenBeltz (Beltz Dev SL)**, equipo de ingeniería de IA para automatizar procesos en empresas y desarrollar e integrar IA en productos SaaS y proyectos de software.
+Web corporativa de **TenBeltz (Beltz Dev SL)**, equipo de ingeniería de IA que ayuda a empresas de distintos sectores a identificar oportunidades, implementar soluciones y preparar a sus equipos para utilizarlas.
 
 Sitio bilingüe en español e inglés, con renderizado en servidor, páginas comerciales, casos de trabajo, equipo, diagnóstico de IA y formulario de contacto.
 
@@ -94,21 +94,23 @@ astro.config.mjs    SSR, integraciones, idiomas y sitemap
 
 ## Rutas e idiomas
 
-El código contiene **24 páginas comerciales: 12 por idioma**, además de páginas de error y endpoints API. Este inventario describe el repositorio, no certifica qué versión está publicada en producción.
+El código contiene **28 páginas públicas: 14 por idioma**, además de páginas de error y endpoints API. Este inventario describe el repositorio, no certifica qué versión está publicada en producción.
 
 | Página | Español | Inglés |
 | --- | --- | --- |
 | Inicio | `/` | `/en` |
 | IA para empresas | `/ia-para-empresas` | `/en/ai-for-business` |
-| IA para software | `/ia-para-software` | `/en/ai-for-software` |
+| Integración técnica (ruta conservada) | `/ia-para-software` | `/en/ai-for-software` |
+| Documentos e informes | `/documentos-e-informes` | `/en/documents-and-reports` |
+| Procesos administrativos | `/automatizacion-administrativa` | `/en/administrative-automation` |
 | Servicios | `/services` | `/en/services` |
 | Casos | `/casos` | `/en/case-studies` |
 | Equipo | `/quien-esta-detras` | `/en/who-is-behind` |
 | Perfil de Aritz | `/aritz` | `/en/aritz` |
-| Diagnóstico | `/diagnostico-ia` | `/en/ai-diagnosis` |
+| Orientación de procesos | `/diagnostico-ia` | `/en/ai-diagnosis` |
 | Evaluación de IA | `/evaluacion-ia-saas` | `/en/ai-evaluation-for-saas` |
-| Agentes de voz | `/agentes-voz-saas` | `/en/voice-agents-for-saas` |
-| IA privada | `/ia-privada-productos` | `/en/private-ai-products` |
+| Atención y agentes de voz | `/agentes-voz-saas` | `/en/voice-agents-for-saas` |
+| Conocimiento interno e IA privada | `/ia-privada-productos` | `/en/private-ai-products` |
 | Políticas | `/politicas` | `/en/politicas` |
 
 ### Añadir o modificar contenido
@@ -132,7 +134,7 @@ No hay un script `npm test` definido. Un build correcto no sustituye las comprob
 
 ## Despliegue
 
-El despliegue lo realiza una persona autorizada. Antes de ejecutarlo, confirma el gestor de procesos, los puertos, las variables y la configuración Nginx del entorno de destino.
+El despliegue requiere autorización del usuario; el 2026-11-02 autorizó expresamente la implementación completa y las publicaciones en desarrollo y producción. Antes de ejecutarlo, confirma el gestor de procesos, los puertos, las variables y la configuración Nginx del entorno de destino.
 
 **Hay dos referencias distintas en el repositorio:**
 
@@ -144,7 +146,8 @@ El despliegue lo realiza una persona autorizada. Antes de ejecutarlo, confirma e
 ## Documentación relacionada
 
 - [Contexto comercial actual](.agents/product-marketing.md).
-- [Brief de las dos audiencias](docs/dual-audience/brief.md) y [verificación de la preview](docs/dual-audience/verification.md).
+- [Nueva orientación comercial](docs/reposicionamiento-empresas/README.md) y [verificación de la implementación](docs/reposicionamiento-empresas/verificacion.md).
+- Historial anterior: [brief de dos audiencias](docs/dual-audience/brief.md).
 - [Diagnóstico de IA](docs/ai-diagnosis-2026-10-09.md).
 - [Brandbook](docs/brandbook-2026-10-08.md).
 - SEO: [estado y fotografías históricas](seo/estado-actual.md), [pendientes](seo/pendientes.md), [decisiones](seo/decisiones.md) y [aprendizajes](seo/aprendizajes.md).

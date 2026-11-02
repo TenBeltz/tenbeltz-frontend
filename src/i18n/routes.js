@@ -8,6 +8,8 @@ const pairs = [
   ['/agentes-voz-saas', '/voice-agents-for-saas'],
   ['/ia-privada-productos', '/private-ai-products'],
   ['/ia-para-empresas', '/ai-for-business'],
+  ['/documentos-e-informes', '/documents-and-reports'],
+  ['/automatizacion-administrativa', '/administrative-automation'],
   ['/ia-para-software', '/ai-for-software'],
 ];
 

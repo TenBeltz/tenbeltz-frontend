@@ -9,7 +9,7 @@ Web corporativa de TenBeltz (Beltz Dev SL). Astro 7 en modo SSR, bilingüe espa�
 - **Islas interactivas:** React 18
 - **i18n:** i18n nativo de Astro. `es` por defecto sin prefijo, `en` bajo `/en/`
 - **Gestor de paquetes:** npm
-- **Despliegue:** VPS con nginx + pm2. El despliegue lo ejecuta una persona, no el agente
+- **Despliegue:** VPS con Nginx y systemd, releases atómicas. El usuario autorizó expresamente al agente a publicar desarrollo y producción el 2026-11-02; procedimiento vigente en `docs/deploy/production-2026-10-09.md` y registro de esta entrega en `docs/reposicionamiento-empresas/verificacion.md`. No usar el deploy.sh histórico de PM2.
 
 ## Estructura
 
@@ -24,7 +24,7 @@ seo/                documentación y trazabilidad de SEO
 docs/deploy/        configuración de servidor
 ```
 
-No hay rutas dinámicas. El sitio son **24 URLs**: 12 páginas × 2 idiomas, incluidas dos landings por audiencia y tres páginas de solución ES/EN. Las rutas anteriores se conservan.
+No hay rutas dinámicas. El sitio son **28 URLs**: 14 páginas × 2 idiomas, incluidas las soluciones de documentos y administración. Las páginas específicas de software conservan su URL como acceso técnico histórico. Las rutas anteriores se conservan.
 
 ## Reglas que importan
 
@@ -108,15 +108,17 @@ npm run preview  # servir el build
 ## Contexto de negocio
 
 TenBeltz es el nombre comercial de Beltz Dev SL (NIF B21697719), Leioa, Bizkaia. Equipo
-de ingeniería de IA con dos líneas comerciales autorizadas por Aritz el 2026-10-13: automatización de procesos para empresas/pymes y desarrollo e integración de IA para equipos SaaS y consultoras de software. Home común, landings `/ia-para-empresas` y `/ia-para-software` con equivalentes EN. Contexto actual en `.agents/product-marketing.md`.
+de ingeniería de IA dirigido, por decisión de Aritz el 2026-11-02, a empresas de cualquier sector que quieran implementar IA. La captación específica de empresas de software deja de ser prioritaria; esta decisión sustituye la doble audiencia de 2026-10-13. Contexto vigente en `.agents/product-marketing.md`; propuesta comercial, mapa y home en `docs/reposicionamiento-empresas/README.md`.
 
-Software: cinco modalidades (AI Gap Analysis, AI Project Foundations, Agent MVP, Production Delivery y formación en IA aplicada). Empresas: elegir el proceso, construir/comprobar e integrar/acompañar, con alcance y presupuesto acordados; sin tarifas ni plazos nuevos publicados.
+Propuesta actual: soluciones por tarea (documentos/informes, administración, atención y conocimiento interno), con diagnóstico, implementación y adopción; formación también independiente. Alcance y presupuesto acordados, sin tarifas, plazos o ahorros inventados. La primera conversación admite necesidades aún por concretar. La llamada de encaje no incluye los entregables del diagnóstico.
+
+Estado: web nueva implementada en ES/EN y verificada en desarrollo. El 2026-11-02 Aritz amplía expresamente el alcance a implementación completa con subagentes y despliegue en desarrollo y producción; no volver a pedir esa autorización. Los documentos anteriores son historial. Conservar URLs durante la transición y verificar cualquier futura redirección. Ver estado y comprobaciones reales en `docs/reposicionamiento-empresas/verificacion.md`.
 
 Aritz lidera las primeras reuniones, la consultoría y la definición técnica. El desarrollo y la integración se delegan al equipo bajo su dirección técnica. No prometer que Aritz implementa personalmente todo el proyecto. El formulario de contacto permanece abierto también en la home.
 
 Referencias públicas autorizadas: Irontec, Qamarero, Prados-Osuna Abogados, LexFirma y TecniSoft (SistemaPol). Biiak es producto cofundado. Imagina subcontrató la formación de 30 horas en IA local para el equipo técnico internacional de Opus Dei. Conservar esta atribución. Los casos jurídicos sin cliente identificado siguen anónimos; la autorización de una referencia no permite atribuirle casos anónimos por inferencia.
 
-Al escribir copy, distingue las dos audiencias: procesos, herramientas y revisión para empresas; arquitectura, evaluación e integración para software. Evita lenguaje corporativo genérico y promesas sin evidencia. La ampliación de audiencia pedida por el usuario sustituye el posicionamiento exclusivamente software anterior. Mantén la especialización en ingeniería y resultados comprobables.
+Al escribir copy, empezar por procesos, herramientas, personas y resultados comprobables. Explicar arquitectura, evaluación e integración cuando ayuden a decidir. Mantener la especialización en ingeniería. El cuestionario actual orienta sobre procesos de negocio con diez preguntas, resumen sin nota y PDF de marca. Las respuestas son locales hasta compartirlas expresamente. Conserva consentimiento y deduplicación de reintentos; nunca ensayes envíos reales durante QA por defecto.
 
 ## Equipo y portfolio (2026-10-08)
 

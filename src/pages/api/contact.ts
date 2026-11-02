@@ -2,11 +2,18 @@ import type { APIRoute } from 'astro';
 
 // Fixed, private upstream. Browser never receives SMTP credentials or bridge token.
 export const POST: APIRoute = async ({ request, url }) => {
-  if (!['tenbeltz.com', 'tenbeltz-landing.dev.tenbeltz.com', '127.0.0.1', 'localhost'].includes(url.hostname)) return new Response('Not found', { status: 404 });
+  // Validate the actual Host independently of framework URL normalisation.
+  // Unknown hosts may be normalised to loopback by Astro, while forwarded
+  // headers may legitimately change url.origin behind a reverse proxy.
+  let incoming: URL;
+  try { incoming = new URL(`http://${request.headers.get('host') || url.host}`); }
+  catch { return new Response('Not found', { status: 404 }); }
+  if (incoming.username || incoming.password || incoming.pathname !== '/' || incoming.search || incoming.hash) return new Response('Not found', { status: 404 });
+  if (!['tenbeltz.com', 'tenbeltz-landing.dev.tenbeltz.com', '127.0.0.1', 'localhost'].includes(incoming.hostname)) return new Response('Not found', { status: 404 });
   // TLS terminates at Nginx; Astro sees HTTP internally. Pin the external
   // public origin instead of trusting arbitrary forwarded headers.
-  const expectedOrigin = ['tenbeltz.com', 'tenbeltz-landing.dev.tenbeltz.com'].includes(url.hostname)
-    ? `https://${url.hostname}` : url.origin;
+  const expectedOrigin = ['tenbeltz.com', 'tenbeltz-landing.dev.tenbeltz.com'].includes(incoming.hostname)
+    ? `https://${incoming.hostname}` : incoming.origin;
   if (request.headers.get('origin') !== expectedOrigin) return new Response('Forbidden', { status: 403 });
   if (!request.headers.get('content-type')?.startsWith('application/json')) return new Response('JSON required', { status: 415 });
   const token = import.meta.env.CONTACT_BRIDGE_TOKEN;

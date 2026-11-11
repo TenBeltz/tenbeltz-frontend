@@ -23,7 +23,7 @@ const nav = [
       visible expanded-to-collapsed jump. Without JS the navigation stays open. */}
   <script is:inline>document.currentScript?.parentElement?.setAttribute('data-menu-enhanced', 'true');</script>
   <div class="wrap header-inner">
-    <a class="brand" href={home} aria-label={en ? 'TenBeltz home' : 'TenBeltz inicio'}><img src="/images/tenbeltz-mark.svg" width="30" height="33" alt="" />TenBeltz<span aria-hidden="true" style="color:var(--accent)">.</span></a>
+    <a class="brand" href={home} aria-label={en ? 'TenBeltz home' : 'TenBeltz inicio'}><span class="header-symbol" data-header-symbol aria-hidden="true"><img src="/images/tenbeltz-mark.svg" width="30" height="33" alt="" /></span>TenBeltz<span aria-hidden="true" style="color:var(--accent)">.</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
       <span class="menu-label-open">{en ? 'Menu' : 'Menú'}</span><span class="menu-label-close">{en ? 'Close' : 'Cerrar'}</span>
       <svg class="menu-symbol" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path class="menu-line-top" d="M4 8h16"/><path class="menu-line-bottom" d="M4 16h16"/></svg>
@@ -37,10 +37,13 @@ const nav = [
   </div>
 </header>
 <script>
+  import { initHeaderSymbol } from '@/scripts/header-symbol';
   const header = document.querySelector<HTMLElement>('.site-header');
   const toggle = header?.querySelector<HTMLButtonElement>('[data-menu-toggle]');
   const nav = document.getElementById('site-nav');
   const mobile = window.matchMedia('(max-width: 740px)');
+  const animateSymbol = initHeaderSymbol(header?.querySelector<HTMLElement>('[data-header-symbol]') ?? null);
+  if (nav) nav.inert = mobile.matches;
   let scrollPosition = 0;
   const inertBefore = new Map<HTMLElement, boolean>();
   header?.setAttribute('data-menu-enhanced', 'true');
@@ -50,6 +53,8 @@ const nav = [
     toggle.setAttribute('aria-expanded', String(open));
     header.setAttribute('data-menu-open', String(open));
     nav.setAttribute('data-open', String(open));
+    nav.inert = mobile.matches && !open;
+    animateSymbol(open);
     if (open) {
       scrollPosition = window.scrollY;
       document.body.style.setProperty('--menu-scroll-offset', `-${scrollPosition}px`);
@@ -79,7 +84,7 @@ const nav = [
     if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
     else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
   });
-  mobile.addEventListener('change', () => setOpen(false));
+  mobile.addEventListener('change', () => { setOpen(false); if (nav) nav.inert = mobile.matches; });
   window.addEventListener('pagehide', () => setOpen(false));
 </script>
 <style>

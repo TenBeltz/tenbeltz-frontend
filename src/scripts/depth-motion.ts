@@ -1,3 +1,4 @@
+import { initBrandFlight } from './brand-flight';
 /**
  * Site-wide depth motion. One language: content is a stack of sheets that rise from
  * beneath the page and settle flat as you scroll, while backgrounds recede.
@@ -73,7 +74,8 @@ export async function initDepthMotion() {
       const fine = desktop && window.matchMedia('(pointer: fine)').matches;
       const untilt = fine ? tilt(main) : undefined;
       const unmark = footerMark(gsap, ScrollTrigger, fine);
-      return () => { untilt?.(); unmark?.(); };
+      const unflight = desktop ? initBrandFlight(gsap, ScrollTrigger) : undefined;
+      return () => { untilt?.(); unmark?.(); unflight?.(); };
     },
   );
 

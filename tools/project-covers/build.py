@@ -79,9 +79,18 @@ def biiak():
     s+='<circle cx="786" cy="540" r="74" fill="#f7f6f2"/>'+line('M786 493l33 12v31c0 27-20 44-33 51-13-7-33-24-33-51v-31z',width=4)+line('M773 537l10 10 20-24',width=4)+'</g>'
     return scene(s)
 
+def periciales():
+    # Source documents become a report that remains subject to review.
+    s='<circle cx="790" cy="405" r="205" fill="#e4dadd" opacity=".5"/>'
+    s+='<g filter="url(#shadow)">'+sheet(255,310,-12)+sheet(315,270,8)+'</g>'+forward()
+    s+='<g filter="url(#shadow)">'+card(670,255,240,300,PAPER,16)
+    s+=line('M709 307h80 M709 350h160 M709 377h145 M709 404h155 M709 431h112','#c3babd',5)
+    s+='<circle cx="865" cy="508" r="61" fill="#583346"/>'+line('M840 508l17 17 32-38',PAPER,5)+'</g>'
+    return scene(s)
+
 if __name__ == '__main__':
     OUT.mkdir(parents=True, exist_ok=True)
-    for key, fn in [('irontec',konect), ('qamarero',qamarero), ('clasificacion-documental',classification), ('biiak',biiak)]:
+    for key, fn in [('irontec',konect), ('qamarero',qamarero), ('clasificacion-documental',classification), ('biiak',biiak), ('informes-periciales',periciales)]:
         for suffix in ['', '-en']:
             (OUT / f'{key}{suffix}.svg').write_text(fn())
-    print('Built 8 text-free conceptual project covers.')
+    print('Built 10 text-free conceptual project covers.')

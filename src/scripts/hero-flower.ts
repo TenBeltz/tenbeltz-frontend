@@ -63,7 +63,7 @@ export async function animateHeroFlower(host: HTMLElement) {
       const uniforms = {
         artwork: { value: texture }, lines: { value: lineTexture }, growthMap: { value: growthTexture },
         draw: { value: 0 }, fill: { value: 0 }, settle: { value: 0 }, time: { value: 0 },
-        gust: { value: 0 }, sweep: { value: -1 }, pointer: { value: new THREE.Vector2(9, 9) }, near: { value: 0 },
+        gust: { value: 0 }, sweep: { value: -1 }, lineGain: { value: 1.7 }, pointer: { value: new THREE.Vector2(9, 9) }, near: { value: 0 },
       };
       const material = new THREE.ShaderMaterial({
         uniforms, transparent: true, depthTest: false, depthWrite: false,
@@ -101,6 +101,7 @@ export async function animateHeroFlower(host: HTMLElement) {
           uniform float settle;
           uniform float sweep;
           uniform float gust;
+          uniform float lineGain;
           varying vec2 artworkUv;
           const vec3 ink = vec3(0.345, 0.2, 0.275);
           const vec3 glow = vec3(0.86, 0.55, 0.72);
@@ -111,7 +112,7 @@ export async function animateHeroFlower(host: HTMLElement) {
             // Drawing: lines appear behind a front that travels out from the stem.
             float drawn = smoothstep(draw, draw - 0.035, order);
             float front = smoothstep(0.06, 0.0, abs(order - draw)) * step(draw, 1.02);
-            float lineA = clamp(line * 1.7, 0.0, 1.0) * drawn * (1.0 - settle * 0.9);
+            float lineA = clamp(line * lineGain, 0.0, 1.0) * drawn * (1.0 - settle * 0.9);
             vec3 lineColour = mix(ink, glow, front * 0.85);
             lineA = max(lineA, line * front * 0.9);
             // Filling: the artwork washes in behind the lines, lighter first, then full colour.
@@ -211,13 +212,16 @@ export async function animateHeroFlower(host: HTMLElement) {
       const resize = () => {
         pollenUniforms.scale.value = renderer.getPixelRatio() * Math.max(host.clientWidth / 660, 0.6);
         renderer.setSize(host.clientWidth, host.clientHeight, false);
+        // Hairlines thin out when the 1254px artwork is drawn small (mobile): compensate.
+        uniforms.lineGain.value = 1.7 * Math.pow(Math.min(Math.max(1254 / Math.max(canvas.width, 1), 1), 2.4), 0.9);
         renderer.render(scene, camera);
       };
       const draw = (now: number) => {
         frame = 0;
         if (disposed || !visible || document.hidden) return;
         if (motion.matches) { sync(); return; }
-        if (previous) elapsed += (now - previous) / 1000;
+        // Cap the step: a slow first frame (shader compile, texture upload) must not skip the drawing.
+        if (previous) elapsed += Math.min((now - previous) / 1000, 1 / 30);
         previous = now;
         const ease = (x: number) => 1 - Math.pow(1 - Math.min(Math.max(x, 0), 1), 2.2);
         uniforms.draw.value = ease(elapsed / DRAW) * 1.08;

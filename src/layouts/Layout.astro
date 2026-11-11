@@ -44,5 +44,12 @@ const lang = getLangFromUrl(Astro.url);
 		<slot />
 		<CookieConsent />
 		<DiagnosisLauncher lang={lang} />
+		<script>
+			import { initDepthMotion } from '@/scripts/depth-motion';
+			// After first paint and idle time, so motion never competes with the LCP.
+			const run = () => void initDepthMotion();
+			if ('requestIdleCallback' in window) requestIdleCallback(run, { timeout: 1500 });
+			else setTimeout(run, 300);
+		</script>
 	</body>
 </html>

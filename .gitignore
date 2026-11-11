@@ -23,3 +23,7 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 .pnpm-store/
+
+# Local browser verification artifacts
+tmp/project-figures-qa/
+.clemisa/

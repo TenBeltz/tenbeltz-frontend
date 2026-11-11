@@ -392,7 +392,6 @@ h1,h2,h3 { font-weight:500; letter-spacing:-.045em; line-height:1.1; }
 .hero-flower[data-phase="loading"] img { visibility:hidden; }
 @media(prefers-reduced-motion:reduce) {
  .hero-flower[data-animated="true"] canvas { opacity:0; }
- .hero-flower[data-animated="true"] img { visibility:visible; }
 }
 @media(min-width:741px) and (max-width:1100px) {
  .home-page .home-intro--flower { min-height:clamp(560px,calc(100svh - 100px),700px); padding-block:52px 48px; }
@@ -412,9 +411,8 @@ h1,h2,h3 { font-weight:500; letter-spacing:-.045em; line-height:1.1; }
  .home-proof dl > div { padding-left:10px; }
  .home-proof dt { font-size:15px; }
  .home-proof dd { font-size:10px; }
- .hero-flower { position:absolute; width:470px; left:auto; right:-135px; top:auto; bottom:-125px; margin:0; transform:rotate(-14deg); opacity:.36; filter:blur(1px); mask-image:linear-gradient(to top,#000 12%,#000b 60%,transparent 98%); }
+ .hero-flower { position:absolute; width:470px; left:auto; right:-135px; top:auto; bottom:-125px; margin:0; transform:rotate(-14deg); opacity:.5; mask-image:linear-gradient(to top,#000 12%,#000b 60%,transparent 98%); }
  .hero-flower img { animation:mobile-flower-breeze 13s ease-in-out infinite alternate; }
- .hero-flower canvas { display:none; }
  .hero-flower[data-animated="true"] img { visibility:visible; }
 }
 @keyframes mobile-flower-breeze { from { transform:rotate(-1deg) translateY(0); } to { transform:rotate(1deg) translateY(-4px); } }
@@ -614,3 +612,43 @@ body.mobile-menu-open #cookie-consent { visibility:hidden; }
 .contact-fields { border:0; padding:0; margin:0; min-width:0; }
 
 .contact-form-shell { min-width:0; }
+
+/* Depth motion (src/scripts/depth-motion.ts): cursor tilt with a moving highlight. */
+.depth-tilt { position:relative; transition:rotate .55s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
+.depth-tilt:hover { z-index:1; transition:rotate .12s linear, box-shadow .4s ease; box-shadow:0 34px 60px -34px rgba(37,40,38,.28); }
+.depth-tilt::after { content:""; position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .35s ease;
+  background:radial-gradient(460px circle at var(--depth-x,50%) var(--depth-y,50%), rgba(88,51,70,.09), transparent 62%); }
+.depth-tilt:hover::after { opacity:1; }
+@media (prefers-reduced-motion: reduce) { .depth-tilt { rotate:none !important; } }
+
+/* Home hero entrance: copy rises from behind line masks while the flower draws itself.
+   Pure CSS, so it never waits for JS; reduced motion shows everything at once. */
+.hero-title-lines .hero-line { display:block; overflow:hidden; padding-bottom:.08em; margin-bottom:-.08em; perspective:600px; }
+.hero-title-lines .hero-line > span { display:block; transform-origin:50% 100%; }
+@keyframes hero-line-in { from { transform:translateY(108%) rotateX(-62deg); } to { transform:none; } }
+@keyframes hero-copy-in { from { opacity:0; transform:translateY(22px); filter:blur(6px); } to { opacity:1; transform:none; filter:none; } }
+@keyframes hero-rule-in { from { clip-path:inset(0 100% 0 0); } to { clip-path:inset(0 0 0 0); } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-title-lines .hero-line > span { animation:hero-line-in 1.15s cubic-bezier(.16,1,.3,1) calc(.12s + var(--i) * .11s) both; }
+  .home-intro--flower .hero-kicker .eyebrow { animation:hero-rule-in 1.1s cubic-bezier(.65,0,.35,1) .05s both; }
+  .home-intro--flower .hero-bottom .lead { animation:hero-copy-in .95s cubic-bezier(.16,1,.3,1) .55s both; }
+  .home-intro--flower .hero-bottom .actions > * { animation:hero-copy-in .9s cubic-bezier(.16,1,.3,1) both; }
+  .home-intro--flower .hero-bottom .actions > :nth-child(1) { animation-delay:.72s; }
+  .home-intro--flower .hero-bottom .actions > :nth-child(2) { animation-delay:.82s; }
+  .home-intro--flower .hero-bottom .hero-context { animation:hero-copy-in .9s cubic-bezier(.16,1,.3,1) .95s both; }
+}
+
+/* Footer: the wordmark is a window onto the flower. Drawn in line, then filled
+   (src/scripts/depth-motion.ts); complete and static without JS or with reduced motion. */
+.footer-mark { margin:6px 0 34px; line-height:0; user-select:none; }
+.footer-mark svg { display:block; width:100%; height:auto; overflow:visible; }
+.footer-mark text { font-family:var(--font-sans); font-size:248px; font-weight:600; letter-spacing:-.04em; }
+.footer-mark-fill rect { fill:var(--accent); }
+.footer-mark-fill { isolation:isolate; }
+.footer-mark-flower { mix-blend-mode:screen; opacity:.92; }
+.footer-mark-stroke { fill:none; stroke:var(--accent); stroke-width:1.1; vector-effect:non-scaling-stroke; }
+/* Curtain: the page slides away to uncover the footer resting underneath. */
+@media (min-width:741px) and (min-height:700px) {
+  body:not(:has(.diagnosis-page,.legal-page,.cv-page)) > main { position:relative; z-index:1; background:var(--paper); box-shadow:0 40px 60px -30px rgba(37,40,38,.22); }
+  body:not(:has(.diagnosis-page,.legal-page,.cv-page)) > .site-footer { position:sticky; bottom:0; z-index:0; }
+}

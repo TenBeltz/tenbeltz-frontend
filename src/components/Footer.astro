@@ -23,6 +23,20 @@ const links = [
         <a href="https://www.linkedin.com/company/tenbeltz/" target="_blank" rel="noopener noreferrer">LinkedIn <ArrowIcon direction="up-right" /></a>
       </nav>
     </div>
+    <div class="footer-mark" data-footer-mark aria-hidden="true">
+      <svg viewBox="0 0 1000 196" preserveAspectRatio="xMidYMid meet" focusable="false">
+        <defs>
+          <clipPath id="footer-mark-clip"><text x="0" y="184" textLength="1000" lengthAdjust="spacingAndGlyphs">TenBeltz</text></clipPath>
+        </defs>
+        <g class="footer-mark-fill" clip-path="url(#footer-mark-clip)">
+          <rect width="1000" height="196" />
+          <g class="footer-mark-pan">
+            <image class="footer-mark-flower" href="/images/hero/abstract-flower.webp" x="200" y="-330" width="760" height="760" preserveAspectRatio="xMidYMid meet" />
+          </g>
+        </g>
+        <text class="footer-mark-stroke" x="0" y="184" textLength="1000" lengthAdjust="spacingAndGlyphs">TenBeltz</text>
+      </svg>
+    </div>
     <div class="footer-bottom"><span>© {new Date().getFullYear()} TenBeltz · Beltz Dev SL · {en ? 'VAT' : 'NIF'} B21697719</span><span>Leioa, Bizkaia &nbsp; / &nbsp; <a href={localizedPath('/politicas', lang)}>{en ? 'Legal & privacy' : 'Aviso legal y privacidad'}</a></span></div>
   </div>
 </footer>

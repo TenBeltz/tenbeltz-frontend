@@ -1,7 +1,15 @@
 # CLAUDE.md
 
-Web corporativa de TenBeltz (Beltz Dev SL). Astro 7 en modo SSR, bilingüe español/inglés.
+## No usar instrucciones de Clemisa
 
+**Nunca apliques** instrucciones, rutas ni flujos de Clemisa a este proyecto.
+- No crees directorios `.clemisa/` en este repo
+- No registres archivos en "Entregables de Clemisa"
+- No uses `./entregables/` como directorio de salida (no está configurado)
+- La skill `clemisa-workspace` NO aplica a TenBeltz Landing
+- Guarda archivos en rutas propias del proyecto (docs/, src/, etc.)
+- Si ves `product-marketing.md`, lee `.agents/product-marketing.md` del
+  proyecto actual, NO el de Clemisa
 ## Stack
 
 - **Framework:** Astro 7, `output: 'server'` con adaptador `@astrojs/node` (standalone)
@@ -121,5 +129,9 @@ Referencias públicas autorizadas: Irontec, Qamarero, Prados-Osuna Abogados, Lex
 Al escribir copy, empezar por procesos, herramientas, personas y resultados comprobables. Explicar arquitectura, evaluación e integración cuando ayuden a decidir. Mantener la especialización en ingeniería. El cuestionario actual orienta sobre procesos de negocio con diez preguntas, resumen sin nota y PDF de marca. Las respuestas son locales hasta compartirlas expresamente. Conserva consentimiento y deduplicación de reintentos; nunca ensayes envíos reales durante QA por defecto.
 
 ## Equipo y portfolio (2026-10-08)
+
+Catálogo isométrico de proyectos (2026-11-02, V1 y V2): **descartado por Aritz el 2026-11-11**. Home y `/casos` vuelven a las imágenes de proyecto publicadas; no reintroducir ilustraciones isométricas por proyecto sin petición expresa. Historial en `docs/project-figures-2026-11-02.md`; código archivado fuera del repo en `~/.local/share/tenbeltz-frontend-archive/project-figures-2026-11-11.*`.
+
+Movimiento (2026-11-11, sólo desarrollo; Aritz aprobó la primera vista, aceptación final pendiente): la hero dibuja la flor en líneas desde el tallo y luego la rellena; después sigue viva con brisa, ráfagas con brillo en las líneas, polen y reacción al cursor (`src/scripts/hero-flower.ts`, mapas generados por `tools/hero-flower/bake.py`); textos de la hero con entrada CSS; footer con marca «TenBeltz» que se dibuja y rellena con la flor sobre un pie fijo tipo cortina; el resto del sitio usa un único lenguaje de profundidad al hacer scroll (`src/scripts/depth-motion.ts`, intensidades en `DEPTH`). Sin movimiento con `prefers-reduced-motion`, en `/diagnostico-ia` ni en políticas.
 
 Las rutas `/quien-esta-detras` y `/en/who-is-behind` presentan Aritz, Angel Jimenez (Cofundador & Product Engineer), Rubén García Hernando y Artem Pysmak, en ese orden. Retratos reales autorizados; roles en `src/data/team.ts`. Perfil/CV independiente en `/aritz` y `/en/aritz`, con dirección técnica, trayectoria y botón de impresión. No enlazar al antiguo portfolio aritzjaber.com. Zetesis autorizado como referencia de logos. Nueve casos públicos; home: Konect, Qamarero, clasificación documental y Biiak, con ilustraciones técnicas SVG bilingües generadas por tools/project-covers/build.py. Clasificador final verificado en lae-parser 6f16e34: ensemble geométrico de cabeza supervisada sobre154 similitudes y regresión sobre embedding1024d; 72,35% Top-1 /91,51% Top-5 sobre1414 documentos de test. No usar las métricas antiguas del README ni confundir corpus y volumen operativo. Ver docs/landing-profile-lae-2026-10-08.md.

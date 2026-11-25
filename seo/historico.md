@@ -5,6 +5,10 @@ Orden cronológico inverso (lo más reciente arriba). Cada entrada dice **qué**
 
 ---
 
+## 2026-11-25 — Enlaces a Bilbe (producto cofundado)
+
+Por petición de Aritz, para reforzar la marca Bilbe en Google: logo de Bilbe con «Producto cofundado» y enlace a https://bilbe.app/ en la tira de clientes de la home; entrada «Bilbe · Cofundador y CTO · Desde 2026» con enlace en `/aritz` y `/en/aritz`, y enlace «Bilbe» en la ficha de Aritz de `/quien-esta-detras` y `/en/who-is-behind`. Aritz confirmó el rol. La fecha es «2026» sin mes porque no hay fecha confirmada. Commit `dc4949b`, release de producción `frontend-dc4949b` (el anterior, `frontend-a9f1d43`, se conserva para rollback). Verificado: build con `astro check` sin errores, candidato 10025 con rutas 200, y en producción HTTPS 200 en 11 rutas y en el logo, www 301 y bilbe.app presente en home, /aritz, /en/aritz y /quien-esta-detras. Capturas Playwright revisadas de la tira de logos (1440) y de /aritz.
+
 ## 2026-10-08 — Correcciones SEO del rebranding
 
 Actualizados llms.txt, og:url, H1 de servicios/casos y descripciones ES/EN.

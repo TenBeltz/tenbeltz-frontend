@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 302 112" role="img" aria-labelledby="title"><title id="title">Bilbe</title>
+<defs><path id="b" fill-rule="evenodd" d="M0 0H13V32C18 27 25 24 33 24C51 24 64 38 64 56S51 88 33 88C25 88 18 84 13 79V86H0ZM13 56C13 67 21 75 32 75S51 67 51 56S43 37 32 37S13 45 13 56Z"/></defs>
+<g fill="#345CE6"><path d="M6 6H28V56L6 46Z"/><path d="M34 29A41 41 0 1 1 6 63L28 73A19 19 0 1 0 34 53Z"/></g>
+<g fill="#182D45" transform="translate(24 15)"><path d="M77 28H90V86H77Z"/><circle cx="83.5" cy="9" r="7.5"/><path d="M103 0H116V86H103Z"/><use href="#b" x="130"/><path fill-rule="evenodd" d="M264 60H215C217 70 224 76 234 76C242 76 248 72 251 68H264C259 81 249 88 234 88C215 88 202 74 202 56S215 24 233 24C252 24 265 38 264 60ZM215 49H251C249 40 242 36 233 36C224 36 218 40 215 49Z"/></g>
+</svg>
